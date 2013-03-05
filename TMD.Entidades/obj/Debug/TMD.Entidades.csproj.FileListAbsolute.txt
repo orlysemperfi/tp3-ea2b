@@ -1,0 +1,33 @@
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Entidades\bin\Debug\TMD.Entidades.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Entidades\bin\Debug\TMD.Entidades.pdb
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Entidades\obj\Debug\TMD.Entidades.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Entidades\obj\Debug\TMD.Entidades.pdb
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Sistemas\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Sistemas\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Sistemas\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Sistemas\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
