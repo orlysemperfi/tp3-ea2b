@@ -1,0 +1,4 @@
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.AccesoDatos\bin\Debug\TMD.GestionConfiguracion.AccesoDatos.dll
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.AccesoDatos\bin\Debug\TMD.GestionConfiguracion.AccesoDatos.pdb
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.AccesoDatos\obj\Debug\TMD.GestionConfiguracion.AccesoDatos.dll
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.AccesoDatos\obj\Debug\TMD.GestionConfiguracion.AccesoDatos.pdb
