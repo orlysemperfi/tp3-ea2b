@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TMD.CF.Site.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css?v=1" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Layout.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <asp:ScriptManager ID="scrMng" runat="server">
+    </asp:ScriptManager>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    TMD - GESTION DE LA CONFIGURACION
+                </h1>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Bienvenido <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>! [
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/Default.aspx" OnLoggedOut="HeadLoginView_LoggedOut" />
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div id="menu-principal" class="panel-wrapper">
+                <asp:Menu ID="Menu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false"
+                    Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Linea Base" Value="LineaBase">
+                            <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/LineaBase/ListaLineaBase.aspx?carga=0" />
+                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/ACP/ListaLineaBase.aspx?carga=1" />
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Auditoría" Value="Auditoria">
+                            <asp:MenuItem Text="Actualizar Programa Anual" Value="ActualizarProgramaAnual" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
+                            <asp:MenuItem Text="Actualizar Plan de Auditoria" Value="ActualizarPlanAuditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
+                            <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" Value="ActualizarHallazgosAuditoria" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
+                            <asp:MenuItem Text="Actualizar Plan de Acción" Value="ActualizarPlanAccion" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
+                            <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" Value="AsignarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
+                            <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" Value="ActualizarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+            <div class="clear hideSkiplink">
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="ButtonContent" runat="server" />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
