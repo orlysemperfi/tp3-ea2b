@@ -17,6 +17,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
     public class CMDBData : DataBase, ICMDBData
     {
 
+
         public CMDBData(String connectionString)
             : base(connectionString)
         {
