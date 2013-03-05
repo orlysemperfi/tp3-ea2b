@@ -11,7 +11,5 @@ namespace TMD.SD.AccesoDatos_Atencion.Contrato
     {
 
         List<CMDB> listaCMDBProyecto(int codigoProyecto);
-        
-
     }
 }
