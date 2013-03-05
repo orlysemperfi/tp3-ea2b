@@ -95,12 +95,6 @@
     <Compile Include="Util\DataReaderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TMD.SistemaIntegral\TMD.Entidades\TMD.Entidades.csproj">
-      <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
-      <Name>TMD.Entidades</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="Implementacion\DAArchivo.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -119,6 +113,12 @@
     <None Include="Implementacion\DAArchivo.dbml.layout">
       <DependentUpon>DAArchivo.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
+      <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
+      <Name>TMD.Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
