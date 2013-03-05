@@ -1,0 +1,5 @@
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.ServiceDesk.AD-Atencion.dll
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.ServiceDesk.AD-Atencion.pdb
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.ServiceDesk.AD-Atencion.dll
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.ServiceDesk.AD-Atencion.pdb
