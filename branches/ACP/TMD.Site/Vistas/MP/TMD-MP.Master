@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TMD-MP.master.cs" Inherits="TMD.MP.Site.Privado.TMD_MP" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>TMD - Definición y Mejora de Procesos</title>
+    <link href="~/App_Themes/TMD.MP/tmd-mp.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="contenedor">
+        <div class="contenedor-cabecera">
+            <div class="contenedor-logo">TMD</div>
+            <div class="seccion-usuario-logo">
+                <div class="seccion-usuario">
+                    <div>
+                        <asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div class="seccion-opciones-usuario">
+                        <asp:LinkButton ID="lbtnCerrarSesion" runat="server" Text="Cerrar Sesión" OnClick="lbtnCerrarSesion_Click"></asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+<%--        <div id="menuh">
+        <ul>
+            <li><a id="lnkInicio" runat="server" href="Inicio.aspx">Inicio</a></li>
+            <li><a id="lnkPropuestas" runat="server" href="PropuestaMejoraListado.aspx">Propuestas</a></li>
+            <li><a id="lnkSoluciones" runat="server" href="#">Soluciones</a></li>
+            <li><a id="lnkProcesos" runat="server" href="#">Procesos</a></li>
+            <li><a id="lnkIndicadores" runat="server" href="IndicadorListado.aspx">Indicadores</a></li>
+            <li><a id="lnkPilotos" runat="server" href="#">Pilotos</a></li>
+            <li><a id="lnkSeguimiento" runat="server" href="#">Seguimiento</a></li>
+        </ul>
+        </div>--%>
+        <ul id="menu-bar">
+            <li class="current"><a href="Inicio.aspx">Inicio</a></li>
+            <li><a href="#">Indicadores</a>
+            <ul>
+            <li><a href="IndicadorListado.aspx">Actualizar Información</a></li>
+            </ul>
+            </li>
+            <li><a href="#">Propuestas</a>
+            <ul>
+            <li><a href="PropuestaMejoraListado.aspx">Actualizar Información</a></li>
+            <li><a href="#">Aprobar Propuesta</a></li>
+            <li><a href="#">Mandar a Desarrollo</a></li>
+            </ul>
+            </li>
+            <li><a href="#">Soluciones</a>
+            <ul>
+            <li><a href="#">Actualizar Información</a></li>
+            </ul>
+            </li>
+            <li><a href="#">Planes</a></li>
+            <li><a href="#">Seguimiento</a></li>
+            <li><a href="#">Lecciones Aprendidas</a></li>
+        </ul>      
+        <div class="contenedor-pagina">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>        
+        <div class="pie_pagina">
+            Copyright ©
+            <%=DateTime.Now.Year %>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
