@@ -33,3 +33,10 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.Entidades.p
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb
+E:\TP3\Proyecto\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.dll
+E:\TP3\Proyecto\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.pdb
+E:\TP3\Proyecto\TMD.MP.Comun\bin\Debug\TMD.Entidades.dll
+E:\TP3\Proyecto\TMD.MP.Comun\bin\Debug\TMD.Entidades.pdb
+E:\TP3\Proyecto\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Proyecto\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
+E:\TP3\Proyecto\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb

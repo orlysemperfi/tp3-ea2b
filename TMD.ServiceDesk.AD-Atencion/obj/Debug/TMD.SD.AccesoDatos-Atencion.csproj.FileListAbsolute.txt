@@ -58,3 +58,10 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.dll
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb
