@@ -13,3 +13,8 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+E:\TP3\Proyecto\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb

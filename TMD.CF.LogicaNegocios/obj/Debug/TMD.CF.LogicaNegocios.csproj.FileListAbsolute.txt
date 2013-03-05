@@ -142,3 +142,15 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.LogicaNegocios\bin\Debug\TMD.En
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.pdb
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.LogicaNegocios.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.LogicaNegocios.pdb
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.AccesoDatos.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.AccesoDatos.pdb
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.dll
+E:\TP3\Proyecto\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.pdb

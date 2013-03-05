@@ -152,3 +152,11 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ACP.AccesoDatos\bin\Debug\TMD.Enti
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ACP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.pdb
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\bin\Debug\TMD.ACP.AccesoDatos.dll.config
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\bin\Debug\TMD.ACP.AccesoDatos.dll
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\bin\Debug\TMD.ACP.AccesoDatos.pdb
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\bin\Debug\TMD.Entidades.dll
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.dll
+E:\TP3\Proyecto\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.pdb

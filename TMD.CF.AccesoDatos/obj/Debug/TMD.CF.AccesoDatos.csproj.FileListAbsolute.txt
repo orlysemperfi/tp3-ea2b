@@ -109,3 +109,10 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.AccesoDatos\bin\Debug\TMD.Entid
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.pdb
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\bin\Debug\TMD.CF.AccesoDatos.dll
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\bin\Debug\TMD.CF.AccesoDatos.pdb
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.dll
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.dll
+E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.pdb
