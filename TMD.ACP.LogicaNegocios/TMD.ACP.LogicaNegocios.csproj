@@ -63,17 +63,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TMD.SistemaIntegral\TMD.Core\TMD.Core.csproj">
-      <Project>{A1458C90-1DFA-4F07-A8E3-F3F0BF953216}</Project>
-      <Name>TMD.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TMD.SistemaIntegral\TMD.Entidades\TMD.Entidades.csproj">
-      <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
-      <Name>TMD.Entidades</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TMD.ACP.AccesoDatos\TMD.ACP.AccesoDatos.csproj">
       <Project>{80B394DF-9667-4B5B-B3A7-3797BCAAC669}</Project>
       <Name>TMD.ACP.AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.Core\TMD.Core.csproj">
+      <Project>{A1458C90-1DFA-4F07-A8E3-F3F0BF953216}</Project>
+      <Name>TMD.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
+      <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
+      <Name>TMD.Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
