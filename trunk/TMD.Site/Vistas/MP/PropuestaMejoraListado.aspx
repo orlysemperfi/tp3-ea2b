@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Privado/TMD-MP.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraListado.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraLista" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraListado.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraLista" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 
@@ -77,7 +77,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Área">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblArea" runat="server" Text='<%#Eval("CODIGO_AREA") %>' />
+                                    <asp:Label ID="lblArea" runat="server" Text='<%#Eval("NOMBRE_AREA") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="100px" />
                             </asp:TemplateField>

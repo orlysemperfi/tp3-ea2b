@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>TMD - Definición y Mejora de Procesos</title>
-    <link href="~/App_Themes/TMD.MP/tmd-mp.css" rel="stylesheet" type="text/css" />
+    <link href="../../Styles/tmd-mp.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

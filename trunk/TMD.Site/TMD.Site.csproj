@@ -103,6 +103,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
+    <Content Include="Styles\tmd-mp.css" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
     <Content Include="Vistas\SD\NuevaAtencion.aspx" />
