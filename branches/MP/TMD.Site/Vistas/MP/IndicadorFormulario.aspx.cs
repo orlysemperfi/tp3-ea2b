@@ -6,7 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TMD.MP.Comun;
 using TMD.Entidades;
-using TMD.MP.Controlador;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
+
 namespace TMD.MP.Site.Privado
 {
     public partial class IndicadoresFormulario : System.Web.UI.Page
@@ -14,7 +16,7 @@ namespace TMD.MP.Site.Privado
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
         int idIndicador = 0; //0:Insertar 1:Actualizar
         
-        public IndicadorControlador indicadorControlador = new IndicadorControlador();
+        
        
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -64,6 +66,7 @@ namespace TMD.MP.Site.Privado
 
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
             oNewIndicador.nombre = tbxNombre.Text;
             oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
@@ -73,9 +76,9 @@ namespace TMD.MP.Site.Privado
             oNewIndicador.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
 
             if (oNewIndicador.codigo != null)
-                indicadorControlador.ActualizarIndicador(oNewIndicador);
+                oIndicadorLogica.ActualizarIndicador(oNewIndicador);
             else
-                indicadorControlador.InsertarIndicador(oNewIndicador);
+                oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
             Response.Redirect(Paginas.TMD_MP_IndicadorListado);
         }
@@ -100,19 +103,20 @@ namespace TMD.MP.Site.Privado
         }
 
         protected void CargarListadoEscalas(){
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             int codigo_indicador = Convert.ToInt32(Sesiones.IndicadorSeleccionado.codigo.ToString());
 
             List<EscalaCualitativoEntidad> oEscalaCualitativoColeccion = new List<EscalaCualitativoEntidad>();
             if (Sesiones.IndicadorSeleccionado.lstEscalaCualitativo == null)
             {
-                Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = indicadorControlador.ObtenerListaEscalaCualitativoPorIndicador(codigo_indicador);
+                Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = oIndicadorLogica.ObtenerListaEscalaCualitativoPorIndicador(codigo_indicador);
             }
             gwEscalasCuali.DataBind();
 
             List<EscalaCuantitativoEntidad> oEscalaCuantitativoColeccion = new List<EscalaCuantitativoEntidad>();
             if (Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo == null)
             {
-                Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = indicadorControlador.ObtenerListaEscalaCuantitativoPorIndicador(codigo_indicador);
+                Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = oIndicadorLogica.ObtenerListaEscalaCuantitativoPorIndicador(codigo_indicador);
             }
             gwEscalasCuanti.DataBind();
         }
