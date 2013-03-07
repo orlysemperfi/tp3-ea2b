@@ -21,29 +21,33 @@ namespace TMD.MP.AccesoDatos.Metodos
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT CODIGO_PROPUESTA, CODIGO_AREA, TIPO_PROPUESTA, CODIGO_RESPONSABLE, FECHA_ENVIO, CODIGO_PROCESO, FECHA_REGISTRO, DESCRIPCION, CAUSA, BENEFICIOS, OBSERVACIONES, CODIGO_ESTADO ");
-            strSQL.Append("FROM MP.PROPUESTAMEJORA WHERE CODIGO_ESTADO <> 4 ");
+            strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.CODIGO_AREA, A.DESCRIPCION AS AREA_DESCRIPCION, P.TIPO_PROPUESTA, P.CODIGO_RESPONSABLE, ");
+            strSQL.Append("P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, ");
+            strSQL.Append("P.OBSERVACIONES, P.CODIGO_ESTADO ");
+            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN GEN.AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
+            strSQL.Append("WHERE P.CODIGO_ESTADO <> 4 ");
             if (oPropuestaMejoraFiltro != null)
             {
                 if (oPropuestaMejoraFiltro.codigo_Propuesta != null && oPropuestaMejoraFiltro.codigo_Propuesta != 0)
-                    strSQL.Append("AND CODIGO_PROPUESTA = @CODIGO_PROPUESTA ");
+                    strSQL.Append("AND P.CODIGO_PROPUESTA = @CODIGO_PROPUESTA ");
                 if (oPropuestaMejoraFiltro.tipo_Propuesta != String.Empty)
-                    strSQL.Append("AND TIPO_PROPUESTA = @TIPO_PROPUESTA ");
+                    strSQL.Append("AND P.TIPO_PROPUESTA = @TIPO_PROPUESTA ");
                 if(oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
-                    strSQL.Append("AND DATEDIFF(DAY, FECHA_REGISTRO, @FECHA_REGISTRO_INICIO) <= 0 ");
+                    strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_INICIO) <= 0 ");
                 if(oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
-                    strSQL.Append("AND DATEDIFF(DAY, FECHA_REGISTRO, @FECHA_REGISTRO_FIN) >= 0  ");
+                    strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_FIN) >= 0  ");
             }
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
             sqlCmd.CommandType = CommandType.Text;
 
-            if (oPropuestaMejoraFiltro.codigo_Propuesta != null && oPropuestaMejoraFiltro.codigo_Propuesta != 0) 
+            if (oPropuestaMejoraFiltro != null) 
             {
-                if (oPropuestaMejoraFiltro.codigo_Propuesta != 0)
+                if (oPropuestaMejoraFiltro.codigo_Propuesta != null && oPropuestaMejoraFiltro.codigo_Propuesta != 0)
                     sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oPropuestaMejoraFiltro.codigo_Propuesta;
-                if (oPropuestaMejoraFiltro.tipo_Propuesta != null)
+                if (oPropuestaMejoraFiltro.tipo_Propuesta != String.Empty)
                     sqlCmd.Parameters.Add("@TIPO_PROPUESTA", SqlDbType.VarChar).Value = oPropuestaMejoraFiltro.tipo_Propuesta;
                 if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
                     sqlCmd.Parameters.Add("@FECHA_REGISTRO_INICIO", SqlDbType.DateTime).Value = oPropuestaMejoraFiltro.fecha_Registro_Inicio;
@@ -57,9 +61,10 @@ namespace TMD.MP.AccesoDatos.Metodos
                 dr = sqlCmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    oPropuestaMejora = new PropuestaMejoraEntidad();
+                    oPropuestaMejora = new PropuestaMejoraEntidad();                    
                     oPropuestaMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
                     oPropuestaMejora.codigo_Area = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_AREA"]);
+                    oPropuestaMejora.nombre_Area = Utilitario.getDefaultOrStringDBValue(dr["AREA_DESCRIPCION"]);
                     oPropuestaMejora.tipo_Propuesta = Utilitario.getDefaultOrStringDBValue(dr["TIPO_PROPUESTA"]);
                     oPropuestaMejora.codigo_Responsable = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_RESPONSABLE"]);
                     oPropuestaMejora.fecha_Envio = Utilitario.getDefaultOrDatetimeDBValue(dr["FECHA_ENVIO"]);
