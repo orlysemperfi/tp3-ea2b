@@ -27,9 +27,9 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarTipoIndicador()
         {
-            ddlTipo.Items.Add(new ListItem("[Todos]", "0"));
-            ddlTipo.Items.Add(new ListItem("Cualitativo", "1"));
-            ddlTipo.Items.Add(new ListItem("Cuantitativo", "2"));
+            ddlTipo.Items.Add(new ListItem("[Todos]", "-1"));
+            ddlTipo.Items.Add(new ListItem("Cualitativo", "0"));
+            ddlTipo.Items.Add(new ListItem("Cuantitativo", "1"));
             ddlTipo.SelectedIndex = 0;
         }
 
