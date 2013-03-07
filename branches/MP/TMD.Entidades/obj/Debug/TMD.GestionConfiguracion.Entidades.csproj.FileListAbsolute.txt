@@ -1,4 +1,0 @@
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Entidades\bin\Debug\TMD.GestionConfiguracion.Entidades.dll
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Entidades\bin\Debug\TMD.GestionConfiguracion.Entidades.pdb
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Entidades\obj\Debug\TMD.GestionConfiguracion.Entidades.dll
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Entidades\obj\Debug\TMD.GestionConfiguracion.Entidades.pdb

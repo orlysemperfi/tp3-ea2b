@@ -1,4 +1,0 @@
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.LogicaNegocios\bin\Debug\TMD.GestionConfiguracion.LogicaNegocios.dll
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.LogicaNegocios\bin\Debug\TMD.GestionConfiguracion.LogicaNegocios.pdb
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.LogicaNegocios\obj\Debug\TMD.GestionConfiguracion.LogicaNegocios.dll
-F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.LogicaNegocios\obj\Debug\TMD.GestionConfiguracion.LogicaNegocios.pdb
