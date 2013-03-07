@@ -38,13 +38,13 @@
                     Fecha:
                 </td>
                 <td class="textbox-espaciado">
-                    <asp:TextBox ID="tbxFechaInicio" runat="server" CssClass="estilo_textbox" Width="75px" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox ID="tbxFechaInicio" runat="server" CssClass="estilo_textbox" Width="75px"></asp:TextBox>
                 </td>
                 <td class="textbox-espaciado">
                     a
                 </td>
                 <td class="textbox-espaciado">
-                    <asp:TextBox ID="tbxFechaFin" runat="server" CssClass="estilo_textbox" Width="75px" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox ID="tbxFechaFin" runat="server" CssClass="estilo_textbox" Width="75px"></asp:TextBox>
                 </td>
                 <td class="textbox-espaciado">
                     <asp:LinkButton ID="lbtnBuscar" runat="server" OnClick="lbtnBuscar_Click" CssClass="estilo_boton" Text="Buscar"></asp:LinkButton>
@@ -95,7 +95,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Estado">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblEstado" runat="server" Text='<%#Eval("CODIGO_ESTADO") %>' />
+                                    <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("CODIGO_ESTADO").ToString()=="1" ? "Registrada": Eval("CODIGO_ESTADO").ToString()=="2" ? "Aprobada": Eval("CODIGO_ESTADO").ToString()=="3" ? "Rechazada": "En Desarrollo" %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="100px" />
                             </asp:TemplateField>
@@ -111,12 +111,12 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
-                            <%--<asp:TemplateField HeaderText="">
+                            <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPropuesta" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPropuesta" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link" Enabled='<%# Eval("CODIGO_ESTADO").ToString()=="1" ? true : false %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
-                            </asp:TemplateField>--%>
+                            </asp:TemplateField>
                         </Columns>
                         <PagerTemplate>
                         </PagerTemplate>                   
@@ -180,9 +180,9 @@
             </tr>
         </table>
     </div>
-    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
+    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="MM/dd/yyyy">
     </ajaxToolkit:CalendarExtender>
-    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
+    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="MM/dd/yyyy">
     </ajaxToolkit:CalendarExtender>
     </ContentTemplate>
     <Triggers>
