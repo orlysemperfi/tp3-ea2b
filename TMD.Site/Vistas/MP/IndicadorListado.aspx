@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Privado/TMD-MP.Master" AutoEventWireup="true" CodeBehind="IndicadorListado.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresListado" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="IndicadorListado.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresListado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
