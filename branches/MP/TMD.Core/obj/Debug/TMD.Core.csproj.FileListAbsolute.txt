@@ -1,0 +1,28 @@
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Core\bin\Debug\TMD.Core.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Core\bin\Debug\TMD.Core.pdb
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Core\obj\Debug\TMD.Core.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.GestionConfiguracion.Core\obj\Debug\TMD.Core.pdb
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.pdb
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.dll
+D:\Alex\Proyectos\Temp\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.pdb
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.dll
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.pdb
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.dll
+C:\Users\caceresg\UPC\Ciclo 10\Taller de Proyectos 3\Fuentes Integradas\TMD.SistemaIntegral\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.pdb
+C:\Sistemas\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.dll
+C:\Sistemas\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.pdb
+C:\Sistemas\TMD.SistemaIntegral\TMD.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.dll
+C:\Sistemas\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.pdb
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.dll
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.pdb
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.dll
+C:\Users\jhonathan\Desktop\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.pdb
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.dll
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Core\bin\Debug\TMD.Core.pdb
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.dll
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Core\obj\Debug\TMD.Core.pdb

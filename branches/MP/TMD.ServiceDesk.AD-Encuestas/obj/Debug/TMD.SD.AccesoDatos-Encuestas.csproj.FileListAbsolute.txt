@@ -1,0 +1,15 @@
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Sistemas\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Sistemas\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Sistemas\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Sistemas\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb

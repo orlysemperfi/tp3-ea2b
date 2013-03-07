@@ -1,0 +1,32 @@
+﻿/*
+Layout.css
+Creado 29/09/2012
+TMD
+
+*/
+
+.panel-wrapper {
+    padding: 10px 2%; 
+    width: 96%; 
+    border: 1px solid #B6B7BC;
+    margin: 10px 0;
+}
+
+label {
+    padding-right: 10px;
+    width: 100px;
+    float: left;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4B6C9E;
+}
+
+.content {
+    padding: 0;
+    text-align: center;
+}
+
+

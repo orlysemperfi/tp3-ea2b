@@ -1,0 +1,4 @@
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Core\bin\Debug\TMD.GestionConfiguracion.Core.dll
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Core\bin\Debug\TMD.GestionConfiguracion.Core.pdb
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Core\obj\Debug\TMD.GestionConfiguracion.Core.dll
+F:\Proyectos\TMD.GestionConfiguracion\TMD.GestionConfiguracion.Core\obj\Debug\TMD.GestionConfiguracion.Core.pdb
