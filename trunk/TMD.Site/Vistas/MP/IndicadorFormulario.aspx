@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Privado/TMD-MP.Master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" 
     CodeBehind="IndicadorFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresFormulario" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
