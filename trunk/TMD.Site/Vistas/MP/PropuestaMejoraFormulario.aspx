@@ -76,7 +76,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="tbxFechaEnvio" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                                        <asp:CalendarExtender ID="tbxFechaEnvio_CalendarExtender" runat="server" Format="dd/MM/yyyy"
+                                        <asp:CalendarExtender ID="tbxFechaEnvio_CalendarExtender" runat="server" Format="MM/dd/yyyy"
                                             TargetControlID="tbxFechaEnvio">
                                         </asp:CalendarExtender>
                                     </td>
