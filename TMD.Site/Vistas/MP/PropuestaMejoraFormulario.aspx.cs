@@ -7,19 +7,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.MP.Controlador;
 using TMD.Entidades;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
 
 namespace TMD.MP.Site.Privado
 {
     public partial class PropuestaMejoraFormulario : System.Web.UI.Page
     {
-        public AreaControlador areaControlador = new AreaControlador();
-        public PropuestaMejoraControlador propuestaMejoraControlador = new PropuestaMejoraControlador();
-        public IndicadorControlador indicadorControlador = new IndicadorControlador();
-        public UsuarioControlador usuarioControlador = new UsuarioControlador();
-        public ProcesoControlador procesoControlador = new ProcesoControlador();
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
         int contador = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -79,11 +75,12 @@ namespace TMD.MP.Site.Privado
 
         public void CargarIndicadorListado()
         {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance(); 
             List<IndicadorEntidad> oIndicadorColeccion = new List<IndicadorEntidad>();
             if (Sesiones.PropuestaMejoraSeleccionada.lstIndicadores == null)
             {
                 int codigo_Propuesta = Convert.ToInt32(Sesiones.PropuestaMejoraSeleccionada.codigo_Propuesta.ToString());
-                Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = indicadorControlador.ObtenerListaIndicadorPorPropuesta(codigo_Propuesta);
+                Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = oIndicadorLogica.ObtenerListaIndicadorPorPropuesta(codigo_Propuesta);
             }
             gvwIndicadores.DataBind();
         }
@@ -117,7 +114,8 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarArea()
         {
-            ddlArea.DataSource = areaControlador.ObtenerListaAreaTodas();
+            IAreaLogica oAreaLogica = AreaLogica.getInstance();
+            ddlArea.DataSource = oAreaLogica.ObtenerListaAreaTodas();
             ddlArea.DataTextField = "DESCRIPCION";
             ddlArea.DataValueField = "CODIGO";
             ddlArea.DataBind();
@@ -125,7 +123,8 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarResponsable()
         {
-            List<UsuarioEntidad> oUsuarioColeccion = usuarioControlador.ObtenerListaEmpleadosTodas();
+            IUsuarioLogica oAreaLogica = UsuarioLogica.getInstance();
+            List<UsuarioEntidad> oUsuarioColeccion = oAreaLogica.ObtenerListaEmpleadosTodas();
             ddlResponsable.DataSource = oUsuarioColeccion;
             ddlResponsable.DataTextField = "NOMBRE_COMPLETO";
             ddlResponsable.DataValueField = "CODIGO_PERSONA";
@@ -134,7 +133,8 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarProceso()
         {
-            List<ProcesoEntidad> oProcesoColeccion = procesoControlador.ObtenerListaProcesoTodas();
+            IProcesoLogica oProcesoLogica = ProcesoLogica.getInstance();
+            List<ProcesoEntidad> oProcesoColeccion = oProcesoLogica.ObtenerListaProcesoTodas();
             ddlProceso.DataSource = oProcesoColeccion;
             ddlProceso.DataTextField = "NOMBRE";
             ddlProceso.DataValueField = "CODIGO";
@@ -150,7 +150,7 @@ namespace TMD.MP.Site.Privado
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
             PropuestaMejoraEntidad oNewPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
-
+            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
             if (validarCampos()) {
                 oNewPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
                 oNewPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
@@ -184,9 +184,9 @@ namespace TMD.MP.Site.Privado
                 }
 
                 if (oNewPropuestaMejora.codigo_Propuesta!= null)
-                    propuestaMejoraControlador.ActualizarPropuestaMejora(oNewPropuestaMejora);
+                    oPropuestaMejoraLogica.ActualizarPropuestaMejora(oNewPropuestaMejora);
                 else
-                    propuestaMejoraControlador.InsertarPropuestaMejora(oNewPropuestaMejora);
+                    oPropuestaMejoraLogica.InsertarPropuestaMejora(oNewPropuestaMejora);
                 
                 Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado);
                 
@@ -223,9 +223,10 @@ namespace TMD.MP.Site.Privado
         }
 
         public void CargarIndicadoresProceso() {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             int procesoSelected = Convert.ToInt32(ddlProceso.SelectedValue);
             //gvwIndicadores.DataSource =  indicadorControlador.ObtenerIndicadorPorProceso(procesoSelected);
-            Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = indicadorControlador.ObtenerIndicadorPorProceso(procesoSelected);
+            Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = oIndicadorLogica.ObtenerIndicadorPorProceso(procesoSelected);
             gvwIndicadores.DataBind();
 
          

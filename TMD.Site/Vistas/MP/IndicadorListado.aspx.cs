@@ -4,16 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.MP.Controlador;
 using TMD.Entidades;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
 
 namespace TMD.MP.Site.Privado
 {
     public partial class IndicadoresListado : System.Web.UI.Page
     {
-        public IndicadorControlador indicadorControlador = new IndicadorControlador();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -53,6 +52,7 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarIndicadorListado()
         {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             IndicadorEntidad oIndicadorFiltro = new IndicadorEntidad();
 
             if (tbxNombre.Text != null && tbxNombre.Text != string.Empty)
@@ -64,7 +64,7 @@ namespace TMD.MP.Site.Privado
             if (ddlProceso.SelectedIndex != 0)
                 oIndicadorFiltro.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
 
-            List<IndicadorEntidad> oIndicadorColeccion = indicadorControlador.ObtenerIndicadorListadoPorFiltros(oIndicadorFiltro);
+            List<IndicadorEntidad> oIndicadorColeccion = oIndicadorLogica.ObtenerIndicadorListadoPorFiltros(oIndicadorFiltro);
             Sesiones.IndicadorListadoRemover();
             Sesiones.IndicadorListado = oIndicadorColeccion;
             PageIndexChanging();

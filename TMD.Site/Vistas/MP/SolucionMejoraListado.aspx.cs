@@ -4,16 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.MP.Controlador;
 using TMD.Entidades;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
 
 namespace TMD.MP.Site.Privado
 {
     public partial class SolucionMejoraLista : System.Web.UI.Page
     {
-        public SolucionMejoraControlador solucionMejoraControlador = new SolucionMejoraControlador();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) {

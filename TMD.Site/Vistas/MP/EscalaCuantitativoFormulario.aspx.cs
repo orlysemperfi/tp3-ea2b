@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.MP.LogicaNegocios;
 using TMD.Entidades;
 using TMD.MP.Comun;
-using TMD.MP.Controlador;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
+
 namespace TMD.MP.Site.Privado
 {
     public partial class EscalaCuantitativaFormulario : System.Web.UI.Page
@@ -21,8 +22,9 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarUnidades()
         {
-        UnidadLogica unidadLogica = new UnidadLogica();
-            List<UnidadEntidad> oUnidadCollection = unidadLogica.SeleccionarUnidadTodas();
+          
+            IUnidadLogica oUnidadLogica = UnidadLogica.getInstance();
+            List<UnidadEntidad> oUnidadCollection = oUnidadLogica.SeleccionarUnidadTodas();
 
             ddlUnidad.DataSource = oUnidadCollection;
             ddlUnidad.DataTextField="codigo";
