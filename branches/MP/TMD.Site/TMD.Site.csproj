@@ -226,7 +226,6 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
-    <Compile Include="Controladora\MP\SolucionMejoraControlador.cs" />
     <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.cs">
       <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -257,11 +256,6 @@
     </Compile>
     <Compile Include="Controladora\Base.cs" />
     <Compile Include="Controladora\LineaBaseControladora.cs" />
-    <Compile Include="Controladora\MP\AreaControlador.cs" />
-    <Compile Include="Controladora\MP\IndicadorControlador.cs" />
-    <Compile Include="Controladora\MP\ProcesoControlador.cs" />
-    <Compile Include="Controladora\MP\PropuestaMejoraControlador.cs" />
-    <Compile Include="Controladora\MP\UsuarioControlador.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

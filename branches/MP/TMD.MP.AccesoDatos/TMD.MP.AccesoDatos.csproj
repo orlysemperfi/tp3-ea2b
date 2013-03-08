@@ -41,22 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IAreaData.cs" />
-    <Compile Include="Interfaces\IEscalaCualitativoData.cs" />
-    <Compile Include="Interfaces\IEscalaCuantitativoData.cs" />
-    <Compile Include="Interfaces\IIndicadorData.cs" />
-    <Compile Include="Interfaces\IProcesoData.cs" />
-    <Compile Include="Interfaces\IPropuestaMejoraData.cs" />
-    <Compile Include="Interfaces\IUnidadData.cs" />
-    <Compile Include="Interfaces\IUsuarioData.cs" />
-    <Compile Include="Metodos\AreaDataSql.cs" />
-    <Compile Include="Metodos\EscalaCualitativoDataSql.cs" />
-    <Compile Include="Metodos\EscalaCuantitativoDataSql.cs" />
-    <Compile Include="Metodos\IndicadorDataSql.cs" />
-    <Compile Include="Metodos\ProcesoDataSql.cs" />
-    <Compile Include="Metodos\PropuestaMejoraDataSql.cs" />
-    <Compile Include="Metodos\UnidadDataSql.cs" />
-    <Compile Include="Metodos\UsuarioDataSql.cs" />
+    <Compile Include="Contrato\IAreaData.cs" />
+    <Compile Include="Contrato\IEscalaCualitativoData.cs" />
+    <Compile Include="Contrato\IEscalaCuantitativoData.cs" />
+    <Compile Include="Contrato\IIndicadorData.cs" />
+    <Compile Include="Contrato\IProcesoData.cs" />
+    <Compile Include="Contrato\IPropuestaMejoraData.cs" />
+    <Compile Include="Contrato\IUnidadData.cs" />
+    <Compile Include="Contrato\IUsuarioData.cs" />
+    <Compile Include="Implementacion\AreaDataSql.cs" />
+    <Compile Include="Implementacion\EscalaCualitativoDataSql.cs" />
+    <Compile Include="Implementacion\EscalaCuantitativoDataSql.cs" />
+    <Compile Include="Implementacion\IndicadorDataSql.cs" />
+    <Compile Include="Implementacion\ProcesoDataSql.cs" />
+    <Compile Include="Implementacion\PropuestaMejoraDataSql.cs" />
+    <Compile Include="Implementacion\UnidadDataSql.cs" />
+    <Compile Include="Implementacion\UsuarioDataSql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

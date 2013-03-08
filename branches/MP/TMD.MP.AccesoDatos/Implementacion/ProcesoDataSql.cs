@@ -8,6 +8,7 @@ using TMD.MP.Comun;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using TMD.MP.AccesoDatos.Interfaces;
 
 namespace TMD.MP.AccesoDatos.Implementacion
 {
