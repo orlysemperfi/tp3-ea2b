@@ -40,19 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AreaLogica.cs" />
-    <Compile Include="IndicadorLogica.cs" />
-    <Compile Include="ProcesoLogica.cs" />
+    <Compile Include="Contrato\IAreaLogica.cs" />
+    <Compile Include="Contrato\IIndicadorLogica.cs" />
+    <Compile Include="Contrato\IProcesoLogica.cs" />
+    <Compile Include="Contrato\IPropuestaMejoraLogica.cs" />
+    <Compile Include="Contrato\IUnidadLogica.cs" />
+    <Compile Include="Contrato\IUsuarioLogica.cs" />
+    <Compile Include="Implementacion\AreaLogica.cs" />
+    <Compile Include="Implementacion\IndicadorLogica.cs" />
+    <Compile Include="Implementacion\ProcesoLogica.cs" />
+    <Compile Include="Implementacion\PropuestaMejoraLogica.cs" />
+    <Compile Include="Implementacion\UnidadLogica.cs" />
+    <Compile Include="Implementacion\UsuarioLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropuestaMejoraLogica.cs" />
-    <Compile Include="UnidadLogica.cs" />
-    <Compile Include="UsuarioLogica.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TMD.CF.AccesoDatos\TMD.CF.AccesoDatos.csproj">
-      <Project>{728F843E-C373-48F7-A41E-B2A5B6FA2572}</Project>
-      <Name>TMD.CF.AccesoDatos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
       <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
       <Name>TMD.Entidades</Name>
