@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace TMD.MP.AccesoDatos.Implementacion
 {
-    public class PropuestaMejoraDataSql : IPropuestaMejoraData
+    public class PropuestaMejoraDataSql : BaseDataSql, IPropuestaMejoraData
     {
         #region "Select"
         public List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListadoPorFiltros(PropuestaMejoraEntidad oPropuestaMejoraFiltro)
@@ -145,7 +145,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
 
         #region "Insert"
-        public void InsertarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
+        public PropuestaMejoraEntidad InsertarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
         {
             
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
@@ -180,6 +180,10 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 throw new System.Exception("No hay registros ingresados a la tabla Propuesta_Mejora");
             }
+            else 
+            {
+                oPropuestaMejora.codigo_Propuesta = ObtenerKeyInsertada("MP.PROPUESTAMEJORA");
+            }
                 
             }
             catch (System.Exception ex)
@@ -191,6 +195,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 sqlConn.Close();
             }
 
+            return oPropuestaMejora;
         }
         #endregion
 

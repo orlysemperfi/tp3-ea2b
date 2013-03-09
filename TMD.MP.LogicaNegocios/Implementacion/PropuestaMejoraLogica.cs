@@ -71,12 +71,13 @@ namespace TMD.MP.LogicaNegocios.Implementacion
              iPropuestaMejora = new PropuestaMejoraDataSql();
              iIndicador = new IndicadorDataSql();
 
-             iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
+             oPropuestaMejora = iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
 
              if (oPropuestaMejora.lstIndicadores != null)
              {
                  foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
                  {
+                     oIndicador.codigo_Propuesta = Convert.ToInt32(oPropuestaMejora.codigo_Propuesta);
                      iIndicador.InsertarPropuestaIndicador(oIndicador);
                  }
              }
