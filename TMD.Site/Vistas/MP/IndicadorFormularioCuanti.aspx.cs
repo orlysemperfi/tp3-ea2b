@@ -87,20 +87,6 @@ namespace TMD.CF.Site.Vistas.MP
             Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
         }
 
-        protected void ddlTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlTipo.SelectedIndex == 0)
-            {
-                pnlIndicadorCualitativo.Visible = true;
-                pnlIndicadorCuantitativo.Visible = false;
-            }
-            else
-            {
-                pnlIndicadorCualitativo.Visible = false;
-                pnlIndicadorCuantitativo.Visible = true;
-            }
-
-        }
 
         protected void CargarListadoEscalas()
         {
