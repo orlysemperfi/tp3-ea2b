@@ -53,12 +53,14 @@
     <Compile Include="Contrato\ILineaBaseLogica.cs" />
     <Compile Include="Contrato\IProyectoFaseLogica.cs" />
     <Compile Include="Contrato\IProyectoLogica.cs" />
+    <Compile Include="Contrato\ISolicitudCambioLogica.cs" />
     <Compile Include="Contrato\IUsuarioLogica.cs" />
     <Compile Include="Implementacion\ElementoConfiguracionLogica.cs" />
     <Compile Include="Implementacion\FaseLogica.cs" />
     <Compile Include="Implementacion\LineaBaseLogica.cs" />
     <Compile Include="Implementacion\ProyectoFaseLogica.cs" />
     <Compile Include="Implementacion\ProyectoLogica.cs" />
+    <Compile Include="Implementacion\SolicitudCambioLogica.cs" />
     <Compile Include="Implementacion\UsuarioLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
