@@ -210,3 +210,5 @@ C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
 C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
 C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
 C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.Interception.dll

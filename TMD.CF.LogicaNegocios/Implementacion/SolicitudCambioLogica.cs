@@ -21,17 +21,12 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
         public void Agregar(SolicitudCambio solicitudCambio)
         {
-            throw new NotImplementedException();
+            _solicitudCambioData.Agregar(solicitudCambio);
         }
 
         public void Aprobar(SolicitudCambio solicitudCambio)
         {
-            using (var scope = new TransactionScope())
-            {
-                _solicitudCambioData.Aprobar(solicitudCambio);
-                scope.Complete();
-            }
-            //throw new NotImplementedException();
+            _solicitudCambioData.Aprobar(solicitudCambio);
         }
 
         public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)

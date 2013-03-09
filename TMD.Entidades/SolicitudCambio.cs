@@ -7,7 +7,7 @@ namespace TMD.Entidades
 {
     public class SolicitudCambio
     {
-        public int codigo { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public ProyectoFase ProyectoFase { get; set; }
         public LineaBase LineaBase { get; set; }

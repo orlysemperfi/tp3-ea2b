@@ -178,3 +178,5 @@ C:\Proyectos\TP3-TMD\TMD.CF.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
 C:\Proyectos\TP3-TMD\TMD.CF.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
 C:\Proyectos\TP3-TMD\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.dll
 C:\Proyectos\TP3-TMD\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.pdb
+C:\Proyectos\TP3-TMD\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Proyectos\TP3-TMD\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.Interception.dll
