@@ -86,7 +86,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Tipo">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblTipo" runat="server" Text='<%#Eval("TIPO") %>' />
+                                    <asp:Label ID="lblTipo" runat="server" Text='<%#Eval("TIPO").ToString()=="0" ? "Cualitativo": "Cuantitativo" %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Width="50px" />
                             </asp:TemplateField>                           

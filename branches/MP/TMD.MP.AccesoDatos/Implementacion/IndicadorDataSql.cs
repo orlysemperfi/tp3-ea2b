@@ -73,7 +73,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
                 if (oIndicadorFiltro.nombre != null)
                     strSQL.Append("AND I.NOMBRE LIKE '%' + @NOMBRE + '%' ");
-                if (oIndicadorFiltro.tipo != 0)
+                if (oIndicadorFiltro.tipo != -1)
                     strSQL.Append("AND I.TIPO = @TIPO ");
                 if (oIndicadorFiltro.codigo_Area != 0)
                     strSQL.Append("AND P.CODIGO_AREA = @AREA ");
@@ -92,7 +92,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 if (oIndicadorFiltro.nombre != null)
                     sqlCmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = oIndicadorFiltro.nombre;
-                if (oIndicadorFiltro.tipo != 0)
+                if (oIndicadorFiltro.tipo != -1)
                     sqlCmd.Parameters.Add("@TIPO", SqlDbType.Int).Value = oIndicadorFiltro.tipo;
                 if (oIndicadorFiltro.codigo_Area != 0)
                     sqlCmd.Parameters.Add("@AREA", SqlDbType.Int).Value = oIndicadorFiltro.codigo_Area;
