@@ -6,6 +6,7 @@ using TMD.MP.AccesoDatos.Contrato;
 using TMD.MP.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.Comun;
 
 namespace TMD.MP.LogicaNegocios.Implementacion
 {
@@ -99,8 +100,9 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          {
              iPropuestaMejora = new PropuestaMejoraDataSql();
 
-             if (oPropuestaMejora.codigo_Estado == 1)
+             if (oPropuestaMejora.nombre_Estado == Constantes.ESTADO_PROPUESTA_REGISTRADA)
              {
+                 oPropuestaMejora.nombre_Estado = Constantes.ESTADO_PROPUESTA_ELIMINADA;
                  ActualizarPropuestaMejora(oPropuestaMejora);
                  return null;
              }

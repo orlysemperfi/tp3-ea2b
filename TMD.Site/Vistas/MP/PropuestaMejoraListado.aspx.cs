@@ -23,8 +23,8 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarTipoPropuesta() {
             ddlTipo.Items.Add(new ListItem("[Todos]", ""));
-            ddlTipo.Items.Add(new ListItem("Problema", "Problema"));
-            ddlTipo.Items.Add(new ListItem("Mejora", "Mejora"));
+            ddlTipo.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_PROBLEMA, Constantes.TIPO_PROPUESTA_PROBLEMA));
+            ddlTipo.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_MEJORA, Constantes.TIPO_PROPUESTA_MEJORA));
             ddlTipo.SelectedIndex = 0;
         }
 
@@ -147,7 +147,7 @@ namespace TMD.MP.Site.Privado
             else
             {
                 divMensaje.Visible = true;
-                lblMensaje.Text = "No se encontró propuestas de mejora";
+                lblMensaje.Text = Mensajes.Mensaje_No_Propuesta_Mejora;
                 tblPropuestaMejoraListado.Visible = false;
                 divLinea.Visible = false;
                 tblPaginacion.Visible = false;
@@ -168,16 +168,8 @@ namespace TMD.MP.Site.Privado
                 {
                     lblMensajeError.Text = strMensaje;
                 }
-
+                CargarPropuestaMejoraListado();
             }
-        }
-
-        protected void BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
-        {
-            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-            oPropuestaMejora.codigo_Estado = 4;
-            oPropuestaMejoraLogica.ActualizarEstadoPropuestaMejora(oPropuestaMejora);
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
         }
 
         protected void ibtnAgregarPropuesta_Click(object sender, EventArgs e)
