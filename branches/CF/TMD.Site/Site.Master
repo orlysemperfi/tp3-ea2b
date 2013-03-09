@@ -40,8 +40,8 @@
                     Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem Text="Linea Base" Value="LineaBase">
-                            <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/LineaBase/ListaLineaBase.aspx?carga=0" />
-                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/LineaBase/ListaLineaBase.aspx?carga=1" />
+                            <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=0" />
+                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=1" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Auditoría" Value="Auditoria">
                             <asp:MenuItem Text="Actualizar Programa Anual" Value="ActualizarProgramaAnual" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
