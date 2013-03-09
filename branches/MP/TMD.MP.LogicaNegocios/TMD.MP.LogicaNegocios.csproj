@@ -63,6 +63,10 @@
       <Project>{442F6990-00E2-444C-B388-E0274435A977}</Project>
       <Name>TMD.MP.AccesoDatos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TMD.MP.Comun\TMD.MP.Comun.csproj">
+      <Project>{33880C96-3055-42AB-9F69-85550D058261}</Project>
+      <Name>TMD.MP.Comun</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

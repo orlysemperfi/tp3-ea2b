@@ -104,6 +104,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
     <Content Include="Styles\tmd-mp.css" />
+    <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
@@ -226,6 +227,13 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.cs">
+      <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.cs">
       <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
