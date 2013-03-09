@@ -37,8 +37,7 @@
         </ul>
         </div>--%>
         <ul id="menu-bar">
-            <li class="current"><a href="Inicio.aspx">Inicio</a></li>
-            <li><a href="#">Indicadores</a>
+            <li class="current"><a href="#">Indicadores</a>
             <ul>
             <li><a href="IndicadorListado.aspx">Actualizar Información</a></li>
             </ul>
