@@ -58,7 +58,7 @@ namespace TMD.CF.Site.Vistas.MP
             tbxFuenteMed.Text = indicador.fuente_Medicion;
             tbxExpresionMat.Text = indicador.expresion_Matematica;
             tbxPlaxo.Text = indicador.plazo;
-            ddlTipo.SelectedValue = indicador.tipo.ToString();
+            //ddlTipo.SelectedValue = indicador.tipo.ToString();
 
             CargarListadoEscalas();
         }
@@ -72,7 +72,7 @@ namespace TMD.CF.Site.Vistas.MP
             oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
             oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
             oNewIndicador.plazo = tbxPlaxo.Text;
-            oNewIndicador.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
+            //oNewIndicador.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
 
             if (oNewIndicador.codigo != null)
                 oIndicadorLogica.ActualizarIndicador(oNewIndicador);

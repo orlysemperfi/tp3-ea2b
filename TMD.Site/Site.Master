@@ -51,9 +51,9 @@
                             <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" Value="AsignarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
                             <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" Value="ActualizarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Mejora de Procesos" Value="MejoraProceso">
-                            <asp:MenuItem Text="Actualizar Propuesta Mejora" Value="ActualizarPropuestaMejora" NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" />
+                        <asp:MenuItem Text="Mejora de Procesos" Value="MejoraProceso">                            
                             <asp:MenuItem Text="Actualizar Indicador" Value="ActualizarIndicador" NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" />
+                            <asp:MenuItem Text="Actualizar Propuesta Mejora" Value="ActualizarPropuestaMejora" NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" />
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>
