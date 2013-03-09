@@ -74,7 +74,6 @@
     <Compile Include="Hallazgo.cs" />
     <Compile Include="IndicadorEntidad.cs" />
     <Compile Include="Informe.cs" />
-    <Compile Include="InformeCambio.cs" />
     <Compile Include="Integrante.cs" />
     <Compile Include="LineaBase.cs" />
     <Compile Include="LineaBaseElementoConfiguracion.cs" />
