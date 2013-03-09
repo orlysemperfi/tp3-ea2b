@@ -105,21 +105,6 @@
     <Content Include="App_Data\ActualizarOLD.txt" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
-    <Content Include="bin\AjaxControlToolkit.dll" />
-    <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
-    <Content Include="bin\Microsoft.Practices.ServiceLocation.dll" />
-    <Content Include="bin\Microsoft.Practices.Unity.dll" />
-    <Content Include="bin\Microsoft.Practices.Unity.Interception.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.Common.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.WebForms.dll" />
-    <Content Include="bin\TMD.CF.AccesoDatos.dll" />
-    <Content Include="bin\TMD.CF.AccesoDatos.pdb" />
-    <Content Include="bin\TMD.CF.LogicaNegocios.dll" />
-    <Content Include="bin\TMD.CF.LogicaNegocios.pdb" />
-    <Content Include="bin\TMD.CF.Site.dll" />
-    <Content Include="bin\TMD.CF.Site.pdb" />
-    <Content Include="bin\TMD.GC.Entidades.dll" />
-    <Content Include="bin\Validators.dll" />
     <Content Include="Error\GeneralError.aspx" />
     <Content Include="Imagenes\add.png" />
     <Content Include="Imagenes\AddNewitem.jpg" />
@@ -269,18 +254,21 @@
     <Compile Include="Util\SesionFachada.cs" />
     <Compile Include="Vistas\CF\LineaBase\ActualizarECS.aspx.cs">
       <DependentUpon>ActualizarECS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\CF\LineaBase\ActualizarECS.aspx.designer.cs">
       <DependentUpon>ActualizarECS.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx.cs">
       <DependentUpon>ActualizarLineaBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx.designer.cs">
       <DependentUpon>ActualizarLineaBase.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\CF\LineaBase\ListaLineaBase.aspx.cs">
       <DependentUpon>ListaLineaBase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\CF\LineaBase\ListaLineaBase.aspx.designer.cs">
       <DependentUpon>ListaLineaBase.aspx</DependentUpon>
