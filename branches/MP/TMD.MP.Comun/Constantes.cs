@@ -24,14 +24,14 @@ namespace TMD.MP.Comun
         #endregion
 
         #region "ESTADO PROPUESTA"
-        public static String ESTADO_PROPUESTA_REGISTRADA = "Registrada";
-        public static String ESTADO_PROPUESTA_APROBADA = "Aprobada";
-        public static String ESTADO_PROPUESTA_RECHAZADA = "Rechazada";
-        public static String ESTADO_PROPUESTA_ELIMINADA = "Eliminada";
-        public static String ESTADO_PROPUESTA_ESTIMADA = "Estimada";
-        public static String ESTADO_PROPUESTA_ASIGNADA = "Asignada";
-        public static String ESTADO_PROPUESTA_DESARROLLO = "Desarrollo";
-        public static String ESTADO_PROPUESTA_FINALIZADA = "Finalizada";
+        public static String ESTADO_PROPUESTA_REGISTRADA = "REGISTRADA";
+        public static String ESTADO_PROPUESTA_APROBADA = "APROBADA";
+        public static String ESTADO_PROPUESTA_RECHAZADA = "RECHAZADA";
+        public static String ESTADO_PROPUESTA_ELIMINADA = "ELIMINADA";
+        public static String ESTADO_PROPUESTA_ESTIMADA = "ESTIMADA";
+        public static String ESTADO_PROPUESTA_ASIGNADA = "ASIGNADA";
+        public static String ESTADO_PROPUESTA_DESARROLLO = "DESARROLLO";
+        public static String ESTADO_PROPUESTA_FINALIZADA = "FINALIZADA";
         #endregion
     }
 }

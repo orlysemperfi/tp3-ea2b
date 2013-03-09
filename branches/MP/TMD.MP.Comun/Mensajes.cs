@@ -9,5 +9,6 @@ namespace TMD.MP.Comun
     {
         public static String Mensaje_Error_Inicio_Sesion = "Usuario y/o contraseña incorrectos";
         public static String Mensaje_No_Propuesta_Mejora = "No se encontró propuestas de mejora";
+        public static String Mensaje_No_Borrar_Propuesta_Mejora = "La propuesta no puede ser borrada.";
     }
 }

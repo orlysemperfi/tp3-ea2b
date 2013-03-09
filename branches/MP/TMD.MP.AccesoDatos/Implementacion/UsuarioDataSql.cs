@@ -61,7 +61,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT  U.CODIGO_PERSONA,U.CODIGO_USUARIO,P.APELLIDO_PATERNO +' '+P.APELLIDO_MATERNO+' ,'+P.NOMBRE_PERSONA AS NOMBRE_COMPLETO ");
+            strSQL.Append("SELECT  U.CODIGO_PERSONA,U.CODIGO_USUARIO,P.APELLIDO_PATERNO +' '+P.APELLIDO_MATERNO+', '+P.NOMBRE_PERSONA AS NOMBRE_COMPLETO ");
             strSQL.Append("FROM GEN.USUARIO U,GEN.PERSONA P ");
             strSQL.Append("WHERE U.CODIGO_PERSONA = P.CODIGO_PERSONA");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);

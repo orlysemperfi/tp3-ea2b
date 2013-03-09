@@ -23,10 +23,12 @@ namespace TMD.MP.AccesoDatos.Implementacion
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.CODIGO_AREA, A.DESCRIPCION AS NOMBRE_AREA, P.TIPO_PROPUESTA, P.CODIGO_RESPONSABLE, ");
             strSQL.Append("P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, ");
-            strSQL.Append("P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO ");
+            strSQL.Append("P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO, ");
+            strSQL.Append("R.APELLIDO_PATERNO +' '+R.APELLIDO_MATERNO+', '+R.NOMBRE_PERSONA AS NOMBRE_COMPLETO ");
             strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
             strSQL.Append("INNER JOIN GEN.AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
             strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("INNER JOIN GEN.PERSONA R ON R.CODIGO_PERSONA = P.CODIGO_RESPONSABLE ");
             strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_PROPUESTA_ELIMINADA + "' ");
             if (oPropuestaMejoraFiltro != null)
             {
@@ -77,6 +79,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oPropuestaMejora.observaciones = Utilitario.getDefaultOrStringDBValue(dr["OBSERVACIONES"]);
                     oPropuestaMejora.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
                     oPropuestaMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_ESTADO"]);
+                    oPropuestaMejora.nombre_Responsable = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_COMPLETO"]);
                     oPropuestaMejoraColeccion.Add(oPropuestaMejora);
                 }
                 dr.Close();
@@ -97,9 +100,10 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT CODIGO_PROPUESTA, CODIGO_AREA, TIPO_PROPUESTA, CODIGO_RESPONSABLE, FECHA_ENVIO, CODIGO_PROCESO, FECHA_REGISTRO, DESCRIPCION, CAUSA, BENEFICIOS, OBSERVACIONES, CODIGO_ESTADO ");
-            strSQL.Append("FROM MP.PROPUESTAMEJORA ");
-            strSQL.Append("WHERE CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
+            strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.CODIGO_AREA, P.TIPO_PROPUESTA, P.CODIGO_RESPONSABLE, P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO ");
+            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("WHERE P.CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
@@ -126,6 +130,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oPropuestaMejora.beneficios = Utilitario.getDefaultOrStringDBValue(dr["BENEFICIOS"]);
                     oPropuestaMejora.observaciones = Utilitario.getDefaultOrStringDBValue(dr["OBSERVACIONES"]);
                     oPropuestaMejora.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
+                    oPropuestaMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_ESTADO"]);
                 }
                 dr.Close();
                 return oPropuestaMejora;
@@ -197,12 +202,12 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.PROPUESTAMEJORA SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
+            strSQL.Append("UPDATE MP.PROPUESTAMEJORA SET CODIGO_ESTADO = (SELECT CODIGO FROM MP.ESTADO WHERE NOMBRE = @NOMBRE_ESTADO) WHERE CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
             sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oPropuestaMejora.codigo_Propuesta;
-            sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oPropuestaMejora.codigo_Estado;
+            sqlCmd.Parameters.Add("@NOMBRE_ESTADO", SqlDbType.VarChar).Value = oPropuestaMejora.nombre_Estado;
             
             try
             {

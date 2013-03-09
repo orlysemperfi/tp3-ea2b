@@ -24,9 +24,9 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td valign="top">
-                            <table border="0" cellpadding="0" cellspacing="0">
+                            <table border="0" cellpadding="2" cellspacing="2">
                                 <tr>
-                                    <td>
+                                    <td align="right">
                                         Código:
                                     </td>
                                     <td>
@@ -35,7 +35,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td align="right">
                                         Area:
                                     </td>
                                     <td>
@@ -44,7 +44,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td align="right">
                                         Proceso:
                                     </td>
                                     <td>
@@ -54,7 +54,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td align="right">
                                         Tipo de Propuesta:
                                     </td>
                                     <td>
@@ -63,7 +63,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td align="right">
                                         Responsable:
                                     </td>
                                     <td>
@@ -71,8 +71,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        Fecha de Envío
+                                    <td align="right">
+                                        Fecha de Envío:
                                     </td>
                                     <td>
                                         <asp:TextBox ID="tbxFechaEnvio" runat="server" CssClass="estilo_textbox"></asp:TextBox>
@@ -83,7 +83,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td>
+                                    <td align="right">
                                         Estado:
                                     </td>
                                     <td>
@@ -92,12 +92,12 @@
                                 </tr>
                             </table>
                         </td>
-                        <td>
+                        <td style="padding-left:10px;">
                         </td>
                         <td valign="top">
-                            <table border="0" cellpadding="0" cellspacing="0">
+                            <table border="0" cellpadding="2" cellspacing="2">
                                 <tr>
-                                    <td>
+                                    <td valign="top" align="right">
                                         Observaciones:
                                     </td>
                                     <td>
@@ -105,7 +105,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td valign="top" align="right">
                                         Descripción:
                                     </td>
                                     <td>
@@ -113,7 +113,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td valign="top" align="right">
                                         Causa:
                                     </td>
                                     <td>
@@ -121,7 +121,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td valign="top" align="right">
                                         Beneficios:
                                     </td>
                                     <td>
@@ -141,7 +141,7 @@
                                 <table border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td style="padding-bottom:10px;">
-                                            <asp:LinkButton ID="lbtnAgregar" runat="server" OnClientClick="javascript:popup(400,300);" CssClass="estilo_boton" Text="Agregar"></asp:LinkButton>
+                                            <asp:LinkButton ID="lbtnAgregar" runat="server" OnClientClick="javascript:popup(400,300);" CssClass="estilo_boton" Text="Agregar" Visible="false"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr>
