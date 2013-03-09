@@ -160,7 +160,10 @@ namespace TMD.MP.Site.Privado
             if (e.CommandName == "EditarPropuesta") {
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
                 Sesiones.PropuestaMejoraSeleccionada = oPropuestaMejora;
-                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario+"?Action="+Constantes.ACTION_UPDATE,true);
+                if(oPropuestaMejora.codigo_Estado == Convert.ToInt32( Constantes.ESTADO_PROPUESTA.REGISTRADA))
+                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario+"?Action="+Constantes.ACTION_UPDATE,true);
+                else
+                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
             }else if(e.CommandName == "EliminarPropuesta"){
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
                 String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
