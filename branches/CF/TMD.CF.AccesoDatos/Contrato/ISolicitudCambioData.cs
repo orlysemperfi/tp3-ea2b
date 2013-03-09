@@ -11,5 +11,6 @@ namespace TMD.CF.AccesoDatos.Contrato
         void Agregar(SolicitudCambio solicitudCambio);
         void Aprobar(SolicitudCambio solicitudCambio);
         List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio);
+        SolicitudCambio ObtenerPorId(int id);
     }
 }

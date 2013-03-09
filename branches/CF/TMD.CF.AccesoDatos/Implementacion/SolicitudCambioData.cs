@@ -29,5 +29,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
             throw new NotImplementedException();
         }
+
+
+        public Entidades.SolicitudCambio ObtenerPorId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
