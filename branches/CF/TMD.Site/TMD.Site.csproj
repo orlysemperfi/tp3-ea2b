@@ -222,6 +222,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Controladora\SolicitudCambioControladora.cs" />
     <Compile Include="Vistas\SD\Atenciones.aspx.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
