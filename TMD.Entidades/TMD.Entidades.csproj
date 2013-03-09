@@ -92,6 +92,7 @@
     <Compile Include="Release.cs" />
     <Compile Include="Rutina.cs" />
     <Compile Include="Servicio.cs" />
+    <Compile Include="SolicitudCambio.cs" />
     <Compile Include="SolicitudMantenimiento.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketCMDB.cs" />
