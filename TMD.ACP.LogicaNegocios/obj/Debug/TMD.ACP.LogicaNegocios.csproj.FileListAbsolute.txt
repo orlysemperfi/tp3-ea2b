@@ -196,3 +196,17 @@ E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
 E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
 E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.pdb
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.pdb
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
+C:\Proyectos\TP3-TMD\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb

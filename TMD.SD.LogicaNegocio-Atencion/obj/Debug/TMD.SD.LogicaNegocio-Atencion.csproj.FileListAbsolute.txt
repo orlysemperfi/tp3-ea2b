@@ -85,3 +85,15 @@ E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atenc
 E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Atencion\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Atencion\obj\Debug\TMD.SD.LogicaNegocio-Atencion.dll
 E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Atencion\obj\Debug\TMD.SD.LogicaNegocio-Atencion.pdb
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.SD.LogicaNegocio-Atencion.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.SD.LogicaNegocio-Atencion.pdb
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\obj\Debug\TMD.SD.LogicaNegocio-Atencion.dll
+C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Atencion\obj\Debug\TMD.SD.LogicaNegocio-Atencion.pdb
