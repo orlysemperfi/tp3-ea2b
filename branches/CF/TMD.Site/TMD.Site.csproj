@@ -103,7 +103,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
-    <Content Include="Vistas\CF\ControlCambio\ListaControlCambio.aspx" />
+    <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
     <Content Include="Vistas\SD\NuevaAtencion.aspx" />
@@ -224,12 +224,12 @@
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
     <Compile Include="Controladora\SolicitudCambioControladora.cs" />
-    <Compile Include="Vistas\CF\ControlCambio\ListaControlCambio.aspx.cs">
-      <DependentUpon>ListaControlCambio.aspx</DependentUpon>
+    <Compile Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx.cs">
+      <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\CF\ControlCambio\ListaControlCambio.aspx.designer.cs">
-      <DependentUpon>ListaControlCambio.aspx</DependentUpon>
+    <Compile Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx.designer.cs">
+      <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\SD\Atenciones.aspx.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
