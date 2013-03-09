@@ -83,6 +83,7 @@
     <Compile Include="Implementacion\ProyectoData.cs" />
     <Compile Include="Map\FaseDataMap.cs" />
     <Compile Include="Map\ProyectoFaseDataMap.cs" />
+    <Compile Include="Map\SolicitudCambioMap.cs" />
     <Compile Include="Map\UsuarioDataMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
