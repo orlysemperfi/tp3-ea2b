@@ -57,8 +57,7 @@ namespace TMD.MP.Site.Privado
 
             if (tbxNombre.Text != null && tbxNombre.Text != string.Empty)
                 oIndicadorFiltro.nombre = tbxNombre.Text.ToString();
-            if(ddlTipo.SelectedIndex != 0)
-                oIndicadorFiltro.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
+                oIndicadorFiltro.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);          
             if (ddlArea.SelectedIndex != 0)
                 oIndicadorFiltro.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
             if (ddlProceso.SelectedIndex != 0)
