@@ -65,6 +65,7 @@
     <Compile Include="Contrato\ILineaBaseElementoConfiguracionData.cs" />
     <Compile Include="Contrato\IProyectoData.cs" />
     <Compile Include="Contrato\IProyectoFaseData.cs" />
+    <Compile Include="Contrato\ISolicitudCambioData.cs" />
     <Compile Include="Contrato\IUsuarioData.cs" />
     <Compile Include="Core\DataBase.cs" />
     <Compile Include="Implementacion\ElementoConfiguracionData.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Implementacion\LineaBaseElementoConfiguracionData.cs" />
     <Compile Include="Implementacion\LineaBaseDataValidacion.cs" />
     <Compile Include="Implementacion\ProyectoFaseData.cs" />
+    <Compile Include="Implementacion\SolicitudCambioData.cs" />
     <Compile Include="Implementacion\UsuarioData.cs" />
     <Compile Include="Map\ElementoConfiguracionMap.cs" />
     <Compile Include="Map\LineaBaseElementoConfiguracionMap.cs" />
