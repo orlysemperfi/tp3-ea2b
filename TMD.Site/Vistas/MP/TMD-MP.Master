@@ -54,9 +54,10 @@
             <li><a href="#">Actualizar Información</a></li>
             </ul>
             </li>
-            <li><a href="#">Planes</a></li>
+            <li><a href="#">Pilotos</a></li>
+            <%--<li><a href="#">Planes</a></li>
             <li><a href="#">Seguimiento</a></li>
-            <li><a href="#">Lecciones Aprendidas</a></li>
+            <li><a href="#">Lecciones Aprendidas</a></li>--%>
         </ul>      
         <div class="contenedor-pagina">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
