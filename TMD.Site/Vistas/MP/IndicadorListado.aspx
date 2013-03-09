@@ -68,7 +68,6 @@
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
-                                    <!--<asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO","{0:000}") %>' />-->
                                     <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
@@ -93,7 +92,7 @@
                             </asp:TemplateField>                           
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Inactivar" CommandName="InactivarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
