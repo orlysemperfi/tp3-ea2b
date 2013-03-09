@@ -12,7 +12,7 @@ namespace TMD.MP.Site.Privado
     public partial class IndicadoresFormulario : System.Web.UI.Page
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
-        int idIndicador = 0; //0:Insertar 1:Actualizar
+        //int idIndicador = 0; //0:Insertar 1:Actualizar
         
         public IndicadorControlador indicadorControlador = new IndicadorControlador();
        
