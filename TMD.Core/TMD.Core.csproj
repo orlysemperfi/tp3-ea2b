@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Caching\CacheAdapter.cs" />
     <Compile Include="Caching\ICacheAdapter.cs" />
+    <Compile Include="Constantes.cs" />
     <Compile Include="EstadoActividad.cs" />
     <Compile Include="EstadoAuditoria.cs" />
     <Compile Include="EstadoHallazgo.cs" />
