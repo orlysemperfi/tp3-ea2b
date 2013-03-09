@@ -25,6 +25,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             }
             return instance;
         }
+
         #region "Select"
 
         public List <PropuestaMejoraEntidad> ObtenerPropuestaMejoraListadoPorFiltros(PropuestaMejoraEntidad oPropuestaMejoraFiltro)
@@ -45,24 +46,43 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             return oPropuestaMejoraColeccion;
         }
 
-         public PropuestaMejoraEntidad ObtenerPropuestaMejoraPorCodigo(int codigo)
-         {
-             iPropuestaMejora = new PropuestaMejoraDataSql();
-             PropuestaMejoraEntidad oPropuestaMejora = new PropuestaMejoraEntidad();
-             try
-             {
-                 oPropuestaMejora = iPropuestaMejora.ObtenerPropuestaMejoraPorCodigo(codigo);
+        public PropuestaMejoraEntidad ObtenerPropuestaMejoraPorCodigo(int codigo)
+        {
+            iPropuestaMejora = new PropuestaMejoraDataSql();
+            PropuestaMejoraEntidad oPropuestaMejora = new PropuestaMejoraEntidad();
+            try
+            {
+                oPropuestaMejora = iPropuestaMejora.ObtenerPropuestaMejoraPorCodigo(codigo);
 
-             }
-             catch (Exception ex)
-             {
-                 throw ex;
-             }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-             return oPropuestaMejora;
-         }
+            return oPropuestaMejora;
+        }
 
         #endregion
+
+         #region "Insert"
+         public void InsertarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
+         {
+             iPropuestaMejora = new PropuestaMejoraDataSql();
+             iIndicador = new IndicadorDataSql();
+
+             iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
+
+             if (oPropuestaMejora.lstIndicadores != null)
+             {
+                 foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
+                 {
+                     iIndicador.InsertarPropuestaIndicador(oIndicador);
+                 }
+             }
+
+         }
+         #endregion
 
         #region "Update"
 
@@ -111,9 +131,9 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          {
              iPropuestaMejora = new PropuestaMejoraDataSql();
 
-             if (oPropuestaMejora.nombre_Estado == Constantes.ESTADO_PROPUESTA_REGISTRADA)
+             if (oPropuestaMejora.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA))
              {
-                 oPropuestaMejora.nombre_Estado = Constantes.ESTADO_PROPUESTA_ELIMINADA;
+                 oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.ELIMINADA);
                  ActualizarEstadoPropuestaMejora(oPropuestaMejora);
                  return null;
              }
@@ -125,103 +145,6 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #endregion
 
-        #region "Insert"
-        public void InsertarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora) {
-             iPropuestaMejora = new PropuestaMejoraDataSql();
-             iIndicador = new IndicadorDataSql();
-             iEscalaCuantitativo = new EscalaCuantitativoDataSql();
-             iEscalaCualitativo = new EscalaCualitativoDataSql();
-             iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
-
-             if (oPropuestaMejora.lstIndicadores != null)
-             {
-
-                 foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
-                 {
-                     iIndicador.InsertarPropuestaIndicador(oIndicador);
-                     //Cualitativo
-                     //if (indicador.tipo == 0)
-                     //{
-                     //    if (indicador.lstEscalaCualitativo != null)
-                     //    {
-                     //        foreach (EscalaCualitativoEntidad escalaCualitativo in indicador.lstEscalaCualitativo)
-                     //        {
-                     //            iEscalaCualitativo.InsertarEscalaCualitativo(escalaCualitativo);
-                     //        }
-                     //    }
-                     //}
-                     ////Cuantitativo
-                     //if (indicador.tipo == 1)
-                     //{
-                     //    if (indicador.lstEscalaCuantitativo != null)
-                     //    {
-                     //        foreach (EscalaCuantitativoEntidad escalaCuantitativo in indicador.lstEscalaCuantitativo)
-                     //        {
-                     //            iEscalaCuantitativo.InsertarEscalaCuantitativo(escalaCuantitativo);
-                     //        }
-                     //    }
-
-                     //}
-                 }
-             }
-             
-        }
-        #endregion
-
-        #region "Actualizar"
-        //void ActualizarPropuestaMejora(PropuestaMejoraEntidad entidad) {
-        //    iPropuestaMejora = new PropuestaMejoraDataSql();
-        //    iIndicador = new IndicadorDataSql();
-        //    iEscalaCuantitativo = new EscalaCuantitativoDataSql();
-        //    iEscalaCualitativo = new EscalaCualitativoDataSql();
-        //    iPropuestaMejora.ActualizarPropuestaMejora(entidad);
-        //    foreach (IndicadorEntidad indicador in entidad.lstIndicadores)
-        //    {
-        //        //0:Insertar , 1 :Actualizar
-                
-        //        if (indicador.action == 0)
-        //        {
-        //            iIndicador.InsertarIndicador(indicador);
-        //        }
-
-        //        if (indicador.action == 1)
-        //        {
-        //            iIndicador.ActualizarIndicador(indicador);
-        //        }
-                
-        //        //Cualitativo
-        //        if (indicador.tipo == 0)
-        //        {
-        //            foreach (EscalaCualitativoEntidad escalaCualitativo in indicador.lstEscalaCualitativo)
-        //            {
-        //                if (escalaCualitativo.action == 0)
-        //                {
-        //                    iEscalaCualitativo.InsertarEscalaCualitativo(escalaCualitativo);
-        //                }
-        //                if (escalaCualitativo.action == 1)
-        //                {
-        //                    iEscalaCualitativo.ActualizarEscalaCualitativo(escalaCualitativo);
-        //                }                        
-        //            }
-        //        }
-        //        //Cuantitativo
-        //        if (indicador.tipo == 1)
-        //        {
-        //            foreach (EscalaCuantitativoEntidad escalaCuantitativo in indicador.lstEscalaCuantitativo)
-        //            {
-        //                if (escalaCuantitativo.action==0)
-        //                {
-        //                    iEscalaCuantitativo.InsertarEscalaCuantitativo(escalaCuantitativo);
-        //                }
-
-        //                if (escalaCuantitativo.action == 1)
-        //                {
-        //                    iEscalaCuantitativo.ActualizarEscalaCuantitativo(escalaCuantitativo);
-        //                }
-        //            }
-        //        }
-        //    }        
-        //}
-        #endregion
+        
     }
 }

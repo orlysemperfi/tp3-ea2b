@@ -32,6 +32,18 @@ namespace TMD.MP.Comun
         public static String ESTADO_PROPUESTA_ASIGNADA = "ASIGNADA";
         public static String ESTADO_PROPUESTA_DESARROLLO = "DESARROLLO";
         public static String ESTADO_PROPUESTA_FINALIZADA = "FINALIZADA";
+
+        public enum ESTADO_PROPUESTA
+        {
+            REGISTRADA = 1,
+            APROBADA = 2,
+            RECHAZADA = 3,
+            ELIMINADA = 4,
+            ESTIMADA = 5,
+            ASIGNADA = 6,
+            DESARROLLO = 7,
+            FINALIZADA = 8
+        }
         #endregion
     }
 }
