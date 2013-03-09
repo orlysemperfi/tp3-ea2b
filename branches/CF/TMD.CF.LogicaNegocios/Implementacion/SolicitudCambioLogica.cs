@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TMD.Entidades;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.AccesoDatos.Contrato;
+using TMD.Entidades;
+using System.Transactions;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
@@ -25,7 +26,12 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
         public void Aprobar(SolicitudCambio solicitudCambio)
         {
-            throw new NotImplementedException();
+            using (var scope = new TransactionScope())
+            {
+                _solicitudCambioData.Aprobar(solicitudCambio);
+                scope.Complete();
+            }
+            //throw new NotImplementedException();
         }
 
         public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
