@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegistroSolicitudCambio.ascx.cs" Inherits="TMD.CF.Site.Controles.RegistroSolicitudCambio" %>
-<asp:Panel runat="server">
+<asp:Panel runat="server" ID="pnlSolicitudCambio">
 <p>
     Solicitud de Cambio</p>
 <p>

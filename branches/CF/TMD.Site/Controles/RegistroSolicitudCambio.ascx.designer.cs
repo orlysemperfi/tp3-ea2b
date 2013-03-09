@@ -13,6 +13,15 @@ namespace TMD.CF.Site.Controles {
     public partial class RegistroSolicitudCambio {
         
         /// <summary>
+        /// pnlSolicitudCambio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSolicitudCambio;
+        
+        /// <summary>
         /// lblCodigo control.
         /// </summary>
         /// <remarks>
