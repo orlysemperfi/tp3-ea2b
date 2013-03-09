@@ -46,7 +46,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.GC.AccesoDatos.Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>..\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -107,7 +107,6 @@
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
     <Content Include="Vistas\SD\NuevaAtencion.aspx" />
     <Content Include="bin\AjaxControlToolkit.dll" />
-    <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
     <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
     <Content Include="bin\Microsoft.Practices.ServiceLocation.dll" />
     <Content Include="bin\Microsoft.Practices.Unity.dll" />
@@ -121,7 +120,6 @@
     <Content Include="bin\TMD.CF.Site.dll" />
     <Content Include="bin\TMD.CF.Site.pdb" />
     <Content Include="bin\TMD.GC.Entidades.dll" />
-    <Content Include="bin\TMD.GC.Entidades.pdb" />
     <Content Include="bin\Validators.dll" />
     <Content Include="Error\GeneralError.aspx" />
     <Content Include="Imagenes\add.png" />
