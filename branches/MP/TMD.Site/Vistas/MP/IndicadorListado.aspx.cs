@@ -39,7 +39,7 @@ namespace TMD.MP.Site.Privado
             ddlArea.DataTextField = "DESCRIPCION";
             ddlArea.DataValueField = "CODIGO";
             ddlArea.DataBind();
-
+            ddlArea.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
 
         protected void CargarProceso()
@@ -50,6 +50,7 @@ namespace TMD.MP.Site.Privado
             ddlProceso.DataTextField = "NOMBRE";
             ddlProceso.DataValueField = "CODIGO";
             ddlProceso.DataBind();
+            ddlArea.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
 
         protected void CargarIndicadorListado()
@@ -184,14 +185,14 @@ namespace TMD.MP.Site.Privado
         protected void gvwIndicadorListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
-            if (e.CommandName == "EliminarIndicador")
+            if (e.CommandName == "InactivarIndicador")
             {
 
                 IndicadorEntidad oIndicador = oIndicadorLogica.ObtenerIndicadorPorCodigo(Convert.ToInt32(e.CommandArgument));
 
-                if (oIndicador.codigo == 1)
+                if (oIndicador.codigo !=null)
                 {
-                    BorrarIndicador(oIndicador);
+                    oIndicadorLogica.InactivarIndicador(oIndicador);
                 }
                 else
                 {
