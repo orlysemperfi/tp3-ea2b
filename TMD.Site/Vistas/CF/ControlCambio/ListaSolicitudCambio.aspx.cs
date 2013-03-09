@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TMD.CF.Site.Controladora.CF;
 using TMD.CF.Site.Controladora;
 using TMD.CF.Site.Util;
+using TMD.Entidades;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -29,6 +31,12 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             }
 
             //btnNuevo.Visible = esCarga == 0;
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            grvSolicitudCambio.DataSource = SolicitudCambioControladora.ListarPorProyectoLineaBase(new SolicitudCambio { });
+            grvSolicitudCambio.DataBind();
         }
     }
 }
