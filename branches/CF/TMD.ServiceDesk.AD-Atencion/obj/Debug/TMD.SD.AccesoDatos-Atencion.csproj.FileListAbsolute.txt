@@ -65,3 +65,10 @@ E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
 E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
+C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb

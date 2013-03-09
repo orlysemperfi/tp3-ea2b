@@ -36,3 +36,8 @@ E:\TP3\Proyecto\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.Entidades\obj\Debug\TMD.Entidades.dll
 E:\TP3\Proyecto\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos\TP3-TMD\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.Entidades\obj\Debug\TMD.Entidades.pdb

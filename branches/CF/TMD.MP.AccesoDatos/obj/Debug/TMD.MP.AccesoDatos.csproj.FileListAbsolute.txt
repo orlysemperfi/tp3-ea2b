@@ -52,3 +52,12 @@ E:\TP3\Proyecto\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.pdb
 E:\TP3\Proyecto\TMD.MP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.dll
 E:\TP3\Proyecto\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.pdb
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.AccesoDatos.dll
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.AccesoDatos.pdb
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.dll
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.pdb
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.dll
+C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.pdb

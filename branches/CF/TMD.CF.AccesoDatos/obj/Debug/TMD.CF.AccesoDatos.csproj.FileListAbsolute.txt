@@ -116,3 +116,13 @@ E:\TP3\Proyecto\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.dll
 E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.pdb
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\TMD.CF.AccesoDatos.dll
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\TMD.CF.AccesoDatos.pdb
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.dll
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.dll
+C:\Proyectos\TP3-TMD\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.pdb
