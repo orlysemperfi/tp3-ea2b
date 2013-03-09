@@ -99,12 +99,16 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         /// <returns>byte[]</returns>
         public LineaBaseElementoConfiguracion ObtenerArchivo(int id)
         {
+            LineaBaseElementoConfiguracion elementoConfiguracion = null;
+
             using (var scope = new TransactionScope())
             {
-                return _lineaBaseECSData.ObtenerArchivo(id);
-
+                elementoConfiguracion = _lineaBaseECSData.ObtenerArchivo(id);
                 scope.Complete();
+                
             }
+
+            return elementoConfiguracion;
         }
     }
 }
