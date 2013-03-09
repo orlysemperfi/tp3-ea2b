@@ -161,6 +161,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Controladora\CF\LineaBaseControladora.cs" />
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
@@ -177,7 +178,6 @@
       <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controladora\Base.cs" />
-    <Compile Include="Controladora\LineaBaseControladora.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
