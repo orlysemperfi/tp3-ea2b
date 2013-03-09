@@ -155,9 +155,9 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Vistas\LineaBase\ActualizarECS.aspx" />
-    <Content Include="Vistas\LineaBase\ActualizarLineaBase.aspx" />
-    <Content Include="Vistas\LineaBase\ListaLineaBase.aspx" />
+    <Content Include="Vistas\CF\LineaBase\ActualizarECS.aspx" />
+    <Content Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx" />
+    <Content Include="Vistas\CF\LineaBase\ListaLineaBase.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -206,6 +206,7 @@
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.designer.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
@@ -266,25 +267,22 @@
       <DependentUpon>SitePublic.Master</DependentUpon>
     </Compile>
     <Compile Include="Util\SesionFachada.cs" />
-    <Compile Include="Vistas\LineaBase\ActualizarECS.aspx.cs">
-      <DependentUpon>ActualizarECS.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\LineaBase\ActualizarECS.aspx.designer.cs">
+    <Compile Include="Vistas\CF\LineaBase\ActualizarECS.aspx.cs">
       <DependentUpon>ActualizarECS.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\LineaBase\ActualizarLineaBase.aspx.cs">
-      <DependentUpon>ActualizarLineaBase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Vistas\CF\LineaBase\ActualizarECS.aspx.designer.cs">
+      <DependentUpon>ActualizarECS.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\LineaBase\ActualizarLineaBase.aspx.designer.cs">
+    <Compile Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx.cs">
       <DependentUpon>ActualizarLineaBase.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\LineaBase\ListaLineaBase.aspx.cs">
+    <Compile Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx.designer.cs">
+      <DependentUpon>ActualizarLineaBase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\CF\LineaBase\ListaLineaBase.aspx.cs">
       <DependentUpon>ListaLineaBase.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\LineaBase\ListaLineaBase.aspx.designer.cs">
+    <Compile Include="Vistas\CF\LineaBase\ListaLineaBase.aspx.designer.cs">
       <DependentUpon>ListaLineaBase.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
