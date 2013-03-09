@@ -8,7 +8,7 @@ using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 
 
-namespace TMD.CF.Site.Controladora
+namespace TMD.CF.Site.Controladora.CF
 {
     class SolicitudCambioControladora : Base
     {

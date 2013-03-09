@@ -32,6 +32,36 @@
             </table>
         </div>        
  
+ 
+        <asp:UpdatePanel ID="upnlLista" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:GridView ID="grvSolicitudCambio" runat="server" AutoGenerateColumns="False" 
+                onrowcommand="grvSolicitudCambio_RowCommand" 
+                ondatabound="grvSolicitudCambio_DataBound">
+                <Columns>
+                <asp:TemplateField HeaderText="Editar"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="imgBtnActualizar" ToolTip="Editar" 
+                                ImageUrl="~/Imagenes/edit.jpg" runat="server" CommandName="Actualizar" 
+                                CommandArgument='<%# Eval("Id")%>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Ver"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" >
+                        <ItemTemplate>
+                            <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" 
+                                ImageUrl="~/Imagenes/select.jpg" CommandName="Ver" 
+                                CommandArgument='<%# Eval("Id")%>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Id" HeaderText="Codigo" />
+                </Columns>
+            </asp:GridView>
+        </ContentTemplate>
+        <Triggers>
+        <asp:AsyncPostBackTrigger ControlID="btnBuscar" EventName="Click" />
+        </Triggers>
+        </asp:UpdatePanel>
+        
     </div>
 </center>
 
