@@ -57,13 +57,13 @@ namespace TMD.MP.Site.Privado
                 Sesiones.PropuestaMejoraSeleccionada = new PropuestaMejoraEntidad();
             }*/
             PropuestaMejoraEntidad propuestaMejora = Sesiones.PropuestaMejoraSeleccionada;
-            tbxCodigo.Text = propuestaMejora.codigo_Propuesta.ToString();
+            tbxCodigo.Text = String.Format("{0:000}", propuestaMejora.codigo_Propuesta);
             ddlArea.SelectedValue = propuestaMejora.codigo_Area.ToString();
             ddlTipoPropuesta.SelectedValue = propuestaMejora.tipo_Propuesta;
             ddlResponsable.SelectedValue = propuestaMejora.codigo_Responsable.ToString();
             ddlProceso.SelectedValue = propuestaMejora.codigo_Proceso.ToString();
             tbxFechaEnvio.Text = propuestaMejora.fecha_Envio.ToShortDateString();
-            tbxEstado.Text = propuestaMejora.codigo_Estado.ToString();
+            tbxEstado.Text = propuestaMejora.nombre_Estado;
             tbxObservaciones.Text = propuestaMejora.observaciones;
             tbxDescripcion.Text = propuestaMejora.descripcion;
             tbxCausa.Text = propuestaMejora.causa;
@@ -107,8 +107,8 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarTipoPropuesta()
         {
-            ddlTipoPropuesta.Items.Add(new ListItem("Problema", "1"));
-            ddlTipoPropuesta.Items.Add(new ListItem("Mejora", "2"));
+            ddlTipoPropuesta.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_PROBLEMA, Constantes.TIPO_PROPUESTA_PROBLEMA));
+            ddlTipoPropuesta.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_MEJORA, Constantes.TIPO_PROPUESTA_MEJORA));
             ddlTipoPropuesta.SelectedIndex = 0;
         }
 
@@ -149,21 +149,19 @@ namespace TMD.MP.Site.Privado
         //}
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
-            PropuestaMejoraEntidad oNewPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
+            PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
             IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
             if (validarCampos()) {
-                oNewPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
-                oNewPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
-                oNewPropuestaMejora.codigo_Responsable = Convert.ToInt32(ddlResponsable.SelectedItem.Value);
-                oNewPropuestaMejora.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
-                oNewPropuestaMejora.descripcion = tbxDescripcion.Text;
-                oNewPropuestaMejora.fecha_Envio = Convert.ToDateTime(tbxFechaEnvio.Text);
-                oNewPropuestaMejora.causa = tbxCausa.Text;
-                oNewPropuestaMejora.beneficios = tbxBeneficios.Text;
-                oNewPropuestaMejora.observaciones = tbxObservaciones.Text;
-                oNewPropuestaMejora.codigo_Estado = 1;
-
-                oNewPropuestaMejora.lstIndicadores = new List<IndicadorEntidad>();
+                oPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
+                oPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
+                oPropuestaMejora.codigo_Responsable = Convert.ToInt32(ddlResponsable.SelectedItem.Value);
+                oPropuestaMejora.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
+                oPropuestaMejora.descripcion = tbxDescripcion.Text;
+                oPropuestaMejora.fecha_Envio = Convert.ToDateTime(tbxFechaEnvio.Text);
+                oPropuestaMejora.causa = tbxCausa.Text;
+                oPropuestaMejora.beneficios = tbxBeneficios.Text;
+                oPropuestaMejora.observaciones = tbxObservaciones.Text;
+                oPropuestaMejora.lstIndicadores = new List<IndicadorEntidad>();
 
                 IndicadorEntidad oIndicador = null;
                 
@@ -178,15 +176,18 @@ namespace TMD.MP.Site.Privado
                         String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
 
                         oIndicador.codigo = Convert.ToInt32(llbl);
-                        oNewPropuestaMejora.lstIndicadores.Add(oIndicador);
+                        oPropuestaMejora.lstIndicadores.Add(oIndicador);
                         
                     }
                 }
 
-                if (oNewPropuestaMejora.codigo_Propuesta!= null)
-                    oPropuestaMejoraLogica.ActualizarPropuestaMejora(oNewPropuestaMejora);
+                if (oPropuestaMejora.codigo_Propuesta != null)
+                    oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
                 else
-                    oPropuestaMejoraLogica.InsertarPropuestaMejora(oNewPropuestaMejora);
+                {
+                    oPropuestaMejora.codigo_Estado = 1;
+                    oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+                }
                 
                 Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado);
                 

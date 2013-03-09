@@ -294,10 +294,14 @@ namespace TMD.MP.AccesoDatos.Implementacion
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
 
-            SqlCommand sqlCmd = new SqlCommand("MP.USP_PROPUESTA_INDICADOR_INS", sqlConn);
+            strSQL.Append("INSERT INTO [TMD].[MP].[PROPUESTA_INDICADOR] ([CODIGO_PROPUESTA],[CODIGO_INDICADOR]) ");
+            strSQL.Append("VALUES (@CODIGO_PROPUESTA,@CODIGO_INDICADOR) ");
 
-            sqlCmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+
             sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = entidad.codigo_Propuesta;
             sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = entidad.codigo;
 

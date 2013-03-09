@@ -84,10 +84,21 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          public void ActualizarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
          {
              iPropuestaMejora = new PropuestaMejoraDataSql();
+             iIndicador = new IndicadorDataSql();
 
              try
              {
                  iPropuestaMejora.ActualizarPropuestaMejora(oPropuestaMejora);
+
+                 if (oPropuestaMejora.lstIndicadores != null)
+                 {
+                     iIndicador.EliminarIndicadorPorPropuesta(Convert.ToInt32(oPropuestaMejora.codigo_Propuesta));
+                     foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
+                     {
+                         oIndicador.codigo_Propuesta = Convert.ToInt32(oPropuestaMejora.codigo_Propuesta);
+                         iIndicador.InsertarPropuestaIndicador(oIndicador);
+                     }
+                 }
              }
              catch (Exception ex)
              {
@@ -103,31 +114,31 @@ namespace TMD.MP.LogicaNegocios.Implementacion
              if (oPropuestaMejora.nombre_Estado == Constantes.ESTADO_PROPUESTA_REGISTRADA)
              {
                  oPropuestaMejora.nombre_Estado = Constantes.ESTADO_PROPUESTA_ELIMINADA;
-                 ActualizarPropuestaMejora(oPropuestaMejora);
+                 ActualizarEstadoPropuestaMejora(oPropuestaMejora);
                  return null;
              }
              else
              {
-                 return  "La propuesta no puede ser borrada.";
+                 return Mensajes.Mensaje_No_Borrar_Propuesta_Mejora;
              }
          }
 
         #endregion
 
         #region "Insert"
-        public void InsertarPropuestaMejora(PropuestaMejoraEntidad entidad) {
+        public void InsertarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora) {
              iPropuestaMejora = new PropuestaMejoraDataSql();
              iIndicador = new IndicadorDataSql();
              iEscalaCuantitativo = new EscalaCuantitativoDataSql();
              iEscalaCualitativo = new EscalaCualitativoDataSql();
-             iPropuestaMejora.InsertarPropuestaMejora(entidad);
+             iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
 
-             if (entidad.lstIndicadores != null)
+             if (oPropuestaMejora.lstIndicadores != null)
              {
 
-                 foreach (IndicadorEntidad indicador in entidad.lstIndicadores)
+                 foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
                  {
-                     iIndicador.InsertarPropuestaIndicador(indicador);
+                     iIndicador.InsertarPropuestaIndicador(oIndicador);
                      //Cualitativo
                      //if (indicador.tipo == 0)
                      //{

@@ -164,11 +164,12 @@ namespace TMD.MP.Site.Privado
             }else if(e.CommandName == "EliminarPropuesta"){
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
                 String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
-                if (strMensaje != null)
-                {
+                if (strMensaje != null){
                     lblMensajeError.Text = strMensaje;
                 }
-                CargarPropuestaMejoraListado();
+                else {
+                    CargarPropuestaMejoraListado();                
+                }                    
             }
         }
 
