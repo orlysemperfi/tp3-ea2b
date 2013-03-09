@@ -185,7 +185,7 @@ namespace TMD.MP.Site.Privado
                     oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
                 else
                 {
-                    oPropuestaMejora.codigo_Estado = 1;
+                    oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
                     oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
                 }
                 
