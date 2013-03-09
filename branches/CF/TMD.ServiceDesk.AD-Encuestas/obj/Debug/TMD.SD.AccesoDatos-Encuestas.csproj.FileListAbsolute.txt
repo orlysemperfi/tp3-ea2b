@@ -23,3 +23,8 @@ C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-E
 C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
 C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
 C:\Proyectos\TP3-TMD\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Users\Administrador\Desktop\CF\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Users\Administrador\Desktop\CF\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Users\Administrador\Desktop\CF\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrador\Desktop\CF\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Users\Administrador\Desktop\CF\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
