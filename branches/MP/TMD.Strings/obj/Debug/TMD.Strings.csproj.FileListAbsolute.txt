@@ -21,3 +21,8 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Strings\bin\Debug\TMD.Strings.pdb
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Strings\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Strings\obj\Debug\TMD.Strings.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.Strings\obj\Debug\TMD.Strings.pdb
+D:\Personal\UPC\TP3\Branch\TMD.Strings\bin\Debug\TMD.Strings.dll
+D:\Personal\UPC\TP3\Branch\TMD.Strings\bin\Debug\TMD.Strings.pdb
+D:\Personal\UPC\TP3\Branch\TMD.Strings\obj\Debug\ResolveAssemblyReference.cache
+D:\Personal\UPC\TP3\Branch\TMD.Strings\obj\Debug\TMD.Strings.dll
+D:\Personal\UPC\TP3\Branch\TMD.Strings\obj\Debug\TMD.Strings.pdb

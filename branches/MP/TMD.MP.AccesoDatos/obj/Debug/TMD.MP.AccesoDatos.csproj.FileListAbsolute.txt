@@ -43,3 +43,12 @@ C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Co
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.dll
 C:\Users\Jose\Desktop\TMD.SistemaIntegral\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.pdb
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.AccesoDatos.dll
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.AccesoDatos.pdb
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\bin\Debug\TMD.Entidades.dll
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.dll
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.pdb
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.dll
+D:\Personal\UPC\TP3\Branch\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.pdb
