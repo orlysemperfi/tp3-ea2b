@@ -84,10 +84,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.GM.LogicaNegocios", "TMD.GM.LogicaNegocios\TMD.GM.LogicaNegocios.csproj", "{610AEC74-2EEF-4432-92A2-880E1CC9E722}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TMD.GestionConfiguracion.vsmdi
 	EndGlobalSection
@@ -190,5 +186,9 @@ Global
 		{D279FDE5-0877-4D76-AF7B-845F50EEDD73} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
 		{018B614F-5867-4B19-AACB-974A8FBC00F7} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
 		{4A1D6B32-DC9D-47E1-A546-C763E8E69CDC} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
