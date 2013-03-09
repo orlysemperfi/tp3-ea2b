@@ -40,57 +40,18 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit">
-      <HintPath>..\Librerias\AjaxControlToolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\TMD.ACP\TMD.ACP.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\Librerias\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Librerias\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception">
-      <HintPath>..\..\Librerias\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="Validators, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Validators.dll</HintPath>
@@ -279,10 +240,6 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TMD.ACP.LogicaNegocios\TMD.ACP.LogicaNegocios.csproj">
-      <Project>{4CBA70E9-590F-43B5-824A-604B04B89644}</Project>
-      <Name>TMD.ACP.LogicaNegocios</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TMD.CF.AccesoDatos\TMD.CF.AccesoDatos.csproj">
       <Project>{728F843E-C373-48F7-A41E-B2A5B6FA2572}</Project>
       <Name>TMD.CF.AccesoDatos</Name>
@@ -298,22 +255,6 @@
     <ProjectReference Include="..\TMD.CF.LogicaNegocios\TMD.CF.LogicaNegocios.csproj">
       <Project>{1ED7F34A-504A-4BA9-A9A2-DDED2E15DB61}</Project>
       <Name>TMD.CF.LogicaNegocios</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TMD.MP.Comun\TMD.MP.Comun.csproj">
-      <Project>{33880C96-3055-42AB-9F69-85550D058261}</Project>
-      <Name>TMD.MP.Comun</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TMD.MP.LogicaNegocios\TMD.MP.LogicaNegocios.csproj">
-      <Project>{202836F6-D587-495C-867A-2E8F00A87408}</Project>
-      <Name>TMD.MP.LogicaNegocios</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TMD.SD.LogicaNegocio-Atencion\TMD.SD.LogicaNegocio-Atencion.csproj">
-      <Project>{0D852F58-3543-419D-968E-CD0AC34AE95B}</Project>
-      <Name>TMD.SD.LogicaNegocio-Atencion</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TMD.ServiceDesk.AD-Atencion\TMD.SD.AccesoDatos-Atencion.csproj">
-      <Project>{A095BF24-7742-45BD-92FA-C376D36C4F23}</Project>
-      <Name>TMD.SD.AccesoDatos-Atencion</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
