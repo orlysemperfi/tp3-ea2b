@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TMD.CF.AccesoDatos.Core;
 using TMD.CF.AccesoDatos.Contrato;
 using TMD.Entidades;
 using System.Data.Common;
 using System.Data;
-using TMD.CF.AccesoDatos.Map;
 
 namespace TMD.CF.AccesoDatos.Implementacion
 {
@@ -19,7 +16,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
         }
 
-        public void Agregar(Entidades.SolicitudCambio solicitudCambio)
+        public void Agregar(SolicitudCambio solicitudCambio)
         {
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_INS"))
             {
@@ -40,7 +37,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
             }
         }
 
-        public void Aprobar(Entidades.SolicitudCambio solicitudCambio)
+        public void Aprobar(SolicitudCambio solicitudCambio)
         {
             using (DbCommand command = DB.GetStoredProcCommand("USP_SOLICITUD_CAMBIO_ESTADO_UPD"))
             {
@@ -63,13 +60,13 @@ namespace TMD.CF.AccesoDatos.Implementacion
         }
 
 
-        public List<Entidades.SolicitudCambio> ListarPorProyectoLineaBase(Entidades.SolicitudCambio solicitudCambio)
+        public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
         {
             throw new NotImplementedException();
         }
 
 
-        public Entidades.SolicitudCambio ObtenerPorId(int id)
+        public SolicitudCambio ObtenerPorId(int id)
         {
             throw new NotImplementedException();
         }
