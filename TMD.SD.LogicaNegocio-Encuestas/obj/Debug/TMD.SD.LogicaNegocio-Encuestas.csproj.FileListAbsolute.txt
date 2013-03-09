@@ -23,3 +23,8 @@ C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Encuestas\bin\Debug\TMD.SD.LogicaNegoc
 C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\ResolveAssemblyReference.cache
 C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.dll
 C:\Proyectos\TP3-TMD\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.pdb
+C:\Users\Administrador\Desktop\CF\TMD.SD.LogicaNegocio-Encuestas\bin\Debug\TMD.SD.LogicaNegocio-Encuestas.dll
+C:\Users\Administrador\Desktop\CF\TMD.SD.LogicaNegocio-Encuestas\bin\Debug\TMD.SD.LogicaNegocio-Encuestas.pdb
+C:\Users\Administrador\Desktop\CF\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrador\Desktop\CF\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.dll
+C:\Users\Administrador\Desktop\CF\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.pdb

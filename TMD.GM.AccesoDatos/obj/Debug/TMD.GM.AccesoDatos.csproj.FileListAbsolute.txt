@@ -42,3 +42,11 @@ C:\Proyectos\TP3-TMD\TMD.GM.AccesoDatos\bin\Debug\TMD.Entidades.pdb
 C:\Proyectos\TP3-TMD\TMD.GM.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 C:\Proyectos\TP3-TMD\TMD.GM.AccesoDatos\obj\Debug\TMD.GM.AccesoDatos.dll
 C:\Proyectos\TP3-TMD\TMD.GM.AccesoDatos\obj\Debug\TMD.GM.AccesoDatos.pdb
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\bin\Debug\TMD.GM.AccesoDatos.dll.config
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\bin\Debug\TMD.GM.AccesoDatos.dll
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\bin\Debug\TMD.GM.AccesoDatos.pdb
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\bin\Debug\TMD.Entidades.dll
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\obj\Debug\TMD.GM.AccesoDatos.dll
+C:\Users\Administrador\Desktop\CF\TMD.GM.AccesoDatos\obj\Debug\TMD.GM.AccesoDatos.pdb

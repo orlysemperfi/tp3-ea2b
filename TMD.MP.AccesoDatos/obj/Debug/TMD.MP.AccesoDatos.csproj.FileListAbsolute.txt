@@ -61,3 +61,12 @@ C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.pdb
 C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.dll
 C:\Proyectos\TP3-TMD\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.pdb
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.AccesoDatos.dll
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.AccesoDatos.pdb
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\bin\Debug\TMD.Entidades.dll
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.dll
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\bin\Debug\TMD.MP.Comun.pdb
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.dll
+C:\Users\Administrador\Desktop\CF\TMD.MP.AccesoDatos\obj\Debug\TMD.MP.AccesoDatos.pdb
