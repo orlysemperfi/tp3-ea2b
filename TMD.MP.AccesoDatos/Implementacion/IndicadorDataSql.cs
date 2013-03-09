@@ -203,7 +203,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
                 if (dr.Read())
                 {
-                    oIndicador.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
+                    oIndicador.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
                     oIndicador.nombre = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
                     oIndicador.expresion_Matematica = Utilitario.getDefaultOrStringDBValue(dr["EXPRESION_MATEMATICA"]);
                     oIndicador.frecuencia_Medicion = Utilitario.getDefaultOrStringDBValue(dr["FRECUENCIA_MEDICION"]);
@@ -328,12 +328,13 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.INDICADOR");
+            strSQL.Append("UPDATE MP.INDICADOR ");
             strSQL.Append("SET NOMBRE = @NOMBRE,EXPRESION_MATEMATICA= @EXPRESION_MATEMATICA,FRECUENCIA_MEDICION = @FRECUENCIA_MEDICION, ");
-            strSQL.Append("FUENTE_MEDICION = @FUENTE_MEDICION,PLAZO = @PLAZO,TIPO = @TIPO ");
+            strSQL.Append("FUENTE_MEDICION=@FUENTE_MEDICION,PLAZO=@PLAZO,TIPO=@TIPO, CODIGO_PROCESO=@CODIGO_PROCESO ");
+            strSQL.Append("REEMPLAZA_INDICADOR=@REEMPLAZA_INDICADOR, ESTADO=@ESTADO ");
             strSQL.Append("WHERE CODIGO=@CODIGO ");
+            
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
-
             sqlCmd.CommandType = CommandType.Text;
             sqlCmd.Parameters.Add("@CODIGO", SqlDbType.VarChar).Value = entidad.codigo;
             sqlCmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = entidad.nombre;
@@ -342,6 +343,9 @@ namespace TMD.MP.AccesoDatos.Implementacion
             sqlCmd.Parameters.Add("@EXPRESION_MATEMATICA", SqlDbType.VarChar).Value = entidad.expresion_Matematica;
             sqlCmd.Parameters.Add("@PLAZO", SqlDbType.VarChar).Value = entidad.plazo;
             sqlCmd.Parameters.Add("@TIPO", SqlDbType.VarChar).Value = entidad.tipo;
+            sqlCmd.Parameters.Add("@CODIGO_PROCESO", SqlDbType.VarChar).Value = entidad.codigo_Proceso;
+            sqlCmd.Parameters.Add("@REEMPLAZA_INDICADOR", SqlDbType.VarChar).Value = entidad.reemplaza_Indicador;
+            sqlCmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = entidad.estado;
 
             try
             {

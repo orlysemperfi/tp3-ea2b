@@ -45,5 +45,19 @@ namespace TMD.MP.Comun
             FINALIZADA = 8
         }
         #endregion
+
+        #region "INDICADOR"
+        public static String ESTADO_INDICADOR_ACTIVO    = "ACTIVO";
+        public static String ESTADO_INDICADOR_INACTIVO = "INACTIVO";
+        public static String ESTADO_INDICADOR_ELIMINADO = "ELIMINADO";
+        
+        public enum ESTADO_INDICADOR
+        {
+            ACTIVO = 20,
+            INACTIVO = 21,
+            ELIMINADO = 22,
+        }
+
+        #endregion
     }
 }
