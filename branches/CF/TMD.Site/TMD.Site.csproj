@@ -103,6 +103,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
+    <Content Include="Controles\RegistroSolicitudCambio.ascx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
@@ -203,6 +204,12 @@
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
+    <Compile Include="Controles\RegistroSolicitudCambio.ascx.cs">
+      <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\RegistroSolicitudCambio.ascx.designer.cs">
+      <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx.cs">
       <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
