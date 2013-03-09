@@ -17,6 +17,26 @@ namespace TMD.CF.AccesoDatos.Implementacion
             : base(connectionString)
         {
         }
+
+        public void Agregar(InformeCambio informeCambio)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Aprobar(InformeCambio informeCambio)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<InformeCambio> ListarPorLineaBase(InformeCambio informeCambio)
+        {
+            throw new NotImplementedException();
+        }
+
+        public InformeCambio ObtenerPorId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
