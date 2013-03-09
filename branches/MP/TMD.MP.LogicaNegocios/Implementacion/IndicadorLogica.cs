@@ -6,6 +6,7 @@ using TMD.MP.AccesoDatos.Contrato;
 using TMD.MP.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.Comun;
 namespace TMD.MP.LogicaNegocios.Implementacion
 {
     public class IndicadorLogica : IIndicadorLogica
@@ -75,14 +76,21 @@ namespace TMD.MP.LogicaNegocios.Implementacion
         #region "Update"
 
         public void ActualizarIndicador(IndicadorEntidad entidad) 
-        { }
+        {
+            iIndicador = new IndicadorDataSql();
+            iIndicador.ActualizarIndicador(entidad);
+        }
 
         #endregion
 
         #region "Delete"
 
-        public void EliminarIndicadorPorCodigo(int codigo) 
-        { }
+        public void InactivarIndicador(IndicadorEntidad entidad)
+        {
+            iIndicador = new IndicadorDataSql();
+            entidad.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.INACTIVO);
+            iIndicador.ActualizarIndicador(entidad);
+        }
 
         #endregion
 

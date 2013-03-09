@@ -32,9 +32,9 @@ namespace TMD.MP.LogicaNegocios.Contrato
         #endregion
 
         #region "Delete"
-
-        void EliminarIndicadorPorCodigo(int codigo);
-
+        
+        void InactivarIndicador(IndicadorEntidad entidad); 
+        
         #endregion
     }
 }
