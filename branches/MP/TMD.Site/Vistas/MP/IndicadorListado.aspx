@@ -89,6 +89,12 @@
                                     <asp:Label ID="lblTipo" runat="server" Text='<%#ObtenerDescTipoIndicador(Eval("TIPO").ToString())%>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Width="50px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>                           
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
