@@ -14,22 +14,22 @@ namespace TMD.CF.Site.Controladora
     {
         private static readonly ISolicitudCambioLogica _solicitudCambioLogica = new SolicitudCambioLogica(new SolicitudCambioData(BaseDatos));
 
-        public void Agregar(SolicitudCambio solicitudCambio)
+        public static void Agregar(SolicitudCambio solicitudCambio)
         {
             _solicitudCambioLogica.Agregar(solicitudCambio);
         }
 
-        public void Aprobar(SolicitudCambio solicitudCambio)
+        public static void Aprobar(SolicitudCambio solicitudCambio)
         {
             _solicitudCambioLogica.Aprobar(solicitudCambio);
         }
 
-        public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
+        public static List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
         {
             return _solicitudCambioLogica.ListarPorProyectoLineaBase(solicitudCambio);
         }
 
-        public SolicitudCambio ObtenerPorId(int id)
+        public static SolicitudCambio ObtenerPorId(int id)
         {
             return _solicitudCambioLogica.ObtenerPorId(id);
         }
