@@ -154,3 +154,15 @@ E:\TP3\Proyecto\TMD.CF.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.CF.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.dll
 E:\TP3\Proyecto\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.pdb
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.LogicaNegocios.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.LogicaNegocios.pdb
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.AccesoDatos.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\TMD.CF.AccesoDatos.pdb
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.dll
+C:\Users\cperalta\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral-CF\TMD.CF.LogicaNegocios\obj\Debug\TMD.CF.LogicaNegocios.pdb
