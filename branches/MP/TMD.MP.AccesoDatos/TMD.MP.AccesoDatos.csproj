@@ -50,6 +50,7 @@
     <Compile Include="Contrato\IUnidadData.cs" />
     <Compile Include="Contrato\IUsuarioData.cs" />
     <Compile Include="Implementacion\AreaDataSql.cs" />
+    <Compile Include="Implementacion\BaseDataSql.cs" />
     <Compile Include="Implementacion\EscalaCualitativoDataSql.cs" />
     <Compile Include="Implementacion\EscalaCuantitativoDataSql.cs" />
     <Compile Include="Implementacion\IndicadorDataSql.cs" />
