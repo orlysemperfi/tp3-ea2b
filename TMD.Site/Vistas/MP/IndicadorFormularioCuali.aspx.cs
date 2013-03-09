@@ -35,7 +35,7 @@ namespace TMD.MP.Site.Privado
                 gwEscalasCuali.DataBind();
 
                 List<EscalaCuantitativoEntidad> escalaCuantitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo;
-                gwEscalasCuanti.DataBind();
+                gwEscalasCuali.DataBind();
             }
         }
 
@@ -47,7 +47,7 @@ namespace TMD.MP.Site.Privado
                 Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
             }
             gwEscalasCuali.DataBind();
-            gwEscalasCuanti.DataBind();
+            gwEscalasCuali.DataBind();
         }
 
 
@@ -59,7 +59,7 @@ namespace TMD.MP.Site.Privado
             tbxFuenteMed.Text = indicador.fuente_Medicion;
             tbxExpresionMat.Text = indicador.expresion_Matematica;
             tbxPlaxo.Text = indicador.plazo;
-            ddlTipo.SelectedValue = indicador.tipo.ToString();
+            
 
             CargarListadoEscalas();
         }
@@ -73,7 +73,7 @@ namespace TMD.MP.Site.Privado
             oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
             oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
             oNewIndicador.plazo = tbxPlaxo.Text;
-            oNewIndicador.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
+            
 
             if (oNewIndicador.codigo != null)
                 oIndicadorLogica.ActualizarIndicador(oNewIndicador);
@@ -86,20 +86,6 @@ namespace TMD.MP.Site.Privado
         protected void lbtnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
-        }
-
-        protected void ddlTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlTipo.SelectedIndex == 0)
-            {
-                pnlIndicadorCualitativo.Visible = true;
-                pnlIndicadorCuantitativo.Visible = false;
-            }
-            else {
-                pnlIndicadorCualitativo.Visible = false;
-                pnlIndicadorCuantitativo.Visible = true;
-            }
-
         }
 
         protected void CargarListadoEscalas(){
@@ -118,7 +104,7 @@ namespace TMD.MP.Site.Privado
             {
                 Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = oIndicadorLogica.ObtenerListaEscalaCuantitativoPorIndicador(codigo_indicador);
             }
-            gwEscalasCuanti.DataBind();
+            gwEscalasCuali.DataBind();
         }
 
         protected List<EscalaCualitativoEntidad> ObtenerEscalaCualitativoListado()
@@ -168,6 +154,11 @@ namespace TMD.MP.Site.Privado
         protected void lbtnBuscar_Click(object sender, EventArgs e)
         { 
         
+        }
+
+        protected void lbtnAgregarICuanti_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

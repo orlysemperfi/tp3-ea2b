@@ -143,7 +143,10 @@
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnAgregarIndicador" runat="server" OnClick="ibtnAgregarIndicador_Click" CssClass="estilo_boton" Text="Agregar"></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnAgregarIndicadorCuali" runat="server" OnClick="ibtnAgregarIndicadorCuali_Click" CssClass="estilo_boton" Text="Agregar Cualitativo"></asp:LinkButton>
+                </td>
+                 <td>
+                    <asp:LinkButton ID="lbtnAgregarIndicadorCuanti" runat="server" OnClick="ibtnAgregarIndicadorCuanti_Click" CssClass="estilo_boton" Text="Agregar Cuantitativo"></asp:LinkButton>
                 </td>
                 <td class="boton-espaciado">
                     <asp:LinkButton ID="lbtnSalir" runat="server" OnClick="ibtnSalir_Click" CssClass="estilo_boton" Text="Salir"></asp:LinkButton>
@@ -167,7 +170,8 @@
         <asp:AsyncPostBackTrigger ControlID="tbxPaginaActual" />
         <asp:AsyncPostBackTrigger ControlID="lbtnDerecha" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnDerechaTodo" EventName="Click" />
-        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicador" EventName="Click" />
+        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicadorCuali" EventName="Click" />
+        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicadorCuanti" EventName="Click" />
     </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

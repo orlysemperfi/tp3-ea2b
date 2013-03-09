@@ -50,7 +50,7 @@ namespace TMD.MP.Site.Privado
             ddlProceso.DataTextField = "NOMBRE";
             ddlProceso.DataValueField = "CODIGO";
             ddlProceso.DataBind();
-            ddlArea.Items.Insert(0, new ListItem("[Todos]", "0"));
+            ddlProceso.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
 
         protected void CargarIndicadorListado()
@@ -193,6 +193,7 @@ namespace TMD.MP.Site.Privado
                 if (oIndicador.codigo !=null)
                 {
                     oIndicadorLogica.InactivarIndicador(oIndicador);
+                    CargarIndicadorListado();
                 }
                 else
                 {
@@ -208,10 +209,16 @@ namespace TMD.MP.Site.Privado
             Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
         }
 
-        protected void ibtnAgregarIndicador_Click(object sender, EventArgs e)
+        protected void ibtnAgregarIndicadorCuali_Click(object sender, EventArgs e)
         {
             Sesiones.IndicadorSeleccionadoRemover();
-            Response.Redirect(Paginas.TMD_MP_IndicadorFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
+            Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_INSERT, true);
+        }
+
+        protected void ibtnAgregarIndicadorCuanti_Click(object sender, EventArgs e)
+        {
+            Sesiones.IndicadorSeleccionadoRemover();
+            Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
         protected void ibtnSalir_Click(object sender, EventArgs e)
