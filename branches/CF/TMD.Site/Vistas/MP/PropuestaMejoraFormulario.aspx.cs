@@ -21,7 +21,7 @@ namespace TMD.MP.Site.Privado
         public UsuarioControlador usuarioControlador = new UsuarioControlador();
         public ProcesoControlador procesoControlador = new ProcesoControlador();
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
-        int contador = 0;
+        //int contador = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
