@@ -70,6 +70,7 @@
     <Compile Include="Implementacion\ElementoConfiguracionData.cs" />
     <Compile Include="Implementacion\LineaBaseData.cs" />
     <Compile Include="Implementacion\LineaBaseElementoConfiguracionData.cs" />
+    <Compile Include="Implementacion\LineaBaseDataValidacion.cs" />
     <Compile Include="Implementacion\ProyectoFaseData.cs" />
     <Compile Include="Implementacion\UsuarioData.cs" />
     <Compile Include="Map\ElementoConfiguracionMap.cs" />
