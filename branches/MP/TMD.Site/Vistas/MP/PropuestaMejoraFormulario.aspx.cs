@@ -17,7 +17,7 @@ namespace TMD.MP.Site.Privado
     public partial class PropuestaMejoraFormulario : System.Web.UI.Page
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
-        int contador = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -32,7 +32,7 @@ namespace TMD.MP.Site.Privado
                 {
                     NuevaPropuestaMejora();
                 }
-                else if (action==Constantes.ACTION_UPDATE) {
+                else if (action==Constantes.ACTION_UPDATE || action==Constantes.ACTION_VIEW) {
                     CargarPropuestaMejora();
                 }
                 List<IndicadorEntidad> indicadorListado = Sesiones.PropuestaMejoraSeleccionada.lstIndicadores;
@@ -71,6 +71,9 @@ namespace TMD.MP.Site.Privado
             tbxObservaciones.Text = propuestaMejora.observaciones;
 
             CargarIndicadorListado();
+
+            if (action == Constantes.ACTION_VIEW)
+                CargarModoView();
         }
 
         public void CargarIndicadorListado()
@@ -140,13 +143,13 @@ namespace TMD.MP.Site.Privado
             ddlProceso.DataValueField = "CODIGO";
             ddlProceso.DataBind();
         }
+
         //protected void chkStatus_OnCheckedChanged(object sender, EventArgs e)
         //{
         //    CheckBox check = (CheckBox)sender;
- 
-
         //    lblMensajeError.Text = lblMensajeError.Text + " chau :" + check.Checked;
         //}
+
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
             PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
@@ -216,7 +219,6 @@ namespace TMD.MP.Site.Privado
                 CheckBox check = (CheckBox)sender;
                 lblMensajeError.Text = "hola :" + e.CommandArgument;
                 lblMensajeError.Text = lblMensajeError.Text + " chau :" + check.Checked;
-
             }
         }
         public CascadingDropDownNameValue[] ObtenerProcesosPorArea(string knownCategoryValues, string category) {
@@ -237,5 +239,18 @@ namespace TMD.MP.Site.Privado
             CargarIndicadoresProceso();
         }
 
+        protected void CargarModoView() {
+            ddlArea.Enabled = false;
+            ddlProceso.Enabled = false;
+            ddlTipoPropuesta.Enabled = false;
+            ddlResponsable.Enabled = false;
+            tbxFechaEnvio.Enabled = false;
+            tbxObservaciones.Enabled = false;
+            tbxDescripcion.Enabled = false;
+            tbxCausa.Enabled = false;
+            tbxBeneficios.Enabled = false;
+            lbtnGuardar.Visible = false;
+            lbtnCancelar.Text = "Salir";
+        }
     }
 }
