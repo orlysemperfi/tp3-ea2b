@@ -13,7 +13,8 @@ namespace TMD.MP.AccesoDatos.Contrato
         List<IndicadorEntidad> ObtenerListaIndicadorPorPropuesta(int codigo_Propuesta);
         List<IndicadorEntidad> ObtenerIndicadorListadoPorFiltros(IndicadorEntidad oIndicadorFiltro);
         List<IndicadorEntidad> ObtenerIndicadorPorProceso(int codigo_Proceso);
-
+        IndicadorEntidad ObtenerIndicadorPorCodigo(int codigo);
+        
         #endregion
 
         #region "Insert"

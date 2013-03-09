@@ -55,6 +55,11 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             iEscalaCuantitativo = new EscalaCuantitativoDataSql();
             return iEscalaCuantitativo.ObtenerListaEscalaCuantitativoPorIndicador(codigo_Indicador);
         }
+        public IndicadorEntidad ObtenerIndicadorPorCodigo(int codigo) {
+            iIndicador = new IndicadorDataSql();
+            return iIndicador.ObtenerIndicadorPorCodigo(codigo);
+        }
+
         #endregion
 
         #region "Insert"
