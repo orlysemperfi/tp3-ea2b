@@ -66,7 +66,9 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT I.CODIGO AS CODIGO_INDICADOR, I.NOMBRE, I.EXPRESION_MATEMATICA, I.FRECUENCIA_MEDICION, I.FUENTE_MEDICION, I.PLAZO, I.TIPO FROM MP.INDICADOR I INNER JOIN MP.PROCESO P ON P.CODIGO = I.CODIGO_PROCESO WHERE 1=1 ");
+            strSQL.Append("SELECT I.CODIGO AS CODIGO_INDICADOR, I.NOMBRE, I.EXPRESION_MATEMATICA, I.FRECUENCIA_MEDICION, I.FUENTE_MEDICION, I.PLAZO, I.TIPO ");
+            strSQL.Append("FROM MP.INDICADOR I INNER JOIN MP.PROCESO P ON P.CODIGO = I.CODIGO_PROCESO ");
+            strSQL.Append("WHERE I.ESTADO = " +Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO));
 
             if (oIndicadorFiltro != null)
             {
@@ -330,7 +332,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("UPDATE MP.INDICADOR ");
             strSQL.Append("SET NOMBRE = @NOMBRE,EXPRESION_MATEMATICA= @EXPRESION_MATEMATICA,FRECUENCIA_MEDICION = @FRECUENCIA_MEDICION, ");
-            strSQL.Append("FUENTE_MEDICION=@FUENTE_MEDICION,PLAZO=@PLAZO,TIPO=@TIPO, CODIGO_PROCESO=@CODIGO_PROCESO ");
+            strSQL.Append("FUENTE_MEDICION=@FUENTE_MEDICION,PLAZO=@PLAZO,TIPO=@TIPO, CODIGO_PROCESO=@CODIGO_PROCESO, ");
             strSQL.Append("REEMPLAZA_INDICADOR=@REEMPLAZA_INDICADOR, ESTADO=@ESTADO ");
             strSQL.Append("WHERE CODIGO=@CODIGO ");
             

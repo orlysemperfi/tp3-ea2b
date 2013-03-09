@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TMD.MP.Site.Privado {
+namespace TMD.CF.Site.Vistas.MP {
     
     
-    public partial class IndicadoresFormulario {
+    public partial class IndicadorFormularioCuanti {
         
         /// <summary>
         /// ToolkitScriptManager1 control.
@@ -65,15 +65,6 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxPlaxo;
-        
-        /// <summary>
-        /// ddlTipo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
         
         /// <summary>
         /// pnlIndicadorCualitativo control.
@@ -155,131 +146,5 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensajeError;
-        
-        /// <summary>
-        /// pnlEscalaCualitativo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEscalaCualitativo;
-        
-        /// <summary>
-        /// txbLimInferior control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbLimInferior;
-        
-        /// <summary>
-        /// txbLimSuperior control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbLimSuperior;
-        
-        /// <summary>
-        /// txbCalifacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbCalifacion;
-        
-        /// <summary>
-        /// ibtnGuardar_ECualitativa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnGuardar_ECualitativa;
-        
-        /// <summary>
-        /// ibtnCancelar_ECualitativa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnCancelar_ECualitativa;
-        
-        /// <summary>
-        /// pnlEscalaCuantitativa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEscalaCuantitativa;
-        
-        /// <summary>
-        /// txbSigno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbSigno;
-        
-        /// <summary>
-        /// txbValor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbValor;
-        
-        /// <summary>
-        /// ddlUnidadEC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUnidadEC;
-        
-        /// <summary>
-        /// ibtnGuardar_ECuantitativo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnGuardar_ECuantitativo;
-        
-        /// <summary>
-        /// ibtnCancelar_ECuantitativo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibtnCancelar_ECuantitativo;
-        
-        /// <summary>
-        /// ModalPopupExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender1;
-        
-        /// <summary>
-        /// ModalPopupExtender2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender ModalPopupExtender2;
     }
 }

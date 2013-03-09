@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" 
-    CodeBehind="IndicadorFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresFormulario" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="IndicadorFormularioCuanti.aspx.cs" Inherits="TMD.CF.Site.Vistas.MP.IndicadorFormularioCuanti" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 
@@ -9,9 +8,9 @@
     </script>
     <script type="text/javascript" language="javascript">
 
-//        function cerrarPopup() {
-//            window.close();
-//        }
+        //        function cerrarPopup() {
+        //            window.close();
+        //        }
         function mostrarIndicador() {
             tipo = document.getElementById("ddlTipo").value;
             if (tipo == "0") {
@@ -75,17 +74,7 @@
                     <asp:TextBox ID="tbxPlaxo" runat="server" CssClass="estilo_textbox"></asp:TextBox>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Tipo:
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlTipo" runat="server" CssClass="estilo_combobox">
-                        <asp:ListItem Text="Cualitativo" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Cuantitativo" Value="1"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
+
         </table>
     </div>
     <asp:Panel ID="pnlIndicadorCualitativo" runat="server" style="display:none">    
@@ -141,7 +130,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:GridView ID="gwEscalasCuanti" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" DataSource='<%#ObtenerEscalaCuantitativoListado() %>'>
+                    <asp:GridView ID="gwEscalasCuanti" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCuantitativoListado() %>'>
                         <Columns>
                             <asp:TemplateField HeaderText="Signo">
                                 <ItemTemplate>
@@ -192,55 +181,5 @@
             </td>
         </tr>
     </table>
-    <asp:Panel ID="pnlEscalaCualitativo" runat="server" style="display:none">
-    <div id="divEscalaCualitativo">
-            <table>            
-            <tr><td>Limite Inferior:</td><td><asp:TextBox ID="txbLimInferior" runat="server"/></td></tr>
-            <tr><td>Limite Superior:</td><td><asp:TextBox ID="txbLimSuperior" runat="server"/></td></tr>
-            <tr><td>Calificacion:</td><td><asp:TextBox ID="txbCalifacion" runat="server"/></td></tr>           
-        </table>    
-    <br />
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td><asp:ImageButton ID="ibtnGuardar_ECualitativa" runat="server" 
-                    AlternateText="Guardar" ImageUrl="../App_Themes/Imagenes/btnGuardar.png" 
-                     /> </td>
-            <td style="padding-left:5px"><asp:ImageButton ID="ibtnCancelar_ECualitativa" runat="server" AlternateText="Cancelar" ImageUrl="../App_Themes/Imagenes/btnCancelar.png"/></td>
-        </tr>
-    </table>
-    </div>        
-</asp:Panel>
 
-<asp:Panel ID="pnlEscalaCuantitativa" runat="server" style="display:none">
-        <div id="divEscalaCuantitativo">
-                <table>            
-                <tr><td>Signo:</td><td><asp:TextBox ID="txbSigno" runat="server"/></td></tr>
-                <tr><td>Valor:</td><td><asp:TextBox ID="txbValor" runat="server"/></td></tr>
-                <tr><td>Unidad:</td><td><asp:DropDownList ID="ddlUnidadEC" runat="server" /></td></tr>            
-            </table>
-    
-        <br />
-        <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-                <td><asp:ImageButton ID="ibtnGuardar_ECuantitativo" runat="server" AlternateText="Guardar" ImageUrl="../App_Themes/Imagenes/btnGuardar.png" /> </td>
-                <td style="padding-left:5px"><asp:ImageButton ID="ibtnCancelar_ECuantitativo" runat="server" AlternateText="Cancelar" ImageUrl="../App_Themes/Imagenes/btnCancelar.png"/></td>
-            </tr>
-        </table>
-        </div>
-</asp:Panel>
-    <asp:ModalPopupExtender
-    OkControlID="ibtnGuardar_ECualitativa"
-    CancelControlID="ibtnCancelar_ECualitativa"
-    runat="server"
-    PopupControlID="pnlEscalaCualitativo"
-    id="ModalPopupExtender1"
-    TargetControlID="lbtnAgregarICuali" /> 
-
-    <asp:ModalPopupExtender
-    OkControlID="ibtnGuardar_ECuantitativo"
-    CancelControlID="ibtnCancelar_ECuantitativo"
-    runat="server"
-    PopupControlID="pnlEscalaCuantitativa"
-    id="ModalPopupExtender2"
-    TargetControlID="lbtnAgregarICuanti" /> 
 </asp:Content>
