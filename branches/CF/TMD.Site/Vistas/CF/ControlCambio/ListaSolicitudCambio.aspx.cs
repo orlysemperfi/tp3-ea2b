@@ -14,7 +14,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
     public partial class ListaSolicitudCambio : System.Web.UI.Page
     {
 
-        protected int esCarga;
+        protected int esCarga; 
 
         protected void Page_Load(object sender, EventArgs e)
         {

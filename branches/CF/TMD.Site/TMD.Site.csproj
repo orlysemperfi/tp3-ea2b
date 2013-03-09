@@ -104,9 +104,6 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
-    <Content Include="Vistas\SD\Atenciones.aspx" />
-    <Content Include="Vistas\SD\IngresarSolucion.aspx" />
-    <Content Include="Vistas\SD\NuevaAtencion.aspx" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
     <Content Include="bin\Microsoft.Practices.ServiceLocation.dll" />
@@ -157,27 +154,9 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Vistas\ACP\ConsultaAuditoria.aspx" />
-    <Content Include="Vistas\ACP\ConsultarAuditor.aspx" />
-    <Content Include="Vistas\ACP\Dashboard.aspx" />
-    <Content Include="Vistas\ACP\ListaPlanAuditoria.aspx" />
-    <Content Include="Vistas\ACP\MantenerHallazgo.aspx" />
-    <Content Include="Vistas\ACP\PlanAuditoria.aspx" />
-    <Content Include="Vistas\ACP\Principal.aspx" />
-    <Content Include="Vistas\ACP\UploadFile.aspx" />
-    <Content Include="Vistas\ACP\WebForm1.aspx" />
-    <Content Include="Vistas\GM\PlanMantenimientoNuevo.aspx" />
     <Content Include="Vistas\LineaBase\ActualizarECS.aspx" />
     <Content Include="Vistas\LineaBase\ActualizarLineaBase.aspx" />
     <Content Include="Vistas\LineaBase\ListaLineaBase.aspx" />
-    <Content Include="Vistas\MP\EscalaCualitativoFormulario.aspx" />
-    <Content Include="Vistas\MP\EscalaCuantitativoFormulario.aspx" />
-    <Content Include="Vistas\MP\IndicadorFormulario.aspx" />
-    <Content Include="Vistas\MP\IndicadorListado.aspx" />
-    <Content Include="Vistas\MP\Inicio.aspx" />
-    <Content Include="Vistas\MP\PropuestaMejoraFormulario.aspx" />
-    <Content Include="Vistas\MP\PropuestaMejoraListado.aspx" />
-    <Content Include="Vistas\MP\Prueba2.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -231,34 +210,8 @@
     <Compile Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx.designer.cs">
       <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\SD\Atenciones.aspx.cs">
-      <DependentUpon>Atenciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\SD\Atenciones.aspx.designer.cs">
-      <DependentUpon>Atenciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\SD\IngresarSolucion.aspx.cs">
-      <DependentUpon>IngresarSolucion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\SD\IngresarSolucion.aspx.designer.cs">
-      <DependentUpon>IngresarSolucion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\SD\NuevaAtencion.aspx.cs">
-      <DependentUpon>NuevaAtencion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\SD\NuevaAtencion.aspx.designer.cs">
-      <DependentUpon>NuevaAtencion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Controladora\Base.cs" />
     <Compile Include="Controladora\LineaBaseControladora.cs" />
-    <Compile Include="Controladora\MP\AreaControlador.cs" />
-    <Compile Include="Controladora\MP\IndicadorControlador.cs" />
-    <Compile Include="Controladora\MP\ProcesoControlador.cs" />
-    <Compile Include="Controladora\MP\PropuestaMejoraControlador.cs" />
-    <Compile Include="Controladora\MP\UsuarioControlador.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,91 +259,6 @@
       <DependentUpon>SitePublic.Master</DependentUpon>
     </Compile>
     <Compile Include="Util\SesionFachada.cs" />
-    <Compile Include="Vistas\ACP\BasePage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\BasicPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\ConsultaAuditoria.aspx.cs">
-      <DependentUpon>ConsultaAuditoria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\ConsultaAuditoria.aspx.designer.cs">
-      <DependentUpon>ConsultaAuditoria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\ConsultarAuditor.aspx.cs">
-      <DependentUpon>ConsultarAuditor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\ConsultarAuditor.aspx.designer.cs">
-      <DependentUpon>ConsultarAuditor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\Contact.cs" />
-    <Compile Include="Vistas\ACP\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\Data.cs" />
-    <Compile Include="Vistas\ACP\ListaPlanAuditoria.aspx.cs">
-      <DependentUpon>ListaPlanAuditoria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\ListaPlanAuditoria.aspx.designer.cs">
-      <DependentUpon>ListaPlanAuditoria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\MantenerHallazgo.aspx.cs">
-      <DependentUpon>MantenerHallazgo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\MantenerHallazgo.aspx.designer.cs">
-      <DependentUpon>MantenerHallazgo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\PlanAuditoria.aspx.cs">
-      <DependentUpon>PlanAuditoria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\PlanAuditoria.aspx.designer.cs">
-      <DependentUpon>PlanAuditoria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\Principal.aspx.cs">
-      <DependentUpon>Principal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\Principal.aspx.designer.cs">
-      <DependentUpon>Principal.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\UploadFile.aspx.cs">
-      <DependentUpon>UploadFile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\UploadFile.aspx.designer.cs">
-      <DependentUpon>UploadFile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\GM\PlanMantenimientoNuevo.aspx.cs">
-      <DependentUpon>PlanMantenimientoNuevo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\GM\PlanMantenimientoNuevo.aspx.designer.cs">
-      <DependentUpon>PlanMantenimientoNuevo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\LineaBase\ActualizarECS.aspx.cs">
       <DependentUpon>ActualizarECS.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -412,72 +280,6 @@
     <Compile Include="Vistas\LineaBase\ListaLineaBase.aspx.designer.cs">
       <DependentUpon>ListaLineaBase.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\MP\EscalaCualitativoFormulario.aspx.cs">
-      <DependentUpon>EscalaCualitativoFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\EscalaCualitativoFormulario.aspx.designer.cs">
-      <DependentUpon>EscalaCualitativoFormulario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.cs">
-      <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.designer.cs">
-      <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\IndicadorFormulario.aspx.cs">
-      <DependentUpon>IndicadorFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\IndicadorFormulario.aspx.designer.cs">
-      <DependentUpon>IndicadorFormulario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\IndicadorListado.aspx.cs">
-      <DependentUpon>IndicadorListado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\IndicadorListado.aspx.designer.cs">
-      <DependentUpon>IndicadorListado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\PropuestaMejoraFormulario.aspx.cs">
-      <DependentUpon>PropuestaMejoraFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\PropuestaMejoraFormulario.aspx.designer.cs">
-      <DependentUpon>PropuestaMejoraFormulario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\PropuestaMejoraListado.aspx.cs">
-      <DependentUpon>PropuestaMejoraListado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\PropuestaMejoraListado.aspx.designer.cs">
-      <DependentUpon>PropuestaMejoraListado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\Prueba2.aspx.cs">
-      <DependentUpon>Prueba2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\Prueba2.aspx.designer.cs">
-      <DependentUpon>Prueba2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\TMD-MP.Master.cs">
-      <DependentUpon>TMD-MP.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\TMD-MP.Master.designer.cs">
-      <DependentUpon>TMD-MP.Master</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Vistas\ACP\Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -523,9 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SitePublic.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Vistas\MP\TMD-MP.Master" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
