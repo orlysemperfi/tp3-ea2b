@@ -16,7 +16,7 @@ namespace TMD.MP.LogicaNegocios.Contrato
         List<IndicadorEntidad> ObtenerIndicadorPorProceso(int codigo_Proceso);
         //Escala Cualitativo
         List<EscalaCualitativoEntidad> ObtenerListaEscalaCualitativoPorIndicador(int codigo_Indicador);
-
+        IndicadorEntidad ObtenerIndicadorPorCodigo(int codigo);
         //Escala Cuantitativo
         List<EscalaCuantitativoEntidad> ObtenerListaEscalaCuantitativoPorIndicador(int codigo_Indicador);
         #endregion

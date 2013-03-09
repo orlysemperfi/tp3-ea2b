@@ -131,7 +131,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
         }
         
 
-       public List<IndicadorEntidad> ObtenerIndicadorPorProceso(int codigo_Proceso)
+        public List<IndicadorEntidad> ObtenerIndicadorPorProceso(int codigo_Proceso)
         {
             List<IndicadorEntidad> oIndicadorColeccion = new List<IndicadorEntidad>();
             IndicadorEntidad oIndicador = null;
@@ -168,6 +168,55 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 }
                 dr.Close();
                 return oIndicadorColeccion;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+
+        public IndicadorEntidad ObtenerIndicadorPorCodigo(int codigo) { 
+                    
+            IndicadorEntidad oIndicador = new IndicadorEntidad();
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("SELECT CODIGO,NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,");
+            strSQL.Append("PLAZO,TIPO,CODIGO_PROCESO,REEMPLAZA_INDICADOR,ESTADO ");
+            strSQL.Append("FROM TMD.MP.INDICADOR ");
+            strSQL.Append("WHERE CODIGO=@CODIGO_INDICADOR");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = codigo;                
+
+            try
+            {
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    oIndicador.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
+                    oIndicador.nombre = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
+                    oIndicador.expresion_Matematica = Utilitario.getDefaultOrStringDBValue(dr["EXPRESION_MATEMATICA"]);
+                    oIndicador.frecuencia_Medicion = Utilitario.getDefaultOrStringDBValue(dr["FRECUENCIA_MEDICION"]);
+                    oIndicador.fuente_Medicion = Utilitario.getDefaultOrStringDBValue(dr["FUENTE_MEDICION"]);
+                    oIndicador.plazo = Utilitario.getDefaultOrStringDBValue(dr["PLAZO"]);
+                    oIndicador.tipo = Utilitario.getDefaultOrIntDBValue(dr["TIPO"]);
+                    oIndicador.codigo_Proceso = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROCESO"]);
+                    oIndicador.reemplaza_Indicador = Utilitario.getDefaultOrIntDBValue(dr["REEMPLAZA_INDICADOR"]);
+                    oIndicador.estado = Utilitario.getDefaultOrIntDBValue(dr["ESTADO"]);
+                    
+                }
+                dr.Close();
+                return oIndicador;
             }
             catch (System.Exception ex)
             {

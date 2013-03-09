@@ -68,7 +68,8 @@
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO","{0:000}") %>' />
+                                    <!--<asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO","{0:000}") %>' />-->
+                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
@@ -86,7 +87,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Tipo">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblTipo" runat="server" Text='<%#Eval("TIPO").ToString()=="0" ? "Cualitativo": "Cuantitativo" %>' />
+                                    <asp:Label ID="lblTipo" runat="server" Text='<%#ObtenerDescTipoIndicador(Eval("TIPO").ToString())%>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Width="50px" />
                             </asp:TemplateField>                           
