@@ -36,7 +36,7 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
         public SolicitudCambio ObtenerPorId(int id)
         {
-            throw new NotImplementedException();
+            return _solicitudCambioData.ObtenerPorId(id);
         }
     }
 }
