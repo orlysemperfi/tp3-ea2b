@@ -22,7 +22,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT [CODIGO], [CODIGO_INDICADOR], [LIMITE_INFERIOR], [LIMITE_SUPERIOR], [CALIFICACION] ");
+            strSQL.Append("SELECT [CODIGO], [CODIGO_INDICADOR], [LIMITE_INFERIOR], [LIMITE_SUPERIOR], [CALIFICACION],[PRINCIPAL] ");
             strSQL.Append("FROM [TMD].[MP].[ESCALA_CUALITATIVO] ");
             strSQL.Append("WHERE [CODIGO_INDICADOR]=@CODIGO_INDICADOR ");
 
@@ -44,6 +44,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oEscalaCualitativo.limte_inferior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_INFERIOR"]);
                     oEscalaCualitativo.limte_superior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_SUPERIOR"]);
                     oEscalaCualitativo.calificacion = Utilitario.getDefaultOrStringDBValue(dr["CALIFICACION"]);
+                    oEscalaCualitativo.principal = Utilitario.getDefaultOrIntDBValue(dr["PRINCIPAL"]);
                     lstEscalaCualitativo.Add(oEscalaCualitativo);
                 }
                 dr.Close();

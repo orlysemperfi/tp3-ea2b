@@ -203,24 +203,21 @@ namespace TMD.MP.Site.Privado
             if (e.CommandName == "EditarIndicador")
             {
                 IndicadorEntidad oIndicador = oIndicadorLogica.ObtenerIndicadorPorCodigo(Convert.ToInt32(e.CommandArgument));
-
+                
                 if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
+                    Sesiones.IndicadorSeleccionado = oIndicador;
+                    Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = new List<EscalaCualitativoEntidad>();
                     Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_UPDATE,true);
                     
                 }
 
                 if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO) {
+                    Sesiones.IndicadorSeleccionado = oIndicador;
+                    Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = new List<EscalaCuantitativoEntidad>();
                     Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_UPDATE,true);
                 }
 
             }
-        }
-
-        protected void BorrarIndicador(IndicadorEntidad oIndicador)
-        {
-            oIndicador.codigo = 4;
-            //indicadorControlador.ActualizarEstadoPropuestaMejora(oIndicador);
-            Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
         }
 
         protected void ibtnAgregarIndicadorCuali_Click(object sender, EventArgs e)
@@ -242,6 +239,8 @@ namespace TMD.MP.Site.Privado
         public String ObtenerDescTipoIndicador(String tipo) {
             return Utilitario.ObtenerDescTipoIndicador(tipo);
         }
+
+
 
     }
 }

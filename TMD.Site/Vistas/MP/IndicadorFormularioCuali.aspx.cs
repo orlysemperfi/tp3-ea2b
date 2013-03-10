@@ -178,5 +178,39 @@ namespace TMD.MP.Site.Privado
             ddlProceso.DataBind();
             ddlProceso.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
+
+
+        protected void CargarEscalaCualitativo()
+        {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+            IndicadorEntidad oIndicadorFiltro = new IndicadorEntidad();
+            if (Sesiones.IndicadorSeleccionado != null) {
+                int codigoIndicador = Convert.ToInt32(Sesiones.IndicadorSeleccionado.codigo);
+                Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = oIndicadorLogica.ObtenerListaEscalaCualitativoPorIndicador(codigoIndicador);
+
+                
+            }
+
+        }
+
+        protected List<EscalaCualitativoEntidad> ObtenerIndicadorListado()
+        {
+            List<EscalaCualitativoEntidad> escCualitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCualitativo;
+            if (escCualitativoListado == null)
+            {
+                return null;
+            }
+            else
+            {
+                if (escCualitativoListado.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return escCualitativoListado;
+                }
+            }
+        }
     }
 }
