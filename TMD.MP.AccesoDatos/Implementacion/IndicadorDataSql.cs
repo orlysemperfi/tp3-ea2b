@@ -141,7 +141,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT CODIGO,NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO,CODIGO_PROCESO,REEMPLAZA_INDICADOR,ESTADO ");
+            strSQL.Append("SELECT CODIGO,NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO,CODIGO_PROCESO,REEMPLAZA_INDICADOR,ESTADO,'false' AS MARCADO ");
             strSQL.Append("FROM MP.INDICADOR ");
             strSQL.Append("WHERE CODIGO_PROCESO = @CODIGO_PROCESO");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -167,6 +167,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oIndicador.codigo_Proceso = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROCESO"]);
                     oIndicador.reemplaza_Indicador = Utilitario.getDefaultOrIntDBValue(dr["REEMPLAZA_INDICADOR"]);
                     oIndicador.estado = Utilitario.getDefaultOrIntDBValue(dr["ESTADO"]);
+                    oIndicador.marcado = Utilitario.getDefaultOrStringDBValue(dr["MARCADO"]);
                     oIndicadorColeccion.Add(oIndicador);
                 }
                 dr.Close();

@@ -70,23 +70,23 @@ namespace TMD.MP.Site.Privado
             tbxBeneficios.Text = propuestaMejora.beneficios;
             tbxObservaciones.Text = propuestaMejora.observaciones;
 
-            CargarIndicadorListado();
+            CargarIndicadoresProceso();
 
             if (action == Constantes.ACTION_VIEW)
                 CargarModoView();
         }
 
-        public void CargarIndicadorListado()
-        {
-            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance(); 
-            List<IndicadorEntidad> oIndicadorColeccion = new List<IndicadorEntidad>();
-            if (Sesiones.PropuestaMejoraSeleccionada.lstIndicadores == null)
-            {
-                int codigo_Propuesta = Convert.ToInt32(Sesiones.PropuestaMejoraSeleccionada.codigo_Propuesta.ToString());
-                Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = oIndicadorLogica.ObtenerListaIndicadorPorPropuesta(codigo_Propuesta);
-            }
-            gvwIndicadores.DataBind();
-        }
+        //public void CargarIndicadorListado()
+        //{
+        //    IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance(); 
+        //    List<IndicadorEntidad> oIndicadorColeccion = new List<IndicadorEntidad>();
+        //    if (Sesiones.PropuestaMejoraSeleccionada.lstIndicadores == null)
+        //    {
+        //        int codigo_Propuesta = Convert.ToInt32(Sesiones.PropuestaMejoraSeleccionada.codigo_Propuesta.ToString());
+        //        Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = oIndicadorLogica.ObtenerListaIndicadorPorPropuesta(codigo_Propuesta);
+        //    }
+        //    gvwIndicadores.DataBind();
+        //}
         protected List<IndicadorEntidad> ObtenerIndicadorListado()
         {
             List<IndicadorEntidad> indicadorListado = Sesiones.PropuestaMejoraSeleccionada.lstIndicadores;
@@ -233,12 +233,27 @@ namespace TMD.MP.Site.Privado
         public void CargarIndicadoresProceso() {
             IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             int procesoSelected = Convert.ToInt32(ddlProceso.SelectedValue);
-            //gvwIndicadores.DataSource =  indicadorControlador.ObtenerIndicadorPorProceso(procesoSelected);
             Sesiones.PropuestaMejoraSeleccionada.lstIndicadores = oIndicadorLogica.ObtenerIndicadorPorProceso(procesoSelected);
-            gvwIndicadores.DataBind();
 
-         
+            if (action != Constantes.ACTION_INSERT) {
+                List<IndicadorEntidad> oIndicadorColeccion = new List<IndicadorEntidad>();
+                int codigo_Propuesta = Convert.ToInt32(Sesiones.PropuestaMejoraSeleccionada.codigo_Propuesta.ToString());
+                oIndicadorColeccion = oIndicadorLogica.ObtenerListaIndicadorPorPropuesta(codigo_Propuesta);
+
+                foreach (IndicadorEntidad oIndicador in Sesiones.PropuestaMejoraSeleccionada.lstIndicadores)
+                { 
+                    foreach (IndicadorEntidad oTempIndicador in oIndicadorColeccion)
+                    {
+                        if (oIndicador.codigo == oTempIndicador.codigo)
+                            oIndicador.marcado = oTempIndicador.marcado;
+                    }
+                }
+                
+            }
+
+            gvwIndicadores.DataBind();         
         }
+
         protected void ddlProceso_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarIndicadoresProceso();
