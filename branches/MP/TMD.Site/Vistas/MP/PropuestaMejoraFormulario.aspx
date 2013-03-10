@@ -149,7 +149,7 @@
                                     <tr>
                                         <td style="padding-bottom:10px;">
                                             <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" AllowPaging="true"
-                                                PageSize="3" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White"
+                                                PageSize="5" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White"
                                                 DataSource='<%#ObtenerIndicadorListado() %>' OnRowCommand="gvwIndicadores_RowCommand">
                                                 <HeaderStyle CssClass="tabla-grilla-cabecera" />
                                                 <RowStyle CssClass="tabla-grilla-filas" />
