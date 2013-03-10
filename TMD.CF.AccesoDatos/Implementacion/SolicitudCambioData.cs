@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMD.CF.AccesoDatos.Core;
 using TMD.CF.AccesoDatos.Contrato;
+using TMD.CF.AccesoDatos.Map;
 using TMD.Entidades;
 using System.Data.Common;
 using System.Data;
@@ -39,26 +40,14 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
         public void Aprobar(SolicitudCambio solicitudCambio)
         {
-            using (DbCommand command = DB.GetStoredProcCommand("USP_SOLICITUD_CAMBIO_ESTADO_UPD"))
+            using (DbCommand command = DB.GetStoredProcCommand("USP_SOLICITUD_CAMBIO_APROBAR_UPD"))
             {
                 DB.AddInParameter(command, "@CODIGO", DbType.Int32, solicitudCambio.Id);
-
-                if (solicitudCambio.Estado == 3)
-                {
-                    using (DbCommand command1 = DB.GetStoredProcCommand("USP_SOLICITUD_CAMBIO_MOTIVO_UPD"))
-                    {
-                        DB.AddInParameter(command1, "@CODIGO", DbType.Int32, solicitudCambio.Id);
-                        DB.AddInParameter(command1, "@MOTIVO", DbType.String, solicitudCambio.Motivo);
-                        DB.ExecuteNonQuery(command1);
-                    }
-                }
-
+                DB.AddInParameter(command, "@MOTIVO", DbType.String, solicitudCambio.Motivo);
                 DB.AddInParameter(command, "@ESTADO", DbType.Int32, solicitudCambio.Estado);
                 DB.ExecuteNonQuery(command);
             }
-            throw new NotImplementedException();
         }
-
 
         public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
         {
@@ -68,7 +57,22 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
         public SolicitudCambio ObtenerPorId(int id)
         {
-            throw new NotImplementedException();
+            SolicitudCambio solicitudCambio = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_SEL_CODIGO"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    if (reader.Read())
+                    {
+                        solicitudCambio = SolicitudCambioMap.Obtener(reader);
+                    }
+                }
+            }
+
+            return solicitudCambio;
         }
     }
 }

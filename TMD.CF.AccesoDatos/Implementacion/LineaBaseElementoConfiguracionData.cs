@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TMD.CF.AccesoDatos.Contrato;
 using TMD.CF.AccesoDatos.Core;
 using TMD.Entidades;
@@ -47,10 +45,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// Recupera la lista de detalle de una linea base
         /// </summary>
         /// <param name="lineaBase">Objeto Linea Base</param>
+        /// <param name="usuario"></param>
         /// <returns>List LineaBaseElementoConfiguracion</returns>
         public List<LineaBaseElementoConfiguracion> ListaPorLineaBase(LineaBase lineaBase,Usuario usuario = null)
         {
-            List<LineaBaseElementoConfiguracion> listaLineaBaseECS = new List<LineaBaseElementoConfiguracion>();
+            var listaLineaBaseEcs = new List<LineaBaseElementoConfiguracion>();
 
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LINEA_BASE_DET_SEL_CODIGO_LINEA_BASE"))
             {
@@ -69,12 +68,12 @@ namespace TMD.CF.AccesoDatos.Implementacion
                 {
                     while (reader.Read())
                     {
-                        listaLineaBaseECS.Add(LineaBaseElementoConfiguracionMap.Select(reader));
+                        listaLineaBaseEcs.Add(LineaBaseElementoConfiguracionMap.Select(reader));
                     }
                 }
             }
 
-            return listaLineaBaseECS;
+            return listaLineaBaseEcs;
         }
 
         /// <summary>
