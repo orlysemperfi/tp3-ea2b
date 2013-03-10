@@ -49,6 +49,15 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.DropDownList ddlArea;
         
         /// <summary>
+        /// rfvArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvArea;
+        
+        /// <summary>
         /// ddlProceso control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProceso;
+        
+        /// <summary>
+        /// rfvProceso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProceso;
         
         /// <summary>
         /// ddlTipoPropuesta control.
@@ -67,6 +85,15 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoPropuesta;
         
         /// <summary>
+        /// rfvTipoPropuesta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTipoPropuesta;
+        
+        /// <summary>
         /// ddlResponsable control.
         /// </summary>
         /// <remarks>
@@ -74,6 +101,15 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlResponsable;
+        
+        /// <summary>
+        /// rfvResponsable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvResponsable;
         
         /// <summary>
         /// tbxFechaEnvio control.
@@ -92,6 +128,24 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender tbxFechaEnvio_CalendarExtender;
+        
+        /// <summary>
+        /// rfvFechaEnvio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFechaEnvio;
+        
+        /// <summary>
+        /// revFechaEnvio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revFechaEnvio;
         
         /// <summary>
         /// tbxEstado control.
@@ -121,6 +175,15 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.TextBox tbxDescripcion;
         
         /// <summary>
+        /// rfvDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
+        
+        /// <summary>
         /// tbxCausa control.
         /// </summary>
         /// <remarks>
@@ -137,15 +200,6 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxBeneficios;
-        
-        /// <summary>
-        /// lbtnAgregar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAgregar;
         
         /// <summary>
         /// gvwIndicadores control.
@@ -173,6 +227,15 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnCancelar;
+        
+        /// <summary>
+        /// vsumGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsumGuardar;
         
         /// <summary>
         /// lblMensajeError control.

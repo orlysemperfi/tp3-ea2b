@@ -31,7 +31,7 @@
                                     </td>
                                     <td>
                                         <asp:HiddenField ID="hdnCodigo" runat="server" />
-                                        <asp:TextBox ID="tbxCodigo" runat="server" Enabled="false" CssClass="estilo_textbox"></asp:TextBox>
+                                        <asp:TextBox ID="tbxCodigo" runat="server" Enabled="false" CssClass="estilo_textbox"></asp:TextBox>                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -41,6 +41,7 @@
                                     <td>
                                         <asp:DropDownList ID="ddlArea" runat="server" CssClass="estilo_combobox">
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfvArea" runat="server" ControlToValidate="ddlArea" InitialValue="0" ErrorMessage="Seleccione un área" ValidationGroup="Propuesta" Display="None" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -51,6 +52,7 @@
                                         <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox" 
                                             onselectedindexchanged="ddlProceso_SelectedIndexChanged" AutoPostBack="true">
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un proceso" ValidationGroup="Propuesta" Display="None" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -60,6 +62,7 @@
                                     <td>
                                         <asp:DropDownList ID="ddlTipoPropuesta" runat="server" CssClass="estilo_combobox">
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfvTipoPropuesta" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un tipo de propuesta" ValidationGroup="Propuesta" Display="None" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -68,6 +71,7 @@
                                     </td>
                                     <td>
                                         <asp:DropDownList ID="ddlResponsable" runat="server" CssClass="estilo_combobox" />
+                                        <asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ControlToValidate="ddlResponsable" InitialValue="0" ErrorMessage="Seleccione un responsable" ValidationGroup="Propuesta" Display="None" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -79,6 +83,8 @@
                                         <asp:CalendarExtender ID="tbxFechaEnvio_CalendarExtender" runat="server" Format="MM/dd/yyyy"
                                             TargetControlID="tbxFechaEnvio">
                                         </asp:CalendarExtender>
+                                        <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" />
+                                        <asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />
                                     </td>
                                 </tr>
 
@@ -101,7 +107,7 @@
                                         Observaciones:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tbxObservaciones" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>
+                                        <asp:TextBox ID="tbxObservaciones" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,6 +116,7 @@
                                     </td>
                                     <td>
                                         <asp:TextBox ID="tbxDescripcion" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Propuesta" Display="None" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -117,7 +124,7 @@
                                         Causa:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tbxCausa" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>
+                                        <asp:TextBox ID="tbxCausa" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -125,7 +132,7 @@
                                         Beneficios:
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tbxBeneficios" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>
+                                        <asp:TextBox ID="tbxBeneficios" runat="server" TextMode="MultiLine" CssClass="estilo_textbox"></asp:TextBox>                                        
                                     </td>
                                 </tr>
                             </table>
@@ -141,11 +148,6 @@
                                 <table border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td style="padding-bottom:10px;">
-                                            <asp:LinkButton ID="lbtnAgregar" runat="server" OnClientClick="javascript:popup(400,300);" CssClass="estilo_boton" Text="Agregar" Visible="false"></asp:LinkButton>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
                                             <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" AllowPaging="true"
                                                 PageSize="3" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White"
                                                 DataSource='<%#ObtenerIndicadorListado() %>' OnRowCommand="gvwIndicadores_RowCommand">
@@ -196,10 +198,14 @@
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td>
-                            <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar"></asp:LinkButton>
+                            <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar" ValidationGroup="Propuesta"></asp:LinkButton>
+                            
                         </td>
                         <td class="boton-espaciado">
                             <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar"></asp:LinkButton>
+                        </td>
+                        <td>
+                            <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Propuesta" />
                         </td>
                     </tr>
                 </table>

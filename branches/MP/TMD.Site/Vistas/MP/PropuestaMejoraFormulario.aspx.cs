@@ -110,6 +110,7 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarTipoPropuesta()
         {
+            ddlTipoPropuesta.Items.Add(new ListItem("[Seleccionar]","0"));
             ddlTipoPropuesta.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_PROBLEMA, Constantes.TIPO_PROPUESTA_PROBLEMA));
             ddlTipoPropuesta.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_MEJORA, Constantes.TIPO_PROPUESTA_MEJORA));
             ddlTipoPropuesta.SelectedIndex = 0;
@@ -122,6 +123,7 @@ namespace TMD.MP.Site.Privado
             ddlArea.DataTextField = "DESCRIPCION";
             ddlArea.DataValueField = "CODIGO";
             ddlArea.DataBind();
+            ddlArea.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
 
         protected void CargarResponsable()
@@ -132,6 +134,7 @@ namespace TMD.MP.Site.Privado
             ddlResponsable.DataTextField = "NOMBRE_COMPLETO";
             ddlResponsable.DataValueField = "CODIGO_PERSONA";
             ddlResponsable.DataBind();
+            ddlResponsable.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
 
         protected void CargarProceso()
@@ -142,6 +145,7 @@ namespace TMD.MP.Site.Privado
             ddlProceso.DataTextField = "NOMBRE";
             ddlProceso.DataValueField = "CODIGO";
             ddlProceso.DataBind();
+            ddlProceso.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
 
         //protected void chkStatus_OnCheckedChanged(object sender, EventArgs e)
@@ -152,50 +156,53 @@ namespace TMD.MP.Site.Privado
 
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
-            PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
-            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-            if (validarCampos()) {
-                oPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
-                oPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
-                oPropuestaMejora.codigo_Responsable = Convert.ToInt32(ddlResponsable.SelectedItem.Value);
-                oPropuestaMejora.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
-                oPropuestaMejora.descripcion = tbxDescripcion.Text;
-                oPropuestaMejora.fecha_Envio = Convert.ToDateTime(tbxFechaEnvio.Text);
-                oPropuestaMejora.causa = tbxCausa.Text;
-                oPropuestaMejora.beneficios = tbxBeneficios.Text;
-                oPropuestaMejora.observaciones = tbxObservaciones.Text;
-                oPropuestaMejora.lstIndicadores = new List<IndicadorEntidad>();
+            Validate(lbtnGuardar.ValidationGroup);
 
-                IndicadorEntidad oIndicador = null;
+            if(IsValid == true){
+                PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
+                IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
+                if (validarCampos()) {
+                    oPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
+                    oPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
+                    oPropuestaMejora.codigo_Responsable = Convert.ToInt32(ddlResponsable.SelectedItem.Value);
+                    oPropuestaMejora.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
+                    oPropuestaMejora.descripcion = tbxDescripcion.Text;
+                    oPropuestaMejora.fecha_Envio = Convert.ToDateTime(tbxFechaEnvio.Text);
+                    oPropuestaMejora.causa = tbxCausa.Text;
+                    oPropuestaMejora.beneficios = tbxBeneficios.Text;
+                    oPropuestaMejora.observaciones = tbxObservaciones.Text;
+                    oPropuestaMejora.lstIndicadores = new List<IndicadorEntidad>();
+
+                    IndicadorEntidad oIndicador = null;
                 
-                foreach (GridViewRow row in gvwIndicadores.Rows)
-                {
-                    CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
-
-                    if (check.Checked)
+                    foreach (GridViewRow row in gvwIndicadores.Rows)
                     {
-                        
-                        oIndicador = new IndicadorEntidad();
-                        String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
+                        CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
 
-                        oIndicador.codigo = Convert.ToInt32(llbl);
-                        oPropuestaMejora.lstIndicadores.Add(oIndicador);
+                        if (check.Checked)
+                        {
                         
+                            oIndicador = new IndicadorEntidad();
+                            String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
+
+                            oIndicador.codigo = Convert.ToInt32(llbl);
+                            oPropuestaMejora.lstIndicadores.Add(oIndicador);
+                        
+                        }
                     }
-                }
 
-                if (oPropuestaMejora.codigo_Propuesta != null)
-                    oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
-                else
-                {
-                    oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
-                    oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+                    if (oPropuestaMejora.codigo_Propuesta != null)
+                        oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
+                    else
+                    {
+                        oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
+                        oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+                    }
+                
+                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado);
+                
                 }
-                
-                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado);
-                
             }
-
         }
 
         protected Boolean validarCampos() {
