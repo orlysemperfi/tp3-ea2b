@@ -31,8 +31,7 @@ namespace TMD.CF.Site.Vistas.MP
                 {
                     CargarIndicador();
                 }
-                List<EscalaCualitativoEntidad> escalaCualitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCualitativo;
-                gwEscalasCuali.DataBind();
+
 
                 List<EscalaCuantitativoEntidad> escalaCuantitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo;
                 gwEscalasCuanti.DataBind();
@@ -45,7 +44,7 @@ namespace TMD.CF.Site.Vistas.MP
             {
                 Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
             }
-            gwEscalasCuali.DataBind();
+   
             gwEscalasCuanti.DataBind();
         }
 
@@ -98,7 +97,7 @@ namespace TMD.CF.Site.Vistas.MP
             {
                 Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = oIndicadorLogica.ObtenerListaEscalaCualitativoPorIndicador(codigo_indicador);
             }
-            gwEscalasCuali.DataBind();
+            
 
             List<EscalaCuantitativoEntidad> oEscalaCuantitativoColeccion = new List<EscalaCuantitativoEntidad>();
             if (Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo == null)
@@ -155,6 +154,11 @@ namespace TMD.CF.Site.Vistas.MP
         protected void lbtnBuscar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void lbtnAgregarICuanti_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Paginas.TMD_MP_EscalaCuantitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         }
     }
 }

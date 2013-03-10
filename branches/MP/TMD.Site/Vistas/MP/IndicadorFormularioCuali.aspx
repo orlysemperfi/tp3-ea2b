@@ -83,7 +83,8 @@
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>
-                <asp:LinkButton ID="lbtnAgregarICuali" runat="server" Text="Agregar" CssClass="estilo_boton" />
+                <asp:LinkButton ID="lbtnAgregarICuali" runat="server" Text="Agregar" 
+                    CssClass="estilo_boton" onclick="lbtnAgregarICuali_Click" />
             </td>
         </tr>
         <tr>

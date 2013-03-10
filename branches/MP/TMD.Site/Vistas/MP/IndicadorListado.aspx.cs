@@ -200,6 +200,20 @@ namespace TMD.MP.Site.Privado
                     lblMensajeError.Text = "El indicador no puede ser borrado.";
                 }
             }
+            if (e.CommandName == "EditarIndicador")
+            {
+                IndicadorEntidad oIndicador = oIndicadorLogica.ObtenerIndicadorPorCodigo(Convert.ToInt32(e.CommandArgument));
+
+                if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
+                    Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_UPDATE,true);
+                    
+                }
+
+                if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO) {
+                    Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_UPDATE,true);
+                }
+
+            }
         }
 
         protected void BorrarIndicador(IndicadorEntidad oIndicador)

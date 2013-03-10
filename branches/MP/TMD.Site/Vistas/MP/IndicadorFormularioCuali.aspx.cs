@@ -47,7 +47,7 @@ namespace TMD.MP.Site.Privado
                 Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
             }
             gwEscalasCuali.DataBind();
-            gwEscalasCuali.DataBind();
+            
         }
 
 
@@ -60,7 +60,6 @@ namespace TMD.MP.Site.Privado
             tbxExpresionMat.Text = indicador.expresion_Matematica;
             tbxPlaxo.Text = indicador.plazo;
             
-
             CargarListadoEscalas();
         }
 
@@ -74,7 +73,6 @@ namespace TMD.MP.Site.Privado
             oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
             oNewIndicador.plazo = tbxPlaxo.Text;
             
-
             if (oNewIndicador.codigo != null)
                 oIndicadorLogica.ActualizarIndicador(oNewIndicador);
             else
@@ -159,6 +157,11 @@ namespace TMD.MP.Site.Privado
         protected void lbtnAgregarICuanti_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void lbtnAgregarICuali_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Paginas.TMD_MP_EscalaCualitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         }
     }
 }

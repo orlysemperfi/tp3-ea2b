@@ -22,7 +22,7 @@ namespace TMD.MP.Site.Privado
 
         protected void lbtnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali, true);
         }
     }
 }

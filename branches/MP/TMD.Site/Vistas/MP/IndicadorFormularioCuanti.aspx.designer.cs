@@ -67,42 +67,6 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxPlaxo;
         
         /// <summary>
-        /// pnlIndicadorCualitativo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlIndicadorCualitativo;
-        
-        /// <summary>
-        /// lbtnAgregarICuali control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAgregarICuali;
-        
-        /// <summary>
-        /// gwEscalasCuali control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gwEscalasCuali;
-        
-        /// <summary>
-        /// pnlIndicadorCuantitativo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlIndicadorCuantitativo;
-        
-        /// <summary>
         /// lbtnAgregarICuanti control.
         /// </summary>
         /// <remarks>
