@@ -80,6 +80,7 @@
     <Compile Include="LineaBaseElementoConfiguracion.cs" />
     <Compile Include="Norma.cs" />
     <Compile Include="OrdenTrabajo.cs" />
+    <Compile Include="Parametro.cs" />
     <Compile Include="PerfilRRHH.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PlanMantenimiento.cs" />

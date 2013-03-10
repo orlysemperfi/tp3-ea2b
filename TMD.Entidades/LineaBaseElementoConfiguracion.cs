@@ -16,5 +16,6 @@ namespace TMD.Entidades
         public String Nombre { get; set; }
         public String Extension { get; set; }
         public Byte[] Data { get; set; }
+        public String NombreEcs { get; set; }  
     }
 }
