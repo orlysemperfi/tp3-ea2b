@@ -49,6 +49,42 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.LinkButton lbtnCerrarSesion;
         
         /// <summary>
+        /// lnkIndicadores control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkIndicadores;
+        
+        /// <summary>
+        /// lnkPropuestas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkPropuestas;
+        
+        /// <summary>
+        /// lnkSoluciones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkSoluciones;
+        
+        /// <summary>
+        /// lnkPilotos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lnkPilotos;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
