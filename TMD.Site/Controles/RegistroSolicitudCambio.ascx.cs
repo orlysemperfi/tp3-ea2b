@@ -9,12 +9,12 @@ namespace TMD.CF.Site.Controles
 {
     public partial class RegistroSolicitudCambio : System.Web.UI.UserControl
     {
-        public delegate void GraboHandler();
-        public event GraboHandler EventoGrabo;
+        public delegate void GraboSolicitudHandler();
+        public event GraboSolicitudHandler EventoGraboSolicitud;
 
-        protected virtual void OnEventoGrabo()
+        protected virtual void OnEventoGraboSolicitud()
         {
-            GraboHandler handler = EventoGrabo;
+            GraboSolicitudHandler handler = EventoGraboSolicitud;
             if (handler != null) handler();
         }
 
@@ -72,7 +72,7 @@ namespace TMD.CF.Site.Controles
 
             SolicitudCambioControladora.Agregar(solicitudCambio);
 
-            OnEventoGrabo();
+            OnEventoGraboSolicitud();
 
             pnlSolicitudCambio.Enabled = false;
         }

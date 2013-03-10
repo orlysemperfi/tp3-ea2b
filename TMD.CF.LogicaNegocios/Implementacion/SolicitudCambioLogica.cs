@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.AccesoDatos.Contrato;
 using TMD.Entidades;
-using System.Transactions;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
@@ -31,12 +27,22 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
         public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
         {
-            throw new NotImplementedException();
+            return _solicitudCambioData.ListarPorProyectoLineaBase(solicitudCambio);
         }
 
         public SolicitudCambio ObtenerPorId(int id)
         {
             return _solicitudCambioData.ObtenerPorId(id);
+        }
+
+        public SolicitudCambio ObtenerArchivo(int id)
+        {
+            return _solicitudCambioData.ObtenerArchivo(id);
+        }
+
+        public void ActualizarArchivo(SolicitudCambio solicitudCambio)
+        {
+            _solicitudCambioData.ActualizarArchivo(solicitudCambio );
         }
     }
 }

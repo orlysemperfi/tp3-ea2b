@@ -11,8 +11,8 @@ namespace TMD.CF.Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ucRegistroSolicitudCambio.EventoGrabo += 
-                new Controles.RegistroSolicitudCambio.GraboHandler(ucRegistroSolicitudCambio_EventoGrabo);
+            ucRegistroSolicitudCambio.EventoGraboSolicitud += 
+                new Controles.RegistroSolicitudCambio.GraboSolicitudHandler(ucRegistroSolicitudCambio_EventoGrabo);
 
             if (String.IsNullOrEmpty(Request.QueryString["ID"]))
             {

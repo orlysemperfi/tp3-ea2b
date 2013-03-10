@@ -23,13 +23,13 @@ namespace TMD.CF.Site.Vistas.LineaBase
             if (!Int32.TryParse(Request.QueryString["idProyecto"], out idProyecto)
                 || !Int32.TryParse(Request.QueryString["idFase"], out idFase))
             {
-                Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
             }
             else
             {
                 if (idProyecto == 0)
                 {
-                    Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                    Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace TMD.CF.Site.Vistas.LineaBase
 
                     if (proyecto == null)
                     {
-                        Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                        Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
                     }
                 }
             }
@@ -61,7 +61,7 @@ namespace TMD.CF.Site.Vistas.LineaBase
 
                 if (fase == null)
                 {
-                    Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                    Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace TMD.CF.Site.Vistas.LineaBase
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+            Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
         }
 
         protected void btnCargar_Click(object sender, EventArgs e)

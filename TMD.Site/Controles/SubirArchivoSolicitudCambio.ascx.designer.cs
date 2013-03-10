@@ -13,13 +13,13 @@ namespace TMD.CF.Site.Controles {
     public partial class SubirArchivoSolicitudCambio {
         
         /// <summary>
-        /// FileUpload1 control.
+        /// fileUpArchivo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpArchivo;
         
         /// <summary>
         /// btnGrabar control.
@@ -38,5 +38,14 @@ namespace TMD.CF.Site.Controles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// hidIdSolicitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidIdSolicitud;
     }
 }
