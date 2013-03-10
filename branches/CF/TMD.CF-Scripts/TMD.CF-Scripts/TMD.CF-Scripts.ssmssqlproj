@@ -19,11 +19,29 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="Data.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Data.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_SOLICITUD_CAMBIO_APROBAR_UPD.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_SOLICITUD_CAMBIO_APROBAR_UPD.sql</FullPath>
+        </FileNode>
         <FileNode Name="USP_SOLICITUD_CAMBIO_INS.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>USP_SOLICITUD_CAMBIO_INS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_SOLICITUD_CAMBIO_SEL_CODIGO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_SOLICITUD_CAMBIO_SEL_CODIGO.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
