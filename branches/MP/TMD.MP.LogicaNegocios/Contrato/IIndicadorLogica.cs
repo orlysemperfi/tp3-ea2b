@@ -14,11 +14,14 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         List<IndicadorEntidad> ObtenerIndicadorListadoPorFiltros(IndicadorEntidad oIndicadorFiltro);
         List<IndicadorEntidad> ObtenerIndicadorPorProceso(int codigo_Proceso);
-        //Escala Cualitativo
-        List<EscalaCualitativoEntidad> ObtenerListaEscalaCualitativoPorIndicador(int codigo_Indicador);
+
         IndicadorEntidad ObtenerIndicadorPorCodigo(int codigo);
+
+        //Escala Cualitativo
+        List<EscalaCualitativoEntidad> ObtenerListaEscalaCualitativoPorIndicador(int codigo_Indicador);        
         //Escala Cuantitativo
         List<EscalaCuantitativoEntidad> ObtenerListaEscalaCuantitativoPorIndicador(int codigo_Indicador);
+
         #endregion
 
         #region "Insert"

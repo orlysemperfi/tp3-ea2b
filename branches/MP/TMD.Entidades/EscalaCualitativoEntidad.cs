@@ -13,5 +13,6 @@ namespace TMD.Entidades
         public double limte_superior { get; set; }
         public String calificacion   { get; set; }
         public int action { get; set; }
+        public int principal { get; set; }
     }
 }
