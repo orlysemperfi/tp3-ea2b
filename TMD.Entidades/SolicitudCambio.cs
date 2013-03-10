@@ -18,5 +18,7 @@ namespace TMD.Entidades
         public int Prioridad { get; set; }
         public string Motivo { get; set; }
         public DateTime FechaAprobacion { get; set; }
+        public Guid IdentificadorUnico { get; set; }
+        public Byte[] Data { get; set; }
     }
 }
