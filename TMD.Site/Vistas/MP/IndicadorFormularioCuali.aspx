@@ -36,6 +36,14 @@
             CUALITATIVO</div>
         <br />
         <table border="0" cellpadding="0" cellspacing="0">
+             <tr>
+                <td>
+                    Proceso:</td>
+                <td >
+                    <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox">
+                    </asp:DropDownList>
+                </td>
+            </tr>
             <tr>
                 <td>
                     Nombre:

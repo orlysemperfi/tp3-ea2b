@@ -22,6 +22,7 @@ namespace TMD.MP.Site.Privado
         {
             if (!Page.IsPostBack)
             {
+                CargarProceso();
                 action = Convert.ToInt32(Request.QueryString["Action"]);
                 if (action == Constantes.ACTION_INSERT)
                 {
@@ -72,7 +73,10 @@ namespace TMD.MP.Site.Privado
             oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
             oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
             oNewIndicador.plazo = tbxPlaxo.Text;
-            
+            oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
+            oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUALITATIVO;
+            oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
+    
             if (oNewIndicador.codigo != null)
                 oIndicadorLogica.ActualizarIndicador(oNewIndicador);
             else
@@ -162,6 +166,17 @@ namespace TMD.MP.Site.Privado
         protected void lbtnAgregarICuali_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_EscalaCualitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
+        }
+
+        protected void CargarProceso()
+        {
+            IProcesoLogica oProcesoLogica = ProcesoLogica.getInstance();
+            List<ProcesoEntidad> oProcesoColeccion = oProcesoLogica.ObtenerListaProcesoTodas();
+            ddlProceso.DataSource = oProcesoColeccion;
+            ddlProceso.DataTextField = "NOMBRE";
+            ddlProceso.DataValueField = "CODIGO";
+            ddlProceso.DataBind();
+            ddlProceso.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
     }
 }

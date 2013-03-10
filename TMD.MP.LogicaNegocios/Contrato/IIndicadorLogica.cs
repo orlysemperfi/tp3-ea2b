@@ -23,7 +23,7 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         #region "Insert"
 
-        void InsertarIndicador(IndicadorEntidad entidad);
+        IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad);
         #endregion
 
         #region "Update"
