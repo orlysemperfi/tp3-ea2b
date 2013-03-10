@@ -6,12 +6,15 @@
 <p>
     Archivo</p>
 <p>
-    <asp:FileUpload ID="FileUpload1" runat="server" />
+    <asp:FileUpload ID="fileUpArchivo" runat="server" />
 </p>
 <p>
-        <asp:Button ID="btnGrabar" runat="server" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
+        <asp:Button ID="btnGrabar" runat="server" Text="Grabar" 
+            ValidationGroup="GrabarValidationGroup" 
+            OnClientClick="javascript: return grabar();" onclick="btnGrabar_Click"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />&nbsp;</p>
-&nbsp;</p>
+&nbsp;<asp:HiddenField ID="hidIdSolicitud" runat="server" />
+</p>
 <script type="text/javascript" language="javascript">
     function grabar() {
         if (Page_ClientValidate('GrabarValidationGroup')) {

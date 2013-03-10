@@ -41,19 +41,35 @@ namespace TMD.CF.Site.Controladora.CF
             SolicitudCambioLogica.Agregar(solicitudCambio);
         }
 
-        public static void Aprobar(SolicitudCambio solicitudCambio)
+        public static void Aprobar(int idSolicitud, int idEstado, string motivo)
         {
-            SolicitudCambioLogica.Aprobar(solicitudCambio);
+            SolicitudCambioLogica.Aprobar(new SolicitudCambio { Id = idSolicitud, Estado = idEstado, Motivo = motivo });
         }
 
-        public static List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
+        public static List<SolicitudCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase)
         {
-            return SolicitudCambioLogica.ListarPorProyectoLineaBase(solicitudCambio);
+            return
+                SolicitudCambioLogica.ListarPorProyectoLineaBase(
+                    new SolicitudCambio
+                        {
+                            ProyectoFase = new ProyectoFase {Proyecto = new Proyecto {Id = idProyecto}},
+                            LineaBase = new LineaBase {Id = idLineaBase}
+                        });
         }
 
         public static SolicitudCambio ObtenerPorId(int id)
         {
             return SolicitudCambioLogica.ObtenerPorId(id);
+        }
+        
+        public static void ActualizarArchivo(int idSolicitud, string nombreArchivo, byte[] data)
+        {
+            SolicitudCambioLogica.ActualizarArchivo(new SolicitudCambio{Id = idSolicitud, Data = data, Nombre = nombreArchivo});
+        }
+
+        public static SolicitudCambio ObtenerArchivo(int idSolicitudCambio)
+        {
+            return SolicitudCambioLogica.ObtenerArchivo(idSolicitudCambio);
         }
     }
 }
