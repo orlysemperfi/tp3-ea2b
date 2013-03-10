@@ -40,6 +40,15 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
+        /// NombreRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NombreRequired;
+        
+        /// <summary>
         /// ddlProyecto control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace TMD.CF.Site.Controles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProyecto;
+        
+        /// <summary>
+        /// proyectoValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator proyectoValidator;
         
         /// <summary>
         /// ddlLineaBase control.
@@ -58,6 +76,15 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.DropDownList ddlLineaBase;
         
         /// <summary>
+        /// lineaBaseValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator lineaBaseValidator;
+        
+        /// <summary>
         /// ddlElementoConfiguracion control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.DropDownList ddlElementoConfiguracion;
         
         /// <summary>
+        /// elementoValidador control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator elementoValidador;
+        
+        /// <summary>
         /// ddlPrioridad control.
         /// </summary>
         /// <remarks>
@@ -74,6 +110,15 @@ namespace TMD.CF.Site.Controles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPrioridad;
+        
+        /// <summary>
+        /// prioridadValidador control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator prioridadValidador;
         
         /// <summary>
         /// ddlEstado control.
@@ -94,12 +139,21 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.Button btnGrabar;
         
         /// <summary>
-        /// btnSalir control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalir;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// GrabarValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary GrabarValidationSummary;
     }
 }

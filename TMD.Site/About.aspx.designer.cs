@@ -13,12 +13,12 @@ namespace TMD.CF.Site {
     public partial class About {
         
         /// <summary>
-        /// RegistroSolicitudCambio1 control.
+        /// ucRegistroSolicitudCambio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TMD.CF.Site.Controles.RegistroSolicitudCambio RegistroSolicitudCambio1;
+        protected global::TMD.CF.Site.Controles.RegistroSolicitudCambio ucRegistroSolicitudCambio;
     }
 }

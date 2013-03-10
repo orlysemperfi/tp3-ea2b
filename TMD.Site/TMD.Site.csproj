@@ -63,8 +63,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
     <Reference Include="Validators">
       <HintPath>..\Librerias\Validators.dll</HintPath>
     </Reference>
@@ -76,7 +78,9 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
+    <Content Include="Controles\AprobarSolicitudCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
+    <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
     <Content Include="Error\GeneralError.aspx" />
     <Content Include="Imagenes\add.png" />
@@ -163,6 +167,13 @@
     <Compile Include="ApplicationLogger.cs" />
     <Compile Include="Controladora\CF\LineaBaseControladora.cs" />
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
+    <Compile Include="Controles\AprobarSolicitudCambio.ascx.cs">
+      <DependentUpon>AprobarSolicitudCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\AprobarSolicitudCambio.ascx.designer.cs">
+      <DependentUpon>AprobarSolicitudCambio.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -170,6 +181,14 @@
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.designer.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\SubirArchivoSolicitudCambio.ascx.cs">
+      <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\SubirArchivoSolicitudCambio.ascx.designer.cs">
+      <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx.cs">
       <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
