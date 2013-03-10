@@ -178,17 +178,15 @@ namespace TMD.MP.Site.Privado
                     foreach (GridViewRow row in gvwIndicadores.Rows)
                     {
                         CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
+                        oIndicador = new IndicadorEntidad();
+                        String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
+                        oIndicador.codigo = Convert.ToInt32(llbl);
 
                         if (check.Checked)
-                        {
-                        
-                            oIndicador = new IndicadorEntidad();
-                            String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
-
-                            oIndicador.codigo = Convert.ToInt32(llbl);
-                            oPropuestaMejora.lstIndicadores.Add(oIndicador);
-                        
-                        }
+                            oIndicador.marcado = "true";
+                        else
+                            oIndicador.marcado = "false";
+                        oPropuestaMejora.lstIndicadores.Add(oIndicador); 
                     }
 
                     if (oPropuestaMejora.codigo_Propuesta != null)
