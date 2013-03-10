@@ -59,17 +59,11 @@
         <asp:DropDownList Enabled="False" ID="ddlEstado" runat="server">
         </asp:DropDownList>
     </p>
+        <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" 
+        CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
     <p>
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
-    </p>
-    <p>
-        &nbsp;<asp:ValidationSummary ID="GrabarValidationSummary" runat="server" CssClass="failureNotification"
-                    ValidationGroup="GrabarValidationGroup" />
-        <p>
-            &nbsp;</p>
-        <p>
-        </p>
     </p>
 </asp:Panel>
 <script type="text/javascript" language="javascript">

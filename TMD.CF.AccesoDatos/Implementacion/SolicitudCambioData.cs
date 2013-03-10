@@ -101,7 +101,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_UPD_ARCHIVO"))
             {
                 DB.AddInParameter(command, "@CODIGO", DbType.Int32, solicitudCambio.Id);
-                DB.AddInParameter(command, "@NOMBRE", DbType.String, solicitudCambio.Nombre);
+                DB.AddInParameter(command, "@NOMBRE_ARCHIVO", DbType.String, solicitudCambio.NombreArchivo);
 
                 DB.AddOutParameter(command, "@RUTA_ARCHIVO", DbType.String, 8000);
                 DB.AddOutParameter(command, "@TRANSACTION_CONTEXT", DbType.Binary, 8000);
@@ -136,7 +136,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                     {
                         elemento = new SolicitudCambio
                             {
-                                Nombre = reader.GetString("NOMBRE")
+                                Nombre = reader.GetString("NOMBRE_ARCHIVO")
                             };
                         ruta = reader.GetString("RUTA_ARCHIVO");
                         context = (byte[]) reader[reader.GetOrdinal("TRANSACTION_CONTEXT")];

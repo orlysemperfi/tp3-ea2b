@@ -39,12 +39,23 @@ namespace TMD.CF.Site.Controles
                 ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
                 int lineaBaseId = solicitud.LineaBase.Id;
                 ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
-                ddlElementoConfiguracion.EnlazarDatos(LineaBaseControladora.ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id");
+                ddlElementoConfiguracion.EnlazarDatos(LineaBaseControladora.ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id",-1,solicitud.ElementoConfiguracion.Id);
                 ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(), "Nombre", "Id", -1, solicitud.Estado);
                 ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(), "Nombre", "Id",-1,solicitud.Prioridad);
 
                 pnlSolicitudCambio.Enabled = false;
             }
+        }
+
+        public void Limpiar()
+        {
+            lblCodigo.Text = "";
+            txtNombre.Text = "";
+            ddlProyecto.Items.Clear();
+            ddlLineaBase.Items.Clear();
+            ddlElementoConfiguracion.Items.Clear();
+            ddlEstado.Items.Clear();
+            ddlPrioridad.Items.Clear();
         }
 
         public void CargarsolicitudNueva()

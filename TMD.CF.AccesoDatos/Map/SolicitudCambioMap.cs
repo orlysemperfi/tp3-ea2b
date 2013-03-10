@@ -38,7 +38,8 @@ namespace TMD.CF.AccesoDatos.Map
                     Motivo = reader.GetString("MOTIVO"),
                     ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = reader.GetInt("CODIGO_PROYECTO"), Nombre = reader.GetString("PROYECTO")} },
                     LineaBase = new LineaBase { Id = reader.GetInt("CODIGO_LINEA_BASE"), Nombre = reader.GetString("LINEA_BASE") },
-                    ElementoConfiguracion = new LineaBaseElementoConfiguracion { Id = reader.GetInt("CODIGO_ECS"), Nombre = reader.GetString("ELEMENTO") }
+                    ElementoConfiguracion = new LineaBaseElementoConfiguracion { Id = reader.GetInt("CODIGO_ECS"), Nombre = reader.GetString("ELEMENTO") },
+                    NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
                 };
         }
     }
