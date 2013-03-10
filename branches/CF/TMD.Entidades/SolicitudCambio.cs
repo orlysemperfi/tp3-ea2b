@@ -20,5 +20,6 @@ namespace TMD.Entidades
         public DateTime FechaAprobacion { get; set; }
         public Guid IdentificadorUnico { get; set; }
         public Byte[] Data { get; set; }
+        public String NombreArchivo { get; set; }
     }
 }

@@ -15,6 +15,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 CargarControles();
             }
+
+            ucRegistroSolicitudCambio.EventoGraboSolicitud +=
+                new Controles.RegistroSolicitudCambio.GraboSolicitudHandler(ucRegistroSolicitudCambio_EventoGraboSolicitud);
+        }
+
+        void ucRegistroSolicitudCambio_EventoGraboSolicitud()
+        {
+            ucRegistroSolicitudCambio.Visible = false;
+            pnlBusqueda.Visible = true;
         }
 
         private void CargarControles()
@@ -77,6 +86,13 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     pnlBusqueda.Visible = false;
                     break;
             }
+        }
+
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ucRegistroSolicitudCambio.CargarsolicitudNueva();
+            ucRegistroSolicitudCambio.Visible = true;
+            pnlBusqueda.Visible = false;
         }
     }
 }
