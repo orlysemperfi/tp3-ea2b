@@ -23,6 +23,7 @@ namespace TMD.CF.AccesoDatos.Map
                     Nombre = reader.GetString("ECS_NOMBRE"),
                     Tipo = "DC".Equals(reader.GetString("TIPO")) ? TipoElementoConfiguracion.Documento : TipoElementoConfiguracion.Release
                 },
+                NombreEcs = reader.GetString("ECS_NOMBRE"),
                 Responsable = new Usuario
                 {
                     Id = reader.GetInt("CODIGO_RESPONSABLE")
