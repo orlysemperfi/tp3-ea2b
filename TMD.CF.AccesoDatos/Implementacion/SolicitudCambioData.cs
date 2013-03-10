@@ -56,11 +56,12 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
             List<SolicitudCambio> solicitudesCambio = new List<SolicitudCambio>();
 
-            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_SEL_CODIGO"))
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_SEL_PROYECTO_LINEABASE"))
             {
                 DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, solicitudCambio.ProyectoFase.Proyecto.Id);
                 DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, solicitudCambio.LineaBase.Id);
-
+                DB.AddInParameter(command, "@ESTADO", DbType.String, solicitudCambio.Estado);
+                DB.AddInParameter(command, "@PRIORIDAD", DbType.Int32, solicitudCambio.Prioridad);
 
                 using (IDataReader reader = DB.ExecuteReader(command))
                 {

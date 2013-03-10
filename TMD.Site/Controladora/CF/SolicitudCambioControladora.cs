@@ -46,14 +46,16 @@ namespace TMD.CF.Site.Controladora.CF
             SolicitudCambioLogica.Aprobar(new SolicitudCambio { Id = idSolicitud, Estado = idEstado, Motivo = motivo });
         }
 
-        public static List<SolicitudCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase)
+        public static List<SolicitudCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase, int estado, int prioridad)
         {
             return
                 SolicitudCambioLogica.ListarPorProyectoLineaBase(
                     new SolicitudCambio
                         {
                             ProyectoFase = new ProyectoFase {Proyecto = new Proyecto {Id = idProyecto}},
-                            LineaBase = new LineaBase {Id = idLineaBase}
+                            LineaBase = new LineaBase {Id = idLineaBase},
+                            Estado = estado,
+                            Prioridad = prioridad
                         });
         }
 

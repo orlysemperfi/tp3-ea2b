@@ -81,6 +81,12 @@
     <Content Include="Controles\AprobarSolicitudCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
     <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
+    <Content Include="Imagenes\Estado\1.ICO" />
+    <Content Include="Imagenes\Estado\2.ico" />
+    <Content Include="Imagenes\Estado\3.ico" />
+    <Content Include="Imagenes\Prioridad\3.ico" />
+    <Content Include="Imagenes\Prioridad\2.ICO" />
+    <Content Include="Imagenes\Prioridad\1.ico" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
     <Content Include="Error\GeneralError.aspx" />
     <Content Include="Imagenes\add.png" />
@@ -291,10 +297,7 @@
   <ItemGroup>
     <Content Include="SitePublic.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Imagenes\Estado\" />
-    <Folder Include="Imagenes\Prioridad\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

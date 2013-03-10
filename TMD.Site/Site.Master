@@ -17,7 +17,7 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    TMD - GESTION DE LA CONFIGURACION
+                    TMD - SISTEMA INTEGRAL
                 </h1>
             </div>
             <div class="loginDisplay">
@@ -30,8 +30,7 @@
                             <asp:LoginName ID="HeadLoginName" runat="server" />
                         </span>! [
                         <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
-                            LogoutPageUrl="~/Default.aspx" OnLoggedOut="HeadLoginView_LoggedOut" />
-                        ]
+                            LogoutPageUrl="~/Default.aspx" OnLoggedOut="HeadLoginView_LoggedOut" />]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
@@ -39,17 +38,15 @@
                 <asp:Menu ID="Menu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false"
                     Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem Text="Linea Base" Value="LineaBase">
-                            <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=0" />
-                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=1" />
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="Auditoría" Value="Auditoria">
-                            <asp:MenuItem Text="Actualizar Programa Anual" Value="ActualizarProgramaAnual" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar Plan de Auditoria" Value="ActualizarPlanAuditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" Value="ActualizarHallazgosAuditoria" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
-                            <asp:MenuItem Text="Actualizar Plan de Acción" Value="ActualizarPlanAccion" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                            <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" Value="AsignarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" Value="ActualizarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
+                        <asp:MenuItem Text="Gestion de la Configuración" Selectable="False">
+                            <asp:MenuItem Text="Linea Base" Value="LineaBase" Selectable="False">
+                                <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=0" />
+                                <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase"
+                                    NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=1" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Solicitud de Cambio" Selectable="False">
+                                <asp:MenuItem Text="Lista Solicitud de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaSolicitudCambio.aspx"/>
+                            </asp:MenuItem>
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>

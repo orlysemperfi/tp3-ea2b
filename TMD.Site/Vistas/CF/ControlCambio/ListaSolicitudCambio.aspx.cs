@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using TMD.CF.Site.Controladora.CF;
-using TMD.CF.Site.Controladora;
 using TMD.CF.Site.Util;
 using TMD.Core.Extension;
-using TMD.Entidades;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -27,15 +21,18 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         {
             ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
+            ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(), "Nombre", "Id");
+            ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(), "Nombre", "Id");
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            grvSolicitudCambio.DataSource = SolicitudCambioControladora.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt());
+            grvSolicitudCambio.DataSource = 
+                SolicitudCambioControladora.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),ddlEstado.SelectedValue.ToInt(), ddlPrioridad.SelectedValue.ToInt());
             grvSolicitudCambio.DataBind();
         }
 
-        public String RecueprarEstadoNombre(int idEstado)
+        public String RecuperarEstadoNombre(int idEstado)
         {
             var estado = SolicitudCambioControladora.ListarEstado().FirstOrDefault(x => x.Id == idEstado);
             if (estado != null)
@@ -45,12 +42,12 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             return null;
         }
 
-        public String RecueprarEstadoImagen(int idEstado)
+        public String RecuperarEstadoImagen(int idEstado)
         {
-            return String.Format("~/Imagenes/Estado/{0}.jpg", idEstado);
+            return String.Format("~/Imagenes/Estado/{0}.ico", idEstado);
         }
 
-        public String RecueprarPrioridadNombre(int idPrioridad)
+        public String RecuperarPrioridadNombre(int idPrioridad)
         {
             var prioridad = SolicitudCambioControladora.ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
             if (prioridad != null)
@@ -60,9 +57,26 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             return null;
         }
 
-        public String RecueprarPrioridadImagen(int idPrioridad)
+        public String RecuperarPrioridadImagen(int idPrioridad)
         {
-            return String.Format("~/Imagenes/Prioridad/{0}.jpg", idPrioridad);
+            return String.Format("~/Imagenes/Prioridad/{0}.ico", idPrioridad);
+        }
+
+        protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+        }
+
+        protected void grvSolicitudCambio_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "Ver":
+                    ucRegistroSolicitudCambio.CargarSolicitudExistente(Convert.ToInt32(e.CommandArgument));
+                    ucRegistroSolicitudCambio.Visible = true;
+                    pnlBusqueda.Visible = false;
+                    break;
+            }
         }
     }
 }

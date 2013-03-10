@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="ListaLineaBase.aspx.cs" Inherits="TMD.GC.Site.Vistas.LineaBase.ListaLineaBase" %>
+    CodeBehind="ListaLineaBase.aspx.cs" Inherits="TMD.CF.Site.Vistas.CF.LineaBase.ListaLineaBase" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
