@@ -14,7 +14,7 @@ namespace TMD.CF.Site.Vistas.MP
     public partial class IndicadorFormularioCuanti : System.Web.UI.Page
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
-        int idIndicador = 0; //0:Insertar 1:Actualizar
+        
 
 
 
@@ -22,6 +22,7 @@ namespace TMD.CF.Site.Vistas.MP
         {
             if (!Page.IsPostBack)
             {
+                CargarProceso();
                 action = Convert.ToInt32(Request.QueryString["Action"]);
                 if (action == Constantes.ACTION_INSERT)
                 {
@@ -71,7 +72,9 @@ namespace TMD.CF.Site.Vistas.MP
             oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
             oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
             oNewIndicador.plazo = tbxPlaxo.Text;
-            //oNewIndicador.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
+            oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
+            oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUANTITATIVO;
+            oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
 
             if (oNewIndicador.codigo != null)
                 oIndicadorLogica.ActualizarIndicador(oNewIndicador);
@@ -159,6 +162,16 @@ namespace TMD.CF.Site.Vistas.MP
         protected void lbtnAgregarICuanti_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_EscalaCuantitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
+        }
+        protected void CargarProceso()
+        {
+            IProcesoLogica oProcesoLogica = ProcesoLogica.getInstance();
+            List<ProcesoEntidad> oProcesoColeccion = oProcesoLogica.ObtenerListaProcesoTodas();
+            ddlProceso.DataSource = oProcesoColeccion;
+            ddlProceso.DataTextField = "NOMBRE";
+            ddlProceso.DataValueField = "CODIGO";
+            ddlProceso.DataBind();
+            ddlProceso.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
     }
 }

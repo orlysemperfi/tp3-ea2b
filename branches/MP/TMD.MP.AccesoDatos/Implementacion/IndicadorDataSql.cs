@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace TMD.MP.AccesoDatos.Implementacion
 {
-    public class IndicadorDataSql:IIndicadorData
+    public class IndicadorDataSql : BaseDataSql, IIndicadorData
     {
         #region "Select"
         public List<IndicadorEntidad> ObtenerListaIndicadorPorPropuesta(int codigo_Propuesta)
@@ -84,7 +84,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 
             }
 
-            strSQL.Append("ORDER BY I.NOMBRE ");
+            strSQL.Append("ORDER BY I.CODIGO ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
@@ -232,55 +232,45 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
 
         #region "Insert"
-        public void InsertarIndicador(IndicadorEntidad entidad)
+        public IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            StringBuilder strSQLId = new StringBuilder();
-            StringBuilder strSQLDet = new StringBuilder();
-            SqlDataReader sqlDr = null;
-            int iCodigo_Indicador = 0;
+            
+            int affectedRows = 0;
             strSQL.Append("INSERT INTO MP.INDICADOR ");
-            strSQL.Append("(NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO) ");
-            strSQL.Append("VALUES(@NOMBRE,@EXPRESION_MATEMATICA,@FRECUENCIA_MEDICION,@FUENTE_MEDICION,@PLAZO,@TIPO)");
-            strSQL.Append("INSERT INTO MP.INDICADOR");
-
-            strSQLId.Append("SELECT IDENT_CURRENT('MP.INDICADOR') AS CODIGO");
-
-            strSQLDet.Append("INSERT INTO MP.PROPUESTA_INDICADOR(CODIGO_PROPUESTA,CODIGO_INDICADOR) ");
-            strSQLDet.Append("VALUES(@CODIGO_PROPUESTA,@CODIGO_INDICADOR)");
+            strSQL.Append("(NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO,CODIGO_PROCESO,ESTADO) ");
+            strSQL.Append("VALUES(@NOMBRE,@EXPRESION_MATEMATICA,@FRECUENCIA_MEDICION,@FUENTE_MEDICION,@PLAZO,@TIPO,@CODIGO_PROCESO,@ESTADO)");            
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
-            SqlCommand sqlCmdId = new SqlCommand(strSQLId.ToString(), sqlConn);
-            SqlCommand sqlCmdDet = new SqlCommand(strSQLDet.ToString(), sqlConn);
-
+            
             sqlCmd.CommandType = CommandType.Text;
             sqlCmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = entidad.nombre;
             sqlCmd.Parameters.Add("@FRECUENCIA_MEDICION", SqlDbType.VarChar).Value = entidad.frecuencia_Medicion;
             sqlCmd.Parameters.Add("@FUENTE_MEDICION", SqlDbType.VarChar).Value = entidad.fuente_Medicion;
             sqlCmd.Parameters.Add("@EXPRESION_MATEMATICA", SqlDbType.VarChar).Value = entidad.expresion_Matematica;
             sqlCmd.Parameters.Add("@PLAZO", SqlDbType.VarChar).Value = entidad.plazo;
-            sqlCmd.Parameters.Add("@TIPO", SqlDbType.VarChar).Value = entidad.tipo;
+            sqlCmd.Parameters.Add("@TIPO", SqlDbType.Int).Value = entidad.tipo;
+            sqlCmd.Parameters.Add("@CODIGO_PROCESO", SqlDbType.Int).Value = entidad.codigo_Proceso;
+            sqlCmd.Parameters.Add("@ESTADO", SqlDbType.Int).Value = entidad.estado;
 
-            sqlCmdId.CommandType = CommandType.Text;
-            sqlCmdDet.CommandType = CommandType.Text;
             try
             {
 
                 sqlConn.Open();
-                sqlCmd.ExecuteNonQuery();
+                affectedRows = sqlCmd.ExecuteNonQuery();
                 //Obteniendo el siguiente ID
+                if (affectedRows == 0)
+                {
+                    throw new System.Exception("No hay registros ingresados a la tabla Propuesta_Mejora");
+                }
+                else
+                {
+                    entidad.codigo = ObtenerKeyInsertada(Constantes.TABLA_INDICADOR);
+                }
 
-                sqlDr = sqlCmdId.ExecuteReader();
-                if (sqlDr.Read())
-                    iCodigo_Indicador = Convert.ToInt32(sqlDr["CODIGO"].ToString());
-
-                sqlCmdDet.Parameters.Add("@CODIGO_PROPUESTA",SqlDbType.Int).Value = entidad.codigo_Propuesta;
-                sqlCmdDet.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = iCodigo_Indicador;
-                sqlCmdDet.ExecuteNonQuery();
-
-                
+               
             }
             catch (System.Exception ex)
             {
@@ -290,6 +280,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 sqlConn.Close();
             }
+            return entidad;
 
         }
         public void InsertarPropuestaIndicador(IndicadorEntidad entidad)

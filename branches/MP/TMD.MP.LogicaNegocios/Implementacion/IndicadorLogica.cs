@@ -65,10 +65,10 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #region "Insert"
 
-        public void InsertarIndicador(IndicadorEntidad entidad)
+        public IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad)
         {
             iIndicador = new IndicadorDataSql();
-            iIndicador.InsertarIndicador(entidad);
+            return iIndicador.InsertarIndicador(entidad);
         }
 
         #endregion

@@ -31,9 +31,17 @@
     </asp:ToolkitScriptManager>
     <div class="contenedor-pagina">
         <div class="contenedor-pagina-titulo">
-            EDICION DE INDICADOR</div>
+            EDICION DE INDICADOR CUANTITATIVO</div>
         <br />
         <table border="0" cellpadding="0" cellspacing="0">
+             <tr>
+                <td>
+                    Proceso:</td>
+                <td >
+                    <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox">
+                    </asp:DropDownList>
+                </td>
+            </tr>
             <tr>
                 <td>
                     Nombre:

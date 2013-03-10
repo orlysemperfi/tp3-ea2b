@@ -19,7 +19,7 @@ namespace TMD.MP.AccesoDatos.Contrato
 
         #region "Insert"
 
-        void InsertarIndicador(IndicadorEntidad entidad);
+        IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad);
         void InsertarPropuestaIndicador(IndicadorEntidad entidad);
 
         #endregion
