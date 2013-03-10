@@ -123,5 +123,10 @@ namespace TMD.MP.Comun
         public static String TABLA_UNIDAD = "MP.UNIDAD";
 
         #endregion
+
+        #region "TIPO INDICADOR"
+        public static int TIPO_INDICADOR_CUALITATIVO = 0;
+        public static int TIPO_INDICADOR_CUANTITATIVO = 1;
+        #endregion  
     }
 }

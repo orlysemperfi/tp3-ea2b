@@ -77,55 +77,13 @@
 
         </table>
     </div>
-    <asp:Panel ID="pnlIndicadorCualitativo" runat="server" style="display:none">    
+ 
+
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnAgregarICuali" runat="server" Text="Agregar" CssClass="estilo_boton" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:GridView ID="gwEscalasCuali" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" DataSource='<%#ObtenerEscalaCualitativoListado() %>'>
-                        <Columns>
-                            <asp:TemplateField HeaderText="Limite Superior">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Limite Inferior">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("LIMITE_INFERIOR") %>' />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Calificacion">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCalificacion" runat="server" Text='<%#Eval("CALIFICACION") %>' />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Resultado">
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="chkResultadoExpec" runat="server" />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="20px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminarICuanli" runat="server" Text="Eliminar" />                                    
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="20px" />
-                            </asp:TemplateField>
-                        </Columns>                        
-                    </asp:GridView>
-                </td>
-            </tr>
-        </table>
-    </asp:Panel>
-    <asp:Panel ID="pnlIndicadorCuantitativo" runat="server">
-        <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-                <td>
-                    <asp:LinkButton ID="lbtnAgregarICuanti" runat="server" Text="Agregar" CssClass="estilo_boton" />
+                    <asp:LinkButton ID="lbtnAgregarICuanti" runat="server" Text="Agregar" 
+                        CssClass="estilo_boton" onclick="lbtnAgregarICuanti_Click" />
                 </td>
             </tr>
             <tr>
@@ -162,7 +120,7 @@
                     &nbsp;</td>
             </tr>
         </table>
-    </asp:Panel>
+
     <br />
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>

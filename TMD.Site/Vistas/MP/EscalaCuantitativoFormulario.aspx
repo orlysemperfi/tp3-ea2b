@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EscalaCuantitativoFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.EscalaCuantitativaFormulario" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="EscalaCuantitativoFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.EscalaCuantitativaFormulario" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link href="../App_Themes/TMD.MP/tmd-mp.css" rel="Stylesheet" type="text/css" />
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
          <table>            
             <tr><td>Signo:</td><td><asp:TextBox ID="txbLimInferior" runat="server" CssClass="estilo_textbox" Text='<%#Eval("SIGNO") %>'/></td></tr>
@@ -30,6 +22,4 @@
             </td>
         </tr>
     </table>
-    </form>
-</body>
-</html>
+</asp:Content>
