@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using TMD.CF.Site.Controladora;
 using TMD.Entidades;
 using TMD.Core.Extension;
 using TMD.CF.Site.Util;
 using TMD.CF.Site.Controladora.CF;
+using TMD.Core;
 
 namespace TMD.CF.Site.Controles
 {
@@ -25,32 +20,52 @@ namespace TMD.CF.Site.Controles
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarControles();
+            if (!Page.IsPostBack)
+            {
+                CargarsolicitudNueva();
+            }
         }
 
-        private void CargarControles()
+        public void CargarSolicitudExistente(int idSolicitudCambio)
         {
-            ddlProyecto.DataSource = LineaBaseControladora.ListarProyectoPorUsuario(1);
-            ddlProyecto.DataTextField = "Nombre";
-            ddlProyecto.DataValueField = "Id";
-            ddlProyecto.DataBind();
+            SolicitudCambio solicitud = SolicitudCambioControladora.ObtenerPorId(idSolicitudCambio);
+
+            if (solicitud != null)
+            {
+                lblCodigo.Text = solicitud.Id.ToString();
+                txtNombre.Text = solicitud.Nombre;
+
+                int idProyecto = solicitud.ProyectoFase.Proyecto.Id;
+                ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
+                int lineaBaseId = solicitud.LineaBase.Id;
+                ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
+                ddlElementoConfiguracion.EnlazarDatos(LineaBaseControladora.ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id");
+                ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(), "Nombre", "Id", -1, solicitud.Estado);
+                ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(), "Nombre", "Id",-1,solicitud.Prioridad);
+
+                pnlSolicitudCambio.Enabled = false;
+            }
+        }
+
+        public void CargarsolicitudNueva()
+        {
+            ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlLineaBase.EnlazarValorDefecto();
+            ddlElementoConfiguracion.EnlazarValorDefecto();
+            ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(),"Nombre","Id",-1,Constantes.EstadoPendiente);
+            ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(),"Nombre","Id");
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.DataSource = LineaBaseControladora.LineaBaseListarPorProyecto(ddlProyecto.SelectedValue.ToInt());
-            ddlLineaBase.DataTextField = "Nombre";
-            ddlLineaBase.DataValueField = "Id";
-            ddlLineaBase.DataBind();
+            ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //ddlElementoConfiguracion.DataSource = LineaBaseControladora.ElementoConfiguracionListarPorFase()
-            //ddlEstado.DataSource = null;
-            //ddlPrioridad.DataSource = null;
+            ddlElementoConfiguracion.EnlazarDatos(LineaBaseControladora.ElementoConfiguracionListarPorLineaBase(ddlLineaBase.SelectedValue.ToInt()), "NombreEcs", "Id");
         }
-
+        
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
             SolicitudCambio solicitudCambio = CrearSolicitud();
@@ -58,6 +73,8 @@ namespace TMD.CF.Site.Controles
             SolicitudCambioControladora.Agregar(solicitudCambio);
 
             OnEventoGrabo();
+
+            pnlSolicitudCambio.Enabled = false;
         }
 
         private SolicitudCambio CrearSolicitud()

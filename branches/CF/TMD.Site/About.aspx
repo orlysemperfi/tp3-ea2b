@@ -12,5 +12,5 @@
     <p>
         Put content here.
     </p>
-<uc1:RegistroSolicitudCambio ID="RegistroSolicitudCambio1" runat="server" />
+<uc1:RegistroSolicitudCambio ID="ucRegistroSolicitudCambio" runat="server" />
 </asp:Content>

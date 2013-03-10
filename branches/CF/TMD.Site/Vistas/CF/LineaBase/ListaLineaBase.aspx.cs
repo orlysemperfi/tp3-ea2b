@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TMD.CF.Site.Controladora;
+using TMD.CF.Site.Controladora.CF;
 using TMD.CF.Site.Util;
 
 namespace TMD.GC.Site.Vistas.LineaBase
