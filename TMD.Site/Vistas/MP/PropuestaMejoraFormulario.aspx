@@ -84,7 +84,7 @@
                                             TargetControlID="tbxFechaEnvio">
                                         </asp:CalendarExtender>
                                         <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" />
-                                        <asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />
+                                        <%--<asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />--%>
                                     </td>
                                 </tr>
 
@@ -181,7 +181,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Escoger">
                                                         <ItemTemplate>
-                                                            <asp:CheckBox ID="chkIndicadorSel" runat="server" CommandName="SeleccionarIndicador" ></asp:CheckBox>
+                                                            <asp:CheckBox ID="chkIndicadorSel" runat="server" CommandName="SeleccionarIndicador" Checked='<%#(Eval("MARCADO").ToString()=="true")? true : false %>' ></asp:CheckBox>
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" />
                                                     </asp:TemplateField>

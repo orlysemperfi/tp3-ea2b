@@ -21,7 +21,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT CODIGO,NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO ");
+            strSQL.Append("SELECT I.CODIGO,I.NOMBRE,I.EXPRESION_MATEMATICA,I.FRECUENCIA_MEDICION,I.FUENTE_MEDICION,I.PLAZO,I.TIPO,PRI.SELECCIONADO ");
             strSQL.Append("FROM MP.INDICADOR I,MP.PROPUESTA_INDICADOR PRI ");
             strSQL.Append("WHERE I.CODIGO = PRI.CODIGO_INDICADOR AND PRI.CODIGO_PROPUESTA=@CODIGO_PROPUESTA ");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -43,6 +43,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oIndicador.expresion_Matematica = Utilitario.getDefaultOrStringDBValue(dr["EXPRESION_MATEMATICA"]);
                     oIndicador.plazo = Utilitario.getDefaultOrStringDBValue(dr["PLAZO"]);
                     oIndicador.tipo = Utilitario.getDefaultOrIntDBValue(dr["TIPO"]);
+                    oIndicador.marcado = Utilitario.getDefaultOrStringDBValue(dr["SELECCIONADO"]);
                     lstIndicador.Add(oIndicador);
                 }
                 dr.Close();
@@ -289,14 +290,15 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
 
-            strSQL.Append("INSERT INTO [TMD].[MP].[PROPUESTA_INDICADOR] ([CODIGO_PROPUESTA],[CODIGO_INDICADOR]) ");
-            strSQL.Append("VALUES (@CODIGO_PROPUESTA,@CODIGO_INDICADOR) ");
+            strSQL.Append("INSERT INTO [TMD].[MP].[PROPUESTA_INDICADOR] ([CODIGO_PROPUESTA],[CODIGO_INDICADOR],[SELECCIONADO]) ");
+            strSQL.Append("VALUES (@CODIGO_PROPUESTA,@CODIGO_INDICADOR,@SELECCIONADO) ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
             sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = entidad.codigo_Propuesta;
             sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = entidad.codigo;
+            sqlCmd.Parameters.Add("@SELECCIONADO", SqlDbType.VarChar).Value = entidad.marcado;
 
             try
             {
