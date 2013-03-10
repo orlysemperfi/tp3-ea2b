@@ -13,6 +13,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
     public partial class ListaSolicitudCambio {
         
         /// <summary>
+        /// pnlBusqueda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlBusqueda;
+        
+        /// <summary>
         /// ddlProyecto control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,24 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.DropDownList ddlLineaBase;
         
         /// <summary>
+        /// ddlEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+        
+        /// <summary>
+        /// ddlPrioridad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPrioridad;
+        
+        /// <summary>
         /// btnBuscar control.
         /// </summary>
         /// <remarks>
@@ -47,5 +74,14 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvSolicitudCambio;
+        
+        /// <summary>
+        /// ucRegistroSolicitudCambio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TMD.CF.Site.Controles.RegistroSolicitudCambio ucRegistroSolicitudCambio;
     }
 }

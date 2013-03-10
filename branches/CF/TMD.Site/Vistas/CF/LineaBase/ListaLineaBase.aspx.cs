@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.CF.Site.Controladora;
 using TMD.CF.Site.Controladora.CF;
 using TMD.CF.Site.Util;
 
-namespace TMD.GC.Site.Vistas.LineaBase
+namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
     public partial class ListaLineaBase : System.Web.UI.Page
     {
