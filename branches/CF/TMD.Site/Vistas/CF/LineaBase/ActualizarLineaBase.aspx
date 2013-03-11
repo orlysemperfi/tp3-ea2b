@@ -31,7 +31,8 @@
                         <td>
                             <label>
                                 Fase</label>
-                            <asp:DropDownList ID="ddlFase" runat="server">
+                            <asp:DropDownList ID="ddlFase" runat="server" AutoPostBack="True" 
+                                onselectedindexchanged="ddlFase_SelectedIndexChanged">
                             </asp:DropDownList>
                             <asp:CompareValidator ID="FaseValidator" runat="server" ControlToValidate="ddlFase"
                                 ErrorMessage="La Fase es requerida." ToolTip="La Fase es requerida." ValidationGroup="GrabarValidationGroup"
