@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Transactions;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.AccesoDatos.Contrato;
 using TMD.Entidades;
@@ -37,12 +38,24 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
         public SolicitudCambio ObtenerArchivo(int id)
         {
-            return _solicitudCambioData.ObtenerArchivo(id);
+            SolicitudCambio solicitudCambio = null;
+
+            using (var scope = new TransactionScope())
+            {
+                solicitudCambio = _solicitudCambioData.ObtenerArchivo(id);
+                scope.Complete();
+            }
+
+            return solicitudCambio;
         }
 
         public void ActualizarArchivo(SolicitudCambio solicitudCambio)
         {
-            _solicitudCambioData.ActualizarArchivo(solicitudCambio );
+            using (var scope = new TransactionScope())
+            {
+                _solicitudCambioData.ActualizarArchivo(solicitudCambio);
+                scope.Complete();
+            }
         }
     }
 }

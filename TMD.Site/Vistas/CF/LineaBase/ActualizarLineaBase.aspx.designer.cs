@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TMD.GC.Site.Vistas.LineaBase {
+namespace TMD.CF.Site.Vistas.CF.LineaBase {
     
     
     public partial class ActualizarLineaBase {
@@ -49,13 +49,13 @@ namespace TMD.GC.Site.Vistas.LineaBase {
         protected global::System.Web.UI.WebControls.HiddenField hiddenIdLineaBase;
         
         /// <summary>
-        /// txtNombreProyecto control.
+        /// ddlProyecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreProyecto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProyecto;
         
         /// <summary>
         /// ddlFase control.

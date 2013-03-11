@@ -3,6 +3,7 @@ using System.Linq;
 using TMD.CF.Site.Controladora.CF;
 using TMD.CF.Site.Util;
 using TMD.Core.Extension;
+using TMD.Entidades;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -23,6 +24,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         void ucRegistroSolicitudCambio_EventoGraboSolicitud()
         {
             ucRegistroSolicitudCambio.Visible = false;
+            ucAprobarSolicitudCambio.Visible = false;
             pnlBusqueda.Visible = true;
         }
 
@@ -84,6 +86,28 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     ucRegistroSolicitudCambio.CargarSolicitudExistente(Convert.ToInt32(e.CommandArgument));
                     ucRegistroSolicitudCambio.Visible = true;
                     pnlBusqueda.Visible = false;
+                    break;
+                case "Cargar":
+                    ucSubirArchivoSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
+                    ucRegistroSolicitudCambio.Visible = false;
+                    pnlBusqueda.Visible = false;
+                    ucAprobarSolicitudCambio.Visible = false;
+                    ucSubirArchivoSolicitudCambio.Visible = true;
+                    break;
+                case "Descargar":
+                    int idSolicitud = Convert.ToInt32(e.CommandArgument);
+
+                    SolicitudCambio solicitud = SolicitudCambioControladora.ObtenerArchivo(idSolicitud);
+
+                    if (solicitud != null && solicitud.Data != null)
+                    {
+                        Response.Clear();
+                        Response.ContentType = "application/octet-stream";
+                        Response.AddHeader("Content-Disposition", String.Format("attachment; filename={0}", solicitud.NombreArchivo));
+                        Response.Flush();
+                        Response.Buffer = true;
+                        Response.BinaryWrite(solicitud.Data);
+                    }
                     break;
             }
         }

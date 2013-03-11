@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="ActualizarECS.aspx.cs" Inherits="TMD.CF.Site.Vistas.LineaBase.ActualizarECS" %>
+    CodeBehind="ActualizarECS.aspx.cs" Inherits="TMD.CF.Site.Vistas.CF.LineaBase.ActualizarECS" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

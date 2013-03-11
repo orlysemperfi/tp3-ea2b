@@ -3,6 +3,8 @@
 
 <%@ Register Src="../../../Controles/RegistroSolicitudCambio.ascx" TagName="RegistroSolicitudCambio"
     TagPrefix="uc1" %>
+<%@ Register src="../../../Controles/AprobarSolicitudCambio.ascx" tagname="AprobarSolicitudCambio" tagprefix="uc2" %>
+<%@ Register src="../../../Controles/SubirArchivoSolicitudCambio.ascx" tagname="SubirArchivoSolicitudCambio" tagprefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
@@ -112,16 +114,16 @@
                     <asp:TemplateField HeaderText="Descargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtnDescargar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                CommandName="Descarga" ImageUrl="~/Imagenes/download.jpg" ToolTip="Descargar Archivo"
+                                CommandName="Descargar" ImageUrl="~/Imagenes/download.jpg" ToolTip="Descargar Archivo"
                                 Visible='<%# (Eval("NombreArchivo")!= null) %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </asp:Panel>
-        <br />
-        <br />
         <uc1:RegistroSolicitudCambio ID="ucRegistroSolicitudCambio" runat="server" Visible="False" />
+        <uc2:AprobarSolicitudCambio ID="ucAprobarSolicitudCambio" runat="server" Visible="False"/>
+        <uc3:SubirArchivoSolicitudCambio ID="ucSubirArchivoSolicitudCambio" runat="server" Visible="False" />
     </div>
     <script type="text/javascript" language="javascript">
         function validarProyecto() {
