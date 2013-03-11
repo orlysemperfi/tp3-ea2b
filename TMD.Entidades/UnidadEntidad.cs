@@ -10,6 +10,6 @@ namespace TMD.Entidades
         public int? codigo { get; set; }
         public String medida { get; set; }
         public String descripcion { get; set; }
-        public double valor { get; set; }
+        
     }
 }

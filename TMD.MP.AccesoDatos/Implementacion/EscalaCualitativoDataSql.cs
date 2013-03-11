@@ -41,8 +41,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oEscalaCualitativo = new EscalaCualitativoEntidad();                        
                     oEscalaCualitativo.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
                     oEscalaCualitativo.codigo_Indicador = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_INDICADOR"]);
-                    oEscalaCualitativo.limte_inferior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_INFERIOR"]);
-                    oEscalaCualitativo.limte_superior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_SUPERIOR"]);
+                    oEscalaCualitativo.limite_inferior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_INFERIOR"]);
+                    oEscalaCualitativo.limite_superior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_SUPERIOR"]);
                     oEscalaCualitativo.calificacion = Utilitario.getDefaultOrStringDBValue(dr["CALIFICACION"]);
                     oEscalaCualitativo.principal = Utilitario.getDefaultOrIntDBValue(dr["PRINCIPAL"]);
                     lstEscalaCualitativo.Add(oEscalaCualitativo);
@@ -69,16 +69,17 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [TMD].[MP].[ESCALA_CUALITATIVO] ([CODIGO_INDICADOR],[LIMITE_INFERIOR],[LIMITE_SUPERIOR],[CALIFICACION]) ");
-            strSQL.Append("VALUES (@CODIGO_INDICADOR,@LIMITE_INFERIOR,@LIMITE_SUPERIOR,@CALIFICACION) ");
+            strSQL.Append("INSERT INTO [TMD].[MP].[ESCALA_CUALITATIVO] ([CODIGO_INDICADOR],[LIMITE_INFERIOR],[LIMITE_SUPERIOR],[CALIFICACION],[PRINCIPAL]) ");
+            strSQL.Append("VALUES (@CODIGO_INDICADOR,@LIMITE_INFERIOR,@LIMITE_SUPERIOR,@CALIFICACION,@PRINCIPAL) ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
             sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = entidad.codigo_Indicador;
-            sqlCmd.Parameters.Add("@LIMITE_INFERIOR", SqlDbType.Float).Value = entidad.limte_inferior;
-            sqlCmd.Parameters.Add("@LIMITE_SUPERIOR", SqlDbType.Float).Value = entidad.limte_superior;
+            sqlCmd.Parameters.Add("@LIMITE_INFERIOR", SqlDbType.Float).Value = entidad.limite_inferior;
+            sqlCmd.Parameters.Add("@LIMITE_SUPERIOR", SqlDbType.Float).Value = entidad.limite_superior;
             sqlCmd.Parameters.Add("@CALIFICACION", SqlDbType.VarChar).Value = entidad.calificacion;
+            sqlCmd.Parameters.Add("@PRINCIPAL", SqlDbType.Bit).Value = entidad.principal;
 
             try
             {
@@ -111,8 +112,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             sqlCmd.Parameters.Add("@CODIGO", SqlDbType.Int).Value = entidad.codigo;
             sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = entidad.codigo_Indicador;
-            sqlCmd.Parameters.Add("@LIMITE_INFERIOR", SqlDbType.Float).Value = entidad.limte_inferior;
-            sqlCmd.Parameters.Add("@LIMITE_SUPERIOR", SqlDbType.Float).Value = entidad.limte_superior;
+            sqlCmd.Parameters.Add("@LIMITE_INFERIOR", SqlDbType.Float).Value = entidad.limite_inferior;
+            sqlCmd.Parameters.Add("@LIMITE_SUPERIOR", SqlDbType.Float).Value = entidad.limite_superior;
             sqlCmd.Parameters.Add("@CALIFICACION", SqlDbType.VarChar).Value = entidad.calificacion;
 
             try
@@ -132,19 +133,19 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
         
         #region "Eliminar"
-        public void EliminarEscalaCualitativoPorCodigo(int codigo)
+        public void EliminarEscalaCualitativoPorIndicador(int codigo_indicador)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("DELETE FROM [TMD].[MP].[ESCALA_CUALITATIVO] ");
-		    strSQL.Append("WHERE [CODIGO] = @CODIGO ");
+            strSQL.Append("WHERE [CODIGO_INDICADOR] = @CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
-            sqlCmd.Parameters.Add("@CODIGO", SqlDbType.Int).Value = codigo;
+            sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = codigo_indicador;
 
             try
             {

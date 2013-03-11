@@ -10,7 +10,7 @@ namespace TMD.MP.LogicaNegocios.Contrato
     {
         #region "Select"
 
-        List<UnidadEntidad> SeleccionarUnidadTodas();
+        List<UnidadEntidad> ObtenerListaUnidadTodas();
 
         #endregion
     }

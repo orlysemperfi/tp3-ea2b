@@ -22,7 +22,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
           String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
           SqlConnection sqlConn = new SqlConnection(strConn);
           StringBuilder strSQL = new StringBuilder();
-          strSQL.Append("SELECT CODIGO,DESCRIPCION FROM MP.UNIDAD");
+          strSQL.Append("SELECT CODIGO,MEDIDA,DESCRIPCION FROM MP.UNIDAD");
           SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
           SqlDataReader dr = null;
           sqlCmd.CommandType = CommandType.Text;
@@ -38,7 +38,6 @@ namespace TMD.MP.AccesoDatos.Implementacion
                   oUnidad.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
                   oUnidad.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                   oUnidad.medida = Utilitario.getDefaultOrStringDBValue(dr["MEDIDA"]);
-                  oUnidad.valor = Utilitario.getDefaultOrDoubleDBValue(dr["VALOR"]);
                   lstUnidad.Add(oUnidad);
               }
 

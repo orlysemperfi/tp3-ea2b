@@ -68,7 +68,28 @@ namespace TMD.MP.LogicaNegocios.Implementacion
         public IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad)
         {
             iIndicador = new IndicadorDataSql();
-            return iIndicador.InsertarIndicador(entidad);
+            IndicadorEntidad oIndicadorEntidad = iIndicador.InsertarIndicador(entidad);
+            if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
+                iEscalaCualitativo = new EscalaCualitativoDataSql();
+                iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
+                foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo) 
+                {
+                    oEscalaCualitativo.codigo_Indicador = oIndicadorEntidad.codigo;
+                    
+                    iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+                }
+            }
+            if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
+            {
+                iEscalaCuantitativo = new EscalaCuantitativoDataSql();
+                iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
+                foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
+                {
+                    oEscalaCuantitativo.codigo_Indicador = oIndicadorEntidad.codigo;                    
+                    iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
+                }
+            }
+            return oIndicadorEntidad;
         }
 
         #endregion

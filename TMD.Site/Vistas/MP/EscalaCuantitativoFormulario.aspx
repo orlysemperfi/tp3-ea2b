@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
          <table>            
-            <tr><td>Signo:</td><td><asp:TextBox ID="txbLimInferior" runat="server" CssClass="estilo_textbox" Text='<%#Eval("SIGNO") %>'/></td></tr>
-            <tr><td>Valor:</td><td><asp:TextBox ID="txbLimSuperior" runat="server" CssClass="estilo_textbox" Text='<%#Eval("VALOR") %>'/></td></tr>
-            <tr><td>Unidad:</td><td><asp:DropDownList ID="ddlUnidad" runat="server" CssClass="estilo_combobox" Text='<%#Eval("UNIDAD") %>'/></td></tr>            
+            <tr><td>Signo:</td><td><asp:TextBox ID="txbSigno" runat="server" CssClass="estilo_textbox" Text='<%#Eval("SIGNO") %>'/></td></tr>
+            <tr><td>Valor:</td><td><asp:TextBox ID="txbValor" runat="server" CssClass="estilo_textbox" Text='<%#Eval("VALOR") %>'/></td></tr>
+            <tr><td>Unidad:</td><td><asp:DropDownList ID="ddlUnidad" runat="server" CssClass="estilo_combobox" /></td></tr>            
         </table>
     </div>
     <br />

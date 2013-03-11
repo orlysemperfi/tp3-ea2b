@@ -39,17 +39,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TMD.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.Core\bin\Debug\TMD.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="TMD.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.Entidades\bin\Debug\TMD.Entidades.dll</HintPath>
-    </Reference>
-    <Reference Include="TMD.GM.AccesoDatos">
-      <HintPath>..\TMD.GM.AccesoDatos\bin\Debug\TMD.GM.AccesoDatos.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

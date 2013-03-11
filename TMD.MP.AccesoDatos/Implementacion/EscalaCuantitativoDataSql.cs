@@ -17,14 +17,14 @@ namespace TMD.MP.AccesoDatos.Implementacion
         public List<EscalaCuantitativoEntidad> ObtenerListaEscalaCuantitativoPorIndicador(int codigo_Indicador)
         {
             List<EscalaCuantitativoEntidad> lstEscalaCuantitativo = new List<EscalaCuantitativoEntidad>();
-            EscalaCuantitativoEntidad oEscalaCualitativo = null;
+            EscalaCuantitativoEntidad oEscalaCuantitativo = null;
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT [CODIGO], [CODIGO_INDICADOR], [SIGNO], [VALOR], [CODIGO_UNIDAD] ");
-            strSQL.Append("FROM [TMD].[MP].[ESCALA_CUANTITATIVO] ");
-            strSQL.Append("WHERE [CODIGO_INDICADOR]=@CODIGO_INDICADOR ");
+            strSQL.Append("SELECT EC.CODIGO, EC.CODIGO_INDICADOR, EC.SIGNO, EC.VALOR, EC.CODIGO_UNIDAD,U.DESCRIPCION ");
+            strSQL.Append("FROM MP.ESCALA_CUANTITATIVO EC , MP.UNIDAD U ");
+            strSQL.Append("WHERE EC.CODIGO_UNIDAD = U.CODIGO AND [CODIGO_INDICADOR]=@CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
@@ -38,12 +38,13 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 dr = sqlCmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    oEscalaCualitativo = new EscalaCuantitativoEntidad();
-                    oEscalaCualitativo.codigo_Indicador = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
-                    oEscalaCualitativo.signo = Utilitario.getDefaultOrStringDBValue(dr["SIGNO"]);
-                    oEscalaCualitativo.valor = Utilitario.getDefaultOrDoubleDBValue(dr["VALOR"]);
-                    oEscalaCualitativo.codigo_Unidad = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_UNIDAD"]);
-                    lstEscalaCuantitativo.Add(oEscalaCualitativo);
+                    oEscalaCuantitativo = new EscalaCuantitativoEntidad();
+                    oEscalaCuantitativo.codigo_Indicador = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oEscalaCuantitativo.signo = Utilitario.getDefaultOrStringDBValue(dr["SIGNO"]);
+                    oEscalaCuantitativo.valor = Utilitario.getDefaultOrDoubleDBValue(dr["VALOR"]);
+                    oEscalaCuantitativo.codigo_Unidad = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_UNIDAD"]);
+                    oEscalaCuantitativo.descripcion_unidad = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    lstEscalaCuantitativo.Add(oEscalaCuantitativo);
                 }
                 dr.Close();
                 return lstEscalaCuantitativo;
@@ -129,19 +130,19 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
 
         #region "Eliminar"
-        public void EliminarEscalaCuantitativoPorCodigo(int codigo)
+        public void EliminarEscalaCuantitativoPorIndicador(int codigo_indicador)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("DELETE FROM [TMD].[MP].[ESCALA_CUANTITATIVO] ");
-            strSQL.Append("WHERE [CODIGO] = @CODIGO ");
+            strSQL.Append("WHERE [CODIGO_INDICADOR] = @CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
-            sqlCmd.Parameters.Add("@CODIGO", SqlDbType.Int).Value = codigo;
+            sqlCmd.Parameters.Add("@CODIGO_INDICADOR", SqlDbType.Int).Value = codigo_indicador;
 
             try
             {

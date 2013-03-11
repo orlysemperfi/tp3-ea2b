@@ -24,7 +24,8 @@ namespace TMD.CF.Site.Vistas.MP
             {
                 CargarProceso();
                 action = Convert.ToInt32(Request.QueryString["Action"]);
-                if (action == Constantes.ACTION_INSERT)
+                CargarIndicador();
+                /*if (action == Constantes.ACTION_INSERT)
                 {
                     NuevoIndicador();
                 }
@@ -32,7 +33,7 @@ namespace TMD.CF.Site.Vistas.MP
                 {
                     CargarIndicador();
                 }
-
+                */
 
                 List<EscalaCuantitativoEntidad> escalaCuantitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo;
                 gwEscalasCuanti.DataBind();
@@ -53,13 +54,12 @@ namespace TMD.CF.Site.Vistas.MP
         protected void CargarIndicador()
         {
             IndicadorEntidad indicador = Sesiones.IndicadorSeleccionado;
+            ddlProceso.SelectedValue = indicador.codigo_Proceso.ToString();
             tbxNombre.Text = indicador.nombre;
             tbxFrecuenciaMed.Text = indicador.frecuencia_Medicion;
             tbxFuenteMed.Text = indicador.fuente_Medicion;
             tbxExpresionMat.Text = indicador.expresion_Matematica;
             tbxPlaxo.Text = indicador.plazo;
-            //ddlTipo.SelectedValue = indicador.tipo.ToString();
-
             CargarListadoEscalas();
         }
 
@@ -93,66 +93,43 @@ namespace TMD.CF.Site.Vistas.MP
         protected void CargarListadoEscalas()
         {
             IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
-            int codigo_indicador = Convert.ToInt32(Sesiones.IndicadorSeleccionado.codigo.ToString());
+            String codigo_indicador = Sesiones.IndicadorSeleccionado.codigo.ToString();
 
-            List<EscalaCualitativoEntidad> oEscalaCualitativoColeccion = new List<EscalaCualitativoEntidad>();
-            if (Sesiones.IndicadorSeleccionado.lstEscalaCualitativo == null)
+            if (codigo_indicador != null)
             {
-                Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = oIndicadorLogica.ObtenerListaEscalaCualitativoPorIndicador(codigo_indicador);
+                List<EscalaCuantitativoEntidad> oEscalaCuantitativoColeccion = new List<EscalaCuantitativoEntidad>();
+                if (Sesiones.IndicadorSeleccionado.lstEscalaCualitativo == null)
+                {
+                    Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = oIndicadorLogica.ObtenerListaEscalaCuantitativoPorIndicador(Convert.ToInt32(codigo_indicador));
+                }
+                gwEscalasCuanti.DataBind();
             }
-            
 
-            List<EscalaCuantitativoEntidad> oEscalaCuantitativoColeccion = new List<EscalaCuantitativoEntidad>();
-            if (Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo == null)
-            {
-                Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = oIndicadorLogica.ObtenerListaEscalaCuantitativoPorIndicador(codigo_indicador);
-            }
-            gwEscalasCuanti.DataBind();
         }
 
-        protected List<EscalaCualitativoEntidad> ObtenerEscalaCualitativoListado()
-        {
-
-            List<EscalaCualitativoEntidad> eCualitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCualitativo;
-
-            if (eCualitativoListado == null)
-            {
-                eCualitativoListado = new List<EscalaCualitativoEntidad>();
-                return null;
-            }
-            else
-            {
-                if (eCualitativoListado.Count == 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    return eCualitativoListado;
-                }
-            }
-        }
         protected List<EscalaCuantitativoEntidad> ObtenerEscalaCuantitativoListado()
         {
 
-            List<EscalaCuantitativoEntidad> eCuantitativaListado = Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo;
-            if (eCuantitativaListado == null)
+            List<EscalaCuantitativoEntidad> eCuantitativoListado = Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo;
+
+            if (eCuantitativoListado == null)
             {
-                eCuantitativaListado = new List<EscalaCuantitativoEntidad>();
+                eCuantitativoListado = new List<EscalaCuantitativoEntidad>();
                 return null;
             }
             else
             {
-                if (eCuantitativaListado.Count == 0)
+                if (eCuantitativoListado.Count == 0)
                 {
                     return null;
                 }
                 else
                 {
-                    return eCuantitativaListado;
+                    return eCuantitativoListado;
                 }
             }
         }
+
 
         protected void lbtnBuscar_Click(object sender, EventArgs e)
         {
@@ -163,6 +140,21 @@ namespace TMD.CF.Site.Vistas.MP
         {
             Response.Redirect(Paginas.TMD_MP_EscalaCuantitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         }
+
+        protected void CargarEscalaCuantitativo()
+        {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+            IndicadorEntidad oIndicadorFiltro = new IndicadorEntidad();
+            if (Sesiones.IndicadorSeleccionado.codigo != null)
+            {
+                int codigoIndicador = Convert.ToInt32(Sesiones.IndicadorSeleccionado.codigo);
+                Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = oIndicadorLogica.ObtenerListaEscalaCuantitativoPorIndicador(codigoIndicador);
+
+
+            }
+            gwEscalasCuanti.DataBind();
+
+        }
         protected void CargarProceso()
         {
             IProcesoLogica oProcesoLogica = ProcesoLogica.getInstance();
@@ -171,7 +163,38 @@ namespace TMD.CF.Site.Vistas.MP
             ddlProceso.DataTextField = "NOMBRE";
             ddlProceso.DataValueField = "CODIGO";
             ddlProceso.DataBind();
-            ddlProceso.Items.Insert(0, new ListItem("[Todos]", "0"));
+            ddlProceso.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
+        }
+        protected void gwEscalasCuanti_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+            if (e.CommandName == "Eliminar")
+            {
+
+                RemoverEscalaCuantiSesion(Convert.ToInt32(e.CommandArgument));
+
+            }
+            if (e.CommandName == "Editar")
+            {
+                Response.Redirect(Paginas.TMD_MP_EscalaCuantitativoFormulario + "?Action=" + Constantes.ACTION_UPDATE + "&Codigo=" + Convert.ToInt32(e.CommandArgument), true);
+            }
+        }
+        protected void RemoverEscalaCuantiSesion(int codigo)
+        {
+            EscalaCuantitativoEntidad oEscalaCuantitativo = null;
+            foreach (EscalaCuantitativoEntidad obj in Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo)
+            {
+                if (obj.codigo == codigo)
+                {
+                    oEscalaCuantitativo = obj;
+                }
+            }
+            if (oEscalaCuantitativo != null)
+                Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo.Remove(oEscalaCuantitativo);
+            else
+                lblMensajeError.Text = "La escala cuantitativa no puede ser borrada.";
+            CargarEscalaCuantitativo();
+            
         }
     }
 }

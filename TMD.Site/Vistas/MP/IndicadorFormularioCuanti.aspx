@@ -96,8 +96,13 @@
             </tr>
             <tr>
                 <td>
-                    <asp:GridView ID="gwEscalasCuanti" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCuantitativoListado() %>'>
+                    <asp:GridView ID="gwEscalasCuanti" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCuantitativoListado() %>' OnRowCommand="gwEscalasCuanti_RowCommand">
                         <Columns>
+                            <asp:TemplateField HeaderText="Codigo">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>' Visible=false />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Signo">
                                 <ItemTemplate>
                                     <asp:Label ID="lblSigno" runat="server" Text='<%#Eval("SIGNO") %>'  />
@@ -110,15 +115,22 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Unidad">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblUnidad" runat="server" Text='<%#Eval("CODIGO_UNIDAD") %>' />
+                                    <asp:Label ID="lblUnidad" runat="server" Text='<%#Eval("DESCRIPCION_UNIDAD") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminarICuanti" runat="server" Text="Eliminar" />
+                                    <asp:LinkButton ID="lbtnEditarCuali" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%#Eval("CODIGO") %>'/>                                    
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lbtnEliminarICuanti" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%#Eval("CODIGO") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
+                            </asp:TemplateField>
+
                         </Columns>                        
                     </asp:GridView>
                 </td>
