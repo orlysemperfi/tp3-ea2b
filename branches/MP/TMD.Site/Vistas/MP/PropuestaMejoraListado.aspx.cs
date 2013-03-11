@@ -156,6 +156,7 @@ namespace TMD.MP.Site.Privado
 
         protected void gvwPropuestaMejoraListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            
             IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
             if (e.CommandName == "EditarPropuesta") {
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));

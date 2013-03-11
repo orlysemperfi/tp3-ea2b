@@ -97,8 +97,13 @@
         </tr>
         <tr>
             <td>
-                <asp:GridView ID="gwEscalasCuali" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCualitativoListado() %>'>
+                <asp:GridView ID="gwEscalasCuali" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCualitativoListado() %>' OnRowCommand="gwEscalasCuali_RowCommand">
                     <Columns>
+                        <asp:TemplateField HeaderText="Codigo">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>'/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Limite Superior">
                             <ItemTemplate>
                                 <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' />
@@ -116,13 +121,19 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Principal">
                             <ItemTemplate>
-                                <asp:CheckBox ID="chkResultadoExpec" runat="server" />
+                                <asp:CheckBox ID="chkResultadoExpec" runat="server"  Checked='<%#(Eval("PRINCIPAL").ToString()=="1")? true : false %>'/>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="20px" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
-                                <asp:LinkButton ID="lbtnEliminarICuali" runat="server" Text="Eliminar" />                                    
+                                <asp:LinkButton ID="lbtnEditarCuali" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%#Eval("CODIGO") %>'/>                                    
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" Width="20px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="lbtnEliminarCuali" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%#Eval("CODIGO") %>'/>                                    
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" Width="20px" />
                         </asp:TemplateField>

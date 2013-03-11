@@ -206,14 +206,12 @@ namespace TMD.MP.Site.Privado
                 
                 if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
                     Sesiones.IndicadorSeleccionado = oIndicador;
-                    Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = new List<EscalaCualitativoEntidad>();
                     Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_UPDATE,true);
                     
                 }
 
                 if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO) {
                     Sesiones.IndicadorSeleccionado = oIndicador;
-                    Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = new List<EscalaCuantitativoEntidad>();
                     Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_UPDATE,true);
                 }
 
@@ -223,12 +221,16 @@ namespace TMD.MP.Site.Privado
         protected void ibtnAgregarIndicadorCuali_Click(object sender, EventArgs e)
         {
             Sesiones.IndicadorSeleccionadoRemover();
+            Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
+            Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = new List<EscalaCualitativoEntidad>();
             Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
         protected void ibtnAgregarIndicadorCuanti_Click(object sender, EventArgs e)
         {
             Sesiones.IndicadorSeleccionadoRemover();
+            Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
+            Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = new List<EscalaCuantitativoEntidad>();
             Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 

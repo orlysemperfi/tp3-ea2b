@@ -24,7 +24,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #region "Select"
 
-        public List<UnidadEntidad> SeleccionarUnidadTodas() {
+        public List<UnidadEntidad> ObtenerListaUnidadTodas() {
             iUnidad = new UnidadDataSql();
             return iUnidad.ObtenerListaUnidadTodas();
         }

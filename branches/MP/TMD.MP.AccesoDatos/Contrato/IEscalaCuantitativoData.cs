@@ -28,7 +28,7 @@ namespace TMD.MP.AccesoDatos.Contrato
 
         #region "Delete"
 
-        void EliminarEscalaCuantitativoPorCodigo(int codigo);
+        void EliminarEscalaCuantitativoPorIndicador(int codigo_indicador);
 
         #endregion
     }
