@@ -92,5 +92,23 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TMD.CF.Site.Controles.RegistroSolicitudCambio ucRegistroSolicitudCambio;
+        
+        /// <summary>
+        /// ucAprobarSolicitudCambio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TMD.CF.Site.Controles.AprobarSolicitudCambio ucAprobarSolicitudCambio;
+        
+        /// <summary>
+        /// ucSubirArchivoSolicitudCambio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TMD.CF.Site.Controles.SubirArchivoSolicitudCambio ucSubirArchivoSolicitudCambio;
     }
 }

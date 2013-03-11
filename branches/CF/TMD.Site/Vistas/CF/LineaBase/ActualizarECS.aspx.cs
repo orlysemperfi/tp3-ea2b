@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using TMD.CF.Site.Controladora.CF;
 using TMD.Entidades;
-using TMD.CF.Site.Controladora;
 using TMD.CF.Site.Util;
 
-namespace TMD.CF.Site.Vistas.LineaBase
+namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
     public partial class ActualizarECS : System.Web.UI.Page
     {

@@ -65,7 +65,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
                 using (IDataReader reader = DB.ExecuteReader(command))
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         solicitudesCambio.Add(SolicitudCambioMap.Obtener(reader));
                     }
@@ -102,6 +102,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
             {
                 DB.AddInParameter(command, "@CODIGO", DbType.Int32, solicitudCambio.Id);
                 DB.AddInParameter(command, "@NOMBRE_ARCHIVO", DbType.String, solicitudCambio.NombreArchivo);
+                DB.AddInParameter(command, "@EXTENSION", DbType.String, solicitudCambio.Extension);
 
                 DB.AddOutParameter(command, "@RUTA_ARCHIVO", DbType.String, 8000);
                 DB.AddOutParameter(command, "@TRANSACTION_CONTEXT", DbType.Binary, 8000);
@@ -136,7 +137,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                     {
                         elemento = new SolicitudCambio
                             {
-                                Nombre = reader.GetString("NOMBRE_ARCHIVO")
+                                NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
                             };
                         ruta = reader.GetString("RUTA_ARCHIVO");
                         context = (byte[]) reader[reader.GetOrdinal("TRANSACTION_CONTEXT")];

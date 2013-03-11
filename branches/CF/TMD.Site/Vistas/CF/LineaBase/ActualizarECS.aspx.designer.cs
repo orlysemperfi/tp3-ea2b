@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TMD.CF.Site.Vistas.LineaBase {
+namespace TMD.CF.Site.Vistas.CF.LineaBase {
     
     
     public partial class ActualizarECS {

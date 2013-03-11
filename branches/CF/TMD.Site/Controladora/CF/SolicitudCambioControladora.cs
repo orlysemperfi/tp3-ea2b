@@ -66,7 +66,8 @@ namespace TMD.CF.Site.Controladora.CF
         
         public static void ActualizarArchivo(int idSolicitud, string nombreArchivo, byte[] data)
         {
-            SolicitudCambioLogica.ActualizarArchivo(new SolicitudCambio{Id = idSolicitud, Data = data, Nombre = nombreArchivo});
+            string extension = string.IsNullOrEmpty(nombreArchivo) ? "" : System.IO.Path.GetExtension(nombreArchivo).Substring(1, 3);
+            SolicitudCambioLogica.ActualizarArchivo(new SolicitudCambio{Id = idSolicitud, Data = data, NombreArchivo = nombreArchivo, Extension = extension});
         }
 
         public static SolicitudCambio ObtenerArchivo(int idSolicitudCambio)

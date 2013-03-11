@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.CF.Site.Controladora;
 using TMD.CF.Site.Controladora.CF;
 using TMD.CF.Site.Util;
 using TMD.Entidades;
 
-namespace TMD.GC.Site.Vistas.LineaBase
+namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
     public partial class ActualizarLineaBase : System.Web.UI.Page
     {
@@ -24,13 +22,13 @@ namespace TMD.GC.Site.Vistas.LineaBase
                 || !Int32.TryParse(Request.QueryString["idFase"], out idFase) 
                 || !Int32.TryParse(Request.QueryString["lectura"], out lectura))
             {
-                    Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
             }
             else
             {
                 if (idProyecto == 0)
                 {
-                    Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                    Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
                 }
                 else
                 {
@@ -38,7 +36,7 @@ namespace TMD.GC.Site.Vistas.LineaBase
 
                     if (proyecto == null)
                     {
-                        Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+                        Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
                     }
                 }
             }
@@ -49,13 +47,14 @@ namespace TMD.GC.Site.Vistas.LineaBase
                 SesionFachada.ListaElementoConfiguracion = null;
                 SesionFachada.ListaUsuarioResponsable = LineaBaseControladora.UsuarioListaPorProyecto(idProyecto);
 
-                txtNombreProyecto.Text = proyecto.Nombre;
-
+                ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id",-1,proyecto.Id);
+                
                 if (idFase != 0)
                 {
                     ddlFase.DataSource = LineaBaseControladora.ListarFasePorProyecto(idProyecto,true);
                     ddlFase.SelectedValue = idFase.ToString();
                     ddlFase.Enabled = false;
+                    ddlProyecto.Enabled = false;
 
                     //CARGAR DATOS LINEA BASE
                     TMD.Entidades.LineaBase lineaBase =
@@ -274,7 +273,7 @@ namespace TMD.GC.Site.Vistas.LineaBase
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vistas/LineaBase/ListaLineaBase.aspx");
+            Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="ActualizarLineaBase.aspx.cs" Inherits="TMD.GC.Site.Vistas.LineaBase.ActualizarLineaBase" %>
+    CodeBehind="ActualizarLineaBase.aspx.cs" Inherits="TMD.CF.Site.Vistas.CF.LineaBase.ActualizarLineaBase" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -25,7 +25,8 @@
                         <td>
                             <label>
                                 Proyecto</label>
-                            <asp:TextBox ID="txtNombreProyecto" runat="server" ReadOnly="true"></asp:TextBox>
+                            <asp:DropDownList ID="ddlProyecto" runat="server" style="margin-left: 0px">
+                            </asp:DropDownList>
                         </td>
                         <td>
                             <label>

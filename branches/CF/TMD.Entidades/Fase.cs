@@ -10,7 +10,7 @@ namespace TMD.Entidades
         public int Id { get; set; }
         public String Nombre { get; set; }
         public String Descripcion { get; set; }
-
+        public List<ElementoConfiguracion> ElementosConfiguracion { get; set; }
         public LineaBase LineaBase { get; set; }
     }
 }
