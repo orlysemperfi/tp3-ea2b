@@ -25,6 +25,12 @@
           <AssociatedConnUserName />
           <FullPath>Data.sql</FullPath>
         </FileNode>
+        <FileNode Name="TABLA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>TABLA.sql</FullPath>
+        </FileNode>
         <FileNode Name="USP_SOLICITUD_CAMBIO_APROBAR_UPD.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
@@ -37,11 +43,29 @@
           <AssociatedConnUserName />
           <FullPath>USP_SOLICITUD_CAMBIO_INS.sql</FullPath>
         </FileNode>
+        <FileNode Name="USP_SOLICITUD_CAMBIO_SEL_ARCHIVO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_SOLICITUD_CAMBIO_SEL_ARCHIVO.sql</FullPath>
+        </FileNode>
         <FileNode Name="USP_SOLICITUD_CAMBIO_SEL_CODIGO.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>USP_SOLICITUD_CAMBIO_SEL_CODIGO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_SOLICITUD_CAMBIO_SEL_PROYECTO_LINEABASE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_SOLICITUD_CAMBIO_SEL_PROYECTO_LINEABASE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_SOLICITUD_CAMBIO_UPD_ARCHIVO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_SOLICITUD_CAMBIO_UPD_ARCHIVO.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
