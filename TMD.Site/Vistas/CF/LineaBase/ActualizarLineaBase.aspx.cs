@@ -275,5 +275,12 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
         {
             Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
         }
+
+        protected void ddlFase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SesionFachada.ListaElementoConfiguracion = null;
+            grvElementoConfiguracion.DataSource = null;
+            grvElementoConfiguracion.DataBind();
+        }
     }
 }

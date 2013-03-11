@@ -42,16 +42,7 @@ namespace TMD.CF.Site.Util
             }
             get { return Get<List<ElementoConfiguracion>>("_ListaECS_"); }
         }
-
-        public static Fase ListaFaseElementoConfiguracion
-        {
-            set
-            {
-                Set("_ListaEFaseCS_", value);
-            }
-            get { return Get<Fase>("_ListaECS_"); }
-        }
-
+        
         public static List<Usuario> ListaUsuarioResponsable
         {
             set
