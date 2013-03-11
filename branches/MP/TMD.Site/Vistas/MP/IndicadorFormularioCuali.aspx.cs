@@ -220,9 +220,8 @@ namespace TMD.MP.Site.Privado
             IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             if (e.CommandName == "Eliminar")
             {
-                
-                RemoverEscalaCualiSesion(Convert.ToInt32(e.CommandArgument));
-                
+                  RemoverEscalaCualiSesion(Convert.ToInt32(e.CommandArgument));
+                               
             }
             if (e.CommandName == "Editar")
             {
