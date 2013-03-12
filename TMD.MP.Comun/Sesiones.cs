@@ -159,5 +159,64 @@ namespace TMD.MP.Comun
         #endregion
 
         #endregion
+
+        #region "SolucionMejora"
+
+        private const String solucionMejoraListado = "solucionMejoraListado";
+        private const String solucionMejoraSeleccionada = "solucionMejoraSeleccionada";
+
+        #region "SolucionMejoraListado"
+
+        public static List<SolucionMejoraEntidad> SolucionMejoraListado
+        {
+            get
+            {
+                return (List<SolucionMejoraEntidad>)HttpContext.Current.Session[solucionMejoraListado];
+            }
+            set
+            {
+                HttpContext.Current.Session[solucionMejoraListado] = value;
+            }
+        }
+
+        public static bool SolucionMejoraListadoEsNulo()
+        {
+            return HttpContext.Current.Session[solucionMejoraListado] == null;
+        }
+
+        public static void SolucionMejoraListadoRemover()
+        {
+            HttpContext.Current.Session.Remove(solucionMejoraListado);
+        }
+
+        #endregion
+
+        #region "SolucionMejoraSeleccionada"
+
+        public static SolucionMejoraEntidad SolucionMejoraSeleccionada
+        {
+            get
+            {
+                return (SolucionMejoraEntidad)HttpContext.Current.Session[solucionMejoraSeleccionada];
+            }
+            set
+            {
+                HttpContext.Current.Session[solucionMejoraSeleccionada] = value;
+            }
+        }
+
+        public static bool SolucionMejoraSeleccionadaEsNula()
+        {
+            return (HttpContext.Current.Session[solucionMejoraSeleccionada] == null);
+        }
+
+        public static void SolucionMejoraSeleccionadaRemover()
+        {
+            HttpContext.Current.Session.Remove(solucionMejoraSeleccionada);
+        }
+
+        #endregion
+
+        #endregion
     }
 }
