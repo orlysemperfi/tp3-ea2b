@@ -11,22 +11,19 @@ using TMD.MP.LogicaNegocios.Implementacion;
 
 namespace TMD.MP.Site.Privado
 {
-    public partial class SolucionMejoraLista : System.Web.UI.Page
+    public partial class SolucionMejoraListado : System.Web.UI.Page
     {
         
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) {
-                CargarPropuesta();
                 CargarSolucionMejoraListado();
             }
         }
 
-        protected void CargarPropuesta() {
-            
-        }
 
         protected void CargarSolucionMejoraListado() {
+            
             SolucionMejoraEntidad oSolucionMejoraFiltro = new SolucionMejoraEntidad();
 
         }
@@ -46,7 +43,7 @@ namespace TMD.MP.Site.Privado
         {
             if (e.CommandName == "EditarSolucion") {
                
-            }else if(e.CommandName == "EliminarPropuesta"){
+            }else if(e.CommandName == "EliminarSolucion"){
                
             }
         }
