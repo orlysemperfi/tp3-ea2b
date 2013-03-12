@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.Util;
+using TMD.Core.Extension;
+using TMD.Entidades;
+using TMD.Core;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -11,7 +12,28 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                CargarControles();
+            }
+        }
 
+        private void CargarControles()
+        {
+            ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlLineaBase.EnlazarValorDefecto();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            grvOrdenCambio.DataSource =
+                OrdenCambioControladora.ListarPorProyectoLBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt());
+            grvOrdenCambio.DataBind();
+        }
+
+        protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
     }
 }

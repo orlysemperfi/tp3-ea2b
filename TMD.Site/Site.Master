@@ -47,6 +47,9 @@
                             <asp:MenuItem Text="Solicitud de Cambio" Selectable="False">
                                 <asp:MenuItem Text="Lista Solicitud de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaSolicitudCambio.aspx"/>
                             </asp:MenuItem>
+                            <asp:MenuItem Text="Orden Cambio" Selectable="False">
+                                <asp:MenuItem Text="Lista Orden de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaOrdenCambio.aspx"/>
+                            </asp:MenuItem>
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>
