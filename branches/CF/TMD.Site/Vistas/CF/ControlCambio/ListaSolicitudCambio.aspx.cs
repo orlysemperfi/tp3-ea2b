@@ -47,32 +47,38 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         void ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud()
         {
             MostrarControles(false, true, false, false,true);
+            ucSubirArchivoSolicitudCambio.Limpiar();
         }
 
         void ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud()
         {
             MostrarControles(false, true, false, false, true);
+            ucSubirArchivoSolicitudCambio.Limpiar();
         }
 
         void ucAprobarSolicitudCambio_EventoCanceloSolicitud()
         {
             MostrarControles(false, true, false, false, true);
+            ucAprobarSolicitudCambio.Limpiar();
         }
 
         void ucAprobarSolicitudCambio_EventoAproboSolicitud()
         {
             MostrarControles(false, true, false, false, true);
+            ucAprobarSolicitudCambio.Limpiar();
             btnBuscar_Click(null, null);
         }
 
         void ucRegistroSolicitudCambio_EventoCanceloSolicitud()
         {
             MostrarControles(false, true, false, false, true);
+            ucRegistroSolicitudCambio.Limpiar();
         }
 
         void ucRegistroSolicitudCambio_EventoGraboSolicitud()
         {
             MostrarControles(false, true, false, false, true);
+            ucRegistroSolicitudCambio.Limpiar();
             btnBuscar_Click(null, null);
         }
 
@@ -133,12 +139,12 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                 case "Ver":
                     ucRegistroSolicitudCambio.CargarSolicitudExistente(Convert.ToInt32(e.CommandArgument));
                     ucRegistroSolicitudCambio.Visible = true;
-                    pnlBusqueda.Visible = false;
+                    //pnlBusqueda.Visible = false;
                     break;
                 case "Cargar":
                     ucSubirArchivoSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
                     ucRegistroSolicitudCambio.Visible = false;
-                    pnlBusqueda.Visible = false;
+                    //pnlBusqueda.Visible = false;
                     ucAprobarSolicitudCambio.Visible = false;
                     ucSubirArchivoSolicitudCambio.Visible = true;
                     break;
@@ -146,7 +152,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     ucAprobarSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarSolicitudCambio.ApruebaSolicitud = true;
                     ucRegistroSolicitudCambio.Visible = false;
-                    pnlBusqueda.Visible = false;
+                    //pnlBusqueda.Visible = false;
                     ucAprobarSolicitudCambio.Visible = true;
                     ucSubirArchivoSolicitudCambio.Visible = false;
                     break;
@@ -154,7 +160,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     ucAprobarSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarSolicitudCambio.ApruebaSolicitud = false;
                     ucRegistroSolicitudCambio.Visible = false;
-                    pnlBusqueda.Visible = false;
+                    //pnlBusqueda.Visible = false;
                     ucAprobarSolicitudCambio.Visible = true;
                     ucSubirArchivoSolicitudCambio.Visible = false;
                     break;
