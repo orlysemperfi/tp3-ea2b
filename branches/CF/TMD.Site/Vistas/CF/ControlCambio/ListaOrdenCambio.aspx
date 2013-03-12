@@ -66,6 +66,21 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Codigo">
+                            <ItemTemplate>
+                                <%# Eval("InformeCambio.Id")%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Nombre">
+                            <ItemTemplate>
+                                <%# Eval("InformeCambio.Nombre")%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Fecha Registro">
+                            <ItemTemplate>
+                                <%# Convert.ToDateTime(Eval("FechaRegistro").ToString()).ToString("dd/MM/yyyy")%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Id" HeaderText="Codigo" />
                     </Columns>
                 </asp:GridView>
