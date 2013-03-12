@@ -22,7 +22,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
             List<OrdenCambio> listaOrdenCambio = new List<OrdenCambio>();
 
-            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LISTA_ORDEN_PROYECTO_BASE"))
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_ORDEN_CAMBIO_SEL_PROYECTO_LINEABASE"))
             {
                 DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, codigoProyecto);
                 DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, codigoLineaBase);
