@@ -49,6 +49,11 @@ namespace TMD.CF.Site.Controles
             OnEventoSubioArchivoSolicitud();
         }
 
+        public void Limpiar()
+        {
+            
+        }
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             OnEventoCanceloArchivoSolicitud();
