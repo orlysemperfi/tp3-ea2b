@@ -11,22 +11,30 @@ namespace TMD.CF.Site.Controles
 {
     public partial class SubirArchivoSolicitudCambio : System.Web.UI.UserControl
     {
-        public delegate void SubirArchivoSolicitudHandler();
+        public delegate void SubioArchivoSolicitudHandler();
+        public event SubioArchivoSolicitudHandler EventoSubioArchivoSolicitud;
 
-        public event SubirArchivoSolicitudHandler EventoSubirArchivoSolicitud;
+        public delegate void CancelarArchivoSolicitudHandler();
+        public event CancelarArchivoSolicitudHandler EventoCanceloArchivoSolicitud;
+
+        protected virtual void OnEventoSubioArchivoSolicitud()
+        {
+            SubioArchivoSolicitudHandler handler = EventoSubioArchivoSolicitud;
+            if (handler != null) handler();
+        }
+
+        protected virtual void OnEventoCanceloArchivoSolicitud()
+        {
+            CancelarArchivoSolicitudHandler handler = EventoCanceloArchivoSolicitud;
+            if (handler != null) handler();
+        }
 
         public int IdSolicitudCambio
         {
             get { return hidIdSolicitud.Value.ToInt(); }
             set { hidIdSolicitud.Value = value.ToString(); }
         }
-
-        protected virtual void OnEventoSubirArchivoSolicitud()
-        {
-            SubirArchivoSolicitudHandler handler = EventoSubirArchivoSolicitud;
-            if (handler != null) handler();
-        }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -38,7 +46,12 @@ namespace TMD.CF.Site.Controles
             String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
             SolicitudCambioControladora.ActualizarArchivo(IdSolicitudCambio, nombre, archivo);
 
-            OnEventoSubirArchivoSolicitud();
+            OnEventoSubioArchivoSolicitud();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            OnEventoCanceloArchivoSolicitud();
         }
     }
 }

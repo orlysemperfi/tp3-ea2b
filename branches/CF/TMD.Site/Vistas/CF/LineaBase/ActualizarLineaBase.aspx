@@ -8,11 +8,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Button ID="btnGrabar" runat="server" Text="Grabar" ValidationGroup="GrabarValidationGroup"
-        OnClientClick="javascript: return grabar();" OnClick="btnGrabar_Click" />
-    <asp:Button ID="btnCancelar" runat="server" Text="Salir" OnClick="btnCancelar_Click" ValidationGroup="None" />
 
-    <center>
 
     <asp:Panel ID="pnlMain" runat="server">
         <asp:HiddenField ID="hiddenIdLineaBase" runat="server" />
@@ -38,6 +34,13 @@
                                 ErrorMessage="La Fase es requerida." ToolTip="La Fase es requerida." ValidationGroup="GrabarValidationGroup"
                                 ValueToCompare="0" CssClass="failureNotification" Operator="NotEqual">*
                             </asp:CompareValidator>
+                        </td>
+                        <td>
+                            <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" 
+                                OnClientClick="javascript: return grabar();" Text="Grabar" 
+                                ValidationGroup="GrabarValidationGroup" />
+                            <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" 
+                                Text="Salir" ValidationGroup="None" />
                         </td>
                     </tr>
                 </table>
@@ -151,7 +154,6 @@
         </asp:UpdatePanel>
     </asp:Panel>
 
-    </center>
     <script type="text/javascript" language="javascript">
 
         function mostrarPopup() {

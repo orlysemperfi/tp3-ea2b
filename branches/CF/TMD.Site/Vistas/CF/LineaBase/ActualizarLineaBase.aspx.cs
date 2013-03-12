@@ -48,6 +48,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 SesionFachada.ListaUsuarioResponsable = LineaBaseControladora.UsuarioListaPorProyecto(idProyecto);
 
                 ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id",-1,proyecto.Id);
+                ddlProyecto.Enabled = false;
                 
                 if (idFase != 0)
                 {

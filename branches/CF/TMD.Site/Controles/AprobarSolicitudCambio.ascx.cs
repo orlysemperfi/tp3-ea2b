@@ -12,9 +12,18 @@ namespace TMD.CF.Site.Controles
         public delegate void AproboSolicitudHandler();
         public event AproboSolicitudHandler EventoAproboSolicitud;
 
+        public delegate void CancelarSolicitudHandler();
+        public event CancelarSolicitudHandler EventoCanceloSolicitud;
+
         protected virtual void OnEventoGraboSolicitud()
         {
             AproboSolicitudHandler handler = EventoAproboSolicitud;
+            if (handler != null) handler();
+        }
+
+        protected virtual void OnEventoCanceloSolicitud()
+        {
+            CancelarSolicitudHandler handler = EventoCanceloSolicitud;
             if (handler != null) handler();
         }
 
@@ -47,6 +56,11 @@ namespace TMD.CF.Site.Controles
             SolicitudCambioControladora.Aprobar(IdSolicitudCambio,IdEstado,txtMotivo.Text);
 
             OnEventoGraboSolicitud();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            OnEventoCanceloSolicitud();
         }
 
     }
