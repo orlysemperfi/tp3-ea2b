@@ -31,7 +31,7 @@
                     Propuesta:
                 </td>
                 <td class="textbox-espaciado">
-                    <asp:TextBox ID="tbxCodigo0" runat="server" CssClass="estilo_textbox" 
+                    <asp:TextBox ID="tbxPropuesta" runat="server" CssClass="estilo_textbox" 
                         Width="50px"></asp:TextBox>
                 </td>
                 <td class="textbox-espaciado">
