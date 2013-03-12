@@ -24,9 +24,8 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LISTA_ORDEN_PROYECTO_BASE"))
             {
-                DB.AddInParameter(command, "@FECHA_ENTREGA", DbType.Date, null);
-                DB.AddInParameter(command, "@CODIGO_PRIORIDAD", DbType.Int32, null);
-                DB.AddInParameter(command, "@CODIGO_INFORME", DbType.Int32, null);
+                DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, codigoProyecto);
+                DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, codigoLineaBase);
 
                 using (IDataReader reader = DB.ExecuteReader(command))
                 {
