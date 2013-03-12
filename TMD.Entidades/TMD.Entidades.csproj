@@ -93,6 +93,7 @@
     <Compile Include="Rutina.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="SolicitudMantenimiento.cs" />
+    <Compile Include="SolucionMejoraEntidad.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketCMDB.cs" />
     <Compile Include="TipoElementoConfiguracion.cs" />

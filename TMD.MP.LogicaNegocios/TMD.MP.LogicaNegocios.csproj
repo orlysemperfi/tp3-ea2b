@@ -40,13 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AreaLogica.cs" />
-    <Compile Include="IndicadorLogica.cs" />
-    <Compile Include="ProcesoLogica.cs" />
+    <Compile Include="Contrato\IAreaLogica.cs" />
+    <Compile Include="Contrato\IIndicadorLogica.cs" />
+    <Compile Include="Contrato\IProcesoLogica.cs" />
+    <Compile Include="Contrato\IPropuestaMejoraLogica.cs" />
+    <Compile Include="Contrato\ISolucionMejoraLogica.cs" />
+    <Compile Include="Contrato\IUnidadLogica.cs" />
+    <Compile Include="Contrato\IUsuarioLogica.cs" />
+    <Compile Include="Implementacion\AreaLogica.cs" />
+    <Compile Include="Implementacion\IndicadorLogica.cs" />
+    <Compile Include="Implementacion\ProcesoLogica.cs" />
+    <Compile Include="Implementacion\PropuestaMejoraLogica.cs" />
+    <Compile Include="Implementacion\SolucionMejoraLogica.cs" />
+    <Compile Include="Implementacion\UnidadLogica.cs" />
+    <Compile Include="Implementacion\UsuarioLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropuestaMejoraLogica.cs" />
-    <Compile Include="UnidadLogica.cs" />
-    <Compile Include="UsuarioLogica.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TMD.CF.AccesoDatos\TMD.CF.AccesoDatos.csproj">
@@ -60,6 +68,10 @@
     <ProjectReference Include="..\TMD.MP.AccesoDatos\TMD.MP.AccesoDatos.csproj">
       <Project>{442F6990-00E2-444C-B388-E0274435A977}</Project>
       <Name>TMD.MP.AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.MP.Comun\TMD.MP.Comun.csproj">
+      <Project>{33880C96-3055-42AB-9F69-85550D058261}</Project>
+      <Name>TMD.MP.Comun</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

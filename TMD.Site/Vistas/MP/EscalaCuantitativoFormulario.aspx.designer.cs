@@ -13,31 +13,22 @@ namespace TMD.MP.Site.Privado {
     public partial class EscalaCuantitativaFormulario {
         
         /// <summary>
-        /// form1 control.
+        /// txbSigno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txbSigno;
         
         /// <summary>
-        /// txbLimInferior control.
+        /// txbValor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbLimInferior;
-        
-        /// <summary>
-        /// txbLimSuperior control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txbLimSuperior;
+        protected global::System.Web.UI.WebControls.TextBox txbValor;
         
         /// <summary>
         /// ddlUnidad control.
