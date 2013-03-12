@@ -37,27 +37,27 @@
         </ul>
         </div>--%>
         <ul id="menu-bar">
-            <li class="current"><a href="Inicio.aspx">Inicio</a></li>
-            <li><a href="#">Indicadores</a>
+            <li id="lnkIndicadores" runat="server" class="current"><a href="#">Indicadores</a>
             <ul>
             <li><a href="IndicadorListado.aspx">Actualizar Información</a></li>
             </ul>
             </li>
-            <li><a href="#">Propuestas</a>
+            <li id="lnkPropuestas" runat="server"><a href="#">Propuestas</a>
             <ul>
             <li><a href="PropuestaMejoraListado.aspx">Actualizar Información</a></li>
-            <li><a href="#">Aprobar Propuesta</a></li>
+            <li><a href="PropuestaMejoraAprobar.aspx">Aprobar Propuesta</a></li>
             <li><a href="#">Mandar a Desarrollo</a></li>
             </ul>
             </li>
-            <li><a href="#">Soluciones</a>
+            <li id="lnkSoluciones" runat="server"><a href="#">Soluciones</a>
             <ul>
             <li><a href="#">Actualizar Información</a></li>
             </ul>
             </li>
-            <li><a href="#">Planes</a></li>
+            <li id="lnkPilotos" runat="server"><a href="#">Pilotos</a></li>
+            <%--<li><a href="#">Planes</a></li>
             <li><a href="#">Seguimiento</a></li>
-            <li><a href="#">Lecciones Aprendidas</a></li>
+            <li><a href="#">Lecciones Aprendidas</a></li>--%>
         </ul>      
         <div class="contenedor-pagina">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />

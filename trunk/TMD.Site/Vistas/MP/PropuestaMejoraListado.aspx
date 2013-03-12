@@ -7,6 +7,10 @@
         function RefreshUpdatePanel() {
             __doPostBack('<%= tbxPaginaActual.ClientID %>', '');
         };
+        function showConfirmationMessage(msg) {
+            var resp = confirm(msg);
+            return resp;
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -65,7 +69,7 @@
         <table id="tblPropuestaMejoraListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>                    
-                    <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" CssClass="tabla-grilla" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="4" DataSource='<%#ObtenerPropuestaMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPropuestaMejoraListado_RowCommand">
+                    <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" CssClass="tabla-grilla" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPropuestaMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPropuestaMejoraListado_RowCommand">
                         <HeaderStyle CssClass="tabla-grilla-cabecera" />
                         <RowStyle CssClass="tabla-grilla-filas" />
                         <Columns>
@@ -89,13 +93,13 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Solicitante">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblSolicitante" runat="server" Text='<%#Eval("CODIGO_RESPONSABLE") %>' />
+                                    <asp:Label ID="lblSolicitante" runat="server" Text='<%#Eval("NOMBRE_RESPONSABLE") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="150px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Estado">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("CODIGO_ESTADO").ToString()=="1" ? "Registrada": Eval("CODIGO_ESTADO").ToString()=="2" ? "Aprobada": Eval("CODIGO_ESTADO").ToString()=="3" ? "Rechazada": "En Desarrollo" %>' />
+                                    <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("NOMBRE_ESTADO") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="100px" />
                             </asp:TemplateField>
@@ -113,7 +117,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPropuesta" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link" Enabled='<%# Eval("CODIGO_ESTADO").ToString()=="1" ? true : false %>'></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPropuesta" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link" OnClientClick="if(showConfirmationMessage('¿Desea borrar la propuesta?')==false){return false;}"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

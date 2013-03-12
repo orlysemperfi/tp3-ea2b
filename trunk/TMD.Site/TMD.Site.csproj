@@ -104,6 +104,10 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
     <Content Include="Styles\tmd-mp.css" />
+    <Content Include="Vistas\MP\IndicadorFormularioCuali.aspx" />
+    <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
+    <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
     <Content Include="Vistas\SD\NuevaAtencion.aspx" />
@@ -174,7 +178,6 @@
     <Content Include="Vistas\LineaBase\ListaLineaBase.aspx" />
     <Content Include="Vistas\MP\EscalaCualitativoFormulario.aspx" />
     <Content Include="Vistas\MP\EscalaCuantitativoFormulario.aspx" />
-    <Content Include="Vistas\MP\IndicadorFormulario.aspx" />
     <Content Include="Vistas\MP\IndicadorListado.aspx" />
     <Content Include="Vistas\MP\Inicio.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraFormulario.aspx" />
@@ -225,6 +228,34 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Vistas\MP\IndicadorFormularioCuali.aspx.cs">
+      <DependentUpon>IndicadorFormularioCuali.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuali.aspx.designer.cs">
+      <DependentUpon>IndicadorFormularioCuali.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuanti.aspx.cs">
+      <DependentUpon>IndicadorFormularioCuanti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuanti.aspx.designer.cs">
+      <DependentUpon>IndicadorFormularioCuanti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.cs">
+      <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.cs">
+      <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.designer.cs">
+      <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\SD\Atenciones.aspx.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -248,11 +279,6 @@
     </Compile>
     <Compile Include="Controladora\Base.cs" />
     <Compile Include="Controladora\LineaBaseControladora.cs" />
-    <Compile Include="Controladora\MP\AreaControlador.cs" />
-    <Compile Include="Controladora\MP\IndicadorControlador.cs" />
-    <Compile Include="Controladora\MP\ProcesoControlador.cs" />
-    <Compile Include="Controladora\MP\PropuestaMejoraControlador.cs" />
-    <Compile Include="Controladora\MP\UsuarioControlador.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,13 +445,6 @@
     </Compile>
     <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.designer.cs">
       <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\IndicadorFormulario.aspx.cs">
-      <DependentUpon>IndicadorFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\IndicadorFormulario.aspx.designer.cs">
-      <DependentUpon>IndicadorFormulario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\IndicadorListado.aspx.cs">
       <DependentUpon>IndicadorListado.aspx</DependentUpon>

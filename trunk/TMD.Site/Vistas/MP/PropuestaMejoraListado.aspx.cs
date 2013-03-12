@@ -4,16 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.MP.Controlador;
 using TMD.Entidades;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
 
 namespace TMD.MP.Site.Privado
 {
     public partial class PropuestaMejoraLista : System.Web.UI.Page
     {
-        public PropuestaMejoraControlador propuestaMejoraControlador = new PropuestaMejoraControlador();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) {
@@ -24,12 +23,13 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarTipoPropuesta() {
             ddlTipo.Items.Add(new ListItem("[Todos]", ""));
-            ddlTipo.Items.Add(new ListItem("Problema", "Problema"));
-            ddlTipo.Items.Add(new ListItem("Mejora", "Mejora"));
+            ddlTipo.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_PROBLEMA, Constantes.TIPO_PROPUESTA_PROBLEMA));
+            ddlTipo.Items.Add(new ListItem(Constantes.TIPO_PROPUESTA_MEJORA, Constantes.TIPO_PROPUESTA_MEJORA));
             ddlTipo.SelectedIndex = 0;
         }
 
-        protected void CargarPropuestaMejoraListado() { 
+        protected void CargarPropuestaMejoraListado() {
+            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance(); 
             PropuestaMejoraEntidad oPropuestaMejoraFiltro = new PropuestaMejoraEntidad();
 
             if (tbxCodigo.Text != null && tbxCodigo.Text != string.Empty)
@@ -40,7 +40,7 @@ namespace TMD.MP.Site.Privado
                 oPropuestaMejoraFiltro.fecha_Registro_Fin = Convert.ToDateTime(tbxFechaFin.Text.ToString());
             
             oPropuestaMejoraFiltro.tipo_Propuesta = ddlTipo.SelectedItem.Value;
-            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = propuestaMejoraControlador.ObtenerPropuestaMejoraListadoPorFiltros(oPropuestaMejoraFiltro);
+            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = oPropuestaMejoraLogica.ObtenerPropuestaMejoraListadoPorFiltros(oPropuestaMejoraFiltro);
             Sesiones.PropuestaMejoraListadoRemover();
             Sesiones.PropuestaMejoraListado = oPropuestaMejoraColeccion;
             PageIndexChanging();
@@ -147,7 +147,7 @@ namespace TMD.MP.Site.Privado
             else
             {
                 divMensaje.Visible = true;
-                lblMensaje.Text = "No se encontró propuestas de mejora";
+                lblMensaje.Text = Mensajes.Mensaje_No_Propuesta_Mejora;
                 tblPropuestaMejoraListado.Visible = false;
                 divLinea.Visible = false;
                 tblPaginacion.Visible = false;
@@ -156,26 +156,25 @@ namespace TMD.MP.Site.Privado
 
         protected void gvwPropuestaMejoraListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            
+            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
             if (e.CommandName == "EditarPropuesta") {
-                PropuestaMejoraEntidad oPropuestaMejora = propuestaMejoraControlador.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
+                PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
                 Sesiones.PropuestaMejoraSeleccionada = oPropuestaMejora;
-                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario+"?Action="+Constantes.ACTION_UPDATE,true);
+                if(oPropuestaMejora.codigo_Estado == Convert.ToInt32( Constantes.ESTADO_PROPUESTA.REGISTRADA))
+                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario+"?Action="+Constantes.ACTION_UPDATE,true);
+                else
+                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
             }else if(e.CommandName == "EliminarPropuesta"){
-                PropuestaMejoraEntidad oPropuestaMejora = propuestaMejoraControlador.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
-                String strMensaje=propuestaMejoraControlador.BorrarPropuestaMejora(oPropuestaMejora);
-                if (strMensaje != null)
-                {
+                PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
+                String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
+                if (strMensaje != null){
                     lblMensajeError.Text = strMensaje;
                 }
-
+                else {
+                    CargarPropuestaMejoraListado();                
+                }                    
             }
-        }
-
-        protected void BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
-        {
-            oPropuestaMejora.codigo_Estado = 4;
-            propuestaMejoraControlador.ActualizarEstadoPropuestaMejora(oPropuestaMejora);
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
         }
 
         protected void ibtnAgregarPropuesta_Click(object sender, EventArgs e)

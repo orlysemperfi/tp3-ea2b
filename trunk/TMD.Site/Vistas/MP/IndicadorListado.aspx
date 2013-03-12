@@ -60,15 +60,15 @@
             <tr>
                 <td>                    
                     <asp:GridView ID="gvwIndicadorListado" runat="server" CssClass="tabla-grilla" 
-                        Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="2" 
-                        DataSource='<%#ObtenerIndicadorListado() %>' BorderWidth="0px" 
-                        BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand">
+                        Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
+                        DataSource='<%#ObtenerIndicadorListado()%>' BorderWidth="0px" 
+                        BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand" >
                         <HeaderStyle CssClass="tabla-grilla-cabecera" />
                         <RowStyle CssClass="tabla-grilla-filas" />
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO","{0:000}") %>' />
+                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
@@ -86,13 +86,19 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Tipo">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblTipo" runat="server" Text='<%#Eval("TIPO") %>' />
+                                    <asp:Label ID="lblTipo" runat="server" Text='<%#ObtenerDescTipoIndicador(Eval("TIPO").ToString())%>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Left" Width="50px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>                           
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Inactivar" CommandName="InactivarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
@@ -143,7 +149,10 @@
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnAgregarIndicador" runat="server" OnClick="ibtnAgregarIndicador_Click" CssClass="estilo_boton" Text="Agregar"></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnAgregarIndicadorCuali" runat="server" OnClick="ibtnAgregarIndicadorCuali_Click" CssClass="estilo_boton" Text="Agregar Cualitativo"></asp:LinkButton>
+                </td>
+                 <td>
+                    <asp:LinkButton ID="lbtnAgregarIndicadorCuanti" runat="server" OnClick="ibtnAgregarIndicadorCuanti_Click" CssClass="estilo_boton" Text="Agregar Cuantitativo"></asp:LinkButton>
                 </td>
                 <td class="boton-espaciado">
                     <asp:LinkButton ID="lbtnSalir" runat="server" OnClick="ibtnSalir_Click" CssClass="estilo_boton" Text="Salir"></asp:LinkButton>
@@ -167,7 +176,8 @@
         <asp:AsyncPostBackTrigger ControlID="tbxPaginaActual" />
         <asp:AsyncPostBackTrigger ControlID="lbtnDerecha" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnDerechaTodo" EventName="Click" />
-        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicador" EventName="Click" />
+        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicadorCuali" EventName="Click" />
+        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicadorCuanti" EventName="Click" />
     </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

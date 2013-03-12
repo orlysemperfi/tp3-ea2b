@@ -17,41 +17,32 @@ namespace TMD.MP.Site.Privado
                 UsuarioEntidad oUsuario = Sesiones.UsuarioLogueado;
                 if(oUsuario!=null)
                     lblUsuario.Text = "Bienvenido: " + oUsuario.codigo_Usuario;
-                //CargarMenu();
+                CargarMenu();
             }
         }
 
         protected void CargarMenu() {
             string currentURL = Request.Url.ToString();
-            ////if (!(currentURL.Contains(Paginas.TMD_MP_Inicio.Replace("~", ""))))
-            ////{
-            ////    lnkInicio.Attributes.Remove("class");                
-            ////}
-            ////else
-            ////{
-            ////    lnkInicio.Attributes.Remove("class");
-            ////    lnkInicio.Attributes.Add("class", "active");
-            ////}
 
-            ////if (!(currentURL.Contains(Paginas.TMD_MP_PropuestaMejoraListado.Replace("~", "")) || currentURL.Contains(Paginas.TMD_MP_PropuestaMejoraFormulario.Replace("~", ""))))
-            ////{
-            ////    lnkPropuestas.Attributes.Remove("class");
-            ////}
-            ////else
-            ////{
-            ////    lnkPropuestas.Attributes.Remove("class");
-            ////    lnkPropuestas.Attributes.Add("class", "active");
-            ////}
+            if (!(currentURL.Contains(Paginas.TMD_MP_PropuestaMejoraListado.Replace("~", "")) || currentURL.Contains(Paginas.TMD_MP_PropuestaMejoraFormulario.Replace("~", "")) || currentURL.Contains(Paginas.TMD_MP_PropuestaMejoraAprobar.Replace("~", ""))))
+            {
+                lnkPropuestas.Attributes.Remove("class");
+            }
+            else
+            {
+                lnkPropuestas.Attributes.Remove("class");
+                lnkPropuestas.Attributes.Add("class", "current");
+            }
 
-            ////if (!(currentURL.Contains(Paginas.TMD_MP_IndicadorListado.Replace("~", "")) || currentURL.Contains(Paginas.TMD_MP_IndicadorFormulario.Replace("~", ""))))
-            ////{
-            ////    lnkIndicadores.Attributes.Remove("class");
-            ////}
-            ////else
-            ////{
-            ////    lnkIndicadores.Attributes.Remove("class");
-            ////    lnkIndicadores.Attributes.Add("class", "active");
-            ////}
+            if (!(currentURL.Contains(Paginas.TMD_MP_IndicadorListado.Replace("~", "")) || currentURL.Contains(Paginas.TMD_MP_IndicadorFormularioCuali.Replace("~", "")) || currentURL.Contains(Paginas.TMD_MP_IndicadorFormularioCuanti.Replace("~", ""))))
+            {
+                lnkIndicadores.Attributes.Remove("class");
+            }
+            else
+            {
+                lnkIndicadores.Attributes.Remove("class");
+                lnkIndicadores.Attributes.Add("class", "current");
+            }
         }
 
         protected void lbtnCerrarSesion_Click(object sender, EventArgs e)

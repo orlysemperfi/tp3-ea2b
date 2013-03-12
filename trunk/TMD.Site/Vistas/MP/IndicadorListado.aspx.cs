@@ -4,16 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.MP.Controlador;
 using TMD.Entidades;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
 
 namespace TMD.MP.Site.Privado
 {
     public partial class IndicadoresListado : System.Web.UI.Page
     {
-        public IndicadorControlador indicadorControlador = new IndicadorControlador();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -28,43 +27,46 @@ namespace TMD.MP.Site.Privado
         protected void CargarTipoIndicador()
         {
             ddlTipo.Items.Add(new ListItem("[Todos]", "-1"));
-            ddlTipo.Items.Add(new ListItem("Cualitativo", "0"));
-            ddlTipo.Items.Add(new ListItem("Cuantitativo", "1"));
+            ddlTipo.Items.Add(new ListItem(ObtenerDescTipoIndicador("0"), "0"));
+            ddlTipo.Items.Add(new ListItem(ObtenerDescTipoIndicador("1"), "1"));
             ddlTipo.SelectedIndex = 0;
         }
 
         protected void CargarArea()
         {
-            ddlArea.Items.Add(new ListItem("[Todas]", "0"));
-            ddlArea.Items.Add(new ListItem("Area 1", "1"));
-            ddlArea.Items.Add(new ListItem("Area 2", "2"));
-            ddlArea.Items.Add(new ListItem("Area 3", "3"));
-            ddlArea.SelectedIndex = 0;
+            IAreaLogica oAreaLogica = AreaLogica.getInstance();
+            ddlArea.DataSource = oAreaLogica.ObtenerListaAreaTodas();
+            ddlArea.DataTextField = "DESCRIPCION";
+            ddlArea.DataValueField = "CODIGO";
+            ddlArea.DataBind();
+            ddlArea.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
 
         protected void CargarProceso()
         {
-            ddlProceso.Items.Add(new ListItem("[Todos]", "0"));
-            ddlProceso.Items.Add(new ListItem("Proceso 1", "1"));
-            ddlProceso.Items.Add(new ListItem("Proceso 2", "2"));
-            ddlProceso.Items.Add(new ListItem("Proceso 3", "3"));
-            ddlProceso.SelectedIndex = 0;
+            IProcesoLogica oProcesoLogica = ProcesoLogica.getInstance();
+            List<ProcesoEntidad> oProcesoColeccion = oProcesoLogica.ObtenerListaProcesoTodas();
+            ddlProceso.DataSource = oProcesoColeccion;
+            ddlProceso.DataTextField = "NOMBRE";
+            ddlProceso.DataValueField = "CODIGO";
+            ddlProceso.DataBind();
+            ddlProceso.Items.Insert(0, new ListItem("[Todos]", "0"));
         }
 
         protected void CargarIndicadorListado()
         {
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
             IndicadorEntidad oIndicadorFiltro = new IndicadorEntidad();
 
             if (tbxNombre.Text != null && tbxNombre.Text != string.Empty)
                 oIndicadorFiltro.nombre = tbxNombre.Text.ToString();
-            if(ddlTipo.SelectedIndex != 0)
-                oIndicadorFiltro.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);
+                oIndicadorFiltro.tipo = Convert.ToInt32(ddlTipo.SelectedItem.Value);          
             if (ddlArea.SelectedIndex != 0)
                 oIndicadorFiltro.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
             if (ddlProceso.SelectedIndex != 0)
                 oIndicadorFiltro.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
 
-            List<IndicadorEntidad> oIndicadorColeccion = indicadorControlador.ObtenerIndicadorListadoPorFiltros(oIndicadorFiltro);
+            List<IndicadorEntidad> oIndicadorColeccion = oIndicadorLogica.ObtenerIndicadorListadoPorFiltros(oIndicadorFiltro);
             Sesiones.IndicadorListadoRemover();
             Sesiones.IndicadorListado = oIndicadorColeccion;
             PageIndexChanging();
@@ -182,37 +184,65 @@ namespace TMD.MP.Site.Privado
 
         protected void gvwIndicadorListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "EliminarIndicador")
+            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+            if (e.CommandName == "InactivarIndicador")
             {
-                IndicadorEntidad oIndicador = null; // indicadorControlador.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
 
-                if (oIndicador.codigo == 1)
+                IndicadorEntidad oIndicador = oIndicadorLogica.ObtenerIndicadorPorCodigo(Convert.ToInt32(e.CommandArgument));
+
+                if (oIndicador.codigo !=null)
                 {
-                    BorrarIndicador(oIndicador);
+                    oIndicadorLogica.InactivarIndicador(oIndicador);
+                    CargarIndicadorListado();
                 }
                 else
                 {
                     lblMensajeError.Text = "El indicador no puede ser borrado.";
                 }
             }
+            if (e.CommandName == "EditarIndicador")
+            {
+                IndicadorEntidad oIndicador = oIndicadorLogica.ObtenerIndicadorPorCodigo(Convert.ToInt32(e.CommandArgument));
+                
+                if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
+                    Sesiones.IndicadorSeleccionado = oIndicador;
+                    Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_UPDATE,true);
+                    
+                }
+
+                if (oIndicador.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO) {
+                    Sesiones.IndicadorSeleccionado = oIndicador;
+                    Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_UPDATE,true);
+                }
+
+            }
         }
 
-        protected void BorrarIndicador(IndicadorEntidad oIndicador)
-        {
-            oIndicador.codigo = 4;
-            //indicadorControlador.ActualizarEstadoPropuestaMejora(oIndicador);
-            Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
-        }
-
-        protected void ibtnAgregarIndicador_Click(object sender, EventArgs e)
+        protected void ibtnAgregarIndicadorCuali_Click(object sender, EventArgs e)
         {
             Sesiones.IndicadorSeleccionadoRemover();
-            Response.Redirect(Paginas.TMD_MP_IndicadorFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
+            Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
+            Sesiones.IndicadorSeleccionado.lstEscalaCualitativo = new List<EscalaCualitativoEntidad>();
+            Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_INSERT, true);
+        }
+
+        protected void ibtnAgregarIndicadorCuanti_Click(object sender, EventArgs e)
+        {
+            Sesiones.IndicadorSeleccionadoRemover();
+            Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
+            Sesiones.IndicadorSeleccionado.lstEscalaCuantitativo = new List<EscalaCuantitativoEntidad>();
+            Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
         protected void ibtnSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_Inicio, true);
         }
+        public String ObtenerDescTipoIndicador(String tipo) {
+            return Utilitario.ObtenerDescTipoIndicador(tipo);
+        }
+
+
+
     }
 }
