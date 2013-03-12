@@ -60,7 +60,7 @@ namespace TMD.CF.Site.Controles
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            SolicitudCambioControladora.Aprobar(IdSolicitudCambio,IdEstado,txtMotivo.Text);
+            new SolicitudCambioControladora().Aprobar(IdSolicitudCambio, IdEstado, txtMotivo.Text);
 
             OnEventoGraboSolicitud();
         }

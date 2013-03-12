@@ -37,7 +37,7 @@ namespace TMD.CF.Site.Controles
 
         public void CargarSolicitudExistente(int idSolicitudCambio)
         {
-            SolicitudCambio solicitud = SolicitudCambioControladora.ObtenerPorId(idSolicitudCambio);
+            SolicitudCambio solicitud = new SolicitudCambioControladora().ObtenerPorId(idSolicitudCambio);
 
             if (solicitud != null)
             {
@@ -45,12 +45,12 @@ namespace TMD.CF.Site.Controles
                 txtNombre.Text = solicitud.Nombre;
 
                 int idProyecto = solicitud.ProyectoFase.Proyecto.Id;
-                ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
+                ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
                 int lineaBaseId = solicitud.LineaBase.Id;
-                ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
-                ddlElementoConfiguracion.EnlazarDatos(LineaBaseControladora.ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id",-1,solicitud.ElementoConfiguracion.Id);
-                ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(), "Nombre", "Id", -1, solicitud.Estado);
-                ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(), "Nombre", "Id",-1,solicitud.Prioridad);
+                ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
+                ddlElementoConfiguracion.EnlazarDatos(new LineaBaseControladora().ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id", -1, solicitud.ElementoConfiguracion.Id);
+                ddlEstado.EnlazarDatos(new SolicitudCambioControladora().ListarEstado(), "Nombre", "Id", -1, solicitud.Estado);
+                ddlPrioridad.EnlazarDatos(new SolicitudCambioControladora().ListarPrioridad(), "Nombre", "Id", -1, solicitud.Prioridad);
 
                 pnlSolicitudCambio.Enabled = false;
             }
@@ -69,28 +69,28 @@ namespace TMD.CF.Site.Controles
 
         public void CargarsolicitudNueva()
         {
-            ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlElementoConfiguracion.EnlazarValorDefecto();
-            ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(),"Nombre","Id",-1,Constantes.EstadoPendiente);
-            ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(),"Nombre","Id");
+            ddlEstado.EnlazarDatos(new SolicitudCambioControladora().ListarEstado(), "Nombre", "Id", -1, Constantes.EstadoPendiente);
+            ddlPrioridad.EnlazarDatos(new SolicitudCambioControladora().ListarPrioridad(), "Nombre", "Id");
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlElementoConfiguracion.EnlazarDatos(LineaBaseControladora.ElementoConfiguracionListarPorLineaBase(ddlLineaBase.SelectedValue.ToInt()), "NombreEcs", "Id");
+            ddlElementoConfiguracion.EnlazarDatos(new LineaBaseControladora().ElementoConfiguracionListarPorLineaBase(ddlLineaBase.SelectedValue.ToInt()), "NombreEcs", "Id");
         }
         
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
             SolicitudCambio solicitudCambio = CrearSolicitud();
 
-            SolicitudCambioControladora.Agregar(solicitudCambio);
+            new SolicitudCambioControladora().Agregar(solicitudCambio);
 
             OnEventoGraboSolicitud();
 

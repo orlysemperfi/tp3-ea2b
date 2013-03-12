@@ -44,7 +44,7 @@ namespace TMD.CF.Site.Controles
         {
             byte[] archivo = fileUpArchivo.FileBytes;
             String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
-            SolicitudCambioControladora.ActualizarArchivo(IdSolicitudCambio, nombre, archivo);
+            new SolicitudCambioControladora().ActualizarArchivo(IdSolicitudCambio, nombre, archivo);
 
             OnEventoSubioArchivoSolicitud();
         }

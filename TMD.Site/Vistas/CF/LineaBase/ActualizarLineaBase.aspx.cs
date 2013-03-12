@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using TMD.CF.Site.Controladora.CF;
 using TMD.CF.Site.Util;
 using TMD.Entidades;
+using TMD.Strings;
 
 namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
@@ -22,21 +23,21 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 || !Int32.TryParse(Request.QueryString["idFase"], out idFase) 
                 || !Int32.TryParse(Request.QueryString["lectura"], out lectura))
             {
-                Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                Response.Redirect(Pagina.LineaBase);
             }
             else
             {
                 if (idProyecto == 0)
                 {
-                    Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                    Response.Redirect(Pagina.LineaBase);
                 }
                 else
                 {
-                    proyecto = LineaBaseControladora.ProyectoObtenerPorId(idProyecto);
+                    proyecto = new LineaBaseControladora().ProyectoObtenerPorId(idProyecto);
 
                     if (proyecto == null)
                     {
-                        Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                        Response.Redirect(Pagina.LineaBase);
                     }
                 }
             }
@@ -45,21 +46,21 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             {
                 pnlECS.Visible = false;
                 SesionFachada.ListaElementoConfiguracion = null;
-                SesionFachada.ListaUsuarioResponsable = LineaBaseControladora.UsuarioListaPorProyecto(idProyecto);
+                SesionFachada.ListaUsuarioResponsable = new LineaBaseControladora().UsuarioListaPorProyecto(idProyecto);
 
-                ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id",-1,proyecto.Id);
+                ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, proyecto.Id);
                 ddlProyecto.Enabled = false;
                 
                 if (idFase != 0)
                 {
-                    ddlFase.DataSource = LineaBaseControladora.ListarFasePorProyecto(idProyecto,true);
+                    ddlFase.DataSource = new LineaBaseControladora().ListarFasePorProyecto(idProyecto, true);
                     ddlFase.SelectedValue = idFase.ToString();
                     ddlFase.Enabled = false;
                     ddlProyecto.Enabled = false;
 
                     //CARGAR DATOS LINEA BASE
                     TMD.Entidades.LineaBase lineaBase =
-                        LineaBaseControladora.LineaBaseObtenerPorProyectoFase(idProyecto, idFase);
+                        new LineaBaseControladora().LineaBaseObtenerPorProyectoFase(idProyecto, idFase);
 
                     hiddenIdLineaBase.Value = lineaBase.Id.ToString();
                     txtNombre.Text = lineaBase.Nombre;
@@ -67,7 +68,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                     
                     if (lineaBase.LineaBaseECS != null)
                     {
-                        List<ElementoConfiguracion> lista = LineaBaseControladora.ElementoConfiguracionListarPorFase(idFase);
+                        List<ElementoConfiguracion> lista = new LineaBaseControladora().ElementoConfiguracionListarPorFase(idFase);
 
                         lineaBase.LineaBaseECS.ForEach(x => 
                             {
@@ -88,7 +89,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 }
                 else
                 {
-                    ddlFase.DataSource = LineaBaseControladora.ListarFasePorProyecto(idProyecto,false);
+                    ddlFase.DataSource = new LineaBaseControladora().ListarFasePorProyecto(idProyecto, false);
                 }
 
                 ddlFase.DataValueField = "Id";
@@ -117,7 +118,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             if (lista == null)
             {
-                lista = LineaBaseControladora.ElementoConfiguracionListarPorFase(Convert.ToInt32(ddlFase.SelectedValue));
+                lista = new LineaBaseControladora().ElementoConfiguracionListarPorFase(Convert.ToInt32(ddlFase.SelectedValue));
 
                 SesionFachada.ListaElementoConfiguracion = lista;
             }
@@ -127,9 +128,6 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             pnlECS.Visible = true;
             btnAgregarECS.Enabled = false;
-
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "_Mostrar_", "mostrarPopup();", true);
-            //ModalPopupExtender1.Show();
         }
 
         protected void btnSeleccionar_Click(object sender, EventArgs e)
@@ -155,8 +153,6 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             pnlECS.Visible = false;
             btnAgregarECS.Enabled = true;
-
-            //ModalPopupExtender1.Hide();
         }
 
         private void GuardarIndiceResponsable()
@@ -241,10 +237,10 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             if (lectura == 0 && idFase == 0)//NUEVO
             {
-                ProyectoFase proyectoFase = 
-                    LineaBaseControladora.ProyectoFaseObtenerPorFaseProyecto(idProyecto, Convert.ToInt32(ddlFase.SelectedValue));
+                ProyectoFase proyectoFase =
+                    new LineaBaseControladora().ProyectoFaseObtenerPorFaseProyecto(idProyecto, Convert.ToInt32(ddlFase.SelectedValue));
 
-                LineaBaseControladora.LineaBaseAgregar(
+                new LineaBaseControladora().LineaBaseAgregar(
                     new TMD.Entidades.LineaBase
                     {
                         Id = 0,
@@ -259,7 +255,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             }
             else//ACTUALIZAR
             {
-                LineaBaseControladora.LineaBaseActualizar(
+                new LineaBaseControladora().LineaBaseActualizar(
                     new TMD.Entidades.LineaBase
                     {
                         Id = Convert.ToInt32(hiddenIdLineaBase.Value),
@@ -274,9 +270,9 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+            Response.Redirect(Pagina.LineaBase);
         }
-
+        
         protected void ddlFase_SelectedIndexChanged(object sender, EventArgs e)
         {
             SesionFachada.ListaElementoConfiguracion = null;
