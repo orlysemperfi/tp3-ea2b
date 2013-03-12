@@ -79,6 +79,7 @@
     <Compile Include="LineaBase.cs" />
     <Compile Include="LineaBaseElementoConfiguracion.cs" />
     <Compile Include="Norma.cs" />
+    <Compile Include="OrdenCambio.cs" />
     <Compile Include="OrdenTrabajo.cs" />
     <Compile Include="Parametro.cs" />
     <Compile Include="PerfilRRHH.cs" />
