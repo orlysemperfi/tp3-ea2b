@@ -34,5 +34,13 @@ namespace TMD.MP.Comun
             else
                 return DateTime.Now;
         }
+        public static String ObtenerDescTipoIndicador(String tipo){
+            if (tipo.Equals("0"))
+                return "Cualitativo";
+            if (tipo.Equals("1"))
+                return "Cuantitativo";
+
+            return "No existe";
+        }
     }
 }
