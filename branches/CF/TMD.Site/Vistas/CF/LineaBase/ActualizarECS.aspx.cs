@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using TMD.CF.Site.Controladora.CF;
 using TMD.Entidades;
 using TMD.CF.Site.Util;
+using TMD.Strings;
 
 namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
@@ -20,21 +21,21 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             if (!Int32.TryParse(Request.QueryString["idProyecto"], out idProyecto)
                 || !Int32.TryParse(Request.QueryString["idFase"], out idFase))
             {
-                Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                Response.Redirect(Pagina.LineaBase);
             }
             else
             {
                 if (idProyecto == 0)
                 {
-                    Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                    Response.Redirect(Pagina.LineaBase);
                 }
                 else
                 {
-                    proyecto = LineaBaseControladora.ProyectoObtenerPorId(idProyecto);
+                    proyecto = new LineaBaseControladora().ProyectoObtenerPorId(idProyecto);
 
                     if (proyecto == null)
                     {
-                        Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                        Response.Redirect(Pagina.LineaBase);
                     }
                 }
             }
@@ -42,7 +43,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             if (!Page.IsPostBack)
             {
                 TMD.Entidades.LineaBase lineaBase =
-                        LineaBaseControladora.LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase,SesionFachada.Usuario.Id);
+                        new LineaBaseControladora().LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
 
                 hiddenIdLineaBase.Value = lineaBase.Id.ToString();
                 txtNombre.Text = lineaBase.Nombre;
@@ -53,12 +54,12 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
                 txtNombreProyecto.Text = proyecto.Nombre;
 
-                List<Fase> listaFase = LineaBaseControladora.ListarFasePorProyecto(idProyecto, true);
+                List<Fase> listaFase = new LineaBaseControladora().ListarFasePorProyecto(idProyecto, true);
                 fase = listaFase.FirstOrDefault(x => x.Id == idFase);
 
                 if (fase == null)
                 {
-                    Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+                    Response.Redirect(Pagina.LineaBase);
                 }
                 else
                 {
@@ -70,7 +71,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vistas/CF/LineaBase/ListaLineaBase.aspx");
+            Response.Redirect(Pagina.LineaBase);
         }
 
         protected void btnCargar_Click(object sender, EventArgs e)
@@ -78,10 +79,10 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             byte[] archivo = fileUpElemento.FileBytes;
             String nombre = System.IO.Path.GetFileName(fileUpElemento.FileName);
 
-            LineaBaseControladora.ActualizarArchivo(Convert.ToInt32(hiddenIdLineaBase.Value), nombre, archivo);
+            new LineaBaseControladora().ActualizarArchivo(Convert.ToInt32(hiddenIdLineaBase.Value), nombre, archivo);
 
             TMD.Entidades.LineaBase lineaBase =
-                        LineaBaseControladora.LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
+                        new LineaBaseControladora().LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
             
             grvElementoConfiguracion.DataSource = lineaBase.LineaBaseECS;
             grvElementoConfiguracion.DataBind();
@@ -96,7 +97,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 case "Descarga":
                     int idElemento = Convert.ToInt32(e.CommandArgument);
 
-                    LineaBaseElementoConfiguracion archivo = LineaBaseControladora.ObtenerArchivo(idElemento);
+                    LineaBaseElementoConfiguracion archivo = new LineaBaseControladora().ObtenerArchivo(idElemento);
 
                     if (archivo != null && archivo.Data != null)
                     {

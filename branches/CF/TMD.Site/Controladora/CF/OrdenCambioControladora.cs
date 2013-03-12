@@ -6,16 +6,24 @@ using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.LogicaNegocios.Implementacion;
 using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
+using System.Configuration;
 
 namespace TMD.CF.Site.Controladora.CF
 {
-    class OrdenCambioControladora : Base
+    class OrdenCambioControladora
     {
-        private static readonly IOrdenCambioLogica _ordenCambioLogica = new OrdenCambioLogica(new OrdenCambioData(BaseDatos));
+        private readonly IOrdenCambioLogica ordenCambioLogica;
 
-        public static List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase)
+        public OrdenCambioControladora()
         {
-            return _ordenCambioLogica.ListarPorProyectoLBase(codigoProyecto,codigoLineaBase);
+            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
+
+            ordenCambioLogica = new OrdenCambioLogica(new OrdenCambioData(baseDatos));
+        }
+
+        public List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase)
+        {
+            return ordenCambioLogica.ListarPorProyectoLBase(codigoProyecto, codigoLineaBase);
         }
     }
 }

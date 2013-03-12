@@ -18,7 +18,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             if (!Page.IsPostBack)
             {
-                ddlProyecto.DataSource = LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id);
+                ddlProyecto.DataSource = new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id);
                 ddlProyecto.DataValueField = "Id";
                 ddlProyecto.DataTextField = "Nombre";
                 ddlProyecto.DataBind();
@@ -29,7 +29,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            grvLineaBase.DataSource = LineaBaseControladora.LineaBaseListarPorProyecto(Convert.ToInt32(ddlProyecto.SelectedValue));
+            grvLineaBase.DataSource = new LineaBaseControladora().LineaBaseListarPorProyecto(Convert.ToInt32(ddlProyecto.SelectedValue));
             grvLineaBase.DataBind();
         }
 

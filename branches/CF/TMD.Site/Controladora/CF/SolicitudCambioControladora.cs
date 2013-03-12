@@ -4,15 +4,22 @@ using TMD.CF.LogicaNegocios.Implementacion;
 using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.Core;
+using System.Configuration;
 
 
 namespace TMD.CF.Site.Controladora.CF
 {
-    class SolicitudCambioControladora : Base
+    class SolicitudCambioControladora
     {
-        private static readonly ISolicitudCambioLogica SolicitudCambioLogica = new SolicitudCambioLogica(new SolicitudCambioData(BaseDatos));
+        private readonly ISolicitudCambioLogica SolicitudCambioLogica;
 
-        public static List<Parametro> ListarEstado()
+        public SolicitudCambioControladora()
+        {
+            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
+            SolicitudCambioLogica = new SolicitudCambioLogica(new SolicitudCambioData(baseDatos));
+        }
+
+        public List<Parametro> ListarEstado()
         {
             return
                 new List<Parametro>
@@ -24,7 +31,7 @@ namespace TMD.CF.Site.Controladora.CF
                     };
         }
 
-        public static List<Parametro> ListarPrioridad()
+        public List<Parametro> ListarPrioridad()
         {
             return
                 new List<Parametro>
@@ -36,17 +43,17 @@ namespace TMD.CF.Site.Controladora.CF
                     };
         }
 
-        public static void Agregar(SolicitudCambio solicitudCambio)
+        public void Agregar(SolicitudCambio solicitudCambio)
         {
             SolicitudCambioLogica.Agregar(solicitudCambio);
         }
 
-        public static void Aprobar(int idSolicitud, int idEstado, string motivo)
+        public void Aprobar(int idSolicitud, int idEstado, string motivo)
         {
             SolicitudCambioLogica.Aprobar(new SolicitudCambio { Id = idSolicitud, Estado = idEstado, Motivo = motivo });
         }
 
-        public static List<SolicitudCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase, int estado, int prioridad)
+        public List<SolicitudCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase, int estado, int prioridad)
         {
             return
                 SolicitudCambioLogica.ListarPorProyectoLineaBase(
@@ -59,18 +66,18 @@ namespace TMD.CF.Site.Controladora.CF
                         });
         }
 
-        public static SolicitudCambio ObtenerPorId(int id)
+        public SolicitudCambio ObtenerPorId(int id)
         {
             return SolicitudCambioLogica.ObtenerPorId(id);
         }
         
-        public static void ActualizarArchivo(int idSolicitud, string nombreArchivo, byte[] data)
+        public void ActualizarArchivo(int idSolicitud, string nombreArchivo, byte[] data)
         {
             string extension = string.IsNullOrEmpty(nombreArchivo) ? "" : System.IO.Path.GetExtension(nombreArchivo).Substring(1, 3);
             SolicitudCambioLogica.ActualizarArchivo(new SolicitudCambio{Id = idSolicitud, Data = data, NombreArchivo = nombreArchivo, Extension = extension});
         }
 
-        public static SolicitudCambio ObtenerArchivo(int idSolicitudCambio)
+        public SolicitudCambio ObtenerArchivo(int idSolicitudCambio)
         {
             return SolicitudCambioLogica.ObtenerArchivo(idSolicitudCambio);
         }

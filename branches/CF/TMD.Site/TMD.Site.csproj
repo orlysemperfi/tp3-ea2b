@@ -62,6 +62,7 @@
       <HintPath>..\Librerias\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -302,6 +303,10 @@
     <ProjectReference Include="..\TMD.CF.LogicaNegocios\TMD.CF.LogicaNegocios.csproj">
       <Project>{1ED7F34A-504A-4BA9-A9A2-DDED2E15DB61}</Project>
       <Name>TMD.CF.LogicaNegocios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.Strings\TMD.Strings.csproj">
+      <Project>{5ECB613B-8ED1-4427-83AA-1615B9E0E319}</Project>
+      <Name>TMD.Strings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

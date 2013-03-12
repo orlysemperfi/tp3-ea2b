@@ -84,22 +84,22 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         private void CargarControles()
         {
-            ddlProyecto.EnlazarDatos(LineaBaseControladora.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
-            ddlEstado.EnlazarDatos(SolicitudCambioControladora.ListarEstado(), "Nombre", "Id");
-            ddlPrioridad.EnlazarDatos(SolicitudCambioControladora.ListarPrioridad(), "Nombre", "Id");
+            ddlEstado.EnlazarDatos(new SolicitudCambioControladora().ListarEstado(), "Nombre", "Id");
+            ddlPrioridad.EnlazarDatos(new SolicitudCambioControladora().ListarPrioridad(), "Nombre", "Id");
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            grvSolicitudCambio.DataSource = 
-                SolicitudCambioControladora.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),ddlEstado.SelectedValue.ToInt(), ddlPrioridad.SelectedValue.ToInt());
+            grvSolicitudCambio.DataSource =
+                new SolicitudCambioControladora().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt(), ddlPrioridad.SelectedValue.ToInt());
             grvSolicitudCambio.DataBind();
         }
 
         public String RecuperarEstadoNombre(int idEstado)
         {
-            var estado = SolicitudCambioControladora.ListarEstado().FirstOrDefault(x => x.Id == idEstado);
+            var estado = new SolicitudCambioControladora().ListarEstado().FirstOrDefault(x => x.Id == idEstado);
             if (estado != null)
             {
                 return estado.Nombre;
@@ -114,7 +114,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarPrioridadNombre(int idPrioridad)
         {
-            var prioridad = SolicitudCambioControladora.ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
+            var prioridad = new SolicitudCambioControladora().ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
             if (prioridad != null)
             {
                 return prioridad.Nombre;
@@ -129,7 +129,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(LineaBaseControladora.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void grvSolicitudCambio_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
@@ -178,7 +178,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         {
             int idSolicitud = Convert.ToInt32(hidIdSolicitud.Value);
 
-            SolicitudCambio solicitud = SolicitudCambioControladora.ObtenerArchivo(idSolicitud);
+            SolicitudCambio solicitud = new SolicitudCambioControladora().ObtenerArchivo(idSolicitud);
 
             if (solicitud != null && solicitud.Data != null)
             {
