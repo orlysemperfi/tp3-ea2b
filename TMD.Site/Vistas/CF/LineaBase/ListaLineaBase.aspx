@@ -4,12 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ButtonContent" runat="server">
-    <asp:Button ID="btnNuevo" runat="server" Text="Nueva Linea Base" 
-        onclick="btnNuevo_Click" OnClientClick="javascript:return validarProyecto();" />
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<center>
 
     <div id="listaLB" class="content">
         <h1 class="page-title">
@@ -26,6 +23,10 @@
                     <td>
                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar"  
                         OnClientClick="javascript:return validarProyecto();" />
+                    </td>
+                    <td>
+    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" 
+        onclick="btnNuevo_Click" OnClientClick="javascript:return validarProyecto();" />
                     </td>
                 </tr>
             </table>
@@ -77,7 +78,6 @@
         </Triggers>
         </asp:UpdatePanel>
         
-        </center>
     </div>
 
     <script type="text/javascript" language="javascript">

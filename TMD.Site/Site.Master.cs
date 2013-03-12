@@ -13,7 +13,12 @@ namespace TMD.CF.Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (SesionFachada.Usuario == null)
+            {
+                SesionFachada.Usuario = null;
+                FormsAuthentication.SignOut();
+                Response.Redirect("~/Account/Login.aspx");
+            }
         }
 
         protected void HeadLoginView_LoggedOut(Object sender, System.EventArgs e)

@@ -63,7 +63,8 @@
         CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
     <p>
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+            onclick="btnCancelar_Click" />
     </p>
 </asp:Panel>
 <script type="text/javascript" language="javascript">

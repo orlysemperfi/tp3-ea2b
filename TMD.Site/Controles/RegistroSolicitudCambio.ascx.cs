@@ -12,9 +12,18 @@ namespace TMD.CF.Site.Controles
         public delegate void GraboSolicitudHandler();
         public event GraboSolicitudHandler EventoGraboSolicitud;
 
+        public delegate void CancelarSolicitudHandler();
+        public event CancelarSolicitudHandler EventoCanceloSolicitud;
+
         protected virtual void OnEventoGraboSolicitud()
         {
             GraboSolicitudHandler handler = EventoGraboSolicitud;
+            if (handler != null) handler();
+        }
+
+        protected virtual void OnEventoCanceloSolicitud()
+        {
+            CancelarSolicitudHandler handler = EventoCanceloSolicitud;
             if (handler != null) handler();
         }
 
@@ -100,6 +109,11 @@ namespace TMD.CF.Site.Controles
                     Prioridad = ddlPrioridad.SelectedValue.ToInt(),
                     Usuario = SesionFachada.Usuario
                 };
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            OnEventoCanceloSolicitud();
         }
     }
 }

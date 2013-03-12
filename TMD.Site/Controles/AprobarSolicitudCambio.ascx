@@ -14,7 +14,8 @@
     <asp:Button ID="btnGrabar" runat="server" Text="Grabar" 
         ValidationGroup="GrabarValidationGroup" 
         OnClientClick="javascript: return grabar();" onclick="btnGrabar_Click"/>
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" />&nbsp;</p>
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+        onclick="btnCancelar_Click" />&nbsp;</p>
         <asp:HiddenField ID="hidIdSolicitud" runat="server" />
 <asp:HiddenField ID="hidIdEstado" runat="server" />
         <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" CssClass="failureNotification"

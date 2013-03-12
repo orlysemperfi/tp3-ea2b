@@ -13,15 +13,6 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase {
     public partial class ListaLineaBase {
         
         /// <summary>
-        /// btnNuevo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
-        
-        /// <summary>
         /// ddlProyecto control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBuscar;
+        
+        /// <summary>
+        /// btnNuevo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevo;
         
         /// <summary>
         /// upnlLista control.

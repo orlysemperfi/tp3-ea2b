@@ -13,6 +13,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
     public partial class ListaSolicitudCambio {
         
         /// <summary>
+        /// upnlFiltro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlFiltro;
+        
+        /// <summary>
         /// pnlBusqueda control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.Button btnNuevo;
         
         /// <summary>
+        /// upnlLista control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlLista;
+        
+        /// <summary>
         /// grvSolicitudCambio control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,24 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvSolicitudCambio;
+        
+        /// <summary>
+        /// hidIdSolicitud control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidIdSolicitud;
+        
+        /// <summary>
+        /// upnlControles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlControles;
         
         /// <summary>
         /// ucRegistroSolicitudCambio control.
@@ -110,5 +146,14 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TMD.CF.Site.Controles.SubirArchivoSolicitudCambio ucSubirArchivoSolicitudCambio;
+        
+        /// <summary>
+        /// btnDescarga control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDescarga;
     }
 }

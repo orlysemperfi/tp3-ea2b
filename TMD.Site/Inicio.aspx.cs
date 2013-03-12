@@ -25,8 +25,6 @@ namespace ServiceDesk
 
         private void OnInitPage()
         {
-            SesionFachada.Usuario = new Usuario { Id = 1, Nombre = "Jaime Suarez", Alias = "jsuarez"  };
-
         }
     }
 }
