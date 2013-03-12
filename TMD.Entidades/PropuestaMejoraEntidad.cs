@@ -24,6 +24,7 @@ namespace TMD.Entidades
         public DateTime? fecha_Registro_Fin { get; set; }
         public int action { get; set; }
         public String nombre_Area { get; set; }
-
+        public String nombre_Estado { get; set; }
+        public String nombre_Responsable { get; set; }
     }
 }
