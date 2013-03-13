@@ -13,11 +13,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
             _lineBaseData = lineaBaseData;
         }
         
-        public void Agregar(Entidades.LineaBase lineaBase)
+        public void Agregar(Entidades.LineaBase lineaBase, Entidades.UsuarioProyecto usuarioProyecto)
         {
             if (lineaBase != null)
             {
-                _lineBaseData.Agregar(lineaBase);
+                _lineBaseData.Agregar(lineaBase, usuarioProyecto);
             }
             else
             {

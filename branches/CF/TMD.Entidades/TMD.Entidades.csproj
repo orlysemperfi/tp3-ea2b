@@ -106,6 +106,7 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioCliente.cs" />
     <Compile Include="UsuarioEntidad.cs" />
+    <Compile Include="UsuarioProyecto.cs" />
     <Compile Include="Version.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
