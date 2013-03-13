@@ -15,5 +15,8 @@ namespace TMD.Core
         public const int PrioridadMedia = 2;
         public const int PrioridadAlta = 3;
 
+        public const int EstadoLineaBaseAbierta = 1;
+        public const int EstadoLineaBaseCerrada = 2;
+        public const int EstadoLineaBaseCongelada = 3;
     }
 }
