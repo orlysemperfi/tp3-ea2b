@@ -199,6 +199,53 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             return oPropuestaMejora;
         }
+
+        public PropuestaEstadoEntidad InsertarPropuestaMejoraEstado(PropuestaEstadoEntidad oPropuestaEstado)
+        {
+
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("INSERT INTO [MP].[PROPUESTAMEJORA]");
+            strSQL.Append("(CODIGO_AREA,TIPO_PROPUESTA,CODIGO_RESPONSABLE,FECHA_ENVIO,CODIGO_PROCESO,FECHA_REGISTRO,DESCRIPCION,CAUSA,BENEFICIOS,OBSERVACIONES,CODIGO_ESTADO) ");
+            strSQL.Append("VALUES(@CODIGO_AREA,@TIPO_PROPUESTA,@CODIGO_RESPONSABLE,@FECHA_ENVIO,@CODIGO_PROCESO,GETDATE(),@DESCRIPCION,@CAUSA,@BENEFICIOS,@OBSERVACIONES,@CODIGO_ESTADO)");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+            int affectedRows = 0;
+            try
+            {
+                sqlCmd.Parameters.Add("@CODIGO_EMPLEADO", SqlDbType.Int).Value = oPropuestaEstado.codigo_empleado;
+                sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oPropuestaEstado.codigo_propuesta;
+                sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oPropuestaEstado.codigo_estado;
+                sqlCmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = oPropuestaEstado.fecha;
+                sqlCmd.Parameters.Add("@OBSERVACIONES", SqlDbType.VarChar).Value = oPropuestaEstado.observaciones;
+                sqlConn.Open();
+
+                affectedRows = sqlCmd.ExecuteNonQuery();
+
+                if (affectedRows == 0)
+                {
+                    throw new System.Exception("No hay registros ingresados a la tabla PropuestaEstado");
+                }
+                else
+                {
+                    oPropuestaEstado.codigo = ObtenerKeyInsertada(Constantes.TABLA_PROPUESTA_ESTADO);
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+
+            return oPropuestaEstado;
+        }
+
         #endregion
 
         #region "Update"
