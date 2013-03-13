@@ -18,6 +18,7 @@ namespace TMD.MP.AccesoDatos.Contrato
         #region "Insert"
 
         PropuestaMejoraEntidad InsertarPropuestaMejora(PropuestaMejoraEntidad entidad);
+        PropuestaMejoraEntidad InsertarPropuestaMejoraEstado(PropuestaEstadoEntidad entidad);
 
         #endregion
 

@@ -200,7 +200,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             return oPropuestaMejora;
         }
 
-        public PropuestaEstadoEntidad InsertarPropuestaMejoraEstado(PropuestaEstadoEntidad oPropuestaEstado)
+        public void InsertarPropuestaMejoraEstado(PropuestaEstadoEntidad oPropuestaEstado)
         {
 
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
@@ -208,7 +208,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("INSERT INTO [MP].[PROPUESTA_ESTADO]");
             strSQL.Append("(CODIGO_EMPLEADO,CODIGO_PROPUESTA,CODIGO_ESTADO,FECHA,OBSERVACIONES) ");
-            strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_PROPUESTA,@CODIGO_ESTADO,@FECHA,@OBSERVACIONES)");
+            //strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_PROPUESTA,@CODIGO_ESTADO,@FECHA,@OBSERVACIONES)");
+            strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_PROPUESTA,@CODIGO_ESTADO,GETDATE(),@OBSERVACIONES)");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
@@ -218,7 +219,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 sqlCmd.Parameters.Add("@CODIGO_EMPLEADO", SqlDbType.Int).Value = oPropuestaEstado.codigo_empleado;
                 sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oPropuestaEstado.codigo_propuesta;
                 sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oPropuestaEstado.codigo_estado;
-                sqlCmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = oPropuestaEstado.fecha;
+                //sqlCmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = oPropuestaEstado.fecha;
                 sqlCmd.Parameters.Add("@OBSERVACIONES", SqlDbType.VarChar).Value = oPropuestaEstado.observaciones;
                 sqlConn.Open();
 
@@ -242,8 +243,6 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 sqlConn.Close();
             }
-
-            return oPropuestaEstado;
         }
 
         #endregion

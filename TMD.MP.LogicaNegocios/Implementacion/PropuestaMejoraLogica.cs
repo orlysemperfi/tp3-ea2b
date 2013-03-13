@@ -70,8 +70,15 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          {
              iPropuestaMejora = new PropuestaMejoraDataSql();
              iIndicador = new IndicadorDataSql();
-
+             PropuestaEstadoEntidad oPropuestaEstado = new PropuestaEstadoEntidad();
+             
              oPropuestaMejora = iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
+             oPropuestaEstado.codigo_empleado = oPropuestaMejora.codigo_Responsable;
+             oPropuestaEstado.codigo_propuesta = oPropuestaMejora.codigo_Propuesta;
+             oPropuestaEstado.codigo_estado = oPropuestaMejora.codigo_Estado;
+             oPropuestaEstado.observaciones = oPropuestaMejora.observaciones;
+
+             iPropuestaMejora.InsertarPropuestaMejoraEstado(oPropuestaEstado);
 
              if (oPropuestaMejora.lstIndicadores != null)
              {
@@ -131,11 +138,19 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          public String BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
          {
              iPropuestaMejora = new PropuestaMejoraDataSql();
+             PropuestaEstadoEntidad oPropuestaEstado = new PropuestaEstadoEntidad();
 
              if (oPropuestaMejora.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA))
              {
                  oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.ELIMINADA);
                  ActualizarEstadoPropuestaMejora(oPropuestaMejora);
+                 oPropuestaEstado.codigo_empleado = oPropuestaMejora.codigo_Responsable;
+                 oPropuestaEstado.codigo_propuesta = oPropuestaMejora.codigo_Propuesta;
+                 oPropuestaEstado.codigo_estado = oPropuestaMejora.codigo_Estado;
+                 oPropuestaEstado.observaciones = oPropuestaMejora.observaciones;
+
+                 iPropuestaMejora.InsertarPropuestaMejoraEstado(oPropuestaEstado);
+
                  return null;
              }
              else
