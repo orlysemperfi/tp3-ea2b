@@ -75,7 +75,6 @@
     <Compile Include="Implementacion\InformeCambioData.cs" />
     <Compile Include="Implementacion\LineaBaseData.cs" />
     <Compile Include="Implementacion\LineaBaseElementoConfiguracionData.cs" />
-    <Compile Include="Implementacion\LineaBaseDataValidacion.cs" />
     <Compile Include="Implementacion\OrdenCambioData.cs" />
     <Compile Include="Implementacion\ProyectoFaseData.cs" />
     <Compile Include="Implementacion\SolicitudCambioData.cs" />
