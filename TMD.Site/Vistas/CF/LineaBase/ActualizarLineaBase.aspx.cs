@@ -248,7 +248,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                         Descripcion = txtDescripcion.Text,
                         ProyectoFase = proyectoFase
                     },
-                    lista
+                    lista                   
                 );
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "_GrabarNuevo_", "exitoNuevo();", true);

@@ -16,22 +16,29 @@ namespace TMD.CF.LogicaNegocios.Implementacion
     {
         private readonly ILineaBaseData _lineaBaseData;
         private readonly ILineaBaseElementoConfiguracionData _lineaBaseECSData;
+        private readonly IUsuarioProyectoData _usuarioProyectoData;
 
-        public LineaBaseLogica(ILineaBaseData lineaBaseData, ILineaBaseElementoConfiguracionData lineaBaseECSData)
+        public LineaBaseLogica(ILineaBaseData lineaBaseData, ILineaBaseElementoConfiguracionData lineaBaseECSData, IUsuarioProyectoData usuarioProyectoData)
         {
             _lineaBaseData = lineaBaseData;
             _lineaBaseECSData = lineaBaseECSData;
+            _usuarioProyectoData = usuarioProyectoData;
         }
 
         /// <summary>
         /// Agrega un registro a la tabla LineaBase.
         /// </summary>
         /// <param name="lineaBase">LineaBase</param>
-        public void Agregar(LineaBase lineaBase)
-        {
+        public void Agregar(LineaBase lineaBase, UsuarioProyecto usuarioProyecto)
+        {         
             using (var scope = new TransactionScope())
             {
-                _lineaBaseData.Agregar(lineaBase);
+                List<UsuarioProyecto> listaUsuarioProyecto = new List<UsuarioProyecto>();
+                listaUsuarioProyecto = _usuarioProyectoData.ListaUsuarioProyecto(usuarioProyecto.Id);
+                //if (listaUsuarioProyecto.ToString() == "JP")
+                //{
+                //}
+                _lineaBaseData.Agregar(lineaBase, usuarioProyecto);
                 lineaBase.LineaBaseECS.ForEach(ecs => _lineaBaseECSData.Agregar(ecs));
 
                 scope.Complete();

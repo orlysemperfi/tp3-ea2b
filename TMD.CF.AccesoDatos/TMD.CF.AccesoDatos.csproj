@@ -69,6 +69,7 @@
     <Compile Include="Contrato\IProyectoFaseData.cs" />
     <Compile Include="Contrato\ISolicitudCambioData.cs" />
     <Compile Include="Contrato\IUsuarioData.cs" />
+    <Compile Include="Contrato\IUsuarioProyectoData.cs" />
     <Compile Include="Core\DataBase.cs" />
     <Compile Include="Implementacion\ElementoConfiguracionData.cs" />
     <Compile Include="Implementacion\InformeCambioData.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Implementacion\ProyectoFaseData.cs" />
     <Compile Include="Implementacion\SolicitudCambioData.cs" />
     <Compile Include="Implementacion\UsuarioData.cs" />
+    <Compile Include="Implementacion\UsuarioProyectoData.cs" />
     <Compile Include="Map\ElementoConfiguracionMap.cs" />
     <Compile Include="Map\InformeCambioMap.cs" />
     <Compile Include="Map\LineaBaseElementoConfiguracionMap.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Map\ProyectoFaseDataMap.cs" />
     <Compile Include="Map\SolicitudCambioMap.cs" />
     <Compile Include="Map\UsuarioDataMap.cs" />
+    <Compile Include="Map\UsuarioProyectoMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
   </ItemGroup>

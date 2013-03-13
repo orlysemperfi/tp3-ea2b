@@ -15,6 +15,7 @@ namespace TMD.CF.Site.Controladora.CF
     {
         private readonly IProyectoFaseLogica ProyectoFaseLogica;
         private readonly IUsuarioLogica UsuarioLogica;
+        private readonly IUsuarioProyectoLogica UsuarioProyectoLogica;
         private readonly IProyectoLogica ProyectoLogica;
         private readonly ILineaBaseLogica LineaBaseLogica;
         private readonly IFaseLogica FaseLogica;
@@ -27,8 +28,9 @@ namespace TMD.CF.Site.Controladora.CF
 
             ProyectoFaseLogica = new ProyectoFaseLogica(new ProyectoFaseData(baseDatos));
             UsuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
+            UsuarioProyectoLogica = new UsuarioProyectoLogica(new UsuarioProyectoData(baseDatos));
             ProyectoLogica = new ProyectoLogica(new ProyectoData(baseDatos));
-            LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos), new LineaBaseElementoConfiguracionData(baseDatos));
+            LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos), new LineaBaseElementoConfiguracionData(baseDatos), new UsuarioProyectoData(baseDatos));
             FaseLogica = new FaseLogica(new FaseData(baseDatos));
             ElementoConfiguracionLogica = new ElementoConfiguracionLogica(new ElementoConfiguracionData(baseDatos));
             LineaBaseDetalleLogica = new LineaBaseDetalleLogica(new LineaBaseElementoConfiguracionData(baseDatos));
@@ -62,7 +64,7 @@ namespace TMD.CF.Site.Controladora.CF
             );
 
             lineaBase.LineaBaseECS = listaEcs;
-            LineaBaseLogica.Agregar(lineaBase);
+            LineaBaseLogica.Agregar(lineaBase, null);
         }
 
         public void LineaBaseActualizar(LineaBase lineaBase, List<LineaBaseElementoConfiguracion> listaEcs)

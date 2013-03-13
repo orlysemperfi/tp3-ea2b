@@ -25,7 +25,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// Agrega un registro a la tabla LineaBase.
         /// </summary>
         /// <param name="lineaBase">LineaBase</param>
-        public void Agregar(LineaBase lineaBase)
+        public void Agregar(LineaBase lineaBase, UsuarioProyecto usuarioProyecto)
         {
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LINEA_BASE_INS"))
             {
