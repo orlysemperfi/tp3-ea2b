@@ -52,7 +52,6 @@ namespace TMD.CF.AccesoDatos.Util
             return null;
         }
 
-
         public static Int16 GetSmallInt(this IDataReader reader, String nombreColumna)
         {
             int ordinal = reader.GetOrdinal(nombreColumna);
