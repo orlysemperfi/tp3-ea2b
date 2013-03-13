@@ -206,9 +206,9 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [MP].[PROPUESTAMEJORA]");
-            strSQL.Append("(CODIGO_AREA,TIPO_PROPUESTA,CODIGO_RESPONSABLE,FECHA_ENVIO,CODIGO_PROCESO,FECHA_REGISTRO,DESCRIPCION,CAUSA,BENEFICIOS,OBSERVACIONES,CODIGO_ESTADO) ");
-            strSQL.Append("VALUES(@CODIGO_AREA,@TIPO_PROPUESTA,@CODIGO_RESPONSABLE,@FECHA_ENVIO,@CODIGO_PROCESO,GETDATE(),@DESCRIPCION,@CAUSA,@BENEFICIOS,@OBSERVACIONES,@CODIGO_ESTADO)");
+            strSQL.Append("INSERT INTO [MP].[PROPUESTA_ESTADO]");
+            strSQL.Append("(CODIGO_EMPLEADO,CODIGO_PROPUESTA,CODIGO_ESTADO,FECHA,OBSERVACIONES) ");
+            strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_PROPUESTA,@CODIGO_ESTADO,@FECHA,@OBSERVACIONES)");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
