@@ -25,6 +25,36 @@
           <AssociatedConnUserName />
           <FullPath>Data.sql</FullPath>
         </FileNode>
+        <FileNode Name="USP_LINEA_BASE_DET_SEL_CODIGO_LINEA_BASE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_LINEA_BASE_DET_SEL_CODIGO_LINEA_BASE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_LINEA_BASE_DET_SEL_CODIGO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_LINEA_BASE_DET_SEL_CODIGO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_LINEA_BASE_INS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_LINEA_BASE_INS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_LINEA_BASE_SEL_CODIGO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_LINEA_BASE_SEL_CODIGO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="USP_PROYECO_FASE_COD_PROYECTO_FASE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>USP_PROYECO_FASE_COD_PROYECTO_FASE.sql</FullPath>
+        </FileNode>
         <FileNode Name="TABLA.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-FC39PTDFLNT\NERV:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>WIN-FC39PTDFLNT\NERV</AssociatedConnSrvName>
