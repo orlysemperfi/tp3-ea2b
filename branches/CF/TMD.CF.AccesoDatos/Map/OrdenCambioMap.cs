@@ -15,7 +15,7 @@ namespace TMD.CF.AccesoDatos.Map
             return new OrdenCambio
             {
                 Id = reader.GetInt("CODIGO"),
-                InformeCambio = new InformeCambio { Id = reader.GetInt("CODIGO_INFORME") },
+                InformeCambio = new InformeCambio { Id = reader.GetInt("CODIGO_INFORME"), Nombre = reader.GetString("NOMBRE") },
                 UsuarioReg = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_REG")},
                 FechaRegistro = reader.GetDateTime("FECHA_REGISTRO"),
                 FechaAprobacion = reader.GetDateTime("FECHA_APROBACION"),
