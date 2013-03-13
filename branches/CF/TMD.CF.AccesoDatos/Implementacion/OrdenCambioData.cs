@@ -11,6 +11,9 @@ using TMD.CF.AccesoDatos.Map;
 
 namespace TMD.CF.AccesoDatos.Implementacion
 {
+    /// <summary>
+    /// Implementacion  del Acceso a datos de la entidad orden de cambio.
+    /// </summary>
     public class OrdenCambioData : DataBase, IOrdenCambioData
     {
         public OrdenCambioData(String connectionString)
@@ -18,6 +21,12 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
         }
 
+        /// <summary>
+        /// Lista las ordenes de un proyecto
+        /// </summary>
+        /// <param name="codigoProyecto">Codigo proyecto</param>
+        /// <param name="codigoLineaBase">Codigo linea Base</param>
+        /// <returns>Lista Orden de cambio</returns>
         public List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase)
         {
             List<OrdenCambio> listaOrdenCambio = new List<OrdenCambio>();
