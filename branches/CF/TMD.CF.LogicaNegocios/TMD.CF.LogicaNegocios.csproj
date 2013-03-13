@@ -59,6 +59,7 @@
     <Compile Include="Contrato\ISolicitudCambioLogica.cs" />
     <Compile Include="Contrato\IUsuarioLogica.cs" />
     <Compile Include="Contrato\IUsuarioProyectoLogica.cs" />
+    <Compile Include="Error\ReglaNegocioException.cs" />
     <Compile Include="Implementacion\ElementoConfiguracionLogica.cs" />
     <Compile Include="Implementacion\FaseLogica.cs" />
     <Compile Include="Implementacion\InformeCambioLogica.cs" />
@@ -79,6 +80,10 @@
     <ProjectReference Include="..\TMD.CF.AccesoDatos\TMD.CF.AccesoDatos.csproj">
       <Project>{728F843E-C373-48F7-A41E-B2A5B6FA2572}</Project>
       <Name>TMD.CF.AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.Core\TMD.Core.csproj">
+      <Project>{A1458C90-1DFA-4F07-A8E3-F3F0BF953216}</Project>
+      <Name>TMD.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
       <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
