@@ -12,6 +12,9 @@ using System.Data;
 
 namespace TMD.CF.AccesoDatos.Implementacion
 {
+    /// <summary>
+    /// Implementacion  del Acceso a datos de la entidad solicitud de cambio.
+    /// </summary>
     public class SolicitudCambioData : DataBase, ISolicitudCambioData
     {
 
@@ -20,6 +23,10 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
         }
 
+        /// <summary>
+        /// Agrega una solicitud de cambio
+        /// </summary>
+        /// <param name="informeCambio">Objeto Solicitud a agregar</param>
         public void Agregar(SolicitudCambio solicitudCambio)
         {
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_INS"))
@@ -41,6 +48,10 @@ namespace TMD.CF.AccesoDatos.Implementacion
             }
         }
 
+        /// <summary>
+        /// Aprueba una solicitud de cambio
+        /// </summary>
+        /// <param name="informeCambio">Objeto Solicitud a aprobar</param>
         public void Aprobar(SolicitudCambio solicitudCambio)
         {
             using (DbCommand command = DB.GetStoredProcCommand("USP_SOLICITUD_CAMBIO_APROBAR_UPD"))
@@ -52,6 +63,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
             }
         }
 
+        /// <summary>
+        /// Lista las solicitudes por proyecto
+        /// </summary>
+        /// <param name="solicitudCambio">Objeto solicitud de cambio</param>
+        /// <returns>Lista de solicitudes</returns>
         public List<SolicitudCambio> ListarPorProyectoLineaBase(SolicitudCambio solicitudCambio)
         {
             List<SolicitudCambio> solicitudesCambio = new List<SolicitudCambio>();
@@ -74,8 +90,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
             return solicitudesCambio;
         }
-
-
+        /// <summary>
+        /// Obtiene una solicitud por el Id
+        /// </summary>
+        /// <param name="id">Id de la solicitud</param>
+        /// <returns>Objetp Solicitud de cambio</returns>
         public SolicitudCambio ObtenerPorId(int id)
         {
             SolicitudCambio solicitudCambio = null;
@@ -96,6 +115,10 @@ namespace TMD.CF.AccesoDatos.Implementacion
             return solicitudCambio;
         }
 
+        /// <summary>
+        /// Actualiza el archivo de una solicitud
+        /// </summary>
+        /// <param name="solicitudCambio">Objeto solicutd a actualziar</param>
         public void ActualizarArchivo(SolicitudCambio solicitudCambio)
         {
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_UPD_ARCHIVO"))
@@ -120,6 +143,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
             }
         }
 
+        /// <summary>
+        /// Obtiene el archivo de la solicitud de cambio
+        /// </summary>
+        /// <param name="id">Id de la solicitud</param>
+        /// <returns>Archivo de la solicitud</returns>
         public SolicitudCambio ObtenerArchivo(int id)
         {
             SolicitudCambio elemento = null;
