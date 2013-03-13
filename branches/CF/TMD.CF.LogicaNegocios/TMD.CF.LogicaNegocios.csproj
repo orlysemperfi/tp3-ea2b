@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Contrato\IElementoConfiguracionLogica.cs" />
     <Compile Include="Contrato\IFaseLogica.cs" />
+    <Compile Include="Contrato\IInformeCambioLogica.cs" />
     <Compile Include="Contrato\ILineaBaseDetalleLogica.cs" />
     <Compile Include="Contrato\ILineaBaseLogica.cs" />
     <Compile Include="Contrato\IOrdenCambioLogica.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Contrato\IUsuarioProyectoLogica.cs" />
     <Compile Include="Implementacion\ElementoConfiguracionLogica.cs" />
     <Compile Include="Implementacion\FaseLogica.cs" />
+    <Compile Include="Implementacion\InformeCambioLogica.cs" />
     <Compile Include="Implementacion\LineaBaseDetalleLogica.cs" />
     <Compile Include="Implementacion\LineaBaseLogica.cs" />
     <Compile Include="Implementacion\OrdenCambioLogica.cs" />
