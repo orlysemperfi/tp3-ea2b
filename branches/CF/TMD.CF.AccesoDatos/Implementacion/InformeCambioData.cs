@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data.SqlTypes;
+using System.IO;
 using TMD.CF.AccesoDatos.Core;
 using TMD.CF.AccesoDatos.Contrato;
+using TMD.CF.AccesoDatos.Map;
+using TMD.CF.AccesoDatos.Util;
 using TMD.Entidades;
 using System.Data.Common;
 using System.Data;
-using TMD.CF.AccesoDatos.Map;
 
 namespace TMD.CF.AccesoDatos.Implementacion
 {
@@ -44,9 +45,25 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// </summary>
         /// <param name="informeCambio">Linea Base</param>
         /// <returns>Lista informes de cambio</returns>
-        public List<InformeCambio> ListarPorLineaBase(InformeCambio informeCambio)
+        public List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio)
         {
-            throw new NotImplementedException();
+            List<InformeCambio> informesCambio = new List<InformeCambio>();
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_SEL_PROYECTO_LINEABASE"))
+            {
+                DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, informeCambio.Solicitud.ProyectoFase.Proyecto.Id);
+                DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, informeCambio.Solicitud.LineaBase.Id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        informesCambio.Add(InformeCambioMap.ListaSolicitudInforme(reader));
+                    }
+                }
+            }
+
+            return informesCambio;
         }
 
         /// <summary>

@@ -89,6 +89,7 @@
     <Content Include="Imagenes\Prioridad\3.ico" />
     <Content Include="Imagenes\Prioridad\2.ICO" />
     <Content Include="Imagenes\Prioridad\1.ico" />
+    <Content Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
     <Content Include="Error\GeneralError.aspx" />
@@ -174,6 +175,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Controladora\CF\InformeCambioFachada.cs" />
     <Compile Include="Controladora\CF\LineaBaseControladora.cs" />
     <Compile Include="Controladora\CF\OrdenCambioControladora.cs" />
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
@@ -199,6 +201,13 @@
       <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
     </Compile>
     <Compile Include="Util\ControlUtil.cs" />
+    <Compile Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx.cs">
+      <DependentUpon>ListaInformeCambio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx.designer.cs">
+      <DependentUpon>ListaInformeCambio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx.cs">
       <DependentUpon>ListaOrdenCambio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
