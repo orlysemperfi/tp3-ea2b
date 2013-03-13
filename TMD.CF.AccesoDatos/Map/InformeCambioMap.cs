@@ -18,6 +18,9 @@ namespace TMD.CF.AccesoDatos.Map
                 Nombre = reader.GetString("NOMBRE"),
                 FechaAprobacion = reader.GetDateTime("FECHA_APROBACION"),
                 FechaRegistro = reader.GetDateTime("FECHA_REGISTRO"),
+                EstimacionCosto = reader.GetString("ESTIMACION_COSTO"),
+                EstimacionEsfuerzo = reader.GetString("ESTIMACION_ESFUERZO"),
+                Recursos = reader.GetString("RECURSOS"),
                 Estado = reader.GetInt("ESTADO"),
                 Motivo = reader.GetString("MOTIVO")
             };
