@@ -47,7 +47,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// <param name="lineaBase">Objeto Linea Base</param>
         /// <param name="usuario"></param>
         /// <returns>List LineaBaseElementoConfiguracion</returns>
-        public List<LineaBaseElementoConfiguracion> ListaPorLineaBase(LineaBase lineaBase,Usuario usuario = null)
+        public List<LineaBaseElementoConfiguracion> ListaPorLineaBase(LineaBase lineaBase, Usuario usuario = null)
         {
             var listaLineaBaseEcs = new List<LineaBaseElementoConfiguracion>();
 
@@ -108,7 +108,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                 DB.ExecuteNonQuery(command);
 
                 String ruta = DB.GetParameterValue(command, "@RUTA_ARCHIVO").ToString();
-                byte[] context = (Byte[])DB.GetParameterValue(command, "@TRANSACTION_CONTEXT");
+                byte[] context = (Byte[]) DB.GetParameterValue(command, "@TRANSACTION_CONTEXT");
 
                 using (var sqlFileStream = new SqlFileStream(ruta, context, FileAccess.Write))
                 {
@@ -139,11 +139,11 @@ namespace TMD.CF.AccesoDatos.Implementacion
                     if (reader.Read())
                     {
                         elemento = new LineaBaseElementoConfiguracion
-                        {
-                            Nombre = reader.GetString("NOMBRE")
-                        };
+                            {
+                                Nombre = reader.GetString("NOMBRE")
+                            };
                         ruta = reader.GetString("RUTA_ARCHIVO");
-                        context = (byte[])reader[reader.GetOrdinal("TRANSACTION_CONTEXT")];
+                        context = (byte[]) reader[reader.GetOrdinal("TRANSACTION_CONTEXT")];
                     }
                 }
 
@@ -151,7 +151,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                 {
                     using (var sqlFileStream = new SqlFileStream(ruta, context, FileAccess.Read))
                     {
-                        byte[] buffer = new byte[(int)sqlFileStream.Length];
+                        byte[] buffer = new byte[(int) sqlFileStream.Length];
 
                         sqlFileStream.Read(buffer, 0, buffer.Length);
                         sqlFileStream.Close();
@@ -162,6 +162,32 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
                 return elemento;
             }
+
+
+
+        }
+
+        public
+           LineaBaseElementoConfiguracion ObtenerPorId
+           (int
+           id)
+        {
+            LineaBaseElementoConfiguracion elemento = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LINEA_BASE_DET_SEL_CODIGO"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        elemento = LineaBaseElementoConfiguracionMap.Select(reader);
+                    }
+                }
+            }
+
+            return elemento;
         }
     }
 }

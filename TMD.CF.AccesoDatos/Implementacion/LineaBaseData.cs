@@ -115,5 +115,30 @@ namespace TMD.CF.AccesoDatos.Implementacion
                 DB.ExecuteNonQuery(command);
             }
         }
+
+        /// <summary>
+        /// Obtiene una linea base por el Id
+        /// </summary>
+        /// <param name="id">Id Linea base</param>
+        /// <returns>Objeto Linea Base</returns>
+        public LineaBase ObtenerPorid(int id)
+        {
+            LineaBase lineaBase = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LINEA_BASE_SEL_CODIGO"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    if (reader.Read())
+                    {
+                        lineaBase = LineaBaseMap.Select(reader);
+                    }
+                }
+            }
+
+            return lineaBase;
+        }
     }
 }
