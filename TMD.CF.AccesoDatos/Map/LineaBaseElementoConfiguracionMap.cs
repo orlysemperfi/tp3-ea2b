@@ -35,7 +35,8 @@ namespace TMD.CF.AccesoDatos.Map
                 },
                 LineaBase = new LineaBase
                 {
-                    Id = reader.GetInt("CODIGO_LINEA_BASE")
+                    Id = reader.GetInt("CODIGO_LINEA_BASE"),
+                    ProyectoFase = new ProyectoFase { FechaFin = reader.GetDateTime("FECHA_FIN") }
                 }
             };
         }
