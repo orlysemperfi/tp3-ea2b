@@ -213,7 +213,6 @@
     <Compile Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx.designer.cs">
       <DependentUpon>ListaSolicitudCambio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controladora\Base.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
