@@ -14,6 +14,7 @@ namespace TMD.GM.AccesoDatos.Core
 
         public DataBase(String connectionString)
         {
+		
             if (DB == null)
             {
                 lock (syncLock)
@@ -27,3 +28,5 @@ namespace TMD.GM.AccesoDatos.Core
         }
     }
 }
+
+
