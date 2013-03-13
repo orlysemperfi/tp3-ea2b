@@ -12,6 +12,7 @@ namespace TMD.Entidades
         public int? codigo_propuesta { get; set; }
         public int? codigo_estado { get; set; }
         public DateTime? fecha { get; set; }
-        public String? observaciones { get; set; }
+        public String observaciones { get; set; }
+
     }
 }

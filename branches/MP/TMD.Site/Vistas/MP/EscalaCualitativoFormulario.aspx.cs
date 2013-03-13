@@ -31,8 +31,8 @@ namespace TMD.MP.Site.Privado
             if (action == Constantes.ACTION_INSERT)
             {
                 EscalaCualitativoEntidad oEscalaCualitativo = new EscalaCualitativoEntidad();
-                oEscalaCualitativo.limite_inferior = Convert.ToDouble(txbLimInferior.Text);
-                oEscalaCualitativo.limite_superior = Convert.ToDouble(txbLimSuperior.Text);
+                oEscalaCualitativo.limite_inferior = txbLimInferior.Text;
+                oEscalaCualitativo.limite_superior = txbLimSuperior.Text;
                 oEscalaCualitativo.calificacion = txbCalifacion.Text;
                 oEscalaCualitativo.principal = (chkPrincipal.Checked) ? 1 : 0;
                 oEscalaCualitativo.codigo = id;
@@ -45,8 +45,8 @@ namespace TMD.MP.Site.Privado
                 EscalaCualitativoEntidad oEscalaCualitativo = new EscalaCualitativoEntidad();
                 oEscalaCualitativo = ObtenerEscalaCualitativo(codigo);
                 Sesiones.IndicadorSeleccionado.lstEscalaCualitativo.Remove(oEscalaCualitativo);
-                oEscalaCualitativo.limite_inferior = Convert.ToDouble(txbLimInferior.Text);
-                oEscalaCualitativo.limite_superior = Convert.ToDouble(txbLimSuperior.Text);
+                oEscalaCualitativo.limite_inferior = txbLimInferior.Text;
+                oEscalaCualitativo.limite_superior = txbLimSuperior.Text;
                 oEscalaCualitativo.calificacion = txbCalifacion.Text;
                 oEscalaCualitativo.principal = (chkPrincipal.Checked) ? 1 : 0;
                 oEscalaCualitativo.codigo = codigo;

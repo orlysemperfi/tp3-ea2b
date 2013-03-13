@@ -200,7 +200,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             return oPropuestaMejora;
         }
 
-        public void InsertarPropuestaMejoraEstado(PropuestaEstadoEntidad oPropuestaEstado)
+        public PropuestaMejoraEntidad InsertarPropuestaMejoraEstado(PropuestaEstadoEntidad oPropuestaEstado)
         {
 
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
@@ -243,6 +243,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 sqlConn.Close();
             }
+            return null;
         }
 
         #endregion

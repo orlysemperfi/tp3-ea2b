@@ -39,7 +39,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 while (dr.Read())
                 {
                     oEscalaCuantitativo = new EscalaCuantitativoEntidad();
-                    oEscalaCuantitativo.codigo_Indicador = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oEscalaCuantitativo.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oEscalaCuantitativo.codigo_Indicador = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_INDICADOR"]);
                     oEscalaCuantitativo.signo = Utilitario.getDefaultOrStringDBValue(dr["SIGNO"]);
                     oEscalaCuantitativo.valor = Utilitario.getDefaultOrDoubleDBValue(dr["VALOR"]);
                     oEscalaCuantitativo.codigo_Unidad = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_UNIDAD"]);
