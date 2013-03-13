@@ -12,7 +12,7 @@ namespace TMD.Entidades
         public DateTime fecha_Envio { get; set; }
         public DateTime? fecha_Registro_Inicio { get; set; }
         public DateTime? fecha_Registro_Fin { get; set; }
-        public String? propuesta { get; set; }
+        //public String? propuesta { get; set; }
 
     }
 }

@@ -30,15 +30,15 @@ namespace TMD.MP.Site.Privado
             if (tbxCodigo.Text != null && tbxCodigo.Text != string.Empty)
                 oSolucionMejoraFiltro.codigo_Solucion = Convert.ToInt32(tbxCodigo.Text.ToString());
             if (tbxPropuesta.Text != null && tbxPropuesta.Text != string.Empty)
-                oSolucionMejoraFiltro.propuesta = tbxPropuesta.Text.ToString();
+                //oSolucionMejoraFiltro.propuesta = tbxPropuesta.Text.ToString();
             if (tbxFechaInicio.Text != null && tbxFechaInicio.Text != string.Empty)
-                oSolucionMejoraFiltro.fecha_Registro_Inicio = Convert.ToDateTime(tbxFechaInicio.Text.ToString());
+                //oSolucionMejoraFiltro.fecha_Registro_Inicio = Convert.ToDateTime(tbxFechaInicio.Text.ToString());
             if (tbxFechaFin.Text != null && tbxFechaFin.Text != string.Empty)
-                oSolucionMejoraFiltro.fecha_Registro_Fin = Convert.ToDateTime(tbxFechaFin.Text.ToString());
+                //oSolucionMejoraFiltro.fecha_Registro_Fin = Convert.ToDateTime(tbxFechaFin.Text.ToString());
 
-            List<SolucionMejoraEntidad> oSolucionMejoraColeccion = oSolucionMejoraLogica.ObtenerSolucionMejoraListadoPorFiltros(oSolucionMejoraFiltro);
+            //List<SolucionMejoraEntidad> oSolucionMejoraColeccion = oSolucionMejoraLogica.ObtenerSolucionMejoraListadoPorFiltros(oSolucionMejoraFiltro);
             Sesiones.SolucionMejoraListadoRemover();
-            Sesiones.SolucionMejoraListado = oSolucionMejoraColeccion;
+            //Sesiones.SolucionMejoraListado = oSolucionMejoraColeccion;
             PageIndexChanging();
             lblMensajeError.Text = "";
 

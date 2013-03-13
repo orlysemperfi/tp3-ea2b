@@ -41,8 +41,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oEscalaCualitativo = new EscalaCualitativoEntidad();                        
                     oEscalaCualitativo.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
                     oEscalaCualitativo.codigo_Indicador = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_INDICADOR"]);
-                    oEscalaCualitativo.limite_inferior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_INFERIOR"]);
-                    oEscalaCualitativo.limite_superior = Utilitario.getDefaultOrDoubleDBValue(dr["LIMITE_SUPERIOR"]);
+                    oEscalaCualitativo.limite_inferior = Utilitario.getDefaultOrStringDBValue(dr["LIMITE_INFERIOR"]);
+                    oEscalaCualitativo.limite_superior = Utilitario.getDefaultOrStringDBValue(dr["LIMITE_SUPERIOR"]);
                     oEscalaCualitativo.calificacion = Utilitario.getDefaultOrStringDBValue(dr["CALIFICACION"]);
                     oEscalaCualitativo.principal = Utilitario.getDefaultOrIntDBValue(dr["PRINCIPAL"]);
                     lstEscalaCualitativo.Add(oEscalaCualitativo);
