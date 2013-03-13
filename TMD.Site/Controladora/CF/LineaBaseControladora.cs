@@ -30,7 +30,7 @@ namespace TMD.CF.Site.Controladora.CF
             UsuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
             UsuarioProyectoLogica = new UsuarioProyectoLogica(new UsuarioProyectoData(baseDatos));
             ProyectoLogica = new ProyectoLogica(new ProyectoData(baseDatos));
-            LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos), new LineaBaseElementoConfiguracionData(baseDatos), new UsuarioProyectoData(baseDatos));
+            LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos), new LineaBaseElementoConfiguracionData(baseDatos), new UsuarioProyectoData(baseDatos), new ProyectoFaseData(baseDatos));
             FaseLogica = new FaseLogica(new FaseData(baseDatos));
             ElementoConfiguracionLogica = new ElementoConfiguracionLogica(new ElementoConfiguracionData(baseDatos));
             LineaBaseDetalleLogica = new LineaBaseDetalleLogica(new LineaBaseElementoConfiguracionData(baseDatos));
