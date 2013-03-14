@@ -22,6 +22,28 @@ namespace TMD.CF.AccesoDatos.Implementacion
         }
 
         /// <summary>
+        /// Agrega una solicitud de cambio
+        /// </summary>
+        /// <param name="informeCambio">Objeto Solicitud a agregar</param>
+        public void Agregar(OrdenCambio ordenCambio)
+        {
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_ORDEN_CAMBIO_INS"))
+            {
+                DB.AddInParameter(command, "@CODIGO_INFORME", DbType.Int32, ordenCambio.InformeCambio.Id);
+                DB.AddInParameter(command, "@CODIGO_USUARIO_REG", DbType.Int32, ordenCambio.UsuarioReg.Id);
+                DB.AddInParameter(command, "@FECHA_REGISTRO", DbType.DateTime, DateTime.Now);
+                DB.AddInParameter(command, "@FECHA_APROBACION", DbType.DateTime, DateTime.Now);
+                DB.AddInParameter(command, "@CODIGO_PRIORIDAD", DbType.Int32, ordenCambio.CodigoPrioridad);
+                DB.AddInParameter(command, "@CODIGO_USUARIO_ASIGNADO", DbType.Int32, ordenCambio.UsuarioAsignado.Id);
+                DB.AddInParameter(command, "@ESTADO", DbType.Int32, ordenCambio.Estado);
+
+                DB.ExecuteNonQuery(command);
+
+                ordenCambio.Id = Convert.ToInt32(DB.GetParameterValue(command, "@CODIGO"));
+            }
+        }
+
+        /// <summary>
         /// Lista las ordenes de un proyecto
         /// </summary>
         /// <param name="codigoProyecto">Codigo proyecto</param>
