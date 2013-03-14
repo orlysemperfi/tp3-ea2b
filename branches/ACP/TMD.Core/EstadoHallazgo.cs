@@ -9,5 +9,6 @@ namespace TMD.Core
     {
         public const string Creado = "CREADO";
         public const string Planificado = "PLANIFICADO";
+        public const string Asignado = "ASIGNADO"; 
     }
 }

@@ -10,5 +10,6 @@ namespace TMD.Core
         public const string Creado = "CREADO";
         public const string Planificado = "PLANIFICADO";
         public const string Autorizado = "AUTORIZADO";
+        public const string Realizado = "REALIZADO";
     }
 }
