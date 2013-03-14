@@ -139,13 +139,40 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::TMD.CF.Site.Controles.AprobarSolicitudCambio ucAprobarSolicitudCambio;
         
         /// <summary>
-        /// ucSubirArchivoSolicitudCambio control.
+        /// pnlSubir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TMD.CF.Site.Controles.SubirArchivoSolicitudCambio ucSubirArchivoSolicitudCambio;
+        protected global::System.Web.UI.WebControls.Panel pnlSubir;
+        
+        /// <summary>
+        /// fileUpArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileUpArchivo;
+        
+        /// <summary>
+        /// btnGrabarArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGrabarArchivo;
+        
+        /// <summary>
+        /// btnCancelarArchivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarArchivo;
         
         /// <summary>
         /// btnDescarga control.

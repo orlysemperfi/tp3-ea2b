@@ -30,10 +30,10 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucAprobarSolicitudCambio.EventoCanceloSolicitud += 
                 new Controles.AprobarSolicitudCambio.CancelarSolicitudHandler(ucAprobarSolicitudCambio_EventoCanceloSolicitud);
 
-            ucSubirArchivoSolicitudCambio.EventoSubioArchivoSolicitud += 
-                new Controles.SubirArchivoSolicitudCambio.SubioArchivoSolicitudHandler(ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud);
-            ucSubirArchivoSolicitudCambio.EventoCanceloArchivoSolicitud += 
-                new Controles.SubirArchivoSolicitudCambio.CancelarArchivoSolicitudHandler(ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud);
+            //ucSubirArchivoSolicitudCambio.EventoSubioArchivoSolicitud += 
+            //    new Controles.SubirArchivoSolicitudCambio.SubioArchivoSolicitudHandler(ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud);
+            //ucSubirArchivoSolicitudCambio.EventoCanceloArchivoSolicitud += 
+            //    new Controles.SubirArchivoSolicitudCambio.CancelarArchivoSolicitudHandler(ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud);
         }
 
         private void MostrarControles(bool visibleRegistro, bool visibleBusqueda, bool visibleAprobar, bool visibleSubir, bool visibleLista)
@@ -41,22 +41,23 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucRegistroSolicitudCambio.Visible = visibleRegistro;
             pnlBusqueda.Visible = visibleBusqueda;
             ucAprobarSolicitudCambio.Visible = visibleAprobar;
-            ucSubirArchivoSolicitudCambio.Visible = visibleSubir;
+            //ucSubirArchivoSolicitudCambio.Visible = visibleSubir;
+            pnlSubir.Visible = visibleSubir;
             grvSolicitudCambio.Visible = visibleLista;
         }
 
-        void ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud()
-        {
-            MostrarControles(false, true, false, false,true);
-            ucSubirArchivoSolicitudCambio.Limpiar();
-        }
+        //void ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud()
+        //{
+        //    MostrarControles(false, true, false, false,true);
+        //    ucSubirArchivoSolicitudCambio.Limpiar();
+        //}
 
-        void ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud()
-        {
-            MostrarControles(false, true, false, false, true);
-            ucSubirArchivoSolicitudCambio.Limpiar();
-            btnBuscar_Click(null, null);
-        }
+        //void ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud()
+        //{
+        //    MostrarControles(false, true, false, false, true);
+        //    ucSubirArchivoSolicitudCambio.Limpiar();
+        //    btnBuscar_Click(null, null);
+        //}
 
         void ucAprobarSolicitudCambio_EventoCanceloSolicitud()
         {
@@ -143,7 +144,8 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     ucRegistroSolicitudCambio.Visible = true;
                     break;
                 case "Cargar":
-                    ucSubirArchivoSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
+                    //ucSubirArchivoSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
+                    hidIdSolicitud.Value = e.CommandArgument.ToString();
                     MostrarControles(false, false, false, true, false);
                     break;
                 case "Aprobar":
@@ -181,5 +183,21 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                 Response.BinaryWrite(solicitud.Data);
             }
         }
+
+        protected void btnGrabarArchcivo_Click(object sender, EventArgs e)
+        {
+            byte[] archivo = fileUpArchivo.FileBytes;
+            String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
+            new SolicitudCambioControladora().ActualizarArchivo(Convert.ToInt32(hidIdSolicitud.Value), nombre, archivo);
+
+            MostrarControles(false, true, false, false, true);
+            btnBuscar_Click(null, null);
+        }
+
+        protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
+        {
+            MostrarControles(false, true, false, false, true);
+        }
+
     }
 }
