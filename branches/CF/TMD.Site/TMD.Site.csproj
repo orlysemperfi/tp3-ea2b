@@ -80,23 +80,23 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
-    <Content Include="Controles\AprobarInformeCambio.ascx" />
     <Content Include="Controles\AprobarSolicitudCambio.ascx" />
-    <Content Include="Controles\RegistroInformeCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
-    <Content Include="Controles\SubirArchivoInformeCambio.ascx" />
     <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
     <Content Include="Imagenes\bg-formLogin.png" />
+    <Content Include="Imagenes\bienvenido.png" />
     <Content Include="Imagenes\btn-login.png" />
     <Content Include="Imagenes\Estado\1.ICO" />
     <Content Include="Imagenes\Estado\2.ico" />
     <Content Include="Imagenes\Estado\3.ico" />
+    <Content Include="Imagenes\methodology.jpg" />
     <Content Include="Imagenes\password-fields.png" />
     <Content Include="Imagenes\Prioridad\3.ico" />
     <Content Include="Imagenes\Prioridad\2.ICO" />
     <Content Include="Imagenes\Prioridad\1.ico" />
     <Content Include="Imagenes\rueda.png" />
     <Content Include="Imagenes\user-fields.png" />
+    <Content Include="Scripts\jquery.cycle.lite.js" />
     <Content Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
@@ -187,13 +187,6 @@
     <Compile Include="Controladora\CF\LineaBaseControladora.cs" />
     <Compile Include="Controladora\CF\OrdenCambioControladora.cs" />
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
-    <Compile Include="Controles\AprobarInformeCambio.ascx.cs">
-      <DependentUpon>AprobarInformeCambio.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\AprobarInformeCambio.ascx.designer.cs">
-      <DependentUpon>AprobarInformeCambio.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controles\AprobarSolicitudCambio.ascx.cs">
       <DependentUpon>AprobarSolicitudCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,26 +194,12 @@
     <Compile Include="Controles\AprobarSolicitudCambio.ascx.designer.cs">
       <DependentUpon>AprobarSolicitudCambio.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controles\RegistroInformeCambio.ascx.cs">
-      <DependentUpon>RegistroInformeCambio.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\RegistroInformeCambio.ascx.designer.cs">
-      <DependentUpon>RegistroInformeCambio.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.designer.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controles\SubirArchivoInformeCambio.ascx.cs">
-      <DependentUpon>SubirArchivoInformeCambio.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\SubirArchivoInformeCambio.ascx.designer.cs">
-      <DependentUpon>SubirArchivoInformeCambio.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\SubirArchivoSolicitudCambio.ascx.cs">
       <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
@@ -358,7 +337,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2260</DevelopmentServerPort>
+          <DevelopmentServerPort>2189</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
