@@ -139,6 +139,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::TMD.CF.Site.Controles.AprobarSolicitudCambio ucAprobarSolicitudCambio;
         
         /// <summary>
+        /// upnlSubir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlSubir;
+        
+        /// <summary>
         /// pnlSubir control.
         /// </summary>
         /// <remarks>
@@ -157,13 +166,13 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.FileUpload fileUpArchivo;
         
         /// <summary>
-        /// btnGrabarArchivo control.
+        /// btnGrabarProxy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGrabarArchivo;
+        protected global::System.Web.UI.WebControls.Button btnGrabarProxy;
         
         /// <summary>
         /// btnCancelarArchivo control.

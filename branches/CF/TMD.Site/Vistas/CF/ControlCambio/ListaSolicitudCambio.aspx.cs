@@ -44,6 +44,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             //ucSubirArchivoSolicitudCambio.Visible = visibleSubir;
             pnlSubir.Visible = visibleSubir;
             grvSolicitudCambio.Visible = visibleLista;
+            upnlSubir.Update();
         }
 
         //void ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud()
@@ -144,9 +145,10 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     ucRegistroSolicitudCambio.Visible = true;
                     break;
                 case "Cargar":
-                    //ucSubirArchivoSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
                     hidIdSolicitud.Value = e.CommandArgument.ToString();
                     MostrarControles(false, false, false, true, false);
+                    //ClientScript.RegisterClientScriptBlock(btnGrabarProxy.GetType(), "carga", "MostrarCarga(1);",true);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "carga", "MostrarCarga(1);", true);
                     break;
                 case "Aprobar":
                     ucAprobarSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
@@ -186,12 +188,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void btnGrabarArchcivo_Click(object sender, EventArgs e)
         {
-            byte[] archivo = fileUpArchivo.FileBytes;
-            String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
-            new SolicitudCambioControladora().ActualizarArchivo(Convert.ToInt32(hidIdSolicitud.Value), nombre, archivo);
+            if (fileUpArchivo.HasFile)
+            {
+                byte[] archivo = fileUpArchivo.FileBytes;
+                String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
+                new SolicitudCambioControladora().ActualizarArchivo(Convert.ToInt32(hidIdSolicitud.Value), nombre, archivo);
 
-            MostrarControles(false, true, false, false, true);
-            btnBuscar_Click(null, null);
+                MostrarControles(false, true, false, false, true);
+                btnBuscar_Click(null, null);
+            }
         }
 
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
