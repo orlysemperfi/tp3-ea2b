@@ -7,28 +7,46 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TMD.CF.Site.Vistas.CF.ControlCambio {
+namespace TMD.CF.Site.Controles {
     
     
-    public partial class ListaInformeCambio {
+    public partial class RegistroInformeCambio {
         
         /// <summary>
-        /// upnlFiltro control.
+        /// pnlInformeCambio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlFiltro;
+        protected global::System.Web.UI.WebControls.Panel pnlInformeCambio;
         
         /// <summary>
-        /// pnlBusqueda control.
+        /// lblCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlBusqueda;
+        protected global::System.Web.UI.WebControls.Label lblCodigo;
+        
+        /// <summary>
+        /// txtNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        
+        /// <summary>
+        /// NombreRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NombreRequired;
         
         /// <summary>
         /// ddlProyecto control.
@@ -40,6 +58,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.DropDownList ddlProyecto;
         
         /// <summary>
+        /// proyectoValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator proyectoValidator;
+        
+        /// <summary>
         /// ddlLineaBase control.
         /// </summary>
         /// <remarks>
@@ -49,102 +76,111 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.DropDownList ddlLineaBase;
         
         /// <summary>
-        /// ddlEstado control.
+        /// lineaBaseValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+        protected global::System.Web.UI.WebControls.CompareValidator lineaBaseValidator;
         
         /// <summary>
-        /// btnBuscar control.
+        /// ddlSolicitud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSolicitud;
         
         /// <summary>
-        /// btnNuevo control.
+        /// elementoValidador control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
+        protected global::System.Web.UI.WebControls.CompareValidator elementoValidador;
         
         /// <summary>
-        /// upnlLista control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlLista;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// grvInformeCambio control.
+        /// estimacionCosto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvInformeCambio;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator estimacionCosto;
         
         /// <summary>
-        /// hidIdSolicitud control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidIdSolicitud;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
-        /// upnlControles control.
+        /// estimacionEsfuerzo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlControles;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator estimacionEsfuerzo;
         
         /// <summary>
-        /// ucRegistroInformeCambio control.
+        /// TextBox3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TMD.CF.Site.Controles.RegistroInformeCambio ucRegistroInformeCambio;
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
         
         /// <summary>
-        /// ucAprobarInformeCambio control.
+        /// Recursos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TMD.CF.Site.Controles.AprobarInformeCambio ucAprobarInformeCambio;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Recursos;
         
         /// <summary>
-        /// ucSubirArchivoInformeCambio control.
+        /// GrabarValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TMD.CF.Site.Controles.SubirArchivoInformeCambio ucSubirArchivoInformeCambio;
+        protected global::System.Web.UI.WebControls.ValidationSummary GrabarValidationSummary;
         
         /// <summary>
-        /// btnDescarga control.
+        /// btnGrabar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDescarga;
+        protected global::System.Web.UI.WebControls.Button btnGrabar;
+        
+        /// <summary>
+        /// btnCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

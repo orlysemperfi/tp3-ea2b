@@ -32,12 +32,17 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            grvInformeCambio.DataSource =
+                new InformeCambioFachada().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt());
+            grvInformeCambio.DataBind();
 
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            ucRegistroInformeCambio.CargarsolicitudNueva();
+            ucRegistroInformeCambio.Visible = true;
+            pnlBusqueda.Visible = false;
         }
 
         public String RecuperarEstadoNombre(int idEstado)
@@ -68,6 +73,28 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         public String RecuperarPrioridadImagen(int idPrioridad)
         {
             return String.Format("~/Imagenes/Prioridad/{0}.ico", idPrioridad);
+        }
+
+        protected void grvInformeCambio_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void btnDescarga_Click(object sender, EventArgs e)
+        {
+            int idSolicitud = Convert.ToInt32(hidIdSolicitud.Value);
+
+            SolicitudCambio solicitud = new SolicitudCambioControladora().ObtenerArchivo(idSolicitud);
+
+            if (solicitud != null && solicitud.Data != null)
+            {
+                Response.Clear();
+                Response.ContentType = "application/octet-stream";
+                Response.AddHeader("Content-Disposition", String.Format("attachment; filename={0}", solicitud.NombreArchivo));
+                Response.Flush();
+                Response.Buffer = true;
+                Response.BinaryWrite(solicitud.Data);
+            }
         }
     }
 }
