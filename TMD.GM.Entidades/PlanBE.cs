@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
+
 namespace TMD.GM.Entidades
 {
     public class PlanBE
