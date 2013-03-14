@@ -46,6 +46,24 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             return oPropuestaMejoraColeccion;
         }
 
+        public List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraAsignadasListadoPorFiltros(PropuestaMejoraEntidad oPropuestaMejoraFiltro)
+        {
+            iPropuestaMejora = new PropuestaMejoraDataSql();
+
+            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = new List<PropuestaMejoraEntidad>();
+            try
+            {
+                oPropuestaMejoraColeccion = iPropuestaMejora.ObtenerPropuestaMejoraAsignadasListadoPorFiltros(oPropuestaMejoraFiltro);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return oPropuestaMejoraColeccion;
+        }
+
         public PropuestaMejoraEntidad ObtenerPropuestaMejoraPorCodigo(int codigo)
         {
             iPropuestaMejora = new PropuestaMejoraDataSql();
