@@ -161,6 +161,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Vistas\ACP\ActualizarHallazgo.aspx" />
     <Content Include="Vistas\ACP\ActualizarPlanAuditoria.aspx" />
+    <Content Include="Vistas\ACP\AsignarSeguimiento.aspx" />
     <Content Include="Vistas\ACP\ConsultaAuditoria.aspx" />
     <Content Include="Vistas\ACP\ConsultarAuditor.aspx" />
     <Content Include="Vistas\ACP\ConsultarEntidadAuditada.aspx" />
@@ -200,6 +201,7 @@
     <Content Include="Vistas\ACP\js\themeswitchertool.js" />
     <Content Include="Vistas\ACP\js\utils.js" />
     <Content Include="Vistas\ACP\ListaPlanAuditoria.aspx" />
+    <Content Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx" />
     <Content Include="Vistas\ACP\MantenerHallazgo.aspx" />
     <Content Include="Vistas\ACP\Principal.aspx" />
     <Content Include="Vistas\ACP\ProgramaAuditoria.aspx" />
@@ -333,6 +335,7 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentadora\ACP\ProgramaAnualPresentadora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -363,6 +366,13 @@
     <Compile Include="Vistas\ACP\ActualizarPlanAuditoria.aspx.designer.cs">
       <DependentUpon>ActualizarPlanAuditoria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ACP\AsignarSeguimiento.aspx.cs">
+      <DependentUpon>AsignarSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\AsignarSeguimiento.aspx.designer.cs">
+      <DependentUpon>AsignarSeguimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ACP\base\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -391,12 +401,20 @@
       <DependentUpon>ConsultarEntidadAuditada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ACP\base\Data.cs" />
+    <Compile Include="Vistas\ACP\IProgramaAnualVista.cs" />
     <Compile Include="Vistas\ACP\ListaPlanAuditoria.aspx.cs">
       <DependentUpon>ListaPlanAuditoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\ACP\ListaPlanAuditoria.aspx.designer.cs">
       <DependentUpon>ListaPlanAuditoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx.cs">
+      <DependentUpon>ListaSeguimientoHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx.designer.cs">
+      <DependentUpon>ListaSeguimientoHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ACP\MantenerHallazgo.aspx.cs">
       <DependentUpon>MantenerHallazgo.aspx</DependentUpon>

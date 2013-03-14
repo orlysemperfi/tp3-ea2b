@@ -41,15 +41,15 @@
                     <Items>
                         <asp:MenuItem Text="Linea Base" Value="LineaBase">
                             <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/LineaBase/ListaLineaBase.aspx?carga=0" />
-                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/ACP/ListaLineaBase.aspx?carga=1" />
+                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/LineaBase/ListaLineaBase.aspx?carga=1" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Auditoría" Value="Auditoria">
                             <asp:MenuItem Text="Actualizar Programa Anual" Value="ActualizarProgramaAnual" NavigateUrl="~/Vistas/ACP/ProgramaAuditoria.aspx" />
                             <asp:MenuItem Text="Actualizar Plan de Auditoria" Value="ActualizarPlanAuditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
                             <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" Value="ActualizarHallazgosAuditoria" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
                             <asp:MenuItem Text="Actualizar Plan de Acción" Value="ActualizarPlanAccion" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                            <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" Value="AsignarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" Value="ActualizarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
+                            <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" Value="AsignarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ListaSeguimientoHallazgo.aspx" />
+                            <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" Value="ActualizarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/AsignarSeguimientoHallazgo.aspx" />
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>
