@@ -80,8 +80,12 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
+    <Content Include="Controles\AprobarInformeCambio.ascx" />
     <Content Include="Controles\AprobarSolicitudCambio.ascx" />
+    <Content Include="Controles\CF\ControlCambio\RegistroOrdenCambio.ascx" />
+    <Content Include="Controles\RegistroInformeCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
+    <Content Include="Controles\SubirArchivoInformeCambio.ascx" />
     <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
     <Content Include="Imagenes\bg-formLogin.png" />
     <Content Include="Imagenes\bienvenido.png" />
@@ -187,6 +191,13 @@
     <Compile Include="Controladora\CF\LineaBaseControladora.cs" />
     <Compile Include="Controladora\CF\OrdenCambioControladora.cs" />
     <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
+    <Compile Include="Controles\AprobarInformeCambio.ascx.cs">
+      <DependentUpon>AprobarInformeCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\AprobarInformeCambio.ascx.designer.cs">
+      <DependentUpon>AprobarInformeCambio.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\AprobarSolicitudCambio.ascx.cs">
       <DependentUpon>AprobarSolicitudCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,12 +205,33 @@
     <Compile Include="Controles\AprobarSolicitudCambio.ascx.designer.cs">
       <DependentUpon>AprobarSolicitudCambio.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controles\CF\ControlCambio\RegistroOrdenCambio.ascx.cs">
+      <DependentUpon>RegistroOrdenCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\CF\ControlCambio\RegistroOrdenCambio.ascx.designer.cs">
+      <DependentUpon>RegistroOrdenCambio.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\RegistroInformeCambio.ascx.cs">
+      <DependentUpon>RegistroInformeCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\RegistroInformeCambio.ascx.designer.cs">
+      <DependentUpon>RegistroInformeCambio.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.designer.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\SubirArchivoInformeCambio.ascx.cs">
+      <DependentUpon>SubirArchivoInformeCambio.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controles\SubirArchivoInformeCambio.ascx.designer.cs">
+      <DependentUpon>SubirArchivoInformeCambio.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controles\SubirArchivoSolicitudCambio.ascx.cs">
       <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
