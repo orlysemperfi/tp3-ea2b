@@ -14,5 +14,11 @@ namespace TMD.Entidades
         public int? IdPreguntaVerificacion { get; set; }
         public string Estado { get; set; }
         public int? nDoc { get; set; }
+        public DateTime? FechaCompromiso { get; set; }
+        public DateTime? FechaSeguimiento { get; set; }
+        public string ComentarioSeguimiento { get; set; }
+        public int? IdAuditorSeguimiento { get; set; }
+        public string ResponsableSeguimiento { get; set; }
+        
     }
 }
