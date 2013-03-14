@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.GM.LogicaNegocios", "TMD.GM.LogicaNegocios.csproj", "{4CBA70E9-590F-43B5-824A-604B04B89644}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.GM.LogicaNegocios", "TMD.GM.LogicaNegocios.csproj", "{610AEC74-2EEF-4432-92A2-880E1CC9E722}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4CBA70E9-590F-43B5-824A-604B04B89644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CBA70E9-590F-43B5-824A-604B04B89644}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CBA70E9-590F-43B5-824A-604B04B89644}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CBA70E9-590F-43B5-824A-604B04B89644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
