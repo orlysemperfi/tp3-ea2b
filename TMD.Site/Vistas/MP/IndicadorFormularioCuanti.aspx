@@ -8,21 +8,12 @@
     </script>
     <script type="text/javascript" language="javascript">
 
-        //        function cerrarPopup() {
-        //            window.close();
-        //        }
-        function mostrarIndicador() {
-            tipo = document.getElementById("ddlTipo").value;
-            if (tipo == "0") {
-                document.getElementById("IndicadorCualitativo").style.visibility = "visible";
-                document.getElementById("IndicadorCuantitativo").style.visibility = "hidden";
-            }
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
 
-            else {
-                document.getElementById("IndicadorCualitativo").style.visibility = "hidden";
-                document.getElementById("IndicadorCuantitativo").style.visibility = "visible";
-            }
-
+            return true;
         }
     </script>
 </asp:Content>
@@ -84,74 +75,76 @@
             </tr>
 
         </table>
-    </div>
- 
-
+        <br />
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnAgregarICuanti" runat="server" Text="Agregar" 
-                        CssClass="estilo_boton" onclick="lbtnAgregarICuanti_Click" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:GridView ID="gwEscalasCuanti" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCuantitativoListado() %>' OnRowCommand="gwEscalasCuanti_RowCommand">
-                        <Columns>
-                            <asp:TemplateField HeaderText="Codigo">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>' Visible=false />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Signo">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblSigno" runat="server" Text='<%#Eval("SIGNO") %>'  />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Valor">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblValor" runat="server" Text='<%#Eval("VALOR") %>' />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Unidad">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblUnidad" runat="server" Text='<%#Eval("DESCRIPCION_UNIDAD") %>' />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEditarCuali" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%#Eval("CODIGO") %>'/>                                    
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="20px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminarICuanti" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%#Eval("CODIGO") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="20px" />
-                            </asp:TemplateField>
+                    <fieldset>  
+                        <legend>Escalas</legend>
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="padding-bottom:10px;">
+                                    <asp:LinkButton ID="lbtnAgregarICuanti" runat="server" Text="Agregar" 
+                                        CssClass="estilo_boton" onclick="ButtonAdd_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom:10px;">
+                                    <asp:GridView ID="gwEscalasCuanti" runat="server" AutoGenerateColumns="false" AllowPaging="false" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White" DataSource='<%#ObtenerEscalaCuantitativoListado() %>' OnRowEditing="gwEscalasCuanti_RowEditing" OnRowCancelingEdit="gwEscalasCuanti_RowCancelingEdit" OnRowUpdating="gwEscalasCuanti_RowUpdating" OnRowDeleting="gwEscalasCuanti_RowDeleting" OnRowDataBound="gwEscalasCuanti_RowDataBound" AutoGenerateDeleteButton="true" AutoGenerateEditButton="true" >
+                                        <HeaderStyle CssClass="tabla-grilla-cabecera" />
+                                        <RowStyle CssClass="tabla-grilla-filas" />
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="Codigo" Visible="false">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>' />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Signo">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblSigno" runat="server" Text='<%#Eval("SIGNO") %>'  />
+                                                </ItemTemplate>
+                                             <EditItemTemplate>
+                                                <asp:TextBox ID="tbxSigno" runat="server" Text='<%#Eval("SIGNO") %>' CssClass="estilo_textbox" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                            </EditItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Valor">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblValor" runat="server" Text='<%#Eval("VALOR") %>' />
+                                                </ItemTemplate>
+                                             <EditItemTemplate>
+                                                <asp:TextBox ID="tbxValor" runat="server" Text='<%#Eval("VALOR") %>' CssClass="estilo_textbox" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                            </EditItemTemplate>
 
-                        </Columns>                        
-                    </asp:GridView>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Unidad">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblUnidad" runat="server" Text='<%#Eval("DESCRIPCION_UNIDAD") %>' />
+                                                </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:DropDownList ID="ddlUnidad" runat="server" CssClass="estilo_combobox"></asp:DropDownList>
+                                            </EditItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>                        
+                                    </asp:GridView>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;</td>
             </tr>
         </table>
-
-    <br />
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td>
-                <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar"></asp:LinkButton>
-            </td>
-            <td style="padding:5px">
-                <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar"></asp:LinkButton>
-            </td>
-        </tr>
-    </table>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar"></asp:LinkButton>
+                </td>
+                <td style="padding:5px">
+                    <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar"></asp:LinkButton>
+                </td>
+            </tr>
+        </table>
+    </div>
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>
@@ -159,5 +152,4 @@
             </td>
         </tr>
     </table>
-
 </asp:Content>
