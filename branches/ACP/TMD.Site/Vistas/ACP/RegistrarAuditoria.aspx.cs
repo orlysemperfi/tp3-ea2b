@@ -97,17 +97,21 @@ namespace TMD.ACP.Site
                     {
                         foreach (Auditoria eAuditoria in lstAuditoria)
                         {
-                            if (eAuditoria.IdAuditoria != Convert.ToInt32(Request["txtAuditoria"]) &&
-                                eAuditoria.ObjEntidadAuditada.IdEntidadAuditada == Convert.ToInt32(Request["__tempIdEntidadAuditada"]))
+                            if (eAuditoria.IdAuditoria != Convert.ToInt32(Request["txtAuditoria"]))
                             {
-                                strMensaje = strMensaje + "El proceso/proyecto ya se encuentra en la lista";
-                                break;
-                            }
-                            if (eAuditoria.IdAuditoria != Convert.ToInt32(Request["txtAuditoria"]) &&
-                                Convert.ToDateTime(Request["txtFechaInicio"]) < eAuditoria.FechaFin)
-                            {
-                                strMensaje = strMensaje + "Ya existe una auditoria para el periodo de tiempo ingresado";
-                                break;
+                                if(eAuditoria.ObjEntidadAuditada.IdEntidadAuditada == Convert.ToInt32(Request["__tempIdEntidadAuditada"]))
+                                {
+                                    strMensaje = strMensaje + "El proceso/proyecto ya se encuentra en la lista";
+                                    break;
+                                }
+                                else if ((eAuditoria.FechaInicio >= Convert.ToDateTime(Request["txtFechaInicio"]) &&
+                                          eAuditoria.FechaInicio <= Convert.ToDateTime(Request["txtFechaFin"])) ||
+                                         (eAuditoria.FechaFin >= Convert.ToDateTime(Request["txtFechaInicio"]) &&
+                                          eAuditoria.FechaFin <= Convert.ToDateTime(Request["txtFechaFin"])))
+                                {
+                                    strMensaje = strMensaje + "Ya existe una auditoria para el periodo de tiempo ingresado";
+                                    break;
+                                }
                             }
                         }
                     }
