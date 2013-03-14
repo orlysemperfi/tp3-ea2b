@@ -43,15 +43,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\TMD.Core\bin\Debug\TMD.Core.dll</HintPath>
     </Reference>
-    <Reference Include="TMD.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.Entidades\bin\Debug\TMD.Entidades.dll</HintPath>
-    </Reference>
     <Reference Include="TMD.GM.AccesoDatos">
       <HintPath>..\TMD.GM.AccesoDatos\bin\Debug\TMD.GM.AccesoDatos.dll</HintPath>
     </Reference>
+    <Reference Include="TMD.GM.Entidades">
+      <HintPath>..\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComunBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
