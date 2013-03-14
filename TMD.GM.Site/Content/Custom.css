@@ -1,0 +1,49 @@
+﻿.divLoading
+{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 50px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    background-color: black;
+    filter: alpha(opacity=20);
+    mozopacity: 0.2;
+    opacity: 0.2;
+    z-index: 1011;
+}
+.j_modal{display:none}
+.txtForm {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.0em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 120px;
+}
+
+
+
+.txtFormFecha {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.0em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 100px;
+}
+
+.ddlForm {
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    font-size: 1.0em;
+    margin: 5px 0 6px 0;
+    padding: 5px;
+    width: 150px;
+}

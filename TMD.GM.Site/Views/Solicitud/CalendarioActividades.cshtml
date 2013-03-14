@@ -1,0 +1,51 @@
+﻿@model TMD.GM.Site.Models.SolicitudModel
+@{
+    ViewBag.Title = "Calendario de Actividades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calendario de Actividades</h2>
+<fieldset>
+Seleccione la fecha programada para ver Actividades
+</fieldset>
+<fieldset style="font-size:8pt">
+<div style="float:left; border:1px solid #000000; height:150px; padding:5px">
+@(new HtmlString( Html.Calendar("calendarioA", DateTime.Now)))
+</div>
+<div style="float:left; border:1px solid #000000; height:150px; padding:5px">
+@(new HtmlString(Html.Calendar("calendarioB", DateTime.Now.AddMonths(1))))
+</div>
+<div style="float:left; border:1px solid #000000; height:150px; padding:5px">
+@(new HtmlString(Html.Calendar("calendarioC", DateTime.Now.AddMonths(2))))
+</div>
+</fieldset>
+<fieldset>
+Fecha seleccionada
+@Html.TextBox("txtFechaSel", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+</fieldset>
+<fieldset>
+<fieldset style="float:left">(</fieldset>
+<fieldset style="float:left">
+<legend>Personal disponible</legend>
+@Html.TextBox("txtPersonalDisp", "", new { @class = "txtForm" })
+</fieldset>
+<fieldset style="float:left">*</fieldset>
+<fieldset style="float:left">
+<legend>Horas laborables</legend>
+@Html.TextBox("txtHorasLabo", "", new { @class = "txtForm" })
+</fieldset>
+<fieldset style="float:left">) = </fieldset>
+<fieldset style="float:left">
+<legend>Horas disponibles</legend>
+@Html.TextBox("txtHorasDisp", "", new { @class = "txtForm" })
+</fieldset>
+<fieldset style="float:left">
+<legend>Horas empleadas</legend>
+@Html.TextBox("txtHorasEmpl", "", new { @class = "txtForm" })
+</fieldset>
+</fieldset>
+<fieldset>
+<input id="btnRetornar" type="button" value="Retornar" />
+</fieldset>
+
+
