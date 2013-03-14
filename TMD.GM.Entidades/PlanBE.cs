@@ -14,7 +14,9 @@ namespace TMD.GM.Entidades
         {}
 
         #region Atributos
-        public string CODIGO { get; set; }
+        public string CODIGO_PLAN { get; set; }
+        public string NOMBRE_PLAN { get; set; }
+        public bool ESTADO_PLAN { get; set; }
         #endregion
     }
 }
