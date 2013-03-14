@@ -173,6 +173,8 @@
     <Compile Include="Helpers\CalendarExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ActividadModels.cs" />
+    <Compile Include="Models\SolicitudConsultaModels.cs" />
+    <Compile Include="Models\PlanConsultaModels.cs" />
     <Compile Include="Models\PlanModels.cs" />
     <Compile Include="Models\PlanDetalleModels.cs" />
     <Compile Include="Models\SolicitudModels.cs" />
@@ -334,6 +336,18 @@
       <Project>{057E073B-A43F-4D13-90A4-49EBEEF9A904}</Project>
       <Name>TMD.GM.Util</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Plan\PlanConsulta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Plan\PlanConsultaResultPV.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Plan\PlanNuevo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Solicitud\SolicitudConsultaResultPV.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
