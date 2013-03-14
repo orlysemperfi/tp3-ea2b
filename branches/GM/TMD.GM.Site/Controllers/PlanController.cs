@@ -7,6 +7,8 @@ using TMD.GM.LogicaNegocios;
 using TMD.GM.Site.Models;
 using System.Web.Helpers;
 using TMD.GM.Entidades;
+using TMD.GM.LogicaNegocios.Implementacion;
+using TMD.GM.LogicaNegocios.Contrato;
 
 namespace TMD.GM.Site.Controllers
 {
@@ -14,32 +16,37 @@ namespace TMD.GM.Site.Controllers
     {
         //
         // GET: /Plan/
-
+        private readonly IComunBL comunBL = new ComunBL();
+        private readonly IPlanBL planBL = new PlanBL();
+        private readonly ISolicitudBL solicitudBL = new SolicitudBL();
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Plan()
+
+        public ActionResult PlanConsulta()
         {
-            ComunBL ComunBL = new ComunBL();
+            return View();
+        }
+        public ActionResult PlanNuevo()
+        {
             PlanModel model = new PlanModel();
-            PlanBE oPlanBE = ComunBL.ObtenerObtenerPlanNuevo();
-            model.codigoPlan = oPlanBE.CODIGO;
+            PlanBE oPlanBE = planBL.ObtenerObtenerPlanNuevo();
+            model.codigoPlan = oPlanBE.CODIGO_PLAN;
 
             model.listaDetalle = new List<PlanDetalleBE>();
-            model.listaDetalle.Add(new PlanDetalleBE());
-            return View(model);
+            //model.listaDetalle.Add(new PlanDetalleBE());
+            return PartialView(model);
         }
         public ActionResult PlanDetalle()
         {
-            ComunBL ComunBL = new ComunBL();
             PlanDetalleModel model = new PlanDetalleModel();
 
             List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataTU = new List<SelectListItemBE>();
 
-            listaDataTA = ComunBL.ListarTipoActividad();
-            listaDataTU = ComunBL.ListarTiempoUniMed();
+            listaDataTA = comunBL.ListarTipoActividad();
+            listaDataTU = comunBL.ListarTiempoUniMed();
 
             model.listaTA = new List<SelectListItem>();
             model.listaTU = new List<SelectListItem>();
@@ -58,14 +65,13 @@ namespace TMD.GM.Site.Controllers
 
         public ActionResult PlanDetallePV()
         {
-            ComunBL ComunBL = new ComunBL();
             PlanDetalleModel model = new PlanDetalleModel();
 
             List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataTU = new List<SelectListItemBE>();
 
-            listaDataTA = ComunBL.ListarTipoActividad();
-            listaDataTU = ComunBL.ListarTiempoUniMed();
+            listaDataTA = comunBL.ListarTipoActividad();
+            listaDataTU = comunBL.ListarTiempoUniMed();
 
             model.listaTA = new List<SelectListItem>();
             model.listaTU = new List<SelectListItem>();
@@ -80,6 +86,16 @@ namespace TMD.GM.Site.Controllers
             }
 
             return PartialView(model);
+        }
+
+        public ActionResult ListarTodosPV()
+        {
+            PlanConsultaModel model = new PlanConsultaModel();
+
+
+            model.listaData = planBL.ListarPlanManteTodos();
+
+            return PartialView("PlanConsultaResultPV", model);
         }
     }
 }
