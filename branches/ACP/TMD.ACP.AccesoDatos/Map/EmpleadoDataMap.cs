@@ -18,6 +18,8 @@ namespace TMD.ACP.AccesoDatos.Map
             objEmpleado.nombre = reader.GetString("nombres");
             objEmpleado.apellidopaterno = reader.GetString("apepat");
             objEmpleado.apellidomaterno = reader.GetString("apemat");
+            objEmpleado.ObjArea.codigo = reader.GetInt("CODIGO_AREA");
+            objEmpleado.ObjArea.descripcion = reader.GetString("nombreArea");            
             return objEmpleado;
         }
     }

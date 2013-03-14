@@ -85,5 +85,84 @@ namespace TMD.ACP.AccesoDatos.Implementacion
                 DB.ExecuteNonQuery(command);
             }
         }
+
+        public List<Auditoria> ObtenerAuditoriasSeguimiento(int anhoAuditoria)
+        {
+            List<Auditoria> lista = new List<Auditoria>();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("SELECT AUD.CODIGO_AUDITORIA, ENT.descripcion as AUDITORIA, AREA.CODIGO_AREA, AREA.DESCRIPCION as AREA, ");
+            sb.Append("AUD.FECHA_INICIO, AUD.FECHA_FIN,AUD.ESTADO ");
+            sb.Append("from AUDITORIA AUD ");
+            sb.Append("inner join AC_ENTIDAD_AUDITADA ENT on (AUD.CODIGO_ENTIDAD_AUDITADA = ENT.idEntidadAuditada) ");
+            sb.Append("inner join AREA AREA on (ENT.idArea = AREA.CODIGO_AREA) ");            
+            sb.Append(string.Format("WHERE YEAR(AUD.FECHA_INICIO) = {0} ", anhoAuditoria));
+
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {               
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(HallazgoDataMap.SelectAuditoriasSeguimientoHallazgo(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public List<Hallazgo> ObtenerHallazgosSeguimiento(int idAuditoria, int idHallazgo)
+        {
+            List<Hallazgo> lista = new List<Hallazgo>();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("SELECT ");
+            sb.Append("H.idHallazgo,H.idAuditoria,H.idPreguntaVerificacion,H.tipoHallazgo,H.descripcion, ");
+            sb.Append("H.fechaCompromiso,H.fechaSeguimiento,H.comentarioSeguimiento,H.idAuditorSeguimiento, ");
+            sb.Append("(E.NOMBRES + E.APEPAT + E.APEMAT) AS responsableSeguimiento,H.estado ");
+            sb.Append("FROM AC_HALLAZGO H ");
+            sb.Append("LEFT JOIN EMPLEADO E ");
+            sb.Append("ON H.idAuditorSeguimiento = E.CODIGO_EMPLEADO ");
+            sb.Append(string.Format("WHERE (H.idAuditoria = {0}) ", idAuditoria));
+            sb.Append(string.Format("AND (H.idHallazgo = {0} OR {0} = 0) ", idHallazgo));
+            
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(HallazgoDataMap.ObtenerHallazgosSeguimiento(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void GrabarHallazgoSeguimiento(Hallazgo hallazgo)
+        {
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE AC_HALLAZGO ");
+            if (hallazgo.FechaSeguimiento.HasValue)
+                sb.Append(string.Format("SET fechaSeguimiento = '{0}', ", hallazgo.FechaSeguimiento.Value.ToString("yyyyMMdd")));
+            else
+                sb.Append("SET fechaSeguimiento = null, ");
+            if (hallazgo.IdAuditorSeguimiento.HasValue)
+                sb.Append(string.Format("idAuditorSeguimiento = {0}, ", hallazgo.IdAuditorSeguimiento.Value.ToString()));
+            else
+                sb.Append("idAuditorSeguimiento = null, ");
+            sb.Append(string.Format("estado = '{0}' ", hallazgo.Estado));
+            sb.Append(string.Format("WHERE idHallazgo = {0} ", hallazgo.IdHallazgo));
+
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {            
+                DB.ExecuteNonQuery(command);
+            }
+        }        
     }
 }
