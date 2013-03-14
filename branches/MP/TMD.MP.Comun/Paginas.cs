@@ -17,5 +17,8 @@ namespace TMD.MP.Comun
         public static String TMD_MP_IndicadorFormularioCuanti = "~/Vistas/MP/IndicadorFormularioCuanti.aspx";
         public static String TMD_MP_IndicadorListado = "~/Vistas/MP/IndicadorListado.aspx";
         public static String TMD_MP_Inicio = "~/Vistas/MP/Inicio.aspx";
+
+        public static String TMD_MP_SolucionMejoraListado = "~/Vistas/MP/SolucionMejoraListado.aspx";
+        public static String TMD_MP_SolucionMejoraFormulario = "~/Vistas/MP/SolucionMejoraFormulario.aspx";
     }
 }

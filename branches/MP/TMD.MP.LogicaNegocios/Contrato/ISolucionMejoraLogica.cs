@@ -12,7 +12,14 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoPorFiltros(SolucionMejoraEntidad oSolucionMejoraFiltro);
 
+        SolucionMejoraEntidad ObtenerSolucionMejoraPorCodigo(int codigo);
+        
         #endregion
 
+        #region "Update"
+
+        String BorrarSolucionMejora(SolucionMejoraEntidad oSolucionMejora);
+
+        #endregion
     }
 }

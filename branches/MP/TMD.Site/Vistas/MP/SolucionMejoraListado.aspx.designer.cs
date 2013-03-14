@@ -22,13 +22,13 @@ namespace TMD.MP.Site.Privado {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// upnlPropuestaMejoraListado control.
+        /// upnlSolucionMejoraListado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnlPropuestaMejoraListado;
+        protected global::System.Web.UI.UpdatePanel upnlSolucionMejoraListado;
         
         /// <summary>
         /// tbxCodigo control.

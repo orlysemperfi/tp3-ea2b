@@ -44,6 +44,34 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             return oSolucionMejoraColeccion;
         }
 
+        public SolucionMejoraEntidad ObtenerSolucionMejoraPorCodigo(int codigo)
+        {
+            iSolucionMejora = new SolucionMejoraDataSql();
+            SolucionMejoraEntidad oSolucionMejora = new SolucionMejoraEntidad();
+            try
+            {
+                //oSolucionMejora = iSolucionMejora.ObtenerSolucionMejoraPorCodigo(codigo);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return oSolucionMejora;
+        }
+
+        #endregion
+
+        #region "Update"
+
+        public String BorrarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        {
+            
+                return null;
+            
+        }
+
         #endregion
 
     }
