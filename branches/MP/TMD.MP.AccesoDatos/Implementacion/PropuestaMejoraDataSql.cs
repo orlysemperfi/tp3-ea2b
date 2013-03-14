@@ -95,6 +95,87 @@ namespace TMD.MP.AccesoDatos.Implementacion
             }
         }
 
+        public List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraAsignadasListadoPorFiltros(PropuestaMejoraEntidad oPropuestaMejoraFiltro)
+        {
+            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = new List<PropuestaMejoraEntidad>();
+            PropuestaMejoraEntidad oPropuestaMejora = null;
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.CODIGO_AREA, A.DESCRIPCION AS NOMBRE_AREA, P.TIPO_PROPUESTA, P.CODIGO_RESPONSABLE, ");
+            strSQL.Append("P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, ");
+            strSQL.Append("P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO, ");
+            strSQL.Append("R.APELLIDO_PATERNO +' '+R.APELLIDO_MATERNO+', '+R.NOMBRE_PERSONA AS NOMBRE_COMPLETO ");
+            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN GEN.AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("INNER JOIN GEN.PERSONA R ON R.CODIGO_PERSONA = P.CODIGO_RESPONSABLE ");
+            strSQL.Append("WHERE E.NOMBRE = '" + Constantes.ESTADO_PROPUESTA_ASIGNADA + "' ");
+            if (oPropuestaMejoraFiltro != null)
+            {
+                if (oPropuestaMejoraFiltro.codigo_Propuesta != null && oPropuestaMejoraFiltro.codigo_Propuesta != 0)
+                    strSQL.Append("AND P.CODIGO_PROPUESTA = @CODIGO_PROPUESTA ");
+                if (oPropuestaMejoraFiltro.tipo_Propuesta != String.Empty)
+                    strSQL.Append("AND P.TIPO_PROPUESTA = @TIPO_PROPUESTA ");
+                if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
+                    strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_INICIO) <= 0 ");
+                if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
+                    strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_FIN) >= 0  ");
+            }
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            if (oPropuestaMejoraFiltro != null)
+            {
+                if (oPropuestaMejoraFiltro.codigo_Propuesta != null && oPropuestaMejoraFiltro.codigo_Propuesta != 0)
+                    sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oPropuestaMejoraFiltro.codigo_Propuesta;
+                if (oPropuestaMejoraFiltro.tipo_Propuesta != String.Empty)
+                    sqlCmd.Parameters.Add("@TIPO_PROPUESTA", SqlDbType.VarChar).Value = oPropuestaMejoraFiltro.tipo_Propuesta;
+                if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
+                    sqlCmd.Parameters.Add("@FECHA_REGISTRO_INICIO", SqlDbType.DateTime).Value = oPropuestaMejoraFiltro.fecha_Registro_Inicio;
+                if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
+                    sqlCmd.Parameters.Add("@FECHA_REGISTRO_FIN", SqlDbType.DateTime).Value = oPropuestaMejoraFiltro.fecha_Registro_Fin;
+            }
+
+            try
+            {
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    oPropuestaMejora = new PropuestaMejoraEntidad();
+                    oPropuestaMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
+                    oPropuestaMejora.codigo_Area = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_AREA"]);
+                    oPropuestaMejora.nombre_Area = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_AREA"]);
+                    oPropuestaMejora.tipo_Propuesta = Utilitario.getDefaultOrStringDBValue(dr["TIPO_PROPUESTA"]);
+                    oPropuestaMejora.codigo_Responsable = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_RESPONSABLE"]);
+                    oPropuestaMejora.fecha_Envio = Utilitario.getDefaultOrDatetimeDBValue(dr["FECHA_ENVIO"]);
+                    oPropuestaMejora.codigo_Proceso = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROCESO"]);
+                    oPropuestaMejora.fecha_Registro = Utilitario.getDefaultOrDatetimeDBValue(dr["FECHA_REGISTRO"]);
+                    oPropuestaMejora.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oPropuestaMejora.causa = Utilitario.getDefaultOrStringDBValue(dr["CAUSA"]);
+                    oPropuestaMejora.beneficios = Utilitario.getDefaultOrStringDBValue(dr["BENEFICIOS"]);
+                    oPropuestaMejora.observaciones = Utilitario.getDefaultOrStringDBValue(dr["OBSERVACIONES"]);
+                    oPropuestaMejora.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
+                    oPropuestaMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_ESTADO"]);
+                    oPropuestaMejora.nombre_Responsable = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_COMPLETO"]);
+                    oPropuestaMejoraColeccion.Add(oPropuestaMejora);
+                }
+                dr.Close();
+                return oPropuestaMejoraColeccion;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+
         public PropuestaMejoraEntidad ObtenerPropuestaMejoraPorCodigo(int codigo) {
             PropuestaMejoraEntidad oPropuestaMejora = new PropuestaMejoraEntidad();
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
