@@ -37,7 +37,10 @@ namespace TMD.CF.AccesoDatos.Map
                 FechaRegistro = reader.GetDateTime("FECHA_REGISTRO"),
                 Estado = reader.GetInt("ESTADO"),
                 Motivo = reader.GetString("MOTIVO"),
-                Solicitud = new SolicitudCambio {  Id = reader.GetInt("CODIGO_SOLICITUD"), Nombre = reader.GetString("NOMBRE_SOLICITUD") } ,
+                Solicitud = new SolicitudCambio {  Id = reader.GetInt("CODIGO_SOLICITUD"), Nombre = reader.GetString("NOMBRE_SOLICITUD"), FechaAprobacion = reader.GetDateTime("SOLICITUD_FECHA_APROBACION") }, 
+                IdSolicitud = reader.GetInt("CODIGO_SOLICITUD"),
+                NombreSolicitud = reader.GetString("NOMBRE_SOLICITUD"),
+                NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
             };
         }
     }

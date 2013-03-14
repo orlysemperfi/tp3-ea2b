@@ -20,5 +20,9 @@ namespace TMD.Entidades
         public string Motivo { get; set; }
         public Guid IdentificadorUnico { get; set; }
         public Byte[] Data { get; set; }
+        public String NombreArchivo { get; set; }
+        public String Extension { get; set; }
+        public int IdSolicitud { get; set; }
+        public String NombreSolicitud { get; set; }
     }
 }
