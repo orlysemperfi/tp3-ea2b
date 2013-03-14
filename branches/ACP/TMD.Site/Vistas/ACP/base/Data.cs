@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TMD.Entidades;
+using System.Web.SessionState;
 
 namespace Ediable_Repeater
 {
@@ -68,36 +69,44 @@ namespace Ediable_Repeater
 
     public class DataAuditorias
     {
+        private DataAuditorias() { }
 
-        public int? idProgramaAnual { get; set; }
-
-        public DataAuditorias(int id)
-        {
-            idProgramaAnual = id;
-        }
+        public int idProgramaAnual { get; set; }
 
         public int NextId
         {
             get
             {
-                int id = 0;
-                if (Auditoria.Count != 0)
-                {
-                    id = Auditoria.Max(c => c.IdAuditoria.Value);
-                }
-                return ++id;
+                return (auditoria != null && auditoria.Count != 0) ? Auditoria.Max(c => c.IdAuditoria.Value) + 1 : 1;
             }
         }
+
+        private List<Auditoria> auditoria = new List<Auditoria>();
 
         public List<Auditoria> Auditoria
         {
             get
             {
-                if (HttpContext.Current.Session[string.Format("PROGRAMAANUAL-AUDITORIA-{0}", idProgramaAnual)] == null)
+                return auditoria;
+            }
+            set
+            {
+                auditoria = value;
+            }
+        }
+
+        public static DataAuditorias Instance
+        {
+            get
+            {
+                HttpSessionState session = HttpContext.Current.Session;
+
+                if (session["PROGRAMAANUAL-AUDITORIA"] == null)
                 {
-                    HttpContext.Current.Session[string.Format("PROGRAMAANUAL-AUDITORIA-{0}", idProgramaAnual)] = new List<Auditoria>();
+                    session["PROGRAMAANUAL-AUDITORIA"] = new DataAuditorias();
                 }
-                return HttpContext.Current.Session[string.Format("PROGRAMAANUAL-AUDITORIA-{0}", idProgramaAnual)] as List<Auditoria>;
+
+                return (DataAuditorias)session["PROGRAMAANUAL-AUDITORIA"];
             }
         }
     }
