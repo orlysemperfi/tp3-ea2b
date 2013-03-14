@@ -246,19 +246,18 @@ namespace TMD.MP.Site.Privado
             
         //}
 
-        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void gwEscalasCuali_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gwEscalasCuali.EditIndex = e.NewEditIndex;
             gwEscalasCuali.DataBind();
 
         }
 
-        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void gwEscalasCuali_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = (GridViewRow)gwEscalasCuali.Rows[e.RowIndex];
             Label lblCodigo = (Label)row.FindControl("lblCodigo");
             TextBox tbxLimSuperior = (TextBox)row.FindControl("tbxLimSuperior");
-            tbxLimSuperior.Attributes.Add("onkeypress", "javascript:return isNumberKey(event)");
             TextBox tbxLimInferior = (TextBox)row.FindControl("tbxLimInferior");
             TextBox tbxCalificacion = (TextBox)row.FindControl("tbxCalificacion");
             CheckBox chkPrincipal = (CheckBox)row.FindControl("chkPrincipal");
@@ -287,13 +286,13 @@ namespace TMD.MP.Site.Privado
 
         }
 
-        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void gwEscalasCuali_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gwEscalasCuali.EditIndex = -1;
             gwEscalasCuali.DataBind();
         }
 
-        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void gwEscalasCuali_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             GridViewRow row = (GridViewRow)gwEscalasCuali.Rows[e.RowIndex];
             Label lblCodigo = (Label)row.FindControl("lblCodigo");
@@ -306,6 +305,7 @@ namespace TMD.MP.Site.Privado
                     break;
                 }
             }
+            
 
             Sesiones.IndicadorSeleccionado.lstEscalaCualitativo.Remove(oEscalaCualitativo);
 

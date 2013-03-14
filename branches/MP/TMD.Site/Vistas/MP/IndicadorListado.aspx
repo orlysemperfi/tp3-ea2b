@@ -151,7 +151,7 @@
                 <td>
                     <asp:LinkButton ID="lbtnAgregarIndicadorCuali" runat="server" OnClick="ibtnAgregarIndicadorCuali_Click" CssClass="estilo_boton" Text="Agregar Cualitativo"></asp:LinkButton>
                 </td>
-                 <td>
+                <td class="boton-espaciado">
                     <asp:LinkButton ID="lbtnAgregarIndicadorCuanti" runat="server" OnClick="ibtnAgregarIndicadorCuanti_Click" CssClass="estilo_boton" Text="Agregar Cuantitativo"></asp:LinkButton>
                 </td>
                 <td class="boton-espaciado">
