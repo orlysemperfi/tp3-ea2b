@@ -35,6 +35,7 @@
                 <td >
                     <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ValidationGroup="Indicador" ErrorMessage="Seleccione un proceso" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -43,6 +44,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="tbxNombre" runat="server" CssClass="estilo_textbox"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="tbxNombre" ValidationGroup="Indicador" ErrorMessage="Ingrese un nombre" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -51,6 +53,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="tbxFrecuenciaMed" runat="server" CssClass="estilo_textbox"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="tbxFrecuenciaMed" ValidationGroup="Indicador" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -59,6 +62,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="tbxFuenteMed" runat="server" CssClass="estilo_textbox"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvFuenteMed" runat="server" ControlToValidate="tbxFuenteMed" ValidationGroup="Indicador" ErrorMessage="Ingrese una fuente de medición" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -67,6 +71,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="tbxExpresionMat" runat="server" CssClass="estilo_textbox"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvExpresionMat" runat="server" ControlToValidate="tbxExpresionMat" ValidationGroup="Indicador" ErrorMessage="Ingrese una expresión matemática" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -74,7 +79,8 @@
                     Plazo:
                 </td>
                 <td>
-                    <asp:TextBox ID="tbxPlaxo" runat="server" CssClass="estilo_textbox"></asp:TextBox>
+                    <asp:TextBox ID="tbxPlazo" runat="server" CssClass="estilo_textbox"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="tbxPlazo" ValidationGroup="Indicador" ErrorMessage="Ingrese un plazo" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
@@ -148,10 +154,13 @@
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar"></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar" ValidationGroup="Indicador"></asp:LinkButton>
                 </td>
                 <td style="padding:5px">
-                    <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar"></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar" CausesValidation="false"></asp:LinkButton>
+                </td>
+                <td>
+                    <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Indicador" />
                 </td>
             </tr>
         </table>
