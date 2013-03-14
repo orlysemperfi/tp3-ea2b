@@ -156,11 +156,13 @@
         </asp:UpdatePanel>
         <asp:UpdatePanel runat="server" ID="upnlControles">
             <ContentTemplate>
-                <uc1:registrosolicitudcambio id="ucRegistroSolicitudCambio" runat="server" Visible="False" />
+                <uc1:registrosolicitudcambio id="ucRegistroSolicitudCambio" runat="server" visible="False" />
                 <uc2:aprobarsolicitudcambio id="ucAprobarSolicitudCambio" runat="server" visible="False" />
-                <uc3:subirarchivosolicitudcambio id="ucSubirArchivoSolicitudCambio" runat="server"
-                    visible="False" />
+                <uc3:subirarchivosolicitudcambio id="ucSubirArchivoSolicitudCambio" runat="server" Visible="False" />
             </ContentTemplate>
+            <Triggers>
+                <asp:PostBackTrigger runat="server" ControlID="ucSubirArchivoSolicitudCambio"/>
+            </Triggers>
         </asp:UpdatePanel>
     </div>
     <asp:Button runat="server" ID="btnDescarga" OnClick="btnDescarga_Click" Style="display: none" />
