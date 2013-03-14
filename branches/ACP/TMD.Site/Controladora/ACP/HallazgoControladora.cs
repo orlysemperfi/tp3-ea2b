@@ -69,5 +69,24 @@ namespace TMD.Site.Controladora.ACP
         {
             return _hallazgoLogica.Modificar(hallazgo);
         }
+   
+        public static List<Auditoria> ObtenerAuditoriasSeguimiento(int anhoAuditoria)
+        {
+            return _hallazgoLogica.ObtenerAuditoriasSeguimiento(anhoAuditoria);
+        }
+        public static List<Hallazgo> ObtenerHallazgosSeguimiento(int idAuditoria,int idHallazgo,string estado)
+        {
+            return _hallazgoLogica.ObtenerHallazgosSeguimiento(idAuditoria,idHallazgo, estado);
+        }
+        public static string GrabarHallazgoSeguimiento(Hallazgo eHallazgo)
+        {
+            return _hallazgoLogica.GrabarHallazgoSeguimiento(eHallazgo);
+        }
+
+        public static List<EmpleadoEntidad> ListarEmpleadosAuditores()
+        {
+            return _empleadoLogica.ListarEmpleadosAuditores();
+        }
+        
     }
 }
