@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{610AEC74-2EEF-4432-92A2-880E1CC9E722}</ProjectGuid>
+    <ProjectGuid>{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TMD.GM.LogicaNegocios</RootNamespace>
@@ -33,31 +33,32 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TMD.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.Core\bin\Debug\TMD.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="TMD.GM.AccesoDatos">
-      <HintPath>..\TMD.GM.AccesoDatos\bin\Debug\TMD.GM.AccesoDatos.dll</HintPath>
-    </Reference>
-    <Reference Include="TMD.GM.Entidades">
-      <HintPath>..\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComunBL.cs" />
+    <Compile Include="Contrato\IComunBL.cs" />
+    <Compile Include="Contrato\ISolicitudBL.cs" />
+    <Compile Include="Contrato\IPlanBL.cs" />
+    <Compile Include="Implementacion\ComunBL.cs" />
+    <Compile Include="Implementacion\PlanBL.cs" />
+    <Compile Include="Implementacion\SolicitudBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contrato\" />
-    <Folder Include="Implementacion\" />
+    <ProjectReference Include="..\TMD.GM.AccesoDatos\TMD.GM.AccesoDatos.csproj">
+      <Project>{9C88B5E5-8CCB-4968-A25F-36DF0E3EC98C}</Project>
+      <Name>TMD.GM.AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.GM.Entidades\TMD.GM.Entidades.csproj">
+      <Project>{F6B316C4-0778-4BD1-9D17-044E191E74A1}</Project>
+      <Name>TMD.GM.Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
