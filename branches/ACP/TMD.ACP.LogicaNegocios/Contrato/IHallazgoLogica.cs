@@ -12,5 +12,8 @@ namespace TMD.ACP.LogicaNegocios.Contrato
         string Modificar(Hallazgo hallazgo);
         string Eliminar(int idHallazgo);
         List<Hallazgo> Obtener(Hallazgo filtro);
+        List<Auditoria> ObtenerAuditoriasSeguimiento(int anhoAuditoria);
+        List<Hallazgo> ObtenerHallazgosSeguimiento(int idAuditoria, int idHallazgo, string estado);
+        string GrabarHallazgoSeguimiento(Hallazgo eHallazgo);
     }
 }

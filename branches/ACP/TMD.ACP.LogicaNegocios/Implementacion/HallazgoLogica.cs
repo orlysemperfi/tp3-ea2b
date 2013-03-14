@@ -91,5 +91,45 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
 
             return strRespuesta;
         }
+
+        public List<Auditoria> ObtenerAuditoriasSeguimiento(int anhoAuditoria)
+        {
+            List<Auditoria> lstBusqueda = _objData.ObtenerAuditoriasSeguimiento(anhoAuditoria);
+            List<Auditoria> lstAuditorias = new List<Auditoria>();
+            foreach(Auditoria e in lstBusqueda){
+                if(e.Estado.Equals(EstadoAuditoria.Realizado))
+                    lstAuditorias.Add(e);
+            }
+            return lstAuditorias;
+        }
+
+        public List<Hallazgo> ObtenerHallazgosSeguimiento(int idAuditoria,int idHallazgo,string estado)
+        {
+            List<Hallazgo> lstBusqueda = _objData.ObtenerHallazgosSeguimiento(idAuditoria, idHallazgo);
+            List<Hallazgo> lstHallazgos = new List<Hallazgo>();
+            foreach (Hallazgo e in lstBusqueda)
+            {
+                if (estado.Equals(""))
+                {
+                    if (e.Estado.Equals(EstadoHallazgo.Planificado) || e.Estado.Equals(EstadoHallazgo.Asignado) )
+                        lstHallazgos.Add(e);
+                }
+                else
+                {
+                    if (e.Estado.Equals(estado)) 
+                        lstHallazgos.Add(e);
+                }
+            }
+            return lstHallazgos;
+        }
+
+        public string GrabarHallazgoSeguimiento(Hallazgo eHallazgo)
+        {
+            string strRespuesta = string.Empty;
+            _objData.GrabarHallazgoSeguimiento(eHallazgo);               
+            return strRespuesta;
+        }
+
+     
     }
 }

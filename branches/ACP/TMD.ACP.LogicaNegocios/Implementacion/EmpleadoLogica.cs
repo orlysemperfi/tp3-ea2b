@@ -32,5 +32,20 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
         {
             return _objData.ListarEmpleadosPorArea(idArea);
         }
+
+        public List<EmpleadoEntidad> ListarEmpleadosAuditores()
+        {
+            List<EmpleadoEntidad> lstBusqueda = _objData.ListarEmpleados();
+            List<EmpleadoEntidad> lstEmpleados = new List<EmpleadoEntidad>();
+
+            foreach (EmpleadoEntidad eEmpleado in lstBusqueda)
+            {
+                if (eEmpleado.ObjArea.codigo == 4)
+                {
+                    lstEmpleados.Add(eEmpleado);
+                }
+            }
+            return lstEmpleados;
+        }
     }
 }
