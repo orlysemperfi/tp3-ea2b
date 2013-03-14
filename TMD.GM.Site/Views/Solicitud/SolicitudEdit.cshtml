@@ -1,10 +1,4 @@
 ﻿@model TMD.GM.Site.Models.SolicitudModel
-@{
-    ViewBag.Title = "Nueva Solicitud";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Nueva Solicitud</h2>
 <fieldset>
 N° Solicitud:
 @Html.TextBoxFor(m=> m.solicitudBE.NUMERO_SOLICITUD, new { @class = "txtForm", @readonly = "readonly" })
@@ -45,5 +39,5 @@ Estado de solicitud:
 </fieldset>
 <fieldset>
 <input id="btnGrabar" type="button" value="Grabar Solicitud" />
-<input id="btnRetornar" type="button" value="Retornar" />
+<input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalSolicitudNueva()" />
 </fieldset>

@@ -1,0 +1,11 @@
+﻿@model TMD.GM.Site.Models.PlanConsultaModel
+@{ WebGrid grid = new WebGrid(Model.listaData);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+      grid.Column("CODIGO_PLAN", "Código", canSort:false),
+       grid.Column("NOMBRE_PLAN", "Nombre", canSort: false),
+               grid.Column("ESTADO_PLAN", "Estado", format:@<text>
+               @Html.CheckBox("cbCodPlan",isChecked:item.ESTADO_PLAN?true:false, htmlAttributes: new { @disabled = "disabled" })
+               </text>, canSort:false)
+         )
+        )

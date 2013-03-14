@@ -1,0 +1,16 @@
+﻿@model TMD.GM.Site.Models.SolicitudConsultaModel
+@{ WebGrid grid = new WebGrid(Model.listaData);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+           grid.Column("NUMERO_SOLICITUD", "N°", canSort: false),
+           grid.Column("FECHA_SOLICITUD", "Fecha", format:@<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>, canSort: false),
+            grid.Column("DESCRIPCION_TIPO_SOLICITUD", "Tipo",  canSort: false),
+            grid.Column("DOCUMENTO_REFERENCIA", "Doc. ref",  canSort: false),
+            grid.Column("FECHA_INICIO_SOLICITUD", "Inicio", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>, canSort: false),
+            grid.Column("FECHA_FIN_SOLICITUD", "Fin", format:@<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>, canSort:false),
+            grid.Column("DESCRIPCION_ESTADO_SOLICITUD", "Estado", canSort:false),
+            grid.Column("NOMBRE_EQUIPO", "Equipo", canSort:false),
+            grid.Column("DESCRIPCION_TIPO_SOLICITUD", "Tipo", canSort:false),
+            grid.Column("CODIGO_PLAN", "Plan", canSort:false)
+         )
+        )
