@@ -158,17 +158,34 @@
             <ContentTemplate>
                 <uc1:registrosolicitudcambio id="ucRegistroSolicitudCambio" runat="server" visible="False" />
                 <uc2:aprobarsolicitudcambio id="ucAprobarSolicitudCambio" runat="server" visible="False" />
-                <uc3:subirarchivosolicitudcambio id="ucSubirArchivoSolicitudCambio" runat="server" Visible="False" />
+                <%--<uc3:subirarchivosolicitudcambio id="ucSubirArchivoSolicitudCambio" runat="server" Visible="False" />--%>
+                <asp:Panel runat="server" ID="pnlSubir" Visible="False">
+            <p>
+            Subir Archivo Solicitud Cambio</p>
+        <p>
+            Archivo</p>
+        <p>
+            <asp:FileUpload ID="fileUpArchivo" runat="server" />
+        </p>
+        <p>
+            <asp:Button ID="btnGrabarArchivo" runat="server" Text="Grabar"  OnClick="btnGrabarArchcivo_Click" />
+            <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
+        </asp:Panel>
             </ContentTemplate>
             <Triggers>
-                <asp:PostBackTrigger runat="server" ControlID="ucSubirArchivoSolicitudCambio"/>
+                <asp:PostBackTrigger runat="server" ControlID="btnGrabarArchivo"/>
             </Triggers>
         </asp:UpdatePanel>
+        
     </div>
     <asp:Button runat="server" ID="btnDescarga" OnClick="btnDescarga_Click" Style="display: none" />
     <script type="text/javascript" language="javascript">
         function Descargar(id) {
             $get('<%= hidIdSolicitud.ClientID %>').value = id;
+            $get('<%= btnDescarga.ClientID %>').click();
+            return false;
+        }
+        function Cargar() {
             $get('<%= btnDescarga.ClientID %>').click();
             return false;
         }
