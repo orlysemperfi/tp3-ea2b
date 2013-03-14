@@ -28,12 +28,15 @@ Nombre equipo:
 @Html.TextBox("txtNombreEquipo", "", new { @class = "txtForm" })
 Plan mantenimiento:
 @Html.DropDownList("ddlPlanMante",null, new { @class = "ddlForm" })
-<input id="btnBuscar" type="button" value="Buscar" />
+<input id="btnBuscar" type="button" value="Buscar" onclick="BuscarSolicitudes('@Url.Action("Solicitudes", "Solicitud")')" />
 </fieldset>
-
 <fieldset>
-<input id="btnNuevo" type="button" value="Nueva Solicitud" />
+<div id="divGridSolicitudesConsulta"></div>
+</fieldset>
+<fieldset>
+<input id="btnNuevo" type="button" value="Nueva Solicitud" onclick="SolicitudNueva('@Url.Action("SolicitudEdit", "Solicitud")')"/>
 <input id="btnModificar" type="button" value="Modificar Solicitud" />
 <input id="btnEliminar" type="button" value="Eliminar Solicitud" />
+<div id="divNuevaSolicitud" class="j_modal" title="Nueva solicitud"></div>
 
 </fieldset>

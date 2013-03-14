@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Consulta de planes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Planes de mantenimiento</h2>
+<fieldset>
+<input id="btnBuscar" type="button" value="Buscar"  onclick="BuscarPlanesMant('@Url.Action("ListarTodosPV", "Plan")');"/>
+<input id="btnNuevo" type="button" value="Nuevo"  onclick="PlanMantNuevo('@Url.Action("PlanNuevo", "Plan")');"/>
+</fieldset>
+<fieldset>
+<div id="divGrid"></div>
+<div id="divNuevoPlan" class="j_modal" title="Nuevo Plan"></div>
+</fieldset>
