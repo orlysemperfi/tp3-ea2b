@@ -293,6 +293,7 @@ legend
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
+    color: #031D42;
 }
 
 input.textEntry 
@@ -500,3 +501,128 @@ div.accountInfo
     right: -23px;
     top: -21px;
     width: 35px;
+}
+
+/********************* LOGIN ********************/
+#login-wrapper {
+    width: 100%;
+    display: block;
+    padding: 30px 0 100px 0;
+    float: left;
+}
+
+#header-login {
+    float: left;
+    padding: 0 4%;
+    width: 92%;
+    position: relative;
+}
+
+#header-login h2 {
+    color: #031D42;
+}
+
+#header-login p {
+    font-size: 15px;
+    margin-top: 2px;
+    color: #000;
+}
+
+#login-content {
+    width: 422px;
+    background: url(/Imagenes/bg-formLogin.png) no-repeat 0 0;
+    float: left;
+    position: relative;
+    height: 444px;
+}
+
+#login-content div.accountInfo {
+    width: 94%;
+    padding: 0 3%;
+    float: left;
+    position: relative;
+}
+
+#username-wrapper input,
+#pwd-wrapper input {
+    background: url(/Imagenes/user-fields.png) no-repeat 0 0;
+    border: medium none;
+    height: 57px;
+    padding: 0 5px 0 55px;
+    width: 280px;
+    color: #031D42;
+    font-size: 22px;
+}
+
+#username-wrapper input {
+    background: url(/Imagenes/user-fields.png) no-repeat 0 0;
+}
+
+#pwd-wrapper input {
+    background: url(/Imagenes/password-fields.png) no-repeat 0 0;
+}
+
+#username-wrapper input.focus,
+#pwd-wrapper input.focus {
+    background-position: 0 -60px;
+}
+
+fieldset.login {
+    margin: 0;
+}
+
+fieldset.login p {
+    margin: 2px 0 10px 15px;
+}
+
+fieldset.login p#pwd-wrapper {
+    margin-bottom: 2px;
+}
+
+
+fieldset.login p#no-cerrar {
+    color: #000;
+    float: left;
+    position: relative;
+    
+}
+
+fieldset.login p#no-cerrar input {
+    float: left;
+}
+
+.submitButton input {
+    background: url(/Imagenes/btn-login.png) no-repeat 0 0;
+    border: medium none;
+    height: 54px;
+    width: 336px;
+    float: left;
+}
+
+#login-content .failureNotification.error2 {
+    padding: 0 4%;
+    width: 92%;
+    float: left;
+}
+
+fieldset.login .failureNotification {
+    font-weight: bold;
+}
+
+fieldset.login legend {
+    font-size: 17px;
+}
+
+fieldset.login .submitButton {
+    padding: 0 0 0 2px;
+    float: left;
+}
+
+#slide-images {
+    float: right;
+    height: 420px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 450px;
+}
