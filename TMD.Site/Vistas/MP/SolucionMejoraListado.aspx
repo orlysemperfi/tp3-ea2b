@@ -12,7 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </ajaxToolkit:ToolkitScriptManager>
-    <asp:UpdatePanel ID="upnlPropuestaMejoraListado" runat="server">
+    <asp:UpdatePanel ID="upnlSolucionMejoraListado" runat="server">
     <ContentTemplate>
     <div class="contenedor-pagina">
         <div class="contenedor-pagina-titulo">
