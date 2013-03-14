@@ -51,12 +51,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TMD.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="TMD.GM.Entidades, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.Entidades\bin\Debug\TMD.Entidades.dll</HintPath>
+      <HintPath>..\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.dll</HintPath>
+    </Reference>
+    <Reference Include="TMD.GM.Util">
+      <HintPath>..\TMD.GM.Util\bin\Debug\TMD.GM.Util.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDA.cs" />
+    <Compile Include="ComunDA.cs" />
     <Compile Include="Core\DataBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
