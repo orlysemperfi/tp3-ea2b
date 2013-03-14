@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TMD.GM.Entidades;
-using TMD.GM.LogicaNegocios;
+using TMD.GM.LogicaNegocios.Contrato;
+using TMD.GM.LogicaNegocios.Implementacion;
 using TMD.GM.Site.Models;
 using TMD.GM.Util;
 
@@ -14,17 +15,18 @@ namespace TMD.GM.Site.Controllers
     {
         //
         // GET: /Manten/
-
+        private readonly IComunBL comunBL = new ComunBL();
+        private readonly IPlanBL planBL = new PlanBL();
+        private readonly ISolicitudBL solicitudBL = new SolicitudBL();
         public ActionResult Solicitud()
         {
-            ComunBL  ComunBL = new ComunBL();
             SolicitudModel model = new SolicitudModel();
 
             List<SelectListItem> listaTS = new List<SelectListItem>();
             List<SelectListItem> listaES = new List<SelectListItem>();
 
-            model.listaDataTS = ComunBL.ListarTipoMante();
-            model.listaDataES = ComunBL.ListarEstadoSolicitud();
+            model.listaDataTS = comunBL.ListarTipoMante();
+            model.listaDataES = comunBL.ListarEstadoSolicitud();
 
             foreach (var item in model.listaDataTS)
             {
@@ -39,20 +41,26 @@ namespace TMD.GM.Site.Controllers
             ViewBag.ddlPlanMante = new List<SelectListItem>();
             return View();
         }
+        public ActionResult Solicitudes()
+        {
+            SolicitudConsultaModel model = new SolicitudConsultaModel();
 
+            model.listaData = solicitudBL.ObtenerSolicitudes();
+
+            return PartialView("SolicitudConsultaResultPV", model);
+        }
         public ActionResult SolicitudEdit()
         {
-            ComunBL ComunBL = new ComunBL();
             SolicitudModel model = new SolicitudModel();
 
             List<SelectListItem> listaTS = new List<SelectListItem>();
             List<SelectListItem> listaES = new List<SelectListItem>();
             List<SelectListItem> listaPM = new List<SelectListItem>();
 
-            model.listaDataTS = ComunBL.ListarTipoMante();
-            model.listaDataES = ComunBL.ListarEstadoSolicitud();
-            model.listaDataPM = ComunBL.ListarPlanMante();
-            model.solicitudBE = ComunBL.ObtenerSolicitudNueva();
+            model.listaDataTS = comunBL.ListarTipoMante();
+            model.listaDataES = comunBL.ListarEstadoSolicitud();
+            model.listaDataPM = planBL.ListarPlanMante();
+            model.solicitudBE = solicitudBL.ObtenerSolicitudNueva();
 
             foreach (var item in model.listaDataTS)
             {
@@ -70,21 +78,20 @@ namespace TMD.GM.Site.Controllers
             ViewBag.ddlEstadoSolicitud = listaES;
             ViewBag.ddlPlanMante = listaPM;
 
-            return View(model);
+            return PartialView(model);
         }
         public ActionResult CalendarioActividades()
         {
-            ComunBL ComunBL = new ComunBL();
             SolicitudModel model = new SolicitudModel();
 
             List<SelectListItem> listaTS = new List<SelectListItem>();
             List<SelectListItem> listaES = new List<SelectListItem>();
             List<SelectListItem> listaPM = new List<SelectListItem>();
 
-            model.listaDataTS = ComunBL.ListarTipoMante();
-            model.listaDataES = ComunBL.ListarEstadoSolicitud();
-            model.listaDataPM = ComunBL.ListarPlanMante();
-            model.solicitudBE = ComunBL.ObtenerSolicitudNueva();
+            model.listaDataTS = comunBL.ListarTipoMante();
+            model.listaDataES = comunBL.ListarEstadoSolicitud();
+            model.listaDataPM = planBL.ListarPlanMante();
+            model.solicitudBE = solicitudBL.ObtenerSolicitudNueva();
 
             foreach (var item in model.listaDataTS)
             {
@@ -106,7 +113,6 @@ namespace TMD.GM.Site.Controllers
         }
         public ActionResult NuevaActividad()
         {
-            ComunBL ComunBL = new ComunBL();
             ActividadModel model = new ActividadModel();
 
             List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
@@ -114,10 +120,10 @@ namespace TMD.GM.Site.Controllers
             List<SelectListItemBE> listaDataPR = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataFR = new List<SelectListItemBE>();
 
-            listaDataTA = ComunBL.ListarTipoActividad();
-            listaDataTU = ComunBL.ListarTiempoUniMed();
-            listaDataPR = ComunBL.ListarPrioridad();
-            listaDataFR = ComunBL.ListarFrecuencia();
+            listaDataTA = comunBL.ListarTipoActividad();
+            listaDataTU = comunBL.ListarTiempoUniMed();
+            listaDataPR = comunBL.ListarPrioridad();
+            listaDataFR = comunBL.ListarFrecuencia();
 
             model.listaTA = new List<SelectListItem>();
             model.listaTU = new List<SelectListItem>();
