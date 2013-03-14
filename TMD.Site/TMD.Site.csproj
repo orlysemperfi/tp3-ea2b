@@ -83,12 +83,17 @@
     <Content Include="Controles\AprobarSolicitudCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
     <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
+    <Content Include="Imagenes\bg-formLogin.png" />
+    <Content Include="Imagenes\btn-login.png" />
     <Content Include="Imagenes\Estado\1.ICO" />
     <Content Include="Imagenes\Estado\2.ico" />
     <Content Include="Imagenes\Estado\3.ico" />
+    <Content Include="Imagenes\password-fields.png" />
     <Content Include="Imagenes\Prioridad\3.ico" />
     <Content Include="Imagenes\Prioridad\2.ICO" />
     <Content Include="Imagenes\Prioridad\1.ico" />
+    <Content Include="Imagenes\rueda.png" />
+    <Content Include="Imagenes\user-fields.png" />
     <Content Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
