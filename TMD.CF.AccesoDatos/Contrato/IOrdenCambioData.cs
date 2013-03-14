@@ -12,6 +12,13 @@ namespace TMD.CF.AccesoDatos.Contrato
     public interface IOrdenCambioData
     {
         /// <summary>
+        /// Agrega orden de cambio
+        /// </summary>
+        /// <param name="ordenCambio">Orden Cambio</param>
+        /// <returns>Agrega Orden de cambio</returns>
+        void Agregar(OrdenCambio ordenCambio);
+
+        /// <summary>
         /// Lista las ordenes de un proyecto
         /// </summary>
         /// <param name="codigoProyecto">Codigo proyecto</param>
