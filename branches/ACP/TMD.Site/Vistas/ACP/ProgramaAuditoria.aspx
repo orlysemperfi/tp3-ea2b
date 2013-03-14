@@ -52,18 +52,21 @@
             var title = 'EDITAR AUDITORIA';
             var mData = arg.split(":::")
             if (mData[0] == "1") {            
-                $("#MainContent___tempNroAuditoria").val(mData[1]);
-                $("#MainContent___tempIdEntAudi").val(mData[2]);
-                $("#MainContent___tempEntAudi").val(mData[3]);
-                $("#MainContent___tempArea").val(mData[4]);
-                $("#MainContent___tempIdArea").val(mData[5]);
-                $("#MainContent___tempIdResponsable").val(mData[6]);
-                $("#MainContent___tempResponsable").val(mData[7]);
-                $("#MainContent___tempAlcance").val(mData[8]);
-                $("#MainContent___tempObjetivo").val(mData[9]);
-                $("#MainContent___tempFechaInicio").val(mData[10]);
-                $("#MainContent___tempFechaFin").val(mData[11]);
+                $("#MainContent___tempNroAuditoria").val(mData[2]);
+                $("#MainContent___tempIdEntAudi").val(mData[3]);
+                $("#MainContent___tempEntAudi").val(mData[4]);
+                $("#MainContent___tempArea").val(mData[5]);
+                $("#MainContent___tempIdArea").val(mData[6]);
+                $("#MainContent___tempIdResponsable").val(mData[7]);
+                $("#MainContent___tempResponsable").val(mData[8]);
+                $("#MainContent___tempAlcance").val(mData[9]);
+                $("#MainContent___tempObjetivo").val(mData[10]);
+                $("#MainContent___tempFechaInicio").val(mData[11]);
+                $("#MainContent___tempFechaFin").val(mData[12]);
                 window.OpenMultiPopup('RegistrarAuditoria.aspx', title, 800, 550, true, null, null, "keyRegistrarAuditoria", "clone", true, false);
+            }
+            else {
+                alert(mData[1]);
             }
         }
 
@@ -89,7 +92,7 @@
         function End_fQuitarAuditoria(arg) {
             var mData = arg.split(":::")
             if (mData[0] == "1") {
-                $("#divProgramaAnual").html(mData[1]);
+                $("#divProgramaAnual").html(mData[3]);
                 $("#MainContent___tempNroAuditoria").val(mData[2]);
                 $("#MainContent___tempIdEntAudi").val('');
                 $("#MainContent___tempEntAudi").val('');
@@ -101,6 +104,9 @@
                 $("#MainContent___tempObjetivo").val('');
                 $("#MainContent___tempFechaInicio").val('');
                 $("#MainContent___tempFechaFin").val('');
+            }
+            else {
+                alert(mData[1]);
             }
         }
 
@@ -115,7 +121,7 @@
         function End_fRefrescarAuditorias(arg) {
             var mData = arg.split(":::")
             if (mData[0] == "1") {
-                $("#divProgramaAnual").html(mData[1]);
+                $("#divProgramaAnual").html(mData[3]);
                 $("#MainContent___tempNroAuditoria").val(mData[2]);
                 $("#MainContent___tempIdEntAudi").val('');
                 $("#MainContent___tempEntAudi").val('');
@@ -126,7 +132,10 @@
                 $("#MainContent___tempAlcance").val('');
                 $("#MainContent___tempObjetivo").val('');
                 $("#MainContent___tempFechaInicio").val('');
-                $("#MainContent___tempFechaFin").val('');           
+                $("#MainContent___tempFechaFin").val('');
+            }
+            else {
+                alert(mData[1]);
             }
         }
 
@@ -181,6 +190,8 @@
     <asp:HiddenField id="__tempFechaFin" runat="server"/>
     <asp:HiddenField id="__IsView" runat="server" Value="0"/>
     <asp:HiddenField id="__TotalAuditorias" runat="server" Value="0"/>
+    <asp:HiddenField id="__IsValid" runat="server" Value="0"/>
+    <asp:HiddenField id="__Mensaje" runat="server" Value=""/>
 
     <div style="text-align:center; font-size: 1.5em;color: #666666;font-variant: small-caps;text-transform: none;font-weight: 200;margin-bottom: 0px;">PROGRAMA ANUAL DE AUDITORÍA</div>       
        

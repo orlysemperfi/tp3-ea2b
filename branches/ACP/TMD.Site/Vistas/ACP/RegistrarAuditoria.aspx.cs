@@ -17,20 +17,12 @@ namespace TMD.ACP.Site
 {
     public partial class RegistrarAuditoria : BasePage 
     {
-        private static List<Auditoria> lstAuditoria = null;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsCallback | Page.IsPostBack)
+            if (!Page.IsPostBack && !IsCallback)
             {
-                return;
+                CargarEmpleados(-1);
             }
-
-            //Obtener las auditorias que se muestran en el grid
-            lstAuditoria = (List<Auditoria>)HttpContext.Current.Session[string.Format("PROGRAMAANUAL-AUDITORIA-{0}", 0)];
-
-            //Obtener empleados
-            CargarEmpleados(-1);
         }
 
         private void CargarEmpleados(int intArea)
@@ -93,9 +85,9 @@ namespace TMD.ACP.Site
                 }
                 else
                 {
-                    if (lstAuditoria != null)
+                    if (DataAuditorias.Instance.Auditoria != null)
                     {
-                        foreach (Auditoria eAuditoria in lstAuditoria)
+                        foreach (Auditoria eAuditoria in DataAuditorias.Instance.Auditoria)
                         {
                             if (eAuditoria.IdAuditoria != Convert.ToInt32(Request["txtAuditoria"]))
                             {

@@ -130,6 +130,24 @@ namespace TMD.ACP.Site {
         protected global::System.Web.UI.WebControls.HiddenField @__TotalAuditorias;
         
         /// <summary>
+        /// Control __IsValid.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField @__IsValid;
+        
+        /// <summary>
+        /// Control __Mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField @__Mensaje;
+        
+        /// <summary>
         /// Control lblPeriodo.
         /// </summary>
         /// <remarks>

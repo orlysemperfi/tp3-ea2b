@@ -130,6 +130,9 @@
                 try { parent.arrRefFunctions["auditoria.refresh"](); } catch (e) { }
                 window.parent.CloseMultiPopup("keyRegistrarAuditoria");
             }
+            else {
+                alert(mData[1]);
+            }
         }
 
         //*****************************************************************************
@@ -169,6 +172,9 @@
                 $("#tdComboBox").html(mData[5]);
                 var idResponsable = window.parent.parent.document.getElementById("MainContent___tempIdResponsable").value;
                 $("#ddlResponsable> option[value='" + idResponsable + "']").attr('selected', 'selected');
+            }
+            else {
+                alert(mData[1]);
             }
         }
 

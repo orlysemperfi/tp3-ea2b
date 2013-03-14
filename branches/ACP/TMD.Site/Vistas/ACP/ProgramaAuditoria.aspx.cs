@@ -11,15 +11,19 @@ using TMD.Core;
 using TMD.ACP.Site;
 using Ediable_Repeater;
 using System.Web.Services;
+using TMD.CF.Site.Presentador.ACP;
+using TMD.CF.Site.Vistas.ACP;
 
 namespace TMD.ACP.Site
 {
-    public partial class ProgramaAuditoria : BasePage
+    public partial class ProgramaAuditoria : BasePage, IProgramaAnualVista
     {
-        /// <summary>
-        /// Variable global de listado de auditorias en sesion
-        /// </summary>
-        public static DataAuditorias DataAuditorias { get; set; }
+        private readonly ProgramaAnualPresentadora _presentadora;
+
+        public ProgramaAuditoria()
+        {
+            _presentadora = new ProgramaAnualPresentadora(this);
+        }
 
         /// <summary>
         /// Al cargar el formulario
@@ -28,47 +32,15 @@ namespace TMD.ACP.Site
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsCallback | Page.IsPostBack)
+            if (!Page.IsPostBack && !IsCallback)
             {
-                return;
-            }
+                _presentadora.Load();
 
-            //Referenciar lista de auditorias en sesion
-            DataAuditorias = new DataAuditorias(0);
-            HttpContext.Current.Session[string.Format("PROGRAMAANUAL-AUDITORIA-{0}", 0)] = null;
-
-            //Verificar si existe un programa anual de auditoria vigente
-            ProgramaAnualAuditoria oProgramaAnual = TMD.Site.Controladora.ACP.AuditoriaControladora.ObtenerProgramaAnualAuditorias();
-            
-            //Si existe un programa anual obtengo datos y grid de auditorias en solo lectura, de lo contrario muestra informacion por defecto
-            if (oProgramaAnual != null)
-            {
-                lblPeriodo.Text = oProgramaAnual.AnhoPrograma.ToString();
-                lblElaboradoPor.Text = oProgramaAnual.UsuarioCreacion;
-                lblAprobadoPor.Text = oProgramaAnual.UsuarioAprobacion;
-                lblEstado.Text = oProgramaAnual.Estado;
-                lblIdPrograma.Text = oProgramaAnual.IdProgramaAnual.ToString();
-
-                List<Auditoria> lstAuditoriar = TMD.Site.Controladora.ACP.AuditoriaControladora.ListarAuditoriasPorAnio(oProgramaAnual.AnhoPrograma);
-                foreach (Auditoria eAuditoria in lstAuditoriar)
-                {
-                    DataAuditorias.Auditoria.Add(eAuditoria);
-                }
-                
-                __IsView.Value = "1";
-            }
-            else
-            {
-                __IsView.Value = "0";
-                lblPeriodo.Text = DateTime.Today.Year.ToString();
-                lblElaboradoPor.Text = "Carla Mier";
-                lblAprobadoPor.Text = "";
-                lblEstado.Text = EstadoProgramaAnual.Creado;
-                lblIdPrograma.Text = "";
-            }
-
-            //Refrescar auditorias
-            CargarAuditorias();            
+                AddCallbackValue(__IsValid.Value);
+                AddCallbackValue(__Mensaje.Value);
+                AddCallbackValue(__tempNroAuditoria.Value);
+                AddCallbackControl(rptProgramaAnual);
+            }         
         }
 
         /// <summary>
@@ -105,77 +77,16 @@ namespace TMD.ACP.Site
         }
 
         /// <summary>
-        /// Permite cargar las auditorias al grid
-        /// </summary>
-        public void CargarAuditorias()
-        {
-            try
-            {
-                __tempNroAuditoria.Value = Convert.ToString(DataAuditorias.NextId);
-                rptProgramaAnual.DataSource = DataAuditorias.Auditoria;
-                rptProgramaAnual.DataBind();
-                AddCallbackValue("1");
-                AddCallbackControl(rptProgramaAnual);
-                AddCallbackValue(__tempNroAuditoria.Value);
-            }
-            catch (Exception ex)
-            {
-                AddCallbackValue("0");
-                AddCallbackValue(ex.Message);
-            }
-        }
-
-        /// <summary>
         /// Permite actualizar el grid de la auditoria ingresada o modificada
         /// </summary>
         public void GrabarAuditoria()
         {
-            try
-            {
-                //Buscar por id la auditoria para saber si existe o no en el grid
-                int idAuditoria = Convert.ToInt32(Request["ctl00$MainContent$__tempNroAuditoria"]);
-                Auditoria auditoria = DataAuditorias.Auditoria.Find(e => e.IdAuditoria == idAuditoria);
-                //Si no existe se agrega en el grid, de lo contrario, se actualiza
-                if (auditoria == null)
-                {
-                    Auditoria eAuditoria = new Auditoria();
-                    eAuditoria.IdAuditoria = Convert.ToInt32(Request["ctl00$MainContent$__tempNroAuditoria"]);
-                    eAuditoria.ObjEntidadAuditada.IdEntidadAuditada = Convert.ToInt32(Request["ctl00$MainContent$__tempIdEntAudi"]);
-                    eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada = Convert.ToString(Request["ctl00$MainContent$__tempEntAudi"]);
-                    eAuditoria.ObjEntidadAuditada.ObjArea.descripcion = Convert.ToString(Request["ctl00$MainContent$__tempArea"]);
-                    eAuditoria.ObjEntidadAuditada.ObjArea.codigo = Convert.ToInt32(Request["ctl00$MainContent$__tempIdArea"]);
-                    eAuditoria.ObjEntidadAuditada.IdResponsable = Convert.ToInt32(Request["ctl00$MainContent$__tempIdResponsable"]);
-                    eAuditoria.ObjEntidadAuditada.Responsable = Convert.ToString(Request["ctl00$MainContent$__tempResponsable"]);
-                    eAuditoria.Alcance = Convert.ToString(Request["ctl00$MainContent$__tempAlcance"]);
-                    eAuditoria.Objetivo = Convert.ToString(Request["ctl00$MainContent$__tempObjetivo"]);
-                    eAuditoria.FechaInicio = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaInicio"]);
-                    eAuditoria.FechaFin = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaFin"]);
-                    eAuditoria.Estado = EstadoAuditoria.Creado;
-                    DataAuditorias.Auditoria.Add(eAuditoria);
-                }
-                else
-                {
-                    Auditoria eAuditoria = DataAuditorias.Auditoria.Single(e => e.IdAuditoria == idAuditoria);
-                    eAuditoria.IdAuditoria = Convert.ToInt32(Request["ctl00$MainContent$__tempNroAuditoria"]);
-                    eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada = Convert.ToString(Request["ctl00$MainContent$__tempEntAudi"]);
-                    eAuditoria.ObjEntidadAuditada.ObjArea.descripcion = Convert.ToString(Request["ctl00$MainContent$__tempArea"]);
-                    eAuditoria.ObjEntidadAuditada.ObjArea.codigo = Convert.ToInt32(Request["ctl00$MainContent$__tempIdArea"]);
-                    eAuditoria.ObjEntidadAuditada.Responsable = Convert.ToString(Request["ctl00$MainContent$__tempResponsable"]);
-                    eAuditoria.ObjEntidadAuditada.IdResponsable = Convert.ToInt32(Request["ctl00$MainContent$__tempIdResponsable"]);
-                    eAuditoria.Alcance = Convert.ToString(Request["ctl00$MainContent$__tempAlcance"]);
-                    eAuditoria.Objetivo = Convert.ToString(Request["ctl00$MainContent$__tempObjetivo"]);
-                    eAuditoria.FechaInicio = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaInicio"]);
-                    eAuditoria.FechaFin = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaFin"]);
-                    eAuditoria.Estado = EstadoAuditoria.Creado;
-                }
-                //Refrescar grid
-                CargarAuditorias();
-            }
-            catch (Exception ex)
-            {
-                AddCallbackValue("0");
-                AddCallbackValue(ex.Message);
-            }
+            _presentadora.GrabarAuditoria();
+
+            AddCallbackValue(__IsValid.Value);
+            AddCallbackValue(__Mensaje.Value);
+            AddCallbackValue(__tempNroAuditoria.Value);
+            AddCallbackControl(rptProgramaAnual);
         }
 
         /// <summary>
@@ -184,21 +95,14 @@ namespace TMD.ACP.Site
         /// <param name="id">Identificador de auditoria</param>
         public void QuitarAuditoria(string id)
         {
-            try
-            {
-                //Buscar por id la auditoria a eliminar
-                int idAuditoria = Convert.ToInt32(id);
-                Auditoria auditoria = DataAuditorias.Auditoria.Single(e => e.IdAuditoria == idAuditoria);
-                //Eliminar auditoria
-                DataAuditorias.Auditoria.Remove(auditoria);
-                //Refrescar grid
-                CargarAuditorias();
-            }
-            catch (Exception ex)
-            {
-                AddCallbackValue("0");
-                AddCallbackValue(ex.Message);
-            }
+            __tempNroAuditoria.Value = id;
+
+            _presentadora.QuitarAuditoria();
+
+            AddCallbackValue(__IsValid.Value);
+            AddCallbackValue(__Mensaje.Value);
+            AddCallbackValue(__tempNroAuditoria.Value);
+            AddCallbackControl(rptProgramaAnual);
         }
 
         /// <summary>
@@ -207,30 +111,9 @@ namespace TMD.ACP.Site
         /// <param name="id">Identificado de auditoria</param>
         public void EditarAuditoria(string id)
         {
-            try
-            {
-                //Buscar por id la auditoria a modificar
-                int idAuditoria = Convert.ToInt32(id);
-                Auditoria eAuditoria = DataAuditorias.Auditoria.Single(e => e.IdAuditoria == idAuditoria);
-                //Devolver los datos de la auditoria a modificar               
-                AddCallbackValue("1");
-                AddCallbackValue(Convert.ToString(eAuditoria.IdAuditoria.Value));
-                AddCallbackValue(Convert.ToString(eAuditoria.ObjEntidadAuditada.IdEntidadAuditada));
-                AddCallbackValue(eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada);
-                AddCallbackValue(eAuditoria.ObjEntidadAuditada.ObjArea.descripcion);
-                AddCallbackValue(Convert.ToString(eAuditoria.ObjEntidadAuditada.ObjArea.codigo.Value));
-                AddCallbackValue(Convert.ToString(eAuditoria.ObjEntidadAuditada.IdResponsable));
-                AddCallbackValue(eAuditoria.ObjEntidadAuditada.Responsable);
-                AddCallbackValue(eAuditoria.Alcance);
-                AddCallbackValue(eAuditoria.Objetivo);
-                AddCallbackValue(eAuditoria.FechaInicio.ToShortDateString());
-                AddCallbackValue(eAuditoria.FechaFin.ToShortDateString());
-            }
-            catch (Exception ex)
-            {
-                AddCallbackValue("0");
-                AddCallbackValue(ex.Message);
-            }
+            __tempNroAuditoria.Value = id;
+
+            _presentadora.EditarAuditoria();
         }
 
         /// <summary>
@@ -239,46 +122,157 @@ namespace TMD.ACP.Site
         /// </summary>
         public void GrabarProgramaAnualAuditoria()
         {
-            try
+            _presentadora.GrabarProgramaAnualAuditoria();
+
+            AddCallbackValue(__IsValid.Value);
+            AddCallbackValue(__Mensaje.Value);
+            AddCallbackControl(lblIdPrograma);
+            AddCallbackControl(rptProgramaAnual);
+        }
+
+        #region IProgramaAnualVista Members
+
+        public int IdProgramaAnual
+        {
+            set
             {
-                int idPrograma = 0;
-                string strMensaje = "";
-                //Validar auditoria
-                if (DataAuditorias.Auditoria == null || DataAuditorias.Auditoria.Count() == 0 || DataAuditorias.Auditoria.Count() > 3)
-                {
-                    strMensaje = "Ingresar auditorias necesarias";
-                }
-                else
-                {
-                    //Obtener datos
-                    ProgramaAnualAuditoria eProgramaAnual = new ProgramaAnualAuditoria();
-                    eProgramaAnual.AnhoPrograma = DateTime.Today.Year;
-                    eProgramaAnual.IdUsuarioCreacion = 1; //TODO: Actualizar con usuario en sesion
-                    eProgramaAnual.ObjAuditorias = DataAuditorias.Auditoria;
-                    //Grabar la programa anual de auditoria
-                    idPrograma = TMD.Site.Controladora.ACP.AuditoriaControladora.GrabarProgramaAnualAuditoria(eProgramaAnual);
-                    //refrescar grid auditorias
-                    DataAuditorias.Auditoria.Clear();
-                    List<Auditoria> lstAuditoriar = TMD.Site.Controladora.ACP.AuditoriaControladora.ListarAuditoriasPorAnio(eProgramaAnual.AnhoPrograma);
-                    foreach (Auditoria eAuditoria in lstAuditoriar)
-                    {
-                        DataAuditorias.Auditoria.Add(eAuditoria);
-                    }
-                    rptProgramaAnual.DataSource = DataAuditorias.Auditoria;
-                    rptProgramaAnual.DataBind();              
-                }
-                //Colocar 1 para mostrar mensaje de confirmacion
-                AddCallbackValue("1");
-                lblIdPrograma.Text = idPrograma.ToString();
-                AddCallbackValue(strMensaje);
-                AddCallbackControl(lblIdPrograma);
-                AddCallbackControl(rptProgramaAnual);
-            }
-            catch (Exception ex)
-            {
-                AddCallbackValue("0");
-                AddCallbackValue(ex.Message);
+                lblIdPrograma.Text = value.ToString();
             }
         }
+
+        public int AnhoPrograma
+        {
+            get
+            {
+                return DateTime.Today.Year;
+            }
+            set
+            {
+                lblPeriodo.Text = value.ToString();
+            }
+        }
+
+        public int IdUsuarioCreacion
+        {
+            get
+            {
+                return 8;
+            }
+        }
+
+        public string UsuarioCreacion
+        {
+            set
+            {
+                lblElaboradoPor.Text = value.ToString();
+            }
+        }
+
+        public string UsuarioAprobacion
+        {
+            set
+            {
+                lblAprobadoPor.Text = value.ToString();
+            }
+        }
+
+        public string Estado
+        {
+            set
+            {
+                lblEstado.Text = value.ToString();
+            }
+        }
+
+        public List<Auditoria> ObjAuditorias
+        {
+            set
+            {
+                rptProgramaAnual.DataSource = value;
+                rptProgramaAnual.DataBind();
+            }
+        }
+
+        public string IsView
+        {
+            set
+            {
+                __IsView.Value = value;
+            }
+        }
+
+        public string tempNroAuditoria
+        {
+            get
+            {
+                return __tempNroAuditoria.Value;
+            }
+            set
+            {
+                __tempNroAuditoria.Value = value;
+            }
+        }
+
+        public Auditoria Auditoria
+        {
+            get
+            {
+                return new Auditoria
+                {
+                    IdAuditoria = Convert.ToInt32(Request["ctl00$MainContent$__tempNroAuditoria"]),
+                    ObjEntidadAuditada = new EntidadAuditada
+                    {
+                        IdEntidadAuditada = Convert.ToInt32(Request["ctl00$MainContent$__tempIdEntAudi"]),
+                        NombreEntidadAuditada = Convert.ToString(Request["ctl00$MainContent$__tempEntAudi"]),
+                        ObjArea = new AreaEntidad
+                        {
+                            descripcion = Convert.ToString(Request["ctl00$MainContent$__tempArea"]),
+                            codigo = Convert.ToInt32(Request["ctl00$MainContent$__tempIdArea"]),
+                        },
+                        Responsable = Convert.ToString(Request["ctl00$MainContent$__tempResponsable"]),
+                        IdResponsable = Convert.ToInt32(Request["ctl00$MainContent$__tempIdResponsable"]),
+                    },
+                    Alcance = Convert.ToString(Request["ctl00$MainContent$__tempAlcance"]),
+                    Objetivo = Convert.ToString(Request["ctl00$MainContent$__tempObjetivo"]),
+                    FechaInicio = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaInicio"]),
+                    FechaFin = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaFin"]),
+                    Estado = EstadoAuditoria.Creado
+                };
+            }
+            set
+            {
+                AddCallbackValue(__IsValid.Value);
+                AddCallbackValue(__Mensaje.Value);
+                AddCallbackValue(Convert.ToString(value.IdAuditoria.Value));
+                AddCallbackValue(Convert.ToString(value.ObjEntidadAuditada.IdEntidadAuditada));
+                AddCallbackValue(value.ObjEntidadAuditada.NombreEntidadAuditada);
+                AddCallbackValue(value.ObjEntidadAuditada.ObjArea.descripcion);
+                AddCallbackValue(Convert.ToString(value.ObjEntidadAuditada.ObjArea.codigo.Value));
+                AddCallbackValue(Convert.ToString(value.ObjEntidadAuditada.IdResponsable));
+                AddCallbackValue(value.ObjEntidadAuditada.Responsable);
+                AddCallbackValue(value.Alcance);
+                AddCallbackValue(value.Objetivo);
+                AddCallbackValue(value.FechaInicio.ToShortDateString());
+                AddCallbackValue(value.FechaFin.ToShortDateString());
+            }
+        }
+
+        public string Mensaje
+        {
+            set
+            {
+                __Mensaje.Value = value;
+            }
+        }
+
+        public string IsValid
+        {
+            set
+            {
+                __IsValid.Value = value;
+            }
+        }
+
+        #endregion
     }
 }
