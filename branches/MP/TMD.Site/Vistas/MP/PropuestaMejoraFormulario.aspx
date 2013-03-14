@@ -139,8 +139,7 @@
                         <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td style="padding-bottom:10px;">
-                                    <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" AllowPaging="true"
-                                        PageSize="5" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White"
+                                    <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White"
                                         DataSource='<%#ObtenerIndicadorListado() %>' OnRowCommand="gvwIndicadores_RowCommand">
                                         <HeaderStyle CssClass="tabla-grilla-cabecera" />
                                         <RowStyle CssClass="tabla-grilla-filas" />
@@ -192,7 +191,7 @@
                     <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar" ValidationGroup="Propuesta"></asp:LinkButton>                            
                 </td>
                 <td class="boton-espaciado">
-                    <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar"></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar" CausesValidation="false"></asp:LinkButton>
                 </td>
                 <td>
                     <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Propuesta" />

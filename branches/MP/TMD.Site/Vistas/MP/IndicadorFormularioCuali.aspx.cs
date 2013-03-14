@@ -59,29 +59,34 @@ namespace TMD.MP.Site.Privado
             tbxFrecuenciaMed.Text = indicador.frecuencia_Medicion;
             tbxFuenteMed.Text = indicador.fuente_Medicion;
             tbxExpresionMat.Text = indicador.expresion_Matematica;
-            tbxPlaxo.Text = indicador.plazo;
+            tbxPlazo.Text = indicador.plazo;
             CargarListadoEscalas();
         }
 
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
-            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
-            IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
-            oNewIndicador.nombre = tbxNombre.Text;
-            oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
-            oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
-            oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
-            oNewIndicador.plazo = tbxPlaxo.Text;
-            oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
-            oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUALITATIVO;
-            oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
-    
-            if (oNewIndicador.codigo != null)
-                oIndicadorLogica.ActualizarIndicador(oNewIndicador);
-            else
-                oIndicadorLogica.InsertarIndicador(oNewIndicador);
+            Validate(lbtnGuardar.ValidationGroup);
 
-            Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+            if (IsValid == true)
+            {
+                IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+                IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
+                oNewIndicador.nombre = tbxNombre.Text;
+                oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
+                oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
+                oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
+                oNewIndicador.plazo = tbxPlazo.Text;
+                oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
+                oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUALITATIVO;
+                oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
+
+                if (oNewIndicador.codigo != null)
+                    oIndicadorLogica.ActualizarIndicador(oNewIndicador);
+                else
+                    oIndicadorLogica.InsertarIndicador(oNewIndicador);
+
+                Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+            }
         }
 
         protected void lbtnCancelar_Click(object sender, EventArgs e)
@@ -165,7 +170,7 @@ namespace TMD.MP.Site.Privado
         //    oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
         //    oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
         //    oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
-        //    oNewIndicador.plazo = tbxPlaxo.Text;
+        //    oNewIndicador.plazo = tbxPlazo.Text;
         //    oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
         //    Response.Redirect(Paginas.TMD_MP_EscalaCualitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         //}
