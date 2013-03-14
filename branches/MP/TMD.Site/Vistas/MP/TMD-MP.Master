@@ -51,7 +51,7 @@
             </li>
             <li id="lnkSoluciones" runat="server"><a href="#">Soluciones</a>
             <ul>
-            <li><a href="#">Actualizar Información</a></li>
+            <li><a href="SolucionMejoraListado.aspx">Actualizar Información</a></li>
             </ul>
             </li>
             <li id="lnkPilotos" runat="server"><a href="#">Pilotos</a></li>
