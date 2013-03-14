@@ -16,6 +16,9 @@ label {
     padding-right: 10px;
     width: 100px;
     float: left;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
 }
 
 .page-title {
@@ -29,4 +32,22 @@ label {
     text-align: center;
 }
 
+input[type="text"],
+input[type="submit"],
+input[type="image"] {
+    border: 1px solid #496077;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px;
+}
+
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+input[type="text"]:focus {
+    border: 2px solid #4B6C9E;
+}
 

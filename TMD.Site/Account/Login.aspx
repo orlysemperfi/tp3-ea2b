@@ -4,8 +4,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
-<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.lite.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('.txtfield input').each(function () {
@@ -30,7 +29,6 @@
             }
         });
 
-        $('#slide-images').cycle();
     });
 </script>
     
@@ -85,10 +83,6 @@
         </asp:Login>
     </div>
 
-    <div id="slide-images">
-        <asp:Image ID="img2" EnableViewState="false" ImageUrl="~/Imagenes/rueda.png" runat="server"/>
-        <asp:Image ID="imgPeople" EnableViewState="false" ImageUrl="~/Imagenes/peple.gif" runat="server" />
-    </div>
 
 </div>
     
