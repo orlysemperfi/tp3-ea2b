@@ -1,7 +1,7 @@
 USE [TMD]
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_INFORME_CAMBIO_INS]    Script Date: 03/14/2013 02:15:10 ******/
+/****** Object:  StoredProcedure [dbo].[USP_INFORME_CAMBIO_INS]    Script Date: 03/14/2013 02:26:26 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[USP_INFORME_CAMBIO_INS]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[USP_INFORME_CAMBIO_INS]
 GO
@@ -9,7 +9,7 @@ GO
 USE [TMD]
 GO
 
-/****** Object:  StoredProcedure [dbo].[USP_INFORME_CAMBIO_INS]    Script Date: 03/14/2013 02:15:10 ******/
+/****** Object:  StoredProcedure [dbo].[USP_INFORME_CAMBIO_INS]    Script Date: 03/14/2013 02:26:26 ******/
 SET ANSI_NULLS ON
 GO
 
