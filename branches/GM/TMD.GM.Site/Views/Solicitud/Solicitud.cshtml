@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Solicitud</h2>
+<fieldset>
+N° Solicitud:
+@Html.TextBox("txtNumSolicitud","", new { @class = "txtForm" })
+Desde
+@Html.TextBox("txtFechaIni", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+Hasta
+@Html.TextBox("txtFechaFin", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+Tipo de solicitud:
+@Html.DropDownList("ddlTipoSolicitud",null, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Documento Referencia:
+@Html.TextBox("txtNumDocuRefe", "", new { @class = "txtForm" })
+Estado de solicitud:
+@Html.DropDownList("ddlEstadoSolicitud",null, new { @class = "ddlForm" })
+Código de equipo:
+@Html.TextBox("txtCodigoEquipo", "", new { @class = "txtForm" })
+<input id="btnBuscarEquipo" type="button" value="..." />
+</fieldset>
+<fieldset>
+Nombre equipo:
+@Html.TextBox("txtNombreEquipo", "", new { @class = "txtForm" })
+Plan mantenimiento:
+@Html.DropDownList("ddlPlanMante",null, new { @class = "ddlForm" })
+<input id="btnBuscar" type="button" value="Buscar" />
+</fieldset>
+
+<fieldset>
+<input id="btnNuevo" type="button" value="Nueva Solicitud" />
+<input id="btnModificar" type="button" value="Modificar Solicitud" />
+<input id="btnEliminar" type="button" value="Eliminar Solicitud" />
+
+</fieldset>
