@@ -187,10 +187,10 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
-    <Compile Include="Controladora\CF\InformeCambioFachada.cs" />
-    <Compile Include="Controladora\CF\LineaBaseControladora.cs" />
-    <Compile Include="Controladora\CF\OrdenCambioControladora.cs" />
-    <Compile Include="Controladora\CF\SolicitudCambioControladora.cs" />
+    <Compile Include="FachadaNegocio\CF\InformeCambioFachada.cs" />
+    <Compile Include="FachadaNegocio\CF\LineaBaseFacahada.cs" />
+    <Compile Include="FachadaNegocio\CF\OrdenCambioFachada.cs" />
+    <Compile Include="FachadaNegocio\CF\SolicitudCambioFachada.cs" />
     <Compile Include="Controles\AprobarInformeCambio.ascx.cs">
       <DependentUpon>AprobarInformeCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
