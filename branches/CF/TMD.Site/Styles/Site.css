@@ -123,11 +123,11 @@ h1, h2, h3, h4, h5, h6
     margin-bottom: 0px;
 }
 
-h1
-{
-    font-size: 1.6em;
+h1{
+    font-size: 2em;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    font-weight: bold;
 }
 
 h2
@@ -675,4 +675,35 @@ fieldset.login .submitButton {
 #form_lineabase input {
     float: left;
 }
+
+#frm-actualizar-sc h2,
+#frm-actualizar-sc h1 {
+    text-align: left;
+}
+
+.form p {
+    display: block;
+    text-align: left;
+}
+
+#frm-actualizar-sc {
+    float: left;
+}
+
+#frm-actualizar-sc p {
+    width: 100%;
+    float: left;
+}
+
+#frm-actualizar-sc p .label-field {
+    width: 215px;
+}
+
+.form .label-field,
+.form label {
+    width: 150px;
+}
+
+
+
 

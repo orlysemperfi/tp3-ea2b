@@ -12,7 +12,8 @@ TMD
     margin: 10px 0;
 }
 
-label {
+label,
+.label-field {
     padding-right: 10px;
     width: 100px;
     float: left;
@@ -45,9 +46,29 @@ input[type="image"] {
 
 input[type="submit"] {
     cursor: pointer;
+    background: #465C71;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-input[type="text"]:focus {
+input[type="submit"]:hover {
+    background-color: #BFCBD6;
+    color: #465C71;
+}
+
+input[type="text"]:focus,
+select:hover {
     border: 2px solid #4B6C9E;
+    padding: 4px;
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #496077;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    min-width: 150px;
 }
 
