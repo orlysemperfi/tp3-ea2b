@@ -15,7 +15,7 @@ namespace TMD.CF.AccesoDatos.Map
             return new ProyectoFase
             {
                 Id = reader.GetInt("CODIGO"),
-                Proyecto = new Proyecto { Id = reader.GetInt("CODIGO_PROYECTO") },
+                Proyecto = new Proyecto { Id = reader.GetInt("CODIGO_PROYECTO"), FechaFin = reader.GetDateTime("FECHA_FIN_PROYECTO") },
                 Fase = new Fase { Id = reader.GetInt("CODIGO_FASE") },
                 FechaInicio = reader.GetDateTime("FECHA_INICIO"),
                 FechaFin = reader.GetDateTime("FECHA_FIN")
