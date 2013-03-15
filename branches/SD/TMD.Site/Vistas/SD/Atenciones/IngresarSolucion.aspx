@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" CodeBehind="IngresarSolucion.aspx.cs" Inherits="TMD.ServiceDesk.Site.Atenciones.IngresarSolucion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" 
+CodeBehind="IngresarSolucion.aspx.cs" Inherits="TMD.ServiceDesk.Site.Atenciones.IngresarSolucion" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
         .style2

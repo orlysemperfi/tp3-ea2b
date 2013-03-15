@@ -35,6 +35,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
                 using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Ticket_AgregarTicket"))
                 {
+                    DB.AddInParameter(command, "@Fecha_Registro", DbType.DateTime, ticket.Fecha_Registro);
                     DB.AddInParameter(command, "@Tipo_Registro", DbType.String, ticket.Tipo_Registro_Ticket);
                     DB.AddInParameter(command, "@Tipo_Atencion", DbType.String, ticket.Tipo_Atencion_Ticket );
                     DB.AddInParameter(command, "@Fecha_Expiracion", DbType.DateTime, ticket.Fecha_Expiracion);
@@ -212,6 +213,63 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
                 DB.ExecuteNonQuery(command);
             }
+
+        }
+
+
+        public void registrarSeguimiento(SeguimientoTicket seguimientoTicket)
+        {
+            string sSQL;
+
+            sSQL = "Insert into SD.INFORMACION_SEGUIMIENTO (CODIGO_TICKET,CODIGO_SEGUIMIENTO,FECHA_REGISTRO_INFORMACION_SEGUIMIENTO," +
+                   "DESCRIPCION_INFORMACION_SEGUIMIENTO,CODIGO_EQUIPO,CODIGO_INTEGRANTE) Values ( @CODIGO_TICKET,@CODIGO_SEGUIMIENTO,@FECHA_REGISTRO_INFORMACION_SEGUIMIENTO," +
+                   "@DESCRIPCION_INFORMACION_SEGUIMIENTO,@CODIGO_EQUIPO,@CODIGO_INTEGRANTE )";
+            using (DbCommand command = DB.GetSqlStringCommand (sSQL))
+            {
+                DB.AddInParameter(command, "@CODIGO_TICKET", DbType.Int32, seguimientoTicket.Codigo_Ticket );
+                DB.AddInParameter(command, "@CODIGO_SEGUIMIENTO", DbType.Int32, seguimientoTicket.Codigo_Seguimiento );
+                DB.AddInParameter(command, "@FECHA_REGISTRO_INFORMACION_SEGUIMIENTO", DbType.DateTime, DateTime.Now);
+                DB.AddInParameter(command, "@DESCRIPCION_INFORMACION_SEGUIMIENTO", DbType.String, seguimientoTicket.Descripcion_Seguimiento);
+                DB.AddInParameter(command, "@CODIGO_EQUIPO", DbType.Int32, seguimientoTicket.Codigo_Equipo);
+                DB.AddInParameter(command, "@CODIGO_INTEGRANTE", DbType.Int32, seguimientoTicket.Codigo_Integrante);
+
+                DB.ExecuteNonQuery(command);
+            }
+
+        }
+
+        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket)
+        {
+            List<SeguimientoTicket> listaSeguimientos = new List<SeguimientoTicket>();
+            string sSQL;
+
+            try
+            {
+
+
+            sSQL = "Select CODIGO_TICKET,CODIGO_SEGUIMIENTO,FECHA_REGISTRO_INFORMACION_SEGUIMIENTO," +
+                   "DESCRIPCION_INFORMACION_SEGUIMIENTO,CODIGO_EQUIPO,CODIGO_INTEGRANTE From SD.INFORMACION_SEGUIMIENTO " +
+                   "Where CODIGO_TICKET=" + numeroTicket;
+
+            using (DbCommand command = DB.GetSqlStringCommand(sSQL))
+            {
+               
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        listaSeguimientos.Add(TicketSeguimientoDataMap.Select(reader));
+
+                    }
+                }
+            }
+
+            }
+            catch
+            {
+
+            }
+            return listaSeguimientos;
 
         }
 

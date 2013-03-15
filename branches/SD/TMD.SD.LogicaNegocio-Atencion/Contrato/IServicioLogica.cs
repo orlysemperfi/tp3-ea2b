@@ -20,7 +20,9 @@ namespace TMD.SD.LogicaNegocio_Atencion.Contrato
             /// <param name="codigoProyecto">Codigo del Proyecto</param>
             /// <returns>Lista Analista</returns>
             List<Servicio> listaServiciosUsuarioCliente(int codigoCliente, int codigoUsuarioCliente);
-            ProyectoServicioSede datosServicioSLA(int codigoProyecto, int codigoServicio, int codigoSede);
+            ProyectoServicioSede datosServicioSLA(ProyectoServicioSede proyectoServicioSede);
+
+            DateTime obtenerFechaExpiración(DateTime fechaRegistro, ProyectoServicioSede proyectoServicioSede);
         }
   
 }

@@ -58,6 +58,7 @@ namespace ServiceDesk.Atenciones
             cmbEstado.Items.Add("Abierto");
             cmbEstado.Items.Add("Asignado");
             cmbEstado.Items.Add("En Proceso");
+            cmbEstado.Items.Add("Solucionado");
 
         }
 
@@ -198,7 +199,9 @@ namespace ServiceDesk.Atenciones
             else
             {
                 numeroTicket = rowGrd.Cells[1].Text;
+                
                 Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
+                //Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimientos.aspx?nroticket=" + numeroTicket.ToString());
                 
             }
         }

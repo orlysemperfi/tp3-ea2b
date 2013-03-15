@@ -26,5 +26,8 @@ namespace TMD.SD.LogicaNegocio_Atencion.Contrato
         Ticket datosTicket(int numeroTicket);
         TicketCMDB datosTicketCMDB(int numeroTicket);
         void registrarSolucion(int numeroTicket, String solucion, int codigoEquipo, int codigoEspecialista);
+        void registrarSeguimiento(SeguimientoTicket seguimientoTicket);
+        //List<SeguimientoTicket> listaSeguimientos(int numeroTicket);
+        
     }
 }

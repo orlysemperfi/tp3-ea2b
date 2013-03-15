@@ -91,6 +91,7 @@
     <Compile Include="ProyectoServicioSede.cs" />
     <Compile Include="Release.cs" />
     <Compile Include="Rutina.cs" />
+    <Compile Include="SeguimientoTicket.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="SolicitudMantenimiento.cs" />
     <Compile Include="Ticket.cs" />

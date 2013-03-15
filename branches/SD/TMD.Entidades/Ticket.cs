@@ -38,6 +38,8 @@ namespace TMD.Entidades
         public int Codigo_Equipo { get; set; }
         public int Codigo_Integrante { get; set; }
         public int Codigo_Sede { get; set; }
+        public String Solucion_Ticket { get; set; }
+
 
 
     }

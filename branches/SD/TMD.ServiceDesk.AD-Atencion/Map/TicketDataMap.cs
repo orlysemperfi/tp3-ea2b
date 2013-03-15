@@ -33,7 +33,9 @@ namespace TMD.SD.AccesoDatos_Atencion.Map
                     Prioridad_Ticket = reader.GetInt("PRIORIDAD_TICKET"),
                     Fecha_Registro=reader.GetDateTime ("FECHA_REGISTRO_TICKET"),
                     Fecha_Expiracion = reader.GetDateTime("FECHA_EXPIRACION_TICKET"),
-                    Codigo_Equipo=reader.GetInt("CODIGO_EQUIPO")
+                    Codigo_Equipo=reader.GetInt("CODIGO_EQUIPO"),
+                    Solucion_Ticket  = reader.GetString("SOLUCION_TICKET")
+                    
                 };
         }
     }

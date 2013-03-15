@@ -11,7 +11,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Contrato
     {
 
         List<Servicio> listaServiciosUsuarioCliente(int codigoCliente, int codigoUsuarioCliente);
-        ProyectoServicioSede datosServicioSLA(int codigoProyecto, int codigoServicio, int codigoSede);
+        ProyectoServicioSede datosServicioSLA(ProyectoServicioSede datosServicioSLA);
 
     }
 }

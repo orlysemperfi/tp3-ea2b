@@ -44,38 +44,13 @@
       <HintPath>..\Librerias\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TMD.GC.AccesoDatos.Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\TMD.ACP\TMD.ACP.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\Librerias\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Librerias\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Librerias\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception">
-      <HintPath>..\..\Librerias\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -103,9 +78,10 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
-    <Content Include="Vistas\SD\Atenciones.aspx" />
-    <Content Include="Vistas\SD\IngresarSolucion.aspx" />
-    <Content Include="Vistas\SD\NuevaAtencion.aspx" />
+    <Content Include="Vistas\SD\Atenciones\Atenciones.aspx" />
+    <Content Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx" />
+    <Content Include="Vistas\SD\Atenciones\IngresarSolucion.aspx" />
+    <Content Include="Vistas\SD\Atenciones\NuevaAtencion.aspx" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
     <Content Include="bin\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
@@ -179,6 +155,7 @@
     <Content Include="Vistas\MP\PropuestaMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraListado.aspx" />
     <Content Include="Vistas\MP\Prueba2.aspx" />
+    <Content Include="Vistas\SD\Atenciones\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -224,25 +201,46 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
-    <Compile Include="Vistas\SD\Atenciones.aspx.cs">
+    <Compile Include="MasterPage\Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\Atenciones.aspx.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\SD\Atenciones.aspx.designer.cs">
+    <Compile Include="Vistas\SD\Atenciones\Atenciones.aspx.designer.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\SD\IngresarSolucion.aspx.cs">
+    <Compile Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx.cs">
+      <DependentUpon>IngresarSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx.designer.cs">
+      <DependentUpon>IngresarSeguimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\IngresarSolucion.aspx.cs">
       <DependentUpon>IngresarSolucion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\SD\IngresarSolucion.aspx.designer.cs">
+    <Compile Include="Vistas\SD\Atenciones\IngresarSolucion.aspx.designer.cs">
       <DependentUpon>IngresarSolucion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\SD\NuevaAtencion.aspx.cs">
+    <Compile Include="Vistas\SD\Atenciones\NuevaAtencion.aspx.cs">
       <DependentUpon>NuevaAtencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\SD\NuevaAtencion.aspx.designer.cs">
+    <Compile Include="Vistas\SD\Atenciones\NuevaAtencion.aspx.designer.cs">
       <DependentUpon>NuevaAtencion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controladora\Base.cs" />
@@ -468,6 +466,13 @@
     <Compile Include="Vistas\MP\TMD-MP.Master.designer.cs">
       <DependentUpon>TMD-MP.Master</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\SD\Atenciones\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vistas\ACP\Site.Master" />
@@ -520,6 +525,15 @@
   <ItemGroup>
     <Content Include="Vistas\MP\TMD-MP.Master" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Vistas\SD\Seguimiento\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterPage\Principal.Master" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
@@ -528,7 +542,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2188</DevelopmentServerPort>
+          <DevelopmentServerPort>2189</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

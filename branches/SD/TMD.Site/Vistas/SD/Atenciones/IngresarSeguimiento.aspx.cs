@@ -44,6 +44,35 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
 
         }
 
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
+            Ticket datosTicket = ticket.datosTicket(numeroTicket);
+            SeguimientoTicket seguimientoTicket;
+            int codigoSeguimiento=1;
+ 
+            int codigoEspecialista = SesionFachada.Usuario.Id;
+            if (txtSeguimiento.Text.Trim() == "")
+            {
+                //"Favor de ingresar el texto de la solución"
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Favor de ingresar el detalle de la solución')</script>");
+            }
+            else
+            {
+                codigoSeguimiento = grdSeguimiento.Rows.Count + 1;
+
+                seguimientoTicket = new SeguimientoTicket { Codigo_Ticket = numeroTicket, Descripcion_Seguimiento = txtSeguimiento.Text, 
+                     Codigo_Seguimiento =codigoSeguimiento, Codigo_Equipo = codigoEquipo, Codigo_Integrante = codigoEspecialista, Fecha_Registro = DateTime.Now };
+                ticket.registrarSeguimiento (seguimientoTicket);
+                Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
+            }
+        }
+
         private void onCargarTicket(int numeroTicket)
         {
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
@@ -62,7 +91,14 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
             txtServicio.Text = datosTicket.Nombre_Servicio;
             codigoEquipo = datosTicket.Codigo_Equipo;
 
+            //Llenar la grilla
+            //grdSeguimiento.DataSource = ticket.listaSeguimientos(datosTicket.Codigo_Ticket);
+            //grdSeguimiento.DataBind(); 
+
+
         }
 
+        
+        
     }
 }

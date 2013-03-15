@@ -15,29 +15,27 @@
             width: 100%;
         }
     </style>
-    
-      
- 
+
     <script type="text/javascript">
 
-        function serverCall(scriptPosition) {
-
-            alert(scriptPosition);
-
-            //var name = document.getElementById('txtName');
-
-            // Generate error for RegisterClientScriptBlock Method as the text box is not rendered
-
+        function alerta(numero) {
+            alert('Se ha presionado el boton: ' + numero);
         }
- 
+    
     </script>
+    
+ 
 
 </head>
 <body>
     <form id="form1" runat="server">
     <div class="page">
             <div class="header">
-                 <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+
+                <asp:ScriptManager ID="ScriptManager1" runat="server">             
+                </asp:ScriptManager> 
+                
+                 <%--<asp:Literal ID="Literal1" runat="server"></asp:Literal>--%>
                  <%--<div id="banner"></div>--%>
 
                  <%--<table width="1000" height="100">
@@ -47,7 +45,7 @@
 
                 <div class="title">
                     <h1>
-                    <img src="../Imagenes/LogoTMD.jpg" width="75" height="77" alt="" />&nbsp;
+                    <img src="../Imagenes/LogoTMD.jpg" width="75" height="77" alt=""  runat="server" />&nbsp;
                         Service Desk
                     </h1>
                 </div>
