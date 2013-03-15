@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\IPilotoLogica.cs" />
     <Compile Include="Contrato\ISolucionMejoraLogica.cs" />
     <Compile Include="Contrato\IAreaLogica.cs" />
     <Compile Include="Contrato\IIndicadorLogica.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Contrato\IUnidadLogica.cs" />
     <Compile Include="Contrato\IUsuarioLogica.cs" />
     <Compile Include="Implementacion\AreaLogica.cs" />
+    <Compile Include="Implementacion\PilotoLogica.cs" />
     <Compile Include="Implementacion\SolucionMejoraLogica.cs" />
     <Compile Include="Implementacion\IndicadorLogica.cs" />
     <Compile Include="Implementacion\ProcesoLogica.cs" />

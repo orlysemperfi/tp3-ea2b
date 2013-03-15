@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\IPilotoData.cs" />
     <Compile Include="Contrato\ISolucionMejoraData.cs" />
     <Compile Include="Contrato\IAreaData.cs" />
     <Compile Include="Contrato\IEscalaCualitativoData.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Contrato\IUsuarioData.cs" />
     <Compile Include="Implementacion\AreaDataSql.cs" />
     <Compile Include="Implementacion\BaseDataSql.cs" />
+    <Compile Include="Implementacion\PilotoDataSql.cs" />
     <Compile Include="Implementacion\SolucionMejoraDataSql.cs" />
     <Compile Include="Implementacion\EscalaCualitativoDataSql.cs" />
     <Compile Include="Implementacion\EscalaCuantitativoDataSql.cs" />

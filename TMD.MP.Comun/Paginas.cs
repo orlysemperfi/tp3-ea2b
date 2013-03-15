@@ -20,5 +20,8 @@ namespace TMD.MP.Comun
 
         public static String TMD_MP_SolucionMejoraListado = "~/Vistas/MP/SolucionMejoraListado.aspx";
         public static String TMD_MP_SolucionMejoraFormulario = "~/Vistas/MP/SolucionMejoraFormulario.aspx";
+
+        public static String TMD_MP_PilotoListado = "~/Vistas/MP/PilotoListado.aspx";
+        public static String TMD_MP_PilotoFormulario = "~/Vistas/MP/PilotoFormulario.aspx";
     }
 }

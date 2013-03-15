@@ -218,5 +218,65 @@ namespace TMD.MP.Comun
         #endregion
 
         #endregion
+
+        #region "Piloto"
+
+        private const String pilotoListado = "pilotoListado";
+        private const String pilotoSeleccionada = "pilotoSeleccionada";
+
+        #region "PilotoListado"
+
+        public static List<PilotoEntidad> PilotoListado
+        {
+            get
+            {
+                return (List<PilotoEntidad>)HttpContext.Current.Session[pilotoListado];
+            }
+            set
+            {
+                HttpContext.Current.Session[pilotoListado] = value;
+            }
+        }
+
+        public static bool PilotoListadoEsNulo()
+        {
+            return HttpContext.Current.Session[pilotoListado] == null;
+        }
+
+        public static void PilotoListadoRemover()
+        {
+            HttpContext.Current.Session.Remove(pilotoListado);
+        }
+
+        #endregion
+
+        #region "PilotoSeleccionada"
+
+        public static PilotoEntidad PilotoSeleccionada
+        {
+            get
+            {
+                return (PilotoEntidad)HttpContext.Current.Session[pilotoSeleccionada];
+            }
+            set
+            {
+                HttpContext.Current.Session[pilotoSeleccionada] = value;
+            }
+        }
+
+        public static bool PilotoSeleccionadaEsNula()
+        {
+            return (HttpContext.Current.Session[pilotoSeleccionada] == null);
+        }
+
+        public static void PilotoSeleccionadaRemover()
+        {
+            HttpContext.Current.Session.Remove(pilotoSeleccionada);
+        }
+
+        #endregion
+
+        #endregion
+
     }
 }
