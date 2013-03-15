@@ -144,7 +144,7 @@
                                         <HeaderStyle CssClass="tabla-grilla-cabecera" />
                                         <RowStyle CssClass="tabla-grilla-filas" />
                                         <Columns>
-                                            <asp:TemplateField HeaderText="Codigo">
+                                            <asp:TemplateField HeaderText="Codigo" Visible="false">
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>'></asp:Label>
                                                 </ItemTemplate>
