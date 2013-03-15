@@ -31,6 +31,15 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.DropDownList ddlProceso;
         
         /// <summary>
+        /// rfvProceso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProceso;
+        
+        /// <summary>
         /// tbxNombre control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace TMD.CF.Site.Vistas.MP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxNombre;
+        
+        /// <summary>
+        /// rfvNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
         
         /// <summary>
         /// tbxFrecuenciaMed control.
@@ -49,6 +67,15 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxFrecuenciaMed;
         
         /// <summary>
+        /// rfvFrecuenciaMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFrecuenciaMed;
+        
+        /// <summary>
         /// tbxFuenteMed control.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,15 @@ namespace TMD.CF.Site.Vistas.MP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxFuenteMed;
+        
+        /// <summary>
+        /// rfvFuenteMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFuenteMed;
         
         /// <summary>
         /// tbxExpresionMat control.
@@ -67,13 +103,31 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxExpresionMat;
         
         /// <summary>
-        /// tbxPlaxo control.
+        /// rfvExpresionMat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxPlaxo;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvExpresionMat;
+        
+        /// <summary>
+        /// tbxPlazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbxPlazo;
+        
+        /// <summary>
+        /// rfvPlazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlazo;
         
         /// <summary>
         /// lbtnAgregarICuanti control.
@@ -110,6 +164,15 @@ namespace TMD.CF.Site.Vistas.MP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnCancelar;
+        
+        /// <summary>
+        /// vsumGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsumGuardar;
         
         /// <summary>
         /// lblMensajeError control.

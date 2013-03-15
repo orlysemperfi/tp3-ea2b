@@ -59,29 +59,39 @@ namespace TMD.CF.Site.Vistas.MP
             tbxFrecuenciaMed.Text = indicador.frecuencia_Medicion;
             tbxFuenteMed.Text = indicador.fuente_Medicion;
             tbxExpresionMat.Text = indicador.expresion_Matematica;
-            tbxPlaxo.Text = indicador.plazo;
+            tbxPlazo.Text = indicador.plazo;
             CargarListadoEscalas();
         }
 
         protected void lbtnGuardar_Click(object sender, EventArgs e)
         {
-            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
-            IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
-            oNewIndicador.nombre = tbxNombre.Text;
-            oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
-            oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
-            oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
-            oNewIndicador.plazo = tbxPlaxo.Text;
-            oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
-            oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUANTITATIVO;
-            oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
+            Validate(lbtnGuardar.ValidationGroup);
+            if (IsValid == true)
+            {
+                IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+                IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
+                oNewIndicador.nombre = tbxNombre.Text;
+                oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
+                oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
+                oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
+                oNewIndicador.plazo = tbxPlazo.Text;
+                oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
+                oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUANTITATIVO;
+                oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
 
-            if (oNewIndicador.codigo != null)
-                oIndicadorLogica.ActualizarIndicador(oNewIndicador);
-            else
-                oIndicadorLogica.InsertarIndicador(oNewIndicador);
+                if (oNewIndicador.codigo != null)
+                    oIndicadorLogica.ActualizarIndicador(oNewIndicador);
+                else
+                    oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
-            Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+                string currentURL = Request.Url.ToString();
+                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                "alert('Indicador Registrado'); window.location='" +
+                newURL + "/IndicadorListado.aspx';", true);
+                //Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+            }
         }
 
         protected void lbtnCancelar_Click(object sender, EventArgs e)

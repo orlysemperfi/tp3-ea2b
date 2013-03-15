@@ -5,9 +5,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" language="javascript">
-        document.getElementById("IndicadorCuantitativo").style.visibility = "hidden";
-    </script>
-    <script type="text/javascript" language="javascript">
 
 
         function isNumberKey(evt) {
@@ -16,6 +13,14 @@
                 return false;
 
             return true;
+        }
+
+        function confirmacion() { 
+            if (confirm("¿Seguro que desea actualizar?")) {
+                alert('Se actualizo la infromacion del Indicador');
+                return true;
+            }else
+                return false;
         }
 
     </script>
@@ -154,7 +159,7 @@
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar" ValidationGroup="Indicador"></asp:LinkButton>
+                    <asp:LinkButton ID="lbtnGuardar" runat="server"  OnClick="lbtnGuardar_Click"  CssClass="estilo_boton" Text="Guardar" ValidationGroup="Indicador"></asp:LinkButton>
                 </td>
                 <td style="padding:5px">
                     <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar" CausesValidation="false"></asp:LinkButton>
