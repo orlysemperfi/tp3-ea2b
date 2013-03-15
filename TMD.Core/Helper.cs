@@ -10,6 +10,9 @@ namespace TMD.Core
 {
     public class Helper
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static string sDBservidor;
         public static string sDBnombre;
         public static string sDBusuario;
