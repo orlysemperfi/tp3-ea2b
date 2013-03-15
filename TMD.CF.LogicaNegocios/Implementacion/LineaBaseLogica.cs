@@ -74,7 +74,6 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             using (var scope = new TransactionScope())
             {
                 List<UsuarioProyecto> listaUsuarioProyecto = new List<UsuarioProyecto>();
-                listaUsuarioProyecto = _usuarioProyectoData.ListaUsuarioProyecto(usuarioProyecto.Id);
                 _lineaBaseData.Agregar(lineaBase, usuarioProyecto);
                 lineaBase.LineaBaseECS.ForEach(ecs => _lineaBaseECSData.Agregar(ecs));
 
