@@ -123,6 +123,7 @@
                     <h1>
                         Lista de Elementos de Configuraci&oacute;n.</h1>
                     <br />
+                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" />
                     <asp:GridView ID="grvListaECS" runat="server" AutoGenerateColumns="False" Enabled="true">
                         <EmptyDataTemplate>
                             No existen registros.
@@ -139,7 +140,6 @@
                             <asp:BoundField DataField="Descripcion" HeaderText="Descripci&oacute;n" />
                         </Columns>
                     </asp:GridView>
-                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" />
                 </asp:Panel>
             </ContentTemplate>
             <Triggers>

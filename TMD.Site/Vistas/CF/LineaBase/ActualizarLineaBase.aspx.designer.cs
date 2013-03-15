@@ -175,15 +175,6 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase {
         protected global::System.Web.UI.WebControls.Panel pnlECS;
         
         /// <summary>
-        /// grvListaECS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvListaECS;
-        
-        /// <summary>
         /// btnSeleccionar control.
         /// </summary>
         /// <remarks>
@@ -191,6 +182,15 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSeleccionar;
+        
+        /// <summary>
+        /// grvListaECS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvListaECS;
         
         /// <summary>
         /// upnlProxy control.
