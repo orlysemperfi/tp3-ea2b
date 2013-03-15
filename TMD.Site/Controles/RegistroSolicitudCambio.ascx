@@ -1,21 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegistroSolicitudCambio.ascx.cs"
     Inherits="TMD.CF.Site.Controles.RegistroSolicitudCambio" %>
 <asp:Panel runat="server" ID="pnlSolicitudCambio">
+<div class="panel-wrapper form" id="frm-actualizar-sc">
+    <h1>
+        Solicitud de Cambio</h1>
     <p>
-        Solicitud de Cambio</p>
-    <p>
-        Codigo:
+        <span class="label-field">Codigo:</span>
         <asp:Label ID="lblCodigo" runat="server"></asp:Label>
     </p>
     <p>
-        Nombre:
+        <span class="label-field">Nombre:</span>
         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="NombreRequired" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="El Nombre es requerido."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
     </p>
     <p>
-        Proyecto:
+        <span class="label-field">Proyecto:</span>
         <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProyecto_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
@@ -25,7 +26,7 @@
         </asp:CompareValidator>
     </p>
     <p>
-        Linea Base:
+        <span class="label-field">Linea Base:</span>
         <asp:DropDownList ID="ddlLineaBase" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlLineaBase_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="lineaBaseValidator" runat="server" ControlToValidate="ddlLineaBase"
@@ -35,7 +36,7 @@
         </asp:CompareValidator>
     </p>
     <p>
-        Elemento Configuracion:
+        <span class="label-field">Elemento Configuracion:</span>
         <asp:DropDownList ID="ddlElementoConfiguracion" runat="server">
         </asp:DropDownList>
         <asp:CompareValidator ID="elementoValidador" runat="server" ControlToValidate="ddlElementoConfiguracion"
@@ -45,7 +46,7 @@
         </asp:CompareValidator>
     </p>
     <p>
-        Prioridad:
+        <span class="label-field">Prioridad:</span>
         <asp:DropDownList ID="ddlPrioridad" runat="server">
         </asp:DropDownList>
         <asp:CompareValidator ID="prioridadValidador" runat="server" ControlToValidate="ddlPrioridad"
@@ -55,17 +56,18 @@
         </asp:CompareValidator>
     </p>
     <p>
-        Estado:
+        <span class="label-field">Estado:</span>
         <asp:DropDownList Enabled="False" ID="ddlEstado" runat="server">
         </asp:DropDownList>
     </p>
         <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" 
         CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
-    <p>
+    <p class="buttons-wrapp">
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
             onclick="btnCancelar_Click" />
     </p>
+</div>
 </asp:Panel>
 <script type="text/javascript" language="javascript">
     function grabar() {
