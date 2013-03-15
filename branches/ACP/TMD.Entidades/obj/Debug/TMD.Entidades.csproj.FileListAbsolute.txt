@@ -1,0 +1,10 @@
+G:\UPC\TP3\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+G:\UPC\TP3\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+G:\UPC\TP3\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+G:\UPC\TP3\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+G:\UPC\TP3\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Entidades\obj\Debug\TMD.Entidades.pdb

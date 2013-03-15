@@ -1,0 +1,10 @@
+G:\UPC\TP3\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+G:\UPC\TP3\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+G:\UPC\TP3\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+G:\UPC\TP3\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+G:\UPC\TP3\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.SD.AccesoDatos-Encuestas.pdb
