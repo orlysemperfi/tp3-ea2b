@@ -85,7 +85,16 @@ namespace TMD.MP.Site.Privado
                 else
                     oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
-                Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+                string currentURL = Request.Url.ToString();
+                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                "alert('Indicador Registrado'); window.location='" +
+                newURL + "/IndicadorListado.aspx';", true);
+
+                //ScriptManager.RegisterStartupScript(this.Page,this.Page.GetType(),"Mensaje","alert('Indicador Actualizado'); window.location='" + Request.ApplicationPath + "Vistas/MP/IndicadorListado.aspx" + "';",true);
+                //ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "mensaje", "if(confirm('Desea Grabar')) {alert('GRABADO'); return true;} else return false; window.location='" + Request.ApplicationPath + "Vistas/MP/IndicadorListado.aspx" + "';", true);
+              //  Response.Redirect(Paginas.TMD_MP_IndicadorListado);
             }
         }
 
