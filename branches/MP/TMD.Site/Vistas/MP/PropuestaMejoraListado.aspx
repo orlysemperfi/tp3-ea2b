@@ -184,9 +184,9 @@
             </tr>
         </table>
     </div>
-    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="MM/dd/yyyy">
+    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
     </ajaxToolkit:CalendarExtender>
-    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="MM/dd/yyyy">
+    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
     </ajaxToolkit:CalendarExtender>
     </ContentTemplate>
     <Triggers>
