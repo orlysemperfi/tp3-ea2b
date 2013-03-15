@@ -18,20 +18,25 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
     public class ServiciosData : DataBase, IServicioData
     {
 
-        public ServiciosData(String connectionString)
-            : base(connectionString)
+        public ServiciosData(String connectionString)  : base(connectionString)
         {
 
 
         }
 
 
-        public ProyectoServicioSede datosServicioSLA(int codigoProyecto, int codigoServicio, int codigoSede)
+        public ProyectoServicioSede datosServicioSLA(ProyectoServicioSede datosServicioSLA)
         {
             ProyectoServicioSede _datosServicioSLA = new ProyectoServicioSede();
+            int codigoProyecto, codigoServicio, codigoSede;
+
             //try
             //{
 
+            codigoProyecto = datosServicioSLA.Codigo_Proyecto;
+            codigoServicio = datosServicioSLA.Codigo_Servicio ;
+            codigoSede = datosServicioSLA.Codigo_Servicio ;
+ 
             using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Proyecto_Servicio_Sede"))
             {
                 DB.AddInParameter(command, "@PROYECTO", DbType.Int32, codigoProyecto);
@@ -90,5 +95,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
     }
 
+   
+    
 
 }

@@ -103,40 +103,31 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones {
         protected global::System.Web.UI.WebControls.TextBox txtDescripcionBreve;
         
         /// <summary>
-        /// Control txtSolucion.
+        /// Control txtSeguimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSolucion;
+        protected global::System.Web.UI.WebControls.TextBox txtSeguimiento;
         
         /// <summary>
-        /// Control btnGrabar.
+        /// Control btnAgregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGrabar;
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
         
         /// <summary>
-        /// Control btnDocumentacion.
+        /// Control grdSeguimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDocumentacion;
-        
-        /// <summary>
-        /// Control btnBDC.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBDC;
+        protected global::System.Web.UI.WebControls.GridView grdSeguimiento;
         
         /// <summary>
         /// Control btnSalir.

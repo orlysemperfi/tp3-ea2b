@@ -59,5 +59,15 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
         {
             _ticketData.registrarSolucion(numeroTicket, solucion, codigoEquipo, codigoEspecialista);
         }
+        public void registrarSeguimiento(SeguimientoTicket seguimientoTicket)
+        {
+            _ticketData.registrarSeguimiento (seguimientoTicket);
+        }
+
+        //public List<SeguimientoTicket> listaSeguimientos(int numeroTicket)
+        //{
+        //    _ticketData.listaSeguimientos (numeroTicket);
+        //}
+
     }
 }

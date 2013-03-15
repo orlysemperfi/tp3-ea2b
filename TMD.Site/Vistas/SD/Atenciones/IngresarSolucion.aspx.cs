@@ -41,7 +41,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         }
         protected void btnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vistas/Atenciones/Atenciones.aspx");
+            Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
         }
 
         protected void btnDocumentacion_Click(object sender, EventArgs e)
@@ -84,6 +84,14 @@ namespace TMD.ServiceDesk.Site.Atenciones
             txtUsuario.Text = datosTicket.Nombre_UsuarioCliente;
             txtServicio.Text = datosTicket.Nombre_Servicio;
             codigoEquipo = datosTicket.Codigo_Equipo;
+
+            if (datosTicket.Estado_Ticket=="SOLUCIONADO" ) 
+            {
+                txtSolucion.Text = datosTicket.Solucion_Ticket;
+                txtSolucion.ReadOnly = true;
+                btnGrabar.Enabled = false; 
+ 
+            }
             
         }
 
