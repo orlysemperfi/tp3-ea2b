@@ -18,8 +18,14 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         #region "Update"
 
+        void ActualizarSolucionMejora(SolucionMejoraEntidad oSolucionMejora);
+
         String BorrarSolucionMejora(SolucionMejoraEntidad oSolucionMejora);
 
+        #endregion
+
+        #region "Insert"
+        void InsertarSolucionMejora(SolucionMejoraEntidad entidad);
         #endregion
     }
 }

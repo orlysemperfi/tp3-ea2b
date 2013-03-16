@@ -174,7 +174,7 @@
         <asp:AsyncPostBackTrigger ControlID="tbxPaginaActual" />
         <asp:AsyncPostBackTrigger ControlID="lbtnDerecha" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnDerechaTodo" EventName="Click" />
-        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarPropuesta" EventName="Click" />
+        <asp:AsyncPostBackTrigger ControlID="lbtnAgregarSolucion" EventName="Click" />
     </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
