@@ -40,6 +40,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.DropDownList ddlProyecto;
         
         /// <summary>
+        /// proyectoValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator proyectoValidator;
+        
+        /// <summary>
         /// ddlLineaBase control.
         /// </summary>
         /// <remarks>
@@ -157,13 +166,13 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.Panel pnlSubir;
         
         /// <summary>
-        /// fileUpArchivo control.
+        /// btnCancelarArchivo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileUpArchivo;
+        protected global::System.Web.UI.WebControls.Button btnCancelarArchivo;
         
         /// <summary>
         /// btnGrabarProxy control.
@@ -175,13 +184,13 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         protected global::System.Web.UI.WebControls.Button btnGrabarProxy;
         
         /// <summary>
-        /// btnCancelarArchivo control.
+        /// fileUpArchivo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarArchivo;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpArchivo;
         
         /// <summary>
         /// btnDescarga control.

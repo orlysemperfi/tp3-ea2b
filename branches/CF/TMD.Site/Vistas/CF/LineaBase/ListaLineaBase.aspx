@@ -16,18 +16,17 @@
                 <tr>
                     <td>
                         <label>
-                            Proyecto</label>
-                        <asp:DropDownList ID="ddlProyecto" runat="server">
+                            Proyecto</label><asp:DropDownList ID="ddlProyecto" runat="server" 
+                            AutoPostBack="True" onselectedindexchanged="ddlProyecto_SelectedIndexChanged" 
+                            Width="200px">
                         </asp:DropDownList>                        
                     </td>
                     <td>
-                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar"  
-                        OnClientClick="javascript:return validarProyecto();" />
-                    </td>
-                    <td>
-    <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" 
+    <asp:Button ID="btnNuevo" runat="server" Text="Nueva Linea Base" 
         onclick="btnNuevo_Click" OnClientClick="javascript:return validarProyecto();" />
                     </td>
+                    <td>
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>        
@@ -42,15 +41,20 @@
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtnActualizar" ToolTip="Editar" 
                                 ImageUrl="~/Imagenes/edit.jpg" runat="server" CommandName="Actualizar" 
-                                CommandArgument='<%# Eval("ProyectoFase.Fase.Id")%>' />
+                                CommandArgument='<%# Eval("ProyectoFase.Fase.Id")%>' Height="20px" 
+                                Width="19px"
+                                Visible='<%# Convert.ToDateTime(Eval("ProyectoFase.FechaFin").ToString()) > DateTime.Now %>' />
                         </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Ver"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" >
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" 
                                 ImageUrl="~/Imagenes/select.jpg" CommandName="Ver" 
-                                CommandArgument='<%# Eval("ProyectoFase.Fase.Id")%>' />
+                                CommandArgument='<%# Eval("ProyectoFase.Fase.Id")%>' Height="20px" 
+                                Width="19px" />
                         </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:TemplateField>
                     <asp:BoundField DataField="Id" HeaderText="Codigo" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
@@ -74,7 +78,7 @@
             </asp:GridView>
         </ContentTemplate>
         <Triggers>
-        <asp:AsyncPostBackTrigger ControlID="btnBuscar" EventName="Click" />
+        <asp:AsyncPostBackTrigger ControlID="ddlProyecto" EventName="SelectedIndexChanged" />
         </Triggers>
         </asp:UpdatePanel>
         
