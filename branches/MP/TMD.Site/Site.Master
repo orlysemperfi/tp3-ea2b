@@ -6,6 +6,9 @@
     <title></title>
     <link href="~/Styles/Site.css?v=1" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Layout.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="http://malsup.github.com/jquery.cycle.lite.js"></script>
+
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -17,7 +20,7 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    TMD - GESTION DE LA CONFIGURACION
+                    TMD - DEFINICIÓN Y MEJORA DE PROCESOS
                 </h1>
             </div>
             <div class="loginDisplay">
@@ -39,21 +42,21 @@
                 <asp:Menu ID="Menu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false"
                     Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem Text="Linea Base" Value="LineaBase">
-                            <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/LineaBase/ListaLineaBase.aspx?carga=0" />
-                            <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase" NavigateUrl="~/Vistas/ACP/ListaLineaBase.aspx?carga=1" />
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="Auditoría" Value="Auditoria">
-                            <asp:MenuItem Text="Actualizar Programa Anual" Value="ActualizarProgramaAnual" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar Plan de Auditoria" Value="ActualizarPlanAuditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" Value="ActualizarHallazgosAuditoria" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
-                            <asp:MenuItem Text="Actualizar Plan de Acción" Value="ActualizarPlanAccion" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                            <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" Value="AsignarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                            <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" Value="ActualizarSeguimientoHallazgos" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="Mejora de Procesos" Value="MejoraProceso">                            
-                            <asp:MenuItem Text="Actualizar Indicador" Value="ActualizarIndicador" NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" />
-                            <asp:MenuItem Text="Actualizar Propuesta Mejora" Value="ActualizarPropuestaMejora" NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" />
+                        <asp:MenuItem Text="Definición y Mejora de Procesos" Selectable="False">
+                            <asp:MenuItem Text="Indicadores" Value="Indicadores">
+                                <asp:MenuItem Text="Actualizar Información" Value="ActualizarIndicador" NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Propuestas" Value="Propuestas">
+                                <asp:MenuItem Text="Actualizar Información" Value="ActualizarPropuesta" NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" />
+                                <asp:MenuItem Text="Aprobar Propuesta" Value="AprobarPropuesta" NavigateUrl="~/Vistas/MP/PropuestaMejoraAprobar.aspx" />
+                                <asp:MenuItem Text="Mandar a Desarrollo" Value="MandarDesarrollo" NavigateUrl="~/Vistas/MP/PropuestaMejoraDesarrollo.aspx" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Soluciones" Value="Soluciones">                            
+                                <asp:MenuItem Text="Actualizar Información" Value="ActualizarSolucion" NavigateUrl="~/Vistas/MP/SolucionMejoraListado.aspx" />                            
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Pilotos" Value="Pilotos"> 
+                                <asp:MenuItem Text="Actualizar Información" Value="ActualizarPiloto" NavigateUrl="~/Vistas/MP/PilotoListado.aspx" />
+                            </asp:MenuItem>
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>

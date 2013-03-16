@@ -107,6 +107,7 @@
     <Content Include="Vistas\MP\PilotoListado.aspx" />
     <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
@@ -251,6 +252,13 @@
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.cs">
+      <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.cs">
       <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
