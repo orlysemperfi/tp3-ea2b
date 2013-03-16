@@ -42,7 +42,7 @@
             <td class="style12">
                 Fecha Registro:</td>
             <td>
-                <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtFechaRegistro" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -54,19 +54,19 @@
             <td class="style12">
                 Analista:</td>
             <td>
-                <asp:TextBox ID="TextBox6" runat="server" Width="199px"></asp:TextBox>
+                <asp:TextBox ID="txtAnalista" runat="server" Width="199px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style2">
                 Servicio:</td>
             <td class="style7" colspan="4">
-                <asp:TextBox ID="TextBox3" runat="server" Width="356px"></asp:TextBox>
+                <asp:TextBox ID="txtServicio" runat="server" Width="356px"></asp:TextBox>
             </td>
             <td class="style12">
                 Especialista:</td>
             <td class="style3">
-                <asp:TextBox ID="TextBox7" runat="server" Width="203px"></asp:TextBox>
+                <asp:TextBox ID="txtEspecialista" runat="server" Width="203px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -77,14 +77,14 @@
             <td class="style12">
                 Usuario:</td>
             <td>
-                <asp:TextBox ID="TextBox8" runat="server" Width="205px"></asp:TextBox>
+                <asp:TextBox ID="txtUsuario" runat="server" Width="205px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style2">
                 Descripción Ticket:</td>
             <td class="style5" colspan="5">
-                <asp:TextBox ID="TextBox4" runat="server" Width="360px"></asp:TextBox>
+                <asp:TextBox ID="txtDescripcionBreve" runat="server" Width="360px"></asp:TextBox>
             </td>
             <td>
                 &nbsp;</td>
