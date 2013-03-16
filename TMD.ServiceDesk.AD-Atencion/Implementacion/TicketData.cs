@@ -274,5 +274,28 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
         }
 
+        public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
+        {
+            string sSQL;
+
+            sSQL = "Insert into SD.INFORMACION_SEGUIMIENTO (CODIGO_TICKET,CODIGO_INFORMACION_ADICIONAL,FECHA_REGISTRO_INFORMACION_ADICIONAL," +
+                   "DESCRIPCION_INFORMACION_ADICIONAL,NOMBRE_ARCHIVO_INFORMACION_ADICIONAL,RUTA_INFORMACION_ADICIONAL,CODIGO_EQUIPO,CODIGO_INTEGRANTE) Values ( @CODIGO_TICKET,@CODIGO_INFORMACION_ADICIONAL,@FECHA_REGISTRO_INFORMACION_ADICIONAL," +
+                   "@DESCRIPCION_INFORMACION_ADICIONAL,@NOMBRE_ARCHIVO_INFORMACION_ADICIONAL,@RUTA_INFORMACION_ADICIONAL,@CODIGO_EQUIPO,@CODIGO_INTEGRANTE )";
+            using (DbCommand command = DB.GetSqlStringCommand(sSQL))
+            {
+                DB.AddInParameter(command, "@CODIGO_TICKET", DbType.Int32, documentoTicket.Codigo_Ticket);
+                DB.AddInParameter(command, "@CODIGO_INFORMACION_ADICIONAL", DbType.Int32, documentoTicket.Codigo_DocumentoTicket);
+                DB.AddInParameter(command, "@FECHA_REGISTRO_INFORMACION_ADICIONAL", DbType.DateTime, DateTime.Now);
+                DB.AddInParameter(command, "@DESCRIPCION_INFORMACION_ADICIONAL", DbType.String, documentoTicket.Descripcion_DocumentoTicket);
+                DB.AddInParameter(command, "@NOMBRE_ARCHIVO_INFORMACION_ADICIONAL", DbType.String, documentoTicket.Nombre_DocumentoTicket);
+                DB.AddInParameter(command, "@RUTA_INFORMACION_ADICIONAL", DbType.String, documentoTicket.Ruta_DocumentoTicket);
+                DB.AddInParameter(command, "@CODIGO_EQUIPO", DbType.Int32, documentoTicket.Codigo_Equipo);
+                DB.AddInParameter(command, "@CODIGO_INTEGRANTE", DbType.Int32, documentoTicket.Codigo_Integrante);
+
+                DB.ExecuteNonQuery(command);
+            }
+
+        }
+
     }
 }
