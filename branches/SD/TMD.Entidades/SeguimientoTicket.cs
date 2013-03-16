@@ -13,6 +13,7 @@ namespace TMD.Entidades
         public String Descripcion_Seguimiento { get; set; }
         public int Codigo_Equipo { get; set; }
         public int Codigo_Integrante { get; set; }
+        public String Tipo_Seguimiento { get; set; }
 
 
     }
