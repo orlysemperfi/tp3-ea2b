@@ -28,5 +28,10 @@ namespace TMD.CF.Site.Controladora.CF
                         Solicitud = new SolicitudCambio { ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = idProyecto } }, LineaBase = new LineaBase { Id = idLineaBase} },                       
                     });
         }
+
+        public void Agregar(InformeCambio informeCambio)
+        {
+            InformeCambioLogica.Agregar(informeCambio);
+        }
     }
 }

@@ -46,21 +46,21 @@
     </p>
     <p>
         Estimación de costo:
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtCosto" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="estimacionCosto" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="La estimación de costo es requerida."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
     </p>
     <p>
         Estimación de esfuerzo:
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtEsfuerzo" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="estimacionEsfuerzo" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="La estimación de esfuerzo es requerida"
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
     </p>
     <p>
         Recursos:
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TxtRecurso" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="Recursos" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="Los recursos son requeridos."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>

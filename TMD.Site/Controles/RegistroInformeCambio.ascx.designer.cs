@@ -103,13 +103,13 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.CompareValidator elementoValidador;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TxtCosto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtCosto;
         
         /// <summary>
         /// estimacionCosto control.
@@ -121,13 +121,13 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator estimacionCosto;
         
         /// <summary>
-        /// TextBox2 control.
+        /// TxtEsfuerzo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TxtEsfuerzo;
         
         /// <summary>
         /// estimacionEsfuerzo control.
@@ -139,13 +139,13 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator estimacionEsfuerzo;
         
         /// <summary>
-        /// TextBox3 control.
+        /// TxtRecurso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TxtRecurso;
         
         /// <summary>
         /// Recursos control.
