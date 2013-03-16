@@ -28,7 +28,16 @@ namespace TMD.CF.Site.Account
             if (e.Authenticated)
             {
                 SeguridadFachada seguridad = new SeguridadFachada();
-                SesionFachada.Usuario = seguridad.ObtenerUsuario(LoginUser.UserName);
+
+                Usuario usuario = seguridad.ObtenerUsuario(LoginUser.UserName);
+                if (usuario != null)
+                {
+                    SesionFachada.Usuario = usuario;
+                }
+                else
+                {
+                    e.Authenticated = false;
+                }
             }
         }
     }
