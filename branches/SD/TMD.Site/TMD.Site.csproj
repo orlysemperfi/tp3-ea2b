@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup> 
+  </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
@@ -79,6 +79,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Data\ActualizarOLD.txt" />
     <Content Include="Vistas\SD\Atenciones\Atenciones.aspx" />
+    <Content Include="Vistas\SD\Atenciones\EscalarTicket.aspx" />
     <Content Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx" />
     <Content Include="Vistas\SD\Atenciones\IngresarSolucion.aspx" />
     <Content Include="Vistas\SD\Atenciones\NuevaAtencion.aspx" />
@@ -221,6 +222,13 @@
     </Compile>
     <Compile Include="Vistas\SD\Atenciones\Atenciones.aspx.designer.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\EscalarTicket.aspx.cs">
+      <DependentUpon>EscalarTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\EscalarTicket.aspx.designer.cs">
+      <DependentUpon>EscalarTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx.cs">
       <DependentUpon>IngresarSeguimiento.aspx</DependentUpon>
@@ -540,12 +548,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2189</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/TMD.Site</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
