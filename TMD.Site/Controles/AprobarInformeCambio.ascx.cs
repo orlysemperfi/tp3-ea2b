@@ -1,5 +1,5 @@
 ﻿using System;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;

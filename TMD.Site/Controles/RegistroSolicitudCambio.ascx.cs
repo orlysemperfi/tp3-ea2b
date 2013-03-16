@@ -2,7 +2,7 @@
 using TMD.Entidades;
 using TMD.Core.Extension;
 using TMD.CF.Site.Util;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
 
 namespace TMD.CF.Site.Controles
@@ -44,10 +44,10 @@ namespace TMD.CF.Site.Controles
                 txtNombre.Text = solicitud.Nombre;
 
                 int idProyecto = solicitud.ProyectoFase.Proyecto.Id;
-                ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
+                ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
                 int lineaBaseId = solicitud.LineaBase.Id;
-                ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
-                ddlElementoConfiguracion.EnlazarDatos(new LineaBaseControladora().ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id", -1, solicitud.ElementoConfiguracion.Id);
+                ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
+                ddlElementoConfiguracion.EnlazarDatos(new LineaBaseFachada().ElementoConfiguracionListarPorLineaBase(lineaBaseId), "NombreEcs", "Id", -1, solicitud.ElementoConfiguracion.Id);
                 ddlEstado.EnlazarDatos(new SolicitudCambioControladora().ListarEstado(), "Nombre", "Id", -1, solicitud.Estado);
                 ddlPrioridad.EnlazarDatos(new SolicitudCambioControladora().ListarPrioridad(), "Nombre", "Id", -1, solicitud.Prioridad);
 
@@ -67,7 +67,7 @@ namespace TMD.CF.Site.Controles
 
         public void CargarsolicitudNueva()
         {
-            ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlElementoConfiguracion.EnlazarValorDefecto();
             ddlEstado.EnlazarDatos(new SolicitudCambioControladora().ListarEstado(), "Nombre", "Id", -1, Constantes.EstadoPendiente);
@@ -76,12 +76,12 @@ namespace TMD.CF.Site.Controles
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlElementoConfiguracion.EnlazarDatos(new LineaBaseControladora().ElementoConfiguracionListarPorLineaBase(ddlLineaBase.SelectedValue.ToInt()), "NombreEcs", "Id");
+            ddlElementoConfiguracion.EnlazarDatos(new LineaBaseFachada().ElementoConfiguracionListarPorLineaBase(ddlLineaBase.SelectedValue.ToInt()), "NombreEcs", "Id");
         }
         
         protected void btnGrabar_Click(object sender, EventArgs e)

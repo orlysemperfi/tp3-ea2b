@@ -8,7 +8,7 @@ using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using System.Configuration;
 
-namespace TMD.CF.Site.Controladora.CF
+namespace TMD.CF.Site.FachadaNegocio.CF
 {
     class OrdenCambioControladora
     {

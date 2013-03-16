@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Entidades;
 using TMD.CF.Site.Util;
 using TMD.Strings;
@@ -31,7 +31,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 }
                 else
                 {
-                    proyecto = new LineaBaseControladora().ProyectoObtenerPorId(idProyecto);
+                    proyecto = new LineaBaseFachada().ProyectoObtenerPorId(idProyecto);
 
                     if (proyecto == null)
                     {
@@ -43,7 +43,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             if (!Page.IsPostBack)
             {
                 TMD.Entidades.LineaBase lineaBase =
-                        new LineaBaseControladora().LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
+                        new LineaBaseFachada().LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
 
                 hiddenIdLineaBase.Value = lineaBase.Id.ToString();
                 txtNombre.Text = lineaBase.Nombre;
@@ -54,7 +54,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
                 txtNombreProyecto.Text = proyecto.Nombre;
 
-                List<Fase> listaFase = new LineaBaseControladora().ListarFasePorProyecto(idProyecto, true);
+                List<Fase> listaFase = new LineaBaseFachada().ListarFasePorProyecto(idProyecto, true);
                 fase = listaFase.FirstOrDefault(x => x.Id == idFase);
 
                 if (fase == null)
@@ -79,10 +79,10 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             byte[] archivo = fileUpElemento.FileBytes;
             String nombre = System.IO.Path.GetFileName(fileUpElemento.FileName);
 
-            new LineaBaseControladora().ActualizarArchivo(Convert.ToInt32(hiddenIdLineaBase.Value), nombre, archivo);
+            new LineaBaseFachada().ActualizarArchivo(Convert.ToInt32(hiddenIdLineaBase.Value), nombre, archivo);
 
             TMD.Entidades.LineaBase lineaBase =
-                        new LineaBaseControladora().LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
+                        new LineaBaseFachada().LineaBaseObtenerPorProyectoFaseUsuario(idProyecto, idFase, SesionFachada.Usuario.Id);
             
             grvElementoConfiguracion.DataSource = lineaBase.LineaBaseECS;
             grvElementoConfiguracion.DataBind();
@@ -97,7 +97,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 case "Descarga":
                     int idElemento = Convert.ToInt32(e.CommandArgument);
 
-                    LineaBaseElementoConfiguracion archivo = new LineaBaseControladora().ObtenerArchivo(idElemento);
+                    LineaBaseElementoConfiguracion archivo = new LineaBaseFachada().ObtenerArchivo(idElemento);
 
                     if (archivo != null && archivo.Data != null)
                     {
