@@ -34,10 +34,14 @@ namespace ServiceDesk.Atenciones
             if (accion == "n")
             {
                 lnkNuevoTicket.Visible = true;
+
+
+                
                 cmbActividad.Items.Add(new ListItem { Text = "Seleccione una actividad", Value = "Seleccionar" });
-                cmbActividad.Items.Add(new ListItem { Text ="Cambio de Estado",Value ="Estado" });
+                cmbActividad.Items.Add(new ListItem { Text = "Solucionar Ticket", Value = "Solucion" });
+                cmbActividad.Items.Add(new ListItem { Text = "Cambio de Estado",Value ="Estado" });
                 cmbActividad.Items.Add(new ListItem { Text = "Seguimiento del Ticket", Value = "Seguimiento" });
-                cmbActividad.Items.Add(new ListItem { Text ="Adjuntar Documento",Value ="Documento" });
+                cmbActividad.Items.Add(new ListItem { Text = "Adjuntar Documento",Value ="Documento" });
                 cmbActividad.Items.Add(new ListItem { Text = "Editar Ticket", Value = "Editar" });
                 cmbActividad.Items.Add(new ListItem { Text = "Escalar Ticket otro Nivel Atención", Value = "Escalar" });
 
@@ -46,7 +50,9 @@ namespace ServiceDesk.Atenciones
             else
             {
                 lnkNuevoTicket.Visible = false;
+                
                 cmbActividad.Items.Add(new ListItem { Text = "Seleccione una actividad", Value = "Seleccionar" });
+                cmbActividad.Items.Add(new ListItem { Text = "Solucionar Ticket", Value = "Solucion" });
                 cmbActividad.Items.Add(new ListItem { Text = "Cambio de Estado", Value = "Estado" });
                 cmbActividad.Items.Add(new ListItem { Text = "Seguimiento del Ticket", Value = "Seguimiento" });
                 cmbActividad.Items.Add(new ListItem { Text = "Adjuntar Documento", Value = "Documento" });
