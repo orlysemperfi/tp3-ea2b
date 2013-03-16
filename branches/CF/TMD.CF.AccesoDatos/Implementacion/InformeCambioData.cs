@@ -50,10 +50,16 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// <summary>
         /// Aprueba un informe de cambio
         /// </summary>
-        /// <param name="informeCambio">Objeto informe a aprobar</param>
+        /// <param name="solicitudCambio"></param>
         public void Aprobar(InformeCambio informeCambio)
         {
-            throw new NotImplementedException();
+            using (DbCommand command = DB.GetStoredProcCommand("USP_INFORME_CAMBIO_APROBAR_UPD"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, informeCambio.Id);
+                DB.AddInParameter(command, "@MOTIVO", DbType.String, informeCambio.Motivo);
+                DB.AddInParameter(command, "@ESTADO", DbType.Int32, informeCambio.Estado);
+                DB.ExecuteNonQuery(command);
+            }
         }
 
         /// <summary>

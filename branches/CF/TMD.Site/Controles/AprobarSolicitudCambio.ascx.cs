@@ -42,10 +42,11 @@ namespace TMD.CF.Site.Controles
             set { hidIdSolicitud.Value = value.ToString(); }
         }
 
-        public int IdEstado {
+        public int IdEstado
+        {
             get { return hidIdEstado.Value.ToInt(); }
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

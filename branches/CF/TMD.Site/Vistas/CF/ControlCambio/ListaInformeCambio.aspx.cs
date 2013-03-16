@@ -22,10 +22,10 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucRegistroInformeCambio.EventoCanceloInforme +=
                 new Controles.RegistroInformeCambio.CancelarInformeHandler(ucRegistroInformeCambio_EventoCanceloInforme);
 
-            //ucAprobarInformeCambio.EventoAproboInforme +=
-            //    new Controles.AprobarSolicitudCambio.AproboSolicitudHandler(ucAprobarInformeCambio_EventoAproboSolicitud);
-            //ucAprobarInformeCambio.EventoCanceloInforme +=
-            //    new Controles.AprobarSolicitudCambio.CancelarSolicitudHandler(ucAprobarInformeCambio_EventoCanceloSolicitud);
+            ucAprobarInformeCambio.EventoAproboInforme +=
+                new Controles.AprobarInformeCambio.AproboInformeHandler(ucAprobarInformeCambio_EventoAproboInforme);
+            ucAprobarInformeCambio.EventoCanceloInforme +=
+                new Controles.AprobarInformeCambio.CancelarInformeHandler(ucAprobarInformeCambio_EventoCanceloInforme);
         }
 
         private void MostrarControles(bool visibleRegistro, bool visibleBusqueda, bool visibleAprobar, bool visibleSubir, bool visibleLista)
@@ -40,18 +40,18 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         }
 
 
-        /*void ucAprobarSolicitudCambio_EventoCanceloSolicitud()
+        void ucAprobarInformeCambio_EventoCanceloInforme()
         {
             MostrarControles(false, true, false, false, true);
             ucAprobarInformeCambio.Limpiar();
         }
 
-        void ucAprobarSolicitudCambio_EventoAproboSolicitud()
+        void ucAprobarInformeCambio_EventoAproboInforme()
         {
             MostrarControles(false, true, false, false, true);
             ucAprobarInformeCambio.Limpiar();
             btnBuscar_Click(null, null);
-        }*/
+        }
 
         void ucRegistroInformeCambio_EventoCanceloInforme()
         {
@@ -125,6 +125,29 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void grvInformeCambio_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
+            switch (e.CommandName)
+            {
+                case "Ver":
+                    ucRegistroInformeCambio.CargarInformeExistente(Convert.ToInt32(e.CommandArgument));
+                    ucRegistroInformeCambio.Visible = true;
+                    break;
+                case "Cargar":
+                    hidIdSolicitud.Value = e.CommandArgument.ToString();
+                    MostrarControles(false, false, false, true, false);
+                    //ClientScript.RegisterClientScriptBlock(btnGrabarProxy.GetType(), "carga", "MostrarCarga(1);",true);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "carga", "MostrarCarga(1);", true);
+                    break;
+                case "Aprobar":
+                    ucAprobarInformeCambio.IdInformeCambio = Convert.ToInt32(e.CommandArgument);
+                    ucAprobarInformeCambio.ApruebaInforme = true;
+                    MostrarControles(false, false, true, false, false);
+                    break;
+                case "Rechazar":
+                    ucAprobarInformeCambio.IdInformeCambio = Convert.ToInt32(e.CommandArgument);
+                    ucAprobarInformeCambio.ApruebaInforme = false;
+                    MostrarControles(false, false, true, false, false);
+                    break;
+            }
 
         }
 
@@ -143,6 +166,16 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                 Response.Buffer = true;
                 Response.BinaryWrite(solicitud.Data);
             }
+        }
+
+        protected void btnGrabarArchcivo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
