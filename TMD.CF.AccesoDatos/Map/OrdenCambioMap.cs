@@ -10,6 +10,11 @@ namespace TMD.CF.AccesoDatos.Map
 {
     class OrdenCambioMap
     {
+        /// <summary>
+        /// Clase encargada de mapear los datos de la Entidad Orden de cambio.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static OrdenCambio Select(IDataReader reader)
         {
             return new OrdenCambio
