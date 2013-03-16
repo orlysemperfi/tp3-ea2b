@@ -16,6 +16,54 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 CargarControles();
             }
+
+            ucRegistroInformeCambio.EventoGraboInforme +=
+                new Controles.RegistroInformeCambio.GraboInformeHandler(ucRegistroInformeCambio_EventoGraboInforme);
+            ucRegistroInformeCambio.EventoCanceloInforme +=
+                new Controles.RegistroInformeCambio.CancelarInformeHandler(ucRegistroInformeCambio_EventoCanceloInforme);
+
+            //ucAprobarInformeCambio.EventoAproboInforme +=
+            //    new Controles.AprobarSolicitudCambio.AproboSolicitudHandler(ucAprobarInformeCambio_EventoAproboSolicitud);
+            //ucAprobarInformeCambio.EventoCanceloInforme +=
+            //    new Controles.AprobarSolicitudCambio.CancelarSolicitudHandler(ucAprobarInformeCambio_EventoCanceloSolicitud);
+        }
+
+        private void MostrarControles(bool visibleRegistro, bool visibleBusqueda, bool visibleAprobar, bool visibleSubir, bool visibleLista)
+        {
+            ucRegistroInformeCambio.Visible = visibleRegistro;
+            pnlBusqueda.Visible = visibleBusqueda;
+            ucAprobarInformeCambio.Visible = visibleAprobar;
+            //ucSubirArchivoSolicitudCambio.Visible = visibleSubir;
+            pnlSubir.Visible = visibleSubir;
+            grvInformeCambio.Visible = visibleLista;
+            upnlSubir.Update();
+        }
+
+
+        /*void ucAprobarSolicitudCambio_EventoCanceloSolicitud()
+        {
+            MostrarControles(false, true, false, false, true);
+            ucAprobarInformeCambio.Limpiar();
+        }
+
+        void ucAprobarSolicitudCambio_EventoAproboSolicitud()
+        {
+            MostrarControles(false, true, false, false, true);
+            ucAprobarInformeCambio.Limpiar();
+            btnBuscar_Click(null, null);
+        }*/
+
+        void ucRegistroInformeCambio_EventoCanceloInforme()
+        {
+            MostrarControles(false, true, false, false, true);
+            ucRegistroInformeCambio.Limpiar();
+        }
+
+        void ucRegistroInformeCambio_EventoGraboInforme()
+        {
+            MostrarControles(false, true, false, false, true);
+            ucRegistroInformeCambio.Limpiar();
+            btnBuscar_Click(null, null);
         }
 
         private void CargarControles()

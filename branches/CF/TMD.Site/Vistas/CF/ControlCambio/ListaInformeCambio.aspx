@@ -79,17 +79,17 @@
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Codigo">
+                        <asp:TemplateField HeaderText="Código solicitud">
                             <ItemTemplate>
                                 <%# Eval("Solicitud.Id ")%>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nombre">
+                        <asp:TemplateField HeaderText="Nombre de solicitud">
                             <ItemTemplate>
                                 <%# Eval("Solicitud.Nombre")%>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Fecha Aprobacion">
+                        <asp:TemplateField HeaderText="Fecha Aprobación">
                             <ItemTemplate>
                                 <%# Convert.ToDateTime(Eval("Solicitud.FechaAprobacion").ToString()).ToString("dd/MM/yyyy")%>
                             </ItemTemplate>
@@ -101,6 +101,16 @@
                                     Width="27px" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Código de informe">
+                            <ItemTemplate>
+                                <%# Eval("Solicitud.Id")%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Nombre de informe">
+                            <ItemTemplate>
+                                <%# Eval("Solicitud.Nombre")%>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Cargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
@@ -149,7 +159,26 @@
                     visible="False" />
             </ContentTemplate>
         </asp:UpdatePanel>
-    </div>
+        <asp:UpdatePanel runat="server" ID="upnlSubir" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:Panel runat="server" ID="pnlSubir" Visible="false">
+                    <p>
+                        Subir Archivo Solicitud Cambio</p>
+                    <p>
+                        Archivo</p>
+                    <p>
+                        <asp:FileUpload ID="fileUpArchivo" runat="server" />
+                    </p>
+                    <p>
+                        <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" />
+                        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
+                </asp:Panel>
+            </ContentTemplate>
+            <Triggers>
+                <asp:PostBackTrigger runat="server" ControlID="btnGrabarProxy" />
+            </Triggers>
+        </asp:UpdatePanel>
+    
     <asp:Button runat="server" ID="btnDescarga" OnClick="btnDescarga_Click" Style="display: none" />
     <script type="text/javascript" language="javascript">
         function Descargar(id) {

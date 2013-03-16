@@ -28,7 +28,23 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// <param name="informeCambio">Objeto informe a agregar</param>
         public void Agregar(InformeCambio informeCambio)
         {
-            throw new NotImplementedException();
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_INS"))
+            {
+                DB.AddInParameter(command, "@NOMBRE", DbType.String, informeCambio.Nombre);
+                DB.AddInParameter(command, "@CODIGO_SOLICITUD", DbType.Int32, informeCambio.Solicitud.Id);
+                DB.AddInParameter(command, "@CODIGO_USUARIO", DbType.Int32, informeCambio.Usuario.Id);
+                DB.AddInParameter(command, "@FECHA_REGISTRO", DbType.DateTime, DateTime.Now);
+                DB.AddInParameter(command, "@ESTADO", DbType.Int32, 1);
+                DB.AddInParameter(command, "@ESTIMACION_COSTO", DbType.String, informeCambio.EstimacionCosto);
+                DB.AddInParameter(command, "@ESTIMACION_ESFUERZO", DbType.String, informeCambio.EstimacionEsfuerzo);
+                DB.AddInParameter(command, "@RECURSOS", DbType.String, informeCambio.Recursos);
+
+                DB.AddOutParameter(command, "@CODIGO", DbType.Int32, 4);
+
+                DB.ExecuteNonQuery(command);
+
+                informeCambio.Id = Convert.ToInt32(DB.GetParameterValue(command, "@CODIGO"));
+            }
         }
 
         /// <summary>
