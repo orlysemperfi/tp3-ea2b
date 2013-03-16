@@ -22,6 +22,24 @@ namespace ServiceDesk.Atenciones {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
+        
+        /// <summary>
+        /// Control Label3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
         /// Control lnkNuevoTicket.
         /// </summary>
         /// <remarks>
@@ -31,49 +49,22 @@ namespace ServiceDesk.Atenciones {
         protected global::System.Web.UI.WebControls.HyperLink lnkNuevoTicket;
         
         /// <summary>
-        /// Control bntIngresarSolucion.
+        /// Control cmbActividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bntIngresarSolucion;
+        protected global::System.Web.UI.WebControls.DropDownList cmbActividad;
         
         /// <summary>
-        /// Control btnInfoSeguimiento.
+        /// Control btnIr.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInfoSeguimiento;
-        
-        /// <summary>
-        /// Control btnAdjuntarDocumentacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdjuntarDocumentacion;
-        
-        /// <summary>
-        /// Control btnCambioEstado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCambioEstado;
-        
-        /// <summary>
-        /// Control btnEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditar;
+        protected global::System.Web.UI.WebControls.Button btnIr;
         
         /// <summary>
         /// Control cmbAnalistas.

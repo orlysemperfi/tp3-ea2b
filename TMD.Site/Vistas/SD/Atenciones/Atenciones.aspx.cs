@@ -27,24 +27,31 @@ namespace ServiceDesk.Atenciones
 
         private void OnInitPage()
         {
+            lblMensaje.Text = "";
             //Habilitar opciones 
             if (Request.QueryString["accion"] != "" && Request.QueryString["accion"]!=null) accion = Request.QueryString["accion"];
-
 
             if (accion == "n")
             {
                 lnkNuevoTicket.Visible = true;
-                btnCambioEstado.Visible = false;
-                btnAdjuntarDocumentacion.Visible = true;
-                btnEditar.Visible = true;
+                cmbActividad.Items.Add(new ListItem { Text = "Seleccione una actividad", Value = "Seleccionar" });
+                cmbActividad.Items.Add(new ListItem { Text ="Cambio de Estado",Value ="Estado" });
+                cmbActividad.Items.Add(new ListItem { Text = "Seguimiento del Ticket", Value = "Seguimiento" });
+                cmbActividad.Items.Add(new ListItem { Text ="Adjuntar Documento",Value ="Documento" });
+                cmbActividad.Items.Add(new ListItem { Text = "Editar Ticket", Value = "Editar" });
+                cmbActividad.Items.Add(new ListItem { Text = "Escalar otro Nivel Atención", Value = "Escalar" });
+
+
             }
             else
             {
                 lnkNuevoTicket.Visible = false;
-                btnCambioEstado.Visible = true;
-                btnAdjuntarDocumentacion.Visible = false;
-                btnEditar.Visible = false;
+                cmbActividad.Items.Add(new ListItem { Text = "Seleccione una actividad", Value = "Seleccionar" });
+                cmbActividad.Items.Add(new ListItem { Text = "Cambio de Estado", Value = "Estado" });
+                cmbActividad.Items.Add(new ListItem { Text = "Seguimiento del Ticket", Value = "Seguimiento" });
+                cmbActividad.Items.Add(new ListItem { Text = "Adjuntar Documento", Value = "Documento" });
             }
+
 
             onCargarAnalistas();
             onCargarEspecialistas();
@@ -120,12 +127,6 @@ namespace ServiceDesk.Atenciones
 
         protected void btnBuscar_Click1(object sender, EventArgs e)
         {
-           // Page.ClientScript.RegisterClientScriptBlock(this.GetType(),
-           //"RegisterClientScriptBlockMethod", "<script>serverCall('hola')</script>");
-
-            
-            //Page.Literal1.Text = "<script>serverCall('Added at middle')</script>";
-            
             onCargarTickets();
         }
 
@@ -134,7 +135,13 @@ namespace ServiceDesk.Atenciones
             Response.Redirect("~/Inicio.aspx");
         }
 
-        protected void btnEditar_Click(object sender, EventArgs e)
+        
+
+        
+
+        
+
+        protected void onEditarTicket()
         {
             string numeroTicket = "0";
 
@@ -142,10 +149,7 @@ namespace ServiceDesk.Atenciones
 
             if (rowGrd == null)
             {
-
-                //Response.Write("<script type='text/javascript'> alert('Faltan prioridad') </script>");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Seleccione un registro')</script>");
-
+                lblMensaje.Text = "Seleccione un ticket de atención";
             }
             else
             {
@@ -154,7 +158,7 @@ namespace ServiceDesk.Atenciones
             }
         }
 
-        protected void bntIngresarSolucion_Click(object sender, EventArgs e)
+        protected void onSolucionTicket()
         {
             string numeroTicket = "0";
 
@@ -162,10 +166,7 @@ namespace ServiceDesk.Atenciones
 
             if (rowGrd == null)
             {
-                
-                //Response.Write("<script type='text/javascript'> alert('Faltan prioridad') </script>");
-                Page.ClientScript.RegisterStartupScript(this.GetType(),"RegisterStartupScript", "<script>serverCall('Seleccione un registro')</script>");             
-            
+                lblMensaje.Text = "Seleccione un ticket de atención";
             }
             else
             {
@@ -174,41 +175,104 @@ namespace ServiceDesk.Atenciones
             }
         }
 
-        protected void btnAdjuntarDocumentacion_Click(object sender, EventArgs e)
+        protected void onSeguimientoTicket()
         {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Invocara a la opción adjuntar documentos')</script>");
-        }
-
-        protected void btnCambioEstado_Click(object sender, EventArgs e)
-        {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Invocara al cambio de estado')</script>");
-        }
-
-        protected void btnInfoSeguimiento_Click(object sender, EventArgs e)
-        {
-
             string numeroTicket = "0";
 
             GridViewRow rowGrd = grdTickets.SelectedRow;
 
             if (rowGrd == null)
             {
-                              
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", "alert('Seleccione un ticket de atención');", true);
+                lblMensaje.Text = "Seleccione un ticket de atención";
             }
             else
             {
                 numeroTicket = rowGrd.Cells[1].Text;
-                
+
                 Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
-                //Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimientos.aspx?nroticket=" + numeroTicket.ToString());
+            }
+        }
+
+        protected void onAdjuntarDocumento()
+        {
+            string numeroTicket = "0";
+
+            GridViewRow rowGrd = grdTickets.SelectedRow;
+
+            if (rowGrd == null)
+            {
+
+                lblMensaje.Text = "Seleccione un ticket de atención";
+            }
+            else
+            {
+                numeroTicket = rowGrd.Cells[1].Text;
+
+                Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
+                
+
+            }
+        }
+        protected void onCambioEstado()
+        {
+            string numeroTicket = "0";
+
+            GridViewRow rowGrd = grdTickets.SelectedRow;
+
+            if (rowGrd == null)
+            {
+
+                lblMensaje.Text = "Seleccione un ticket de atención";
+            }
+            else
+            {
+                numeroTicket = rowGrd.Cells[1].Text;
+
+                Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
                 
             }
         }
 
-      
+        protected void btnInfoSeguimiento_Click(object sender, EventArgs e)
+        {
+            string actividadSeleccionada=  cmbActividad.SelectedItem.Value ;
+            lblMensaje.Text = "";
+            switch (actividadSeleccionada)
+            {
+                case "Solucion":
+                    {
+                        onSolucionTicket();
+                        break;
+                    }
+                case "Seguimiento":
+                    {
+                        onSeguimientoTicket();
+                        break;
+                    }
+                case "Documento":
+                    {
+                        onAdjuntarDocumento();
+                        break;
+                    }
+                case "Estado":
+                    {
+                        onCambioEstado();
+                        break;
+                    }
+                case "Editar":
+                    {
+                        onEditarTicket();
+                        break;
+                    }
 
-        
+                default:
+                    {
+                     lblMensaje.Text= "Seleccione una actividad"; 
+                     break;
+                    }
+            }
+
+        }
 
 
 
