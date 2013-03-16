@@ -39,7 +39,7 @@ namespace ServiceDesk.Atenciones
                 cmbActividad.Items.Add(new ListItem { Text = "Seguimiento del Ticket", Value = "Seguimiento" });
                 cmbActividad.Items.Add(new ListItem { Text ="Adjuntar Documento",Value ="Documento" });
                 cmbActividad.Items.Add(new ListItem { Text = "Editar Ticket", Value = "Editar" });
-                cmbActividad.Items.Add(new ListItem { Text = "Escalar otro Nivel Atención", Value = "Escalar" });
+                cmbActividad.Items.Add(new ListItem { Text = "Escalar Ticket otro Nivel Atención", Value = "Escalar" });
 
 
             }
@@ -127,19 +127,17 @@ namespace ServiceDesk.Atenciones
 
         protected void btnBuscar_Click1(object sender, EventArgs e)
         {
+            lblMensaje.Text = "";
             onCargarTickets();
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)
         {
+            lblMensaje.Text = "";
             Response.Redirect("~/Inicio.aspx");
         }
 
-        
-
-        
-
-        
+                  
 
         protected void onEditarTicket()
         {
@@ -213,6 +211,7 @@ namespace ServiceDesk.Atenciones
 
             }
         }
+
         protected void onCambioEstado()
         {
             string numeroTicket = "0";
@@ -230,6 +229,26 @@ namespace ServiceDesk.Atenciones
 
                 Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
                 
+            }
+        }
+
+        protected void onEscalarTicket()
+        {
+            string numeroTicket = "0";
+
+            GridViewRow rowGrd = grdTickets.SelectedRow;
+
+            if (rowGrd == null)
+            {
+
+                lblMensaje.Text = "Seleccione un ticket de atención";
+            }
+            else
+            {
+                numeroTicket = rowGrd.Cells[1].Text;
+
+                Response.Redirect("~/Vistas/SD/Atenciones/EscalarTicket.aspx?nroticket=" + numeroTicket.ToString());
+
             }
         }
 
@@ -262,6 +281,12 @@ namespace ServiceDesk.Atenciones
                 case "Editar":
                     {
                         onEditarTicket();
+                        break;
+                    }
+
+                case "Escalar":
+                    {
+                        onEscalarTicket();
                         break;
                     }
 
