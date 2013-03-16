@@ -206,7 +206,7 @@ namespace ServiceDesk.Atenciones
             {
                 numeroTicket = rowGrd.Cells[1].Text;
 
-                Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
+                Response.Redirect("~/Vistas/SD/Atenciones/AdjuntarDocumento.aspx?nroticket=" + numeroTicket.ToString());
                 
 
             }
@@ -227,7 +227,7 @@ namespace ServiceDesk.Atenciones
             {
                 numeroTicket = rowGrd.Cells[1].Text;
 
-                Response.Redirect("~/Vistas/SD/Atenciones/IngresarSeguimiento.aspx?nroticket=" + numeroTicket.ToString());
+                Response.Redirect("~/Vistas/SD/Atenciones/CambiarEstado.aspx?nroticket=" + numeroTicket.ToString());
                 
             }
         }
