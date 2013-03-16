@@ -93,6 +93,16 @@
                             <ItemTemplate>
                                 <%# Convert.ToDateTime(Eval("Solicitud.FechaAprobacion").ToString()).ToString("dd/MM/yyyy")%>
                             </ItemTemplate>
+                        </asp:TemplateField>                       
+                        <asp:TemplateField HeaderText="Código de informe">
+                            <ItemTemplate>
+                                <%# Eval("Id")%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Nombre de informe">
+                            <ItemTemplate>
+                                <%# Eval("Nombre")%>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
@@ -101,16 +111,6 @@
                                     Width="27px" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Código de informe">
-                            <ItemTemplate>
-                                <%# Eval("Solicitud.Id")%>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Nombre de informe">
-                            <ItemTemplate>
-                                <%# Eval("Solicitud.Nombre")%>
-                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Cargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>

@@ -33,5 +33,10 @@ namespace TMD.CF.Site.Controladora.CF
         {
             InformeCambioLogica.Agregar(informeCambio);
         }
+
+        public void Aprobar(int idInforme, int idEstado, string motivo)
+        {
+            InformeCambioLogica.Aprobar(new InformeCambio { Id = idInforme, Estado = idEstado, Motivo = motivo });
+        }
     }
 }
