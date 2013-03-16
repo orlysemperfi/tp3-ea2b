@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 
 namespace TMD.Entidades
-{
+{   
+    /// <summary>
+    /// Clase que representa la entidad Fase que se asigna a la linea base
+    /// </summary>
+
     public class Fase : Base
     {
         public int Id { get; set; }

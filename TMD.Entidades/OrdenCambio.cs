@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TMD.Entidades
 {
+    /// <summary>
+    /// Clase que representa la entidad Orden de cambio (sobre informes generados)
+    /// </summary>
     public class OrdenCambio
     {
         public int Id { get; set; }

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TMD.Entidades
 {
+    /// <summary>
+    /// Clase que representa la entidad Elemento de configuración
+    /// </summary>
     public class ElementoConfiguracion
     {
         public int Id { get; set; }

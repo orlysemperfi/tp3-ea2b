@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TMD.Entidades
 {
+    /// <summary>
+    /// Clase que representa la entidad Informe de cambio para una solicitud
+    /// </summary>
     public class InformeCambio
     {
         public int Id { get; set; }

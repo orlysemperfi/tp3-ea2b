@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TMD.Entidades
 {
+    /// <summary>
+    /// Clase que representa la entidad Solicitud de cambio sobre un elemento de configuracion
+    /// </summary>
     public class SolicitudCambio
     {
         public int Id { get; set; }
