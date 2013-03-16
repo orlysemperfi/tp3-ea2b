@@ -22,24 +22,6 @@ namespace TMD.CF.Site.Controles {
         protected global::System.Web.UI.WebControls.Label lblTitulo;
         
         /// <summary>
-        /// txtMotivo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMotivo;
-        
-        /// <summary>
-        /// motivoRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator motivoRequired;
-        
-        /// <summary>
         /// btnGrabar control.
         /// </summary>
         /// <remarks>
@@ -56,6 +38,24 @@ namespace TMD.CF.Site.Controles {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// txtMotivo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMotivo;
+        
+        /// <summary>
+        /// motivoRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator motivoRequired;
         
         /// <summary>
         /// hidIdSolicitud control.

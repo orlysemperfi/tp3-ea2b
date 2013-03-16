@@ -41,7 +41,6 @@ namespace TMD.CF.Site.Controles
 
             if (solicitud != null)
             {
-                lblCodigo.Text = solicitud.Id.ToString();
                 txtNombre.Text = solicitud.Nombre;
 
                 int idProyecto = solicitud.ProyectoFase.Proyecto.Id;
@@ -58,7 +57,6 @@ namespace TMD.CF.Site.Controles
 
         public void Limpiar()
         {
-            lblCodigo.Text = "";
             txtNombre.Text = "";
             ddlProyecto.Items.Clear();
             ddlLineaBase.Items.Clear();

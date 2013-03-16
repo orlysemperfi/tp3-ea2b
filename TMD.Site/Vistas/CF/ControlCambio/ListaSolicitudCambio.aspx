@@ -25,14 +25,18 @@
                                 <td>
                                     <label>
                                         Proyecto</label>
-                                    <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProyecto_SelectedIndexChanged"
-                                        Width="186px">
-                                    </asp:DropDownList>
+                                    <asp:DropDownList ID="ddlProyecto" runat="server"
+                                        Width="170px">
+                                    </asp:DropDownList><asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
+            ErrorMessage="El proyecto es requerido." ToolTip="El proyecto es requerido."
+            ValidationGroup="BusquedaValidationGroup" ValueToCompare="0" CssClass="failureNotification"
+            Operator="NotEqual">*
+        </asp:CompareValidator>
                                 </td>
                                 <td>
                                     <label>
                                         LineaBase</label>
-                                    <asp:DropDownList ID="ddlLineaBase" runat="server" Width="186px">
+                                    <asp:DropDownList ID="ddlLineaBase" runat="server" Width="170px">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
@@ -45,21 +49,21 @@
                                 <td>
                                     <label>
                                         Estado</label>
-                                    <asp:DropDownList ID="ddlEstado" runat="server" Width="186px">
+                                    <asp:DropDownList ID="ddlEstado" runat="server" Width="170px">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
                                     <label>
                                         Prioridad</label>
-                                    <asp:DropDownList ID="ddlPrioridad" runat="server" Width="186px">
+                                    <asp:DropDownList ID="ddlPrioridad" runat="server" Width="170px">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar"
-                                        OnClientClick="javascript:return validarProyecto();" />
+                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar"  ValidationGroup="BusquedaValidationGroup"/>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" Text="Nuevo" />
+                                    <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" 
+                                        Text="Nueva Solicitud" />
                                 </td>
                             </tr>
                         </table>
@@ -70,7 +74,8 @@
         <asp:UpdatePanel runat="server" ID="upnlLista">
             <ContentTemplate>
                 <asp:GridView ID="grvSolicitudCambio" runat="server" AutoGenerateColumns="False"
-                    OnRowCommand="grvSolicitudCambio_RowCommand">
+                    OnRowCommand="grvSolicitudCambio_RowCommand" 
+                    ondatabound="grvSolicitudCambio_DataBound">
                     <EmptyDataTemplate>
                         No hay registros.
                     </EmptyDataTemplate>
@@ -163,16 +168,17 @@
         <asp:UpdatePanel runat="server" ID="upnlSubir" UpdateMode="Conditional">
             <ContentTemplate>
                 <asp:Panel runat="server" ID="pnlSubir" Visible="false">
-                    <p>
-                        Subir Archivo Solicitud Cambio</p>
-                    <p>
-                        Archivo</p>
-                    <p>
-                        <asp:FileUpload ID="fileUpArchivo" runat="server" />
-                    </p>
-                    <p>
-                        <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" />
-                        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
+                <table>
+                <tr>
+                <td>Subir Archivo Solicitud Cambio</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
+                <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" /></td>
+                <td>Archivo <asp:FileUpload ID="fileUpArchivo" runat="server" /></td>
+                </tr>
+                </table>
                 </asp:Panel>
             </ContentTemplate>
             <Triggers>
@@ -189,8 +195,8 @@
         }
         function validarProyecto() {
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                alert('Seleccione un Proyecto!');
-                return false;
+                //alert('Seleccione un Proyecto!');
+                return true;
             }
         }
     </script>

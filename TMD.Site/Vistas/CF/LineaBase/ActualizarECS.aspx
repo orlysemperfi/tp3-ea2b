@@ -6,8 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Button ID="btnCancelar" runat="server" Text="Salir" OnClick="btnCancelar_Click"
-        ValidationGroup="None" />
     <center>
         <asp:Panel ID="pnlMain" runat="server">
             <asp:HiddenField ID="hiddenIdLineaBase" runat="server" />
@@ -26,6 +24,10 @@
                                 <label>
                                     Fase</label>
                                 <asp:TextBox ID="txtNombreFase" runat="server" Enabled="false"></asp:TextBox>
+                            </td>
+                            <td>
+                                <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" 
+                                    Text="Cancelar " ValidationGroup="None" />
                             </td>
                         </tr>
                     </table>
@@ -101,7 +103,8 @@
                         </h1>                        
                         <br />
                         <asp:FileUpload ID="fileUpElemento" runat="server" />
-                        <asp:Button ID="btnCargar" runat="server" Text="Cargar" OnClick="btnCargar_Click" />
+                        &nbsp;<asp:Button ID="btnCargar" runat="server" Text="Cargar Elemento" 
+                            OnClick="btnCargar_Click" />
                     </asp:Panel>
         </asp:Panel>
     </center>

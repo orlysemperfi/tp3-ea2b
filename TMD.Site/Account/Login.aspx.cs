@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using TMD.CF.Site.Util;
 using TMD.Entidades;
+using TMD.CF.Site.FachadaNegocio.CF;
 
 namespace TMD.CF.Site.Account
 {
@@ -23,7 +24,12 @@ namespace TMD.CF.Site.Account
         protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
         {
             e.Authenticated = FormsAuthentication.Authenticate(LoginUser.UserName, LoginUser.Password);
-            SesionFachada.Usuario = new Usuario { Id = 1, Nombre = LoginUser.UserName };
+
+            if (e.Authenticated)
+            {
+                SeguridadFachada seguridad = new SeguridadFachada();
+                SesionFachada.Usuario = seguridad.ObtenerUsuario(LoginUser.UserName);
+            }
         }
     }
 }

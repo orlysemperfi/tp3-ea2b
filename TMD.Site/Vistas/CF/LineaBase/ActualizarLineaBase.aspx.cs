@@ -98,7 +98,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
                 if (lectura == 0)
                 {
-                    btnCancelar.OnClientClick = "javascript:return cancelar();";
+                    btnCancelar.OnClientClick = Scripts.Cancelar;
                 }
                 else
                 {

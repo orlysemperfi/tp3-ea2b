@@ -30,10 +30,12 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucAprobarSolicitudCambio.EventoCanceloSolicitud += 
                 new Controles.AprobarSolicitudCambio.CancelarSolicitudHandler(ucAprobarSolicitudCambio_EventoCanceloSolicitud);
 
-            //ucSubirArchivoSolicitudCambio.EventoSubioArchivoSolicitud += 
-            //    new Controles.SubirArchivoSolicitudCambio.SubioArchivoSolicitudHandler(ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud);
-            //ucSubirArchivoSolicitudCambio.EventoCanceloArchivoSolicitud += 
-            //    new Controles.SubirArchivoSolicitudCambio.CancelarArchivoSolicitudHandler(ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud);
+            btnNuevo.Visible = SesionFachada.Usuario.Rol == Roles.ResponsableElemento;
+
+            if (SesionFachada.Usuario.Rol != Roles.ResponsableElemento && SesionFachada.Usuario.Rol != Roles.GestorCambio)
+            {
+                Response.Redirect(Pagina.NoPermitido);
+            }
         }
 
         private void MostrarControles(bool visibleRegistro, bool visibleBusqueda, bool visibleAprobar, bool visibleSubir, bool visibleLista)
@@ -41,24 +43,10 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucRegistroSolicitudCambio.Visible = visibleRegistro;
             pnlBusqueda.Visible = visibleBusqueda;
             ucAprobarSolicitudCambio.Visible = visibleAprobar;
-            //ucSubirArchivoSolicitudCambio.Visible = visibleSubir;
             pnlSubir.Visible = visibleSubir;
             grvSolicitudCambio.Visible = visibleLista;
             upnlSubir.Update();
         }
-
-        //void ucSubirArchivoSolicitudCambio_EventoCanceloArchivoSolicitud()
-        //{
-        //    MostrarControles(false, true, false, false,true);
-        //    ucSubirArchivoSolicitudCambio.Limpiar();
-        //}
-
-        //void ucSubirArchivoSolicitudCambio_EventoSubioArchivoSolicitud()
-        //{
-        //    MostrarControles(false, true, false, false, true);
-        //    ucSubirArchivoSolicitudCambio.Limpiar();
-        //    btnBuscar_Click(null, null);
-        //}
 
         void ucAprobarSolicitudCambio_EventoCanceloSolicitud()
         {
@@ -133,6 +121,10 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
+            grvSolicitudCambio.DataSource =
+                new SolicitudCambioControladora().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt(), ddlPrioridad.SelectedValue.ToInt());
+            grvSolicitudCambio.DataBind();
+
             ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
@@ -142,12 +134,11 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 case "Ver":
                     ucRegistroSolicitudCambio.CargarSolicitudExistente(Convert.ToInt32(e.CommandArgument));
-                    ucRegistroSolicitudCambio.Visible = true;
+                    MostrarControles(true, false, false, false, false);
                     break;
                 case "Cargar":
                     hidIdSolicitud.Value = e.CommandArgument.ToString();
                     MostrarControles(false, false, false, true, false);
-                    //ClientScript.RegisterClientScriptBlock(btnGrabarProxy.GetType(), "carga", "MostrarCarga(1);",true);
                     System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "carga", "MostrarCarga(1);", true);
                     break;
                 case "Aprobar":
@@ -202,6 +193,15 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
         {
             MostrarControles(false, true, false, false, true);
+        }
+
+        protected void grvSolicitudCambio_DataBound(object sender, EventArgs e)
+        {
+            grvSolicitudCambio.Columns[10].Visible = SesionFachada.Usuario.Rol == Roles.GestorCambio;
+            grvSolicitudCambio.Columns[11].Visible = SesionFachada.Usuario.Rol == Roles.GestorCambio;
+
+            grvSolicitudCambio.Columns[9].Visible = SesionFachada.Usuario.Rol == Roles.ResponsableElemento;
+            grvSolicitudCambio.Columns[8].Visible = SesionFachada.Usuario.Rol == Roles.ResponsableElemento;
         }
 
     }

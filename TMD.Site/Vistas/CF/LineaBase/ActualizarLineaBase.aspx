@@ -28,7 +28,7 @@
                             <label>
                                 Fase</label>
                             <asp:DropDownList ID="ddlFase" runat="server" AutoPostBack="True" 
-                                onselectedindexchanged="ddlFase_SelectedIndexChanged">
+                                onselectedindexchanged="ddlFase_SelectedIndexChanged" Width="100px">
                             </asp:DropDownList>
                             <asp:CompareValidator ID="FaseValidator" runat="server" ControlToValidate="ddlFase"
                                 ErrorMessage="La Fase es requerida." ToolTip="La Fase es requerida." ValidationGroup="GrabarValidationGroup"
@@ -37,10 +37,10 @@
                         </td>
                         <td>
                             <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" 
-                                OnClientClick="javascript: return grabar();" Text="Grabar" 
+                                OnClientClick="javascript: return grabar();" Text="Grabar Linea Base" 
                                 ValidationGroup="GrabarValidationGroup" />
                             <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" 
-                                Text="Salir" ValidationGroup="None" />
+                                Text="Cancelar" ValidationGroup="None" />
                         </td>
                     </tr>
                 </table>
@@ -74,7 +74,7 @@
                     <asp:CustomValidator ID="ElementoValidator" runat="server" ErrorMessage="Los elementos de configuraci&amp;oacute;n son requeridos."
                         ClientValidationFunction="ClientValidate" ValidationGroup="GrabarValidationGroup"
                         Text="*" ForeColor="White"></asp:CustomValidator>
-                    <asp:Button ID="btnAgregarECS" runat="server" Text="Agregar Detalle" OnClick="btnAgregarECS_Click"
+                    <asp:Button ID="btnAgregarECS" runat="server" Text="Agregar Elemento" OnClick="btnAgregarECS_Click"
                         OnClientClick="javascript:return validarFase();" ValidationGroup="None" /></p>
                 <asp:UpdatePanel ID="upnlListaFinalEcs" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -88,9 +88,11 @@
                                 <asp:TemplateField HeaderText="Eliminar"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                                     <ItemTemplate>
                                         <asp:ImageButton ID="imgBtnEliminar" runat="server" ToolTip="Eliminar" ImageUrl="~/Imagenes/delete.jpg"
-                                            CommandName="Eliminar" ValidationGroup="None" CommandArgument='<%# Eval("Id")%>' />
+                                            CommandName="Eliminar" ValidationGroup="None" 
+                                            CommandArgument='<%# Eval("Id")%>' Height="20px" Width="19px" />
                                         <asp:HiddenField ID="hiddenEcsId" runat="server" Value='<%# Eval("Id")%>' />
                                     </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Nombre" HeaderText="Elemento de Configuraci&oacute;n" />
                                 <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
@@ -103,6 +105,7 @@
                                             ValueToCompare="0" Operator="NotEqual">*
                                         </asp:CompareValidator>
                                     </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
@@ -123,7 +126,8 @@
                     <h1>
                         Lista de Elementos de Configuraci&oacute;n.</h1>
                     <br />
-                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" OnClick="btnSeleccionar_Click" />
+                    <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar Elemento" 
+                        OnClick="btnSeleccionar_Click" />
                     <asp:GridView ID="grvListaECS" runat="server" AutoGenerateColumns="False" Enabled="true">
                         <EmptyDataTemplate>
                             No existen registros.
@@ -176,7 +180,7 @@
             return false;
         }
         function cancelar() {
-            return confirm('Desea salir de la página?');
+            return true;
         }
         function validarFase() {
             if ($get('<%= ddlFase.ClientID %>').selectedIndex == 0) {
