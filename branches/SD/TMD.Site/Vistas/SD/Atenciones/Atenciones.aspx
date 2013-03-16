@@ -104,7 +104,7 @@
                     ToolTip="Agrega nuevo ticket" >Nuevo Ticket</asp:HyperLink>
             </td>
             <td class="style23" colspan="2" >
-                <asp:DropDownList ID="cmbActividad" runat="server" Height="30px" Width="200px">
+                <asp:DropDownList ID="cmbActividad" runat="server" Height="28px" Width="206px">
                 </asp:DropDownList>
             </td>
             <td class="style23" colspan="2">
