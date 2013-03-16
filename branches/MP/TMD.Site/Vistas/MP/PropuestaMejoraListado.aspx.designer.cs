@@ -31,6 +31,15 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.Panel pnlFiltros;
         
         /// <summary>
+        /// lblCodigo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigo;
+        
+        /// <summary>
         /// tbxCodigo control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.TextBox tbxCodigo;
         
         /// <summary>
+        /// lblTipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipo;
+        
+        /// <summary>
         /// ddlTipo control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
+        
+        /// <summary>
+        /// lblFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFecha;
         
         /// <summary>
         /// tbxFechaInicio control.
@@ -65,6 +92,15 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
+        
+        /// <summary>
+        /// lblA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblA;
         
         /// <summary>
         /// tbxFechaFin control.

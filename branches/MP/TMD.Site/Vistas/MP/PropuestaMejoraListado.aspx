@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraListado.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraLista" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraListado.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraLista" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 
@@ -10,25 +10,21 @@
         }
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
         <h1 class="page-title">LISTADO DE PROPUESTAS DE MEJORA</h1>
         <div class="panel-wrapper">
             <asp:UpdatePanel ID="upnlFiltros" runat="server">
                 <ContentTemplate>
                     <asp:Panel runat="server" ID="pnlFiltros">
-                        <table style="width: 800px;">
+                        <table border="0" cellpadding="0" cellspacing="0" style="width: 800px;">
                             <tr>
                                 <td>
-                                    <label>
-                                        Código:</label>
+                                    <asp:Label ID="lblCodigo" runat="server" Text="Código:" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxCodigo" runat="server" Width="50px"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <label>
-                                        Tipo:</label>
+                                    <asp:Label ID="lblTipo" runat="server" Text="Tipo:" Width="50px"></asp:Label>
                                     <asp:DropDownList ID="ddlTipo" runat="server">
                                 </asp:DropDownList>
                                 </td>
@@ -40,15 +36,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>
-                                        Fecha:</label>
+                                    <asp:Label ID="lblFecha" runat="server" Text="Fecha:" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxFechaInicio" runat="server" Width="75px"></asp:TextBox>
                                     <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
                                     </ajaxToolkit:CalendarExtender>
                                 </td>
                                 <td>
-                                    <label>
-                                        a</label>
+                                    <asp:Label ID="lblA" runat="server" Text="a" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxFechaFin" runat="server" Width="75px"></asp:TextBox>
                                     <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
                                     </ajaxToolkit:CalendarExtender>
