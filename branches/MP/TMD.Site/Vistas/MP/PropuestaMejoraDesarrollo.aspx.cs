@@ -108,8 +108,48 @@ namespace TMD.CF.Site.Vistas.MP
 
         protected void ibtnCambiarEstadoEnDesarrollo_Click(object sender, EventArgs e)
         {
-            Sesiones.PropuestaMejoraSeleccionadaRemover();
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraDesarrollo + "?Action=" + Constantes.ACTION_INSERT, true);
+
+            int count = 0;
+
+            foreach (GridViewRow row in gvwPropuestaMejoraListado.Rows)
+            {
+                CheckBox check = row.FindControl("chkPropuestaSel") as CheckBox;
+                if (check.Checked)
+                    count++;
+            }
+
+            if (count == 0){
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                      "err_msg",
+                      "alert('Seleccione al menos un Proceso');",
+                      true);
+                return;
+            }else{
+                PropuestaMejoraEntidad oPropuestaMejoraEntidad = null;
+                IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
+                foreach (GridViewRow row in gvwPropuestaMejoraListado.Rows)
+                {
+                    CheckBox check = row.FindControl("chkPropuestaSel") as CheckBox;
+                    oPropuestaMejoraEntidad = new PropuestaMejoraEntidad();
+                    String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
+                    oPropuestaMejoraEntidad.codigo_Propuesta = Convert.ToInt32(llbl);
+                    oPropuestaMejoraEntidad.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.DESARROLLO);
+
+
+                    if (check.Checked)
+                    {
+                        oPropuestaMejoraLogica.ActualizarEstadoPropuestaMejora(oPropuestaMejoraEntidad);
+                    }
+                }
+            }
+
+            string currentURL = Request.Url.ToString();
+            string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+            "alert('Se actualizaron las Propuestas Seleccionadas al estado En Desarrollo'); window.location='" +
+            newURL + "/PropuestaMejoraDesarrollo.aspx';", true);
+
         }
 
         protected void ibtnSalir_Click(object sender, EventArgs e)

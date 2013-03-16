@@ -62,7 +62,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="Seleccionar">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="chkMarca" runat="server" CommandName="SeleccionarPropuesta"/>
+                                    <asp:CheckBox ID="chkPropuestaSel" runat="server" CommandName="SeleccionarPropuesta"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             
@@ -76,9 +76,9 @@
                                     <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("DESCRIPCION") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Estado">
+                            <asp:TemplateField HeaderText="Tipo Propuesta">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("NOMBRE_ESTADO") %>' />
+                                    <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("TIPO_PROPUESTA") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Fecha">
