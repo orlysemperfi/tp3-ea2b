@@ -222,13 +222,14 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             string sSQL;
 
             sSQL = "Insert into SD.INFORMACION_SEGUIMIENTO (CODIGO_TICKET,CODIGO_SEGUIMIENTO,FECHA_REGISTRO_INFORMACION_SEGUIMIENTO," +
-                   "DESCRIPCION_INFORMACION_SEGUIMIENTO,CODIGO_EQUIPO,CODIGO_INTEGRANTE) Values ( @CODIGO_TICKET,@CODIGO_SEGUIMIENTO,@FECHA_REGISTRO_INFORMACION_SEGUIMIENTO," +
-                   "@DESCRIPCION_INFORMACION_SEGUIMIENTO,@CODIGO_EQUIPO,@CODIGO_INTEGRANTE )";
+                   "DESCRIPCION_INFORMACION_SEGUIMIENTO,CODIGO_EQUIPO,CODIGO_INTEGRANTE,TIPO_SEGUIMIENTO) Values ( @CODIGO_TICKET,@CODIGO_SEGUIMIENTO,@FECHA_REGISTRO_INFORMACION_SEGUIMIENTO," +
+                   "@DESCRIPCION_INFORMACION_SEGUIMIENTO,@CODIGO_EQUIPO,@CODIGO_INTEGRANTE,@TIPO_SEGUIMIENTO )";
             using (DbCommand command = DB.GetSqlStringCommand (sSQL))
             {
                 DB.AddInParameter(command, "@CODIGO_TICKET", DbType.Int32, seguimientoTicket.Codigo_Ticket );
                 DB.AddInParameter(command, "@CODIGO_SEGUIMIENTO", DbType.Int32, seguimientoTicket.Codigo_Seguimiento );
                 DB.AddInParameter(command, "@FECHA_REGISTRO_INFORMACION_SEGUIMIENTO", DbType.DateTime, DateTime.Now);
+                DB.AddInParameter(command, "@TIPO_SEGUIMIENTO", DbType.String, seguimientoTicket.Tipo_Seguimiento);
                 DB.AddInParameter(command, "@DESCRIPCION_INFORMACION_SEGUIMIENTO", DbType.String, seguimientoTicket.Descripcion_Seguimiento);
                 DB.AddInParameter(command, "@CODIGO_EQUIPO", DbType.Int32, seguimientoTicket.Codigo_Equipo);
                 DB.AddInParameter(command, "@CODIGO_INTEGRANTE", DbType.Int32, seguimientoTicket.Codigo_Integrante);
