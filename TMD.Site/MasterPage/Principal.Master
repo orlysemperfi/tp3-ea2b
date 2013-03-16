@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Sistema Integral</title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -46,7 +46,7 @@
                 <div class="title">
                     <h1>
                     <img src="../Imagenes/LogoTMD.jpg" width="75" height="77" alt=""  runat="server" />&nbsp;
-                        Service Desk
+                        Definición y Mejora de Procesos
                     </h1>
                 </div>
 
@@ -66,13 +66,20 @@
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                         <Items>
                             <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Inicio"/>
-                            <asp:MenuItem  Text="Atenciones">
-                                <asp:MenuItem NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=n" Text="Tickets"></asp:MenuItem>
-                                <asp:MenuItem NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=s" Text="Solucionar Tickets"></asp:MenuItem>
-                                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Seguimiento de Tickets"></asp:MenuItem>
+                            <asp:MenuItem Text="Indicadores">
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                             </asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Servicios"/>
-                            <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
+                            <asp:MenuItem  Text="Propuestas">
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" Text="Actualizar Información"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraAprobar.aspx" Text="Aprobar Propuesta"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraDesarrollo.aspx" Text="Mandar a Desarrollo"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Soluciones">
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/SolucionMejoraListado.aspx" Text="Actualizar Información"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Pilotos">
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PilotoListado.aspx" Text="Actualizar Información"></asp:MenuItem>
+                            </asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>
@@ -94,7 +101,7 @@
                         <h5 > (C) Copyright 2012-2013 </h5>
                     </td>
                     <td>
-                        <h5 > Grupo Service Desk</h5>
+                        <h5 > Grupo Definición y Mejora de Procesos</h5>
                     </td>
                 </tr>
             </table>

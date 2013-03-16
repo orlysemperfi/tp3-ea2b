@@ -44,6 +44,7 @@ namespace TMD.MP.Site.Privado
             Sesiones.PropuestaMejoraListadoRemover();
             Sesiones.PropuestaMejoraListado = oPropuestaMejoraColeccion;
             //PageIndexChanging();
+            gvwPropuestaMejoraListado.DataBind();
             lblMensajeError.Text = "";
         }
 
