@@ -1,0 +1,21 @@
+G:\UPC\TP3\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.dll
+G:\UPC\TP3\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.pdb
+G:\UPC\TP3\TMD.MP.Comun\bin\Debug\TMD.Entidades.dll
+G:\UPC\TP3\TMD.MP.Comun\bin\Debug\TMD.Entidades.pdb
+G:\UPC\TP3\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
+G:\UPC\TP3\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
+G:\UPC\TP3\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.Entidades.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.Entidades.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.Entidades.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\bin\Debug\TMD.Entidades.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb

@@ -1,0 +1,25 @@
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.dll
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
+G:\UPC\TP3\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb

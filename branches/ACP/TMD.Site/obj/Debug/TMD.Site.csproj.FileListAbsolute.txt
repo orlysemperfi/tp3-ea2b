@@ -1,0 +1,105 @@
+G:\UPC\TP3\TMD.Site\obj\Debug\ResolveAssemblyReference.cache
+G:\UPC\TP3\TMD.Site\bin\TMD.CF.Site.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.CF.Site.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.ACP.AccesoDatos.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.ACP.LogicaNegocios.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.CF.AccesoDatos.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.CF.LogicaNegocios.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.Core.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.Entidades.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.MP.Comun.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.MP.LogicaNegocios.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.SD.AccesoDatos-Atencion.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.SD.LogicaNegocio-Atencion.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.MP.AccesoDatos.dll
+G:\UPC\TP3\TMD.Site\bin\TMD.ACP.AccesoDatos.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.ACP.LogicaNegocios.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.CF.AccesoDatos.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.Core.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.Entidades.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.CF.LogicaNegocios.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.MP.Comun.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.MP.LogicaNegocios.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.SD.LogicaNegocio-Atencion.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.SD.AccesoDatos-Atencion.pdb
+G:\UPC\TP3\TMD.Site\bin\TMD.MP.AccesoDatos.pdb
+G:\UPC\TP3\TMD.Site\obj\Debug\TMD.CF.Site.dll
+G:\UPC\TP3\TMD.Site\obj\Debug\TMD.CF.Site.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\obj\Debug\TMD.CF.Site.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.Site.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.Site.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.Configuration.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.AccesoDatos.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.LogicaNegocios.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.AccesoDatos.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.LogicaNegocios.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.Core.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.Entidades.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.Comun.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.LogicaNegocios.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.AccesoDatos-Atencion.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.LogicaNegocio-Atencion.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.AccesoDatos.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.AccesoDatos.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.LogicaNegocios.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.AccesoDatos.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.Core.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.Entidades.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.LogicaNegocios.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.Comun.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.LogicaNegocios.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.LogicaNegocio-Atencion.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.AccesoDatos-Atencion.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Data.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.ServiceLocation.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.Configuration.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.Interception.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.AccesoDatos.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.Site\obj\Debug\TMD.CF.Site.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.Site.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.Site.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.AccesoDatos.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.LogicaNegocios.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.AccesoDatos.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.LogicaNegocios.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.Core.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.Entidades.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.Comun.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.LogicaNegocios.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.AccesoDatos-Atencion.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.LogicaNegocio-Atencion.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.AccesoDatos.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.AccesoDatos.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.ACP.LogicaNegocios.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.AccesoDatos.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.Core.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.Entidades.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.CF.LogicaNegocios.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.Comun.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.LogicaNegocios.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.LogicaNegocio-Atencion.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.SD.AccesoDatos-Atencion.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Data.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.Configuration.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\Microsoft.Practices.Unity.Interception.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\bin\TMD.MP.AccesoDatos.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\obj\Debug\TMD.CF.Site.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.Site\obj\Debug\TMD.CF.Site.pdb

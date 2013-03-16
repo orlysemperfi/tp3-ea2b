@@ -1,0 +1,60 @@
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.pdb
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.pdb
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
+G:\UPC\TP3\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.Interception.pdb
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
+D:\UPC\2013-00\Taller de Proyecto 3\20130314\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.Interception.pdb
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
+C:\Sistemas\FINAL\TMD.SistemaIntegral\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
