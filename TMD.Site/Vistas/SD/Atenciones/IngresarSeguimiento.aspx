@@ -54,7 +54,7 @@ CodeBehind="IngresarSeguimiento.aspx.cs"  Inherits="TMD.CF.Site.Vistas.SD.Atenci
             <td colspan="4" class="title">
                 <asp:Label ID="Label1" runat="server" CssClass="bold" 
                     Text="Datos del Ticket de Atención"></asp:Label>
-            </td>
+            &nbsp;m</td>
             <td colspan="2">
                 &nbsp;</td>
         </tr>
@@ -62,7 +62,8 @@ CodeBehind="IngresarSeguimiento.aspx.cs"  Inherits="TMD.CF.Site.Vistas.SD.Atenci
             <td class="style2">
                 Número Ticket:</td>
             <td class="style7" colspan="3">
-                <asp:TextBox ID="txtNroTicket" runat="server" ReadOnly="True"></asp:TextBox>
+                <asp:TextBox ID="txtNroTicket" runat="server" ReadOnly="True" 
+                    ontextchanged="txtNroTicket_TextChanged"></asp:TextBox>
             </td>
             <td class="style12">
                 Fecha Registro:</td>
@@ -109,8 +110,7 @@ CodeBehind="IngresarSeguimiento.aspx.cs"  Inherits="TMD.CF.Site.Vistas.SD.Atenci
             <td class="style2">
                 Descripción Ticket:</td>
             <td class="style5" colspan="4">
-                <asp:TextBox ID="txtDescripcionBreve" runat="server" ReadOnly="True" 
-                    Width="398px"></asp:TextBox>
+                <asp:TextBox ID="txtDescripcionBreve" runat="server" Width="393px"></asp:TextBox>
             </td>
             <td>
                 &nbsp;</td>
