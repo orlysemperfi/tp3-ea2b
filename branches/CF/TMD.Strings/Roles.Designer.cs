@@ -22,14 +22,14 @@ namespace TMD.Strings {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Pagina {
+    public class Roles {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Pagina() {
+        internal Roles() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TMD.Strings {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TMD.Strings.Pagina", typeof(Pagina).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TMD.Strings.Roles", typeof(Roles).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,47 @@ namespace TMD.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase=0&amp;lectura=0.
+        ///   Looks up a localized string similar to GR.
         /// </summary>
-        public static string ActLineaBaseEscritura {
+        public static string GestorCambio {
             get {
-                return ResourceManager.GetString("ActLineaBaseEscritura", resourceCulture);
+                return ResourceManager.GetString("GestorCambio", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=1.
+        ///   Looks up a localized string similar to GC.
         /// </summary>
-        public static string ActLineaBaseLectura {
+        public static string GestorConfiguracion {
             get {
-                return ResourceManager.GetString("ActLineaBaseLectura", resourceCulture);
+                return ResourceManager.GetString("GestorConfiguracion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {2}.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=0.
+        ///   Looks up a localized string similar to JP.
         /// </summary>
-        public static string ActualizarPagina {
+        public static string JefeProyecto {
             get {
-                return ResourceManager.GetString("ActualizarPagina", resourceCulture);
+                return ResourceManager.GetString("JefeProyecto", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~/Vistas/CF/LineaBase/ListaLineaBase.aspx.
+        ///   Looks up a localized string similar to RC.
         /// </summary>
-        public static string LineaBase {
+        public static string ResponsableCambio {
             get {
-                return ResourceManager.GetString("LineaBase", resourceCulture);
+                return ResourceManager.GetString("ResponsableCambio", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~/Error/NoPermitido.aspx.
+        ///   Looks up a localized string similar to RE.
         /// </summary>
-        public static string NoPermitido {
+        public static string ResponsableElemento {
             get {
-                return ResourceManager.GetString("NoPermitido", resourceCulture);
+                return ResourceManager.GetString("ResponsableElemento", resourceCulture);
             }
         }
     }

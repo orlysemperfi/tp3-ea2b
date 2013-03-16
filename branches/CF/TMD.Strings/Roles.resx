@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActLineaBaseEscritura" xml:space="preserve">
-    <value>ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase=0&amp;lectura=0</value>
+  <data name="GestorCambio" xml:space="preserve">
+    <value>GR</value>
   </data>
-  <data name="ActLineaBaseLectura" xml:space="preserve">
-    <value>ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=1</value>
+  <data name="GestorConfiguracion" xml:space="preserve">
+    <value>GC</value>
   </data>
-  <data name="ActualizarPagina" xml:space="preserve">
-    <value>{2}.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=0</value>
+  <data name="JefeProyecto" xml:space="preserve">
+    <value>JP</value>
   </data>
-  <data name="LineaBase" xml:space="preserve">
-    <value>~/Vistas/CF/LineaBase/ListaLineaBase.aspx</value>
+  <data name="ResponsableCambio" xml:space="preserve">
+    <value>RC</value>
   </data>
-  <data name="NoPermitido" xml:space="preserve">
-    <value>~/Error/NoPermitido.aspx</value>
+  <data name="ResponsableElemento" xml:space="preserve">
+    <value>RE</value>
   </data>
 </root>
