@@ -130,7 +130,7 @@ CodeBehind="IngresarSeguimiento.aspx.cs"  Inherits="TMD.CF.Site.Vistas.SD.Atenci
                 Descripción del seguimiento:</td>
             <td class="style6" colspan="5">
                 <asp:TextBox ID="txtSeguimiento" runat="server" CssClass="fieldEdit" 
-                    Height="64px" Width="608px"></asp:TextBox>
+                    Height="64px" Width="608px" TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
         <tr>
