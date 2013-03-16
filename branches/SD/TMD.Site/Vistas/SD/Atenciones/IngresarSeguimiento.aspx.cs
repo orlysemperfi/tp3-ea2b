@@ -98,6 +98,11 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
 
         }
 
+        protected void txtNroTicket_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         
         
     }
