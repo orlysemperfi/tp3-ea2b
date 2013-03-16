@@ -4,8 +4,9 @@
     <p>
         Informe de Cambio</p>
     <p>
-        Codigo:
-        <asp:Label ID="lblCodigo" runat="server"></asp:Label>
+        <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+            onclick="btnCancelar_Click" />
     </p>
     <p>
         Nombre:
@@ -67,11 +68,6 @@
     </p>
         <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" 
         CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
-    <p>
-        <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
-            onclick="btnCancelar_Click" />
-    </p>
 </asp:Panel>
 <script type="text/javascript" language="javascript">
     function grabar() {
