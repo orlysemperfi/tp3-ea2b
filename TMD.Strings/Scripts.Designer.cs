@@ -22,14 +22,14 @@ namespace TMD.Strings {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Pagina {
+    public class Scripts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Pagina() {
+        internal Scripts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TMD.Strings {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TMD.Strings.Pagina", typeof(Pagina).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TMD.Strings.Scripts", typeof(Scripts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,11 @@ namespace TMD.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase=0&amp;lectura=0.
+        ///   Looks up a localized string similar to javascript:return cancelar();.
         /// </summary>
-        public static string ActLineaBaseEscritura {
+        public static string Cancelar {
             get {
-                return ResourceManager.GetString("ActLineaBaseEscritura", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=1.
-        /// </summary>
-        public static string ActLineaBaseLectura {
-            get {
-                return ResourceManager.GetString("ActLineaBaseLectura", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {2}.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=0.
-        /// </summary>
-        public static string ActualizarPagina {
-            get {
-                return ResourceManager.GetString("ActualizarPagina", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ~/Vistas/CF/LineaBase/ListaLineaBase.aspx.
-        /// </summary>
-        public static string LineaBase {
-            get {
-                return ResourceManager.GetString("LineaBase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ~/Error/NoPermitido.aspx.
-        /// </summary>
-        public static string NoPermitido {
-            get {
-                return ResourceManager.GetString("NoPermitido", resourceCulture);
+                return ResourceManager.GetString("Cancelar", resourceCulture);
             }
         }
     }

@@ -117,19 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActLineaBaseEscritura" xml:space="preserve">
-    <value>ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase=0&amp;lectura=0</value>
-  </data>
-  <data name="ActLineaBaseLectura" xml:space="preserve">
-    <value>ActualizarLineaBase.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=1</value>
-  </data>
-  <data name="ActualizarPagina" xml:space="preserve">
-    <value>{2}.aspx?idProyecto={0}&amp;idFase={1}&amp;lectura=0</value>
-  </data>
-  <data name="LineaBase" xml:space="preserve">
-    <value>~/Vistas/CF/LineaBase/ListaLineaBase.aspx</value>
-  </data>
-  <data name="NoPermitido" xml:space="preserve">
-    <value>~/Error/NoPermitido.aspx</value>
+  <data name="Cancelar" xml:space="preserve">
+    <value>javascript:return cancelar();</value>
   </data>
 </root>
