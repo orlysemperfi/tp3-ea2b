@@ -87,6 +87,7 @@
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
     <Content Include="Controles\SubirArchivoInformeCambio.ascx" />
     <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
+    <Content Include="Error\NoPermitido.aspx" />
     <Content Include="Imagenes\bg-formLogin.png" />
     <Content Include="Imagenes\bienvenido.png" />
     <Content Include="Imagenes\btn-login.png" />
@@ -142,7 +143,9 @@
     <Content Include="Vistas\CF\LineaBase\ActualizarECS.aspx" />
     <Content Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx" />
     <Content Include="Vistas\CF\LineaBase\ListaLineaBase.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -187,9 +190,17 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Error\NoPermitido.aspx.cs">
+      <DependentUpon>NoPermitido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error\NoPermitido.aspx.designer.cs">
+      <DependentUpon>NoPermitido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FachadaNegocio\CF\InformeCambioFachada.cs" />
     <Compile Include="FachadaNegocio\CF\LineaBaseFacahada.cs" />
     <Compile Include="FachadaNegocio\CF\OrdenCambioFachada.cs" />
+    <Compile Include="FachadaNegocio\CF\SeguridadFachada.cs" />
     <Compile Include="FachadaNegocio\CF\SolicitudCambioFachada.cs" />
     <Compile Include="Controles\AprobarInformeCambio.ascx.cs">
       <DependentUpon>AprobarInformeCambio.ascx</DependentUpon>
