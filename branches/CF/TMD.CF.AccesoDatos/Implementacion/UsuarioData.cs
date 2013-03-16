@@ -47,5 +47,25 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
             return listaUsuario;
         }
+
+        public Usuario ObtenerUsuario(string login)
+        {
+            Usuario usuario = new Usuario();
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_USUARIO_SEL_LOGIN"))
+            {
+                DB.AddInParameter(command, "@LOGIN", DbType.String, login);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        usuario = UsuarioDataMap.ObtenerUsuarioProyecto(reader);
+                    }
+                }
+            }
+
+            return usuario;
+        }
     }
 }

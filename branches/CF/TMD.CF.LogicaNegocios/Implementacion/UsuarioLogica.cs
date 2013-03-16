@@ -29,5 +29,10 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         {
             return _usuarioData.ListaPorProyecto(proyecto);
         }
+
+        public Usuario ObtenerUsuario(string login)
+        {
+            return _usuarioData.ObtenerUsuario(login);
+        }
     }
 }
