@@ -20,7 +20,7 @@ namespace TMD.ACP.Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblAuditoria.Text = Helper.Right("00000" + Convert.ToString(Request.QueryString[0]), 5);
+            lblAuditoria.Text = Convert.ToString(Request.QueryString[0]);
             idAuditoria = Convert.ToInt32(Request.QueryString[0]);
             __IdAuditoria.Value = idAuditoria.ToString();
 

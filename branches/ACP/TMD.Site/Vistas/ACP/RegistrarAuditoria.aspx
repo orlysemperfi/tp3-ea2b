@@ -87,22 +87,6 @@
                 alert('Ingresar fecha fin correcta');
                 return;
             }
-            var d1 = $("#txtFechaInicio").val().split("/");
-            var dat1 = new Date(d1[2], parseFloat(d1[1]) - 1, parseFloat(d1[0]));
-            var d2 = $("#txtFechaFin").val().split("/");
-            var dat2 = new Date(d2[2], parseFloat(d2[1]) - 1, parseFloat(d2[0]));
-            if (dat1 >= dat2) {
-                alert('Colocar un rango de fechas correcto');
-                return;
-            }
-            if (CalculateDateDiff($("#txtFechaInicio").val(), $("#txtFechaFin").val()) > 3) {
-                alert('La auditoria no puede durar mas de 3 meses');
-                return;
-            }
-            if (CalculateDateDiff($("#txtFechaInicio").val(), $("#txtFechaFin").val()) < 1) {
-                alert('La auditoria no puede durar menos de 1 mes');
-                return;
-            }
 
             window.setTimeout(function () { DoFormCallBack("ValidarAuditoria", null, End_fSaveData); }, 1000)         
         }
@@ -172,6 +156,10 @@
                 $("#tdComboBox").html(mData[5]);
                 var idResponsable = window.parent.parent.document.getElementById("MainContent___tempIdResponsable").value;
                 $("#ddlResponsable> option[value='" + idResponsable + "']").attr('selected', 'selected');
+                $("#txtAlcance").val('');
+                $("#txtObjetivo").val('');
+                $("#txtFechaInicio").val('');
+                $("#txtFechaFin").val('');
             }
             else {
                 alert(mData[1]);

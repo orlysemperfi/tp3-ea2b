@@ -47,8 +47,8 @@ namespace TMD.CF.Site.Vistas.ACP
             eAuditoria = TMD.Site.Controladora.ACP.AuditoriaControladora.ObtenerPlanAuditoriaPorID(idAuditoria);
             
             if (eAuditoria.IdAuditoria > 0)
-            {               
-                lblAuditoria.Text = Helper.Right("00000" + Convert.ToString(idAuditoria), 5);
+            {
+                lblAuditoria.Text = Convert.ToString(idAuditoria);
                 lblDescrip.Text = eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada;                
                 lblArea.Text = eAuditoria.ObjEntidadAuditada.ObjArea.descripcion;
                 lblResponsable.Text = eAuditoria.ObjEntidadAuditada.Responsable;

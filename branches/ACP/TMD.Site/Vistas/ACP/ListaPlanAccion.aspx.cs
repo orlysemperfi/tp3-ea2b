@@ -67,7 +67,7 @@ namespace TMD.ACP.Site
                     if (l != null) l.Text = oHallazgo.IdHallazgo.ToString();
 
                     l = (Literal)e.Row.FindControl("ltrlIdaudi");
-                    if (l != null) l.Text = Helper.Right("00000" + oHallazgo.IdAuditoria.ToString(), 5);
+                    if (l != null) l.Text = oHallazgo.IdAuditoria.ToString();
 
                     l = (Literal)e.Row.FindControl("ltrlPregunta");
                     if (l != null) l.Text = oHallazgo.DescripcionPregunta;

@@ -50,14 +50,13 @@ namespace TMD.ACP.Site
                     Auditoria oAudi = (Auditoria)e.Row.DataItem;
                     Literal l;
                     l = (Literal)e.Row.FindControl("ltrlIdaudi");
-                    if (l != null) l.Text = Helper.Right("00000" + oAudi.IdAuditoria.ToString(), 5);
+                    if (l != null) l.Text = oAudi.IdAuditoria.ToString();
 
                     l = (Literal)e.Row.FindControl("ltrlEntAudi");
                     if (l != null) l.Text = oAudi.ObjEntidadAuditada.NombreEntidadAuditada;
 
                     l = (Literal)e.Row.FindControl("ltrlNomArea");
-                    //if (l != null) l.Text = oAudi.ObjEntidadAuditada.ObjArea.NombreArea;
-                    if (l != null) l.Text = "AREA";
+                    if (l != null) l.Text = oAudi.ObjEntidadAuditada.ObjArea.descripcion;
 
                     l = (Literal)e.Row.FindControl("ltrlFecIni");
                     if (l != null) l.Text = oAudi.FechaInicio.ToString("dd/MM/yyyy");

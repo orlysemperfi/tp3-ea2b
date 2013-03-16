@@ -54,7 +54,7 @@ namespace TMD.ACP.Site
                 Literal litFechaSeguimiento = (Literal)e.Item.FindControl("litFechaSeguimiento");
                 Literal litEstado = (Literal)e.Item.FindControl("litEstado");
                 litIdHallazgo.Text = Convert.ToString(eHallazgo.IdHallazgo);
-                litIdAuditoria.Text = Helper.Right("00000" + Convert.ToString(eHallazgo.IdAuditoria), 5);
+                litIdAuditoria.Text = Convert.ToString(eHallazgo.IdAuditoria);
                 litDescripcionPregunta.Text = eHallazgo.DescripcionPregunta;
                 litDescripcion.Text = eHallazgo.Descripcion;
                 if (eHallazgo.TipoHallazgo == "NOCONFORMIDAD")

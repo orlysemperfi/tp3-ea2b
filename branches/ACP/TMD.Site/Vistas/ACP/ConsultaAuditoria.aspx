@@ -15,13 +15,7 @@
         <div style="float:left">
             <label>Periodo:</label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
         </div>
-         <div style="float:right">
-            Nro:<label style="font-weight:bold;"></label><label>PA00001</label>     
-         </div>
-         </div>
-
-
-
+        </div>
     <br />
     <div id="divGvLista">
         <asp:GridView ID="gvAuditoria" runat="server" 

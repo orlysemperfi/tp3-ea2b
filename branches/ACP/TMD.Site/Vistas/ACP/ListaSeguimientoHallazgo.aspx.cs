@@ -58,7 +58,7 @@ namespace TMD.ACP.Site
                 
                 AddCallbackValue("1");
                 AddCallbackControl(rptHallazgos);
-                AddCallbackValue(Helper.Right("00000" + idAuditoria, 5).ToString());
+                AddCallbackValue(idAuditoria.ToString());
             }
             catch (Exception ex)
             {
@@ -99,7 +99,7 @@ namespace TMD.ACP.Site
                 Literal litFechaInicio = (Literal)e.Item.FindControl("litFechaInicio");
                 Literal litFechaFin = (Literal)e.Item.FindControl("litFechaFin");
 
-                litIdAuditoria.Text = Helper.Right("00000" + Convert.ToString(eAuditoria.IdAuditoria), 5);
+                litIdAuditoria.Text = Convert.ToString(eAuditoria.IdAuditoria);
                 litDesAuditorias.Text = eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada;
                 litArea.Text = eAuditoria.ObjEntidadAuditada.ObjArea.descripcion;
                 litFechaInicio.Text = eAuditoria.FechaInicio.ToShortDateString();

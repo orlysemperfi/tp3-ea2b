@@ -83,6 +83,11 @@ namespace TMD.ACP.Site
                 {
                     strMensaje = "El proceso/proyecto ya se audito el año pasado, debe seleccionar otra auditoria";
                 }
+                else if (DiferenciaFechas(Convert.ToDateTime(Request["txtFechaFin"]), Convert.ToDateTime(Request["txtFechaInicio"])) < 1 ||
+                         DiferenciaFechas(Convert.ToDateTime(Request["txtFechaFin"]), Convert.ToDateTime(Request["txtFechaInicio"])) > 3)
+                {
+                    strMensaje = "La auditoria no puede durar menos de 1 mes ni mas de 3 meses.";
+                }
                 else
                 {
                     if (DataAuditorias.Instance.Auditoria != null)
@@ -91,9 +96,9 @@ namespace TMD.ACP.Site
                         {
                             if (eAuditoria.IdAuditoria != Convert.ToInt32(Request["txtAuditoria"]))
                             {
-                                if(eAuditoria.ObjEntidadAuditada.IdEntidadAuditada == Convert.ToInt32(Request["__tempIdEntidadAuditada"]))
+                                if (eAuditoria.ObjEntidadAuditada.IdEntidadAuditada == Convert.ToInt32(Request["__tempIdEntidadAuditada"]))
                                 {
-                                    strMensaje = strMensaje + "El proceso/proyecto ya se encuentra en la lista";
+                                    strMensaje = "El proceso/proyecto ya se encuentra en la lista";
                                     break;
                                 }
                                 else if ((eAuditoria.FechaInicio >= Convert.ToDateTime(Request["txtFechaInicio"]) &&
@@ -101,7 +106,7 @@ namespace TMD.ACP.Site
                                          (eAuditoria.FechaFin >= Convert.ToDateTime(Request["txtFechaInicio"]) &&
                                           eAuditoria.FechaFin <= Convert.ToDateTime(Request["txtFechaFin"])))
                                 {
-                                    strMensaje = strMensaje + "Ya existe una auditoria para el periodo de tiempo ingresado";
+                                    strMensaje = "Ya existe una auditoria para el periodo de tiempo ingresado";
                                     break;
                                 }
                             }
@@ -118,5 +123,24 @@ namespace TMD.ACP.Site
                 AddCallbackValue(ex.Message);
             }
         }
+
+        private Int32 DiferenciaFechas(DateTime newdt, DateTime olddt)
+        {
+            Int32 anios;
+            Int32 meses;
+            Int32 dias;
+
+            anios = (newdt.Year - olddt.Year);
+            meses = (newdt.Month - olddt.Month);
+            dias = (newdt.Day - olddt.Day);
+
+            if (meses < 0)
+            {
+                anios -= 1;
+                meses += 12;
+            }
+
+            return meses;
+        } 
     }
 }
