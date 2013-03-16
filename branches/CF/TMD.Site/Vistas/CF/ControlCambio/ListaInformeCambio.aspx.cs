@@ -5,6 +5,7 @@ using TMD.CF.Site.Util;
 using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;
+using TMD.Strings;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -26,6 +27,13 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                 new Controles.AprobarInformeCambio.AproboInformeHandler(ucAprobarInformeCambio_EventoAproboInforme);
             ucAprobarInformeCambio.EventoCanceloInforme +=
                 new Controles.AprobarInformeCambio.CancelarInformeHandler(ucAprobarInformeCambio_EventoCanceloInforme);
+
+            if (SesionFachada.Usuario.Rol != Roles.JefeProyecto && SesionFachada.Usuario.Rol != Roles.GestorCambio)
+            {
+                Response.Redirect(Pagina.NoPermitido);
+            }
+            
+            btnNuevo.Visible = SesionFachada.Usuario.Rol == Roles.JefeProyecto;
         }
 
         private void MostrarControles(bool visibleRegistro, bool visibleBusqueda, bool visibleAprobar, bool visibleSubir, bool visibleLista)
@@ -33,7 +41,6 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucRegistroInformeCambio.Visible = visibleRegistro;
             pnlBusqueda.Visible = visibleBusqueda;
             ucAprobarInformeCambio.Visible = visibleAprobar;
-            //ucSubirArchivoSolicitudCambio.Visible = visibleSubir;
             pnlSubir.Visible = visibleSubir;
             grvInformeCambio.Visible = visibleLista;
             upnlSubir.Update();
@@ -76,6 +83,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            btnBuscar_Click(null, null);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -89,8 +97,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             ucRegistroInformeCambio.CargarsolicitudNueva();
-            ucRegistroInformeCambio.Visible = true;
-            pnlBusqueda.Visible = false;
+            MostrarControles(true, false, false, false, false);
         }
 
         public String RecuperarEstadoNombre(int idEstado)
@@ -129,18 +136,16 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 case "Ver":
                     ucRegistroInformeCambio.CargarInformeExistente(Convert.ToInt32(e.CommandArgument));
-                    ucRegistroInformeCambio.Visible = true;
+                    MostrarControles(true, false, false, false, false);
                     break;
                 case "Cargar":
                     hidIdSolicitud.Value = e.CommandArgument.ToString();
                     MostrarControles(false, false, false, true, false);
-                    //ClientScript.RegisterClientScriptBlock(btnGrabarProxy.GetType(), "carga", "MostrarCarga(1);",true);
-                    System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "carga", "MostrarCarga(1);", true);
                     break;
                 case "Aprobar":
                     ucAprobarInformeCambio.IdInformeCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarInformeCambio.ApruebaInforme = true;
-                    MostrarControles(false, false, true, false, false);
+                    MostrarControles(false,false,true,false,false);
                     break;
                 case "Rechazar":
                     ucAprobarInformeCambio.IdInformeCambio = Convert.ToInt32(e.CommandArgument);
@@ -175,7 +180,17 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
         {
-
+            MostrarControles(false, true, false, false, true);
         }
+
+        protected void grvInformeCambio_DataBound(object sender, EventArgs e)
+        {
+            grvInformeCambio.Columns[10].Visible = SesionFachada.Usuario.Rol == Roles.GestorCambio;
+            grvInformeCambio.Columns[9].Visible = SesionFachada.Usuario.Rol == Roles.GestorCambio;
+
+            grvInformeCambio.Columns[7].Visible = SesionFachada.Usuario.Rol == Roles.JefeProyecto;
+            grvInformeCambio.Columns[8].Visible = SesionFachada.Usuario.Rol == Roles.JefeProyecto;
+        }
+
     }
 }

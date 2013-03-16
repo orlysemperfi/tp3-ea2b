@@ -25,13 +25,13 @@
                                     <label>
                                         Proyecto</label>
                                     <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProyecto_SelectedIndexChanged"
-                                        Width="186px">
+                                        Width="170px">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
                                     <label>
                                         LineaBase</label>
-                                    <asp:DropDownList ID="ddlLineaBase" runat="server" Width="186px">
+                                    <asp:DropDownList ID="ddlLineaBase" runat="server" Width="170px">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
@@ -44,7 +44,7 @@
                                 <td>
                                     <label>
                                         Estado</label>
-                                    <asp:DropDownList ID="ddlEstado" runat="server" Width="186px">
+                                    <asp:DropDownList ID="ddlEstado" runat="server" Width="170px">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
@@ -54,7 +54,8 @@
                                         OnClientClick="javascript:return validarProyecto();" />
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" Text="Nuevo" />
+                                    <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" 
+                                        Text="Nuevo Informe" />
                                 </td>
                             </tr>
                         </table>
@@ -67,7 +68,8 @@
             <asp:UpdatePanel runat="server" ID="upnlLista">
             <ContentTemplate>
                 <asp:GridView ID="grvInformeCambio" runat="server" AutoGenerateColumns="False"
-                    OnRowCommand="grvInformeCambio_RowCommand">
+                    OnRowCommand="grvInformeCambio_RowCommand" 
+                    ondatabound="grvInformeCambio_DataBound">
                     <EmptyDataTemplate>
                         No hay registros.
                     </EmptyDataTemplate>
@@ -162,16 +164,17 @@
         <asp:UpdatePanel runat="server" ID="upnlSubir" UpdateMode="Conditional">
             <ContentTemplate>
                 <asp:Panel runat="server" ID="pnlSubir" Visible="false">
-                    <p>
-                        Subir Archivo Solicitud Cambio</p>
-                    <p>
-                        Archivo</p>
-                    <p>
-                        <asp:FileUpload ID="fileUpArchivo" runat="server" />
-                    </p>
-                    <p>
-                        <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" />
-                        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
+                <table>
+                <tr>
+                <td>Subir Archivo Solicitud Cambio</td>
+                <td></td>
+                </tr>
+                <tr>
+                <td>        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
+                <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" /></td>
+                <td>Archivo <asp:FileUpload ID="fileUpArchivo" runat="server" /></td>
+                </tr>
+                </table>
                 </asp:Panel>
             </ContentTemplate>
             <Triggers>
