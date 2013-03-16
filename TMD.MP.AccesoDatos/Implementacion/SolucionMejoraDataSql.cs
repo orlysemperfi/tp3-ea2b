@@ -30,7 +30,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 if (oSolucionMejoraFiltro.codigo_Propuesta != null && oSolucionMejoraFiltro.codigo_Propuesta != 0)
                     strSQL.Append("AND S.CODIGO = @CODIGO_SOLUCION ");
-                if (oSolucionMejoraFiltro.propuesta != String.Empty)
+                if (oSolucionMejoraFiltro.propuesta != null && oSolucionMejoraFiltro.propuesta != String.Empty)
                     strSQL.Append("AND P.DESCRIPCION = @PROPUESTA ");
                 if (oSolucionMejoraFiltro.fecha_Registro_Inicio != null)
                     strSQL.Append("AND DATEDIFF(DAY, S.FECHA_APROBACION, @FECHA_REGISTRO_INICIO) <= 0 ");
@@ -46,7 +46,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 if (oSolucionMejoraFiltro.codigo_Propuesta != null && oSolucionMejoraFiltro.codigo_Propuesta != 0)
                     sqlCmd.Parameters.Add("@CODIGO_SOLUCION", SqlDbType.Int).Value = oSolucionMejoraFiltro.codigo_Propuesta;
-                if (oSolucionMejoraFiltro.propuesta != String.Empty)
+                if (oSolucionMejoraFiltro.propuesta != null && oSolucionMejoraFiltro.propuesta != String.Empty)
                     sqlCmd.Parameters.Add("@PROPUESTA", SqlDbType.VarChar).Value = oSolucionMejoraFiltro.propuesta;
                 if (oSolucionMejoraFiltro.fecha_Registro_Inicio != null)
                     sqlCmd.Parameters.Add("@FECHA_REGISTRO_INICIO", SqlDbType.DateTime).Value = oSolucionMejoraFiltro.fecha_Registro_Inicio;
@@ -80,7 +80,85 @@ namespace TMD.MP.AccesoDatos.Implementacion
             }
         }
 
+        public SolucionMejoraEntidad ObtenerSolucionMejoraPorCodigo(int codigo)
+        {
+            SolucionMejoraEntidad oSolucionMejora = new SolucionMejoraEntidad();
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            
+            try
+            {
+                
+                return oSolucionMejora;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
         #endregion
 
+        #region "Insert"
+        public SolucionMejoraEntidad InsertarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        {
+
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            
+            try
+            {
+                
+
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+
+            return oSolucionMejora;
+        }
+
+        #endregion
+
+        #region "Update"
+        
+        public void ActualizarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        {
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            
+            try
+            {
+                
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+
+        #endregion
+
+        #region "Delete"
+        public void EliminarSolucionMejoraPorCodigo(int codigo)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

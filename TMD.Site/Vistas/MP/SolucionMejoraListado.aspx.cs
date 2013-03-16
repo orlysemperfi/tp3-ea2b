@@ -146,7 +146,7 @@ namespace TMD.MP.Site.Privado
             else
             {
                 divMensaje.Visible = true;
-                lblMensaje.Text = Mensajes.Mensaje_No_Propuesta_Mejora;
+                lblMensaje.Text = Mensajes.Mensaje_No_Solucion;
                 tblSolucionMejoraListado.Visible = false;
                 divLinea.Visible = false;
                 tblPaginacion.Visible = false;

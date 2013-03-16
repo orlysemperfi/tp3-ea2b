@@ -16,7 +16,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
     </ajaxToolkit:ToolkitScriptManager>
-    <asp:UpdatePanel ID="upnlPropuestaMejoraListado" runat="server">
+    <asp:UpdatePanel ID="upnlPilotoListado" runat="server">
     <ContentTemplate>
     <div class="contenedor-pagina">
         <div class="contenedor-pagina-titulo">
@@ -86,7 +86,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPropuesta" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link" OnClientClick="if(showConfirmationMessage('¿Desea borrar el piloto?')==false){return false;}"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPiloto" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link" OnClientClick="if(showConfirmationMessage('¿Desea borrar el piloto?')==false){return false;}"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

@@ -11,8 +11,26 @@ namespace TMD.MP.AccesoDatos.Contrato
         #region "Select"
 
         List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoPorFiltros(SolucionMejoraEntidad oSolucionMejoraFiltro);
+        SolucionMejoraEntidad ObtenerSolucionMejoraPorCodigo(int codigo);
+        
+        #endregion
+
+        #region "Insert"
+
+        SolucionMejoraEntidad InsertarSolucionMejora(SolucionMejoraEntidad entidad);
 
         #endregion
 
+        #region "Update"
+
+        void ActualizarSolucionMejora(SolucionMejoraEntidad oSolucionMejora);
+
+        #endregion
+
+        #region "Delete"
+
+        void EliminarSolucionMejoraPorCodigo(int codigo);
+
+        #endregion
     }
 }

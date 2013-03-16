@@ -50,7 +50,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             SolucionMejoraEntidad oSolucionMejora = new SolucionMejoraEntidad();
             try
             {
-                //oSolucionMejora = iSolucionMejora.ObtenerSolucionMejoraPorCodigo(codigo);
+                oSolucionMejora = iSolucionMejora.ObtenerSolucionMejoraPorCodigo(codigo);
 
             }
             catch (Exception ex)
@@ -63,13 +63,64 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #endregion
 
+
+        #region "Insert"
+        public void InsertarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        {
+            iSolucionMejora = new SolucionMejoraDataSql();
+            //SolucionEstadoEntidad oSolucionEstado = new SolucionEstadoEntidad();
+
+            oSolucionMejora = iSolucionMejora.InsertarSolucionMejora(oSolucionMejora);
+            //oSolucionEstado.codigo_Solucion = oSolucionMejora.codigo_Solucion;
+            //oSolucionEstado.codigo_estado = oSolucionMejora.codigo_Estado;
+            //oSolucionEstado.propuesta = oSolucionMejora.propuesta;
+
+            //iSolucionMejora.InsertarSolucionMejoraEstado(oSolucionEstado);
+
+
+        }
+        #endregion
+
         #region "Update"
+
+
+        public void ActualizarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        {
+            iSolucionMejora = new SolucionMejoraDataSql();
+
+            try
+            {
+                iSolucionMejora.ActualizarSolucionMejora(oSolucionMejora);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public String BorrarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
         {
-            
+            iSolucionMejora = new SolucionMejoraDataSql();
+            //SolucionEstadoEntidad oSolucionEstado = new SolucionEstadoEntidad();
+
+            if (oSolucionMejora.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_SOLUCION.GENERADA))
+            {
+                oSolucionMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_SOLUCION.ELIMINADA);
+                //ActualizarEstadoSolucionMejora(oSolucionMejora);
+                //oSolucionEstado.codigo_empleado = oSolucionMejora.codigo_Responsable;
+                //oSolucionEstado.codigo_Solucion = oSolucionMejora.codigo_Solucion;
+                //oSolucionEstado.codigo_estado = oSolucionMejora.codigo_Estado;
+                //oSolucionEstado.observaciones = oSolucionMejora.observaciones;
+
+                //iSolucionMejora.InsertarSolucionMejoraEstado(oSolucionEstado);
+
                 return null;
-            
+            }
+            else
+            {
+                return Mensajes.Mensaje_No_Borrar_Solucion_Mejora;
+            }
         }
 
         #endregion
