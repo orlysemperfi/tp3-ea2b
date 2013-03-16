@@ -43,11 +43,15 @@
                                     <label>
                                         Fecha:</label>
                                     <asp:TextBox ID="tbxFechaInicio" runat="server" Width="75px"></asp:TextBox>
+                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
+                                    </ajaxToolkit:CalendarExtender>
                                 </td>
                                 <td>
                                     <label>
                                         a</label>
                                     <asp:TextBox ID="tbxFechaFin" runat="server" Width="75px"></asp:TextBox>
+                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
+                                    </ajaxToolkit:CalendarExtender>
                                 <td>
                                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
                                 </td>
@@ -196,10 +200,6 @@
                 </tr>
             </table>
         <%--</div>--%>
-        <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
-        </ajaxToolkit:CalendarExtender>
-        <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
-        </ajaxToolkit:CalendarExtender>
         </ContentTemplate>
 <%--        <Triggers>
             <asp:AsyncPostBackTrigger ControlID="lbtnBuscar" EventName="Click" />

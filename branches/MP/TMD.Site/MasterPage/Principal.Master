@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.master.cs" Inherits="ServiceDesk.Principal" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        function alerta(numero) {
+            alert('Se ha presionado el boton: ' + numero);
+        }
+    
+    </script>
+    
+ 
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="page">
+            <div class="header">
+
+                <asp:ScriptManager ID="ScriptManager1" runat="server">             
+                </asp:ScriptManager> 
+                
+                 <%--<asp:Literal ID="Literal1" runat="server"></asp:Literal>--%>
+                 <%--<div id="banner"></div>--%>
+
+                 <%--<table width="1000" height="100">
+                 <td width="100"><img src="Imagenes/LogTMD.jpg" width="50" height="50" alt="" /> </td>
+                 <td width="820">B</td>
+                 </table>--%>
+
+                <div class="title">
+                    <h1>
+                    <img src="../Imagenes/LogoTMD.jpg" width="75" height="77" alt=""  runat="server" />&nbsp;
+                        Service Desk
+                    </h1>
+                </div>
+
+                
+                <div class="loginDisplay">
+                    <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                        <AnonymousTemplate>
+                            [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                            [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+                <div class="clear hideSkiplink">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                        <Items>
+                            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Inicio"/>
+                            <asp:MenuItem  Text="Atenciones">
+                                <asp:MenuItem NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=n" Text="Tickets"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=s" Text="Solucionar Tickets"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Seguimiento de Tickets"></asp:MenuItem>
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Servicios"/>
+                            <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
+                        </Items>
+                    </asp:Menu>
+                </div>
+            </div>
+            <div class="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            </div>
+            <div class="clear">
+            </div>
+     
+        <div class="footer">
+        
+            <table class="footer">
+                <tr>
+                    <td>
+                        <h5 > TMD S.A. </h5>
+                    </td>
+                    <td>
+                        <h5 > (C) Copyright 2012-2013 </h5>
+                    </td>
+                    <td>
+                        <h5 > Grupo Service Desk</h5>
+                    </td>
+                </tr>
+            </table>
+        
+        </div> 
+     
+     
+        </div>
+    
+    
+        
+    </form>
+</body>
+</html>
