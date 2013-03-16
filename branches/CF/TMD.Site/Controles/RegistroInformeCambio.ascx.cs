@@ -2,7 +2,7 @@
 using TMD.Entidades;
 using TMD.Core.Extension;
 using TMD.CF.Site.Util;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
 
 namespace TMD.CF.Site.Controles
@@ -37,7 +37,7 @@ namespace TMD.CF.Site.Controles
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace TMD.CF.Site.Controles
 
         public void CargarsolicitudNueva()
         {
-            ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlSolicitud.EnlazarValorDefecto();
         }

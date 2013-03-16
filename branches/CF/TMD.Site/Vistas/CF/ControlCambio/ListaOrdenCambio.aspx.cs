@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.CF.Site.Util;
 using TMD.Core.Extension;
 using TMD.Entidades;
@@ -20,7 +20,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         private void CargarControles()
         {
-            ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
         }
 
@@ -33,7 +33,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new LineaBaseControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
     }
 }

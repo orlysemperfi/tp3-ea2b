@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.CF.Site.Util;
 using TMD.Strings;
 
@@ -19,7 +19,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             if (!Page.IsPostBack)
             {
-                ddlProyecto.DataSource = new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id);
+                ddlProyecto.DataSource = new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id);
                 ddlProyecto.DataValueField = "Id";
                 ddlProyecto.DataTextField = "Nombre";
                 ddlProyecto.DataBind();
@@ -68,7 +68,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grvLineaBase.DataSource = new LineaBaseControladora().LineaBaseListarPorProyecto(Convert.ToInt32(ddlProyecto.SelectedValue));
+            grvLineaBase.DataSource = new LineaBaseFachada().LineaBaseListarPorProyecto(Convert.ToInt32(ddlProyecto.SelectedValue));
             grvLineaBase.DataBind();
         }
     }

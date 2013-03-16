@@ -6,7 +6,7 @@ using TMD.Entidades;
 using TMD.Core;
 using System.Configuration;
 
-namespace TMD.CF.Site.Controladora.CF
+namespace TMD.CF.Site.FachadaNegocio.CF
 {
     class InformeCambioFachada
     {

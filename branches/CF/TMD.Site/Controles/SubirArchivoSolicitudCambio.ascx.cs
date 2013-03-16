@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TMD.Core.Extension;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 
 namespace TMD.CF.Site.Controles
 {

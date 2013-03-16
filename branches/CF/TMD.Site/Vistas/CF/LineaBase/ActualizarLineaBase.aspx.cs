@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TMD.CF.Site.Controladora.CF;
+using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.CF.Site.Util;
 using TMD.Entidades;
 using TMD.Strings;
@@ -33,7 +33,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 }
                 else
                 {
-                    proyecto = new LineaBaseControladora().ProyectoObtenerPorId(idProyecto);
+                    proyecto = new LineaBaseFachada().ProyectoObtenerPorId(idProyecto);
 
                     if (proyecto == null)
                     {
@@ -46,21 +46,21 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             {
                 pnlECS.Visible = false;
                 SesionFachada.ListaElementoConfiguracion = null;
-                SesionFachada.ListaUsuarioResponsable = new LineaBaseControladora().UsuarioListaPorProyecto(idProyecto);
+                SesionFachada.ListaUsuarioResponsable = new LineaBaseFachada().UsuarioListaPorProyecto(idProyecto);
 
-                ddlProyecto.EnlazarDatos(new LineaBaseControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, proyecto.Id);
+                ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, proyecto.Id);
                 ddlProyecto.Enabled = false;
                 
                 if (idFase != 0)
                 {
-                    ddlFase.DataSource = new LineaBaseControladora().ListarFasePorProyecto(idProyecto, true);
+                    ddlFase.DataSource = new LineaBaseFachada().ListarFasePorProyecto(idProyecto, true);
                     ddlFase.SelectedValue = idFase.ToString();
                     ddlFase.Enabled = false;
                     ddlProyecto.Enabled = false;
 
                     //CARGAR DATOS LINEA BASE
                     TMD.Entidades.LineaBase lineaBase =
-                        new LineaBaseControladora().LineaBaseObtenerPorProyectoFase(idProyecto, idFase);
+                        new LineaBaseFachada().LineaBaseObtenerPorProyectoFase(idProyecto, idFase);
 
                     hiddenIdLineaBase.Value = lineaBase.Id.ToString();
                     txtNombre.Text = lineaBase.Nombre;
@@ -68,7 +68,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                     
                     if (lineaBase.LineaBaseECS != null)
                     {
-                        List<ElementoConfiguracion> lista = new LineaBaseControladora().ElementoConfiguracionListarPorFase(idFase);
+                        List<ElementoConfiguracion> lista = new LineaBaseFachada().ElementoConfiguracionListarPorFase(idFase);
 
                         lineaBase.LineaBaseECS.ForEach(x => 
                             {
@@ -89,7 +89,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 }
                 else
                 {
-                    ddlFase.DataSource = new LineaBaseControladora().ListarFasePorProyecto(idProyecto, false);
+                    ddlFase.DataSource = new LineaBaseFachada().ListarFasePorProyecto(idProyecto, false);
                 }
 
                 ddlFase.DataValueField = "Id";
@@ -118,7 +118,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             if (lista == null)
             {
-                lista = new LineaBaseControladora().ElementoConfiguracionListarPorFase(Convert.ToInt32(ddlFase.SelectedValue));
+                lista = new LineaBaseFachada().ElementoConfiguracionListarPorFase(Convert.ToInt32(ddlFase.SelectedValue));
 
                 SesionFachada.ListaElementoConfiguracion = lista;
             }
@@ -238,9 +238,9 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             if (lectura == 0 && idFase == 0)//NUEVO
             {
                 ProyectoFase proyectoFase =
-                    new LineaBaseControladora().ProyectoFaseObtenerPorFaseProyecto(idProyecto, Convert.ToInt32(ddlFase.SelectedValue));
+                    new LineaBaseFachada().ProyectoFaseObtenerPorFaseProyecto(idProyecto, Convert.ToInt32(ddlFase.SelectedValue));
 
-                new LineaBaseControladora().LineaBaseAgregar(
+                new LineaBaseFachada().LineaBaseAgregar(
                     new TMD.Entidades.LineaBase
                     {
                         Id = 0,
@@ -255,7 +255,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             }
             else//ACTUALIZAR
             {
-                new LineaBaseControladora().LineaBaseActualizar(
+                new LineaBaseFachada().LineaBaseActualizar(
                     new TMD.Entidades.LineaBase
                     {
                         Id = Convert.ToInt32(hiddenIdLineaBase.Value),
