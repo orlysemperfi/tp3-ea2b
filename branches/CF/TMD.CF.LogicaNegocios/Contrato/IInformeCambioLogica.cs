@@ -16,5 +16,18 @@ namespace TMD.CF.LogicaNegocios.Contrato
         void Aprobar(InformeCambio informeCambio);
         List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio);
         InformeCambio ObtenerPorId(int id);
+
+        /// <summary>
+        /// Obtiene el archivo de un informe de cambio
+        /// </summary>
+        /// <param name="id">Id de la solicitud</param>
+        /// <returns>Archivo de la solicitud</returns>
+        InformeCambio ObtenerArchivo(int id);
+
+        /// <summary>
+        /// Actualiza el archivo de un informe de cambio
+        /// </summary>
+        /// <param name="solicitudCambio">Objeto solicutd a actualziar</param>
+        void ActualizarArchivo(InformeCambio informeCambio);
     }
 }

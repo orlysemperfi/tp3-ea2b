@@ -63,6 +63,80 @@ namespace TMD.CF.AccesoDatos.Implementacion
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="solicitudCambio"></param>
+        public void ActualizarArchivo(InformeCambio informeCambio)
+        {
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_UPD_ARCHIVO"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, informeCambio.Id);
+                DB.AddInParameter(command, "@NOMBRE_ARCHIVO", DbType.String, informeCambio.NombreArchivo);
+                DB.AddInParameter(command, "@EXTENSION", DbType.String, informeCambio.Extension);
+
+                DB.AddOutParameter(command, "@RUTA_ARCHIVO", DbType.String, 8000);
+                DB.AddOutParameter(command, "@TRANSACTION_CONTEXT", DbType.Binary, 8000);
+
+                DB.ExecuteNonQuery(command);
+
+                String ruta = DB.GetParameterValue(command, "@RUTA_ARCHIVO").ToString();
+                byte[] context = (Byte[])DB.GetParameterValue(command, "@TRANSACTION_CONTEXT");
+
+                using (var sqlFileStream = new SqlFileStream(ruta, context, FileAccess.Write))
+                {
+                    sqlFileStream.Write(informeCambio.Data, 0, informeCambio.Data.Length);
+                    sqlFileStream.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Obtiene el archivo de un informe de cambio
+        /// </summary>
+        /// <param name="id">Id del informe</param>
+        /// <returns>Archivo del informe</returns>
+        public InformeCambio ObtenerArchivo(int id)
+        {
+            InformeCambio elemento = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_SEL_ARCHIVO"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, id);
+
+                String ruta = null;
+                byte[] context = null;
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    if (reader.Read())
+                    {
+                        elemento = new InformeCambio
+                        {
+                            NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
+                        };
+                        ruta = reader.GetString("RUTA_ARCHIVO");
+                        context = (byte[])reader[reader.GetOrdinal("TRANSACTION_CONTEXT")];
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(ruta))
+                {
+                    using (var sqlFileStream = new SqlFileStream(ruta, context, FileAccess.Read))
+                    {
+                        byte[] buffer = new byte[(int)sqlFileStream.Length];
+
+                        sqlFileStream.Read(buffer, 0, buffer.Length);
+                        sqlFileStream.Close();
+
+                        elemento.Data = buffer;
+                    }
+                }
+
+                return elemento;
+            }
+        }
+
+        /// <summary>
         /// Lista los informes de una linea base
         /// </summary>
         /// <param name="informeCambio">Linea Base</param>

@@ -146,7 +146,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-                <asp:HiddenField runat="server" ID="hidIdSolicitud" />
+                <asp:HiddenField runat="server" ID="hidIdInforme" />
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger runat="server" ControlID="btnBuscar" EventName="Click" />
@@ -185,7 +185,7 @@
     <asp:Button runat="server" ID="btnDescarga" OnClick="btnDescarga_Click" Style="display: none" />
     <script type="text/javascript" language="javascript">
         function Descargar(id) {
-            $get('<%= hidIdSolicitud.ClientID %>').value = id;
+            $get('<%= hidIdInforme.ClientID %>').value = id;
             $get('<%= btnDescarga.ClientID %>').click();
             return false;
         }

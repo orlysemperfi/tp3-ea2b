@@ -45,6 +45,37 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
             return informeCambio;
         }
+
+        /// <summary>
+        /// Obtiene el archivo de un informe de cambio
+        /// </summary>
+        /// <param name="id">Id del informe de cambio</param>
+        /// <returns>Archivo del informe de cambio</returns>
+        public InformeCambio ObtenerArchivo(int id)
+        {
+            InformeCambio informeCambio = null;
+
+            using (var scope = new TransactionScope())
+            {
+                informeCambio = _informeCambioData.ObtenerArchivo(id);
+                scope.Complete();
+            }
+
+            return informeCambio;
+        }
+
+        /// <summary>
+        /// Actualiza el archivo de un informe de cambio
+        /// </summary>
+        /// <param name="solicitudCambio">Objeto solicutd a actualziar</param>
+        public void ActualizarArchivo(InformeCambio informeCambio)
+        {
+            using (var scope = new TransactionScope())
+            {
+                _informeCambioData.ActualizarArchivo(informeCambio);
+                scope.Complete();
+            }
+        }
        
     }
 }

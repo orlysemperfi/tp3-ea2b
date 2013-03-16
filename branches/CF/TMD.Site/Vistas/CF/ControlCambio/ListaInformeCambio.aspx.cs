@@ -139,7 +139,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                     MostrarControles(true, false, false, false, false);
                     break;
                 case "Cargar":
-                    hidIdSolicitud.Value = e.CommandArgument.ToString();
+                    hidIdInforme.Value = e.CommandArgument.ToString();
                     MostrarControles(false, false, false, true, false);
                     break;
                 case "Aprobar":
@@ -158,24 +158,32 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void btnDescarga_Click(object sender, EventArgs e)
         {
-            int idSolicitud = Convert.ToInt32(hidIdSolicitud.Value);
+            int idInforme = Convert.ToInt32(hidIdInforme.Value);
 
-            SolicitudCambio solicitud = new SolicitudCambioControladora().ObtenerArchivo(idSolicitud);
+            InformeCambio informe = new InformeCambioFachada().ObtenerArchivo(idInforme);
 
-            if (solicitud != null && solicitud.Data != null)
+            if (informe != null && informe.Data != null)
             {
                 Response.Clear();
                 Response.ContentType = "application/octet-stream";
-                Response.AddHeader("Content-Disposition", String.Format("attachment; filename={0}", solicitud.NombreArchivo));
+                Response.AddHeader("Content-Disposition", String.Format("attachment; filename={0}", informe.NombreArchivo));
                 Response.Flush();
                 Response.Buffer = true;
-                Response.BinaryWrite(solicitud.Data);
+                Response.BinaryWrite(informe.Data);
             }
         }
 
         protected void btnGrabarArchcivo_Click(object sender, EventArgs e)
         {
+            if (fileUpArchivo.HasFile)
+            {
+                byte[] archivo = fileUpArchivo.FileBytes;
+                String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
+                new InformeCambioFachada().ActualizarArchivo(Convert.ToInt32(hidIdInforme.Value), nombre, archivo);
 
+                MostrarControles(false, true, false, false, true);
+                btnBuscar_Click(null, null);
+            }
         }
 
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)

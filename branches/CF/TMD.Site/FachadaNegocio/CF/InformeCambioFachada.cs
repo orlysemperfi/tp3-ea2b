@@ -38,5 +38,16 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         {
             InformeCambioLogica.Aprobar(new InformeCambio { Id = idInforme, Estado = idEstado, Motivo = motivo });
         }
+
+        public void ActualizarArchivo(int idInforme, string nombreArchivo, byte[] data)
+        {
+            string extension = string.IsNullOrEmpty(nombreArchivo) ? "" : System.IO.Path.GetExtension(nombreArchivo).Substring(1, 3);
+            InformeCambioLogica.ActualizarArchivo(new InformeCambio { Id = idInforme, Data = data, NombreArchivo = nombreArchivo, Extension = extension });
+        }
+
+        public InformeCambio ObtenerArchivo(int idInformeCambio)
+        {
+            return InformeCambioLogica.ObtenerArchivo(idInformeCambio);
+        }
     }
 }
