@@ -7,9 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ServiceDesk {
-    
-    
-    public partial class Inicio {
+namespace ServiceDesk
+{
+
+
+    public partial class Inicio
+    {
     }
 }

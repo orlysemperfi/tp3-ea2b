@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TMD.CF.Site.Account
+namespace ServiceDesk
 {
-    public partial class ChangePasswordSuccess : System.Web.UI.Page
+    public partial class Principal : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
