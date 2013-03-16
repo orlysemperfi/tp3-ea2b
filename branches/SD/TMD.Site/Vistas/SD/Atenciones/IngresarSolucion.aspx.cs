@@ -18,6 +18,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
     public partial class IngresarSolucion : System.Web.UI.Page
     {
         static string accionRegistro;
+
         static int numeroTicket;
         static int codigoEquipo;
         
