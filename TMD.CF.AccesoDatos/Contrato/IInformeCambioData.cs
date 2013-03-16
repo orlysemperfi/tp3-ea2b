@@ -36,5 +36,18 @@ namespace TMD.CF.AccesoDatos.Contrato
         /// <param name="id">Id informe</param>
         /// <returns>Informe de cambio</returns>
         InformeCambio ObtenerPorId(int id);
+
+        /// <summary>
+        /// Obtiene el archivo del informe de cambio
+        /// </summary>
+        /// <param name="id">Id del informe</param>
+        /// <returns>Archivo del informe</returns>
+        InformeCambio ObtenerArchivo(int id);
+
+        /// <summary>
+        /// Actualiza el archivo de informe de cambio
+        /// </summary>
+        /// <param name="solicitudCambio"></param>
+        void ActualizarArchivo(InformeCambio informeCambio);
     }
 }
