@@ -79,7 +79,6 @@ namespace TMD.CF.Site.Controles
 
         public void Limpiar()
         {
-            lblCodigo.Text = "";
             txtNombre.Text = "";
             ddlProyecto.Items.Clear();
             ddlLineaBase.Items.Clear();
@@ -105,7 +104,7 @@ namespace TMD.CF.Site.Controles
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            OnEventoCanceloInforme();
         }
 
         public void CargarsolicitudNueva()
