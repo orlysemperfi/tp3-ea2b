@@ -164,11 +164,11 @@
             alert('popup');
         }
         function exitoNuevo() {
-            alert('Linea Base registrada correctamente!');
+            //alert('Linea Base registrada correctamente!');
             window.location = "ListaLineaBase.aspx";
         }
         function exitoActualizar() {
-            alert('Linea Base actualizada correctamente!');
+            //alert('Linea Base actualizada correctamente!');
             window.location = "ListaLineaBase.aspx";
         }
         function grabar() {
@@ -184,8 +184,8 @@
         }
         function validarFase() {
             if ($get('<%= ddlFase.ClientID %>').selectedIndex == 0) {
-                alert('Seleccione una Fase!');
-                return false;
+                //alert('Seleccione una Fase!');
+                return true;
             }
         }
         function ClientValidate(source, arguments) {

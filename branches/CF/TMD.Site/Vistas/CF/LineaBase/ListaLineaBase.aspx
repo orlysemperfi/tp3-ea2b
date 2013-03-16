@@ -19,11 +19,15 @@
                             Proyecto</label><asp:DropDownList ID="ddlProyecto" runat="server" 
                             AutoPostBack="True" onselectedindexchanged="ddlProyecto_SelectedIndexChanged" 
                             Width="200px">
-                        </asp:DropDownList>                        
+                        </asp:DropDownList>  <asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
+            ErrorMessage="El proyecto es requerido." ToolTip="El proyecto es requerido."
+            ValidationGroup="BusquedaValidationGroup" ValueToCompare="0" CssClass="failureNotification"
+            Operator="NotEqual">*
+        </asp:CompareValidator>                      
                     </td>
                     <td>
     <asp:Button ID="btnNuevo" runat="server" Text="Nueva Linea Base" 
-        onclick="btnNuevo_Click" OnClientClick="javascript:return validarProyecto();" />
+        onclick="btnNuevo_Click"  ValidationGroup="BusquedaValidationGroup" />
                     </td>
                     <td>
                         &nbsp;</td>
@@ -87,8 +91,8 @@
     <script type="text/javascript" language="javascript">
         function validarProyecto() {
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                alert('Seleccione un Proyecto!');
-                return false;
+                //alert('Seleccione un Proyecto!');
+                return true;
             }
         }
     </script>

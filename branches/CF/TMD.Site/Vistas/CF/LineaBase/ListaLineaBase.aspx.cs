@@ -27,11 +27,11 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             
             btnNuevo.Visible = SesionFachada.Usuario.Rol == Roles.GestorConfiguracion;
 
-            if (SesionFachada.Usuario.Rol != Roles.GestorConfiguracion && carga.Equals("0"))
+            if (SesionFachada.Usuario.Rol != Roles.GestorConfiguracion && !String.IsNullOrEmpty(carga) && carga.Equals("0"))
             {
                 Response.Redirect(Pagina.NoPermitido);
             }
-            else if (SesionFachada.Usuario.Rol != Roles.ResponsableElemento && carga.Equals("1"))
+            else if (SesionFachada.Usuario.Rol != Roles.ResponsableElemento && !String.IsNullOrEmpty(carga) && carga.Equals("1"))
             {
                 Response.Redirect(Pagina.NoPermitido);
             }
