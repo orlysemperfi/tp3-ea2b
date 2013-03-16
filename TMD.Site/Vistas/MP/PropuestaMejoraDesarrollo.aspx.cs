@@ -109,7 +109,7 @@ namespace TMD.CF.Site.Vistas.MP
         protected void ibtnCambiarEstadoEnDesarrollo_Click(object sender, EventArgs e)
         {
             Sesiones.PropuestaMejoraSeleccionadaRemover();
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
+            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraDesarrollo + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
         protected void ibtnSalir_Click(object sender, EventArgs e)

@@ -1,9 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraDesarrollo.aspx.cs" Inherits="TMD.CF.Site.Vistas.MP.PropuestaMejoraDesarrollo" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
 
 <div class="contenedor-pagina">
     <div class="contenedor-pagina-titulo">
@@ -64,6 +60,11 @@
                         OnRowCommand="gvwPropuestaMejoraDesarrollo_RowCommand" 
                         Width="657px">
                         <Columns>
+                            <asp:TemplateField HeaderText="Seleccionar">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkMarca" runat="server" CommandName="SeleccionarPropuesta"/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             
                             <asp:TemplateField HeaderText="Codigo Propuesta">
                                 <ItemTemplate>
