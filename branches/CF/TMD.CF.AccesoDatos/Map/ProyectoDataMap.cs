@@ -20,6 +20,8 @@ namespace TMD.CF.AccesoDatos.Map
         /// <returns>Proyecto</returns>
         public static Proyecto Select(IDataReader reader)
         {
+            
+
             return new Proyecto
             {
                 Id = reader.GetInt("CODIGO_PROYECTO"),

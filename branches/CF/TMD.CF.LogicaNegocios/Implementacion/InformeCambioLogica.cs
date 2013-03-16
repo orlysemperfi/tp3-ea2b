@@ -6,6 +6,9 @@ using TMD.Entidades;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
+    /// <summary>
+    /// Implementa la Logica de Negocios de la entidad Informe de cambio
+    /// </summary>
     public class InformeCambioLogica : IInformeCambioLogica
     {
         private readonly IInformeCambioData _informeCambioData;

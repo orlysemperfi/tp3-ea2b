@@ -10,6 +10,11 @@ namespace TMD.CF.AccesoDatos.Map
 {
     static class ProyectoFaseDataMap
     {
+        /// <summary>
+        /// Mapea un IDataReader a una entidad Proyecto - Fase
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static ProyectoFase Select(IDataReader reader)
         {
             return new ProyectoFase

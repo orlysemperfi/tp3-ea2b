@@ -11,6 +11,11 @@ namespace TMD.CF.AccesoDatos.Map
 {
     static class InformeCambioMap
     {
+        /// <summary>
+        /// Clase encargada de mapear los datos de la Entidad Informe de Cambio
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static InformeCambio Select(IDataReader reader)
         {
             return new InformeCambio

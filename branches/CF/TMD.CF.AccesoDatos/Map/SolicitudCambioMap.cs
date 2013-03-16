@@ -11,6 +11,11 @@ namespace TMD.CF.AccesoDatos.Map
 {
     static class SolicitudCambioMap
     {
+        /// <summary>
+        /// Mapea un IDataReader a una entidad Solicitud de Cambio
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static SolicitudCambio Select(IDataReader reader)
         {
             return new SolicitudCambio

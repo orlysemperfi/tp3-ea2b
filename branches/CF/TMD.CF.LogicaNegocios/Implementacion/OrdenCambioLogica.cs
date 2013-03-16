@@ -9,7 +9,7 @@ using TMD.Entidades;
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
     /// <summary>
-    /// Impelemntacion  de la logica d enegocios de la entidad orden de cambio.
+    /// Implementacion  de la logica de negocios de la entidad orden de cambio.
     /// </summary>
     public class OrdenCambioLogica : IOrdenCambioLogica
     {

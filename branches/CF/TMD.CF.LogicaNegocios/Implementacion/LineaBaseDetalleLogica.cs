@@ -8,6 +8,9 @@ using TMD.Entidades;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
+    /// <summary>
+    /// Implementa la Logica de Negocios de la entidad Linea base detalle
+    /// </summary>
     public class LineaBaseDetalleLogica : ILineaBaseDetalleLogica
     {
         private readonly ILineaBaseElementoConfiguracionData _lineaBaseEcsData;

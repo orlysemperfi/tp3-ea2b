@@ -10,6 +10,11 @@ namespace TMD.CF.AccesoDatos.Map
 {
     static class LineaBaseElementoConfiguracionMap
     {
+        /// <summary>
+        /// Clase encargada de mapear los datos de la Entidad LineaBase - Detalle.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static LineaBaseElementoConfiguracion Select(IDataReader reader)
         {
             return new LineaBaseElementoConfiguracion
