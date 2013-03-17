@@ -7,6 +7,7 @@ using System.Web.SessionState;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using System.Configuration;
+using TMD.Core.Logger;
 
 namespace TMD.CF.Site
 {
@@ -47,6 +48,14 @@ namespace TMD.CF.Site
         void Application_End(object sender, EventArgs e)
         {
             CleanUp();
+        }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception error = Server.GetLastError();
+            Log logger = new Log();
+            logger.RegistrarError(error);
+
         }
 
         private static void BuildContainer()
