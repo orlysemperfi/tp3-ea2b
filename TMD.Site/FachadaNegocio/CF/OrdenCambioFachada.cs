@@ -11,38 +11,38 @@ using TMD.Core;
 
 namespace TMD.CF.Site.FachadaNegocio.CF
 {
-    class OrdenCambioControladora
+    public class OrdenCambioFachada
     {
-        private readonly IOrdenCambioLogica ordenCambioLogica;
-        private readonly IUsuarioLogica usuarioLogica;
-        private readonly IProyectoLogica ProyectoLogica;
-        private readonly ILineaBaseLogica LineaBaseLogica;
-        private readonly IInformeCambioLogica InformeCambioLogica;
+        public IOrdenCambioLogica OrdenCambioLogica { get; set; }
+        public IUsuarioLogica UsuarioLogica { get; set; }
+        public IProyectoLogica ProyectoLogica { get; set; }
+        public ILineaBaseLogica LineaBaseLogica { get; set; }
+        public IInformeCambioLogica InformeCambioLogica { get; set; }
 
-        public OrdenCambioControladora()
+        public OrdenCambioFachada()
         {
-            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
+            //string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
 
-            ordenCambioLogica = new OrdenCambioLogica(new OrdenCambioData(baseDatos));
-            usuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
-            ProyectoLogica = new ProyectoLogica(new ProyectoData(baseDatos));
-            InformeCambioLogica = new InformeCambioLogica(new InformeCambioData(baseDatos));
-            LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos),null,null,null);
+            //ordenCambioLogica = new OrdenCambioLogica(new OrdenCambioData(baseDatos));
+            //usuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
+            //ProyectoLogica = new ProyectoLogica(new ProyectoData(baseDatos));
+            //InformeCambioLogica = new InformeCambioLogica(new InformeCambioData(baseDatos));
+            //LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos),null,null,null);
         }
 
         public List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase)
         {
-            return ordenCambioLogica.ListarPorProyectoLBase(codigoProyecto, codigoLineaBase);
+            return OrdenCambioLogica.ListarPorProyectoLBase(codigoProyecto, codigoLineaBase);
         }
 
         public void Agregar(OrdenCambio ordenCambio)
         {
-            ordenCambioLogica.Agregar(ordenCambio);
+            OrdenCambioLogica.Agregar(ordenCambio);
         }
 
         public List<Usuario> ListaPorRol(String rol)
         {
-            List<Usuario> lista = usuarioLogica.ListaPorRol(rol);
+            List<Usuario> lista = UsuarioLogica.ListaPorRol(rol);
             lista.Insert(0, new Usuario { Id = 0, Nombre = "--Seleccione--" });
 
             return lista;
@@ -101,18 +101,18 @@ namespace TMD.CF.Site.FachadaNegocio.CF
 
         public OrdenCambio ObtenerPorId(int id)
         {
-            return ordenCambioLogica.ObtenerPorId(id);
+            return OrdenCambioLogica.ObtenerPorId(id);
         }
 
         public void ActualizarArchivo(int idOrden, string nombreArchivo, byte[] data)
         {
             string extension = string.IsNullOrEmpty(nombreArchivo) ? "" : System.IO.Path.GetExtension(nombreArchivo).Substring(1, 3);
-            ordenCambioLogica.ActualizarArchivo(new OrdenCambio { Id = idOrden, Data = data, NombreArchivo = nombreArchivo, Extension = extension });
+            OrdenCambioLogica.ActualizarArchivo(new OrdenCambio { Id = idOrden, Data = data, NombreArchivo = nombreArchivo, Extension = extension });
         }
 
         public OrdenCambio ObtenerArchivo(int idOrdenCambio)
         {
-            return ordenCambioLogica.ObtenerArchivo(idOrdenCambio);
+            return OrdenCambioLogica.ObtenerArchivo(idOrdenCambio);
         }
     }
 }

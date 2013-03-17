@@ -4,6 +4,8 @@ using TMD.Core.Extension;
 using TMD.CF.Site.Util;
 using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
+using System.Web;
+using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Controles.CF.ControlCambio
 {
@@ -26,9 +28,15 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
             CancelarOrdenHandler handler = EventoCanceloOrden;
             if (handler != null) handler();
         }
-        
+
+        protected OrdenCambioFachada ordenFachada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            ordenFachada = container.Resolve<OrdenCambioFachada>();
+
             if (!Page.IsPostBack)
             {
                 CargarordenNueva();
@@ -37,21 +45,21 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
 
         public void CargarOrdenExistente(int idOrdenCambio)
         {
-            OrdenCambio orden = new OrdenCambioControladora().ObtenerPorId(idOrdenCambio);
+            OrdenCambio orden = ordenFachada.ObtenerPorId(idOrdenCambio);
 
             if (orden != null)
             {
                 txtNombre.Text = orden.Nombre;
 
                 int idProyecto = orden.ProyectoFase.Proyecto.Id;
-                ddlProyecto.EnlazarDatos(new OrdenCambioControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
+                ddlProyecto.EnlazarDatos(ordenFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
                 int lineaBaseId = orden.LineaBase.Id;
-                ddlLineaBase.EnlazarDatos(new OrdenCambioControladora().LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
+                ddlLineaBase.EnlazarDatos(ordenFachada.LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
                 int idInforme = orden.InformeCambio.Id;
-                ddlInforme.EnlazarDatos(new OrdenCambioControladora().ListarInformePorProyectoLineaBase(idProyecto, lineaBaseId, 2), "Nombre", "Id", -1, idInforme);
+                ddlInforme.EnlazarDatos(ordenFachada.ListarInformePorProyectoLineaBase(idProyecto, lineaBaseId, 2), "Nombre", "Id", -1, idInforme);
                 int idUsuario = orden.UsuarioAsignado.Id;
-                ddlUsuario.EnlazarDatos(new OrdenCambioControladora().ListaPorRol(""), "Nombre", "Id", -1, idUsuario);
-                ddlPrioridad.EnlazarDatos(new OrdenCambioControladora().ListarPrioridad(), "Nombre", "Id", -1, orden.Prioridad);
+                ddlUsuario.EnlazarDatos(ordenFachada.ListaPorRol(""), "Nombre", "Id", -1, idUsuario);
+                ddlPrioridad.EnlazarDatos(ordenFachada.ListarPrioridad(), "Nombre", "Id", -1, orden.Prioridad);
                 pnlOrdenCambio.Enabled = false;
             }
         }
@@ -68,21 +76,21 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         
         public void CargarordenNueva()
         {
-            ddlProyecto.EnlazarDatos(new OrdenCambioControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(ordenFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlInforme.EnlazarValorDefecto();
-            ddlPrioridad.EnlazarDatos(new OrdenCambioControladora().ListarPrioridad(), "Nombre", "Id");
-            ddlUsuario.EnlazarDatos(new OrdenCambioControladora().ListaPorRol(""), "Nombre", "Id");
+            ddlPrioridad.EnlazarDatos(ordenFachada.ListarPrioridad(), "Nombre", "Id");
+            ddlUsuario.EnlazarDatos(ordenFachada.ListaPorRol(""), "Nombre", "Id");
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new OrdenCambioControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(ordenFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlInforme.EnlazarDatos(new OrdenCambioControladora().ListarInformePorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), 1), "Nombre", "Id");
+            ddlInforme.EnlazarDatos(ordenFachada.ListarInformePorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), 1), "Nombre", "Id");
         }
 
         protected void ddlUsuario_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,7 +101,7 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         {
             OrdenCambio ordenCambio = CrearOrden();
 
-            new OrdenCambioControladora().Agregar(ordenCambio);
+            ordenFachada.Agregar(ordenCambio);
 
             OnEventoGraboOrden();
 
