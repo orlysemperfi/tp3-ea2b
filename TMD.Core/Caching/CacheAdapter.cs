@@ -6,9 +6,10 @@ using System.Runtime.Caching;
 
 namespace TMD.Core.Caching
 {
+    //PATRON: ADAPTER CACHE
     public class CacheAdapter : ICacheAdapter
     {
-        private static readonly ObjectCache _objectCache = MemoryCache.Default;
+        private readonly ObjectCache _objectCache = MemoryCache.Default;
 
         /// <summary>
         /// Agrega un item en cache

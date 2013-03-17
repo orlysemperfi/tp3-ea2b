@@ -12,6 +12,7 @@ namespace TMD.CF.AccesoDatos.Core
         protected static SqlDatabase _dataBase;
         private static object syncLock = new object();
         
+        //PATRON: SINGLETON
         public DataBase(String connectionString)
         {
             if (_dataBase == null)
