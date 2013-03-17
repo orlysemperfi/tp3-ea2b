@@ -72,9 +72,10 @@
 <%--        <table id="tblSolucionMejoraListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>  --%>                  
-                    <asp:GridView ID="gvwSolucionMejoraListado" runat="server" CssClass="tabla-grilla" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="4" DataSource='<%#ObtenerSolucionMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwSolucionMejoraListado_RowCommand">
-                        <HeaderStyle CssClass="tabla-grilla-cabecera" />
-                        <RowStyle CssClass="tabla-grilla-filas" />
+                    <asp:GridView ID="gvwSolucionMejoraListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="4" DataSource='<%#ObtenerSolucionMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwSolucionMejoraListado_RowCommand">
+                        <EmptyDataTemplate>
+                                No existen soluciones con los criterios ingresados.
+                        </EmptyDataTemplate>
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
