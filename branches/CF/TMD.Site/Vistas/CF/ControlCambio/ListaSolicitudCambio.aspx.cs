@@ -121,9 +121,12 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grvSolicitudCambio.DataSource =
-                new SolicitudCambioControladora().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt(), ddlPrioridad.SelectedValue.ToInt());
-            grvSolicitudCambio.DataBind();
+            //
+            // Verificar el uso de esta asignación
+            //
+            //grvSolicitudCambio.DataSource =
+            //    new SolicitudCambioControladora().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt(), ddlPrioridad.SelectedValue.ToInt());
+            //grvSolicitudCambio.DataBind();
 
             ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }

@@ -23,8 +23,8 @@
                                 <td>
                                     <label>
                                         Proyecto</label>
-                                    <asp:DropDownList ID="ddlProyecto" runat="server"
-                                        Width="170px">
+                                    <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" script="width: auto;"
+                                        onselectedindexchanged="ddlProyecto_SelectedIndexChanged">
                                     </asp:DropDownList><asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
             ErrorMessage="El proyecto es requerido." ToolTip="El proyecto es requerido."
             ValidationGroup="BusquedaValidationGroup" ValueToCompare="0" CssClass="failureNotification"
