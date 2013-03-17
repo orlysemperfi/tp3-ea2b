@@ -5,6 +5,7 @@ using System.Text;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.Entidades;
 using TMD.CF.AccesoDatos.Contrato;
+using TMD.Core.Caching;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
@@ -14,10 +15,13 @@ namespace TMD.CF.LogicaNegocios.Implementacion
     public class ElementoConfiguracionLogica : IElementoConfiguracionLogica
     {
         private readonly IElementoConfiguracionData _elementoConfData;
+        private readonly ICacheAdapter _cacheAdapter;
 
-        public ElementoConfiguracionLogica(IElementoConfiguracionData elementoConfData)
+        //PATRON: INYECION DE DEPENDENCIA
+        public ElementoConfiguracionLogica(IElementoConfiguracionData elementoConfData, ICacheAdapter cacheAdapter)
         {
             _elementoConfData = elementoConfData;
+            _cacheAdapter = cacheAdapter;
         }
 
         /// <summary>
@@ -26,8 +30,11 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         /// <param name="fase">Fase</param>
         /// <returns>Lista ElementoConfiguracion</returns>
         public List<ElementoConfiguracion> ListarPorFase(Fase fase)
-        {
-            return _elementoConfData.ListarPorFase(fase);
+        {            
+            List<ElementoConfiguracion> lista =
+                _cacheAdapter.Resolve(String.Format("_LisEcFase{0}",fase.Id), fase, _elementoConfData.ListarPorFase);
+
+            return lista;
         }
     }
 }

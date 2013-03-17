@@ -13,6 +13,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
 {
     public class ElementoConfiguracionData : DataBase, IElementoConfiguracionData
     {
+        //PATRON: DAO
         public ElementoConfiguracionData(String connectionString)
             : base(connectionString)
         {
