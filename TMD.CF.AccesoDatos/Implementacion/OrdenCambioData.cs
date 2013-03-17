@@ -29,13 +29,14 @@ namespace TMD.CF.AccesoDatos.Implementacion
         {
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_ORDEN_CAMBIO_INS"))
             {
+                DB.AddInParameter(command, "@NOMBRE", DbType.String, ordenCambio.Nombre);
                 DB.AddInParameter(command, "@CODIGO_INFORME", DbType.Int32, ordenCambio.InformeCambio.Id);
                 DB.AddInParameter(command, "@CODIGO_USUARIO_REG", DbType.Int32, ordenCambio.UsuarioReg.Id);
                 DB.AddInParameter(command, "@FECHA_REGISTRO", DbType.DateTime, DateTime.Now);
-                DB.AddInParameter(command, "@FECHA_APROBACION", DbType.DateTime, DateTime.Now);
-                DB.AddInParameter(command, "@CODIGO_PRIORIDAD", DbType.Int32, ordenCambio.CodigoPrioridad);
+                DB.AddInParameter(command, "@PRIORIDAD", DbType.Int32, ordenCambio.Prioridad);
                 DB.AddInParameter(command, "@CODIGO_USUARIO_ASIGNADO", DbType.Int32, ordenCambio.UsuarioAsignado.Id);
-                DB.AddInParameter(command, "@ESTADO", DbType.Int32, ordenCambio.Estado);
+
+                DB.AddOutParameter(command, "@CODIGO", DbType.Int32, 4);
 
                 DB.ExecuteNonQuery(command);
 

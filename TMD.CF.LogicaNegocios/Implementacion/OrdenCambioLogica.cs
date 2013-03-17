@@ -30,5 +30,14 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         {
             return _ordenCambioData.ListarPorProyectoLBase(codigoProyecto, codigoLineaBase);
         }
+
+        /// <summary>
+        /// Agrega una orden de cambio
+        /// </summary>
+        /// <param name="ordenCambio">Objeto Orden a agregar</param>
+        public void Agregar(OrdenCambio ordenCambio)
+        {
+            _ordenCambioData.Agregar(ordenCambio);
+        }
     }
 }
