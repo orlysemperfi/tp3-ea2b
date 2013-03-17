@@ -131,12 +131,12 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// </summary>
         /// <param name="ordenCambio">Objeto orden a actualziar</param>
         public void ActualizarArchivo(OrdenCambio ordenCambio)
-        {/*
-            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_UPD_ARCHIVO"))
+        {
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_ORDEN_CAMBIO_UPD_ARCHIVO"))
             {
-                DB.AddInParameter(command, "@CODIGO", DbType.Int32, solicitudCambio.Id);
-                DB.AddInParameter(command, "@NOMBRE_ARCHIVO", DbType.String, solicitudCambio.NombreArchivo);
-                DB.AddInParameter(command, "@EXTENSION", DbType.String, solicitudCambio.Extension);
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, ordenCambio.Id);
+                DB.AddInParameter(command, "@NOMBRE_ARCHIVO", DbType.String, ordenCambio.NombreArchivo);
+                DB.AddInParameter(command, "@EXTENSION", DbType.String, ordenCambio.Extension);
 
                 DB.AddOutParameter(command, "@RUTA_ARCHIVO", DbType.String, 8000);
                 DB.AddOutParameter(command, "@TRANSACTION_CONTEXT", DbType.Binary, 8000);
@@ -148,10 +148,10 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
                 using (var sqlFileStream = new SqlFileStream(ruta, context, FileAccess.Write))
                 {
-                    sqlFileStream.Write(solicitudCambio.Data, 0, solicitudCambio.Data.Length);
+                    sqlFileStream.Write(ordenCambio.Data, 0, ordenCambio.Data.Length);
                     sqlFileStream.Close();
                 }
-            }*/
+            }
         }
 
         /// <summary>

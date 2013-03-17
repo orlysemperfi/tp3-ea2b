@@ -103,5 +103,16 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         {
             return ordenCambioLogica.ObtenerPorId(id);
         }
+
+        public void ActualizarArchivo(int idOrden, string nombreArchivo, byte[] data)
+        {
+            string extension = string.IsNullOrEmpty(nombreArchivo) ? "" : System.IO.Path.GetExtension(nombreArchivo).Substring(1, 3);
+            ordenCambioLogica.ActualizarArchivo(new OrdenCambio { Id = idOrden, Data = data, NombreArchivo = nombreArchivo, Extension = extension });
+        }
+
+        public OrdenCambio ObtenerArchivo(int idOrdenCambio)
+        {
+            return ordenCambioLogica.ObtenerArchivo(idOrdenCambio);
+        }
     }
 }
