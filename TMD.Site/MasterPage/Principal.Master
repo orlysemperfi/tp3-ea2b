@@ -69,7 +69,7 @@
                             <asp:MenuItem  Text="Atenciones">
                                 <asp:MenuItem NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=n" Text="Tickets"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=s" Text="Solucionar Tickets"></asp:MenuItem>
-                                <asp:MenuItem NavigateUrl="~/Vistas/SD/eguimiento/Atenciones.aspx" Text="Seguimiento de Tickets"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Vistas/SD/Seguimiento/Atenciones.aspx" Text="Seguimiento de Tickets"></asp:MenuItem>
                             </asp:MenuItem>
                             <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Servicios"/>
                             <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
