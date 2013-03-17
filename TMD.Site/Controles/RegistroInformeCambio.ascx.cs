@@ -4,6 +4,8 @@ using TMD.Core.Extension;
 using TMD.CF.Site.Util;
 using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
+using Microsoft.Practices.Unity;
+using System.Web;
 
 namespace TMD.CF.Site.Controles
 {
@@ -25,10 +27,18 @@ namespace TMD.CF.Site.Controles
         {
             CancelarInformeHandler handler = EventoCanceloInforme;
             if (handler != null) handler();
-        }        
-        
+        }
+
+        protected InformeCambioFachada informeFachada;
+        protected LineaBaseFachada lineaBaseFachada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            informeFachada = container.Resolve<InformeCambioFachada>();
+            lineaBaseFachada = container.Resolve<LineaBaseFachada>();
+
             if (!Page.IsPostBack)
             {
                 CargarsolicitudNueva();
@@ -37,19 +47,19 @@ namespace TMD.CF.Site.Controles
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(lineaBaseFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlSolicitud.EnlazarDatos(new InformeCambioFachada().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),1), "NombreSolicitud", "IdSolicitud");
+            ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),1), "NombreSolicitud", "IdSolicitud");
         }
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
             InformeCambio informeCambio = CrearSolicitud();
 
-            new InformeCambioFachada().Agregar(informeCambio);
+            informeFachada.Agregar(informeCambio);
 
             OnEventoGraboInforme();
 
@@ -109,7 +119,7 @@ namespace TMD.CF.Site.Controles
 
         public void CargarsolicitudNueva()
         {
-            ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlSolicitud.EnlazarValorDefecto();
         }

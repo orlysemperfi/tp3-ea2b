@@ -8,17 +8,14 @@ using System.Configuration;
 
 namespace TMD.CF.Site.FachadaNegocio.CF
 {
-    class InformeCambioFachada
+    public class InformeCambioFachada
     {
-        private readonly IInformeCambioLogica InformeCambioLogica;
+        public IInformeCambioLogica InformeCambioLogica { get; set; }
 
         public InformeCambioFachada()
         {
-            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
-            InformeCambioLogica = new InformeCambioLogica(new InformeCambioData(baseDatos));
         }
-
- 
+         
         public List<InformeCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase, int estado)
         {
             return
