@@ -83,7 +83,6 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
-            btnBuscar_Click(null, null);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
