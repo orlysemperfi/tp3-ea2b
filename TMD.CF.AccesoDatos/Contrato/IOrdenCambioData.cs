@@ -26,13 +26,19 @@ namespace TMD.CF.AccesoDatos.Contrato
         /// <returns>Lista Orden de cambio</returns>
         List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase);
 
-
         /// <summary>
         /// Obtiene una orden por el Id
         /// </summary>
         /// <param name="id">Id de la orden</param>
         /// <returns>Objeto orden de cambio</returns>
         OrdenCambio ObtenerPorId(int id);
+
+        /// <summary>
+        /// Obtiene una orden por Informe
+        /// </summary>
+        /// <param name="id">Id del informe</param>
+        /// <returns>Objeto orden de cambio</returns>
+        OrdenCambio ObtenerPorInforme(int id);
 
         /// <summary>
         /// Obtiene el archivo de la orden de cambio

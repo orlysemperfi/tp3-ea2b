@@ -31,6 +31,13 @@ namespace TMD.CF.LogicaNegocios.Contrato
         /// <param name="id">Id de la orden</param>
         /// <returns>Objeto orden de cambio</returns>
         OrdenCambio ObtenerPorId(int id);
+        
+        /// <summary>
+        /// Obtiene una orden por Informe
+        /// </summary>
+        /// <param name="id">Id del informe</param>
+        /// <returns>Objeto orden de cambio</returns>
+        OrdenCambio ObtenerPorInforme(int id);
 
         /// <summary>
         /// Obtiene el archivo de la orden de cambio

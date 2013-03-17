@@ -76,21 +76,6 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             grvOrdenCambio.DataBind();
         }
 
-        public String RecuperarEstadoNombre(int idEstado)
-        {
-            var estado = ordenFachada.ListarEstado().FirstOrDefault(x => x.Id == idEstado);
-            if (estado != null)
-            {
-                return estado.Nombre;
-            }
-            return null;
-        }
-
-        public String RecuperarEstadoImagen(int idEstado)
-        {
-            return String.Format(Imagenes.ForamtoEstado, idEstado);
-        }
-
         public String RecuperarPrioridadNombre(int idPrioridad)
         {
             var prioridad = ordenFachada.ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
