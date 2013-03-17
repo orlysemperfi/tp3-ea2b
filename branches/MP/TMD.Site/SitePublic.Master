@@ -19,15 +19,7 @@
                 </h1>
             </div>
             <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a>
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Bienvenido <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Default.aspx"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
+                &nbsp;
             </div>
             <div class="clear hideSkiplink">
             </div>

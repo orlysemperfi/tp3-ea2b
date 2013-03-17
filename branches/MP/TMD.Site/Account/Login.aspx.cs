@@ -5,10 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using TMD.CF.Site.Util;
 using TMD.Entidades;
+using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Implementacion;
+using TMD.CF.Site.Util;
 
-namespace TMD.CF.Site.Account
+namespace TMD.MP.Site.Account
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -18,6 +21,11 @@ namespace TMD.CF.Site.Account
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+            //IUsuarioLogica oUsuarioLogica = UsuarioLogica.getInstance();
+            //UsuarioEntidad oUsuario = oUsuarioLogica.ObtenerUsuario(LoginUser.UserName, LoginUser.Password);
+            //Sesiones.UsuarioLogueadoRemover();
+            //Sesiones.UsuarioLogueado = oUsuario;
+            //Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
         }
 
         protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)

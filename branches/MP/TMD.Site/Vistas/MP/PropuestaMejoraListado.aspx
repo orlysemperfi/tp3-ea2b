@@ -29,6 +29,7 @@
                                 </asp:DropDownList>
                                 </td>
                                 <td>
+                                    &nbsp;
                                 </td>
                                 <td>
                                     &nbsp;
@@ -54,6 +55,7 @@
                                 </td>
                             </tr>
                         </table>
+                        <br />
                     </asp:Panel>
                 </ContentTemplate>
             </asp:UpdatePanel>

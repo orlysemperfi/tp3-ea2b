@@ -54,9 +54,9 @@ namespace TMD.MP.Site.Privado
                 CargarModoView();
         }
 
-        protected void lbtnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Validate(lbtnGuardar.ValidationGroup);
+            Validate(btnGuardar.ValidationGroup);
 
             if(IsValid == true){
 
@@ -95,8 +95,8 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarModoView() {
             tbxPropuesta.Enabled = false;
-            lbtnGuardar.Visible = false;
-            lbtnCancelar.Text = "Salir";
+            btnGuardar.Visible = false;
+            btnCancelar.Text = "Salir";
         }
     }
 }
