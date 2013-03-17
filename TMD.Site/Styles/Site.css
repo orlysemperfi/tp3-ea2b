@@ -489,7 +489,11 @@ div.accountInfo
     width: 35px;
 }
 
-
+input[type="submit"].btn-cancelar,
+input[type="image"].btn-cancelar {
+    background: #d4d7dc;
+    color: #85878a;
+}
 
 
 /*************** NUEVOS 17/03/13 **********************/
