@@ -3,23 +3,28 @@ using System.Web.UI.WebControls;
 using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.CF.Site.Util;
 using TMD.Strings;
+using System.Web;
+using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
     public partial class ListaLineaBase : System.Web.UI.Page
     {
-
         protected int esCarga;
+        protected LineaBaseFachada lineaBaseFachada;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            lineaBaseFachada = container.Resolve<LineaBaseFachada>();
 
             string carga = Request.QueryString["carga"];
             int.TryParse(carga, out esCarga);            
 
             if (!Page.IsPostBack)
             {
-                ddlProyecto.DataSource = new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id);
+                ddlProyecto.DataSource = lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id);
                 ddlProyecto.DataValueField = "Id";
                 ddlProyecto.DataTextField = "Nombre";
                 ddlProyecto.DataBind();
@@ -68,7 +73,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            grvLineaBase.DataSource = new LineaBaseFachada().LineaBaseListarPorProyecto(Convert.ToInt32(ddlProyecto.SelectedValue));
+            grvLineaBase.DataSource = lineaBaseFachada.LineaBaseListarPorProyecto(Convert.ToInt32(ddlProyecto.SelectedValue));
             grvLineaBase.DataBind();
         }
     }

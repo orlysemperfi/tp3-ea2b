@@ -54,7 +54,7 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
             ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlInforme.EnlazarValorDefecto();
-            ddlPrioridad.EnlazarDatos(new SolicitudCambioControladora().ListarPrioridad(), "Nombre", "Id");
+            ddlPrioridad.EnlazarDatos(new SolicitudCambioFachada().ListarPrioridad(), "Nombre", "Id");
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)

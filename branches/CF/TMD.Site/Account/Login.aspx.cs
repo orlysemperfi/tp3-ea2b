@@ -8,13 +8,20 @@ using System.Web.Security;
 using TMD.CF.Site.Util;
 using TMD.Entidades;
 using TMD.CF.Site.FachadaNegocio.CF;
+using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Account
 {
     public partial class Login : System.Web.UI.Page
     {
+
+        protected SeguridadFachada seguridadFachada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            seguridadFachada = container.Resolve<SeguridadFachada>();
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
@@ -27,9 +34,7 @@ namespace TMD.CF.Site.Account
 
             if (e.Authenticated)
             {
-                SeguridadFachada seguridad = new SeguridadFachada();
-
-                Usuario usuario = seguridad.ObtenerUsuario(LoginUser.UserName);
+                Usuario usuario = seguridadFachada.ObtenerUsuario(LoginUser.UserName);
                 if (usuario != null)
                 {
                     SesionFachada.Usuario = usuario;

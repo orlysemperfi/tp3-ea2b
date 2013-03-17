@@ -9,14 +9,12 @@ using System.Configuration;
 
 namespace TMD.CF.Site.FachadaNegocio.CF
 {
-    class SolicitudCambioControladora
+    public class SolicitudCambioFachada
     {
-        private readonly ISolicitudCambioLogica SolicitudCambioLogica;
+        public ISolicitudCambioLogica SolicitudCambioLogica { get; set; }
 
-        public SolicitudCambioControladora()
+        public SolicitudCambioFachada()
         {
-            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
-            SolicitudCambioLogica = new SolicitudCambioLogica(new SolicitudCambioData(baseDatos));
         }
 
         public List<Parametro> ListarEstado()
