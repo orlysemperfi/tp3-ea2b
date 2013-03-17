@@ -6,14 +6,21 @@ using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;
 using TMD.Strings;
+using Microsoft.Practices.Unity;
+using System.Web;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
     public partial class ListaOrdenCambio : System.Web.UI.Page
     {
 
+        protected OrdenCambioFachada ordenFachada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            ordenFachada = container.Resolve<OrdenCambioFachada>();
 
             if (!Page.IsPostBack)
             {
@@ -58,20 +65,20 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         private void CargarControles()
         {
-            ddlProyecto.EnlazarDatos(new OrdenCambioControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(ordenFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             grvOrdenCambio.DataSource =
-                new OrdenCambioControladora().ListarPorProyectoLBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt());
+                ordenFachada.ListarPorProyectoLBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt());
             grvOrdenCambio.DataBind();
         }
 
         public String RecuperarEstadoNombre(int idEstado)
         {
-            var estado = new OrdenCambioControladora().ListarEstado().FirstOrDefault(x => x.Id == idEstado);
+            var estado = ordenFachada.ListarEstado().FirstOrDefault(x => x.Id == idEstado);
             if (estado != null)
             {
                 return estado.Nombre;
@@ -86,7 +93,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarPrioridadNombre(int idPrioridad)
         {
-            var prioridad = new OrdenCambioControladora().ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
+            var prioridad = ordenFachada.ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
             if (prioridad != null)
             {
                 return prioridad.Nombre;
@@ -102,10 +109,10 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             grvOrdenCambio.DataSource =
-                new OrdenCambioControladora().ListarPorProyectoLBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt());
+                ordenFachada.ListarPorProyectoLBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt());
             grvOrdenCambio.DataBind();
 
-            ddlLineaBase.EnlazarDatos(new OrdenCambioControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(ordenFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void grvOrdenCambio_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
@@ -134,7 +141,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         {
             int idOrden = Convert.ToInt32(hidIdOrden.Value);
             
-            OrdenCambio orden = new OrdenCambioControladora().ObtenerArchivo(idOrden);
+            OrdenCambio orden = ordenFachada.ObtenerArchivo(idOrden);
 
             if (orden != null && orden.Data != null)
             {
@@ -153,7 +160,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 byte[] archivo = fileUpArchivo.FileBytes;
                 String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
-                new OrdenCambioControladora().ActualizarArchivo(Convert.ToInt32(hidIdOrden.Value), nombre, archivo);
+                ordenFachada.ActualizarArchivo(Convert.ToInt32(hidIdOrden.Value), nombre, archivo);
 
                 MostrarControles(false, true, false, false, true);
                 btnBuscar_Click(null, null);
