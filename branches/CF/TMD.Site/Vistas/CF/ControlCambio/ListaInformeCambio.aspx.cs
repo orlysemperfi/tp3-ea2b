@@ -6,13 +6,26 @@ using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;
 using TMD.Strings;
+using Microsoft.Practices.Unity;
+using System.Web;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
     public partial class ListaInformeCambio : System.Web.UI.Page
     {
+
+        protected SolicitudCambioFachada solicitudFachada;
+        protected LineaBaseFachada lineaBaseFachada;
+        protected InformeCambioFachada informeFachada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            solicitudFachada = container.Resolve<SolicitudCambioFachada>();
+            lineaBaseFachada = container.Resolve<LineaBaseFachada>();
+            informeFachada = container.Resolve<InformeCambioFachada>();
+
             if (!Page.IsPostBack)
             {
                 CargarControles();
@@ -75,20 +88,20 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         private void CargarControles()
         {
-            ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
-            ddlEstado.EnlazarDatos(new SolicitudCambioFachada().ListarEstado(), "Nombre", "Id");
+            ddlEstado.EnlazarDatos(solicitudFachada.ListarEstado(), "Nombre", "Id");
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(lineaBaseFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             grvInformeCambio.DataSource =
-                new InformeCambioFachada().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt());
+                informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt());
             grvInformeCambio.DataBind();
 
         }
@@ -101,7 +114,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarEstadoNombre(int idEstado)
         {
-            var estado = new SolicitudCambioFachada().ListarEstado().FirstOrDefault(x => x.Id == idEstado);
+            var estado = solicitudFachada.ListarEstado().FirstOrDefault(x => x.Id == idEstado);
             if (estado != null)
             {
                 return estado.Nombre;
@@ -116,7 +129,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarPrioridadNombre(int idPrioridad)
         {
-            var prioridad = new SolicitudCambioFachada().ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
+            var prioridad = solicitudFachada.ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
             if (prioridad != null)
             {
                 return prioridad.Nombre;
@@ -159,7 +172,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         {
             int idInforme = Convert.ToInt32(hidIdInforme.Value);
 
-            InformeCambio informe = new InformeCambioFachada().ObtenerArchivo(idInforme);
+            InformeCambio informe = informeFachada.ObtenerArchivo(idInforme);
 
             if (informe != null && informe.Data != null)
             {
@@ -178,7 +191,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 byte[] archivo = fileUpArchivo.FileBytes;
                 String nombre = System.IO.Path.GetFileName(fileUpArchivo.FileName);
-                new InformeCambioFachada().ActualizarArchivo(Convert.ToInt32(hidIdInforme.Value), nombre, archivo);
+                informeFachada.ActualizarArchivo(Convert.ToInt32(hidIdInforme.Value), nombre, archivo);
 
                 MostrarControles(false, true, false, false, true);
                 btnBuscar_Click(null, null);

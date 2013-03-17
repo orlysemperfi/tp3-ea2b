@@ -3,6 +3,8 @@ using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;
+using System.Web;
+using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Controles
 {
@@ -47,9 +49,15 @@ namespace TMD.CF.Site.Controles
             get { return hidIdEstado.Value.ToInt(); }
         }
 
+
+        protected InformeCambioFachada informeFachada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            informeFachada = container.Resolve<InformeCambioFachada>();
         }
 
         public void Limpiar()
@@ -61,7 +69,7 @@ namespace TMD.CF.Site.Controles
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            new InformeCambioFachada().Aprobar(IdInformeCambio, IdEstado, txtMotivo.Text);
+            informeFachada.Aprobar(IdInformeCambio, IdEstado, txtMotivo.Text);
 
             OnEventoGraboInforme();
         }
