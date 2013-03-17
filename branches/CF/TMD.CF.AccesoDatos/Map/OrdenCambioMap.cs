@@ -20,13 +20,12 @@ namespace TMD.CF.AccesoDatos.Map
             return new OrdenCambio
             {
                 Id = reader.GetInt("CODIGO"),
+                Nombre = reader.GetString("NOMBRE"),
                 InformeCambio = new InformeCambio { Id = reader.GetInt("CODIGO_INFORME"), Nombre = reader.GetString("NOMBRE") },
                 UsuarioReg = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_REG")},
                 FechaRegistro = reader.GetDateTime("FECHA_REGISTRO"),
-                FechaAprobacion = reader.GetDateTime("FECHA_APROBACION"),
-                CodigoPrioridad = reader.GetInt("CODIGO_PRIORIDAD"),
-                UsuarioAsignado = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_ASIGNADO")},
-                Estado = reader.GetInt("ESTADO"),
+                Prioridad = reader.GetInt("PRIORIDAD"),
+                UsuarioAsignado = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_ASIGNADO")}
             };
         }
     }

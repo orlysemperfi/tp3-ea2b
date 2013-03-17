@@ -18,5 +18,11 @@ namespace TMD.CF.LogicaNegocios.Contrato
         /// <param name="codigoLineaBase">Codigo linea Base</param>
         /// <returns>Lista Orden de cambio</returns>
         List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase);
+
+        /// <summary>
+        /// Agrega una orden de cambio
+        /// </summary>
+        /// <param name="ordenCambio">Objeto Orden a agregar</param>
+        void Agregar(OrdenCambio ordenCambio);
     }
 }

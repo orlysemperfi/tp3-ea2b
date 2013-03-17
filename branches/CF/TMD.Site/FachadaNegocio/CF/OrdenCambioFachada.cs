@@ -25,5 +25,10 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         {
             return ordenCambioLogica.ListarPorProyectoLBase(codigoProyecto, codigoLineaBase);
         }
+
+        public void Agregar(OrdenCambio ordenCambio)
+        {
+            ordenCambioLogica.Agregar(ordenCambio);
+        }
     }
 }

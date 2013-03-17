@@ -28,12 +28,6 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             ucAprobarInformeCambio.EventoCanceloInforme +=
                 new Controles.AprobarInformeCambio.CancelarInformeHandler(ucAprobarInformeCambio_EventoCanceloInforme);
 
-            if (SesionFachada.Usuario.Rol != Roles.JefeProyecto && SesionFachada.Usuario.Rol != Roles.GestorCambio)
-            {
-                Response.Redirect(Pagina.NoPermitido);
-            }
-            
-            btnNuevo.Visible = SesionFachada.Usuario.Rol == Roles.JefeProyecto;
         }
 
         private void MostrarControles(bool visibleRegistro, bool visibleBusqueda, bool visibleAprobar, bool visibleSubir, bool visibleLista)
