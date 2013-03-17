@@ -47,6 +47,10 @@
       <Name>TMD.CF.LogicaNegocios</Name>
       <Project>{1ed7f34a-504a-4ba9-a9a2-dded2e15db61}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\TMD.Core\TMD.Core.csproj">
+      <Name>TMD.Core</Name>
+      <Project>{a1458c90-1dfa-4f07-a8e3-f3f0bf953216}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
       <Name>TMD.Entidades</Name>
       <Project>{106f46e5-0855-453e-9c06-b67d1ee7a00f}</Project>

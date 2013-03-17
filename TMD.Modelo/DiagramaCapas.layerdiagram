@@ -9,6 +9,9 @@
         <dependencyFromLayerToLayer Id="ca4ecc0f-3dfa-40a8-b301-d77491370090" direction="Forward">
           <layerMoniker Id="ecd8e8e5-01cb-47aa-9580-f3839ddf79a6" />
         </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="2aa99531-fedb-4db3-bd17-6cdefab4aa6c" direction="Forward">
+          <layerMoniker Id="c1d0df15-1d06-42ac-9630-7bd0fa6e5588" />
+        </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <references>
         <reference Id="b7e55630-25f4-4d33-ba11-802fe8793285" name="TMD.Site">
@@ -29,6 +32,9 @@
         </dependencyFromLayerToLayer>
         <dependencyFromLayerToLayer Id="56ee1c3f-7560-47a2-8a7d-2af2c1b96f35" direction="Forward">
           <layerMoniker Id="a5ada79b-ffeb-45d1-9d68-a74aacc8f2bb" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="7beef6b6-f579-43b4-94d8-bc1457c8c58f" direction="Forward">
+          <layerMoniker Id="c1d0df15-1d06-42ac-9630-7bd0fa6e5588" />
         </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <references>
@@ -61,6 +67,9 @@
         <dependencyFromLayerToLayer Id="22f4b9e1-2904-453d-a5be-c72fd488a41d" direction="Forward">
           <layerMoniker Id="98dcec7d-6c53-4b4d-8220-00864c921c5f" />
         </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="71798c0a-c5b6-4ecf-999d-58315a83693a" direction="Forward">
+          <layerMoniker Id="c1d0df15-1d06-42ac-9630-7bd0fa6e5588" />
+        </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <references>
         <reference Id="83c9bc5b-e185-444a-ad84-2a43ee24f8d3" name="TMD.CF.AccesoDatos">
@@ -68,6 +77,19 @@
             <Category Ref="CodeSchema_SourceFile" />
           </ArtifactNode>
           <ExpandedNode Id="(Assembly=TMD.CF.AccesoDatos)" Label="TMD.CF.AccesoDatos.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="c1d0df15-1d06-42ac-9630-7bd0fa6e5588" name="Transversal">
+      <references>
+        <reference Id="b17a4f00-7fad-4d21-ba23-a9336e18d76b" name="TMD.Core">
+          <ArtifactNode Label="TMD.Core" Category="CodeSchema_Project" Id="(Assembly=../TMD.Core/TMD.Core.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=TMD.Core)" Label="TMD.Core.dll" Category="FileSystem.Category.FileOfType.dll">
             <LinkCategory Ref="Produces" />
             <LinkCategory Ref="Represents" />
           </ExpandedNode>
