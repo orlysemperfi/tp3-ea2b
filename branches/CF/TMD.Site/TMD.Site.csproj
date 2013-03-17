@@ -85,8 +85,6 @@
     <Content Include="Controles\CF\ControlCambio\RegistroOrdenCambio.ascx" />
     <Content Include="Controles\RegistroInformeCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
-    <Content Include="Controles\SubirArchivoInformeCambio.ascx" />
-    <Content Include="Controles\SubirArchivoSolicitudCambio.ascx" />
     <Content Include="Error\NoPermitido.aspx" />
     <Content Include="Imagenes\bg-formLogin.png" />
     <Content Include="Imagenes\bienvenido.png" />
@@ -236,20 +234,6 @@
     </Compile>
     <Compile Include="Controles\RegistroSolicitudCambio.ascx.designer.cs">
       <DependentUpon>RegistroSolicitudCambio.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controles\SubirArchivoInformeCambio.ascx.cs">
-      <DependentUpon>SubirArchivoInformeCambio.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\SubirArchivoInformeCambio.ascx.designer.cs">
-      <DependentUpon>SubirArchivoInformeCambio.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controles\SubirArchivoSolicitudCambio.ascx.cs">
-      <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controles\SubirArchivoSolicitudCambio.ascx.designer.cs">
-      <DependentUpon>SubirArchivoSolicitudCambio.ascx</DependentUpon>
     </Compile>
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx.cs">

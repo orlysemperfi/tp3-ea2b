@@ -5,8 +5,6 @@
     TagPrefix="uc1" %>
 <%@ Register Src="../../../Controles/AprobarInformeCambio.ascx" TagName="AprobarInformeCambio"
     TagPrefix="uc2" %>
-<%@ Register Src="../../../Controles/SubirArchivoInformeCambio.ascx" TagName="SubirArchivoInformeCambio"
-    TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
@@ -157,7 +155,6 @@
             <ContentTemplate>
                 <uc1:registroinformecambio id="ucRegistroInformeCambio" runat="server" Visible="False" />
                 <uc2:aprobarinformecambio id="ucAprobarInformeCambio" runat="server" visible="False" />
-                <uc3:subirarchivoinformecambio id="ucSubirArchivoInformeCambio" runat="server"
                     visible="False" />
             </ContentTemplate>
         </asp:UpdatePanel>

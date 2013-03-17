@@ -6,8 +6,6 @@
     TagPrefix="uc1" %>
 <%@ Register Src="../../../Controles/AprobarSolicitudCambio.ascx" TagName="AprobarSolicitudCambio"
     TagPrefix="uc2" %>
-<%@ Register Src="../../../Controles/SubirArchivoSolicitudCambio.ascx" TagName="SubirArchivoSolicitudCambio"
-    TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
@@ -106,7 +104,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
-                                <asp:Image runat="server" ID="imgEstado" ToolTip='<%# RecuperarEstadoNombre(Eval("Estado").ToString())%>'
+                                <asp:Image runat="server" ID="imgEstado" ToolTip='<%# RecuperarEstadoNombre(Convert.ToInt32(Eval("Estado")))%>'
                                     ImageUrl='<%# RecuperarEstadoImagen(Convert.ToInt32(Eval("Estado")))%>' Height="26px"
                                     Width="27px" />
                             </ItemTemplate>
