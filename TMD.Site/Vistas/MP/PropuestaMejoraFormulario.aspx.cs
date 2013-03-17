@@ -154,9 +154,9 @@ namespace TMD.MP.Site.Privado
         //    lblMensajeError.Text = lblMensajeError.Text + " chau :" + check.Checked;
         //}
 
-        protected void lbtnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Validate(lbtnGuardar.ValidationGroup);
+            Validate(btnGuardar.ValidationGroup);
 
             if(IsValid == true){
                 int count = 0;
@@ -224,7 +224,7 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void lbtnCancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
         }
@@ -281,8 +281,8 @@ namespace TMD.MP.Site.Privado
             tbxDescripcion.Enabled = false;
             tbxCausa.Enabled = false;
             tbxBeneficios.Enabled = false;
-            lbtnGuardar.Visible = false;
-            lbtnCancelar.Text = "Salir";
+            btnGuardar.Visible = false;
+            btnCancelar.Text = "Salir";
         }
     }
 }

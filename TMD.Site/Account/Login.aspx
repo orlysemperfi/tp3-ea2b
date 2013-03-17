@@ -1,5 +1,5 @@
-﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="TMD.CF.Site.Account.Login" %>
+﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/SitePublic.Master" AutoEventWireup="true"
+    CodeBehind="Login.aspx.cs" Inherits="TMD.MP.Site.Account.Login" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
@@ -21,7 +21,7 @@
     <td class="style2">
     <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false"
         MembershipProvider="None" OnAuthenticate="LoginUser_Authenticate" FailureText="Su intento de inicio de sesión no se realizó correctamente. Por favor, inténtelo de nuevo."
-        DestinationPageUrl="~/Index.aspx">
+        DestinationPageUrl="~/Vistas/MP/IndicadorListado.aspx">
         <LayoutTemplate>
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
@@ -53,7 +53,7 @@
                             Width="114px">No cerrar sesi&oacute;n.</asp:Label>
                     </p>
                 </fieldset>
-                &nbsp;<p class="submitButton">
+                &nbsp;<p>
                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup"
                         OnClick="LoginButton_Click" />
                 </p>

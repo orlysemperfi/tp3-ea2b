@@ -13,13 +13,13 @@ namespace TMD.MP.Site.Privado {
     public partial class SolucionMejoraFormulario {
         
         /// <summary>
-        /// ToolkitScriptManager1 control.
+        /// tbxCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        protected global::System.Web.UI.WebControls.TextBox tbxCodigo;
         
         /// <summary>
         /// hdnCodigo control.
@@ -31,15 +31,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.HiddenField hdnCodigo;
         
         /// <summary>
-        /// tbxCodigo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxCodigo;
-        
-        /// <summary>
         /// tbxPropuesta control.
         /// </summary>
         /// <remarks>
@@ -49,31 +40,31 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.TextBox tbxPropuesta;
         
         /// <summary>
-        /// lbtnBuscar control.
+        /// btnBuscar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnBuscar;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
-        /// lbtnGuardar control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnGuardar;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// lbtnCancelar control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
         /// vsumGuardar control.

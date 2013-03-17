@@ -659,7 +659,7 @@ fieldset.login .submitButton {
     left: 0;
 }
 
-.content table {
+/*.content table {
     margin: 20px auto;
 }
 
@@ -667,7 +667,7 @@ fieldset.login .submitButton {
 .content table td {
     padding: 5px;
 }
-
+*/
 #form_lineabase label {
     width: 120px;
 }
