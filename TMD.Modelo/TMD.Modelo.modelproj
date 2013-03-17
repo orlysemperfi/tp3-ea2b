@@ -18,9 +18,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
   <ItemGroup>
     <Folder Include="ModelDefinition\" />
-    <Content Include="Dependencias.dgml">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="ModelDefinition\TMD.Modelo.uml">
       <SubType>Content</SubType>
     </Content>
