@@ -48,7 +48,8 @@
                                         OnClientClick="javascript:return validarProyecto();" />
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" Text="Nuevo" />
+                                    <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" 
+                                        Text="Nueva Orden" />
                                 </td>
                             </tr>
                         </table>
@@ -99,7 +100,8 @@
                         <asp:TemplateField HeaderText="Cargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnCargar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Cargar" ImageUrl="~/Imagenes/upload.jpg" ToolTip="Cargar Archivo"/>
+                                    CommandName="Cargar" ImageUrl="~/Imagenes/upload.jpg" ToolTip="Cargar Archivo"
+                                    Visible='<%# (Eval("NombreArchivo")== null) %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Descargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
@@ -152,8 +154,8 @@
         }
         function validarProyecto() {
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                alert('Seleccione un Proyecto!');
-                return false;
+                //alert('Seleccione un Proyecto!');
+                return true;
             }
         }
     </script>
