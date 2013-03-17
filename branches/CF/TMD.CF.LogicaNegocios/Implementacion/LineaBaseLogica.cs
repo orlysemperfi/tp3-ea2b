@@ -35,42 +35,7 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         /// </summary>
         /// <param name="lineaBase">LineaBase</param>
         public void Agregar(LineaBase lineaBase, UsuarioProyecto usuarioProyecto)
-        {
-            ProyectoFase proyectoFase = _proyectoFaseData.ObtenerPorFaseProyecto(lineaBase.ProyectoFase);
-
-            if (lineaBase.LineaBaseECS == null || lineaBase.LineaBaseECS.Count() == 0)
-            {
-                //REGLA: La Linea base debe tener asociado por lo menos un elemento de configuracion.
-                throw new ReglaNegocioException("La Linea base debe tener asociado por lo menos un elemento de configuracion.");
-            }
-            else if (proyectoFase == null)
-            {
-                //REGLA: El codigo del proyecto y/o fase deben existir.
-                throw new ReglaNegocioException("El codigo del proyecto y/o fase deben existir.");
-
-            }
-            else if (proyectoFase.Proyecto.FechaFin < DateTime.Now)
-            {
-                //REGLA: Solo se puede crear una linea base para un proyecto que no haya finalizado.
-                throw new ReglaNegocioException("Solo se puede crear una linea base para un proyecto que no haya finalizado.");
-            }
-            else if (proyectoFase.FechaFin < DateTime.Now)
-            {
-                //REGLA: Solo se puede crear una linea base para una fase que no haya finalizado.
-                throw new ReglaNegocioException("Solo se puede crear una linea base para una fase que no haya finalizado.");
-
-            }
-            else if (_lineaBaseData.ObtenerPorProyectoFase(lineaBase.ProyectoFase) != null)
-            {
-                //REGLA: Solo se peude crear una linea base para una fase de un proyecto.
-                throw new ReglaNegocioException("Solo se peude crear una linea base para una fase de un proyecto.");
-            }
-            else if (lineaBase.LineaBaseECS.Where(x => x.Responsable.Id == 0).Count() > 0)
-            {
-                //REGLA: Todos los elementos de configuracion deben tener asignado a un responsable.
-                throw new ReglaNegocioException(
-                    "REGLAs los elementos de configuracion deben tener asignado a un responsable.");
-            }
+        {            
             using (var scope = new TransactionScope())
             {
                 List<UsuarioProyecto> listaUsuarioProyecto = new List<UsuarioProyecto>();
@@ -110,30 +75,6 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         /// <param name="lineaBase">Objeto LineaBase</param>
         public void Actualizar(LineaBase lineaBase)
         {
-            LineaBase lineaBaseCreada = _lineaBaseData.ObtenerPorid(lineaBase.Id);
-            if (lineaBaseCreada == null)
-            {
-                //REGLA: Solo se peuden actualizar lineas base que existan en BD.
-                throw new ReglaNegocioException("Solo se peude actualizar lineas base que existan en BD.");
-            }
-            else if (!lineaBaseCreada.Estado.Equals(Constantes.EstadoLineaBaseAbierta.ToString()))
-            {
-                //REGLA: Solo se peude actualizar cuando la linea base se encuentra en estado abierta.
-                throw new ReglaNegocioException("Solo se peude actualizar cuando la linea base se encuentra en estado abierta.");
-            }
-            else if (lineaBase.LineaBaseECS == null || lineaBase.LineaBaseECS.Count() == 0)
-            {
-                //REGLA: La Linea base debe tener asociado por lo menos un elemento de configuracion.
-                throw new ReglaNegocioException(
-                    "La Linea base debe tener asociado por lo menos un elemento de configuracion.");
-            }
-            else if (lineaBase.LineaBaseECS.Where(x => x.Responsable.Id == 0).Count() > 0)
-            {
-                //REGLA: Todos los elementos de configuracion deben tener asignado a un responsable.
-                throw new ReglaNegocioException(
-                    "REGLAs los elementos de configuracion deben tener asignado a un responsable.");
-            }
-
             using (var scope = new TransactionScope())
             {
                 _lineaBaseData.Actualizar(lineaBase);
@@ -151,13 +92,6 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         /// <param name="elemento">Objeto LineaBaseElementoConfiguracion</param>
         public void ActualizarArchivo(LineaBaseElementoConfiguracion elemento)
         {
-            LineaBaseElementoConfiguracion elementoCreado = _lineaBaseECSData.ObtenerPorId(elemento.Id);
-            if (elementoCreado.LineaBase.ProyectoFase.FechaFin < DateTime.Now)
-            {
-                //REGLA: Solo se puede modificar el archivo de una linea base para un proyecto que no haya finalizado.
-                throw new ReglaNegocioException("Solo se puede modificar el archivo de una linea base para un proyecto que no haya finalizado.");
-            }
-
             using (var scope=new TransactionScope())
             {
                 _lineaBaseECSData.ActualizarArchivo(elemento);
@@ -178,8 +112,7 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             using (var scope = new TransactionScope())
             {
                 elementoConfiguracion = _lineaBaseECSData.ObtenerArchivo(id);
-                scope.Complete();
-                
+                scope.Complete();                
             }
 
             return elementoConfiguracion;
