@@ -243,7 +243,11 @@ namespace TMD.MP.Site.Privado
             return Utilitario.ObtenerDescTipoIndicador(tipo);
         }
 
-
+        protected void gvwIndicadorListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvwIndicadorListado.PageIndex = e.NewPageIndex;
+            gvwIndicadorListado.DataBind();
+        }
 
     }
 }

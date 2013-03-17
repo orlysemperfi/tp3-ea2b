@@ -71,7 +71,7 @@
 <%--        <table id="tblPilotoListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td> --%>                   
-                    <asp:GridView ID="gvwPilotoListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPilotoListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPilotoListado_RowCommand">
+                    <asp:GridView ID="gvwPilotoListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPilotoListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPilotoListado_RowCommand" OnPageIndexChanging="gvwPilotoListado_PageIndexChanging">
                         <EmptyDataTemplate>
                                 No existen pilotos con los criterios ingresados.
                         </EmptyDataTemplate> 
@@ -100,9 +100,7 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
-                        </Columns>
-                        <PagerTemplate>
-                        </PagerTemplate>                   
+                        </Columns>                 
                     </asp:GridView>
 <%--                </td>
             </tr>

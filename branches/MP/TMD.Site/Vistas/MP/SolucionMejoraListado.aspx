@@ -72,7 +72,7 @@
 <%--        <table id="tblSolucionMejoraListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>  --%>                  
-                    <asp:GridView ID="gvwSolucionMejoraListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="4" DataSource='<%#ObtenerSolucionMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwSolucionMejoraListado_RowCommand">
+                    <asp:GridView ID="gvwSolucionMejoraListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="4" DataSource='<%#ObtenerSolucionMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwSolucionMejoraListado_RowCommand" OnPageIndexChanging="gvwSolucionMejoraListado_PageIndexChanging">
                         <EmptyDataTemplate>
                                 No existen soluciones con los criterios ingresados.
                         </EmptyDataTemplate>

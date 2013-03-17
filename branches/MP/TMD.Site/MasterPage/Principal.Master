@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.master.cs" Inherits="ServiceDesk.Principal" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,8 +34,8 @@
     <div class="page">
             <div class="header">
 
-                <asp:ScriptManager ID="ScriptManager1" runat="server">             
-                </asp:ScriptManager> 
+                <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server">             
+                </ajaxToolkit:ToolkitScriptManager> 
                 
                  <%--<asp:Literal ID="Literal1" runat="server"></asp:Literal>--%>
                  <%--<div id="banner"></div>--%>

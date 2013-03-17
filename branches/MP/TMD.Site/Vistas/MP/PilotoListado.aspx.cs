@@ -179,5 +179,11 @@ namespace TMD.MP.Site.Privado
         //{
         //    Response.Redirect(Paginas.TMD_MP_Inicio, true);
         //}
+
+        protected void gvwPilotoListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvwPilotoListado.PageIndex = e.NewPageIndex;
+            gvwPilotoListado.DataBind();
+        }
     }
 }
