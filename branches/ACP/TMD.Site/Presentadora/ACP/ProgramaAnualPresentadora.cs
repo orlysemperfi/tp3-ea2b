@@ -32,7 +32,7 @@ namespace TMD.CF.Site.Presentador.ACP
                 ProgramaAnualAuditoria oProgramaAnual = _modelo.ObtenerProgramaAnualDeAuditoria();
                 _vista.AnhoPrograma = oProgramaAnual.AnhoPrograma;
                 _vista.UsuarioCreacion = oProgramaAnual.UsuarioCreacion;
-                _vista.UsuarioAprobacion = oProgramaAnual.UsuarioAprobacion;
+                _vista.UsuarioAprobacion = oProgramaAnual.UsuarioAprobacion == null ? "" : oProgramaAnual.UsuarioAprobacion;
                 _vista.Estado = oProgramaAnual.Estado;
                 _vista.IdProgramaAnual = oProgramaAnual.IdProgramaAnual;                
                 _vista.IsView = oProgramaAnual.ObjAuditorias.Count == 0 ? "0" : "1";                
