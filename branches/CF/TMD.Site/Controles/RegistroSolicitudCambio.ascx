@@ -13,7 +13,7 @@
     </p>
     <p>
         <span class="label-field">Nombre:</span>
-        <asp:TextBox ID="txtNombre" runat="server" Width="230px"></asp:TextBox>
+        <asp:TextBox ID="txtNombre" runat="server" Width="240px"></asp:TextBox>
         <asp:RequiredFieldValidator ID="NombreRequired" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="El Nombre es requerido."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
@@ -21,7 +21,7 @@
     <p>
         <span class="label-field">Proyecto:</span>
         <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" 
-            OnSelectedIndexChanged="ddlProyecto_SelectedIndexChanged" Width="230px">
+            OnSelectedIndexChanged="ddlProyecto_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
             ErrorMessage="El proyecto es requerido." ToolTip="El proyecto es requerido."
@@ -32,7 +32,7 @@
     <p>
         <span class="label-field">Linea Base:</span>
         <asp:DropDownList ID="ddlLineaBase" runat="server" AutoPostBack="True" 
-            OnSelectedIndexChanged="ddlLineaBase_SelectedIndexChanged" Width="210px">
+            OnSelectedIndexChanged="ddlLineaBase_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="lineaBaseValidator" runat="server" ControlToValidate="ddlLineaBase"
             ErrorMessage="La linea base es requerida." ToolTip="La linea base es requerida."
@@ -42,7 +42,7 @@
     </p>
     <p>
         <span class="label-field">Elemento Configuracion:</span>
-        <asp:DropDownList ID="ddlElementoConfiguracion" runat="server" Width="150px">
+        <asp:DropDownList ID="ddlElementoConfiguracion" runat="server">
         </asp:DropDownList>
         <asp:CompareValidator ID="elementoValidador" runat="server" ControlToValidate="ddlElementoConfiguracion"
             ErrorMessage="El elemento de configuraci&oacute;n es requerido." ToolTip="El elemento de configuraci&oacute;n es requerido"
@@ -52,7 +52,7 @@
     </p>
     <p>
         <span class="label-field">Prioridad:</span>
-        <asp:DropDownList ID="ddlPrioridad" runat="server" Width="100px">
+        <asp:DropDownList ID="ddlPrioridad" runat="server">
         </asp:DropDownList>
         <asp:CompareValidator ID="prioridadValidador" runat="server" ControlToValidate="ddlPrioridad"
             ErrorMessage="La prioridad es requerida." ToolTip="La prioridad es requerida."

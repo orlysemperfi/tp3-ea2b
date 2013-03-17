@@ -1,20 +1,5 @@
-﻿/* DEFAULTS
+﻿﻿/* DEFAULTS
 ----------------------------------------------------------*/
-.ModalPopupBG
-{
-    background-color: #666699;
-    filter: alpha(opacity=50);
-    opacity: 0.7;
-}
-
-.HellowWorldPopup
-{
-    min-width:200px;
-    min-height:150px;
-    background:white;
-}
-
-
 .ModalPopupBG
 {
     background-color: #666699;
@@ -24,57 +9,57 @@
 
 
 .popup_Container {
-	background-color:#FFFFFF;
-	border:2px solid #000000;
-	padding: 0px 0px 0px 0px;
+﻿  background-color:#FFFFFF;
+﻿  border:2px solid #000000;
+﻿  padding: 0px 0px 0px 0px;
 }
 
 .popupConfirmation
 {
-	width: 300px;
-	height: 200px;
+﻿  width: 300px;
+﻿  height: 200px;
 }
 
 .popup_Titlebar {
-	background: url(/imagenes/titlebar_bg.jpg);
-	height: 29px;
+﻿  background: url(/imagenes/titlebar_bg.jpg);
+﻿  height: 29px;
 }
 
 .popup_Body
 {
-	padding:15px 15px 15px 15px;
-	font-family:Arial;
-	font-weight:bold;
-	font-size:12px;
-	line-height:15pt;
-	clear:both;
-	padding:20px;
+﻿  padding:15px 15px 15px 15px;
+﻿  font-family:Arial;
+﻿  font-weight:bold;
+﻿  font-size:12px;
+﻿  line-height:15pt;
+﻿  clear:both;
+﻿  padding:20px;
 }
 
 .TitlebarLeft 
 {
-	float:left;
-	padding-left:5px;
-	padding-top:5px;
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight:bold;
-	font-size:12px;
-	color:#FFFFFF;
+﻿  float:left;
+﻿  padding-left:5px;
+﻿  padding-top:5px;
+﻿  font-family:Arial, Helvetica, sans-serif;
+﻿  font-weight:bold;
+﻿  font-size:12px;
+﻿  color:#FFFFFF;
 }
 .TitlebarRight 
-{	
-	background-position:right;
-	background-repeat:no-repeat;
-	height:15px;
-	width:16px;
-	float:right;
-	margin-right:5px;
-	margin-top:5px;
+{﻿  
+﻿  background-position:right;
+﻿  background-repeat:no-repeat;
+﻿  height:15px;
+﻿  width:16px;
+﻿  float:right;
+﻿  margin-right:5px;
+﻿  margin-top:5px;
 }
 
 .popup_Buttons
 {
-	margin:10px;
+﻿  margin:10px;
 }
 
 body   
@@ -103,9 +88,8 @@ a:active
     color: #034af3;
 }
 
-p
-{
-    margin-bottom: 10px;
+p {
+    margin: 7px 0;
     line-height: 1.6em;
 }
 
@@ -123,11 +107,11 @@ h1, h2, h3, h4, h5, h6
     margin-bottom: 0px;
 }
 
-h1{
-    font-size: 2em;
+h1
+{
+    font-size: 1.6em;
     padding-bottom: 0px;
     margin-bottom: 0px;
-    font-weight: bold;
 }
 
 h2
@@ -168,9 +152,6 @@ first child of the left and right table columns */
     background-color: #fff;
     margin: 20px auto 0px auto;
     border: 1px solid #496077;
-    border-radius: 10px 10px 0 0;
-    -moz-border-radius: 10px 10px 0 0;
-    -webkit-border-radius: 10px 10px 0 0;
 }
 
 .header
@@ -178,20 +159,8 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
+    background: #4b6c9e;
     width: 100%;
-    z-index: 11;
-    border-radius: 8px 8px 0 0;
-    -moz-border-radius: 8px 8px 0 0;
-    -webkit-border-radius: 8px 8px 0 0;
-    
-    background: #558eb2; /* Old browsers */
-    background: -moz-linear-gradient(top,  #558eb2 0%, #031d42 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#558eb2), color-stop(100%,#031d42)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #558eb2 0%,#031d42 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #558eb2 0%,#031d42 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #558eb2 0%,#031d42 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #558eb2 0%,#031d42 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#558eb2', endColorstr='#031d42',GradientType=0 ); /* IE6-9 */
 }
 
 .header h1
@@ -308,24 +277,21 @@ legend
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
-    color: #031D42;
 }
 
 input.textEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
 }
 
 input.passwordEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
 }
 
 div.accountInfo
 {
-    width: 80%;
+    width: auto;
 }
 
 /* MISC  
@@ -383,6 +349,11 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+.fieldEdit
+{
+   
+    background:#CCFF66;
 }
 
 
@@ -518,192 +489,24 @@ div.accountInfo
     width: 35px;
 }
 
-/********************* LOGIN ********************/
-#login-wrapper {
-    width: 100%;
-    display: block;
-    padding: 30px 0 100px 0;
-    float: left;
-    text-align: center;
-}
-
-#header-login {
-    float: left;
-    padding: 0 4%;
-    width: 92%;
-    position: relative;
-}
-
-#header-login h2 {
-    color: #031D42;
-}
-
-#header-login p {
-    font-size: 15px;
-    margin-top: 2px;
-    color: #000;
-}
-
-#login-content {
-    width: 422px;
-    background: url(/Imagenes/bg-formLogin.png) no-repeat 0 0;
-    text-align: left;
-    position: relative;
-    height: 444px;
-    margin: 0 auto;
-}
-
-#login-content div.accountInfo {
-    width: 94%;
-    padding: 0 3%;
-    float: left;
-    position: relative;
-}
-
-#username-wrapper input,
-#pwd-wrapper input {
-    background: url(/Imagenes/user-fields.png) no-repeat 0 0;
-    border: medium none;
-    height: 57px;
-    padding: 0 5px 0 55px;
-    width: 280px;
-    color: #031D42;
-    font-size: 22px;
-}
-
-#username-wrapper input {
-    background: url(/Imagenes/user-fields.png) no-repeat 0 0;
-}
-
-#pwd-wrapper input {
-    background: url(/Imagenes/password-fields.png) no-repeat 0 0;
-}
-
-#username-wrapper input.focus,
-#pwd-wrapper input.focus {
-    background-position: 0 -60px;
-}
-
-fieldset.login {
-    margin: 0;
-}
-
-fieldset.login p {
-    margin: 2px 0 10px 15px;
-}
-
-fieldset.login p#pwd-wrapper {
-    margin-bottom: 2px;
-}
 
 
-fieldset.login p#no-cerrar {
-    color: #000;
-    float: left;
-    position: relative;
-    
-}
 
-fieldset.login p#no-cerrar label {
-     font-size: 13px;
-}
-
-fieldset.login p#no-cerrar input {
-    float: left;
-}
-
-.submitButton input {
-    background: url(/Imagenes/btn-login.png) no-repeat 0 0;
-    border: medium none;
-    height: 54px;
-    width: 336px;
-    float: left;
-    cursor: pointer;
-}
-
-.submitButton input:hover {
-    background-position: 0 -57px;
-}
-
-#login-content .failureNotification.error2 {
-    padding: 0 4%;
-    width: 92%;
-    float: left;
-}
-
-fieldset.login .failureNotification {
-    font-weight: bold;
-}
-
-fieldset.login legend {
-    font-size: 17px;
-}
-
-fieldset.login .submitButton {
-    padding: 0 0 0 2px;
-    float: left;
-}
-
-#slide-images {
-    height: 420px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 0;
-    width: 700px;
-    text-align: center;
-    margin-left: 100px;
-    position: relative;
-}
-
-#slide-images img {
-    left: 0;
-}
-
-.content table {
-    margin: 20px auto;
-}
-
-.content table th,
-.content table td {
-    padding: 5px;
-}
-
-#form_lineabase label {
-    width: 120px;
-}
-
-#form_lineabase input {
-    float: left;
-}
-
-#frm-actualizar-sc h2,
-#frm-actualizar-sc h1 {
+/*************** NUEVOS 17/03/13 **********************/
+.content .panel-wrapper {
     text-align: left;
 }
 
-.form p {
-    display: block;
-    text-align: left;
-}
-
-#frm-actualizar-sc {
+.content .panel-wrapper label,
+.label-field {
+    min-width: 100px;
     float: left;
 }
 
-#frm-actualizar-sc p {
-    width: 100%;
-    float: left;
+#frm-actualizar-sc .label-field {
+    min-width: 170px;
 }
 
-#frm-actualizar-sc p .label-field {
-    width: 215px;
+#frm-actualizar-sc select {
+    min-width: 246px;
 }
-
-.form .label-field,
-.form label {
-    width: 150px;
-}
-
-
-
-
