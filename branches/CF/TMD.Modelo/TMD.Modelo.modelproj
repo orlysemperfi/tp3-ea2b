@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{d745eff8-dbdc-4cc0-b74f-22b09c78cabe}</ProjectGuid>
+    <ArchitectureToolsVersion>1.0.0.0</ArchitectureToolsVersion>
+    <Name>TMD.Modelo</Name>
+    <RootNamespace>TMD.Modelo</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Dependencias.dgml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\TMD.Modelo.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="DiagramaCapas.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="DiagramaCapas.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>DiagramaCapas.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="DiagramaCapas.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>DiagramaCapas.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMD.CF.AccesoDatos\TMD.CF.AccesoDatos.csproj">
+      <Name>TMD.CF.AccesoDatos</Name>
+      <Project>{728f843e-c373-48f7-a41e-b2a5b6fa2572}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.CF.LogicaNegocios\TMD.CF.LogicaNegocios.csproj">
+      <Name>TMD.CF.LogicaNegocios</Name>
+      <Project>{1ed7f34a-504a-4ba9-a9a2-dded2e15db61}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
+      <Name>TMD.Entidades</Name>
+      <Project>{106f46e5-0855-453e-9c06-b67d1ee7a00f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.Site\TMD.Site.csproj">
+      <Name>TMD.Site</Name>
+      <Project>{8e4b6af7-458b-4fef-9879-b66c16b3441d}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

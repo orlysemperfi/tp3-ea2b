@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="07877fb4-628b-436a-9295-caedce17a15c" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="53c5dc41-55db-464b-b19a-37d1cb22cddc" name="Capa Presentacion">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="c402a1d7-bf8f-4950-9b46-88b34d8f5f94" direction="Forward">
+          <layerMoniker Id="98dcec7d-6c53-4b4d-8220-00864c921c5f" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="ca4ecc0f-3dfa-40a8-b301-d77491370090" direction="Forward">
+          <layerMoniker Id="ecd8e8e5-01cb-47aa-9580-f3839ddf79a6" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="b7e55630-25f4-4d33-ba11-802fe8793285" name="TMD.Site">
+          <ArtifactNode Label="TMD.Site" Category="CodeSchema_Project" Id="(Assembly=../TMD.Site/TMD.Site.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=TMD.CF.Site)" Label="TMD.CF.Site.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="ecd8e8e5-01cb-47aa-9580-f3839ddf79a6" name="Capa Negocio">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="3ab11761-e59d-4e79-96c4-306625ae6a84" direction="Forward">
+          <layerMoniker Id="98dcec7d-6c53-4b4d-8220-00864c921c5f" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="56ee1c3f-7560-47a2-8a7d-2af2c1b96f35" direction="Forward">
+          <layerMoniker Id="a5ada79b-ffeb-45d1-9d68-a74aacc8f2bb" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="3af8cbcb-c250-4772-91b4-d29b9680a36e" name="TMD.CF.LogicaNegocios">
+          <ArtifactNode Label="TMD.CF.LogicaNegocios" Category="CodeSchema_Project" Id="(Assembly=../TMD.CF.LogicaNegocios/TMD.CF.LogicaNegocios.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=TMD.CF.LogicaNegocios)" Label="TMD.CF.LogicaNegocios.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="98dcec7d-6c53-4b4d-8220-00864c921c5f" name="Entidades">
+      <references>
+        <reference Id="c6b21e96-ef17-4655-840a-4b9879bd003d" name="TMD.Entidades">
+          <ArtifactNode Label="TMD.Entidades" Category="CodeSchema_Project" Id="(Assembly=../TMD.Entidades/TMD.Entidades.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=TMD.Entidades)" Label="TMD.Entidades.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="a5ada79b-ffeb-45d1-9d68-a74aacc8f2bb" name="Capa Datos">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="22f4b9e1-2904-453d-a5be-c72fd488a41d" direction="Forward">
+          <layerMoniker Id="98dcec7d-6c53-4b4d-8220-00864c921c5f" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="83c9bc5b-e185-444a-ad84-2a43ee24f8d3" name="TMD.CF.AccesoDatos">
+          <ArtifactNode Label="TMD.CF.AccesoDatos" Category="CodeSchema_Project" Id="(Assembly=../TMD.CF.AccesoDatos/TMD.CF.AccesoDatos.csproj)">
+            <Category Ref="CodeSchema_SourceFile" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=TMD.CF.AccesoDatos)" Label="TMD.CF.AccesoDatos.dll" Category="FileSystem.Category.FileOfType.dll">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>
