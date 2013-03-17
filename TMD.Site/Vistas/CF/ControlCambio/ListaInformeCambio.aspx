@@ -154,8 +154,7 @@
                 <asp:UpdatePanel runat="server" ID="upnlControles">
             <ContentTemplate>
                 <uc1:registroinformecambio id="ucRegistroInformeCambio" runat="server" Visible="False" />
-                <uc2:aprobarinformecambio id="ucAprobarInformeCambio" runat="server" visible="False" />
-                    visible="False" />
+                <uc2:aprobarinformecambio id="ucAprobarInformeCambio" runat="server" visible="False" />                
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:UpdatePanel runat="server" ID="upnlSubir" UpdateMode="Conditional">
