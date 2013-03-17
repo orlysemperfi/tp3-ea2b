@@ -133,7 +133,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnDescarga_Click(object sender, EventArgs e)
         {
             int idOrden = Convert.ToInt32(hidIdOrden.Value);
-            /*
+            
             OrdenCambio orden = new OrdenCambioControladora().ObtenerArchivo(idOrden);
 
             if (orden != null && orden.Data != null)
@@ -144,11 +144,11 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
                 Response.Flush();
                 Response.Buffer = true;
                 Response.BinaryWrite(orden.Data);
-            }*/
+            }
         }
 
         protected void btnGrabarArchcivo_Click(object sender, EventArgs e)
-        {/*
+        {
             if (fileUpArchivo.HasFile)
             {
                 byte[] archivo = fileUpArchivo.FileBytes;
@@ -157,7 +157,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
                 MostrarControles(false, true, false, false, true);
                 btnBuscar_Click(null, null);
-            }*/
+            }
         }
 
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
