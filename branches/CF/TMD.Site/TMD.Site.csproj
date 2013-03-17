@@ -58,6 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\Librerias\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity.Interception">
       <HintPath>..\Librerias\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
