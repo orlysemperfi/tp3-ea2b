@@ -106,7 +106,7 @@ namespace TMD.CF.Site.Vistas.MP
             }
         }
 
-        protected void ibtnCambiarEstadoEnDesarrollo_Click(object sender, EventArgs e)
+        protected void btnCambiarEstadoEnDesarrollo_Click(object sender, EventArgs e)
         {
 
             int count = 0;
