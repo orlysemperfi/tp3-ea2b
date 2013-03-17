@@ -30,6 +30,16 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             return _usuarioData.ListaPorProyecto(proyecto);
         }
 
+        /// <summary>
+        /// Lista los usuarios por rol
+        /// </summary>
+        /// <param name="rol">rol</param>
+        /// <returns>Lista los usuarios por rol</returns>
+        public List<Usuario> ListaPorRol(String rol)
+        {
+            return _usuarioData.ListaPorRol(rol);
+        }
+
         public Usuario ObtenerUsuario(string login)
         {
             return _usuarioData.ObtenerUsuario(login);

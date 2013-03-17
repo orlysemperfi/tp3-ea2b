@@ -19,6 +19,13 @@ namespace TMD.CF.AccesoDatos.Contrato
         List<Usuario> ListaPorProyecto(Proyecto proyecto);
 
         /// <summary>
+        /// Lista los usuarios por rol.
+        /// </summary>
+        /// <param name="rol">rol</param>
+        /// <returns>List Usuario</returns>
+        List<Usuario> ListaPorRol(String rol);
+
+        /// <summary>
         /// Obtiene un usuario de el login
         /// </summary>
         /// <param name="proyecto">Login usuario</param>
