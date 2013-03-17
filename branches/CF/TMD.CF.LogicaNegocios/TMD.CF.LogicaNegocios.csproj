@@ -68,6 +68,7 @@
     <Compile Include="Implementacion\InformeCambioLogica.cs" />
     <Compile Include="Implementacion\LineaBaseDetalleLogica.cs" />
     <Compile Include="Implementacion\LineaBaseLogica.cs" />
+    <Compile Include="Implementacion\LineaBaseValidacionLogica.cs" />
     <Compile Include="Implementacion\OrdenCambioLogica.cs" />
     <Compile Include="Implementacion\ProyectoFaseLogica.cs" />
     <Compile Include="Implementacion\ProyectoLogica.cs" />
