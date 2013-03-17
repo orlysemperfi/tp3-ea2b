@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.LogicaNegocios.Implementacion;
-using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using System.Configuration;
 using TMD.Core;
@@ -21,13 +20,6 @@ namespace TMD.CF.Site.FachadaNegocio.CF
 
         public OrdenCambioFachada()
         {
-            //string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
-
-            //ordenCambioLogica = new OrdenCambioLogica(new OrdenCambioData(baseDatos));
-            //usuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
-            //ProyectoLogica = new ProyectoLogica(new ProyectoData(baseDatos));
-            //InformeCambioLogica = new InformeCambioLogica(new InformeCambioData(baseDatos));
-            //LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos),null,null,null);
         }
 
         public List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase)
