@@ -190,12 +190,14 @@
     <Compile Include="ApplicationLogger.cs" />
     <Compile Include="Error\GeneralError.aspx.cs">
       <DependentUpon>GeneralError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error\GeneralError.aspx.designer.cs">
       <DependentUpon>GeneralError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error\NoPermitido.aspx.cs">
       <DependentUpon>NoPermitido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error\NoPermitido.aspx.designer.cs">
       <DependentUpon>NoPermitido.aspx</DependentUpon>
