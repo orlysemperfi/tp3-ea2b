@@ -3,6 +3,9 @@ using System.Transactions;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.AccesoDatos.Contrato;
 using TMD.Entidades;
+using TMD.CF.LogicaNegocios.Error;
+using System;
+using TMD.Core;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
