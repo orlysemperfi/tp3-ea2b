@@ -25,7 +25,8 @@ namespace TMD.CF.AccesoDatos.Map
                 UsuarioReg = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_REG")},
                 FechaRegistro = reader.GetDateTime("FECHA_REGISTRO"),
                 Prioridad = reader.GetInt("PRIORIDAD"),
-                UsuarioAsignado = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_ASIGNADO")}
+                UsuarioAsignado = new Usuario { Id = reader.GetInt("CODIGO_USUARIO_ASIGNADO")},
+                NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
             };
         }
 

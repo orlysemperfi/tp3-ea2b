@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data.SqlTypes;
+using System.IO;
 using TMD.CF.AccesoDatos.Core;
 using TMD.CF.AccesoDatos.Contrato;
+using TMD.CF.AccesoDatos.Map;
+using TMD.CF.AccesoDatos.Util;
 using TMD.Entidades;
 using System.Data.Common;
 using System.Data;
-using TMD.CF.AccesoDatos.Map;
-using System.Data.SqlTypes;
-using System.IO;
 
 namespace TMD.CF.AccesoDatos.Implementacion
 {
@@ -162,8 +161,8 @@ namespace TMD.CF.AccesoDatos.Implementacion
         public OrdenCambio ObtenerArchivo(int id)
         {
             OrdenCambio elemento = null;
-            /*
-            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_SOLICITUD_CAMBIO_SEL_ARCHIVO"))
+            
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_ORDEN_CAMBIO_SEL_ARCHIVO"))
             {
                 DB.AddInParameter(command, "@CODIGO", DbType.Int32, id);
 
@@ -174,7 +173,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                 {
                     if (reader.Read())
                     {
-                        elemento = new SolicitudCambio
+                        elemento = new OrdenCambio
                         {
                             NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
                         };
@@ -197,8 +196,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                 }
             
                 return elemento;
-            }*/
-            return elemento;
+            }
         }
     }
 }
