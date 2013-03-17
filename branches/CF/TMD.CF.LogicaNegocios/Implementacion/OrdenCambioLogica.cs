@@ -52,6 +52,16 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         }
 
         /// <summary>
+        /// Obtiene una orden por informe
+        /// </summary>
+        /// <param name="id">Id de informe</param>
+        /// <returns>Objeto orden de cambio</returns>
+        public OrdenCambio ObtenerPorInforme(int id)
+        {
+            return _ordenCambioData.ObtenerPorInforme(id);
+        }
+
+        /// <summary>
         /// Obtiene el archivo de la orden de cambio
         /// </summary>
         /// <param name="id">Id de la orden</param>

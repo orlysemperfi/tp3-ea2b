@@ -126,6 +126,31 @@ namespace TMD.CF.AccesoDatos.Implementacion
         }
 
         /// <summary>
+        /// Obtiene una orden por el Id
+        /// </summary>
+        /// <param name="id">Id de la orden</param>
+        /// <returns>Objeto orden de cambio</returns>
+        public OrdenCambio ObtenerPorInforme(int id)
+        {
+            OrdenCambio ordenCambio = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_ORDEN_CAMBIO_SEL_INFORME"))
+            {
+                DB.AddInParameter(command, "@CODIGO_INFORME", DbType.Int32, id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    if (reader.Read())
+                    {
+                        ordenCambio = OrdenCambioMap.Select(reader);
+                    }
+                }
+            }
+
+            return ordenCambio;
+        }
+
+        /// <summary>
         /// Actualiza el archivo de una oden
         /// </summary>
         /// <param name="ordenCambio">Objeto orden a actualziar</param>

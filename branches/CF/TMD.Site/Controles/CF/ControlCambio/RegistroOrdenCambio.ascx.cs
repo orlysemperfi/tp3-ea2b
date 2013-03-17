@@ -92,10 +92,6 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         {
             ddlInforme.EnlazarDatos(ordenFachada.ListarInformePorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), 1), "Nombre", "Id");
         }
-
-        protected void ddlUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
         
         protected void btnGrabar_Click(object sender, EventArgs e)
         {

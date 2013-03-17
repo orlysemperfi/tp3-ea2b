@@ -62,7 +62,7 @@
     </p>
     <p>
         <span class="label-field">Usuario Asignado:</span>
-        <asp:DropDownList ID="ddlUsuario" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlUsuario_SelectedIndexChanged">
+        <asp:DropDownList ID="ddlUsuario" runat="server" AutoPostBack="True">
         </asp:DropDownList>
         <asp:CompareValidator ID="usuarioValidator" runat="server" ControlToValidate="ddlUsuario"
             ErrorMessage="El usuario es requerido." ToolTip="El usuario es requerido."

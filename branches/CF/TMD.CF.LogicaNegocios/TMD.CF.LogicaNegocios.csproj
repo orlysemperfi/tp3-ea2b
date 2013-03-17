@@ -74,6 +74,7 @@
     <Compile Include="Implementacion\ProyectoFaseLogica.cs" />
     <Compile Include="Implementacion\ProyectoLogica.cs" />
     <Compile Include="Implementacion\SolicitudCambioLogica.cs" />
+    <Compile Include="Reglas\OrdenCambioValidacionLogica.cs" />
     <Compile Include="Reglas\SolicitudCambioValidacionLogica.cs" />
     <Compile Include="Implementacion\UsuarioLogica.cs" />
     <Compile Include="Implementacion\UsuarioProyectoLogica.cs" />
