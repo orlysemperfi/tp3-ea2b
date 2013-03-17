@@ -66,14 +66,15 @@
     <Compile Include="Implementacion\ElementoConfiguracionLogica.cs" />
     <Compile Include="Implementacion\FaseLogica.cs" />
     <Compile Include="Implementacion\InformeCambioLogica.cs" />
+    <Compile Include="Reglas\InformeCambioValidacionLogic.cs" />
     <Compile Include="Implementacion\LineaBaseDetalleLogica.cs" />
     <Compile Include="Implementacion\LineaBaseLogica.cs" />
-    <Compile Include="Implementacion\LineaBaseValidacionLogica.cs" />
+    <Compile Include="Reglas\LineaBaseValidacionLogica.cs" />
     <Compile Include="Implementacion\OrdenCambioLogica.cs" />
     <Compile Include="Implementacion\ProyectoFaseLogica.cs" />
     <Compile Include="Implementacion\ProyectoLogica.cs" />
     <Compile Include="Implementacion\SolicitudCambioLogica.cs" />
-    <Compile Include="Implementacion\SolicitudCambioValidacionLogica.cs" />
+    <Compile Include="Reglas\SolicitudCambioValidacionLogica.cs" />
     <Compile Include="Implementacion\UsuarioLogica.cs" />
     <Compile Include="Implementacion\UsuarioProyectoLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
