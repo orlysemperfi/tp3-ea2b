@@ -128,16 +128,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TMD.CF.Site.Controles.AprobarInformeCambio ucAprobarInformeCambio;
-        
-        /// <summary>
-        /// ucSubirArchivoInformeCambio control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TMD.CF.Site.Controles.SubirArchivoInformeCambio ucSubirArchivoInformeCambio;
-        
+              
         /// <summary>
         /// upnlSubir control.
         /// </summary>
