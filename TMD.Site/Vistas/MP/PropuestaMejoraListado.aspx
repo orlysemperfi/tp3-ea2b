@@ -78,7 +78,7 @@
 <%--            <table id="tblPropuestaMejoraListado" runat="server" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>  --%>                  
-                        <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPropuestaMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPropuestaMejoraListado_RowCommand">
+                        <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPropuestaMejoraListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPropuestaMejoraListado_RowCommand" OnPageIndexChanging="gvwPropuestaMejoraListado_PageIndexChanging">
                             <EmptyDataTemplate>
                                 No existen propuestas con los criterios ingresados.
                             </EmptyDataTemplate>
@@ -131,9 +131,7 @@
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="20px" />
                                 </asp:TemplateField>
-                            </Columns>
-                            <PagerTemplate>
-                            </PagerTemplate>                   
+                            </Columns>                
                         </asp:GridView>
 <%--                    </td>
                 </tr>

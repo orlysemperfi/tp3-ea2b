@@ -157,6 +157,11 @@ namespace TMD.CF.Site.Vistas.MP
         //    Response.Redirect(Paginas.TMD_MP_Inicio, true);
         //}
 
+        protected void gvwPropuestaMejoraListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvwPropuestaMejoraListado.PageIndex = e.NewPageIndex;
+            gvwPropuestaMejoraListado.DataBind();
+        }
     }
 
 

@@ -193,6 +193,11 @@ namespace TMD.MP.Site.Privado
         //    Response.Redirect(Paginas.TMD_MP_Inicio, true);
         //}
 
+        protected void gvwSolucionMejoraListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvwSolucionMejoraListado.PageIndex = e.NewPageIndex;
+            gvwSolucionMejoraListado.DataBind();
+        }
 
     }
 }

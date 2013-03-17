@@ -37,7 +37,7 @@ namespace ServiceDesk {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
         /// HeadLoginView control.

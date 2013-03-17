@@ -71,7 +71,7 @@
                     <asp:GridView ID="gvwIndicadorListado" runat="server" 
                         Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
                         DataSource='<%#ObtenerIndicadorListado()%>' BorderWidth="0px" 
-                        BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand" >
+                        BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand" OnPageIndexChanging="gvwIndicadorListado_PageIndexChanging">
                         <EmptyDataTemplate>
                                 No existen indicadores con los criterios ingresados.
                         </EmptyDataTemplate>
@@ -112,9 +112,7 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
-                        </Columns>
-                        <PagerTemplate>
-                        </PagerTemplate>                   
+                        </Columns>                  
                     </asp:GridView>
 <%--                </td>
             </tr>

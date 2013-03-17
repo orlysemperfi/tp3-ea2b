@@ -136,10 +136,8 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="padding-bottom:10px;">
-                                        <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" CssClass="tabla-grilla" Width="800px" BorderWidth="0px" BorderColor="White"
+                                        <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" Width="800px" BorderWidth="0px" BorderColor="White"
                                             DataSource='<%#ObtenerIndicadorListado() %>' OnRowCommand="gvwIndicadores_RowCommand">
-                                            <HeaderStyle CssClass="tabla-grilla-cabecera" />
-                                            <RowStyle CssClass="tabla-grilla-filas" />
                                             <Columns>
                                                 <asp:TemplateField HeaderText="Codigo" Visible="false">
                                                     <ItemTemplate>

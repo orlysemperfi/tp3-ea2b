@@ -72,7 +72,7 @@
                     <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" AutoGenerateColumns="false" 
                         DataSource='<%#ObtenerPropuestaMejoraListado() %>' 
                         OnRowCommand="gvwPropuestaMejoraDesarrollo_RowCommand" 
-                        Width="657px">
+                        Width="920px" AllowPaging="true" PageSize="10" BorderWidth="0px" BorderColor="White" OnPageIndexChanging="gvwPropuestaMejoraListado_PageIndexChanging">
                         <EmptyDataTemplate>
                                 No existen propuestas con los criterios ingresados.
                         </EmptyDataTemplate>
