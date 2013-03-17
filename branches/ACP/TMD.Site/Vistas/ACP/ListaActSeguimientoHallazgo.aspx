@@ -1,9 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaActSeguimientoHallazgo.aspx.cs" Inherits="TMD.ACP.Site.ListaActSeguimientoHallazgo" EnableViewState="false" ValidateRequest="false" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" CodeBehind="ListaActSeguimientoHallazgo.aspx.cs" Inherits="TMD.ACP.Site.ListaActSeguimientoHallazgo" EnableViewState="false" ValidateRequest="false" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
     <link rel="stylesheet" type="text/css" href="Styles/style.css" />
@@ -39,7 +37,7 @@
    
     <div style="padding:5px 10px 5px 10px;height:15px;font-family:Arial;">
         <div style="float:left">
-            <label>Periodo:</label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
+            <label>Periodo: </label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
         </div>        
     </div>    
     <div style="float:left; width:100%;">

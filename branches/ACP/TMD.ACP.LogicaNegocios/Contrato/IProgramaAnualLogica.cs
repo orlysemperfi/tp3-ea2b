@@ -8,7 +8,7 @@ namespace TMD.ACP.LogicaNegocios.Contrato
 {
     public interface IProgramaAnualLogica
     {
-        ProgramaAnualAuditoria ObtenerProgramaAnualDeAuditoria();
+        ProgramaAnualAuditoria ObtenerProgramaAnualDeAuditoria(int idUsuario);
 
         void GrabarProgramaAnual(ref ProgramaAnualAuditoria oProgramaAnualAuditoria);          
     }

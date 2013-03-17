@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true"
     CodeBehind="ProgramaAuditoria.aspx.cs" Inherits="TMD.ACP.Site.ProgramaAuditoria" EnableViewState="false" ValidateRequest="false" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
     <link rel="stylesheet" type="text/css" href="Styles/style.css" />
@@ -197,12 +195,12 @@
        
         <div style="border:solid 1px #C2C2C2;padding:10px 10px 10px 10px;height:50px;font-family:Arial;margin:10px 20px 0px 20px">
             <div style="float:left;font-weight:bold;">
-                <div><label style="width:140px;">Periodo:</label><asp:Label ID="lblPeriodo" runat="server"  Font-Names="Arial" Font-Size="10pt"></asp:Label></div>
+                <div><label style="width:140px;">Periodo: </label><asp:Label ID="lblPeriodo" runat="server"  Font-Names="Arial" Font-Size="10pt"></asp:Label></div>
                 <div><label style="width:140px;" >Elaborado por: </label><asp:Label ID="lblElaboradoPor" runat="server"  Font-Names="Arial" Font-Size="10pt"></asp:Label></div>
                 <div><label style="width:140px;">Aprobado por: </label><asp:Label ID="lblAprobadoPor" runat="server"  Font-Names="Arial" Font-Size="10pt"></asp:Label></div></br>                                 
             </div>
             <div style="float:right;text-align:right;font-weight:bold;">
-                <div><label style="width:140px;">Nro: </label><div id="divIdPrograma"><asp:Label ID="lblIdPrograma" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></div></div></br>
+                <div><label style="width:140px;">Nro: </label><div id="divIdPrograma"><asp:Label ID="lblIdPrograma" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></div></div>
                 <div><label style="width:140px;">Estado: </label><asp:Label ID="lblEstado" runat="server"  Font-Names="Arial" Font-Size="10pt"></asp:Label></div> 
             </div>        
         </div>

@@ -1,12 +1,8 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true"
     CodeBehind="ListaPlanAuditoria.aspx.cs" Inherits="TMD.ACP.Site.ListaPlanAuditoria" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
   <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 
 <div>
@@ -14,7 +10,7 @@
 
          <div style="padding:10px 10px 10px 10px;height:20px;font-family:Arial;">
             <div style="float:left">
-                <label>Periodo:</label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
+                <label>Periodo: </label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
             </div>        
          </div>
 

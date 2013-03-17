@@ -23,7 +23,7 @@ namespace TMD.CF.Site.Account
         protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
         {
             e.Authenticated = FormsAuthentication.Authenticate(LoginUser.UserName, LoginUser.Password);
-            SesionFachada.Usuario = new Usuario { Id = 1, Nombre = LoginUser.UserName };
+            SesionFachada.Usuario = new Usuario { Id = Convert.ToInt32(LoginUser.UserName.Replace("USUARIO","")), Nombre = LoginUser.UserName };
         }
     }
 }

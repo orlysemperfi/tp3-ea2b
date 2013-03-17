@@ -156,10 +156,12 @@
                 $("#tdComboBox").html(mData[5]);
                 var idResponsable = window.parent.parent.document.getElementById("MainContent___tempIdResponsable").value;
                 $("#ddlResponsable> option[value='" + idResponsable + "']").attr('selected', 'selected');
-                $("#txtAlcance").val('');
-                $("#txtObjetivo").val('');
-                $("#txtFechaInicio").val('');
-                $("#txtFechaFin").val('');
+                if (idResponsable == "") {
+                    $("#txtAlcance").val('');
+                    $("#txtObjetivo").val('');
+                    $("#txtFechaInicio").val('');
+                    $("#txtFechaFin").val('');
+                }
             }
             else {
                 alert(mData[1]);

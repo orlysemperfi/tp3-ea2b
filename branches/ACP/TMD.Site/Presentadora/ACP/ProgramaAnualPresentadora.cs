@@ -8,6 +8,7 @@ using TMD.ACP.LogicaNegocios.Implementacion;
 using TMD.Entidades;
 using TMD.Core;
 using Ediable_Repeater;
+using TMD.CF.Site.Util;
 
 namespace TMD.CF.Site.Presentador.ACP
 {
@@ -29,7 +30,7 @@ namespace TMD.CF.Site.Presentador.ACP
         {
             try
             {
-                ProgramaAnualAuditoria oProgramaAnual = _modelo.ObtenerProgramaAnualDeAuditoria();
+                ProgramaAnualAuditoria oProgramaAnual = _modelo.ObtenerProgramaAnualDeAuditoria(SesionFachada.Usuario.Id);
                 _vista.AnhoPrograma = oProgramaAnual.AnhoPrograma;
                 _vista.UsuarioCreacion = oProgramaAnual.UsuarioCreacion;
                 _vista.UsuarioAprobacion = oProgramaAnual.UsuarioAprobacion == null ? "" : oProgramaAnual.UsuarioAprobacion;
@@ -56,30 +57,34 @@ namespace TMD.CF.Site.Presentador.ACP
         {
             try
             {
-                //Buscar por id la auditoria para saber si existe o no en el grid
-                int idAuditoria = _vista.Auditoria.IdAuditoria.Value;
-                Auditoria auditoria = DataAuditorias.Instance.Auditoria.Find(e => e.IdAuditoria == idAuditoria);
+                //Validar que no hayan colocado la opcion cerrar
+                if (_vista.Auditoria != null)
+                {
+                    //Buscar por id la auditoria para saber si existe o no en el grid
+                    int idAuditoria = _vista.Auditoria.IdAuditoria.Value;
+                    Auditoria auditoria = DataAuditorias.Instance.Auditoria.Find(e => e.IdAuditoria == idAuditoria);
 
-                //Si no existe se agrega en el grid, de lo contrario, se actualiza
-                if (auditoria == null)
-                {
-                    DataAuditorias.Instance.Auditoria.Add(_vista.Auditoria);
-                }
-                else
-                {
-                    Auditoria eAuditoria = DataAuditorias.Instance.Auditoria.Single(e => e.IdAuditoria == idAuditoria);
-                    eAuditoria.IdAuditoria = _vista.Auditoria.IdAuditoria;
-                    eAuditoria.ObjEntidadAuditada.IdEntidadAuditada = _vista.Auditoria.ObjEntidadAuditada.IdEntidadAuditada;
-                    eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada = _vista.Auditoria.ObjEntidadAuditada.NombreEntidadAuditada;
-                    eAuditoria.ObjEntidadAuditada.ObjArea.descripcion = _vista.Auditoria.ObjEntidadAuditada.ObjArea.descripcion;
-                    eAuditoria.ObjEntidadAuditada.ObjArea.codigo = _vista.Auditoria.ObjEntidadAuditada.ObjArea.codigo;
-                    eAuditoria.ObjEntidadAuditada.Responsable = _vista.Auditoria.ObjEntidadAuditada.Responsable;
-                    eAuditoria.ObjEntidadAuditada.IdResponsable = _vista.Auditoria.ObjEntidadAuditada.IdResponsable;
-                    eAuditoria.Alcance = _vista.Auditoria.Alcance;
-                    eAuditoria.Objetivo = _vista.Auditoria.Objetivo;
-                    eAuditoria.FechaInicio = _vista.Auditoria.FechaInicio;
-                    eAuditoria.FechaFin = _vista.Auditoria.FechaFin;
-                    eAuditoria.Estado = _vista.Auditoria.Estado;
+                    //Si no existe se agrega en el grid, de lo contrario, se actualiza
+                    if (auditoria == null)
+                    {
+                        DataAuditorias.Instance.Auditoria.Add(_vista.Auditoria);
+                    }
+                    else
+                    {
+                        Auditoria eAuditoria = DataAuditorias.Instance.Auditoria.Single(e => e.IdAuditoria == idAuditoria);
+                        eAuditoria.IdAuditoria = _vista.Auditoria.IdAuditoria;
+                        eAuditoria.ObjEntidadAuditada.IdEntidadAuditada = _vista.Auditoria.ObjEntidadAuditada.IdEntidadAuditada;
+                        eAuditoria.ObjEntidadAuditada.NombreEntidadAuditada = _vista.Auditoria.ObjEntidadAuditada.NombreEntidadAuditada;
+                        eAuditoria.ObjEntidadAuditada.ObjArea.descripcion = _vista.Auditoria.ObjEntidadAuditada.ObjArea.descripcion;
+                        eAuditoria.ObjEntidadAuditada.ObjArea.codigo = _vista.Auditoria.ObjEntidadAuditada.ObjArea.codigo;
+                        eAuditoria.ObjEntidadAuditada.Responsable = _vista.Auditoria.ObjEntidadAuditada.Responsable;
+                        eAuditoria.ObjEntidadAuditada.IdResponsable = _vista.Auditoria.ObjEntidadAuditada.IdResponsable;
+                        eAuditoria.Alcance = _vista.Auditoria.Alcance;
+                        eAuditoria.Objetivo = _vista.Auditoria.Objetivo;
+                        eAuditoria.FechaInicio = _vista.Auditoria.FechaInicio;
+                        eAuditoria.FechaFin = _vista.Auditoria.FechaFin;
+                        eAuditoria.Estado = _vista.Auditoria.Estado;
+                    }
                 }
 
                 //Refrescar grid de auditorias y id de auditoria generado

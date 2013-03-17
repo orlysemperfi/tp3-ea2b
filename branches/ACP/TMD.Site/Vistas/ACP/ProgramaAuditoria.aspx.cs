@@ -13,6 +13,7 @@ using Ediable_Repeater;
 using System.Web.Services;
 using TMD.CF.Site.Presentador.ACP;
 using TMD.CF.Site.Vistas.ACP;
+using TMD.CF.Site.Util;
 
 namespace TMD.ACP.Site
 {
@@ -156,7 +157,7 @@ namespace TMD.ACP.Site
         {
             get
             {
-                return 8;
+                return SesionFachada.Usuario.Id;
             }
         }
 
@@ -217,27 +218,34 @@ namespace TMD.ACP.Site
         {
             get
             {
-                return new Auditoria
+                if (Request["ctl00$MainContent$__tempIdEntAudi"] != "")
                 {
-                    IdAuditoria = Convert.ToInt32(Request["ctl00$MainContent$__tempNroAuditoria"]),
-                    ObjEntidadAuditada = new EntidadAuditada
+                    return new Auditoria
                     {
-                        IdEntidadAuditada = Convert.ToInt32(Request["ctl00$MainContent$__tempIdEntAudi"]),
-                        NombreEntidadAuditada = Convert.ToString(Request["ctl00$MainContent$__tempEntAudi"]),
-                        ObjArea = new AreaEntidad
+                        IdAuditoria = Convert.ToInt32(Request["ctl00$MainContent$__tempNroAuditoria"]),
+                        ObjEntidadAuditada = new EntidadAuditada
                         {
-                            descripcion = Convert.ToString(Request["ctl00$MainContent$__tempArea"]),
-                            codigo = Convert.ToInt32(Request["ctl00$MainContent$__tempIdArea"]),
+                            IdEntidadAuditada = Convert.ToInt32(Request["ctl00$MainContent$__tempIdEntAudi"]),
+                            NombreEntidadAuditada = Convert.ToString(Request["ctl00$MainContent$__tempEntAudi"]),
+                            ObjArea = new AreaEntidad
+                            {
+                                descripcion = Convert.ToString(Request["ctl00$MainContent$__tempArea"]),
+                                codigo = Convert.ToInt32(Request["ctl00$MainContent$__tempIdArea"]),
+                            },
+                            Responsable = Convert.ToString(Request["ctl00$MainContent$__tempResponsable"]),
+                            IdResponsable = Convert.ToInt32(Request["ctl00$MainContent$__tempIdResponsable"]),
                         },
-                        Responsable = Convert.ToString(Request["ctl00$MainContent$__tempResponsable"]),
-                        IdResponsable = Convert.ToInt32(Request["ctl00$MainContent$__tempIdResponsable"]),
-                    },
-                    Alcance = Convert.ToString(Request["ctl00$MainContent$__tempAlcance"]),
-                    Objetivo = Convert.ToString(Request["ctl00$MainContent$__tempObjetivo"]),
-                    FechaInicio = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaInicio"]),
-                    FechaFin = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaFin"]),
-                    Estado = EstadoAuditoria.Creado
-                };
+                        Alcance = Convert.ToString(Request["ctl00$MainContent$__tempAlcance"]),
+                        Objetivo = Convert.ToString(Request["ctl00$MainContent$__tempObjetivo"]),
+                        FechaInicio = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaInicio"]),
+                        FechaFin = Convert.ToDateTime(Request["ctl00$MainContent$__tempFechaFin"]),
+                        Estado = EstadoAuditoria.Creado
+                    };
+                }
+                else
+                {
+                    return null;
+                }
             }
             set
             {

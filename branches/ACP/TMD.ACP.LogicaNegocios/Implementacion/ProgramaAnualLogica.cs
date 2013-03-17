@@ -13,13 +13,15 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
     public class ProgramaAnualLogica : IProgramaAnualLogica
     {
         private readonly IAuditoriaData _objData;
+        private readonly IEmpleadoData _objDataEmpleado;
 
         public ProgramaAnualLogica()
         {
             _objData = new AuditoriaData("TMD");
+            _objDataEmpleado = new EmpleadoData("TMD");
         }
 
-        public ProgramaAnualAuditoria ObtenerProgramaAnualDeAuditoria()
+        public ProgramaAnualAuditoria ObtenerProgramaAnualDeAuditoria(int IdUsuario)
         {
             ProgramaAnualAuditoria oProgramaAnual = _objData.ObtenerProgramaAnualAuditorias();
 
@@ -30,9 +32,11 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
             }
             else
             {
+                EmpleadoEntidad empleado = _objDataEmpleado.ObtenerEmpleado(IdUsuario);
+
                 oProgramaAnual = new ProgramaAnualAuditoria {
                     AnhoPrograma = DateTime.Today.Year,
-                    UsuarioCreacion = "Carla Mier",
+                    UsuarioCreacion = empleado == null ? "" : empleado.nombre + " " + empleado.apellidopaterno,
                     UsuarioAprobacion = "",
                     Estado = EstadoProgramaAnual.Creado,
                     IdProgramaAnual = 0,
