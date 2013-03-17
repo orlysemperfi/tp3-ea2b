@@ -69,7 +69,8 @@ namespace TMD.MP.Site.Privado
             List<IndicadorEntidad> oIndicadorColeccion = oIndicadorLogica.ObtenerIndicadorListadoPorFiltros(oIndicadorFiltro);
             Sesiones.IndicadorListadoRemover();
             Sesiones.IndicadorListado = oIndicadorColeccion;
-            PageIndexChanging();
+            //PageIndexChanging();
+            gvwIndicadorListado.DataBind();
             lblMensajeError.Text = "";
         }
 
@@ -93,94 +94,94 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void lbtnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarIndicadorListado();
         }
 
-        protected void ibtnIzquierdaTodo_Click(object sender, EventArgs e)
-        {
-            gvwIndicadorListado.PageIndex = 0;
-            PageIndexChanging();
-        }
+        //protected void ibtnIzquierdaTodo_Click(object sender, EventArgs e)
+        //{
+        //    gvwIndicadorListado.PageIndex = 0;
+        //    PageIndexChanging();
+        //}
 
-        protected void ibtnIzquierda_Click(object sender, EventArgs e)
-        {
-            if (gvwIndicadorListado.PageIndex > 0)
-                gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageIndex - 1;
-            else
-                gvwIndicadorListado.PageIndex = 0;
-            PageIndexChanging();
-        }
+        //protected void ibtnIzquierda_Click(object sender, EventArgs e)
+        //{
+        //    if (gvwIndicadorListado.PageIndex > 0)
+        //        gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageIndex - 1;
+        //    else
+        //        gvwIndicadorListado.PageIndex = 0;
+        //    PageIndexChanging();
+        //}
 
-        protected void ibtnDerecha_Click(object sender, EventArgs e)
-        {
-            if (gvwIndicadorListado.PageIndex < gvwIndicadorListado.PageCount - 1)
-                gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageIndex + 1;
-            else
-                gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageCount - 1;
-            PageIndexChanging();
-        }
+        //protected void ibtnDerecha_Click(object sender, EventArgs e)
+        //{
+        //    if (gvwIndicadorListado.PageIndex < gvwIndicadorListado.PageCount - 1)
+        //        gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageIndex + 1;
+        //    else
+        //        gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageCount - 1;
+        //    PageIndexChanging();
+        //}
 
-        protected void ibtnDerechaTodo_Click(object sender, EventArgs e)
-        {
-            gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageCount - 1;
-            PageIndexChanging();
-        }
+        //protected void ibtnDerechaTodo_Click(object sender, EventArgs e)
+        //{
+        //    gvwIndicadorListado.PageIndex = gvwIndicadorListado.PageCount - 1;
+        //    PageIndexChanging();
+        //}
 
-        protected void tbxPaginaActual_TextChanged(object sender, EventArgs e)
-        {
-            gvwIndicadorListado.PageIndex = Convert.ToInt32(tbxPaginaActual.Text) - 1;
-            PageIndexChanging();
-        }
+        //protected void tbxPaginaActual_TextChanged(object sender, EventArgs e)
+        //{
+        //    gvwIndicadorListado.PageIndex = Convert.ToInt32(tbxPaginaActual.Text) - 1;
+        //    PageIndexChanging();
+        //}
 
-        protected void PageIndexChanging()
-        {
-            gvwIndicadorListado.DataBind();
-            List<IndicadorEntidad> oIndicadorColeccion = Sesiones.IndicadorListado;
+        //protected void PageIndexChanging()
+        //{
+        //    gvwIndicadorListado.DataBind();
+        //    List<IndicadorEntidad> oIndicadorColeccion = Sesiones.IndicadorListado;
 
-            if (oIndicadorColeccion.Count > 0)
-            {
-                divMensaje.Visible = false;
-                lblMensaje.Text = "";
-                tblIndicadorListado.Visible = true;
-                divLinea.Visible = true;
-                tblPaginacion.Visible = true;
+        //    if (oIndicadorColeccion.Count > 0)
+        //    {
+        //        divMensaje.Visible = false;
+        //        lblMensaje.Text = "";
+        //        tblIndicadorListado.Visible = true;
+        //        divLinea.Visible = true;
+        //        tblPaginacion.Visible = true;
 
-                tbxPaginaActual.Text = Convert.ToString(gvwIndicadorListado.PageIndex + 1);
-                lblNumeroPaginas.Text = Convert.ToString(gvwIndicadorListado.PageCount);
-                if (gvwIndicadorListado.PageIndex == gvwIndicadorListado.PageCount - 1)
-                {
-                    if (oIndicadorColeccion.Count % gvwIndicadorListado.PageCount == 0)
-                    {
-                        if (gvwIndicadorListado.PageSize > oIndicadorColeccion.Count)
-                        {
-                            lblNumeroRegistros.Text = (gvwIndicadorListado.PageSize - oIndicadorColeccion.Count) + " - " + oIndicadorColeccion.Count + " de " + oIndicadorColeccion.Count + " registros";
-                        }
-                        else
-                        {
-                            lblNumeroRegistros.Text = (oIndicadorColeccion.Count - gvwIndicadorListado.PageSize + 1) + " - " + oIndicadorColeccion.Count + " de " + oIndicadorColeccion.Count + " registros";
-                        }
-                    }
-                    else
-                    {
-                        lblNumeroRegistros.Text = (oIndicadorColeccion.Count - (oIndicadorColeccion.Count % gvwIndicadorListado.PageCount) + 1) + " - " + oIndicadorColeccion.Count + " de " + oIndicadorColeccion.Count + " registros";
-                    }
-                }
-                else
-                {
-                    lblNumeroRegistros.Text = ((gvwIndicadorListado.PageSize * (gvwIndicadorListado.PageIndex)) + 1) + " - " + (gvwIndicadorListado.PageSize * (gvwIndicadorListado.PageIndex + 1)) + " de " + oIndicadorColeccion.Count + " registros";
-                }
-            }
-            else
-            {
-                divMensaje.Visible = true;
-                lblMensaje.Text = "No se encontró indicadores";
-                tblIndicadorListado.Visible = false;
-                divLinea.Visible = false;
-                tblPaginacion.Visible = false;
-            }
-        }
+        //        tbxPaginaActual.Text = Convert.ToString(gvwIndicadorListado.PageIndex + 1);
+        //        lblNumeroPaginas.Text = Convert.ToString(gvwIndicadorListado.PageCount);
+        //        if (gvwIndicadorListado.PageIndex == gvwIndicadorListado.PageCount - 1)
+        //        {
+        //            if (oIndicadorColeccion.Count % gvwIndicadorListado.PageCount == 0)
+        //            {
+        //                if (gvwIndicadorListado.PageSize > oIndicadorColeccion.Count)
+        //                {
+        //                    lblNumeroRegistros.Text = (gvwIndicadorListado.PageSize - oIndicadorColeccion.Count) + " - " + oIndicadorColeccion.Count + " de " + oIndicadorColeccion.Count + " registros";
+        //                }
+        //                else
+        //                {
+        //                    lblNumeroRegistros.Text = (oIndicadorColeccion.Count - gvwIndicadorListado.PageSize + 1) + " - " + oIndicadorColeccion.Count + " de " + oIndicadorColeccion.Count + " registros";
+        //                }
+        //            }
+        //            else
+        //            {
+        //                lblNumeroRegistros.Text = (oIndicadorColeccion.Count - (oIndicadorColeccion.Count % gvwIndicadorListado.PageCount) + 1) + " - " + oIndicadorColeccion.Count + " de " + oIndicadorColeccion.Count + " registros";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            lblNumeroRegistros.Text = ((gvwIndicadorListado.PageSize * (gvwIndicadorListado.PageIndex)) + 1) + " - " + (gvwIndicadorListado.PageSize * (gvwIndicadorListado.PageIndex + 1)) + " de " + oIndicadorColeccion.Count + " registros";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        divMensaje.Visible = true;
+        //        lblMensaje.Text = "No se encontró indicadores";
+        //        tblIndicadorListado.Visible = false;
+        //        divLinea.Visible = false;
+        //        tblPaginacion.Visible = false;
+        //    }
+        //}
 
         protected void gvwIndicadorListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -218,7 +219,7 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void ibtnAgregarIndicadorCuali_Click(object sender, EventArgs e)
+        protected void btnAgregarIndicadorCuali_Click(object sender, EventArgs e)
         {
             Sesiones.IndicadorSeleccionadoRemover();
             Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
@@ -226,7 +227,7 @@ namespace TMD.MP.Site.Privado
             Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuali + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
-        protected void ibtnAgregarIndicadorCuanti_Click(object sender, EventArgs e)
+        protected void btnAgregarIndicadorCuanti_Click(object sender, EventArgs e)
         {
             Sesiones.IndicadorSeleccionadoRemover();
             Sesiones.IndicadorSeleccionado = new IndicadorEntidad();
@@ -234,10 +235,10 @@ namespace TMD.MP.Site.Privado
             Response.Redirect(Paginas.TMD_MP_IndicadorFormularioCuanti + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
-        protected void ibtnSalir_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Paginas.TMD_MP_Inicio, true);
-        }
+        //protected void ibtnSalir_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect(Paginas.TMD_MP_Inicio, true);
+        //}
         public String ObtenerDescTipoIndicador(String tipo) {
             return Utilitario.ObtenerDescTipoIndicador(tipo);
         }

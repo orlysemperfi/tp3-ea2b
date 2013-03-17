@@ -83,12 +83,12 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void lbtnCancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado, true);
         }
 
-        protected void lbtnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
            
         }

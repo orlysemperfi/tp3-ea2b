@@ -72,7 +72,7 @@ namespace TMD.CF.Site.Vistas.MP
             }
         }
         
-        protected void lbtnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarPropuestaMejoraListado();
         }
@@ -152,10 +152,10 @@ namespace TMD.CF.Site.Vistas.MP
 
         }
 
-        protected void ibtnSalir_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Paginas.TMD_MP_Inicio, true);
-        }
+        //protected void ibtnSalir_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect(Paginas.TMD_MP_Inicio, true);
+        //}
 
     }
 
