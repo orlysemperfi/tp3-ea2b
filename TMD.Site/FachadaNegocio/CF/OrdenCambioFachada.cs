@@ -13,12 +13,14 @@ namespace TMD.CF.Site.FachadaNegocio.CF
     class OrdenCambioControladora
     {
         private readonly IOrdenCambioLogica ordenCambioLogica;
+        private readonly IUsuarioLogica usuarioLogica;
 
         public OrdenCambioControladora()
         {
             string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
 
             ordenCambioLogica = new OrdenCambioLogica(new OrdenCambioData(baseDatos));
+            usuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
         }
 
         public List<OrdenCambio> ListarPorProyectoLBase(int codigoProyecto, int codigoLineaBase)
@@ -29,6 +31,14 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         public void Agregar(OrdenCambio ordenCambio)
         {
             ordenCambioLogica.Agregar(ordenCambio);
+        }
+
+        public List<Usuario> ListaPorRol(String rol)
+        {
+            List<Usuario> lista = usuarioLogica.ListaPorRol(rol);
+            lista.Insert(0, new Usuario { Id = 0, Nombre = "--Seleccione--" });
+
+            return lista;
         }
     }
 }
