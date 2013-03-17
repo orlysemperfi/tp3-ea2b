@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.LogicaNegocios.Implementacion;
-using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.Core;
 using System.Configuration;
