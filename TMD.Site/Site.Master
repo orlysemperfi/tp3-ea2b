@@ -37,7 +37,7 @@
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
-            <div id="menu-principal" class="panel-wrapper">
+            <div id="menu-principal" class="panel-wrapper clear hideSkiplink">
                 <asp:Menu ID="Menu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false"
                     Orientation="Horizontal">
                     <Items>
