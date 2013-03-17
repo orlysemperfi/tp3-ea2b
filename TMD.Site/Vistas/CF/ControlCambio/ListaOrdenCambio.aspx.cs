@@ -71,7 +71,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarEstadoNombre(int idEstado)
         {
-            var estado = new SolicitudCambioControladora().ListarEstado().FirstOrDefault(x => x.Id == idEstado);
+            var estado = new SolicitudCambioFachada().ListarEstado().FirstOrDefault(x => x.Id == idEstado);
             if (estado != null)
             {
                 return estado.Nombre;
@@ -86,7 +86,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarPrioridadNombre(int idPrioridad)
         {
-            var prioridad = new SolicitudCambioControladora().ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
+            var prioridad = new SolicitudCambioFachada().ListarPrioridad().FirstOrDefault(x => x.Id == idPrioridad);
             if (prioridad != null)
             {
                 return prioridad.Nombre;

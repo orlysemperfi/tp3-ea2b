@@ -3,11 +3,15 @@ using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;
+using Microsoft.Practices.Unity;
+using System.Web;
 
 namespace TMD.CF.Site.Controles
 {
     public partial class AprobarSolicitudCambio : System.Web.UI.UserControl
     {
+
+        protected SolicitudCambioFachada solicitudFachada;
 
         public delegate void AproboSolicitudHandler();
         public event AproboSolicitudHandler EventoAproboSolicitud;
@@ -49,7 +53,9 @@ namespace TMD.CF.Site.Controles
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            solicitudFachada = container.Resolve<SolicitudCambioFachada>();
         }
 
         public void Limpiar()
@@ -61,7 +67,7 @@ namespace TMD.CF.Site.Controles
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            new SolicitudCambioControladora().Aprobar(IdSolicitudCambio, IdEstado, txtMotivo.Text);
+            solicitudFachada.Aprobar(IdSolicitudCambio, IdEstado, txtMotivo.Text);
 
             OnEventoGraboSolicitud();
         }

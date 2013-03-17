@@ -7,15 +7,22 @@ using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.CF.Site.Util;
 using TMD.Entidades;
 using TMD.Strings;
+using System.Web;
+using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Vistas.CF.LineaBase
 {
     public partial class ActualizarLineaBase : System.Web.UI.Page
     {
         Dictionary<int, int> listaResponsable = new Dictionary<int, int>();
+        protected LineaBaseFachada lineaBaseFachada;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var accessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var container = accessor.Container;
+            lineaBaseFachada = container.Resolve<LineaBaseFachada>();
+
             Proyecto proyecto = null;
             int idProyecto, idFase = 0, lectura=0;
 
@@ -33,7 +40,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 }
                 else
                 {
-                    proyecto = new LineaBaseFachada().ProyectoObtenerPorId(idProyecto);
+                    proyecto = lineaBaseFachada.ProyectoObtenerPorId(idProyecto);
 
                     if (proyecto == null)
                     {
@@ -46,21 +53,21 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             {
                 pnlECS.Visible = false;
                 SesionFachada.ListaElementoConfiguracion = null;
-                SesionFachada.ListaUsuarioResponsable = new LineaBaseFachada().UsuarioListaPorProyecto(idProyecto);
+                SesionFachada.ListaUsuarioResponsable = lineaBaseFachada.UsuarioListaPorProyecto(idProyecto);
 
-                ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, proyecto.Id);
+                ddlProyecto.EnlazarDatos(lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, proyecto.Id);
                 ddlProyecto.Enabled = false;
                 
                 if (idFase != 0)
                 {
-                    ddlFase.DataSource = new LineaBaseFachada().ListarFasePorProyecto(idProyecto, true);
+                    ddlFase.DataSource = lineaBaseFachada.ListarFasePorProyecto(idProyecto, true);
                     ddlFase.SelectedValue = idFase.ToString();
                     ddlFase.Enabled = false;
                     ddlProyecto.Enabled = false;
 
                     //CARGAR DATOS LINEA BASE
                     TMD.Entidades.LineaBase lineaBase =
-                        new LineaBaseFachada().LineaBaseObtenerPorProyectoFase(idProyecto, idFase);
+                        lineaBaseFachada.LineaBaseObtenerPorProyectoFase(idProyecto, idFase);
 
                     hiddenIdLineaBase.Value = lineaBase.Id.ToString();
                     txtNombre.Text = lineaBase.Nombre;
@@ -68,7 +75,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                     
                     if (lineaBase.LineaBaseECS != null)
                     {
-                        List<ElementoConfiguracion> lista = new LineaBaseFachada().ElementoConfiguracionListarPorFase(idFase);
+                        List<ElementoConfiguracion> lista = lineaBaseFachada.ElementoConfiguracionListarPorFase(idFase);
 
                         lineaBase.LineaBaseECS.ForEach(x => 
                             {
@@ -89,7 +96,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
                 }
                 else
                 {
-                    ddlFase.DataSource = new LineaBaseFachada().ListarFasePorProyecto(idProyecto, false);
+                    ddlFase.DataSource = lineaBaseFachada.ListarFasePorProyecto(idProyecto, false);
                 }
 
                 ddlFase.DataValueField = "Id";
@@ -118,7 +125,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
 
             if (lista == null)
             {
-                lista = new LineaBaseFachada().ElementoConfiguracionListarPorFase(Convert.ToInt32(ddlFase.SelectedValue));
+                lista = lineaBaseFachada.ElementoConfiguracionListarPorFase(Convert.ToInt32(ddlFase.SelectedValue));
 
                 SesionFachada.ListaElementoConfiguracion = lista;
             }
@@ -238,9 +245,9 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             if (lectura == 0 && idFase == 0)//NUEVO
             {
                 ProyectoFase proyectoFase =
-                    new LineaBaseFachada().ProyectoFaseObtenerPorFaseProyecto(idProyecto, Convert.ToInt32(ddlFase.SelectedValue));
+                    lineaBaseFachada.ProyectoFaseObtenerPorFaseProyecto(idProyecto, Convert.ToInt32(ddlFase.SelectedValue));
 
-                new LineaBaseFachada().LineaBaseAgregar(
+                lineaBaseFachada.LineaBaseAgregar(
                     new TMD.Entidades.LineaBase
                     {
                         Id = 0,
@@ -255,7 +262,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase
             }
             else//ACTUALIZAR
             {
-                new LineaBaseFachada().LineaBaseActualizar(
+                lineaBaseFachada.LineaBaseActualizar(
                     new TMD.Entidades.LineaBase
                     {
                         Id = Convert.ToInt32(hiddenIdLineaBase.Value),

@@ -10,14 +10,12 @@ using TMD.Entidades;
 
 namespace TMD.CF.Site.FachadaNegocio.CF
 {
-    class SeguridadFachada
+    public class SeguridadFachada
     {
-        private readonly IUsuarioLogica UsuarioLogica;
+        public IUsuarioLogica UsuarioLogica { get; set; }
 
         public SeguridadFachada()
         {
-            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
-            UsuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
         }
 
         public Usuario ObtenerUsuario(string login)

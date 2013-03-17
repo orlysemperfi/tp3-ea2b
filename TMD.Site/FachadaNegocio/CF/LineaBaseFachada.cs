@@ -5,35 +5,26 @@ using TMD.CF.LogicaNegocios.Implementacion;
 using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using System.Configuration;
+using TMD.Core.Caching;
 
 namespace TMD.CF.Site.FachadaNegocio.CF
 {
     /// <summary>
     /// Controladora del paquete Linea Base
     /// </summary>
-    class LineaBaseFachada
+    public class LineaBaseFachada
     {
-        private readonly IProyectoFaseLogica ProyectoFaseLogica;
-        private readonly IUsuarioLogica UsuarioLogica;
-        private readonly IUsuarioProyectoLogica UsuarioProyectoLogica;
-        private readonly IProyectoLogica ProyectoLogica;
-        private readonly ILineaBaseLogica LineaBaseLogica;
-        private readonly IFaseLogica FaseLogica;
-        private readonly IElementoConfiguracionLogica ElementoConfiguracionLogica;
-        private readonly ILineaBaseDetalleLogica LineaBaseDetalleLogica;
+        public IProyectoFaseLogica ProyectoFaseLogica { get; set; }
+        public IUsuarioLogica UsuarioLogica { get; set; }
+        public IUsuarioProyectoLogica UsuarioProyectoLogica { get; set; }
+        public IProyectoLogica ProyectoLogica { get; set; }
+        public ILineaBaseLogica LineaBaseLogica { get; set; }
+        public IFaseLogica FaseLogica { get; set; }
+        public IElementoConfiguracionLogica ElementoConfiguracionLogica { get; set; }
+        public ILineaBaseDetalleLogica LineaBaseDetalleLogica { get; set; }
 
         public LineaBaseFachada()
         {
-            string baseDatos = ConfigurationManager.AppSettings["BaseDatos"];
-
-            ProyectoFaseLogica = new ProyectoFaseLogica(new ProyectoFaseData(baseDatos));
-            UsuarioLogica = new UsuarioLogica(new UsuarioData(baseDatos));
-            UsuarioProyectoLogica = new UsuarioProyectoLogica(new UsuarioProyectoData(baseDatos));
-            ProyectoLogica = new ProyectoLogica(new ProyectoData(baseDatos));
-            LineaBaseLogica = new LineaBaseLogica(new LineaBaseData(baseDatos), new LineaBaseElementoConfiguracionData(baseDatos), new UsuarioProyectoData(baseDatos), new ProyectoFaseData(baseDatos));
-            FaseLogica = new FaseLogica(new FaseData(baseDatos));
-            ElementoConfiguracionLogica = new ElementoConfiguracionLogica(new ElementoConfiguracionData(baseDatos));
-            LineaBaseDetalleLogica = new LineaBaseDetalleLogica(new LineaBaseElementoConfiguracionData(baseDatos));
         }
         
         public ProyectoFase ProyectoFaseObtenerPorFaseProyecto(int idProyecto, int idFase)
