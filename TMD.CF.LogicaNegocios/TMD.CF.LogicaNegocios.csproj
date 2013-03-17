@@ -73,6 +73,7 @@
     <Compile Include="Implementacion\ProyectoFaseLogica.cs" />
     <Compile Include="Implementacion\ProyectoLogica.cs" />
     <Compile Include="Implementacion\SolicitudCambioLogica.cs" />
+    <Compile Include="Implementacion\SolicitudCambioValidacionLogica.cs" />
     <Compile Include="Implementacion\UsuarioLogica.cs" />
     <Compile Include="Implementacion\UsuarioProyectoLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

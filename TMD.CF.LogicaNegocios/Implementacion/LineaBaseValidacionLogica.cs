@@ -50,7 +50,6 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             {
                 //REGLA: Solo se puede crear una linea base para una fase que no haya finalizado.
                 throw new ReglaNegocioException("Solo se puede crear una linea base para una fase que no haya finalizado.");
-
             }
             else if (_lineaBaseData.ObtenerPorProyectoFase(lineaBase.ProyectoFase) != null)
             {
