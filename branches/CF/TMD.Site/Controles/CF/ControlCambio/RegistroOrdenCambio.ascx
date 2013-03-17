@@ -42,7 +42,7 @@
     </p>
     <p>
         <span class="label-field">Informe:</span>
-        <asp:DropDownList ID="ddlInforme" runat="server" runat="server" Width="150px">
+        <asp:DropDownList ID="ddlInforme" runat="server" Width="150px">
         </asp:DropDownList>
         <asp:CompareValidator ID="informeValidator" runat="server" ControlToValidate="ddlInforme"
             ErrorMessage="El informe es requerido." ToolTip="El informe es requerido."

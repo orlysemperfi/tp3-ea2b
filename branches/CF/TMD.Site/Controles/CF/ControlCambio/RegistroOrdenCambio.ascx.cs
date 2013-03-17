@@ -35,8 +35,25 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
             }
         }
 
-        public void CargarOrdenExistente(int idSolicitudCambio)
+        public void CargarOrdenExistente(int idOrdenCambio)
         {
+            OrdenCambio orden = new OrdenCambioControladora().ObtenerPorId(idOrdenCambio);
+
+            if (orden != null)
+            {
+                txtNombre.Text = orden.Nombre;
+
+                int idProyecto = orden.ProyectoFase.Proyecto.Id;
+                ddlProyecto.EnlazarDatos(new OrdenCambioControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
+                int lineaBaseId = orden.LineaBase.Id;
+                ddlLineaBase.EnlazarDatos(new OrdenCambioControladora().LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
+                int idInforme = orden.InformeCambio.Id;
+                ddlInforme.EnlazarDatos(new OrdenCambioControladora().ListarInformePorProyectoLineaBase(idProyecto, lineaBaseId, 2), "Nombre", "Id", -1, idInforme);
+                int idUsuario = orden.UsuarioAsignado.Id;
+                ddlUsuario.EnlazarDatos(new OrdenCambioControladora().ListaPorRol(""), "Nombre", "Id", -1, idUsuario);
+                ddlPrioridad.EnlazarDatos(new OrdenCambioControladora().ListarPrioridad(), "Nombre", "Id", -1, orden.Prioridad);
+                pnlOrdenCambio.Enabled = false;
+            }
         }
 
         public void Limpiar()
@@ -51,21 +68,21 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         
         public void CargarordenNueva()
         {
-            ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
+            ddlProyecto.EnlazarDatos(new OrdenCambioControladora().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();
             ddlInforme.EnlazarValorDefecto();
-            ddlPrioridad.EnlazarDatos(new SolicitudCambioFachada().ListarPrioridad(), "Nombre", "Id");
+            ddlPrioridad.EnlazarDatos(new OrdenCambioControladora().ListarPrioridad(), "Nombre", "Id");
             ddlUsuario.EnlazarDatos(new OrdenCambioControladora().ListaPorRol(""), "Nombre", "Id");
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ddlLineaBase.EnlazarDatos(new OrdenCambioControladora().LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlInforme.EnlazarDatos(new InformeCambioFachada().ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),1), "Nombre", "Id");
+            ddlInforme.EnlazarDatos(new OrdenCambioControladora().ListarInformePorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), 1), "Nombre", "Id");
         }
 
         protected void ddlUsuario_SelectedIndexChanged(object sender, EventArgs e)

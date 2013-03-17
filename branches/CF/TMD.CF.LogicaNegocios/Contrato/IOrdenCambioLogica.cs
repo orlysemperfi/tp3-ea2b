@@ -24,5 +24,25 @@ namespace TMD.CF.LogicaNegocios.Contrato
         /// </summary>
         /// <param name="ordenCambio">Objeto Orden a agregar</param>
         void Agregar(OrdenCambio ordenCambio);
+
+        /// <summary>
+        /// Obtiene una orden por el Id
+        /// </summary>
+        /// <param name="id">Id de la orden</param>
+        /// <returns>Objeto orden de cambio</returns>
+        OrdenCambio ObtenerPorId(int id);
+
+        /// <summary>
+        /// Obtiene el archivo de la orden de cambio
+        /// </summary>
+        /// <param name="id">Id de la orden</param>
+        /// <returns>Archivo de la orden</returns>
+        OrdenCambio ObtenerArchivo(int id);
+
+        /// <summary>
+        /// Actualiza el archivo de una orden
+        /// </summary>
+        /// <param name="solicitudCambio">Objeto orden a actualziar</param>
+        void ActualizarArchivo(OrdenCambio ordenCambio);
     }
 }

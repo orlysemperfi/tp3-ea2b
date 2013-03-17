@@ -13,6 +13,8 @@ namespace TMD.Entidades
         public int Id { get; set; }
         public String Nombre { get; set; }
         public InformeCambio InformeCambio { get; set; }
+        public ProyectoFase ProyectoFase { get; set; }
+        public LineaBase LineaBase { get; set; }
         public Usuario UsuarioReg { get; set; }
         public DateTime FechaRegistro { get; set; }
         public int Prioridad { get; set; }

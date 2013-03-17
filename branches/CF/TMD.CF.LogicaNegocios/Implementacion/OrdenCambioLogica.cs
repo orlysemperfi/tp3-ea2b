@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Transactions;
 using System.Linq;
 using System.Text;
 using TMD.CF.LogicaNegocios.Contrato;
@@ -38,6 +39,47 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         public void Agregar(OrdenCambio ordenCambio)
         {
             _ordenCambioData.Agregar(ordenCambio);
+        }
+
+        /// <summary>
+        /// Obtiene una orden por el Id
+        /// </summary>
+        /// <param name="id">Id de la orden</param>
+        /// <returns>Objeto orden de cambio</returns>
+        public OrdenCambio ObtenerPorId(int id)
+        {
+            return _ordenCambioData.ObtenerPorId(id);
+        }
+
+        /// <summary>
+        /// Obtiene el archivo de la orden de cambio
+        /// </summary>
+        /// <param name="id">Id de la orden</param>
+        /// <returns>Archivo de la orden</returns>
+        public OrdenCambio ObtenerArchivo(int id)
+        {
+            OrdenCambio ordenCambio = null;
+
+            using (var scope = new TransactionScope())
+            {
+                ordenCambio = _ordenCambioData.ObtenerArchivo(id);
+                scope.Complete();
+            }
+
+            return ordenCambio;
+        }
+
+        /// <summary>
+        /// Actualiza el archivo de una orden
+        /// </summary>
+        /// <param name="ordenCambio">Objeto orden a actualziar</param>
+        public void ActualizarArchivo(OrdenCambio ordenCambio)
+        {
+            using (var scope = new TransactionScope())
+            {
+                _ordenCambioData.ActualizarArchivo(ordenCambio);
+                scope.Complete();
+            }
         }
     }
 }
