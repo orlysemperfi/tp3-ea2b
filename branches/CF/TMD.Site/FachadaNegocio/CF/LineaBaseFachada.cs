@@ -2,7 +2,6 @@
 using System.Linq;
 using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.LogicaNegocios.Implementacion;
-using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using System.Configuration;
 using TMD.Core.Caching;

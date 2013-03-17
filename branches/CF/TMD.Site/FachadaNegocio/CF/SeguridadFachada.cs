@@ -5,7 +5,6 @@ using System.Web;
 using TMD.CF.LogicaNegocios.Contrato;
 using System.Configuration;
 using TMD.CF.LogicaNegocios.Implementacion;
-using TMD.CF.AccesoDatos.Implementacion;
 using TMD.Entidades;
 
 namespace TMD.CF.Site.FachadaNegocio.CF
