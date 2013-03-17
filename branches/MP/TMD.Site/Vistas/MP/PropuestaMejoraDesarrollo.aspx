@@ -1,6 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraDesarrollo.aspx.cs" Inherits="TMD.CF.Site.Vistas.MP.PropuestaMejoraDesarrollo" %>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" 
+    CodeBehind="PropuestaMejoraDesarrollo.aspx.cs" Inherits="TMD.CF.Site.Vistas.MP.PropuestaMejoraDesarrollo" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div class="contenedor-pagina">
     <div class="contenedor-pagina-titulo">
         DESARROLLAR PROPUESTA DE MEJORA
@@ -25,7 +28,9 @@
                 Fecha del:
             </td>
             <td class="textbox-espaciado">
-                <asp:TextBox ID="tbxFechaInicio" runat="server" Width="78px"></asp:TextBox>
+                <asp:TextBox ID="tbxFechaInicio" runat="server" CssClass="estilo_textbox" ></asp:TextBox>
+                <!--asp:CalendarExtender ID="tbxFechaEnvio_CalendarExtender" runat="server" Format="dd/MM/yyyy" TargetControlID="tbxFechaInicio"></asp:CalendarExtender>
+                <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaInicio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" /-->
             </td>
             <td class="textbox-espaciado">
                 al: 
