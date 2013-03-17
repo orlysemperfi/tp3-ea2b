@@ -13,15 +13,6 @@ namespace TMD.MP.Site.Privado {
     public partial class IndicadoresFormulario {
         
         /// <summary>
-        /// ToolkitScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-        
-        /// <summary>
         /// ddlProceso control.
         /// </summary>
         /// <remarks>
@@ -112,13 +103,13 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlazo;
         
         /// <summary>
-        /// lbtnAgregarICuali control.
+        /// btnAgregarICuali control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAgregarICuali;
+        protected global::System.Web.UI.WebControls.Button btnAgregarICuali;
         
         /// <summary>
         /// gwEscalasCuali control.
@@ -130,22 +121,22 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.GridView gwEscalasCuali;
         
         /// <summary>
-        /// lbtnGuardar control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnGuardar;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// lbtnCancelar control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
         /// vsumGuardar control.

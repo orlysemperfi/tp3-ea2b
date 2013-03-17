@@ -71,9 +71,10 @@
 <%--        <table id="tblPilotoListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td> --%>                   
-                    <asp:GridView ID="gvwPilotoListado" runat="server" CssClass="tabla-grilla" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPilotoListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPilotoListado_RowCommand">
-                        <HeaderStyle CssClass="tabla-grilla-cabecera" />
-                        <RowStyle CssClass="tabla-grilla-filas" />
+                    <asp:GridView ID="gvwPilotoListado" runat="server" Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" DataSource='<%#ObtenerPilotoListado() %>' BorderWidth="0px" BorderColor="White" OnRowCommand="gvwPilotoListado_RowCommand">
+                        <EmptyDataTemplate>
+                                No existen pilotos con los criterios ingresados.
+                        </EmptyDataTemplate> 
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
@@ -89,13 +90,13 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "REGISTRADA" ? "Editar" : "Ver" %>' CommandName="EditarPropuesta" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "REGISTRADA" ? "Editar" : "Ver" %>' CommandName="EditarPropuesta" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPiloto" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link" OnClientClick="if(showConfirmationMessage('¿Desea borrar el piloto?')==false){return false;}"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarPiloto" CommandArgument='<%#Eval("CODIGO") %>' OnClientClick="if(showConfirmationMessage('¿Desea borrar el piloto?')==false){return false;}"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

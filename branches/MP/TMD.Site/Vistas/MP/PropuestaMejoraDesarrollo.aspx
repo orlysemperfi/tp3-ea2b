@@ -14,11 +14,11 @@
                             <tr>
                                 <td>
                                     <asp:Label ID="lblCodigo" runat="server" Text="Código:" Width="50px"></asp:Label>
-                                    <asp:TextBox ID="tbxCodigo" runat="server" CssClass="estilo_textbox" Width="150px"></asp:TextBox>
+                                    <asp:TextBox ID="tbxCodigo" runat="server" Width="150px"></asp:TextBox>
                                 </td>
                                 <td>
                                     <asp:Label ID="lblTipo" runat="server" Text="Tipo:" Width="50px"></asp:Label>
-                                    <asp:DropDownList ID="ddlTipo" runat="server" CssClass="estilo_combobox">
+                                    <asp:DropDownList ID="ddlTipo" runat="server">
                                     </asp:DropDownList>
                                 </td>
                                 <td>
@@ -73,6 +73,9 @@
                         DataSource='<%#ObtenerPropuestaMejoraListado() %>' 
                         OnRowCommand="gvwPropuestaMejoraDesarrollo_RowCommand" 
                         Width="657px">
+                        <EmptyDataTemplate>
+                                No existen propuestas con los criterios ingresados.
+                        </EmptyDataTemplate>
                         <Columns>
                             <asp:TemplateField HeaderText="Seleccionar">
                                 <ItemTemplate>
@@ -80,7 +83,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             
-                            <asp:TemplateField HeaderText="Codigo Propuesta">
+                            <asp:TemplateField HeaderText="Código Propuesta">
                                 <ItemTemplate>
                                     <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO_PROPUESTA") %>'/>
                                 </ItemTemplate>

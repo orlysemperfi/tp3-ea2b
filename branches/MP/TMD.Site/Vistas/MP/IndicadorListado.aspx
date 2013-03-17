@@ -68,12 +68,13 @@
 <%--        <table id="tblIndicadorListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>   --%>                 
-                    <asp:GridView ID="gvwIndicadorListado" runat="server" CssClass="tabla-grilla" 
+                    <asp:GridView ID="gvwIndicadorListado" runat="server" 
                         Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
                         DataSource='<%#ObtenerIndicadorListado()%>' BorderWidth="0px" 
                         BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand" >
-                        <HeaderStyle CssClass="tabla-grilla-cabecera" />
-                        <RowStyle CssClass="tabla-grilla-filas" />
+                        <EmptyDataTemplate>
+                                No existen indicadores con los criterios ingresados.
+                        </EmptyDataTemplate>
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
@@ -101,13 +102,13 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarIndicador" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>                           
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Inactivar" CommandName="InactivarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Inactivar" CommandName="InactivarIndicador" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

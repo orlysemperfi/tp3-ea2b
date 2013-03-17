@@ -86,9 +86,9 @@ namespace TMD.CF.Site.Vistas.MP
             CargarListadoEscalas();
         }
 
-        protected void lbtnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Validate(lbtnGuardar.ValidationGroup);
+            Validate(btnGuardar.ValidationGroup);
             if (IsValid == true)
             {
                 IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
@@ -117,7 +117,7 @@ namespace TMD.CF.Site.Vistas.MP
             }
         }
 
-        protected void lbtnCancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
         }
@@ -164,12 +164,12 @@ namespace TMD.CF.Site.Vistas.MP
         }
 
 
-        protected void lbtnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void lbtnAgregarICuanti_Click(object sender, EventArgs e)
+        protected void btnAgregarICuanti_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_EscalaCuantitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         }

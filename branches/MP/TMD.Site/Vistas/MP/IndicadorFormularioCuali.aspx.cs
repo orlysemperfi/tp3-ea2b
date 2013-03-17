@@ -78,9 +78,9 @@ namespace TMD.MP.Site.Privado
             CargarListadoEscalas();
         }
 
-        protected void lbtnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Validate(lbtnGuardar.ValidationGroup);
+            Validate(btnGuardar.ValidationGroup);
 
             if (IsValid == true)
             {
@@ -109,7 +109,7 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void lbtnCancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
         }
