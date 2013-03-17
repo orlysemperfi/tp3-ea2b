@@ -85,6 +85,7 @@
     <Content Include="Controles\CF\ControlCambio\RegistroOrdenCambio.ascx" />
     <Content Include="Controles\RegistroInformeCambio.ascx" />
     <Content Include="Controles\RegistroSolicitudCambio.ascx" />
+    <Content Include="Error\GeneralError.aspx" />
     <Content Include="Error\NoPermitido.aspx" />
     <Content Include="Imagenes\bg-formLogin.png" />
     <Content Include="Imagenes\bienvenido.png" />
@@ -103,7 +104,6 @@
     <Content Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
-    <Content Include="Error\GeneralError.aspx" />
     <Content Include="Imagenes\add.png" />
     <Content Include="Imagenes\AddNewitem.jpg" />
     <Content Include="Imagenes\background.jpg" />
@@ -188,9 +188,14 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="ApplicationLogger.cs" />
+    <Compile Include="Error\GeneralError.aspx.cs">
+      <DependentUpon>GeneralError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error\GeneralError.aspx.designer.cs">
+      <DependentUpon>GeneralError.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Error\NoPermitido.aspx.cs">
       <DependentUpon>NoPermitido.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error\NoPermitido.aspx.designer.cs">
       <DependentUpon>NoPermitido.aspx</DependentUpon>
@@ -263,13 +268,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Error\GeneralError.aspx.cs">
-      <DependentUpon>GeneralError.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Error\GeneralError.aspx.designer.cs">
-      <DependentUpon>GeneralError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

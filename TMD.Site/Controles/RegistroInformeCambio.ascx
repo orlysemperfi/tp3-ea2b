@@ -4,12 +4,12 @@
     <p>
         Informe de Cambio</p>
     <p>
-        <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
+        <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar informe" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
             onclick="btnCancelar_Click" />
     </p>
     <p>
-        Nombre:
+        Nombre de Informe:
         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="NombreRequired" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="El Nombre es requerido."
@@ -26,7 +26,7 @@
         </asp:CompareValidator>
     </p>
     <p>
-        Linea Base:
+        Línea Base:
         <asp:DropDownList ID="ddlLineaBase" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlLineaBase_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="lineaBaseValidator" runat="server" ControlToValidate="ddlLineaBase"

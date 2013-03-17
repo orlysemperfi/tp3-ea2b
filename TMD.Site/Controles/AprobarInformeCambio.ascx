@@ -11,7 +11,7 @@
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
 </p>
 <p>
-    <asp:Button ID="btnGrabar" runat="server" Text="Grabar" 
+    <asp:Button ID="btnGrabar" runat="server" Text="Grabar motivo" 
         ValidationGroup="GrabarValidationGroup" 
         OnClientClick="javascript: return grabar();" onclick="btnGrabar_Click"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 

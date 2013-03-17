@@ -12,7 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
         <h1 class="page-title">
-            LISTA DE INFORMES</h1>
+            LISTADO DE INFORMES</h1>
         <div class="panel-wrapper">
             <asp:UpdatePanel runat="server" ID="upnlFiltro">
                 <ContentTemplate>
@@ -48,7 +48,7 @@
                                 <td>
                                     &nbsp;</td>
                                 <td>
-                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar"
+                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar Informes"
                                         OnClientClick="javascript:return validarProyecto();" />
                                 </td>
                                 <td>
@@ -167,7 +167,7 @@
                 </tr>
                 <tr>
                 <td>        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
-                <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" /></td>
+                <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar archivo" OnClick="btnGrabarArchcivo_Click" /></td>
                 <td>Archivo <asp:FileUpload ID="fileUpArchivo" runat="server" /></td>
                 </tr>
                 </table>
