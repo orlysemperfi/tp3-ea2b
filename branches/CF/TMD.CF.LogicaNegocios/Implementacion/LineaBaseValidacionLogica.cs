@@ -10,6 +10,7 @@ using TMD.CF.AccesoDatos.Contrato;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
+    //PATRON: DECORADOR
     public class LineaBaseValidacionLogica : ILineaBaseLogica
     {
         private readonly ILineaBaseLogica _lineaBaseLogica;

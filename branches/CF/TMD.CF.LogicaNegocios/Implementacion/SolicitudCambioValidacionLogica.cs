@@ -10,6 +10,7 @@ using TMD.Core;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
+    //PATRON: DECORADOR
     public class SolicitudCambioValidacionLogica : ISolicitudCambioLogica
     {
         private readonly ISolicitudCambioLogica _solicitudCambioLogica;
