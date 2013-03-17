@@ -55,7 +55,6 @@
     <Compile Include="Caching\ICacheAdapter.cs" />
     <Compile Include="Constantes.cs" />
     <Compile Include="Extension\Cadena.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="Logger\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
