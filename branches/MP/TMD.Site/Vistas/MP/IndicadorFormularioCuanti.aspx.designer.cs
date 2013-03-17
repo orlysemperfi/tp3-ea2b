@@ -58,13 +58,13 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
         
         /// <summary>
-        /// tbxFrecuenciaMed control.
+        /// ddlFrecuenciaMed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxFrecuenciaMed;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFrecuenciaMed;
         
         /// <summary>
         /// rfvFrecuenciaMed control.
@@ -112,13 +112,13 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvExpresionMat;
         
         /// <summary>
-        /// tbxPlazo control.
+        /// ddlPlazo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxPlazo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlazo;
         
         /// <summary>
         /// rfvPlazo control.

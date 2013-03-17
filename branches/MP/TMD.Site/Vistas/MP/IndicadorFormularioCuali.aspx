@@ -23,6 +23,15 @@
                 return false;
         }
 
+        function validarRangos() {
+            var tbxLimSuperior = document.getElementById("tbxLimSuperior");
+            var tbxLimInferior = document.getElementById("tbxLimInferior");
+
+
+
+           
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -38,8 +47,7 @@
                 <td>
                     Proceso:</td>
                 <td >
-                    <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox">
-                    </asp:DropDownList>
+                    <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox"></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ValidationGroup="Indicador" ErrorMessage="Seleccione un proceso" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -57,8 +65,8 @@
                     Frecuencia de Medición:
                 </td>
                 <td>
-                    <asp:TextBox ID="tbxFrecuenciaMed" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="tbxFrecuenciaMed" ValidationGroup="Indicador" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
+                    <asp:DropDownList ID="ddlFrecuenciaMed" runat="server" CssClass="estilo_combobox"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="ddlFrecuenciaMed" InitialValue="0" ValidationGroup="Indicador" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -72,20 +80,11 @@
             </tr>
             <tr>
                 <td>
-                    Expresion Matematica:
-                </td>
-                <td>
-                    <asp:TextBox ID="tbxExpresionMat" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvExpresionMat" runat="server" ControlToValidate="tbxExpresionMat" ValidationGroup="Indicador" ErrorMessage="Ingrese una expresión matemática" Display="None"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     Plazo:
                 </td>
                 <td>
-                    <asp:TextBox ID="tbxPlazo" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="tbxPlazo" ValidationGroup="Indicador" ErrorMessage="Ingrese un plazo" Display="None"></asp:RequiredFieldValidator>
+                    <asp:DropDownList ID="ddlPlazo" runat="server" CssClass="estilo_combobox" ></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="ddlPlazo" ValidationGroup="Indicador" InitialValue="0" ErrorMessage="Ingrese un plazo" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>

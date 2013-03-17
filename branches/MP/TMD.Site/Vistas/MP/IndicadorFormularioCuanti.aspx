@@ -48,8 +48,8 @@
                     Frecuencia de Medición:
                 </td>
                 <td>
-                    <asp:TextBox ID="tbxFrecuenciaMed" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="tbxFrecuenciaMed" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
+                     <asp:DropDownList ID="ddlFrecuenciaMed" runat="server" CssClass="estilo_combobox"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="ddlFrecuenciaMed" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -76,8 +76,8 @@
                     Plazo:
                 </td>
                 <td>
-                    <asp:TextBox ID="tbxPlazo" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="tbxPlazo" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una plazo" Display="None"></asp:RequiredFieldValidator>
+                    <asp:DropDownList ID="ddlPlazo" runat="server" CssClass="estilo_combobox" ></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="ddlPlazo" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una plazo" Display="None"></asp:RequiredFieldValidator>
                 </td>
             </tr>
 
@@ -111,7 +111,7 @@
                                                     <asp:Label ID="lblSigno" runat="server" Text='<%#Eval("SIGNO") %>'  />
                                                 </ItemTemplate>
                                              <EditItemTemplate>
-                                                <asp:TextBox ID="tbxSigno" runat="server" Text='<%#Eval("SIGNO") %>' CssClass="estilo_textbox" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlSigno" runat="server" CssClass="estilo_combobox"></asp:DropDownList>
                                             </EditItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Valor">

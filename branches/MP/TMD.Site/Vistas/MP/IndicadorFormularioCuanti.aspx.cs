@@ -24,6 +24,8 @@ namespace TMD.CF.Site.Vistas.MP
             {
                 CargarProceso();
                 action = Convert.ToInt32(Request.QueryString["Action"]);
+                CargarPlazo();
+                CargarFrecuencia();
                 CargarIndicador();
                 /*if (action == Constantes.ACTION_INSERT)
                 {
@@ -50,16 +52,37 @@ namespace TMD.CF.Site.Vistas.MP
             gwEscalasCuanti.DataBind();
         }
 
+        protected void CargarPlazo()
+        {
+            ddlPlazo.Items.Add(new ListItem("[Seleccionar]", "0"));
+            ddlPlazo.Items.Add(new ListItem("3 meses", "3 meses"));
+            ddlPlazo.Items.Add(new ListItem("6 meses", "6 meses"));
+            ddlPlazo.Items.Add(new ListItem("1 año", "1 año"));
+            ddlPlazo.Items.Add(new ListItem("2 años", "2 años"));
+            ddlPlazo.Items.Add(new ListItem("3 años", "3 años"));
+            ddlPlazo.DataBind();
+        }
+
+        protected void CargarFrecuencia()
+        {
+            ddlFrecuenciaMed.Items.Add(new ListItem("[Seleccionar]", "0"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Diaria", "Diaria"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Semanal", "Semanal"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Mensual", "Mensual"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Semestral", "Semestral"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Anual", "Anual"));
+            ddlFrecuenciaMed.DataBind();
+        }
 
         protected void CargarIndicador()
         {
             IndicadorEntidad indicador = Sesiones.IndicadorSeleccionado;
             ddlProceso.SelectedValue = indicador.codigo_Proceso.ToString();
             tbxNombre.Text = indicador.nombre;
-            tbxFrecuenciaMed.Text = indicador.frecuencia_Medicion;
+            ddlFrecuenciaMed.SelectedValue = indicador.frecuencia_Medicion;
             tbxFuenteMed.Text = indicador.fuente_Medicion;
             tbxExpresionMat.Text = indicador.expresion_Matematica;
-            tbxPlazo.Text = indicador.plazo;
+            ddlPlazo.SelectedValue = indicador.plazo;
             CargarListadoEscalas();
         }
 
@@ -71,10 +94,10 @@ namespace TMD.CF.Site.Vistas.MP
                 IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
                 IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
                 oNewIndicador.nombre = tbxNombre.Text;
-                oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
+                oNewIndicador.frecuencia_Medicion = ddlFrecuenciaMed.SelectedValue.ToString();
                 oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
                 oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
-                oNewIndicador.plazo = tbxPlazo.Text;
+                oNewIndicador.plazo = ddlPlazo.SelectedValue.ToString();
                 oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
                 oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUANTITATIVO;
                 oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
@@ -219,7 +242,7 @@ namespace TMD.CF.Site.Vistas.MP
         {
             GridViewRow row = (GridViewRow)gwEscalasCuanti.Rows[e.RowIndex];
             Label lblCodigo = (Label)row.FindControl("lblCodigo");
-            TextBox tbxSigno = (TextBox)row.FindControl("tbxSigno");
+            DropDownList ddlSigno = (DropDownList)row.FindControl("ddlSigno");
             TextBox tbxValor = (TextBox)row.FindControl("tbxValor");
             DropDownList ddlUnidad = (DropDownList)row.FindControl("ddlUnidad");
 
@@ -230,7 +253,7 @@ namespace TMD.CF.Site.Vistas.MP
             {
                 if (obj.codigo == Convert.ToInt32(lblCodigo.Text))
                 {
-                    obj.signo = tbxSigno.Text;
+                    obj.signo = ddlSigno.SelectedItem.Text;
                     obj.valor = Convert.ToDouble(tbxValor.Text);
                     obj.codigo_Unidad = Convert.ToInt32(ddlUnidad.SelectedValue);
                     obj.descripcion_unidad = ddlUnidad.SelectedItem.Text;
@@ -296,8 +319,15 @@ namespace TMD.CF.Site.Vistas.MP
             {
                 Label lblCodigo = (Label)(gwEscalasCuanti.Rows[grdRow.RowIndex].FindControl("lblCodigo"));
                 DropDownList ddlUnidad = (DropDownList)(gwEscalasCuanti.Rows[grdRow.RowIndex].FindControl("ddlUnidad"));
+                DropDownList ddlSigno = (DropDownList)(gwEscalasCuanti.Rows[grdRow.RowIndex].FindControl("ddlSigno"));
 
-                if (ddlUnidad != null) { 
+                if (ddlUnidad != null & ddlSigno !=null) {
+                    ddlSigno.Items.Add(new ListItem(">",">"));
+                    ddlSigno.Items.Add(new ListItem("<", "<"));
+                    ddlSigno.Items.Add(new ListItem(">=", ">="));
+                    ddlSigno.Items.Add(new ListItem("<=", "<="));
+                    ddlSigno.Items.Add(new ListItem("=", "="));
+                    ddlSigno.DataBind();
                     ddlUnidad.DataSource = oUnidadColeccion;
                     ddlUnidad.DataTextField = "DESCRIPCION";
                     ddlUnidad.DataValueField = "CODIGO";
@@ -308,6 +338,7 @@ namespace TMD.CF.Site.Vistas.MP
                         if (oEscalaCuantitativo.codigo == Convert.ToInt32(lblCodigo.Text))
                         {
                             ddlUnidad.SelectedValue = oEscalaCuantitativo.codigo_Unidad.ToString();
+                            ddlSigno.SelectedValue = oEscalaCuantitativo.signo;
                         }
                     }
                 } 

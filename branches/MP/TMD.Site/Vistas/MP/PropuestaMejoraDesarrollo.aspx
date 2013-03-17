@@ -29,9 +29,12 @@
             </td>
             <td class="textbox-espaciado">
                 <asp:TextBox ID="tbxFechaInicio" runat="server" CssClass="estilo_textbox" ></asp:TextBox>
-                <!--asp:CalendarExtender ID="tbxFechaEnvio_CalendarExtender" runat="server" Format="dd/MM/yyyy" TargetControlID="tbxFechaInicio"></asp:CalendarExtender>
-                <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaInicio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" /-->
-            </td>
+                
+                <asp:CalendarExtender ID="tbxFechaInicio_CalendarExtender" runat="server" 
+                    TargetControlID="tbxFechaInicio">
+                </asp:CalendarExtender>
+                
+             </td>
             <td class="textbox-espaciado">
                 al: 
             </td>
@@ -57,8 +60,7 @@
     <br />
 
     <table border="0" cellpadding="0" cellspacing="0">
-        
-            <tr>
+        <tr>
                 <td>
                     <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" AutoGenerateColumns="false" 
                         DataSource='<%#ObtenerPropuestaMejoraListado() %>' 
@@ -70,7 +72,6 @@
                                     <asp:CheckBox ID="chkPropuestaSel" runat="server" CommandName="SeleccionarPropuesta"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            
                             <asp:TemplateField HeaderText="Codigo Propuesta">
                                 <ItemTemplate>
                                     <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO_PROPUESTA") %>'/>

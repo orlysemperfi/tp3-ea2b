@@ -40,6 +40,15 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxFechaInicio;
         
         /// <summary>
+        /// tbxFechaInicio_CalendarExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender tbxFechaInicio_CalendarExtender;
+        
+        /// <summary>
         /// tbxFechaFin control.
         /// </summary>
         /// <remarks>
