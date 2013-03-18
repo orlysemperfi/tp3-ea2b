@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegistroOrdenCambio.ascx.cs" 
 	Inherits="TMD.CF.Site.Controles.CF.ControlCambio.RegistroOrdenCambio" %>
+<asp:Button ID="btnRegresar" runat="server" Text="Regresar" 
+        onclick="btnRegresar_Click" />
 <asp:Panel runat="server" ID="pnlOrdenCambio">
 <div class="panel-wrapper form" id="frm-actualizar-sc">
     <h1>
@@ -72,7 +74,13 @@
     </p>
         <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" 
         CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
-        <asp:Label ID="lblErrorMessage" runat="server" CssClass="failureNotification"></asp:Label>
+        <div id="divRN" style="display:none">
+            <asp:TextBox ID="txtRN" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RNValidator" runat="server" ControlToValidate="txtRN"
+                CssClass="failureNotification" ErrorMessage=""
+                ValidationGroup="GrabarValidationGroup"></asp:RequiredFieldValidator>
+        </div>
+        
 </div>
 </asp:Panel>
 <script type="text/javascript" language="javascript">

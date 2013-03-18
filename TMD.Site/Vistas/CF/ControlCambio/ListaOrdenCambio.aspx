@@ -35,16 +35,9 @@
                                 <td>
                                 </td>
                                 <td>
-                                    &nbsp;
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                </td>
-                                <td>
                                     &nbsp;</td>
                                 <td>
-                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar"
+                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" Visible="false"
                                         OnClientClick="javascript:return validarProyecto();" />
                                 </td>
                                 <td>
