@@ -13,6 +13,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
     public class SolucionMejoraLogica : ISolucionMejoraLogica
     {
         public ISolucionMejoraData iSolucionMejora;
+        public IAccionesSolucionData iAccionesSolucion;
         
         private static ISolucionMejoraLogica instance;
         private SolucionMejoraLogica() { }
@@ -78,7 +79,13 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
             return oSolucionMejoraColeccion;
         }
-
+        
+        //Acciones
+        public List<AccionesSolucionEntidad> ObtenerListaAccionesSolucionPorSolucion(int codigo_Solucion)
+        {
+            iAccionesSolucion = new AccionesSolucionDataSql();
+            return iAccionesSolucion.ObtenerListaAccionesPorSolucion(codigo_Solucion);
+        }
         #endregion
 
 
@@ -95,6 +102,13 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             iSolucionMejora.InsertarSolucionMejoraEstado(oSolucionEstado);
 
 
+            iAccionesSolucion = new AccionesSolucionDataSql();
+            iAccionesSolucion.EliminarAccionesSolucionPorSolucion(Convert.ToInt32(oSolucionMejora.codigo_Solucion));
+            foreach (AccionesSolucionEntidad oAccionesSolucion in oSolucionMejora.lstAcciones)
+                {
+                    oAccionesSolucion.codigo_solucion = oSolucionMejora.codigo_Solucion;
+                    iAccionesSolucion.InsertarAccionesSolucion(oAccionesSolucion);
+            }
         }
         #endregion
 
@@ -105,10 +119,18 @@ namespace TMD.MP.LogicaNegocios.Implementacion
         {
             iSolucionMejora = new SolucionMejoraDataSql();
 
+            
+
             try
             {
                 iSolucionMejora.ActualizarSolucionMejora(oSolucionMejora);
-
+                iAccionesSolucion = new AccionesSolucionDataSql();
+                iAccionesSolucion.EliminarAccionesSolucionPorSolucion(Convert.ToInt32(oSolucionMejora.codigo_Solucion));
+                foreach (AccionesSolucionEntidad oAccionesSolucion in oSolucionMejora.lstAcciones)
+                {
+                    oAccionesSolucion.codigo_solucion = oSolucionMejora.codigo_Solucion;
+                    iAccionesSolucion.InsertarAccionesSolucion(oAccionesSolucion);
+                }
             }
             catch (Exception ex)
             {

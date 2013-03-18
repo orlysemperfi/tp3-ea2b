@@ -19,6 +19,7 @@ namespace TMD.Entidades
         public String propuesta { get; set; }
         public String nombre_Estado { get; set; }
 
+        public List<AccionesSolucionEntidad> lstAcciones { get; set; }
 
     }
 }

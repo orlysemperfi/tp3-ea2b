@@ -15,6 +15,10 @@ namespace TMD.MP.LogicaNegocios.Contrato
         SolucionMejoraEntidad ObtenerSolucionMejoraPorCodigo(int codigo);
 
         List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoParaPiloto();
+
+        //Acciones
+        List<AccionesSolucionEntidad> ObtenerListaAccionesSolucionPorSolucion(int codigo_Solucion);       
+
         #endregion
 
         #region "Update"

@@ -198,7 +198,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO MP.ESTADO_SOLUCION");
+            strSQL.Append("INSERT INTO MP.SOLUCION_MEJORA");
             strSQL.Append("(CODIGO_SOLUCION,CODIGO_ESTADO,FECHA) ");
             strSQL.Append("VALUES(@CODIGO_SOLUCION,@CODIGO_ESTADO,GETDATE())");
 
@@ -238,16 +238,30 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
 
         #region "Update"
-        
+
         public void ActualizarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            
+            strSQL.Append("UPDATE MP.SOLUCION_MEJORA SET ");
+            strSQL.Append("CODIGO_EMPLEADO=@CODIGO_EMPLEADO, CODIGO_PROPUESTA=@CODIGO_PROPUESTA,DESCRIPCION=@DESCRIPCION, ");
+            strSQL.Append("CODIGO_ESTADO=@CODIGO_ESTADO ");
+            strSQL.Append("WHERE CODIGO = @CODIGO_SOLUCION");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+
+            sqlCmd.Parameters.Add("@CODIGO_SOLUCION", SqlDbType.Int).Value = oSolucionMejora.codigo_Solucion;
+            sqlCmd.Parameters.Add("@CODIGO_EMPLEADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Empleado;
+            sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.VarChar).Value = oSolucionMejora.codigo_Propuesta;
+            sqlCmd.Parameters.Add("@DESCRIPCION", SqlDbType.Int).Value = oSolucionMejora.descripcion;
+            sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Estado;
+
             try
             {
-                
+                sqlConn.Open();
+                sqlCmd.ExecuteNonQuery();
             }
             catch (System.Exception ex)
             {
@@ -258,7 +272,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 sqlConn.Close();
             }
         }
-        
+
         public void ActualizarEstadoSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;

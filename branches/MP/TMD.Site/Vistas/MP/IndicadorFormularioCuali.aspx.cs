@@ -66,7 +66,6 @@ namespace TMD.MP.Site.Privado
             
         }
 
-
         protected void CargarIndicador()
         {
             IndicadorEntidad indicador = Sesiones.IndicadorSeleccionado;
