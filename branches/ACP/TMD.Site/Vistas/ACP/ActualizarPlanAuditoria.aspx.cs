@@ -232,8 +232,30 @@ namespace TMD.CF.Site.Vistas.ACP
             DateTime fechaInicio = Convert.ToDateTime(Request["ctl00$MainContent$__TmpFechaInicio"]);
             DateTime fechaFin = Convert.ToDateTime(Request["ctl00$MainContent$__TmpFechaFin"]);
 
-            DataActividades.Actividades.Add(new Actividad() { IdActividad = idActividad, IdAuditor = idAuditor, DescripcionActividad = descripcion, Lugar = lugar, FechaInicio = fechaInicio, FechaFin = fechaFin });
-            CargarActividadesAuditoria();           
+            string strMensaje = "";
+
+            Auditoria auditoria = TMD.Site.Controladora.ACP.AuditoriaControladora.ObtenerPlanAuditoriaPorID(idAuditoria);
+            if (fechaInicio < auditoria.FechaInicio || 
+                fechaInicio > auditoria.FechaFin)
+            {
+                strMensaje = "Las actividades a realizar no se encuentra en el periodo de tiempo que dura la auditoria";
+            }
+            else if (fechaFin < auditoria.FechaInicio ||
+                     fechaFin > auditoria.FechaFin)
+            {
+                strMensaje = "Las actividades a realizar no se encuentra en el periodo de tiempo que dura la auditoria";
+            }
+
+            if (strMensaje == "")
+            {
+                DataActividades.Actividades.Add(new Actividad() { IdActividad = idActividad, IdAuditor = idAuditor, DescripcionActividad = descripcion, Lugar = lugar, FechaInicio = fechaInicio, FechaFin = fechaFin });
+            }
+
+            rptActividadesAuditoria.DataSource = DataActividades.Actividades;
+            rptActividadesAuditoria.DataBind();
+            AddCallbackValue("1");
+            AddCallbackControl(rptActividadesAuditoria);
+            AddCallbackValue(strMensaje);
         }
 
         public void GrabarActividadAuditoria()

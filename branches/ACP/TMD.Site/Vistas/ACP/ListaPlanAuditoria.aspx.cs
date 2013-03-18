@@ -80,9 +80,9 @@ namespace TMD.ACP.Site
                     gvAuditoria.SelectedIndex = gvAuditoria.Rows[Convert.ToInt32(e.CommandArgument)].RowIndex;
                 }
                 string sIdAuditoria = gvAuditoria.SelectedDataKey["idAuditoria"].ToString();                
-                Response.Redirect("ActualizarPlanAuditoria.aspx?idAuditoria=" + sIdAuditoria);
+                Response.Redirect("ActualizarPlanAuditoria.aspx?idAuditoria=" + sIdAuditoria, false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 lblError.ForeColor = System.Drawing.Color.Red;
                 lblError.Text = "Error al Realizar la Transacción";

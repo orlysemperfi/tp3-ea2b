@@ -176,8 +176,13 @@
     function End_fAgregarActividadAuditoria(arg) {
         var mData = arg.split(":::")
         if (mData[0] == "1") {
-            $("#divActividadesAuditoria").html(mData[1]);
-            $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+            if (mData[2] == "") {
+                $("#divActividadesAuditoria").html(mData[1]);
+                $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+            }
+            else {
+                alert(mData[2]);
+            }
         }
     }
 
