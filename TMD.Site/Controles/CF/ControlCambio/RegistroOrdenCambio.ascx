@@ -6,7 +6,7 @@
         Orden de Cambio</h1>
             <p class="buttons-wrapp">
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" 
-                    Text="Grabar Solicitud" ValidationGroup="GrabarValidationGroup" 
+                    Text="Grabar Orden" ValidationGroup="GrabarValidationGroup" 
                     OnClientClick="javascript: return grabar();"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
             onclick="btnCancelar_Click" />
