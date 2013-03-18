@@ -19,8 +19,8 @@ namespace TMD.SD.AccesoDatos_Atencion.Map
             return new DocumentoTicket
             {
                 Codigo_Ticket = reader.GetInt("CODIGO_TICKET"),
-                Codigo_DocumentoTicket = reader.GetInt("CODIGO_INFORMACION_ADICIONAL"),
-                Fecha_Registro = reader.GetDateTime("FECHA_REGISTRO_INFORMACION_SEGUIMIENTO"),
+                Codigo_DocumentoTicket = Convert.ToInt32(reader.GetBigInt("CODIGO_INFORMACION_ADICIONAL")),
+                Fecha_Registro = reader.GetDateTime("FECHA_REGISTRO_INFORMACION_ADICIONAL"),
                 Descripcion_DocumentoTicket = reader.GetString("DESCRIPCION_INFORMACION_ADICIONAL"),
                 Nombre_DocumentoTicket = reader.GetString("NOMBRE_ARCHIVO_INFORMACION_ADICIONAL"),
                 Ruta_DocumentoTicket = reader.GetString("RUTA_INFORMACION_ADICIONAL"),
