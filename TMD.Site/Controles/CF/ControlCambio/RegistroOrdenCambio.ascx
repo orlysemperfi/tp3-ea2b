@@ -11,7 +11,7 @@
                     Text="Grabar Orden" ValidationGroup="GrabarValidationGroup" 
                     OnClientClick="javascript: return grabar();"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" cssClass="btn-cancelar"
-            onclick="btnCancelar_Click" />
+            onclick="btnCancelar_Click" onClientClick="javascript:ocultarDiv('divRegistroOrden');"/>
     </p>
     <p>
         <span class="label-field">Nombre:</span>

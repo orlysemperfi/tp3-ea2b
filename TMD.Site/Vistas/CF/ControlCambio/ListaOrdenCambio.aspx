@@ -12,7 +12,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaOrden" class="content">
         <h1 class="page-title">
-            LISTA DE ORDEN CAMBIO</h1>
+            LISTADO DE ORDENES DE CAMBIO</h1>
         <div class="panel-wrapper">
             <asp:UpdatePanel runat="server" ID="upnlFiltro">
                 <ContentTemplate>
@@ -61,7 +61,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Ver" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
-                                <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" ImageUrl="~/Imagenes/select.jpg"
+                                <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" ImageUrl="~/Imagenes/ver.png"
                                     CommandName="Ver" CommandArgument='<%# Eval("Id")%>' Height="26px" Width="27px" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
@@ -93,14 +93,14 @@
                         <asp:TemplateField HeaderText="Cargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnCargar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Cargar" ImageUrl="~/Imagenes/upload.jpg" ToolTip="Cargar Archivo"
+                                    CommandName="Cargar" ImageUrl="~/Imagenes/upload.png" ToolTip="Cargar Archivo"
                                     Visible='<%# (Eval("NombreArchivo")== null) %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Descargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnDescargar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Descargar" ImageUrl="~/Imagenes/download.jpg" ToolTip="Descargar Archivo"
+                                    CommandName="Descargar" ImageUrl="~/Imagenes/download.png" ToolTip="Descargar Archivo"
                                     Visible='<%# (Eval("NombreArchivo")!= null) %>' OnClientClick='<%# String.Format("javascript:return Descargar({0});",Eval("Id"))%>' />
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -115,14 +115,17 @@
         </asp:UpdatePanel>
         <asp:UpdatePanel runat="server" ID="upnlControles">
             <ContentTemplate>
+            <div id="divRegistroOrden" class="divFlotante" style="display:none;">
                 <uc1:registroordencambio id="ucRegistroOrdenCambio" runat="server" visible="False" />
+            </div>
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:UpdatePanel runat="server" ID="upnlSubir" UpdateMode="Conditional">
             <ContentTemplate>
+                <div id="divSubirOrden" class="divFlotante" style="display:none;">
                 <asp:Panel runat="server" ID="pnlSubir" Visible="false">
                     <p>
-                        Subir Archivo Orden Cambio</p>
+                        Subir archivo de Orden de Cambio</p>
                     <p>
                         Archivo</p>
                     <p>
@@ -132,6 +135,7 @@
                         <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" />
                         <asp:Button ID="btnCancelarArchivo" runat="server" CssClass="btn-cancelar" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
                 </asp:Panel>
+                </div>
             </ContentTemplate>
             <Triggers>
                 <asp:PostBackTrigger runat="server" ControlID="btnGrabarProxy" />
@@ -150,6 +154,13 @@
                 //alert('Seleccione un Proyecto!');
                 return true;
             }
+        }
+        function mostrarDiv(idDiv) {
+            document.getElementById(idDiv).style.display = 'inline-block';
+        }
+
+        function ocultarDiv(idDiv) {
+            document.getElementById(idDiv).style.display = 'none';
         }
     </script>
 </asp:Content>
