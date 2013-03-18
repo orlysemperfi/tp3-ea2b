@@ -15,5 +15,6 @@ namespace TMD.Entidades
         public String Ruta_DocumentoTicket { get; set; }
         public int Codigo_Equipo { get; set; }
         public int Codigo_Integrante { get; set; }
+
     }
 }
