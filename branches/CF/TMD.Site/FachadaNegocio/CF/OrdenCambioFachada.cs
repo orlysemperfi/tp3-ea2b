@@ -84,7 +84,7 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         public List<InformeCambio> ListarInformePorProyectoLineaBase(int idProyecto, int idLineaBase, int estado)
         {
 
-            List<InformeCambio> lista = InformeCambioLogica.ListarPorProyectoLineaBase(new InformeCambio {Solicitud = new SolicitudCambio { ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = idProyecto } }, LineaBase = new LineaBase { Id = idLineaBase } },});
+            List<InformeCambio> lista = InformeCambioLogica.ListarPorProyectoLineaBase(new InformeCambio {Solicitud = new SolicitudCambio { ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = idProyecto } }, LineaBase = new LineaBase { Id = idLineaBase } },},1);
 
             lista.Insert(0, new InformeCambio { Id = 0, Nombre = "--Seleccione--" });
             

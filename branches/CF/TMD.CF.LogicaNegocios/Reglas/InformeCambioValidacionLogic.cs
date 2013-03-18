@@ -47,9 +47,9 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             _informeLogicaCambio.Aprobar(informeCambio);
         }
 
-        public List<Entidades.InformeCambio> ListarPorProyectoLineaBase(Entidades.InformeCambio informeCambio)
+        public List<Entidades.InformeCambio> ListarPorProyectoLineaBase(Entidades.InformeCambio informeCambio, int conNull)
         {
-            return _informeLogicaCambio.ListarPorProyectoLineaBase(informeCambio);
+            return _informeLogicaCambio.ListarPorProyectoLineaBase(informeCambio, conNull);
         }
 
         public Entidades.InformeCambio ObtenerPorId(int id)

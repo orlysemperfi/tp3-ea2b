@@ -14,7 +14,7 @@ namespace TMD.CF.LogicaNegocios.Contrato
         /// <param name="informeCambio"></param>
         void Agregar(InformeCambio informeCambio);
         void Aprobar(InformeCambio informeCambio);
-        List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio);
+        List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio, int conNull);
         InformeCambio ObtenerPorId(int id);
 
         /// <summary>
