@@ -319,7 +319,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
 
         #region "Update"
-        public void ActualizarIndicador(IndicadorEntidad entidad)
+        public IndicadorEntidad ActualizarIndicador(IndicadorEntidad entidad)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
@@ -356,6 +356,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 sqlConn.Close();
             }
+            return entidad;
         }
         #endregion
 

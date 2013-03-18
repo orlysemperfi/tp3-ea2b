@@ -106,20 +106,20 @@
                                                         <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>'/>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Límite Superior">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' />
-                                                    </ItemTemplate>
-                                                    <EditItemTemplate>
-                                                        <asp:TextBox ID="tbxLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' onkeypress="return isNumberKey(event)"></asp:TextBox>
-                                                    </EditItemTemplate>
-                                                </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Límite Inferior">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("LIMITE_INFERIOR") %>' />
                                                     </ItemTemplate>
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="tbxLimInferior" runat="server" Text='<%#Eval("LIMITE_INFERIOR") %>' onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Límite Superior">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' />
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="tbxLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' onkeypress="return isNumberKey(event)"></asp:TextBox>
                                                     </EditItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Calificación">
