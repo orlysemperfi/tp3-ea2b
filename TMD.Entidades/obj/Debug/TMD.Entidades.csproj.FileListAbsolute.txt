@@ -36,3 +36,8 @@ E:\TP3\Proyecto\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.Entidades\obj\Debug\TMD.Entidades.dll
 E:\TP3\Proyecto\TMD.Entidades\obj\Debug\TMD.Entidades.pdb
+C:\Users\Hans\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral(1)\TMD.Entidades\bin\Debug\TMD.Entidades.dll
+C:\Users\Hans\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral(1)\TMD.Entidades\bin\Debug\TMD.Entidades.pdb
+C:\Users\Hans\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral(1)\TMD.Entidades\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Hans\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral(1)\TMD.Entidades\obj\Debug\TMD.Entidades.dll
+C:\Users\Hans\Documents\Visual Studio 2010\Projects\TMD.SistemaIntegral(1)\TMD.Entidades\obj\Debug\TMD.Entidades.pdb

@@ -64,9 +64,9 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
             _ticketData.registrarSeguimiento (seguimientoTicket);
         }
 
-        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket)
+        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket, String tipoSeguimiento)
         {
-            return _ticketData.listaSeguimientos(numeroTicket);
+            return _ticketData.listaSeguimientos(numeroTicket,  tipoSeguimiento);
         }
 
         public void escalarTicketEspecialista(Ticket ticket)
@@ -74,11 +74,20 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
             _ticketData.escalarTicketEspecialista(ticket);
         }
 
-        //public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
-        //{
-        //    _ticketData.registrarDocumentoTicket(documentoTicket);
-        //}
+        public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
+        {
+            _ticketData.registrarDocumentoTicket(documentoTicket);
+        }
 
+        public void cambiarEstadoTicket(Ticket ticket)
+        {
+            _ticketData.cambiarEstadoTicket(ticket);
+        }
+
+        public List<DocumentoTicket> listaDocumentosTickets(int numeroTicket)
+        {
+            return _ticketData.listaDocumentosTickets(numeroTicket);
+        }
 
     }
 }

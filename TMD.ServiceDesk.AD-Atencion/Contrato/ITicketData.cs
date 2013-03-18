@@ -25,8 +25,10 @@ namespace TMD.SD.AccesoDatos_Atencion.Contrato
         TicketCMDB datosTicketCMDB(int numeroTicket);
         void registrarSolucion(int numeroTicket, String solucion, int codigoEquipo, int codigoEspecialista);
         void registrarSeguimiento(SeguimientoTicket seguimientoTicket);
-        List<SeguimientoTicket> listaSeguimientos(int numeroTicket);
+        List<SeguimientoTicket> listaSeguimientos(int numeroTicket,String tipoSeguimiento);
+        List<DocumentoTicket> listaDocumentosTickets(int numeroTicket);
         void escalarTicketEspecialista(Ticket ticket);
         void registrarDocumentoTicket(DocumentoTicket documentoTicket);
+        void cambiarEstadoTicket(Ticket ticket);
     }
 }

@@ -239,7 +239,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
         }
 
-        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket)
+        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket, String tipoSeguimiento)
         {
             List<SeguimientoTicket> listaSeguimientos = new List<SeguimientoTicket>();
             string sSQL;
@@ -252,10 +252,12 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
                    "S.DESCRIPCION_INFORMACION_SEGUIMIENTO,S.CODIGO_EQUIPO,S.CODIGO_INTEGRANTE, " +
                    "S.TIPO_SEGUIMIENTO,O.NOMBRE_PERSONA + ' ' + O.APELLIDO_PATERNO + ' ' + O.APELLIDO_MATERNO AS Nombre_Integrante " +
                    "from  SD.INFORMACION_SEGUIMIENTO S " + 
-                   "Left Join SD.INTEGRANTE I On I.CODIGO_EQUIPO = S.CODIGO_SEGUIMIENTO And I.CODIGO_INTEGRANTE = S.CODIGO_INTEGRANTE "+
+                   "Left Join SD.INTEGRANTE I On I.CODIGO_EQUIPO = S.CODIGO_EQUIPO And I.CODIGO_INTEGRANTE = S.CODIGO_INTEGRANTE "+
                    "Left Join GEN.EMPLEADO E On E.CODIGO_EMPLEADO = I.CODIGO_EMPLEADO "+
                    "Left Join GEN.PERSONA O ON O.CODIGO_PERSONA= E.CODIGO_EMPLEADO " + 
                    "Where CODIGO_TICKET=" + numeroTicket;
+
+            if (tipoSeguimiento != "TODOS") sSQL = sSQL + "  And S.TIPO_SEGUIMIENTO='" + tipoSeguimiento + "'";
 
             using (DbCommand command = DB.GetSqlStringCommand(sSQL))
             {
@@ -322,8 +324,55 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
         }
 
+        public void cambiarEstadoTicket(Ticket ticket)
+        {
+            string sSQL;
+
+            int numeroTicket = ticket.Codigo_Ticket;
+           
+            sSQL = "Update SD.TICKET SET ESTADO_TICKET=@ESTADO_TICKET " +
+                    "Where CODIGO_TICKET=" + numeroTicket;
+            using (DbCommand command = DB.GetSqlStringCommand(sSQL))
+            {
+                DB.AddInParameter(command, "@ESTADO_TICKET", DbType.String , ticket.Estado_Ticket);
+                DB.ExecuteNonQuery(command);
+            }
+
+        }
 
 
+        public List<DocumentoTicket> listaDocumentosTickets(int numeroTicket)
+        {
+            List<DocumentoTicket> listaDocumentoTicket = new List<DocumentoTicket>();
+            string sSQL;
+
+            //try
+            //{
+            sSQL = "Select CODIGO_TICKET,CODIGO_INFORMACION_ADICIONAL,FECHA_REGISTRO_INFORMACION_ADICIONAL," +
+                   "DESCRIPCION_INFORMACION_ADICIONAL,NOMBRE_ARCHIVO_INFORMACION_ADICIONAL,RUTA_INFORMACION_ADICIONAL,CODIGO_EQUIPO,CODIGO_INTEGRANTE " +
+                   "From SD.INFORMACION_ADICIONAL " +
+                   "Where CODIGO_TICKET=" + numeroTicket;
+
+            using (DbCommand command = DB.GetSqlStringCommand(sSQL))
+            {
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        listaDocumentoTicket.Add(TicketDocumentoDataMap.Select(reader));
+
+                    }
+                }
+            }
+
+            //}
+            //catch
+            //{
+            //    return new List<DocumentoTicket>();
+            //}
+            return listaDocumentoTicket;
+        }
 
     }
 }

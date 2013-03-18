@@ -92,7 +92,7 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
             codigoEquipo = datosTicket.Codigo_Equipo;
 
             //Llenar la grilla
-            grdSeguimiento.DataSource = ticket.listaSeguimientos(datosTicket.Codigo_Ticket);
+            grdSeguimiento.DataSource = ticket.listaSeguimientos(datosTicket.Codigo_Ticket,"TODOS");
             grdSeguimiento.DataBind(); 
 
 
