@@ -95,6 +95,7 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
+            lblErrorMessage.Text = "";
             if (validar())
             {
                 OrdenCambio ordenCambio = CrearOrden();
@@ -106,10 +107,8 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
                     pnlOrdenCambio.Enabled = false;
                 }catch (Exception ex)
                 {
-                
+                    lblErrorMessage.Text = ex.Message;
                 }
-
-                
             }
         }
 

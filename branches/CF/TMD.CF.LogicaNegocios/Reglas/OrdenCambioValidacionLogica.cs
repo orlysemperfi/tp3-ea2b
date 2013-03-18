@@ -28,7 +28,7 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             if (_ordenCambioData.ObtenerPorInforme(ordenCambio.InformeCambio.Id) != null)
             {
                 //REGLA: No puede agregarse mas de una orden de cambio a un informe.
-                throw new ReglaNegocioException("No puede agregarse mas de una orden de cambio a un informe.");
+                throw new ReglaNegocioException("No se puede agregar más de una orden a un informe.");
             }
             
             //REGLA: Solo se puede agregar una orden de cambio a un proyecto que no haya finalizado.
