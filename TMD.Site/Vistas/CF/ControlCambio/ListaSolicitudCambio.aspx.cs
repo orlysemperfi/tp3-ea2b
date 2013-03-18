@@ -7,6 +7,7 @@ using TMD.Entidades;
 using TMD.Core;
 using TMD.Strings;
 using System.Web;
+using System.Web.UI;
 using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
@@ -140,22 +141,25 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 case "Ver":
                     ucRegistroSolicitudCambio.CargarSolicitudExistente(Convert.ToInt32(e.CommandArgument));
-                    MostrarControles(true, false, false, false, false);
+                    MostrarControles(true, true, false, false, false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnVer_", "mostrarDiv('divRegistroSolicitud');", true);
                     break;
                 case "Cargar":
                     hidIdSolicitud.Value = e.CommandArgument.ToString();
-                    MostrarControles(false, false, false, true, false);
-                    System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "carga", "MostrarCarga(1);", true);
+                    MostrarControles(false, true, false, true, true);
+                    System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "_idBtnCargar_", "mostrarDiv('divSubirSolicitud');", true);
                     break;
                 case "Aprobar":
                     ucAprobarSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarSolicitudCambio.ApruebaSolicitud = true;
-                    MostrarControles(false,false,true,false,false);
+                    MostrarControles(false,true,true,false,true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnAprobar_", "mostrarDiv('divAprobarSolicitud');", true);
                     break;
                 case "Rechazar":
                     ucAprobarSolicitudCambio.IdSolicitudCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarSolicitudCambio.ApruebaSolicitud = false;
-                    MostrarControles(false, false, true, false, false);
+                    MostrarControles(false, true, true, false, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnRechazar_", "mostrarDiv('divAprobarSolicitud');", true);
                     break;
             }
         }
@@ -163,7 +167,8 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             ucRegistroSolicitudCambio.CargarsolicitudNueva();
-            MostrarControles(true, false, false, false, false);
+            MostrarControles(true, true, false, false, false);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroSolicitud');", true);
         }
 
         protected void btnDescarga_Click(object sender, EventArgs e)
@@ -199,6 +204,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
         {
             MostrarControles(false, true, false, false, true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnCancel_", "ocultarDiv('divRegistroSolicitud');", true);
         }
 
         protected void grvSolicitudCambio_DataBound(object sender, EventArgs e)

@@ -74,7 +74,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="Ver" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
-                                <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" ImageUrl="~/Imagenes/select.jpg"
+                                <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" ImageUrl="~/Imagenes/ver.png"
                                     CommandName="Ver" CommandArgument='<%# Eval("Solicitud.Id")%>' Height="26px" Width="27px" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
@@ -115,21 +115,21 @@
                         <asp:TemplateField HeaderText="Cargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnCargar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Cargar" ImageUrl="~/Imagenes/upload.jpg" ToolTip="Cargar Archivo"
+                                    CommandName="Cargar" ImageUrl="~/Imagenes/upload.png" ToolTip="Cargar Archivo"
                                     Visible='<%# Convert.ToInt32(Eval("Estado")) == TMD.Core.Constantes.EstadoPendiente %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Descargar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnDescargar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Descargar" ImageUrl="~/Imagenes/download.jpg" ToolTip="Descargar Archivo"
+                                    CommandName="Descargar" ImageUrl="~/Imagenes/download.png" ToolTip="Descargar Archivo"
                                     Visible='<%# (Eval("NombreArchivo")!= null) %>' OnClientClick='<%# String.Format("javascript:return Descargar({0});",Eval("Id"))%>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Aprobar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnAprobar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Aprobar" ImageUrl="~/Imagenes/Estado/2.ico" ToolTip="Aprobar Solicitud"
+                                    CommandName="Aprobar" ImageUrl="~/Imagenes/Estado/aprobar.png" ToolTip="Aprobar Solicitud"
                                     Visible='<%# Convert.ToInt32(Eval("Estado")) == TMD.Core.Constantes.EstadoPendiente %>'
                                     Height="26px" Width="27px" />
                             </ItemTemplate>
@@ -137,7 +137,7 @@
                         <asp:TemplateField HeaderText="Rechazar" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnRechazar" runat="server" CommandArgument='<%# Eval("Id")%>'
-                                    CommandName="Rechazar" ImageUrl="~/Imagenes/Estado/3.ico" ToolTip="Rechazar Solicitud"
+                                    CommandName="Rechazar" ImageUrl="~/Imagenes/Estado/rechazar.png" ToolTip="Rechazar Solicitud"
                                     Visible='<%# Convert.ToInt32(Eval("Estado")) == TMD.Core.Constantes.EstadoPendiente %>'
                                     Height="26px" Width="27px" />
                             </ItemTemplate>
@@ -153,16 +153,21 @@
         </asp:UpdatePanel>
                 <asp:UpdatePanel runat="server" ID="upnlControles">
             <ContentTemplate>
-                <uc1:registroinformecambio id="ucRegistroInformeCambio" runat="server" Visible="False" />
-                <uc2:aprobarinformecambio id="ucAprobarInformeCambio" runat="server" visible="False" />                
+                <div id="divRegistroInforme" class="divFlotante" style="display:none;">
+                    <uc1:registroinformecambio id="ucRegistroInformeCambio" runat="server" Visible="False" />
+                </div>
+                <div id="divAprobarInforme" class="divFlotante" style="display:none;">
+                    <uc2:aprobarinformecambio id="ucAprobarInformeCambio" runat="server" Visible="False" />                
+                </div>
             </ContentTemplate>
         </asp:UpdatePanel>
         <asp:UpdatePanel runat="server" ID="upnlSubir" UpdateMode="Conditional">
             <ContentTemplate>
+                <div id="divSubirInforme" class="divFlotante" style="display:none;">
                 <asp:Panel runat="server" ID="pnlSubir" Visible="false">
                 <table>
                 <tr>
-                <td>Subir Archivo Solicitud Cambio</td>
+                <td>Subir archivo de Informe de Cambio</td>
                 <td></td>
                 </tr>
                 <tr>
@@ -172,6 +177,7 @@
                 </tr>
                 </table>
                 </asp:Panel>
+                </div>
             </ContentTemplate>
             <Triggers>
                 <asp:PostBackTrigger runat="server" ControlID="btnGrabarProxy" />
@@ -191,5 +197,17 @@
                 return false;
             }
         }
+        function mostrarDiv(idDiv) {
+            document.getElementById(idDiv).style.display = 'inline-block';
+        }
+
+        function ocultarDiv(idDiv) {
+            document.getElementById(idDiv).style.display = 'none';
+        }
+
+        function prueba() {
+            alert("prueba");
+        }
+        
     </script>
 </asp:Content>

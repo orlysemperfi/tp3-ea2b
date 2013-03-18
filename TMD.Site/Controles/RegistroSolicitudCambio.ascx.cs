@@ -6,6 +6,7 @@ using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
 using Microsoft.Practices.Unity;
 using System.Web;
+using System.Web.UI;
 
 namespace TMD.CF.Site.Controles
 {
@@ -62,7 +63,8 @@ namespace TMD.CF.Site.Controles
                 ddlEstado.EnlazarDatos(solicitudFachada.ListarEstado(), "Nombre", "Id", -1, solicitud.Estado);
                 ddlPrioridad.EnlazarDatos(solicitudFachada.ListarPrioridad(), "Nombre", "Id", -1, solicitud.Prioridad);
 
-                pnlSolicitudCambio.Enabled = false;
+                btnGrabar.Visible = false;
+                //pnlSolicitudCambio.Enabled = false;
             }
         }
 
@@ -88,11 +90,14 @@ namespace TMD.CF.Site.Controles
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLineaBase.EnlazarDatos(lineaBaseFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroSolicitud');", true);
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             ddlElementoConfiguracion.EnlazarDatos(lineaBaseFachada.ElementoConfiguracionListarPorLineaBase(ddlLineaBase.SelectedValue.ToInt()), "NombreEcs", "Id");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroSolicitud');", true);
         }
         
         protected void btnGrabar_Click(object sender, EventArgs e)

@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ForamtoEstado" xml:space="preserve">
-    <value>~/Imagenes/Estado/{0}.ico</value>
+    <value>~/Imagenes/Estado/{0}.png</value>
   </data>
   <data name="FormatoPrioridad" xml:space="preserve">
-    <value>~/Imagenes/Prioridad/{0}.ico</value>
+    <value>~/Imagenes/Prioridad/{0}.png</value>
   </data>
 </root>
