@@ -36,8 +36,8 @@ namespace TMD.ServiceDesk.Site.Atenciones
             int numeroTicket;
             accionRegistro = Request.QueryString["registro"];
 
-            Session["CodigoCliente"] = 0;
-            Session["CodigoSede"] = 0;
+                Session["CodigoCliente"] = 0;
+                Session["CodigoSede"] = 0;
             
 
             //pageAnterior = Request.ServerVariables["HTTP_REFERER"].ToLower();
@@ -81,16 +81,6 @@ namespace TMD.ServiceDesk.Site.Atenciones
             int codigoCliente = Convert.ToInt32(Session["CodigoCliente"]);
             int codigoSede = Convert.ToInt32(Session["CodigoSede"]);
             
-            if (txtDescripcionBreve.Text=="" || txtDescripcionDetallada.Text=="") 
-            {
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Falta ingresar datos')</script>");
-                //return;
-                ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", "alert('Falta ingresar datos 1!');", true);
-                                
-                return;
-
-            }
-
             Datosticket.Fecha_Registro = Convert.ToDateTime(txtFechaRegistro.Text);
             Datosticket.Tipo_Registro_Ticket = cmbTipoRegistro.SelectedValue.ToUpper();
             Datosticket.Tipo_Atencion_Ticket = cmbTipoAtencion.SelectedValue.ToUpper();

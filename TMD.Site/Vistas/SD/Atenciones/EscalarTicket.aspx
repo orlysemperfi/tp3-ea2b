@@ -112,7 +112,11 @@
            <td class="style2">
                 &nbsp;</td>
             <td class="style7" colspan="4">
-                &nbsp;</td>
+                <asp:CustomValidator ID="CustomValidator1" runat="server" 
+                    ControlToValidate="txtComentario" 
+                    ErrorMessage="Debe ingresar 20 carácteres como mínimo" ForeColor="Red" 
+                    onservervalidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+            </td>
             <td class="style12">
                 &nbsp;</td>
             <td>

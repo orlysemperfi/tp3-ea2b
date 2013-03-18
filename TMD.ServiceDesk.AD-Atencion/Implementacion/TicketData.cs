@@ -302,5 +302,28 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
         }
 
+
+
+        public void escalarTicketEspecialista(Ticket ticket)
+        {
+            string sSQL;
+
+            int numeroTicket = ticket.Codigo_Ticket;
+            int codigoIntegrante = ticket.Codigo_Integrante;
+
+            sSQL = "Update SD.TICKET SET ASIGNADO_A_CODIGO_INTEGRANTE=@CODIGO_INTEGRANTE, ULTIMA_SECUENCIA_SEGUIMIENTO_TICKET=@ULTIMO_SEGUIMIENTO " +
+                    "Where CODIGO_TICKET=" + numeroTicket ;
+            using (DbCommand command = DB.GetSqlStringCommand(sSQL))
+            {
+                DB.AddInParameter(command, "@CODIGO_INTEGRANTE", DbType.Int64, ticket.Codigo_Integrante);
+                DB.AddInParameter(command, "@ULTIMO_SEGUIMIENTO", DbType.Int64, ticket.Ultimo_Seguimiento );
+                DB.ExecuteNonQuery(command);
+            }
+
+        }
+
+
+
+
     }
 }

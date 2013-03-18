@@ -23,6 +23,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Contrato
         List<Integrante> listaAnalistas(int codigoProyecto);
         List<Integrante> listaIntegrantesCompleta(string nivel);
         List<Integrante> listaEspecialistaProyectoServicioSede(int CodigoProyecto, int CodigoServicio, int CodigoSede);
+        List<Integrante> listaEspecialistaProyectoServicioSedeCarga(int CodigoProyecto, int CodigoServicio, int CodigoSede);
         List<Equipo> listaEquiposEspecialista(int CodigoProyecto, int CodigoServicio, int CodigoSede, int CodigoEmpleado);
 
     }

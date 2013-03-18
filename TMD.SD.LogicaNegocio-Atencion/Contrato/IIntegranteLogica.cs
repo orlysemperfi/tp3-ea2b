@@ -20,6 +20,7 @@ namespace TMD.SD.LogicaNegocio_Atencion.Contrato
         /// <returns>Lista Analista</returns>
         List<Integrante> listaAnalistas(int codigoProyecto);
         List<Integrante> listaEspecialistaProyectoServicioSede(int CodigoProyecto, int CodigoServicio, int CodigoSede);
+        List<Integrante> listaEspecialistaProyectoServicioSedeCarga(int CodigoProyecto, int CodigoServicio, int CodigoSede);
         List<Equipo> listaEquiposEspecialista(int CodigoProyecto, int CodigoServicio, int CodigoSede, int CodigoEmpleado);
         List<Integrante> listaIntegrantesCompleta(string nivel);
     }

@@ -34,7 +34,12 @@ namespace TMD.SD.AccesoDatos_Atencion.Map
                     Fecha_Registro=reader.GetDateTime ("FECHA_REGISTRO_TICKET"),
                     Fecha_Expiracion = reader.GetDateTime("FECHA_EXPIRACION_TICKET"),
                     Codigo_Equipo=reader.GetInt("CODIGO_EQUIPO"),
-                    Solucion_Ticket  = reader.GetString("SOLUCION_TICKET")
+                    Solucion_Ticket  = reader.GetString("SOLUCION_TICKET"),
+                    Codigo_Proyecto =reader.GetInt("CODIGO_PROYECTO"),
+                    Codigo_Servicio = reader.GetInt("CODIGO_SERVICIO"),
+                    Codigo_Sede = reader.GetInt("CODIGO_SEDE"),
+                    Ultimo_Seguimiento = reader.GetBigInt("ULTIMA_SECUENCIA_SEGUIMIENTO_TICKET"),
+                    Ultimo_Adicional = reader.GetBigInt("ULTIMA_SECUENCIA_ADICIONAL_TICKET")
                     
                 };
         }
