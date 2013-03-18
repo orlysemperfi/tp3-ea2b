@@ -64,6 +64,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             return oPropuestaMejoraColeccion;
         }
 
+
         public PropuestaMejoraEntidad ObtenerPropuestaMejoraPorCodigo(int codigo)
         {
             iPropuestaMejora = new PropuestaMejoraDataSql();
@@ -79,6 +80,24 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             }
 
             return oPropuestaMejora;
+        }
+
+        public List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListadoParaSolucion()
+        {
+            iPropuestaMejora = new PropuestaMejoraDataSql();
+
+            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = new List<PropuestaMejoraEntidad>();
+            try
+            {
+
+                oPropuestaMejoraColeccion = iPropuestaMejora.ObtenerPropuestaMejoraListadoPorEstado(Constantes.ESTADO_PROPUESTA_DESARROLLO);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return oPropuestaMejoraColeccion;
         }
 
         #endregion

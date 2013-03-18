@@ -18,12 +18,15 @@ namespace TMD.MP.AccesoDatos.Contrato
         #region "Insert"
 
         SolucionMejoraEntidad InsertarSolucionMejora(SolucionMejoraEntidad entidad);
+        SolucionMejoraEntidad InsertarSolucionMejoraEstado(SolucionEstadoEntidad entidad);
 
         #endregion
 
         #region "Update"
 
         void ActualizarSolucionMejora(SolucionMejoraEntidad oSolucionMejora);
+
+        void ActualizarEstadoSolucionMejora(SolucionMejoraEntidad oSolucionMejora);
 
         #endregion
 

@@ -30,11 +30,33 @@
                                     Propuesta:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbxPropuesta" runat="server" Enabled="false"></asp:TextBox>
-                                                
+                                <asp:DropDownList ID="ddlPropuesta" runat="server">
+                                    </asp:DropDownList>
                                 </td>
-                                <td style="padding-left:5px;">
-                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
+                                <td>
+                                <asp:RequiredFieldValidator ID="rfvPropuesta" runat="server" ControlToValidate="ddlPropuesta" InitialValue="0" ErrorMessage="Seleccione una propuesta" ValidationGroup="Solucion" Display="None" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Empleado:
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlEmpleado" runat="server" />
+                                </td>
+                                <td>
+                                <asp:RequiredFieldValidator ID="rfvEmpleado" runat="server" ControlToValidate="ddlEmpleado" InitialValue="0" ErrorMessage="Seleccione un empleado" ValidationGroup="Solucion" Display="None" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top" align="right">
+                                    Descripción:
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tbxDescripcion" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Solucion" Display="None" />
                                 </td>
                             </tr>
                         </table>

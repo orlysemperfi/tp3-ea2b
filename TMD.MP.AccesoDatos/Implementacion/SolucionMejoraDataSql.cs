@@ -21,7 +21,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT S.CODIGO, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE ");
+            strSQL.Append("SELECT S.CODIGO, P.CODIGO_PROPUESTA, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE ");
             strSQL.Append("FROM MP.SOLUCION_MEJORA S ");
             strSQL.Append("INNER JOIN MP.PROPUESTAMEJORA P ON S.CODIGO_PROPUESTA = P.CODIGO_PROPUESTA ");
             strSQL.Append("INNER JOIN MP.ESTADO E ON S.CODIGO_ESTADO = E.CODIGO ");
@@ -63,6 +63,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oSolucionMejora = new SolucionMejoraEntidad();
                     oSolucionMejora.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
                     oSolucionMejora.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oSolucionMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
                     oSolucionMejora.propuesta = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oSolucionMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
                     oSolucionMejoraColeccion.Add(oSolucionMejora);
@@ -110,10 +111,31 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            
+            strSQL.Append("INSERT INTO [MP].[SOLUCION_MEJORA]");
+            strSQL.Append("(CODIGO_EMPLEADO,CODIGO_PROPUESTA,DESCRIPCION,FECHA_APROBACION,CODIGO_ESTADO) ");
+            strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_PROPUESTA,@DESCRIPCION,GETDATE(),@CODIGO_ESTADO)");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+            int affectedRows = 0;
             try
             {
-                
+                sqlCmd.Parameters.Add("@CODIGO_EMPLEADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Empleado;
+                sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oSolucionMejora.codigo_Propuesta;
+                sqlCmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = oSolucionMejora.descripcion;
+                sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Estado;
+                sqlConn.Open();
+
+                affectedRows = sqlCmd.ExecuteNonQuery();
+
+                if (affectedRows == 0)
+                {
+                    throw new System.Exception("No hay registros ingresados a la tabla Solucion_Mejora");
+                }
+                else
+                {
+                    oSolucionMejora.codigo_Solucion = ObtenerKeyInsertada(Constantes.TABLA_SOLUCION_MEJORA);
+                }
 
             }
             catch (System.Exception ex)
@@ -128,6 +150,49 @@ namespace TMD.MP.AccesoDatos.Implementacion
             return oSolucionMejora;
         }
 
+        public SolucionMejoraEntidad InsertarSolucionMejoraEstado(SolucionEstadoEntidad oSolucionEstado)
+        {
+
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("INSERT INTO MP.ESTADO_SOLUCION");
+            strSQL.Append("(CODIGO_SOLUCION,CODIGO_ESTADO,FECHA) ");
+            strSQL.Append("VALUES(@CODIGO_SOLUCION,@CODIGO_ESTADO,GETDATE())");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+            int affectedRows = 0;
+            try
+            {
+                sqlCmd.Parameters.Add("@CODIGO_SOLUCION", SqlDbType.Int).Value = oSolucionEstado.codigo_solucion;
+                sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oSolucionEstado.codigo_estado;
+                sqlConn.Open();
+
+                affectedRows = sqlCmd.ExecuteNonQuery();
+
+                if (affectedRows == 0)
+                {
+                    throw new System.Exception("No hay registros ingresados a la tabla Solucion Estado");
+                }
+                else
+                {
+                    oSolucionEstado.codigo = ObtenerKeyInsertada(Constantes.TABLA_SOLUCION_ESTADO);
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+            return null;
+        }
+
+
         #endregion
 
         #region "Update"
@@ -141,6 +206,33 @@ namespace TMD.MP.AccesoDatos.Implementacion
             try
             {
                 
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+        
+        public void ActualizarEstadoSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        {
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("UPDATE MP.SOLUCION_MEJORA SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO = @CODIGO");
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+
+            sqlCmd.Parameters.Add("@CODIGO", SqlDbType.Int).Value = oSolucionMejora.codigo_Solucion;
+            sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Estado;
+
+            try
+            {
+                sqlConn.Open();
+                sqlCmd.ExecuteNonQuery();
             }
             catch (System.Exception ex)
             {
