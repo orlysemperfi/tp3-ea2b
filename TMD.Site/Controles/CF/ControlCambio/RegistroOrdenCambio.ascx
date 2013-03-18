@@ -72,6 +72,7 @@
     </p>
         <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" 
         CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
+        <asp:Label ID="lblErrorMessage" runat="server" CssClass="failureNotification"></asp:Label>
 </div>
 </asp:Panel>
 <script type="text/javascript" language="javascript">
