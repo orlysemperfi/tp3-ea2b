@@ -61,7 +61,8 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        
+    <div id="mensajeError" style="display:none">
+    </div>    
     </div>
             <asp:UpdatePanel runat="server" ID="upnlLista">
             <ContentTemplate>
@@ -191,12 +192,24 @@
             $get('<%= btnDescarga.ClientID %>').click();
             return false;
         }
+
+        function cerrarDiv(idDiv) {
+            //document.getElementById(idDiv).innerHTML = "";
+            document.getElementById(idDiv).style.display = 'none';
+        }
+
         function validarProyecto() {
+            var elemento;
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                alert('Seleccione un Proyecto!');
+                setTimeout(cerrarDiv('mensajeError'), 5000);
+                elemento = document.createElement("label");
+                elemento.innerHTML = "Seleccione un Proyecto!";
+                document.getElementById("mensajeError").appendChild(elemento);
+                document.getElementById("mensajeError").style.display = 'inline-block';
                 return false;
             }
         }
+
         function mostrarDiv(idDiv) {
             document.getElementById(idDiv).style.display = 'inline-block';
         }
