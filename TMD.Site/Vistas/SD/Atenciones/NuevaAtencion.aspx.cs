@@ -226,7 +226,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
             cmbEspecialista .DataSource= integrante.listaEspecialistaProyectoServicioSede(Convert.ToInt32(cmbProyecto.SelectedValue), Convert.ToInt32(cmbServicio.SelectedValue), codigoSede);
             cmbEspecialista.DataTextField = "NOMBRE_EMPLEADO";
-            cmbEspecialista.DataValueField = "CODIGO_INTEGRANTE";
+            cmbEspecialista.DataValueField = "CODIGO_EMPLEADO";  //INTEGRANTE";
             cmbEspecialista.DataBind();
             onCargarEquipo();
  
