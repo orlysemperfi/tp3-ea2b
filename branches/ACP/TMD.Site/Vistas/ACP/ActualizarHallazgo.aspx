@@ -94,7 +94,7 @@
                 alert('Ingrese un sustento a la pregunta seleccionada');
                 $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtSustento_"]').focus();
                 bValida = true;
-            } else if (porcentaje == "" || isNaN(porcentaje) == true || (parseInt(porcentaje) < 0 && parseInt(porcentaje) > 100)) {
+            } else if (porcentaje == "" || isNaN(porcentaje) == true || parseInt(porcentaje) < 0 || parseInt(porcentaje) > 100) {
                 alert('Ingrese un valor correcto para el Porcentaje');
                 $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').focus();
                 bValida = true;
