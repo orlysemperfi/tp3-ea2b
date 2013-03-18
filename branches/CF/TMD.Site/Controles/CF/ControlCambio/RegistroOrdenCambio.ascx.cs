@@ -61,6 +61,9 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
                 ddlUsuario.EnlazarDatos(ordenFachada.ListaPorRol(""), "Nombre", "Id", -1, idUsuario);
                 ddlPrioridad.EnlazarDatos(ordenFachada.ListarPrioridad(), "Nombre", "Id", -1, orden.Prioridad);
                 pnlOrdenCambio.Enabled = false;
+                btnGrabar.Visible = false;
+                btnCancelar.Visible = false;
+                btnRegresar.Visible = false;
             }
         }
 
@@ -81,6 +84,10 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
             ddlInforme.EnlazarValorDefecto();
             ddlPrioridad.EnlazarDatos(ordenFachada.ListarPrioridad(), "Nombre", "Id");
             ddlUsuario.EnlazarDatos(ordenFachada.ListaPorRol(""), "Nombre", "Id");
+            pnlOrdenCambio.Enabled = true;
+            btnGrabar.Visible = true;
+            btnCancelar.Visible = true;
+            btnRegresar.Visible = false;
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +102,6 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            lblErrorMessage.Text = "";
             if (validar())
             {
                 OrdenCambio ordenCambio = CrearOrden();
@@ -105,9 +111,9 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
                     ordenFachada.Agregar(ordenCambio);
                     OnEventoGraboOrden();
                     pnlOrdenCambio.Enabled = false;
-                }catch (Exception ex)
+                }catch (TMD.CF.LogicaNegocios.Error.ReglaNegocioException ex)
                 {
-                    lblErrorMessage.Text = ex.Message;
+                    RNValidator.ErrorMessage = ex.Message;
                 }
             }
         }
@@ -125,6 +131,11 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            OnEventoCanceloOrden();
+        }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
         {
             OnEventoCanceloOrden();
         }
