@@ -75,7 +75,7 @@
                         <asp:TemplateField HeaderText="Ver" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" ImageUrl="~/Imagenes/ver.png"
-                                    CommandName="Ver" CommandArgument='<%# Eval("Solicitud.Id")%>' Height="26px" Width="27px" />
+                                    CommandName="Ver" CommandArgument='<%# Eval("Id")%>' Height="26px" Width="27px" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                         </asp:TemplateField>
