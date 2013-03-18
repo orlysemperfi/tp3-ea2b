@@ -32,7 +32,9 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
         private void OnInitPage()
         {
-            
+
+            lblMensaje.Text = "";     
+
             //Cargar la info del ticket
             numeroTicket = Convert.ToInt32(Request.QueryString["nroticket"]);
             onCargarTicket(numeroTicket);
@@ -52,17 +54,28 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
+            
+            if (Page.IsValid == false)
+            {
+                return;
+            }
+
+
             ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
             Ticket datosTicket = ticket.datosTicket(numeroTicket);
 
             int codigoEspecialista = SesionFachada.Usuario.Id;
-            if (txtSolucion.Text.Trim()=="") 
+            if (datosTicket.Estado_Ticket  == "SOLUCIONADO") 
             {
-                //"Favor de ingresar el texto de la solución"
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Favor de ingresar el detalle de la solución')</script>");
+                lblMensaje.Text = "El ticket se encuentra con el estado solucionado";     
+            }
+            else if (datosTicket.Estado_Ticket != "EN PROCESO")
+            {
+                lblMensaje.Text = "El estado actual del ticket no permite registrar la solución";
             }
             else
             {
+                lblMensaje.Text = "";
                 ticket.registrarSolucion(numeroTicket, txtSolucion.Text, codigoEquipo, codigoEspecialista);
                 Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
             }
@@ -99,6 +112,11 @@ namespace TMD.ServiceDesk.Site.Atenciones
         protected void btnBDC_Click(object sender, EventArgs e)
         {
             Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Invocara a la consulta de Base del Conocimiento')</script>");
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = args.Value.Length >= 20;
         }
 
     }
