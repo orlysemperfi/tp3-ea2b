@@ -16,5 +16,7 @@ namespace TMD.Entidades
         public String nombre_Empleado { get; set; }
         public int? codigo_Estado { get; set; }
         public int action { get; set; }
+        public String solucion { get; set; }
+        public String nombre_Estado { get; set; }
     }
 }

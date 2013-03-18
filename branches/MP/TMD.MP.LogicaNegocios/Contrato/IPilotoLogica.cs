@@ -16,5 +16,16 @@ namespace TMD.MP.LogicaNegocios.Contrato
         
         #endregion
 
+        #region "Update"
+
+        void ActualizarPiloto(PilotoEntidad oPiloto);
+
+        String BorrarPiloto(PilotoEntidad oPiloto);
+
+        #endregion
+
+        #region "Insert"
+        void InsertarPiloto(PilotoEntidad entidad);
+        #endregion
     }
 }

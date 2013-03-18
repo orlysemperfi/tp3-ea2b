@@ -62,5 +62,78 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #endregion
 
+        #region "Insert"
+        public void InsertarPiloto(PilotoEntidad oPiloto)
+        {
+            iPiloto = new PilotoDataSql();
+            PilotoEstadoEntidad oPilotoEstado = new PilotoEstadoEntidad();
+
+            oPiloto = iPiloto.InsertarPiloto(oPiloto);
+            oPilotoEstado.codigo_piloto = oPiloto.codigo;
+            oPilotoEstado.codigo_estado = oPiloto.codigo_Estado;
+
+            iPiloto.InsertarPilotoEstado(oPilotoEstado);
+
+
+        }
+        #endregion
+
+        #region "Update"
+
+
+        public void ActualizarPiloto(PilotoEntidad oPiloto)
+        {
+            iPiloto = new PilotoDataSql();
+
+            try
+            {
+                iPiloto.ActualizarPiloto(oPiloto);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void ActualizarEstadoPiloto(PilotoEntidad oPiloto)
+        {
+            iPiloto = new PilotoDataSql();
+
+            try
+            {
+                iPiloto.ActualizarEstadoPiloto(oPiloto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public String BorrarPiloto(PilotoEntidad oPiloto)
+        {
+            iPiloto = new PilotoDataSql();
+            PilotoEstadoEntidad oPilotoEstado = new PilotoEstadoEntidad();
+
+            if (oPiloto.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_SOLUCION.GENERADA))
+            {
+                oPiloto.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_SOLUCION.ELIMINADA);
+                ActualizarEstadoPiloto(oPiloto);
+                oPilotoEstado.codigo_piloto = oPiloto.codigo;
+                oPilotoEstado.codigo_estado = oPiloto.codigo_Estado;
+
+                iPiloto.InsertarPilotoEstado(oPilotoEstado);
+
+                return null;
+            }
+            else
+            {
+                return Mensajes.Mensaje_No_Borrar_Piloto;
+            }
+        }
+
+        #endregion
     }
 }
