@@ -119,7 +119,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     strSQL.Append("AND P.TIPO_PROPUESTA = @TIPO_PROPUESTA ");
                 if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
                     strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_INICIO) <= 0 ");
-                if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
+                if (oPropuestaMejoraFiltro.fecha_Registro_Fin != null)
                     strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_FIN) >= 0  ");
             }
 
