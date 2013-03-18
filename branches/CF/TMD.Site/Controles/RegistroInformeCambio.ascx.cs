@@ -6,6 +6,7 @@ using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
 using Microsoft.Practices.Unity;
 using System.Web;
+using System.Web.UI;
 
 namespace TMD.CF.Site.Controles
 {
@@ -41,18 +42,20 @@ namespace TMD.CF.Site.Controles
 
             if (!Page.IsPostBack)
             {
-                CargarsolicitudNueva();
+                CargarInformeNuevo();                
             }
         }
 
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLineaBase.EnlazarDatos(lineaBaseFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroInforme');", true);
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),1), "NombreSolicitud", "IdSolicitud");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroInforme');", true);
         }
 
         protected void btnGrabar_Click(object sender, EventArgs e)
@@ -117,7 +120,7 @@ namespace TMD.CF.Site.Controles
             OnEventoCanceloInforme();
         }
 
-        public void CargarsolicitudNueva()
+        public void CargarInformeNuevo()
         {
             ddlProyecto.EnlazarDatos(lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id");
             ddlLineaBase.EnlazarValorDefecto();

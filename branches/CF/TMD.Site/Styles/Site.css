@@ -1,5 +1,22 @@
-﻿﻿/* DEFAULTS
+﻿/* DEFAULTS
 ----------------------------------------------------------*/
+.divFlotante 
+{
+/*﻿    padding-left:5px;
+    ﻿padding-top:5px;    */
+    width:auto;
+    height:auto;
+    top:25%;
+    left:50%;
+    margin-left: -200px;
+    margin-top: 50px;
+    background-color: #FFFFFF;    
+    border: 1px solid #000000;  
+    position:absolute;
+	z-index:100;
+    /*background:url() center no-repeat transparent;*/
+}
+
 .ModalPopupBG
 {
     background-color: #666699;
@@ -46,6 +63,7 @@
 ﻿  font-size:12px;
 ﻿  color:#FFFFFF;
 }
+
 .TitlebarRight 
 {﻿  
 ﻿  background-position:right;

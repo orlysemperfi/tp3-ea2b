@@ -8,6 +8,7 @@ using TMD.Core;
 using TMD.Strings;
 using Microsoft.Practices.Unity;
 using System.Web;
+using System.Web.UI;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -108,8 +109,9 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            ucRegistroInformeCambio.CargarsolicitudNueva();
-            MostrarControles(true, false, false, false, false);
+            ucRegistroInformeCambio.CargarInformeNuevo();
+            MostrarControles(true, true, false, false, false);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroInforme');", true);
         }
 
         public String RecuperarEstadoNombre(int idEstado)
@@ -124,7 +126,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarEstadoImagen(int idEstado)
         {
-            return String.Format("~/Imagenes/Estado/{0}.ico", idEstado);
+            return String.Format("~/Imagenes/Estado/{0}.png", idEstado);
         }
 
         public String RecuperarPrioridadNombre(int idPrioridad)
@@ -148,21 +150,25 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 case "Ver":
                     ucRegistroInformeCambio.CargarInformeExistente(Convert.ToInt32(e.CommandArgument));
-                    MostrarControles(true, false, false, false, false);
+                    MostrarControles(true, true, false, false, false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnVer_", "mostrarDiv('divRegistroInforme');", true);
                     break;
                 case "Cargar":
                     hidIdInforme.Value = e.CommandArgument.ToString();
-                    MostrarControles(false, false, false, true, false);
+                    MostrarControles(false, true, false, true, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnCargar_", "mostrarDiv('divSubirInforme');", true);
                     break;
                 case "Aprobar":
                     ucAprobarInformeCambio.IdInformeCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarInformeCambio.ApruebaInforme = true;
-                    MostrarControles(false,false,true,false,false);
+                    MostrarControles(false,true,true,false,true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnAprobar_", "mostrarDiv('divAprobarInforme');", true);
                     break;
                 case "Rechazar":
                     ucAprobarInformeCambio.IdInformeCambio = Convert.ToInt32(e.CommandArgument);
                     ucAprobarInformeCambio.ApruebaInforme = false;
-                    MostrarControles(false, false, true, false, false);
+                    MostrarControles(false, true, true, false, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnRechazar_", "mostrarDiv('divAprobarInforme');", true);
                     break;
             }
 
@@ -201,6 +207,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnCancelarArchcivo_Click(object sender, EventArgs e)
         {
             MostrarControles(false, true, false, false, true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnCancel_", "ocultarDiv('divRegistroInforme');", true);
         }
 
         protected void grvInformeCambio_DataBound(object sender, EventArgs e)

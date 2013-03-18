@@ -61,7 +61,7 @@ namespace TMD.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~/Imagenes/Estado/{0}.ico.
+        ///   Looks up a localized string similar to ~/Imagenes/Estado/{0}.png.
         /// </summary>
         public static string ForamtoEstado {
             get {
@@ -70,7 +70,7 @@ namespace TMD.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ~/Imagenes/Prioridad/{0}.ico.
+        ///   Looks up a localized string similar to ~/Imagenes/Prioridad/{0}.png.
         /// </summary>
         public static string FormatoPrioridad {
             get {

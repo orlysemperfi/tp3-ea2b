@@ -1,22 +1,39 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegistroInformeCambio.ascx.cs"
     Inherits="TMD.CF.Site.Controles.RegistroInformeCambio" %>
 <asp:Panel runat="server" ID="pnlInformeCambio">
-    <p>
-        Informe de Cambio</p>
-    <p>
+<div class="panel-wrapper form" id="frm-actualizar-sc">
+<table>
+<tr>
+<td colspan="2">
+    <h1 class="buttons-wrapp">
+        Informe de Cambio</h1>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <p class="buttons-wrapp">
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar informe" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
-            onclick="btnCancelar_Click" />
+            onclick="btnCancelar_Click" onClientClick="javascript:ocultarDiv('divRegistroInforme');"/>
     </p>
-    <p>
-        Nombre de Informe:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Nombre de Informe:</span>
+</td>
+<td>
         <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="NombreRequired" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="El Nombre es requerido."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
-    </p>
-    <p>
-        Proyecto:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Proyecto:</span>
+</td>
+<td>
         <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProyecto_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
@@ -24,9 +41,13 @@
             ValidationGroup="GrabarValidationGroup" ValueToCompare="0" CssClass="failureNotification"
             Operator="NotEqual">*
         </asp:CompareValidator>
-    </p>
-    <p>
-        Línea Base:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Línea Base:</span>
+</td>
+<td>
         <asp:DropDownList ID="ddlLineaBase" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlLineaBase_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:CompareValidator ID="lineaBaseValidator" runat="server" ControlToValidate="ddlLineaBase"
@@ -34,9 +55,13 @@
             ValidationGroup="GrabarValidationGroup" ValueToCompare="0" CssClass="failureNotification"
             Operator="NotEqual">*
         </asp:CompareValidator>
-    </p>
-    <p>
-        Solicitud:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Solicitud:</span>
+</td>
+<td>
         <asp:DropDownList ID="ddlSolicitud" runat="server">
         </asp:DropDownList>
         <asp:CompareValidator ID="elementoValidador" runat="server" ControlToValidate="ddlSolicitud"
@@ -44,30 +69,46 @@
             ValidationGroup="GrabarValidationGroup" ValueToCompare="0" CssClass="failureNotification"
             Operator="NotEqual">*
         </asp:CompareValidator>
-    </p>
-    <p>
-        Estimación de costo:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Estimación de costo:</span>
+</td>
+<td>
         <asp:TextBox ID="TxtCosto" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="estimacionCosto" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="La estimación de costo es requerida."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
-    </p>
-    <p>
-        Estimación de esfuerzo:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Estimación de esfuerzo:</span>
+</td>
+<td>
         <asp:TextBox ID="TxtEsfuerzo" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="estimacionEsfuerzo" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="La estimación de esfuerzo es requerida"
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
-    </p>
-    <p>
-        Recursos:
+</td>
+</tr>
+<tr>
+<td>
+        <span class="label-field">Recursos:</span>
+</td>
+<td>
         <asp:TextBox ID="TxtRecurso" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="Recursos" runat="server" ControlToValidate="txtNombre"
             CssClass="failureNotification" ErrorMessage="El Nombre es requerido." ToolTip="Los recursos son requeridos."
             ValidationGroup="GrabarValidationGroup">*</asp:RequiredFieldValidator>
-    </p>
+</td>
+</tr>
+</table>
         <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" 
         CssClass="failureNotification" ValidationGroup="GrabarValidationGroup" />
+</div>
+
 </asp:Panel>
 <script type="text/javascript" language="javascript">
     function grabar() {
