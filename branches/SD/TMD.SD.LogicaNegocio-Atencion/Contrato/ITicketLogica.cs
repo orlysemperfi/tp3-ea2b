@@ -28,7 +28,7 @@ namespace TMD.SD.LogicaNegocio_Atencion.Contrato
         void registrarSolucion(int numeroTicket, String solucion, int codigoEquipo, int codigoEspecialista);
         void registrarSeguimiento(SeguimientoTicket seguimientoTicket);
         List<SeguimientoTicket> listaSeguimientos(int numeroTicket);
-
+        void escalarTicketEspecialista(Ticket ticket);
         //void registrarDocumentoTicket(DocumentoTicket documentoTicket);
         
     }

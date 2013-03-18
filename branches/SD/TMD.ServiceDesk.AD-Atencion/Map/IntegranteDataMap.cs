@@ -26,8 +26,9 @@ namespace TMD.SD.AccesoDatos_Atencion.Map
                 Alias_Empleado=reader.GetString("ALIAS_EMPLEADO"),
                 Correo_Empleado =reader.GetString("CORREO_EMPLEADO"),
                 Nombre_Empleado=reader.GetString("NOMBRE_EMPLEADO"),
-                Nombre_Empleado_Proyecto=reader.GetString("NOMBRE_EMPLEADO_PROYECTO")
-          
+                Nombre_Empleado_Proyecto=reader.GetString("NOMBRE_EMPLEADO_PROYECTO"),
+                Nombre_Nivel_Carga = reader.GetString("NOMBRE_NIVEL_CARGA")
+                
             };
         }
 

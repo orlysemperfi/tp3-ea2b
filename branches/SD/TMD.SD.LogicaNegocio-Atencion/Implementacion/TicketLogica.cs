@@ -69,6 +69,11 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
             return _ticketData.listaSeguimientos(numeroTicket);
         }
 
+        public void escalarTicketEspecialista(Ticket ticket)
+        {
+            _ticketData.escalarTicketEspecialista(ticket);
+        }
+
         //public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
         //{
         //    _ticketData.registrarDocumentoTicket(documentoTicket);
