@@ -6,6 +6,7 @@ using TMD.CF.Site.FachadaNegocio.CF;
 using TMD.Core;
 using System.Web;
 using Microsoft.Practices.Unity;
+using System.Web.UI;
 
 namespace TMD.CF.Site.Controles.CF.ControlCambio
 {
@@ -93,11 +94,13 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         protected void ddlProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlLineaBase.EnlazarDatos(ordenFachada.LineaBaseListarPorProyectoCombo(ddlProyecto.SelectedValue.ToInt()), "Nombre", "Id");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroOrden');", true);
         }
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlInforme.EnlazarDatos(ordenFachada.ListarInformePorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), 1), "Nombre", "Id");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroOrden');", true);
         }
         
         protected void btnGrabar_Click(object sender, EventArgs e)

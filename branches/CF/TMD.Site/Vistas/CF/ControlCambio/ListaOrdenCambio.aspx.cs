@@ -8,6 +8,7 @@ using TMD.Core;
 using TMD.Strings;
 using Microsoft.Practices.Unity;
 using System.Web;
+using System.Web.UI;
 
 namespace TMD.CF.Site.Vistas.CF.ControlCambio
 {
@@ -106,12 +107,13 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
             {
                 case "Ver":
                     ucRegistroOrdenCambio.CargarOrdenExistente(Convert.ToInt32(e.CommandArgument));
-                    MostrarControles(true, false, false, false, false);
+                    MostrarControles(true, true, false, false, false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnVer_", "mostrarDiv('divRegistroOrden');", true);
                     break;
                 case "Cargar":
                     hidIdOrden.Value = e.CommandArgument.ToString();
-                    MostrarControles(false, false, false, true, false);
-                    System.Web.UI.ScriptManager.RegisterStartupScript(Page, Page.GetType(), "carga", "MostrarCarga(1);", true);
+                    MostrarControles(false, true, false, true, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnCargar_", "mostrarDiv('divSubirOrden');", true);
                     break;
             }
         }
@@ -119,7 +121,8 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             ucRegistroOrdenCambio.CargarordenNueva();
-            MostrarControles(true, false, false, false, false);
+            MostrarControles(true, true, false, false, false);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroOrden');", true);
         }
 
         protected void btnDescarga_Click(object sender, EventArgs e)

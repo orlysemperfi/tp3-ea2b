@@ -204,10 +204,5 @@
         function ocultarDiv(idDiv) {
             document.getElementById(idDiv).style.display = 'none';
         }
-
-        function prueba() {
-            alert("prueba");
-        }
-        
     </script>
 </asp:Content>
