@@ -27,6 +27,8 @@ namespace TMD.GM.Entidades
         public string NOMBRE_EQUIPO { get; set; }
         public string CODIGO_PLAN { get; set; }
         public string NOMBRE_PLAN { get; set; }
+
+        public List<SolicitudDetalleBE> listaActividades { get; set; }
         #endregion
     }
 }

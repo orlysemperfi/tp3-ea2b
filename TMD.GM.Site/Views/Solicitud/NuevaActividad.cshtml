@@ -1,13 +1,7 @@
-﻿@model TMD.GM.Site.Models.ActividadModel
-@{
-    ViewBag.Title = "Nueva Actividad";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Nueva Solicitud</h2>
+﻿@model TMD.GM.Site.Models.SolicitudActividadModel
 <fieldset>
 Item:
-@Html.TextBoxFor(m => m.item, new { @class = "txtForm", @readonly = "readonly" })
+@Html.TextBoxFor(m => m.solicitudDetalleBE.ITEM_SOLICITUD, new { @class = "txtForm", @readonly = "readonly" })
 </fieldset>
 <fieldset>
 Descripción:

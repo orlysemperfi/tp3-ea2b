@@ -1,0 +1,45 @@
+﻿@model TMD.GM.Site.Models.SolicitudModel
+@{
+    ViewBag.Title = "Solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Solicitud</h2>
+<fieldset>
+N° Solicitud:
+@Html.TextBox("txtNumSolicitud_Consulta","", new { @class = "txtForm" })
+Desde
+@Html.TextBox("txtFechaIni_Consulta", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+Hasta
+@Html.TextBox("txtFechaFin_Consulta", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+Tipo de solicitud:
+@Html.DropDownList("ddlTipoSolicitud_Consulta", Model.listaTS, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Documento Referencia:
+@Html.TextBox("txtNumDocuRefe_Consulta", "", new { @class = "txtForm" })
+Estado de solicitud:
+@Html.DropDownList("ddlEstadoSolicitud_Consulta", Model.listaES, new { @class = "ddlForm" })
+Código de equipo:
+@Html.TextBox("txtCodigoEquipo_Consulta", "", new { @class = "txtForm" })
+<input id="btnBuscarEquipo" type="button" value="..."  onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")')"/>
+</fieldset>
+<fieldset>
+Nombre equipo:
+@Html.TextBox("txtNombreEquipo_Consulta", "", new { @class = "txtForm" })
+Plan mantenimiento:
+@Html.DropDownList("ddlPlanMante_Consulta", Model.listaPM, new { @class = "ddlForm" })
+<input id="btnBuscar" type="button" value="Buscar" onclick="BuscarSolicitudes('@Url.Action("Solicitudes", "Solicitud")')" />
+</fieldset>
+<fieldset>
+<div id="divGridSolicitudesConsulta"></div>
+</fieldset>
+<fieldset>
+<input id="btnNuevo" type="button" value="Nueva Solicitud" onclick="SolicitudNueva('@Url.Action("SolicitudNueva", "Solicitud")')"/>
+<div id="divSolicitud" class="j_modal" title="Solicitud"></div>
+<div id="divActividad" class="j_modal" title="Actividad"></div>
+<div id="divCalendario" class="j_modal" title="Calendario de Actividades"></div>
+<div id="divEquipos" class="j_modal" title="Equipos"></div>
+
+
+</fieldset>

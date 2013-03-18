@@ -1,10 +1,4 @@
 ﻿@model TMD.GM.Site.Models.SolicitudModel
-@{
-    ViewBag.Title = "Calendario de Actividades";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Calendario de Actividades</h2>
 <fieldset>
 Seleccione la fecha programada para ver Actividades
 </fieldset>
@@ -45,7 +39,7 @@ Fecha seleccionada
 </fieldset>
 </fieldset>
 <fieldset>
-<input id="btnRetornar" type="button" value="Retornar" />
+<input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalCalendario()" />
 </fieldset>
 
 

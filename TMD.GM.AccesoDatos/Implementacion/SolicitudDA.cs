@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using TMD.GM.Util;
 using TMD.GM.AccesoDatos.Contrato;
+using System.Data.Common;
 
 
 namespace TMD.GM.AccesoDatos.Implementacion
@@ -36,13 +37,14 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 throw ex;
             }
         }
-        public List<SolicitudBE> ObtenerSolicitudes()
+        public List<SolicitudBE> ObtenerSolicitudes(SolicitudFiltroBE filtro)
         {
             Database oDatabase = BaseDA.GetSqlDatabase;
             try
             {
                 List<SolicitudBE> result = new List<SolicitudBE>();
-                using (IDataReader oReader = oDatabase.ExecuteReader("GET_SOLICITUDES"))
+                using (IDataReader oReader = oDatabase.ExecuteReader("GET_SOLICITUDES", filtro.NUMERO_SOLICITUD, filtro.FECHA_INICIO_SOLICITUD, filtro.FECHA_FIN_SOLICITUD,
+                    filtro.ESTADO_SOLICITUD, filtro.TIPO_SOLICITUD, filtro.DOCUMENTO_REFERENCIA, filtro.CODIGO_EQUIPO, filtro.CODIGO_PLAN))
                 {
                     while (oReader.Read())
                     {
@@ -65,6 +67,227 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     }
                 }
                 return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void RegistrarSolicitud(SolicitudBE solicitudBE)
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    DbTransaction dbTran = null;
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
+                        dbTran = db.Connection.BeginTransaction();
+
+                        SOLICITUD_CABECERA entidad = new SOLICITUD_CABECERA();
+
+                        entidad.NUMERO_SOLICITUD = solicitudBE.NUMERO_SOLICITUD;
+                        entidad.FECHA_SOLICITUD = solicitudBE.FECHA_SOLICITUD;
+                        entidad.TIPO_SOLICITUD = solicitudBE.TIPO_SOLICITUD;
+                        entidad.DOCUMENTO_REFERENCIA = solicitudBE.DOCUMENTO_REFERENCIA;
+                        entidad.FECHA_INICIO_SOLICITUD = solicitudBE.FECHA_INICIO_SOLICITUD;
+                        entidad.FECHA_FIN_SOLICITUD = solicitudBE.FECHA_FIN_SOLICITUD;
+                        entidad.ESTADO_SOLICITUD = solicitudBE.ESTADO_SOLICITUD;
+                        entidad.CODIGO_EQUIPO = solicitudBE.CODIGO_EQUIPO;
+                        entidad.CODIGO_PLAN = solicitudBE.CODIGO_PLAN;
+
+                        
+
+                        db.SOLICITUD_CABECERA.AddObject(entidad);
+
+                        //foreach (var item in solicitudBE.listaActividades)
+                        //{
+                        //    SOLICITUD_DETALLE itemEntidad = new SOLICITUD_DETALLE();
+                        //    itemEntidad.NUMERO_SOLICITUD = entidad.NUMERO_SOLICITUD;
+                        //    itemEntidad.ITEM_SOLICITUD = item.ITEM_SOLICITUD;
+                        //    itemEntidad.CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD;
+                        //    itemEntidad.DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD;
+                        //    itemEntidad.PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD;
+                        //    itemEntidad.CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA;
+                        //    itemEntidad.PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO;
+                        //    itemEntidad.CODIGO_TIEMPO = item.CODIGO_TIEMPO;
+                        //    itemEntidad.TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD;
+                        //    itemEntidad.FECHA_PROGRAMACION = item.FECHA_PROGRAMACION;
+                        //    itemEntidad.ORDEN_TRABAJO = item.ORDEN_TRABAJO;
+
+                        //    db.SOLICITUD_DETALLE.AddObject(itemEntidad);
+                        //}
+
+                        if (db.SaveChanges() < 1)
+                        {
+                            throw new Exception("Error en el proceso");
+                        }
+                        dbTran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        dbTran.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ActualizarSolicitud(SolicitudBE solicitudBE)
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    DbTransaction dbTran = null;
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
+                        dbTran = db.Connection.BeginTransaction();
+
+                        SOLICITUD_CABECERA entidad = (from u in db.SOLICITUD_CABECERA where u.NUMERO_SOLICITUD == solicitudBE.NUMERO_SOLICITUD select u).FirstOrDefault(); ;
+
+                        if (entidad == null)
+                            throw new Exception(ConstantesUT.MENSAJES_ERROR.NoExiste);
+
+                        entidad.FECHA_SOLICITUD = solicitudBE.FECHA_SOLICITUD;
+                        entidad.TIPO_SOLICITUD = solicitudBE.TIPO_SOLICITUD;
+                        entidad.DOCUMENTO_REFERENCIA = solicitudBE.DOCUMENTO_REFERENCIA;
+                        entidad.FECHA_INICIO_SOLICITUD = solicitudBE.FECHA_INICIO_SOLICITUD;
+                        entidad.FECHA_FIN_SOLICITUD = solicitudBE.FECHA_FIN_SOLICITUD;
+                        entidad.ESTADO_SOLICITUD = solicitudBE.ESTADO_SOLICITUD;
+                        entidad.CODIGO_EQUIPO = solicitudBE.CODIGO_EQUIPO;
+                        entidad.CODIGO_PLAN = solicitudBE.CODIGO_PLAN;
+
+                        db.SOLICITUD_CABECERA.ApplyCurrentValues(entidad);
+
+                        foreach (var item in solicitudBE.listaActividades)
+                        {
+                            #region Detalle
+                            if (item.ID_ACTIVIDAD == 0)
+                            {
+                                SOLICITUD_DETALLE itemDetalle = new SOLICITUD_DETALLE()
+                                {
+                                    NUMERO_SOLICITUD = item.NUMERO_SOLICITUD,
+                                    ITEM_SOLICITUD = item.ITEM_SOLICITUD,
+                                    CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD,
+                                    DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD,
+                                    PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD,
+                                    CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA,
+                                    PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO,
+                                    CODIGO_TIEMPO = item.CODIGO_TIEMPO,
+                                    TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD,
+                                    FECHA_PROGRAMACION = item.FECHA_PROGRAMACION,
+                                    ORDEN_TRABAJO = item.ORDEN_TRABAJO,
+                                };
+
+                                db.SOLICITUD_DETALLE.AddObject(itemDetalle);
+                            }
+                            else
+                            {
+                                SOLICITUD_DETALLE itemDetalle = (from u in db.SOLICITUD_DETALLE
+                                                                          where (u.ID_ACTIVIDAD == item.ID_ACTIVIDAD)
+                                                                          select u).FirstOrDefault();
+
+                                if (itemDetalle != null)
+                                {
+                                    itemDetalle.ITEM_SOLICITUD = item.ITEM_SOLICITUD;
+                                    itemDetalle.CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD;
+                                    itemDetalle.DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD;
+                                    itemDetalle.PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD;
+                                    itemDetalle.CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA;
+                                    itemDetalle.PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO;
+                                    itemDetalle.CODIGO_TIEMPO = item.CODIGO_TIEMPO;
+                                    itemDetalle.TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD;
+                                    itemDetalle.FECHA_PROGRAMACION = item.FECHA_PROGRAMACION;
+                                    itemDetalle.ORDEN_TRABAJO = item.ORDEN_TRABAJO;
+
+                                    db.SOLICITUD_DETALLE.ApplyCurrentValues(itemDetalle);
+                                }
+                            }
+                            #endregion
+
+                        }
+
+                        if (db.SaveChanges() < 1)
+                        {
+                            throw new Exception("Error en el proceso");
+                        }
+                        dbTran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        dbTran.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public SolicitudBE VisualizarSolicitud(SolicitudBE SolicitudBE)
+        {
+            //Database oDatabase = BaseDA.GetSqlDatabase;
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    if (db.Connection.State == System.Data.ConnectionState.Closed)
+                        db.Connection.Open();
+
+                    SOLICITUD_CABECERA entidad = (from u in db.SOLICITUD_CABECERA where u.NUMERO_SOLICITUD == SolicitudBE.NUMERO_SOLICITUD select u).FirstOrDefault(); ;
+
+                    if (entidad == null)
+                        throw new Exception(ConstantesUT.MENSAJES_ERROR.NoExiste);
+
+                    SolicitudBE.FECHA_SOLICITUD = DataUT.ObjectToDateTime( entidad.FECHA_SOLICITUD);
+                    SolicitudBE.TIPO_SOLICITUD = DataUT.ObjectToInt32(entidad.TIPO_SOLICITUD);
+                    SolicitudBE.DOCUMENTO_REFERENCIA = entidad.DOCUMENTO_REFERENCIA;
+                    SolicitudBE.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(entidad.FECHA_INICIO_SOLICITUD);
+                    SolicitudBE.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(entidad.FECHA_FIN_SOLICITUD);
+                    SolicitudBE.ESTADO_SOLICITUD = DataUT.ObjectToInt32(entidad.ESTADO_SOLICITUD);
+                    SolicitudBE.CODIGO_EQUIPO = DataUT.ObjectToInt32(entidad.CODIGO_EQUIPO);
+                    SolicitudBE.CODIGO_PLAN = entidad.CODIGO_PLAN;
+
+                    SolicitudBE.listaActividades = new List<SolicitudDetalleBE>();
+                    foreach (var itemEntidad in entidad.SOLICITUD_DETALLE)
+                    {
+                        SolicitudDetalleBE item = new SolicitudDetalleBE();
+                        item.ID_ACTIVIDAD = itemEntidad.ID_ACTIVIDAD;
+                        item.NUMERO_SOLICITUD = itemEntidad.NUMERO_SOLICITUD;
+                        item.ITEM_SOLICITUD = itemEntidad.ITEM_SOLICITUD;
+                        item.CODIGO_TIPO_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.CODIGO_TIPO_ACTIVIDAD);
+                        item.DESCRIPCION_TIPO_ACTIVIDAD = itemEntidad.ACTIVIDAD_TIPO.DESCRIPCION_TIPO_ACTIVIDAD;
+                        item.DESCRIPCION_ACTIVIDAD = itemEntidad.DESCRIPCION_ACTIVIDAD;
+                        item.PRIORIDAD_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.PRIORIDAD_ACTIVIDAD);
+                        item.CODIGO_FRECUENCIA = DataUT.ObjectToInt32(itemEntidad.CODIGO_FRECUENCIA);
+                        item.DESCRIPCION_FRECUENCIA = itemEntidad.FRECUENCIA.DESCRIPCION_FRECUENCIA;
+                        item.PERSONAL_REQUERIDO = DataUT.ObjectToInt32(itemEntidad.PERSONAL_REQUERIDO);
+                        item.CODIGO_TIEMPO = DataUT.ObjectToInt32(itemEntidad.CODIGO_TIEMPO);
+                        item.DESCRIPCION_TIEMPO = itemEntidad.UNIDAD_TIEMPO.DESCRIPCION_TIEMPO;
+                        item.TIEMPO_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.TIEMPO_ACTIVIDAD);
+                        item.FECHA_PROGRAMACION = DataUT.ObjectToDateTime( itemEntidad.FECHA_PROGRAMACION);
+                        item.ORDEN_TRABAJO = itemEntidad.ORDEN_TRABAJO;
+
+                        SolicitudBE.listaActividades.Add(item);
+                    }
+
+                }
+                return SolicitudBE;
             }
             catch (Exception ex)
             {

@@ -1,0 +1,34 @@
+﻿@model TMD.GM.Site.Models.SolicitudModel
+@{ WebGrid grid = new WebGrid(Model.solicitudBE.listaActividades, canPage:false);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+      grid.Column("ITEM_SOLICITUD", "Item", canSort: false),
+           grid.Column("DESCRIPCION_ACTIVIDAD", "Actividad", canSort: false),
+           grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo", canSort: false),
+           grid.Column("DESCRIPCION_PRIORIDAD_ACTIVIDAD", "Prioridad", canSort: false),
+        grid.Column("PERSONAL_REQUERIDO", "Personal", canSort: false),
+        grid.Column("TIEMPO_ACTIVIDAD", "Tiempo", canSort: false),
+          grid.Column("DESCRIPCION_PRIORIDAD_ACTIVIDAD", "Tipo", canSort: false),
+        grid.Column("FECHA_PROGRAMACION", "Fecha", format: @<text>@item.FECHA_PROGRAMACION.ToString("dd/MM/yyyy")</text>, canSort: false),
+        grid.Column("ORDEN_TRABAJO", "OT", canSort: false),
+         grid.Column("", "", format: @<text>
+         <a href="#" onclick="SolicitudActividadEditar('@Url.Action("SolicitudActividadEditar", "Solicitud")',
+         '@item.ID_ACTIVIDAD',
+         '@item.NUMERO_SOLICITUD',
+         '@item.ITEM_SOLICITUD',
+         '@item.DESCRIPCION_ACTIVIDAD',
+         '@item.CODIGO_TIPO_ACTIVIDAD',
+         '@item.PRIORIDAD_ACTIVIDAD',
+         '@item.CODIGO_FRECUENCIA',
+         '@item.PERSONAL_REQUERIDO',
+         '@item.CODIGO_TIEMPO',
+         '@item.TIEMPO_ACTIVIDAD',
+         '@item.FECHA_PROGRAMACION.ToString("dd/MM/yyyy")',
+         '@item.ORDEN_TRABAJO');">Editar</a>
+            </text>, canSort: false),
+        grid.Column("", "", format: @<text>
+         <a href="#" onclick="SolicitudActividad_Eliminar('@Url.Action("SolicitudActividadEditar", "Solicitud")',
+         '@item.NUMERO_SOLICITUD');">Eliminar</a>
+            </text>, canSort: false)
+         )
+        )

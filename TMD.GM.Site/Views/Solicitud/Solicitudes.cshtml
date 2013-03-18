@@ -1,0 +1,27 @@
+﻿@model TMD.GM.Site.Models.SolicitudConsultaModel
+@{ WebGrid grid = new WebGrid(Model.listaData);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+           grid.Column("NUMERO_SOLICITUD", "N°", canSort: false),
+           grid.Column("FECHA_SOLICITUD", "Fecha", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>, canSort: false),
+            grid.Column("DESCRIPCION_TIPO_SOLICITUD", "Tipo", canSort: false),
+            grid.Column("DOCUMENTO_REFERENCIA", "Doc. ref", canSort: false),
+            grid.Column("FECHA_INICIO_SOLICITUD", "Inicio", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>, canSort: false),
+            grid.Column("FECHA_FIN_SOLICITUD", "Fin", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>, canSort: false),
+            grid.Column("DESCRIPCION_ESTADO_SOLICITUD", "Estado", canSort: false),
+            grid.Column("NOMBRE_EQUIPO", "Equipo", canSort: false),
+            grid.Column("CODIGO_PLAN", "Plan", canSort: false),
+              grid.Column("", "", format: @<text>
+         <a href="#" onclick="SolicitudEditar('@Url.Action("SolicitudEditar", "Solicitud")','@Url.Action("SolicitudActividades", "Solicitud")',
+         '@item.NUMERO_SOLICITUD',
+         '@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")',
+         '@item.TIPO_SOLICITUD',
+         '@item.DOCUMENTO_REFERENCIA',
+         '@item.FECHA_INICIO_SOLICITUD.ToString("dd/MM/yyyy")',
+         '@item.FECHA_FIN_SOLICITUD.ToString("dd/MM/yyyy")',
+         '@item.ESTADO_SOLICITUD',
+         '@item.CODIGO_EQUIPO',
+         '@item.CODIGO_PLAN');">Editar</a>
+            </text>, canSort: false)
+         )
+        )
