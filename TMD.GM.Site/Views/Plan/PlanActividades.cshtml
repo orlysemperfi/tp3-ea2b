@@ -1,0 +1,35 @@
+﻿@model TMD.GM.Site.Models.PlanModel
+@{ WebGrid grid = new WebGrid(Model.listaDetalle, canPage: false);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+      grid.Column("ITEM_ACTIVIDAD", "Item", canSort: false, style: "width:50"),
+               grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo", canSort: false, style: "width:100"),
+          grid.Column("DESCRIPCION_ACTIVIDAD", "Descripción", canSort: false),
+          grid.Column("PRIORIDAD_ACTIVIDAD", "Prioridad", canSort: false),
+          grid.Column("DESCRIPCION_FRECUENCIA", "Frecuencia", canSort: false),
+          grid.Column("PERSONAL_REQUERIDO", "Personal", canSort: false),
+          grid.Column("TIEMPO_ACTIVIDAD", "Tiempo", canSort: false),
+          grid.Column("DESCRIPCION_TIEMPO", "Medida", canSort: false),
+          grid.Column("PROCEDIMIENTOS_PLAN", "Procedimiento", canSort: false),
+          grid.Column("OBSERVACIONES_PLAN", "Observaciones", canSort: false),
+          grid.Column("", "", format: @<text>
+         <a href="#" onclick="PlanActividadEditar('@Url.Action("PlanActividad", "Plan")',
+         '@item.ID_ACTIVIDAD',
+         '@item.CODIGO_PLAN',
+         @item.ITEM_ACTIVIDAD,
+         @item.CODIGO_TIPO_ACTIVIDAD,
+         '@item.DESCRIPCION_ACTIVIDAD',
+         @item.PRIORIDAD_ACTIVIDAD,
+         @item.CODIGO_FRECUENCIA,
+         @item.PERSONAL_REQUERIDO,
+         @item.CODIGO_TIEMPO,
+         @item.TIEMPO_ACTIVIDAD,
+         '@item.PROCEDIMIENTOS_PLAN',
+         '@item.OBSERVACIONES_PLAN');">Editar</a>
+            </text>, canSort: false),
+  grid.Column("", "", format: @<text>
+         <a href="#" onclick="PlanActividadEliminar('@Url.Action("PlanActividad_Eliminar", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.CODIGO_PLAN','@item.ID_ACTIVIDAD');">Eliminar</a>
+            </text>, canSort: false)
+         )
+        )
+    

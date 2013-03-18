@@ -1,0 +1,45 @@
+﻿@model TMD.GM.Site.Models.PlanActividadModel
+
+<fieldset>
+Item:
+@Html.Hidden("hdIdActividad", Model.entity.ID_ACTIVIDAD)
+@Html.Hidden("hdCodigoPlan", Model.entity.CODIGO_PLAN)
+@Html.TextBox("txtItem", Model.entity.ITEM_ACTIVIDAD, new { @class = "txtForm" })
+</fieldset>
+<fieldset>
+Descripción:
+@Html.TextBox("txtActividadDesc", Model.entity.DESCRIPCION_ACTIVIDAD, new { @class = "txtForm", style = "width: 300px;" })
+</fieldset>
+<fieldset>
+Tipo actividad:
+@Html.DropDownList("ddlTipoActividad", Model.listaTA, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Personas requeridas:
+@Html.TextBox("txtPersRequ", Model.entity.PERSONAL_REQUERIDO, new { @class = "txtForm", style = "width: 50px;" })
+</fieldset>
+<fieldset>
+Tiempo:
+@Html.TextBox("txtTiempoDura", Model.entity.TIEMPO_ACTIVIDAD, new { @class = "txtForm", style = "width: 50px;" })
+@Html.DropDownList("ddlTiempoUnme", Model.listaTU, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Priodidad:
+@Html.DropDownList("ddlPrioridad", Model.listaPR, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Frecuencia:
+@Html.DropDownList("ddlFrecuencia", Model.listaFR, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Procedimiento:
+@Html.TextBox("txtProcedimiento", Model.entity.PROCEDIMIENTOS_PLAN, new { @class = "txtForm", style = "width: 300px;" })
+</fieldset>
+<fieldset>
+Observaciones:
+@Html.TextBox("txtObservaciones", Model.entity.OBSERVACIONES_PLAN, new { @class = "txtForm", style = "width: 300px;" })
+</fieldset>
+<fieldset>
+<input id="btnAceptar" type="button" value="Aceptar"  onclick="PlanActividad_AceptarClick('@Url.Action("PlanActividadAceptar", "Plan")', '@Url.Action("PlanActividades_Actualizar", "Plan")');"/>
+<input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalActividadEditar();" />
+</fieldset>

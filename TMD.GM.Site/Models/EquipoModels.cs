@@ -10,9 +10,13 @@ using TMD.GM.Entidades;
 
 namespace TMD.GM.Site.Models
 {
-    public class PlanConsultaModel
+    public class EquipoModel
     {
-        public List<PlanBE> listaData { get; set; }
-       
+        public EquipoBE entity { get; set; }
+    }
+
+    public class EquipoBusquedaModel
+    {
+        public List<EquipoBE> listaEquipos { get; set; }
     }
 }

@@ -47,3 +47,16 @@
     padding: 5px;
     width: 150px;
 }
+
+.labelForm {
+    color: #333;
+    font-size: 1.0em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
+
+.btnEditForm {
+       background: url('../images/edit16x16.png') no-repeat right;
+       display: inline-block;
+       height: 16px;
+       width: 16px;
+      }

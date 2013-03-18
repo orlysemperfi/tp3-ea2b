@@ -30,5 +30,24 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             return instanciaDA.ListarPlanManteTodos();
         }
+
+        public void RegistrarPlan( PlanBE planBE)
+        {
+            instanciaDA.RegistrarPlan(planBE);
+        }
+
+        public void ActualizarPlan(PlanBE planBE)
+        {
+            instanciaDA.ActualizarPlan(planBE);
+        }
+
+        public void EliminarPlan(PlanBE planBE)
+        {
+            instanciaDA.EliminarPlan(planBE);
+        }
+        public PlanBE VisualizarPlan(PlanBE planBE)
+        {
+            return instanciaDA.VisualizarPlan(planBE);
+        }
     }
 }

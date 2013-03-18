@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using System.Data.EntityClient;
+using System.Data.Common;
 
 namespace TMD.GM.AccesoDatos
 {
@@ -19,10 +21,11 @@ namespace TMD.GM.AccesoDatos
         private static bool IntegratedSecurity = false;
         private static bool MultipleActiveResultSets = true;
         private static string Provider = "System.Data.SqlClient";
-        private static string Metadata = @"res://*/ModelCERTCALI.csdl|res://*/ModelCERTCALI.ssdl|res://*/ModelCERTCALI.msl";
+        private static string Metadata = @"res://*/ModelGM.csdl|res://*/ModelGM.ssdl|res://*/ModelGM.msl";
         #endregion
 
         private static SqlDatabase getSqlDatabase = null;
+        private static BDMantenEntities getEntityDatabase = null;
 
         public static SqlDatabase GetSqlDatabase
         {
@@ -35,7 +38,31 @@ namespace TMD.GM.AccesoDatos
                 return getSqlDatabase;
             }
         }
+        public static BDMantenEntities GetEntityDatabase
+        {
+            get
+            {
+                if (getEntityDatabase == null)
+                {
+                    getEntityDatabase = new BDMantenEntities(GetEntityConnectionCustom());
+                    getEntityDatabase.ContextOptions.UseLegacyPreserveChangesBehavior = false;
+                }
+                else
+                {
+                    try
+                    {
+                        DbConnection conn = getEntityDatabase.Connection;
+                    }
+                    catch(Exception ex)
+                    {
+                        getEntityDatabase.Dispose();
+                        getEntityDatabase = new BDMantenEntities(GetEntityConnectionCustom());
+                    }
 
+                }
+                return getEntityDatabase;
+            }
+        }
         private static string GetSQLConnectionStringCustom()
         {
             SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
@@ -48,6 +75,27 @@ namespace TMD.GM.AccesoDatos
             sqlBuilder.MultipleActiveResultSets = MultipleActiveResultSets;
 
             return sqlBuilder.ToString();
+        }
+
+        public static EntityConnection GetEntityConnectionCustom()
+        {
+            SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
+
+            sqlBuilder.DataSource = DataSource;
+            sqlBuilder.InitialCatalog = InitialCatalog;
+            sqlBuilder.IntegratedSecurity = IntegratedSecurity;
+            sqlBuilder.UserID = UserID;
+            sqlBuilder.Password = Password;
+            sqlBuilder.MultipleActiveResultSets = true;
+
+            EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
+            entityBuilder.Provider = Provider;
+            entityBuilder.ProviderConnectionString = sqlBuilder.ToString();
+            entityBuilder.Metadata = Metadata;
+
+            EntityConnection conn = new EntityConnection(entityBuilder.ToString());
+            return conn;
+
         }
 
     }

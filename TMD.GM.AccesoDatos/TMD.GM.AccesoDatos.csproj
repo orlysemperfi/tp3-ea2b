@@ -37,6 +37,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,12 +48,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseDA.cs" />
+    <Compile Include="Contrato\IEquipoDA.cs" />
     <Compile Include="Contrato\IComunDA.cs" />
     <Compile Include="Contrato\IPlanDA.cs" />
     <Compile Include="Contrato\ISolicitudDA.cs" />
     <Compile Include="Implementacion\ComunDA.cs" />
+    <Compile Include="Implementacion\EquipoDA.cs" />
     <Compile Include="Implementacion\PlanDA.cs" />
     <Compile Include="Implementacion\SolicitudDA.cs" />
+    <Compile Include="ModelGM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGM.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +80,15 @@
       <Project>{057E073B-A43F-4D13-90A4-49EBEEF9A904}</Project>
       <Name>TMD.GM.Util</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelGM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelGM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,23 @@
+﻿@model TMD.GM.Site.Models.PlanConsultaModel
+@{ WebGrid grid = new WebGrid(Model.listaData, canPage: false);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+    grid.Column("CODIGO_PLAN", "Código", canSort: false),
+    grid.Column("NOMBRE_PLAN", "Nombre", canSort: false),
+    grid.Column("ESTADO_PLAN", "Estado", format: @<text>
+    @Html.CheckBox("cbCodPlan", isChecked: item.ESTADO_PLAN ? true : false, htmlAttributes: new { @disabled = "disabled" })
+    </text>, canSort: false),
+ grid.Column("", "", format: @<text>
+ <a href="#" onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.CODIGO_PLAN','@item.NOMBRE_PLAN',@(item.ESTADO_PLAN ? 1 : 0));">Editar</a>
+    </text>, canSort: false),
+ grid.Column("", "", format: @<text>
+ <a href="#" onclick="PlanMantEliminar('@Url.Action("PlanEliminar", "Plan")','@Url.Action("Planes", "Plan")','@item.CODIGO_PLAN');">Eliminar</a>
+    </text>, canSort: false)
+         )
+        )
+
+
+ @*Html.ActionImageLink("Edit", new { id = item.CODIGO_PLAN }, "btnEditForm", "Editar")
+ Html.ActionLink("Visualizar", "Visualizar", "Plan", new { ID = item.CODIGO_PLAN }, null)
+ onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@item.CODIGO_PLAN','@NOMBRE_PLAN','@(item.ESTADO_PLAN?1:0)');"
+ *@

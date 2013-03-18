@@ -11,5 +11,9 @@ namespace TMD.GM.LogicaNegocios.Contrato
         PlanBE ObtenerObtenerPlanNuevo();
         List<SelectListItemBE> ListarPlanMante();
         List<PlanBE> ListarPlanManteTodos();
+        void RegistrarPlan(PlanBE planBE);
+        void ActualizarPlan(PlanBE planBE);
+        void EliminarPlan(PlanBE planBE);
+        PlanBE VisualizarPlan(PlanBE planBE);
     }
 }
