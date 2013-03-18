@@ -120,7 +120,7 @@ namespace TMD.CF.LogicaNegocios.Implementacion
 
         public Entidades.LineaBaseElementoConfiguracion ObtenerArchivo(int id)
         {
-            return ObtenerArchivo(id);
+            return _lineaBaseLogica.ObtenerArchivo(id);
         }
     }
 }
