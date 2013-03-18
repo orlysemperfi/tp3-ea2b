@@ -283,6 +283,8 @@ namespace TMD.MP.Site.Privado
             tbxBeneficios.Enabled = false;
             btnGuardar.Visible = false;
             btnCancelar.Text = "Salir";
+            gvwIndicadores.Enabled = false;
+
         }
     }
 }

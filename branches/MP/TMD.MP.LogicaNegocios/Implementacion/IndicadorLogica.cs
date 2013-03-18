@@ -68,58 +68,82 @@ namespace TMD.MP.LogicaNegocios.Implementacion
         public IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad)
         {
             iIndicador = new IndicadorDataSql();
-            IndicadorEntidad oIndicadorEntidad = iIndicador.InsertarIndicador(entidad);
-            if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
-                iEscalaCualitativo = new EscalaCualitativoDataSql();
-                iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
-                foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo) 
-                {
-                    oEscalaCualitativo.codigo_Indicador = oIndicadorEntidad.codigo;
-                    
-                    iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
-                }
-            }
-            if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
+             
+            if (ValidarEscalas(entidad))
             {
-                iEscalaCuantitativo = new EscalaCuantitativoDataSql();
-                iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
-                foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
+                IndicadorEntidad oIndicadorEntidad  = iIndicador.InsertarIndicador(entidad);
+                if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO)
                 {
-                    oEscalaCuantitativo.codigo_Indicador = oIndicadorEntidad.codigo;                    
-                    iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
+                    iEscalaCualitativo = new EscalaCualitativoDataSql();
+                    iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
+                    foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo)
+                    {
+                        oEscalaCualitativo.codigo_Indicador = oIndicadorEntidad.codigo;
+                        iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+
+
+                    }
                 }
+                if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
+                {
+                    iEscalaCuantitativo = new EscalaCuantitativoDataSql();
+                    iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
+                    foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
+                    {
+                        oEscalaCuantitativo.codigo_Indicador = oIndicadorEntidad.codigo;
+                        iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
+                    }
+                }
+                oIndicadorEntidad.action = 0;
+                return oIndicadorEntidad;
             }
-            return oIndicadorEntidad;
+            else {
+                entidad.action = -1;
+                return entidad;
+            }
+            
         }
 
         #endregion
 
         #region "Update"
 
-        public void ActualizarIndicador(IndicadorEntidad entidad) 
+        public IndicadorEntidad ActualizarIndicador(IndicadorEntidad entidad) 
         {
             iIndicador = new IndicadorDataSql();
-            iIndicador.ActualizarIndicador(entidad);
-            if (entidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO)
+             
+            if (ValidarEscalas(entidad))
             {
-                iEscalaCualitativo = new EscalaCualitativoDataSql();
-                iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(entidad.codigo));
-                foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo)
+                IndicadorEntidad oIndicadorEntidad = iIndicador.ActualizarIndicador(entidad);
+                if (entidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO)
                 {
-                    oEscalaCualitativo.codigo_Indicador = entidad.codigo;
-                    iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+                    iEscalaCualitativo = new EscalaCualitativoDataSql();
+                    iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(entidad.codigo));
+                    foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo)
+                    {
+                        oEscalaCualitativo.codigo_Indicador = entidad.codigo;
+                        iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+                    }
                 }
+                if (entidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
+                {
+                    iEscalaCuantitativo = new EscalaCuantitativoDataSql();
+                    iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(entidad.codigo));
+                    foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
+                    {
+                        oEscalaCuantitativo.codigo_Indicador = entidad.codigo;
+                        iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
+                    }
+                }
+                oIndicadorEntidad.action = 0;
+                return oIndicadorEntidad;
             }
-            if (entidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
+            else
             {
-                iEscalaCuantitativo = new EscalaCuantitativoDataSql();
-                iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(entidad.codigo));
-                foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
-                {
-                    oEscalaCuantitativo.codigo_Indicador = entidad.codigo;
-                    iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
-                }
+                entidad.action = -1;
+                return entidad;
             }
+            
         }
 
         #endregion
@@ -135,6 +159,29 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #endregion
 
+        #region "Validate"
+        public Boolean ValidarEscalas(IndicadorEntidad entidad) {
+
+            List<EscalaCualitativoEntidad> lista = entidad.lstEscalaCualitativo;
+
+            for(int i=0;i < lista.Count;i++){
+                int limSuperior = 0;
+                int limInferior = 0;
+                limInferior = Convert.ToInt32(lista.ElementAt(i).limite_inferior);
+                limSuperior = Convert.ToInt32(lista.ElementAt(i).limite_superior);
+                if (limSuperior < limInferior)
+                    return false;
+                if (i > 0) {
+                    int limSuperiorAnt = Convert.ToInt32(lista.ElementAt(i-1).limite_superior);
+                    int limInferiorAnt = Convert.ToInt32(lista.ElementAt(i-1).limite_inferior);
+                    if (limInferior != limSuperiorAnt+1) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion
 
     }
 }

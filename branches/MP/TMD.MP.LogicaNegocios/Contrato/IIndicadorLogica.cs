@@ -31,7 +31,7 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         #region "Update"
 
-        void ActualizarIndicador(IndicadorEntidad entidad);
+        IndicadorEntidad ActualizarIndicador(IndicadorEntidad entidad);
         #endregion
 
         #region "Delete"

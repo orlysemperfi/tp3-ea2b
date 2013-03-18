@@ -26,7 +26,7 @@ namespace TMD.MP.AccesoDatos.Contrato
 
         #region "Update"
 
-        void ActualizarIndicador(IndicadorEntidad entidad);
+        IndicadorEntidad ActualizarIndicador(IndicadorEntidad entidad);
 
         #endregion
 

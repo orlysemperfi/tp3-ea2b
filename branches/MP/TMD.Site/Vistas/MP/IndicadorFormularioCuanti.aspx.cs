@@ -106,14 +106,22 @@ namespace TMD.CF.Site.Vistas.MP
                     oIndicadorLogica.ActualizarIndicador(oNewIndicador);
                 else
                     oIndicadorLogica.InsertarIndicador(oNewIndicador);
+                
+                if (oNewIndicador.action == 0) // OK
+                { 
+                    string currentURL = Request.Url.ToString();
+                    string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
-                string currentURL = Request.Url.ToString();
-                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-                "alert('Indicador Registrado'); window.location='" +
-                newURL + "/IndicadorListado.aspx';", true);
-                //Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                    "alert('Indicador Registrado'); window.location='" +
+                    newURL + "/IndicadorListado.aspx';", true);
+                    
+                }
+                else
+                { //Error
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error",
+                    "alert('Verifique los rangos ingresados');", true);
+                }
             }
         }
 

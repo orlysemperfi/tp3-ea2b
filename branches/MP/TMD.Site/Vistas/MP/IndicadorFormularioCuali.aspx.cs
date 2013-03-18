@@ -99,13 +99,21 @@ namespace TMD.MP.Site.Privado
                 else
                     oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
-                string currentURL = Request.Url.ToString();
-                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+                if (oNewIndicador.action == 0) // OK
+                { 
+                    string currentURL = Request.Url.ToString();
+                    string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-                "alert('Indicador Registrado'); window.location='" +
-                newURL + "/IndicadorListado.aspx';", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                    "alert('Indicador Registrado'); window.location='" +
+                    newURL + "/IndicadorListado.aspx';", true);
+                }
+                else { //Error
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error",
+                    "alert('Verifique los rangos ingresados');", true);
+                }
 
+                
             }
         }
 
