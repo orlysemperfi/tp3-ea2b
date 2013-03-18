@@ -35,7 +35,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
             codigoProyecto = datosServicioSLA.Codigo_Proyecto;
             codigoServicio = datosServicioSLA.Codigo_Servicio ;
-            codigoSede = datosServicioSLA.Codigo_Servicio ;
+            codigoSede = datosServicioSLA.Codigo_Sede ;
  
             using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Proyecto_Servicio_Sede"))
             {
