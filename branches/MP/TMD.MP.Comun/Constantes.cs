@@ -114,6 +114,7 @@ namespace TMD.MP.Comun
         public static String TABLA_LECCIONES_APRENDIDAS = "MP.LECCIONES_APRENDIDAS";
         public static String TABLA_OBSERVACIONES_PILOTO = "MP.OBSERVACIONES_PILOTO";
         public static String TABLA_PILOTO = "MP.PILOTO";
+        public static String TABLA_PILOTO_ESTADO = "MP.ESTADO_PILOTO";
         public static String TABLA_PLAN_DESPLIEGUE = "MP.PLAN_DESPLIEGUE";
         public static String TABLA_PROCESO = "MP.PROCESO";
         public static String TABLA_PROPUESTA_ESTADO = "MP.PROPUESTA_ESTADO";

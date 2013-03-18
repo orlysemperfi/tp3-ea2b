@@ -11,10 +11,29 @@ namespace TMD.MP.AccesoDatos.Contrato
         #region "Select"
 
         List<PilotoEntidad> ObtenerPilotoListadoPorFiltros(PilotoEntidad oPilotoFiltro);
-        List<PilotoEntidad> ObtenerPilotoAsignadasListadoPorFiltros(PilotoEntidad oPilotoFiltro);
         PilotoEntidad ObtenerPilotoPorCodigo(int codigo);
         
         #endregion
 
+        #region "Insert"
+
+        PilotoEntidad InsertarPiloto(PilotoEntidad entidad);
+        PilotoEntidad InsertarPilotoEstado(PilotoEstadoEntidad entidad);
+
+        #endregion
+
+        #region "Update"
+
+        void ActualizarPiloto(PilotoEntidad oPiloto);
+
+        void ActualizarEstadoPiloto(PilotoEntidad oPiloto);
+
+        #endregion
+
+        #region "Delete"
+
+        void EliminarPilotoPorCodigo(int codigo);
+
+        #endregion
     }
 }
