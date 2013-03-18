@@ -83,12 +83,12 @@ namespace TMD.CF.Site.FachadaNegocio.CF
 
         public List<InformeCambio> ListarInformePorProyectoLineaBase(int idProyecto, int idLineaBase, int estado)
         {
-            return
-                InformeCambioLogica.ListarPorProyectoLineaBase(
-                    new InformeCambio
-                    {
-                        Solicitud = new SolicitudCambio { ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = idProyecto } }, LineaBase = new LineaBase { Id = idLineaBase } },
-                    });
+
+            List<InformeCambio> lista = InformeCambioLogica.ListarPorProyectoLineaBase(new InformeCambio {Solicitud = new SolicitudCambio { ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = idProyecto } }, LineaBase = new LineaBase { Id = idLineaBase } },});
+
+            lista.Insert(0, new InformeCambio { Id = 0, Nombre = "--Seleccione--" });
+            
+            return lista;
         }
 
         public OrdenCambio ObtenerPorId(int id)

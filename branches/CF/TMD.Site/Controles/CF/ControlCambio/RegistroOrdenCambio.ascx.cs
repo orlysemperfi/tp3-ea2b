@@ -95,13 +95,22 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            OrdenCambio ordenCambio = CrearOrden();
+            if (validar())
+            {
+                OrdenCambio ordenCambio = CrearOrden();
 
-            ordenFachada.Agregar(ordenCambio);
+                try 
+                {
+                    ordenFachada.Agregar(ordenCambio);
+                    OnEventoGraboOrden();
+                    pnlOrdenCambio.Enabled = false;
+                }catch (Exception ex)
+                {
+                
+                }
 
-            OnEventoGraboOrden();
-
-            pnlOrdenCambio.Enabled = false;
+                
+            }
         }
 
         private OrdenCambio CrearOrden()
@@ -119,6 +128,17 @@ namespace TMD.CF.Site.Controles.CF.ControlCambio
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             OnEventoCanceloOrden();
+        }
+
+        private Boolean validar()
+        {
+            bool registro = true;
+            if (txtNombre.Text == "" || ddlProyecto.SelectedIndex == 0 || ddlLineaBase.SelectedIndex == 0 ||
+                ddlInforme.SelectedIndex == 0 || ddlUsuario.SelectedIndex == 0 || ddlPrioridad.SelectedIndex == 0)
+            {
+                registro = false;
+            }
+            return registro;
         }
     }
 }
