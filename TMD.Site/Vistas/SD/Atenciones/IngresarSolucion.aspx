@@ -113,7 +113,8 @@ CodeBehind="IngresarSolucion.aspx.cs" Inherits="TMD.ServiceDesk.Site.Atenciones.
            <td class="style2">
                 &nbsp;</td>
             <td class="style7" colspan="3">
-                &nbsp;</td>
+                <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" Text="Mensaje"></asp:Label>
+            </td>
             <td class="style4">
                 &nbsp;</td>
             <td>
@@ -132,7 +133,11 @@ CodeBehind="IngresarSolucion.aspx.cs" Inherits="TMD.ServiceDesk.Site.Atenciones.
            <td class="style2">
                 &nbsp;</td>
             <td class="style7" colspan="3">
-                &nbsp;</td>
+                <asp:CustomValidator ID="CustomValidator1" runat="server" 
+                    ControlToValidate="txtSolucion" 
+                    ErrorMessage="Debe ingresar 20 carácteres como mínimo" ForeColor="Red" 
+                    onservervalidate="CustomValidator1_ServerValidate" ValidateEmptyText="True"></asp:CustomValidator>
+            </td>
             <td class="style4">
                 &nbsp;</td>
             <td>
