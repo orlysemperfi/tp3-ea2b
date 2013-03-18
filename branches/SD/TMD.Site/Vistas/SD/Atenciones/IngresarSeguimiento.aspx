@@ -152,17 +152,18 @@ CodeBehind="IngresarSeguimiento.aspx.cs"  Inherits="TMD.CF.Site.Vistas.SD.Atenci
                 <asp:GridView ID="grdSeguimiento" runat="server" AllowPaging="True" 
                     AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" 
                     ForeColor="#333333" GridLines="None" ShowHeaderWhenEmpty="True" 
-                    Width="797px" AutoGenerateSelectButton="True">
+                    Width="797px">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
-                        <asp:BoundField DataField="[CODIGO_SEGUIMIENTO]" HeaderText="Id" 
+                        <asp:BoundField DataField="CODIGO_SEGUIMIENTO" HeaderText="Id" 
                             ReadOnly="True" />
-                        <asp:BoundField HeaderText="Fecha Seguimiento" ReadOnly="True" 
-                            DataField="FECHA_REGISTRO_INFORMACION_SEGUIMIENTO" />
+                        <asp:BoundField HeaderText="Fecha Registro" ReadOnly="True" 
+                            DataField="FECHA_REGISTRO" />
                         <asp:BoundField HeaderText="Especialista" ReadOnly="True" 
-                            DataField="CODIGO_INTEGRANTE" />
+                            DataField="NOMBRE_INTEGRANTE" />
                         <asp:BoundField HeaderText="Descripción del seguimiento" 
-                            DataField="DESCRIPCION_INFORMACION_SEGUIMIENTO" />
+                            DataField="DESCRIPCION_SEGUIMIENTO" />
+                        <asp:BoundField DataField="Tipo_Seguimiento" HeaderText="Tipo Seguimiento" />
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

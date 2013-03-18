@@ -15,6 +15,7 @@ namespace TMD.Entidades
         public int Codigo_Integrante { get; set; }
         public String Tipo_Seguimiento { get; set; }
         public String Nombre_Integrante { get; set; }
+        
 
 
     }

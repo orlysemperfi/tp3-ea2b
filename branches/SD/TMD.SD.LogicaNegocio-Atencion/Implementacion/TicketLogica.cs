@@ -64,15 +64,15 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
             _ticketData.registrarSeguimiento (seguimientoTicket);
         }
 
-        //public List<SeguimientoTicket> listaSeguimientos(int numeroTicket)
-        //{
-        //    _ticketData.listaSeguimientos (numeroTicket);
-        //}
-
-        public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
+        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket)
         {
-            _ticketData.registrarDocumentoTicket(documentoTicket);
+            return _ticketData.listaSeguimientos(numeroTicket);
         }
+
+        //public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
+        //{
+        //    _ticketData.registrarDocumentoTicket(documentoTicket);
+        //}
 
 
     }
