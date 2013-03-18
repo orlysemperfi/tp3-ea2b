@@ -120,6 +120,11 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 List<SelectListItemBE> result = new List<SelectListItemBE>();
                 using (IDataReader oReader = oDatabase.ExecuteReader("GET_PRIORIDAD"))
                 {
+                    result.Add(new SelectListItemBE()
+                    {
+                        CODIGO = "0",
+                        DESCRIPCION = "[Todos]",
+                    });
                     while (oReader.Read())
                     {
                         result.Add(new SelectListItemBE()
@@ -144,6 +149,12 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 List<SelectListItemBE> result = new List<SelectListItemBE>();
                 using (IDataReader oReader = oDatabase.ExecuteReader("GET_FRECUENCIA"))
                 {
+                    result.Add(new SelectListItemBE()
+                    {
+                        CODIGO = "0",
+                        DESCRIPCION = "[Todos]",
+                    });
+
                     while (oReader.Read())
                     {
                         result.Add(new SelectListItemBE()

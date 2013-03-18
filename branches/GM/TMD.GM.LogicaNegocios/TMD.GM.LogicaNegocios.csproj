@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\IEquipoBL.cs" />
     <Compile Include="Contrato\IComunBL.cs" />
     <Compile Include="Contrato\ISolicitudBL.cs" />
     <Compile Include="Contrato\IPlanBL.cs" />
     <Compile Include="Implementacion\ComunBL.cs" />
+    <Compile Include="Implementacion\EquipoBL.cs" />
     <Compile Include="Implementacion\PlanBL.cs" />
     <Compile Include="Implementacion\SolicitudBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

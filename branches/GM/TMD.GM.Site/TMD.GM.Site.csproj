@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EquipoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\SolicitudController.cs" />
@@ -171,12 +172,10 @@
     </Compile>
     <Compile Include="Helpers\Calendar.cs" />
     <Compile Include="Helpers\CalendarExtensions.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\ActividadModels.cs" />
-    <Compile Include="Models\SolicitudConsultaModels.cs" />
-    <Compile Include="Models\PlanConsultaModels.cs" />
+    <Compile Include="Helpers\HelperExtensions.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\EquipoModels.cs" />
     <Compile Include="Models\PlanModels.cs" />
-    <Compile Include="Models\PlanDetalleModels.cs" />
     <Compile Include="Models\SolicitudModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,6 +238,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\1363144560_Utilities.png" />
+    <Content Include="Images\edit16x16.png" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -303,10 +303,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\Solicitud.cshtml" />
+    <Content Include="Views\Solicitud\SolicitudConsulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\SolicitudEdit.cshtml" />
+    <Content Include="Views\Solicitud\Solicitud.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Solicitud\CalendarioActividades.cshtml" />
@@ -315,13 +315,7 @@
     <Content Include="Views\Solicitud\NuevaActividad.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plan\Plan.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Plan\PlanDetalle.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Plan\PlanDetallePV.cshtml" />
+    <Content Include="Views\Plan\PlanActividad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TMD.GM.Entidades\TMD.GM.Entidades.csproj">
@@ -341,13 +335,34 @@
     <Content Include="Views\Plan\PlanConsulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plan\PlanConsultaResultPV.cshtml" />
+    <Content Include="Views\Plan\Planes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Plan\PlanNuevo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\SolicitudConsultaResultPV.cshtml" />
+    <Content Include="Views\Solicitud\Solicitudes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Plan\PlanEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Solicitud\SolicitudActividades.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Plan\PlanActividades.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Solicitud\SolicitudActividad.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Equipo\Equipos.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Equipo\EquipoConsulta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Solicitud\SolicitudNueva.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

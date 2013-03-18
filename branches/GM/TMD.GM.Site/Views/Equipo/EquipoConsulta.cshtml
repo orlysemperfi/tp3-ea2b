@@ -1,0 +1,16 @@
+﻿<fieldset>
+Código:
+@Html.TextBox("txtCodigoEquipo", "", new { @class = "txtForm", style = "width: 100px;" })
+Nombre:
+@Html.TextBox("txtNombreEquipo", "", new { @class = "txtForm", style = "width: 100px;" })
+N° Serie:
+@Html.TextBox("txtSerieEquipo", "", new { @class = "txtForm", style = "width: 100px;" })
+</fieldset>
+<fieldset>
+<input id="btnBuscarEquipos" type="button" value="Buscar" onclick="EquiposEjecutarBusqueda('@Url.Action("Equipos", "Equipo")');" />
+</fieldset>
+<div id="gridEquipos"></div>
+
+<fieldset>
+<input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalEquipos();" />
+</fieldset>
