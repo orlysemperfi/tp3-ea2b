@@ -24,9 +24,23 @@ namespace TMD.GM.LogicaNegocios.Implementacion
             return instanciaDA.ObtenerSolicitudNueva();
         }
 
-        public List<SolicitudBE> ObtenerSolicitudes()
+        public List<SolicitudBE> ObtenerSolicitudes(SolicitudFiltroBE filtro)
         {
-            return instanciaDA.ObtenerSolicitudes();
+            return instanciaDA.ObtenerSolicitudes( filtro);
+        }
+
+        public void RegistrarSolicitud(SolicitudBE SolicitudBE)
+        {
+            instanciaDA.RegistrarSolicitud(SolicitudBE);
+        }
+
+        public void ActualizarSolicitud(SolicitudBE SolicitudBE)
+        {
+            instanciaDA.ActualizarSolicitud(SolicitudBE);
+        }
+        public SolicitudBE VisualizarSolicitud(SolicitudBE SolicitudBE)
+        {
+            return instanciaDA.VisualizarSolicitud(SolicitudBE);
         }
     }
 }

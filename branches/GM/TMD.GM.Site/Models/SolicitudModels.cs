@@ -10,13 +10,29 @@ using TMD.GM.Entidades;
 
 namespace TMD.GM.Site.Models
 {
-    
+    public class SolicitudActividadModel
+    {
+        public int item { get; set; }
+        public SolicitudDetalleBE solicitudDetalleBE { get; set; }
+        public List<SelectListItem> listaTA { get; set; }
+        public List<SelectListItem> listaTU { get; set; }
+        public List<SelectListItem> listaPR { get; set; }
+        public List<SelectListItem> listaFR { get; set; }
+    }
 
     public class SolicitudModel
     {
-        public List<SelectListItemBE> listaDataTS { get; set; }
-        public List<SelectListItemBE> listaDataES { get; set; }
-        public List<SelectListItemBE> listaDataPM { get; set; }
+        public List<SelectListItem> listaTS { get; set; }
+        public List<SelectListItem> listaES { get; set; }
+        public List<SelectListItem> listaPM { get; set; }
         public SolicitudBE solicitudBE { get; set; }
+
     }
+
+    public class SolicitudConsultaModel
+    {
+        public List<SolicitudBE> listaData { get; set; }
+
+    }
+
 }

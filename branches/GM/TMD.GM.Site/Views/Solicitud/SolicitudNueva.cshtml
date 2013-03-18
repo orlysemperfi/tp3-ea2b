@@ -29,15 +29,10 @@
 @Html.TextBox("txtFechaIni", String.Format("{0:dd/MM/yyyy}", Model.solicitudBE.FECHA_INICIO_SOLICITUD), new { @class = "txtFormFecha" })
 <span class="labelForm">Hasta</span>
 @Html.TextBox("txtFechaFin", String.Format("{0:dd/MM/yyyy}", Model.solicitudBE.FECHA_FIN_SOLICITUD), new { @class = "txtFormFecha" })
-<input id="btnGenerar" type="button" value="Generar Cronograma" />
 </fieldset>
 <div id="pnlGridActividades"></div>
 <fieldset>
-<input id="btnNuevo" type="button" value="Nueva Actividad" onclick="SolicitudActividadNueva('@Url.Action("SolicitudActividadNueva", "Solicitud")', '@Model.solicitudBE.NUMERO_SOLICITUD')"  />
-<input id="btnVerCalendario" type="button" value="Ver Calendario de Cronograma" onclick="MostrarCalendario('@Url.Action("CalendarioActividades", "Solicitud")')" />
-</fieldset>
-<fieldset>
-<input id="btnGrabar" type="button" value="Grabar Solicitud" />
+<input id="btnGrabar" type="button" value="Grabar Solicitud" onclick="SolicitudRegistrar('@Url.Action("SolicitudRegistrar", "Solicitud")')"/>
 <input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalSolicitud()" />
 
 </fieldset>

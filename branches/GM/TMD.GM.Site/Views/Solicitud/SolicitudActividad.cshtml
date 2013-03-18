@@ -1,0 +1,40 @@
+﻿@model TMD.GM.Site.Models.SolicitudActividadModel
+
+<fieldset>
+Item:
+@Html.Hidden("hdIdActividad", Model.solicitudDetalleBE.ID_ACTIVIDAD)
+@Html.Hidden("hdNumeroSoli", Model.solicitudDetalleBE.NUMERO_SOLICITUD)
+@Html.TextBox("txtItem", Model.solicitudDetalleBE.ITEM_SOLICITUD, new { @class = "txtForm" })
+</fieldset>
+<fieldset>
+Descripción:
+@Html.TextBox("txtActividadDesc", "", new { @class = "txtForm", style = "width: 300px;" })
+</fieldset>
+<fieldset>
+Tipo actividad:
+@Html.DropDownList("ddlTipoActividad", Model.listaTA, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Tiempo:
+@Html.TextBox("txtTiempoDura", Model.solicitudDetalleBE.TIEMPO_ACTIVIDAD, new { @class = "txtForm", style = "width: 50px;" })
+@Html.DropDownList("ddlTiempoUnme", Model.listaTU, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Prioridad:
+@Html.DropDownList("ddlPrioridad", Model.listaPR, new { @class = "ddlForm" })
+Frecuencia:
+@Html.DropDownList("ddlFrecuencia", Model.listaFR, new { @class = "ddlForm" })
+</fieldset>
+<fieldset>
+Personal requerido:
+@Html.TextBox("txtPersRequ", Model.solicitudDetalleBE.PERSONAL_REQUERIDO, new { @class = "txtForm", style = "width: 50px;" })
+Fecha programada
+@Html.TextBox("txtFechaProg", String.Format("{0:dd/MM/yyyy}", Model.solicitudDetalleBE.FECHA_PROGRAMACION), new { @class = "txtFormFecha" })
+</fieldset>
+<fieldset>
+N° Orden de Trabajo:
+@Html.TextBox("txtNumOT", Model.solicitudDetalleBE.ORDEN_TRABAJO, new { @class = "txtForm" })
+<input id="btnGrabar" type="button" value="Grabar" onclick="SolicitudActividad_AceptarClick('@Url.Action("SolicitudActividadAceptar", "Solicitud")','@Url.Action("SolicitudActividades_Actualiza", "Solicitud")')" />
+<input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalActividadEditar()" />
+</fieldset>
+
