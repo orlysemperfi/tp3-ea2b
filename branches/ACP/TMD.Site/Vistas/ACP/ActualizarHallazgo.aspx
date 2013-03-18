@@ -104,6 +104,11 @@
                     $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').focus();
                     bValida = true;
                 }
+                if (chkRpta == false && parseInt(porcentaje) != 0) {
+                    alert('El indicador de cumplimiento es NO, el valor del Porcentaje no puede ser distinto a 0. Verificar');
+                    $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').focus();
+                    bValida = true;
+                }
             }
 
             if (bValida == false) {
