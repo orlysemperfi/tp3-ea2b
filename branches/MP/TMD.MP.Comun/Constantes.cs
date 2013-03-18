@@ -120,6 +120,7 @@ namespace TMD.MP.Comun
         public static String TABLA_PROPUESTA_INDICADOR = "MP.PROPUESTA_INDICADOR";
         public static String TABLA_PROPUESTAMEJORA = "MP.PROPUESTAMEJORA";
         public static String TABLA_SOLUCION_MEJORA = "MP.SOLUCION_MEJORA";
+        public static String TABLA_SOLUCION_ESTADO = "MP.ESTADO_SOLUCION";
         public static String TABLA_UNIDAD = "MP.UNIDAD";
 
         #endregion

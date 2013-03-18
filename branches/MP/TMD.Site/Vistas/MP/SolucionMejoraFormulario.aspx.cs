@@ -23,7 +23,10 @@ namespace TMD.MP.Site.Privado
             if (!Page.IsPostBack)
             {
                 action = Convert.ToInt32(Request.QueryString["Action"]);
-                
+
+                CargarEmpleado();
+                CargarPropuesta();
+
                 if (action == Constantes.ACTION_INSERT)
                 {
                     NuevaSolucionMejora();
@@ -48,10 +51,12 @@ namespace TMD.MP.Site.Privado
         {
             SolucionMejoraEntidad SolucionMejora = Sesiones.SolucionMejoraSeleccionada;
             tbxCodigo.Text = String.Format("{0:000}", SolucionMejora.codigo_Solucion);
-            tbxPropuesta.Text = SolucionMejora.propuesta;
+            ddlPropuesta.SelectedValue = SolucionMejora.propuesta;
 
             if (action == Constantes.ACTION_VIEW)
                 CargarModoView();
+            else
+                CargarModoEdit();
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -60,11 +65,12 @@ namespace TMD.MP.Site.Privado
 
             if(IsValid == true){
 
-                SolucionMejoraEntidad oSolucionMejora = Sesiones.SolucionMejoraSeleccionada; //new SolucionMejoraEntidad();
+                SolucionMejoraEntidad oSolucionMejora = Sesiones.SolucionMejoraSeleccionada;
                 ISolucionMejoraLogica oSolucionMejoraLogica = SolucionMejoraLogica.getInstance();
 
-                oSolucionMejora.propuesta = tbxPropuesta.Text;
-                
+                oSolucionMejora.codigo_Propuesta = Convert.ToInt32(ddlPropuesta.SelectedItem.Value);
+                oSolucionMejora.codigo_Empleado = Convert.ToInt32(ddlEmpleado.SelectedItem.Value);
+                oSolucionMejora.descripcion = tbxDescripcion.Text;
 
                 if (oSolucionMejora.codigo_Solucion != null)
                     oSolucionMejoraLogica.ActualizarSolucionMejora(oSolucionMejora);
@@ -88,15 +94,40 @@ namespace TMD.MP.Site.Privado
             Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado, true);
         }
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         protected void CargarModoView() {
-            tbxPropuesta.Enabled = false;
+            ddlPropuesta.Enabled = false;
+            ddlEmpleado.Enabled = false;
             btnGuardar.Visible = false;
             btnCancelar.Text = "Salir";
         }
+
+        protected void CargarModoEdit()
+        {
+            ddlPropuesta.Enabled = false;
+        }
+
+        protected void CargarEmpleado()
+        {
+            IUsuarioLogica oAreaLogica = UsuarioLogica.getInstance();
+            List<UsuarioEntidad> oUsuarioColeccion = oAreaLogica.ObtenerListaEmpleadosTodas();
+            ddlEmpleado.DataSource = oUsuarioColeccion;
+            ddlEmpleado.DataTextField = "NOMBRE_COMPLETO";
+            ddlEmpleado.DataValueField = "CODIGO_PERSONA";
+            ddlEmpleado.DataBind();
+            ddlEmpleado.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
+        }
+
+
+        protected void CargarPropuesta()
+        {
+            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
+            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = oPropuestaMejoraLogica.ObtenerPropuestaMejoraListadoParaSolucion();
+            ddlPropuesta.DataSource = oPropuestaMejoraColeccion;
+            ddlPropuesta.DataTextField = "DESCRIPCION";
+            ddlPropuesta.DataValueField = "CODIGO_PROPUESTA";
+            ddlPropuesta.DataBind();
+            ddlPropuesta.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
+        }
+
     }
 }

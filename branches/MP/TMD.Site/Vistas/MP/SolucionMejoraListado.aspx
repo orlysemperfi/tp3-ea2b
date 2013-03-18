@@ -91,9 +91,9 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Estado">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("CODIGO_ESTADO").ToString()=="1" ? "Registrada": Eval("CODIGO_ESTADO").ToString()=="2" ? "Aprobada": Eval("CODIGO_ESTADO").ToString()=="3" ? "Rechazada": "En Desarrollo" %>' />
+                                    <asp:Label ID="lblEstado" runat="server" Text='<%#Eval("NOMBRE_ESTADO") %>' />
                                 </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="100px" />
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
@@ -103,7 +103,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarSolucion" CommandArgument='<%#Eval("CODIGO_SOLUCION") %>' CssClass="table-grilla-link" Enabled='<%# Eval("CODIGO_ESTADO").ToString()=="1" ? true : false %>'></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Eliminar" CommandName="EliminarSolucion" CommandArgument='<%#Eval("CODIGO_SOLUCION") %>' CssClass="table-grilla-link" OnClientClick="if(showConfirmationMessage('¿Desea borrar la solucion?')==false){return false;}"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

@@ -13,7 +13,8 @@ namespace TMD.MP.AccesoDatos.Contrato
         List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListadoPorFiltros(PropuestaMejoraEntidad oPropuestaMejoraFiltro);
         List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraAsignadasListadoPorFiltros(PropuestaMejoraEntidad oPropuestaMejoraFiltro);
         PropuestaMejoraEntidad ObtenerPropuestaMejoraPorCodigo(int codigo);
-        
+
+        List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListadoPorEstado(String estado);
         #endregion
 
         #region "Insert"

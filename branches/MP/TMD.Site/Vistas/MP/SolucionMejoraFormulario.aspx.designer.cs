@@ -31,22 +31,58 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.HiddenField hdnCodigo;
         
         /// <summary>
-        /// tbxPropuesta control.
+        /// ddlPropuesta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxPropuesta;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPropuesta;
         
         /// <summary>
-        /// btnBuscar control.
+        /// rfvPropuesta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPropuesta;
+        
+        /// <summary>
+        /// ddlEmpleado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmpleado;
+        
+        /// <summary>
+        /// rfvEmpleado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmpleado;
+        
+        /// <summary>
+        /// tbxDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbxDescripcion;
+        
+        /// <summary>
+        /// rfvDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
         
         /// <summary>
         /// btnGuardar control.

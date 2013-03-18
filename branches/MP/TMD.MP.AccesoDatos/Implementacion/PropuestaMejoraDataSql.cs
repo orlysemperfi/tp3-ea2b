@@ -225,6 +225,47 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 sqlConn.Close();
             }
         }
+
+        public List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListadoPorEstado(String estado)
+        {
+            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = new List<PropuestaMejoraEntidad>();
+            PropuestaMejoraEntidad oPropuestaMejora = null;
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.DESCRIPCION ");
+            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("WHERE E.NOMBRE = '" + estado + "' ");
+            
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            try
+            {
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    oPropuestaMejora = new PropuestaMejoraEntidad();
+                    oPropuestaMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
+                    oPropuestaMejora.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oPropuestaMejoraColeccion.Add(oPropuestaMejora);
+                }
+                dr.Close();
+                return oPropuestaMejoraColeccion;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+
         #endregion
 
         #region "Insert"
