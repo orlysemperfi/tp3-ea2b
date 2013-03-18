@@ -48,8 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseDA.cs" />
+	<Compile Include="Base\SQLHelper.cs" />
+	<Compile Include="Contrato\IEmpleadosDA.cs" />    
+	<Compile Include="Contrato\IComunDA.cs" />
+    <Compile Include="Contrato\IEspecialidadDA.cs" />
+    <Compile Include="Contrato\IInformesDA.cs" />
     <Compile Include="Contrato\IEquipoDA.cs" />
-    <Compile Include="Contrato\IComunDA.cs" />
     <Compile Include="Contrato\IPlanDA.cs" />
     <Compile Include="Contrato\ISolicitudDA.cs" />
     <Compile Include="Implementacion\ComunDA.cs" />
