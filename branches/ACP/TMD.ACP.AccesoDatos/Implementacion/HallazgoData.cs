@@ -248,10 +248,28 @@ namespace TMD.ACP.AccesoDatos.Implementacion
             {
                 DB.AddInParameter(command, "@idHallazgo", DbType.Int32, hallazgo.IdHallazgo);
                 DB.AddInParameter(command, "@fechacompromiso", DbType.DateTime, hallazgo.FechaCompromiso);
+                DB.AddInParameter(command, "@causa", DbType.String, hallazgo.Causa);
                 DB.AddInParameter(command, "@accioncorrectiva", DbType.String, hallazgo.AccionCorrectiva);
                 DB.AddInParameter(command, "@accionpreventiva", DbType.String, hallazgo.AccionPreventiva);
                 DB.ExecuteNonQuery(command);
             }
+        }
+
+        public bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso)
+        {
+            int count = 0;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT count(*) from AC_HALLAZGO H, AUDITORIA A ");
+            sb.Append("WHERE H.idAuditoria=A.CODIGO_AUDITORIA ");
+            sb.Append(string.Format(" AND H.idHallazgo={0}", IdHallazgo));
+            sb.Append(string.Format("AND CONVERT(VARCHAR(10), A.FECHA_INICIO,112)>= {0} ", dFecCompromiso.ToString("yyyyMMdd")));
+
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {                
+                count = Convert.ToInt32(DB.ExecuteScalar(command));
+            }
+            return count > 0 ? true : false;
         }
     }
 }

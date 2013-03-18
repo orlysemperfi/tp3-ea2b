@@ -122,6 +122,12 @@ namespace TMD.ACP.Site
                 Literal litFechaSeguimiento = (Literal)e.Item.FindControl("litFechaSeguimiento");
                 Literal litEstado = (Literal)e.Item.FindControl("litEstado");
 
+                HtmlAnchor lnkAgregar = (HtmlAnchor)e.Item.FindControl("lnkAgregar");
+                lnkAgregar.HRef = string.Format("javascript:fAgregar({0},{1});", eHallazgo.IdAuditoria, eHallazgo.IdHallazgo);
+
+                HtmlAnchor lnkQuitar = (HtmlAnchor)e.Item.FindControl("lnkQuitar");
+                lnkQuitar.HRef = string.Format("javascript:fQuitarAsignacion({0},{1});", eHallazgo.IdAuditoria, eHallazgo.IdHallazgo);
+
                 litIdHallazgo.Text = Convert.ToString(eHallazgo.IdHallazgo);
                 litDescripcion.Text = eHallazgo.Descripcion;
                 if (eHallazgo.TipoHallazgo == "NOCONFORMIDAD")
@@ -129,11 +135,17 @@ namespace TMD.ACP.Site
                 else
                     litTipoHallazgo.Text = eHallazgo.TipoHallazgo;
                 if (eHallazgo.FechaCompromiso.HasValue)
-                    litFechaCompromiso.Text = eHallazgo.FechaCompromiso.Value.ToShortDateString();                
+                    litFechaCompromiso.Text = eHallazgo.FechaCompromiso.Value.ToShortDateString();
 
-                if (eHallazgo.Estado.Equals(EstadoHallazgo.Asignado)){
+                if (eHallazgo.Estado.Equals(EstadoHallazgo.Asignado))
+                {
                     if (eHallazgo.FechaSeguimiento.HasValue)
                         litFechaSeguimiento.Text = eHallazgo.FechaSeguimiento.Value.ToShortDateString();
+                    lnkAgregar.Style.Add("display", "none");
+                }
+                if (eHallazgo.Estado.Equals(EstadoHallazgo.Planificado))
+                {
+                    lnkQuitar.Style.Add("display", "none");
                 }
                 litResponsable.Text = eHallazgo.ResponsableSeguimiento;                
                 litEstado.Text = eHallazgo.Estado;

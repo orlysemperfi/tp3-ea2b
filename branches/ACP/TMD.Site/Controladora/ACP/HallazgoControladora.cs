@@ -108,5 +108,10 @@ namespace TMD.Site.Controladora.ACP
             return _hallazgoLogica.ModificarHallazgoSeguimiento(eHallazgo);
         }
 
+        public static bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso)
+        {
+            return _hallazgoLogica.ValidarUpdate(IdHallazgo, dFecCompromiso);
+        }
+
     }
 }

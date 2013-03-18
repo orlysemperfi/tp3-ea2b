@@ -177,6 +177,7 @@ namespace TMD.ACP.Site
 
                 AddCallbackValue("1");
                 AddCallbackControl(rptHallazgos);
+                AddCallbackValue(codPregunta);
 
             }
             catch (Exception ex)
@@ -199,7 +200,7 @@ namespace TMD.ACP.Site
             PreguntaVerificacion oPregunta = new PreguntaVerificacion();
             oPregunta.ObjAuditoria.IdAuditoria = idAuditoria;
             oPregunta.idPreguntaVerificacion = idPregunta;
-            oPregunta.Respuesta = respuesta == "on" ? true : false;
+            oPregunta.Respuesta = respuesta == "true" ? true : false;
             oPregunta.Sustento = sustento;
             oPregunta.Porcentaje = porcentaje;
 
@@ -366,9 +367,21 @@ namespace TMD.ACP.Site
                     litTipoHallazgo.Text = "NO CONFORMIDAD";
                 else
                     litTipoHallazgo.Text = eHallazgo.TipoHallazgo;
-                
 
-                //Modo Vista              
+
+                //Modo Editable
+
+                HtmlAnchor lnkEditarHallazgo = (HtmlAnchor)e.Item.FindControl("lnkEditarHallazgo");
+                lnkEditarHallazgo.HRef = string.Format("javascript:fEditarHallazgo({0});", eHallazgo.IdHallazgo);
+
+                HtmlAnchor lnkQuitarHallazgo = (HtmlAnchor)e.Item.FindControl("lnkQuitarHallazgo");
+                lnkQuitarHallazgo.HRef = string.Format("javascript:fQuitarHallazgo({0});", eHallazgo.IdHallazgo);
+
+                if (eHallazgo.Estado == "PLANIFICADO")
+                {
+                    lnkEditarHallazgo.Style.Add("display", "none");
+                    lnkQuitarHallazgo.Style.Add("display", "none");
+                } 
             }
         }
 

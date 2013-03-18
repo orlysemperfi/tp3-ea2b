@@ -21,6 +21,7 @@ namespace TMD.Entidades
         public int? IdAuditorSeguimiento { get; set; }
         public string ResponsableSeguimiento { get; set; }
 
+        public string Causa { get; set; }
         public string AccionCorrectiva { get; set; }
         public string AccionPreventiva { get; set; }
     }

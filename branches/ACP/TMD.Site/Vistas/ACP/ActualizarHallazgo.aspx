@@ -66,6 +66,7 @@
             var mData = arg.split(":::")
             if (mData[0] == "1") {
                 $("#divHallazgos").html(mData[1]);
+                $("#spanIdPregunta").html(mData[2]); 
             }
         }
         //*****************************************************************************
@@ -83,37 +84,38 @@
         //***************************************************************************** 
         function fGrabarPregunta(id) {
             var idPregunta = $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtIdPregunta_"]').val();
-            var chkRpta = $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_chkRpta_"]').val();
+            var chkRpta = $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_chkRpta_"]').is(':checked');
             var sustento = $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtSustento_"]').val();
             var porcentaje = $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').val();
-                        
+
+            bValida = false;
+
             if (sustento == "") {
                 alert('Ingrese un sustento a la pregunta seleccionada');
                 $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtSustento_"]').focus();
-                return false;
-            }
-
-            if (porcentaje == "") {
+                bValida = true;
+            } else if (porcentaje == "" || isNaN(porcentaje) == true || (parseInt(porcentaje) < 0 && parseInt(porcentaje) > 100)) {
                 alert('Ingrese un valor correcto para el Porcentaje');
                 $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').focus();
-                return false;
-            }
-                        
-            if (chkRpta == "on" && porcentaje == "0") {
-                alert('El indicador de cumplimiento es SI, el valor del Porcentaje no puede ser 0. Verificar');
-                $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').focus();
-                return false;
+                bValida = true;
+            } else if (isNaN(porcentaje) == false) {
+                if (chkRpta == true && parseInt(porcentaje) <= 0) {
+                    alert('El indicador de cumplimiento es SI, el valor del Porcentaje no puede ser 0. Verificar');
+                    $('#ModoEdicion' + id + ' input[id*="MainContent_rptPreguntas_txtPorcentaje_"]').focus();
+                    bValida = true;
+                }
             }
 
-            //aqui se hace un set para el registro correspondiente
-            $("#MainContent___TmpIdPregunta").val(idPregunta);
-            $("#MainContent___TmpChkRpta").val(chkRpta);            
-            $("#MainContent___TmpSustento").val(sustento);
-            $("#MainContent___TmpPorcentaje").val(porcentaje);            
+            if (bValida == false) {
+                //aqui se hace un set para el registro correspondiente
+                $("#MainContent___TmpIdPregunta").val(idPregunta);
+                $("#MainContent___TmpChkRpta").val(chkRpta);
+                $("#MainContent___TmpSustento").val(sustento);
+                $("#MainContent___TmpPorcentaje").val(porcentaje);
 
-            window.setTimeout(function () { DoFormCallBack("GrabarPregunta", null, End_fGrabarPregunta); }, 500) 
+                window.setTimeout(function () { DoFormCallBack("GrabarPregunta", null, End_fGrabarPregunta); }, 500)
+            }
         }
-
         //*****************************************************************************    
         function End_fGrabarPregunta(arg) {
             var mData = arg.split(":::")
@@ -125,11 +127,13 @@
         function fEditarHallazgo(id) {
             $("#ModoEdicionHallazgo" + id).show();
             $("#ModoVistaHallazgo" + id).hide();
+            $("#trNewRowHallazgo").hide();
         }
         //*****************************************************************************            
         function fCancelarHallazgo(id) {
             $("#ModoVistaHallazgo" + id).show();
             $("#ModoEdicionHallazgo" + id).hide();
+            $("#trNewRowHallazgo").show();
         }
         //***************************************************************************** 
         function fGrabarHallazgo(id) {
@@ -143,12 +147,17 @@
             var idHallazgo = $('#ModoEdicionHallazgo' + id + ' input[id*="MainContent_rptHallazgos_txtIdHallazgo_"]').val();
             var descripcion = $('#ModoEdicionHallazgo' + id + ' input[id*="MainContent_rptHallazgos_txtDesHallazgo_"]').val();
 
-            $("#MainContent___TmpIdHallazgo").val(idHallazgo);
-            $("#MainContent___TmpDesHallazgo").val(descripcion);
-            $("#MainContent___TmpTipoHallazgo").val(tipoHallazgo);
+            if (descripcion == "") {
+                alert('Ingrese una descripción para el Hallazgo');
+                $('#ModoEdicionHallazgo' + id + ' input[id*="MainContent_rptHallazgos_txtDesHallazgo_"]').focus();
+            } else {
 
-            window.setTimeout(function () { DoFormCallBack("GrabarHallazgo", null, End_fGrabarHallazgo); }, 500)
-                        
+                $("#MainContent___TmpIdHallazgo").val(idHallazgo);
+                $("#MainContent___TmpDesHallazgo").val(descripcion);
+                $("#MainContent___TmpTipoHallazgo").val(tipoHallazgo);
+
+                window.setTimeout(function () { DoFormCallBack("GrabarHallazgo", null, End_fGrabarHallazgo); }, 500)
+            }     
         }
         //*****************************************************************************    
         function End_fGrabarHallazgo(arg) {
@@ -164,24 +173,26 @@
             var idHallazgo = $("#MainContent_rptHallazgos_txtIdNewHallazgo").val();
             var descripcion = $("#MainContent_rptHallazgos_txtDesNewHallazgo").val();
             var tipoHallazgo = $("#MainContent_rptHallazgos_ddlNewTipoHallazgo").val();
-                        
+
+            bValida = false;
+
             if (descripcion == "") {
                 alert('Ingrese una descripción para el Hallazgo');
                 $("#MainContent_rptHallazgos_txtDesNewHallazgo").focus();
-                return false;
-            }
-
-            if (tipoHallazgo == "") {
+                bValida = true;
+            } else if (tipoHallazgo == "") {
                 alert('Ingrese una Tipo de Hallazgo');
                 $("#MainContent_rptHallazgos_ddlNewTipoHallazgo").focus();
-                return false;
+                bValida = true;
             }
-
-            $("#MainContent___TmpIdHallazgo").val(idHallazgo);
-            $("#MainContent___TmpDesHallazgo").val(descripcion);
-            $("#MainContent___TmpTipoHallazgo").val(tipoHallazgo);            
             
-            window.setTimeout(function () { DoFormCallBack("AgregarHallazgo", null, End_fGrabarHallazgo); }, 500)
+            if (bValida == false) {
+                $("#MainContent___TmpIdHallazgo").val(idHallazgo);
+                $("#MainContent___TmpDesHallazgo").val(descripcion);
+                $("#MainContent___TmpTipoHallazgo").val(tipoHallazgo);
+
+                window.setTimeout(function () { DoFormCallBack("AgregarHallazgo", null, End_fGrabarHallazgo); }, 500)
+            }
         }
 
         //*****************************************************************************
@@ -329,7 +340,8 @@
         </div>
     </div>
     <div style="border:solid 1px #C2C2C2;padding:10px 10px 10px 10px;font-family:Arial;margin:10px 20px 0px 20px"> 
-        <span style="padding:0px 10px 0px 10px">Datos de Hallazgos de la Pregunta Seleccionada </span>
+        <span style="font-weight:bold;font-size:12px;font-family:Arial;float:left;margin:5px 0px 5px 0px;"><asp:Literal ID="ltrTitulo" runat="server" Text="Datos de Hallazgos de la Pregunta :  "></asp:Literal></span>
+        <span style="font-weight:bold;font-size:12px;font-family:Arial;float:left;width:70px;margin:5px 0px 5px 0px;" id="spanIdPregunta"></span>
         <div id="divHallazgos" style="margin:10px 0px 0px 0px;height:100%;width:100%;">        
           <asp:Repeater ID="rptHallazgos" runat="server" OnItemDataBound="rptHallazgos_ItemDataBound">
                     <HeaderTemplate>
@@ -366,10 +378,10 @@
                         <asp:Literal ID="litEstado" runat="server" Text='<%# Eval("estado") %>' />                                  
                     </td>                   
                     <td align="center" style="width:60px">               
-                    <a id="lnkEditarHallazgo" class="cLnkEditarHallazgo" href="javascript:fEditarHallazgo(<%# Eval("idHallazgo")%>);">Editar</a>                
+                    <a id="lnkEditarHallazgo" class="cLnkEditarHallazgo" runat="server" >Editar</a>
                     </td>
                     <td align="center" style="width:60px">
-                    <a id="lnkQuitarHallazgo" class="cLnkQuitarHallazgo" href="javascript:fQuitarHallazgo(<%# Eval("idHallazgo")%>);">Quitar</a>                
+                    <a id="lnkQuitarHallazgo" class="cLnkQuitarHallazgo" runat="server" >Quitar</a>
                     </td>   
                     </tr>
 

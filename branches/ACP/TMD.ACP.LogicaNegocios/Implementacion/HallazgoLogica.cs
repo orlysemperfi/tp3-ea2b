@@ -152,13 +152,17 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
         {
             return _objData.ObtenerHallazgosSeguimiento_PlanAccion(idHallazgo);
         }
-
-
+        
         public string ModificarHallazgoSeguimiento(Hallazgo eHallazgo)
         {
             string strRespuesta = string.Empty;
             _objData.ModificarHallazgoSeguimiento(eHallazgo);
             return strRespuesta;
+        }
+
+        public bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso)
+        {
+            return _objData.ValidarUpdate(IdHallazgo, dFecCompromiso);
         }
     }
 }

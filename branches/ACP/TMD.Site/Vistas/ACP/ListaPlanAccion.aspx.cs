@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using TMD.Entidades;
 using TMD.ACP.LogicaNegocios.Contrato;
 using TMD.ACP.LogicaNegocios.Implementacion;
@@ -77,7 +78,7 @@ namespace TMD.ACP.Site
 
                     l = (Literal)e.Row.FindControl("ltrlDocumentos");
                     if (l != null) l.Text = oHallazgo.nDoc.ToString();
-
+                    
                     l = (Literal)e.Row.FindControl("ltrlTipo");
                     if (l != null) l.Text = oHallazgo.TipoHallazgo;
 

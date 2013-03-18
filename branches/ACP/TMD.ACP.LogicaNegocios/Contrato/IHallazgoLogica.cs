@@ -20,6 +20,7 @@ namespace TMD.ACP.LogicaNegocios.Contrato
         List<Hallazgo> ObtenerHallazgosSeguimientoAsignadoPorPeriodo(int anhoAuditoria, int idHallazgo);
         List<Hallazgo> ObtenerHallazgosSeguimiento_PlanAccion(int idHallazgo);
         string ModificarHallazgoSeguimiento(Hallazgo eHallazgo);
+        bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso);
 
     }
 }

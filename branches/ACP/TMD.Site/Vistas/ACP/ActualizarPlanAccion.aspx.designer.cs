@@ -58,6 +58,24 @@ namespace TMD.ACP.Site.Vistas.ACP {
         protected global::System.Web.UI.WebControls.Label lblAuditoria;
         
         /// <summary>
+        /// Control lblFecIni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFecIni;
+        
+        /// <summary>
+        /// Control lblFecFin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFecFin;
+        
+        /// <summary>
         /// Control lblDescripcion.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace TMD.ACP.Site.Vistas.ACP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdHallazgo;
+        
+        /// <summary>
+        /// Control txtCausa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCausa;
         
         /// <summary>
         /// Control txtAccionCorrectiva.

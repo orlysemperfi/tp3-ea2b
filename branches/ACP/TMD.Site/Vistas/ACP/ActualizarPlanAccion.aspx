@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+
     <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
     <link rel="stylesheet" type="text/css" href="Styles/style.css" />
     <link rel="stylesheet" href="css/jquery-ui.css" />         
@@ -16,6 +17,7 @@
 
     <script type="text/javascript" src="js/facebox/facebox.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
+    
 
     <script type="text/javascript">
 
@@ -23,6 +25,7 @@
         //*****************************************************************************
 
         $(document).ready(function () {
+            $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
         });
 
         //*****************************************************************************
@@ -33,25 +36,47 @@
 
         //********************************************************************
         function fGrabar() {
+            var causa = $("#MainContent_txtCausa").val();
             var accionCorrectiva = $("#MainContent_txtAccionCorrectiva").val();
-            if ($.trim(accionCorrectiva) == "") {
-                alert("Ingrese una accion correctiva");
-                return false;
-            } 
-            var accionPreventiva = $("#MainContent_txtAccionCorrectiva").val();
-            if ($.trim(accionPreventiva) == "") {
-                alert("Ingrese una accion preventiva");
-                return false;
-            }
-
+            var accionPreventiva = $("#MainContent_txtAccionPreventiva").val();
             var fcompromiso = $("#MainContent_txtFechaCompromiso").val();
+            bValida = false;
 
-            if (isDate(fcompromiso) == false) {
+            if ($.trim(causa) == "") {
+                alert("Ingrese una descripcion para la causa");
+                $("#MainContent_txtCausa").focus();
+                bValida = true;
+            }else if ($.trim(accionCorrectiva) == "") {
+                alert("Ingrese una accion correctiva");
+                $("#MainContent_txtAccionCorrectiva").focus();
+                bValida = true;
+            } else if ($.trim(accionPreventiva) == "") {
+                alert("Ingrese una accion preventiva");
+                $("#MainContent_txtAccionPreventiva").focus();
+                bValida = true;
+            } else if (isDate(fcompromiso) == false) {
                 alert("Ingrese una fecha de compromiso correcto");
-                return false;
+                $("#MainContent_txtFechaCompromiso").focus();
+                bValida = true;
             }
 
-            window.setTimeout(function () { DoFormCallBack("GrabarHallazgo", null, End_fSaveData); }, 1000)
+            if (bValida == false) {
+                window.setTimeout(function () { DoFormCallBack("ValidarUpdate", null, End_fGrabar); }, 1000)         
+            }
+        }
+
+        //*****************************************************************************
+        function End_fGrabar(arg) {
+            var mData = arg.split(":::")
+            if (mData[0] == "2") {
+                if (mData[1] != "") {
+                    alert(mData[1]);
+                    return;
+                }
+            } 
+            else if (mData[0] == "1")  {
+                window.setTimeout(function () { DoFormCallBack("GrabarHallazgo", null, End_fSaveData); }, 1000)
+            }
         }
         
         //*****************************************************************************
@@ -59,7 +84,7 @@
         function End_fSaveData(arg) {
             var mData = arg.split(":::")
             if (mData[0] == "1") {
-                window.location.href = "ListaActSeguimientoHallazgo.aspx";
+                window.location.href = "ListaPlanAccion.aspx";
             }
         }
 
@@ -80,6 +105,8 @@
     </div>
     <div style="float:right;text-align:right;font-weight:bold;">
     <label style="">Nro:<asp:Label ID="lblAuditoria" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></label></br>      
+    <label style="">Fecha Inicio:<asp:Label ID="lblFecIni" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></label></br>      
+    <label style="">Fecha Fin:<asp:Label ID="lblFecFin" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></label></br>      
     </div>
     </div>
 
@@ -97,17 +124,25 @@
     </div>
 
     <div style="padding:0px 10px 0px 10px;font-family:Arial;margin:10px 20px 10px 20px;">
-        <div style="float:left;font-weight:bold;width:100%;height:130px;">
-             <p>
-             <label>Accion Correctiva:</label>
-             <asp:TextBox ID="txtAccionCorrectiva" runat="server" TextMode="MultiLine" Height="50" Width="500"/>
-             </p>
-             <p>
-             <label>Accion Preventiva:</label>
-             <asp:TextBox ID="txtAccionPreventiva" runat="server" TextMode="MultiLine" Height="50" Width="500"/>
-             </p>
-             <label>Fecha Compromiso:</label>
-             <asp:TextBox ID="txtFechaCompromiso" runat="server" Width="100" ReadOnly="true" CssClass="datepicker"/>
+        <div style="float:left;font-weight:bold;width:100%;height:200px;">
+        <table>
+        <tr>
+            <td><label>Causa:</label></td>
+            <td><asp:TextBox ID="txtCausa" runat="server" TextMode="MultiLine" Height="50" Width="500"/></td>
+        </tr>
+        <tr>             
+            <td><label>Accion Correctiva:</label></td>
+            <td><asp:TextBox ID="txtAccionCorrectiva" runat="server" TextMode="MultiLine" Height="50" Width="500"/></td>
+        </tr>
+        <tr>
+            <td><label>Accion Preventiva:</label></td>
+            <td><asp:TextBox ID="txtAccionPreventiva" runat="server" TextMode="MultiLine" Height="50" Width="500"/></td>
+        </tr>
+        <tr>
+            <td><label>Fecha Compromiso:</label></td>
+            <td><asp:TextBox ID="txtFechaCompromiso" runat="server" Width="100" CssClass="datepicker"/></td>
+        </tr>
+        </table>             
         </div>
     </div>
  

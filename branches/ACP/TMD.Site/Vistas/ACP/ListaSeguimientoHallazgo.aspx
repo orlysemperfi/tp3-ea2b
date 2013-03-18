@@ -176,10 +176,10 @@
                             <asp:Literal ID="litEstado" runat="server"/>                                    
                         </td>  
                         <td align="center" style="width:60px">
-                        <a id="lnkAgregar" class="cLnkAgregar" href="javascript:fAgregar(<%# Eval("idAuditoria")%>,<%# Eval("idHallazgo")%>);">Agregar</a>                
+                        <a id="lnkAgregar" class="cLnkAgregar" runat="server"  >Agregar</a>                
                         </td>  
                         <td align="center" style="width:60px">               
-                        <a id="lnkQuitar" class="cLnkQuitar" href="javascript:fQuitarAsignacion(<%# Eval("idAuditoria")%>,<%# Eval("idHallazgo")%>);">Quitar</a>                
+                        <a id="lnkQuitar" class="cLnkQuitar" runat="server" >Quitar</a>                
                         </td>                     
                         </tr>            
                     </ItemTemplate>

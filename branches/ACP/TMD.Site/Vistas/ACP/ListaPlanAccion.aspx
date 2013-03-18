@@ -51,7 +51,7 @@
                 <ItemStyle HorizontalAlign="Left" Width="40%" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Documentos" >
-                <ItemTemplate><asp:Literal ID="ltrlDocumentos" runat="server" /></ItemTemplate>
+                <ItemTemplate><asp:Literal ID="ltrlDocumentos" runat="server" /></ItemTemplate>                
                 <ItemStyle HorizontalAlign="Center" Width="10%" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Tipo" >

@@ -32,12 +32,18 @@
         }
 
         //********************************************************************
-        function fGrabar() {         
+        function fGrabar() {
+            var estado = $("#MainContent_ddlEstado").val();
             var comentarios = $("#MainContent_txtComentarios").val();
-            if ($.trim(comentarios) == "") {
-                alert("Comentario es obligatorio");          
-            } else {
+            if (estado == "CUMPLIDO") {
                 window.setTimeout(function () { DoFormCallBack("GrabarHallazgo", null, End_fSaveData); }, 1000)
+            }
+            else {
+                if ($.trim(comentarios) == "") {
+                    alert("Comentario es obligatorio");
+                } else {
+                    window.setTimeout(function () { DoFormCallBack("GrabarHallazgo", null, End_fSaveData); }, 1000)
+                }
             }
         }
         
@@ -49,8 +55,17 @@
                 window.location.href = "ListaActSeguimientoHallazgo.aspx";
             }
         }
-
+        
         //*****************************************************************************
+
+        function fMostrarComentario() {
+            var estado = $("#MainContent_ddlEstado").val();
+            if (estado == "CUMPLIDO") {
+                $("#pComentario").hide();
+            } else {
+                $("#pComentario").show();
+            }
+        }
 
     </script>
     <asp:HiddenField id="__IdHallazgo" runat="server"/>
@@ -84,15 +99,17 @@
 
     <div style="padding:0px 10px 0px 10px;font-family:Arial;margin:10px 20px 10px 20px;">
      <div style="float:left;font-weight:bold;width:100%;height:130px;">
-         <p>
+        <p>
             <label>Estado:</label>
-             <asp:DropDownList ID="ddlEstado" runat="server" Width="130">
-                <asp:ListItem Value ="COMPLETO">COMPLETO</asp:ListItem>                               
+             <asp:DropDownList ID="ddlEstado" runat="server" Width="130" onChange="fMostrarComentario()">
+                <asp:ListItem Value ="CUMPLIDO">CUMPLIDO</asp:ListItem>                               
+                <asp:ListItem Value ="INCUMPLIDO">INCUMPLIDO</asp:ListItem>
             </asp:DropDownList>   
          </p>
-         
-         <label>Comentarios:</label>
-         <asp:TextBox ID="txtComentarios" runat="server" TextMode="MultiLine" Height="50" Width="500"/>
+         <p id="pComentario" style="display:none">
+             <label>Comentario:</label>
+             <asp:TextBox ID="txtComentarios" runat="server" TextMode="MultiLine" Height="50" Width="500"/>
+         </p>
          </div>
     </div>
  
