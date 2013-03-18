@@ -102,6 +102,48 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 sqlConn.Close();
             }
         }
+
+        public List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoPorEstado(String estado)
+        {
+            List<SolucionMejoraEntidad> oSolucionMejoraColeccion = new List<SolucionMejoraEntidad>();
+            SolucionMejoraEntidad oSolucionMejora = null;
+            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+            SqlConnection sqlConn = new SqlConnection(strConn);
+            StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("SELECT S.CODIGO, S.DESCRIPCION ");
+            strSQL.Append("FROM MP.SOLUCION_MEJORA S ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = S.CODIGO_ESTADO ");
+            strSQL.Append("WHERE E.NOMBRE = '" + estado + "' ");
+            strSQL.Append("AND S.TIENEPILOTO=1 ");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            try
+            {
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    oSolucionMejora = new SolucionMejoraEntidad();
+                    oSolucionMejora.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oSolucionMejora.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oSolucionMejoraColeccion.Add(oSolucionMejora);
+                }
+                dr.Close();
+                return oSolucionMejoraColeccion;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+        }
+
         #endregion
 
         #region "Insert"

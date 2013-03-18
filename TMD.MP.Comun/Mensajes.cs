@@ -12,5 +12,7 @@ namespace TMD.MP.Comun
         public static String Mensaje_No_Borrar_Propuesta_Mejora = "La propuesta no puede ser borrada.";
         public static String Mensaje_No_Solucion = "No se encontró solución";
         public static String Mensaje_No_Borrar_Solucion_Mejora = "La solucion no puede ser borrada.";
+        public static String Mensaje_No_Piloto = "No se encontró pilotos";
+        public static String Mensaje_No_Borrar_Piloto = "El piloto no puede ser borrada.";
     }
 }

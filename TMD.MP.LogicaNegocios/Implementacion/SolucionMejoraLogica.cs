@@ -61,6 +61,24 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             return oSolucionMejora;
         }
 
+        public List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoParaPiloto()
+        {
+            iSolucionMejora = new SolucionMejoraDataSql();
+
+            List<SolucionMejoraEntidad> oSolucionMejoraColeccion = new List<SolucionMejoraEntidad>();
+            try
+            {
+
+                oSolucionMejoraColeccion = iSolucionMejora.ObtenerSolucionMejoraListadoPorEstado(Constantes.ESTADO_SOLUCION_APROBADA);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return oSolucionMejoraColeccion;
+        }
+
         #endregion
 
 

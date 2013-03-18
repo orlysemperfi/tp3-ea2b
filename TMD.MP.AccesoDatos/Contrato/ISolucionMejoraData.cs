@@ -12,7 +12,8 @@ namespace TMD.MP.AccesoDatos.Contrato
 
         List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoPorFiltros(SolucionMejoraEntidad oSolucionMejoraFiltro);
         SolucionMejoraEntidad ObtenerSolucionMejoraPorCodigo(int codigo);
-        
+
+        List<SolucionMejoraEntidad> ObtenerSolucionMejoraListadoPorEstado(String estado);
         #endregion
 
         #region "Insert"

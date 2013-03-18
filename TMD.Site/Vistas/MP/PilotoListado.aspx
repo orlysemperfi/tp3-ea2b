@@ -82,9 +82,9 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Área">
+                            <asp:TemplateField HeaderText="Solucion">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblDescripcion" runat="server" Text='<%#Eval("DESCRIPCION") %>' />
+                                    <asp:Label ID="lblDescripcion" runat="server" Text='<%#Eval("CODIGO_SOLUCION","{0:000}") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="100px" />
                             </asp:TemplateField>

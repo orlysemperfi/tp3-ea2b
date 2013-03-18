@@ -21,33 +21,49 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            
-            try
+            strSQL.Append("SELECT P.CODIGO, S.CODIGO, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE ");
+            strSQL.Append("FROM MP.PILOTO P ");
+            strSQL.Append("INNER JOIN MP.SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
+            strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_SOLUCION_ELIMINADA + "' ");
+            if (oPilotoFiltro != null)
             {
-                
-                return oPilotoColeccion;
+                if (oPilotoFiltro.codigo != null && oPilotoFiltro.codigo != 0)
+                    strSQL.Append("AND P.CODIGO = @CODIGO_PILOTO ");
+                if (oPilotoFiltro.fecha_Inicio != null)
+                    strSQL.Append("AND DATEDIFF(DAY, P.FECHA_INICIO_IMPL, @FECHA_INICIO) <= 0 ");
+                if (oPilotoFiltro.fecha_Inicio != null)
+                    strSQL.Append("AND DATEDIFF(DAY, P.FECHA_INICIO_IMPL, @FECHA_FIN) >= 0  ");
             }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                sqlConn.Close();
-            }
-        }
 
-        public List<PilotoEntidad> ObtenerPilotoAsignadasListadoPorFiltros(PilotoEntidad oPilotoFiltro)
-        {
-            List<PilotoEntidad> oPilotoColeccion = new List<PilotoEntidad>();
-            PilotoEntidad oPiloto = null;
-            String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
-            SqlConnection sqlConn = new SqlConnection(strConn);
-            StringBuilder strSQL = new StringBuilder();
-            
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            if (oPilotoFiltro != null)
+            {
+                if (oPilotoFiltro.codigo != null && oPilotoFiltro.codigo != 0)
+                    sqlCmd.Parameters.Add("@CODIGO_PILOTO", SqlDbType.Int).Value = oPilotoFiltro.codigo;
+                if (oPilotoFiltro.fecha_Inicio != null)
+                    sqlCmd.Parameters.Add("@FECHA_INICIO", SqlDbType.DateTime).Value = oPilotoFiltro.fecha_Inicio;
+                if (oPilotoFiltro.fecha_Inicio != null)
+                    sqlCmd.Parameters.Add("@FECHA_FIN", SqlDbType.DateTime).Value = oPilotoFiltro.fecha_Fin;
+            }
+
             try
             {
-                
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    oPiloto = new PilotoEntidad();
+                    oPiloto.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oPiloto.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oPiloto.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oPiloto.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
+                    oPilotoColeccion.Add(oPiloto);
+                }
+                dr.Close();
                 return oPilotoColeccion;
             }
             catch (System.Exception ex)
@@ -101,8 +117,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 sqlCmd.Parameters.Add("@CODIGO_EMPLEADO", SqlDbType.Int).Value = oPiloto.codigo_Empleado;
                 sqlCmd.Parameters.Add("@CODIGO_SOLUCION", SqlDbType.Int).Value = oPiloto.codigo_Solucion;
-                sqlCmd.Parameters.Add("@FECHA_INICIO_IMPL", SqlDbType.Int).Value = oPiloto.fecha_Inicio;
-                sqlCmd.Parameters.Add("@FECHA_FIN_IMPL", SqlDbType.Int).Value = oPiloto.fecha_Fin;
+                sqlCmd.Parameters.Add("@FECHA_INICIO_IMPL", SqlDbType.DateTime).Value = oPiloto.fecha_Inicio;
+                sqlCmd.Parameters.Add("@FECHA_FIN_IMPL", SqlDbType.DateTime).Value = oPiloto.fecha_Fin;
                 sqlCmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = oPiloto.descripcion;
                 sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oPiloto.codigo_Estado;
                 sqlConn.Open();
@@ -111,11 +127,11 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
                 if (affectedRows == 0)
                 {
-                    throw new System.Exception("No hay registros ingresados a la tabla Solucion_Mejora");
+                    throw new System.Exception("No hay registros ingresados a la tabla Piloto");
                 }
                 else
                 {
-                    oPiloto.codigo_Solucion = ObtenerKeyInsertada(Constantes.TABLA_SOLUCION_MEJORA);
+                    oPiloto.codigo = ObtenerKeyInsertada(Constantes.TABLA_PILOTO);
                 }
 
             }
@@ -183,10 +199,17 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
+            strSQL.Append("UPDATE MP.PILOTO SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO = @CODIGO_PILOTO");
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+
+            sqlCmd.Parameters.Add("@CODIGO_PILOTO", SqlDbType.Int).Value = oPiloto.codigo;
+            sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oPiloto.codigo_Estado;
 
             try
             {
-
+                sqlConn.Open();
+                sqlCmd.ExecuteNonQuery();
             }
             catch (System.Exception ex)
             {
@@ -195,7 +218,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             finally
             {
                 sqlConn.Close();
-            }
+            } 
         }
 
         public void ActualizarEstadoPiloto(PilotoEntidad oPiloto)
