@@ -61,6 +61,7 @@
     <Compile Include="DetallePlanMantenimiento.cs" />
     <Compile Include="DetalleSolicitud.cs" />
     <Compile Include="Documento.cs" />
+    <Compile Include="DocumentoTicket.cs" />
     <Compile Include="ElementoConfiguracion.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoEntidad.cs" />

@@ -67,7 +67,7 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
                 codigoSeguimiento = grdSeguimiento.Rows.Count + 1;
 
                 seguimientoTicket = new SeguimientoTicket { Codigo_Ticket = numeroTicket, Descripcion_Seguimiento = txtSeguimiento.Text, 
-                     Codigo_Seguimiento =codigoSeguimiento, Codigo_Equipo = codigoEquipo, Codigo_Integrante = codigoEspecialista, Fecha_Registro = DateTime.Now };
+                     Codigo_Seguimiento =codigoSeguimiento, Codigo_Equipo = codigoEquipo, Codigo_Integrante = codigoEspecialista, Fecha_Registro = DateTime.Now,Tipo_Seguimiento="SEGUIMIENTO" };
                 ticket.registrarSeguimiento (seguimientoTicket);
                 Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
             }
@@ -92,8 +92,8 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
             codigoEquipo = datosTicket.Codigo_Equipo;
 
             //Llenar la grilla
-            //grdSeguimiento.DataSource = ticket.listaSeguimientos(datosTicket.Codigo_Ticket);
-            //grdSeguimiento.DataBind(); 
+            grdSeguimiento.DataSource = ticket.listaSeguimientos(datosTicket.Codigo_Ticket);
+            grdSeguimiento.DataBind(); 
 
 
         }
