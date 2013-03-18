@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+<DirectedGraph GraphDirection="TopToBottom" Layout="Sugiyama" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
     <Node Id="(@1 @26 @156 @858)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Global" />
     <Node Id="(@1 @26 @156 Member=(Name=Application_Error @728))" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="Application_Error" />
@@ -858,7 +858,7 @@
     <Node Id="@197" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="IOrdenCambioLogica" />
     <Node Id="@198" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="IProyectoData" />
     <Node Id="@199" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" Group="Collapsed" Label="IProyectoFaseData" />
-    <Node Id="@2" Category="FileSystem.Category.FileOfType.dll" CodeSchemaProperty_StrongName="TMD.CF.Site, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" FilePath="$(8e4b6af7-458b-4fef-9879-b66c16b3441d.OutputPath)" Group="Expanded" Label="TMD.CF.Site.dll">
+    <Node Id="@2" Category="FileSystem.Category.FileOfType.dll" CodeSchemaProperty_StrongName="TMD.CF.Site, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" FilePath="$(8e4b6af7-458b-4fef-9879-b66c16b3441d.OutputPath)" Group="Collapsed" Label="TMD.CF.Site.dll">
       <Category Ref="CodeSchema_Assembly" />
     </Node>
     <Node Id="@20" Category="CodeSchema_Namespace" Group="Collapsed" Label="TMD.CF.AccesoDatos.Util" />
@@ -5075,12 +5075,14 @@
     <Property Id="CodeSchemaProperty_StrongName" Label="StrongName" Description="StrongName" DataType="System.String" />
     <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
     <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Progression.Layout.GraphDirection" />
     <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.Progression.GraphModel.GroupStyle" />
     <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
     <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
     <Property Id="IsContainment" DataType="System.Boolean" />
     <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
     <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
     <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
     <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
   </Properties>
@@ -6210,8 +6212,11 @@
     <Path Id="728f843e-c373-48f7-a41e-b2a5b6fa2572.OutputPathUri" Value="file:///C:/Proyectos/TP3-TMD/TMD.CF.AccesoDatos/bin/Debug/TMD.CF.AccesoDatos.dll" />
     <Path Id="8e4b6af7-458b-4fef-9879-b66c16b3441d.OutputPath" Value="C:\Proyectos\TP3-TMD\TMD.Site\bin\TMD.CF.Site.dll" />
     <Path Id="8e4b6af7-458b-4fef-9879-b66c16b3441d.OutputPathUri" Value="file:///C:/Proyectos/TP3-TMD/TMD.Site/bin/TMD.CF.Site.dll" />
+    <Path Id="a1458c90-1dfa-4f07-a8e3-f3f0bf953216.OutputPath" Value="C:\Proyectos\TP3-TMD\TMD.Core\bin\Debug\TMD.Core.dll" />
     <Path Id="a1458c90-1dfa-4f07-a8e3-f3f0bf953216.OutputPathUri" Value="file:///C:/Proyectos/TP3-TMD/TMD.Core/bin/Debug/TMD.Core.dll" />
+    <Path Id="FxReferenceAssemblies" Value="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework" />
     <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+    <Path Id="VsSolution" Value="C:\Proyectos\TP3-TMD" />
     <Path Id="VsSolutionUri" Value="file:///C:/Proyectos/TP3-TMD" />
   </Paths>
 </DirectedGraph>
