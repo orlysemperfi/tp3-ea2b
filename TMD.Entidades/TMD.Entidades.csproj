@@ -57,6 +57,7 @@
     <Compile Include="Capitulo.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="CMDB.cs" />
+    <Compile Include="AccionesSolucionEntidad.cs" />
     <Compile Include="PilotoEstadoEntidad.cs" />
     <Compile Include="SolucionEstadoEntidad.cs" />
     <Compile Include="PilotoEntidad.cs" />

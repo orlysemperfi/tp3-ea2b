@@ -52,6 +52,7 @@ namespace TMD.MP.Site.Privado
             SolucionMejoraEntidad SolucionMejora = Sesiones.SolucionMejoraSeleccionada;
             tbxCodigo.Text = String.Format("{0:000}", SolucionMejora.codigo_Solucion);
             ddlPropuesta.SelectedValue = SolucionMejora.propuesta;
+            CargarListadoAcciones();
 
             if (action == Constantes.ACTION_VIEW)
                 CargarModoView();
@@ -94,6 +95,25 @@ namespace TMD.MP.Site.Privado
             Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado, true);
         }
 
+        protected void CargarListadoAcciones()
+        {
+            ISolucionMejoraLogica oSolucionMejoraLogica = SolucionMejoraLogica.getInstance();
+            String codigo_solucion = Sesiones.SolucionMejoraSeleccionada.codigo_Solucion.ToString();
+
+            if (codigo_solucion != null)
+            {
+                List<AccionesSolucionEntidad> oAccionesSolucionColeccion = new List<AccionesSolucionEntidad>();
+                if (Sesiones.SolucionMejoraSeleccionada.lstAcciones == null)
+                {
+                    Sesiones.SolucionMejoraSeleccionada.lstAcciones = oSolucionMejoraLogica.ObtenerListaAccionesSolucionPorSolucion(Convert.ToInt32(codigo_solucion));
+                }
+                gwAcciones.DataBind();
+            }
+
+
+
+        }
+
         protected void CargarModoView() {
             ddlPropuesta.Enabled = false;
             ddlEmpleado.Enabled = false;
@@ -127,6 +147,112 @@ namespace TMD.MP.Site.Privado
             ddlPropuesta.DataValueField = "CODIGO_PROPUESTA";
             ddlPropuesta.DataBind();
             ddlPropuesta.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
+        }
+
+        protected void ButtonAdd_Click(object sender, EventArgs e)
+        {
+            AddNewRowToGrid();
+        }
+
+        private void AddNewRowToGrid()
+        {
+            AccionesSolucionEntidad oAccion = new AccionesSolucionEntidad();
+
+            Sesiones.SolucionMejoraSeleccionada.lstAcciones.Add(oAccion);
+            gwAcciones.EditIndex = Sesiones.SolucionMejoraSeleccionada.lstAcciones.Count - 1;
+            gwAcciones.DataBind();
+        }
+
+
+        protected void CargarAccionesSolucion()
+        {
+            ISolucionMejoraLogica oSolucionMejoraLogica = SolucionMejoraLogica.getInstance();
+            SolucionMejoraEntidad oSolucionMejoraFiltro = new SolucionMejoraEntidad();
+            if (Sesiones.SolucionMejoraSeleccionada.codigo_Solucion != null)
+            {
+                int codigoSolucion = Convert.ToInt32(Sesiones.SolucionMejoraSeleccionada.codigo_Solucion);
+                Sesiones.SolucionMejoraSeleccionada.lstAcciones = oSolucionMejoraLogica.ObtenerListaAccionesSolucionPorSolucion(codigoSolucion);
+
+
+            }
+            gwAcciones.DataBind();
+
+        }
+        
+        protected List<AccionesSolucionEntidad> ObtenerAccionesListado()
+        {
+
+            List<AccionesSolucionEntidad> eAccionesListado = Sesiones.SolucionMejoraSeleccionada.lstAcciones;
+
+            if (eAccionesListado == null)
+            {
+                eAccionesListado = new List<AccionesSolucionEntidad>();
+                return null;
+            }
+            else
+            {
+                if (eAccionesListado.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return eAccionesListado;
+                }
+            }
+        }
+
+        protected void gwAcciones_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gwAcciones.EditIndex = e.NewEditIndex;
+            gwAcciones.DataBind();
+
+        }
+
+        protected void gwAcciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)gwAcciones.Rows[e.RowIndex];
+            Label lblCodigo = (Label)row.FindControl("lblCodigo");
+            TextBox tbxAccion = (TextBox)row.FindControl("tbxAccion");
+
+            gwAcciones.EditIndex = -1;
+
+            foreach (AccionesSolucionEntidad obj in Sesiones.SolucionMejoraSeleccionada.lstAcciones)
+            {
+                if (obj.codigo == Convert.ToInt32(lblCodigo.Text))
+                {
+                    obj.descripcion = tbxAccion.Text;
+                }
+            }
+
+            gwAcciones.DataBind();
+
+        }
+
+        protected void gwAcciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gwAcciones.EditIndex = -1;
+            gwAcciones.DataBind();
+        }
+
+        protected void gwAcciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)gwAcciones.Rows[e.RowIndex];
+            Label lblCodigo = (Label)row.FindControl("lblCodigo");
+            AccionesSolucionEntidad oAcciones = null;
+            foreach (AccionesSolucionEntidad obj in Sesiones.SolucionMejoraSeleccionada.lstAcciones)
+            {
+                if (obj.codigo == Convert.ToInt32(lblCodigo.Text))
+                {
+                    oAcciones = obj;
+                    break;
+                }
+            }
+
+
+            Sesiones.SolucionMejoraSeleccionada.lstAcciones.Remove(oAcciones);
+
+            gwAcciones.DataBind();
         }
 
     }
