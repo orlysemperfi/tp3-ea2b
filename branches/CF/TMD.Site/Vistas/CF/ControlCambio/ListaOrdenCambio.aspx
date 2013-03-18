@@ -137,7 +137,7 @@
                     </p>
                     <p>
                         <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" />
-                        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
+                        <asp:Button ID="btnCancelarArchivo" runat="server" CssClass="btn-cancelar" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;</p>
                 </asp:Panel>
             </ContentTemplate>
             <Triggers>

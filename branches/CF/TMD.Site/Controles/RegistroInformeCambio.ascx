@@ -13,7 +13,7 @@
 <td colspan="2">
     <p class="buttons-wrapp">
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" Text="Grabar informe" ValidationGroup="GrabarValidationGroup" OnClientClick="javascript: return grabar();"/>
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn-cancelar"
             onclick="btnCancelar_Click" onClientClick="javascript:ocultarDiv('divRegistroInforme');"/>
     </p>
 </td>

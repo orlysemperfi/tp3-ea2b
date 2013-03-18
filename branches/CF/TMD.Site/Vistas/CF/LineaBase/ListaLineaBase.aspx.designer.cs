@@ -22,6 +22,7 @@ namespace TMD.CF.Site.Vistas.CF.LineaBase {
         protected global::System.Web.UI.WebControls.DropDownList ddlProyecto;
         
         /// <summary>
+        /// Control proyectoValidator.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.

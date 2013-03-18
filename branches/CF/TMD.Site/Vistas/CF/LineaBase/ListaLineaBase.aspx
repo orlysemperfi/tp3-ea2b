@@ -40,6 +40,7 @@
             <asp:GridView ID="grvLineaBase" runat="server" AutoGenerateColumns="False" 
                 onrowcommand="grvLineaBase_RowCommand" 
                 ondatabound="grvLineaBase_DataBound">
+                <HeaderStyle CssClass="headGrid" />
                 <Columns>
                 <asp:TemplateField HeaderText="Editar"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
                         <ItemTemplate>
