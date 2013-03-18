@@ -48,5 +48,17 @@ namespace TMD.CF.AccesoDatos.Map
                 NombreArchivo = reader.GetString("NOMBRE_ARCHIVO")
             };
         }
+
+        public static InformeCambio Obtener(IDataReader reader)
+        {
+            return new InformeCambio
+            {
+                Nombre = reader.GetString("NOMBRE_INFORME"),
+                EstimacionCosto = reader.GetString("ESTIMACION_COSTO"),
+                EstimacionEsfuerzo = reader.GetString("ESTIMACION_ESFUERZO"),
+                Recursos = reader.GetString("RECURSOS"),
+                Solicitud = new SolicitudCambio { Id = reader.GetInt("CODIGO_SOLICITUD"), Nombre = reader.GetString("NOMBRE_SOLICITUD"), LineaBase = new LineaBase { Id = reader.GetInt("CODIGO_LINEA_BASE") }, ProyectoFase = new ProyectoFase { Id = reader.GetInt("CODIGO_PROYECTO")} },
+            };
+        }
     }
 }

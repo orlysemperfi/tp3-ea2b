@@ -33,18 +33,16 @@ namespace TMD.CF.LogicaNegocios.Implementacion
             return _informeCambioData.ListarPorProyectoLineaBase(informeCambio, conNull);
         }
 
+        /// <summary>
+        /// Obtiene un informe por el Id
+        /// </summary>
+        /// <param name="id">Id del informe</param>
+        /// <returns>Objeto informe de cambio</returns>     
         public InformeCambio ObtenerPorId(int id)
         {
-            InformeCambio informeCambio = null;
-
-            using (var scope = new TransactionScope())
-            {
-                informeCambio = _informeCambioData.ObtenerPorId(id);
-                scope.Complete();
-            }
-
-            return informeCambio;
+            return _informeCambioData.ObtenerPorId(id);
         }
+        
 
         /// <summary>
         /// Obtiene el archivo de un informe de cambio
