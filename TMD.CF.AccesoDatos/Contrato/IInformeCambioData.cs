@@ -28,7 +28,7 @@ namespace TMD.CF.AccesoDatos.Contrato
         /// </summary>
         /// <param name="informeCambio">Linea Base</param>
         /// <returns>Lista informes de cambio</returns>
-        List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio);
+        List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio, int conNull);
 
         /// <summary>
         /// Obtiene un informe de cambio por el id

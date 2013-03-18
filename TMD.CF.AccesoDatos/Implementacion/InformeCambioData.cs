@@ -141,25 +141,41 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// </summary>
         /// <param name="informeCambio">Linea Base</param>
         /// <returns>Lista informes de cambio</returns>
-        public List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio)
+        public List<InformeCambio> ListarPorProyectoLineaBase(InformeCambio informeCambio, int conNull)
         {
             List<InformeCambio> informesCambio = new List<InformeCambio>();
 
-            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_SEL_PROYECTO_LINEABASE"))
+            if(conNull == 1)
             {
-                DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, informeCambio.Solicitud.ProyectoFase.Proyecto.Id);
-                DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, informeCambio.Solicitud.LineaBase.Id);
-
-                using (IDataReader reader = DB.ExecuteReader(command))
+                using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_SEL_PROYECTO_LINEABASE"))
                 {
-                    while (reader.Read())
+                    DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, informeCambio.Solicitud.ProyectoFase.Proyecto.Id);
+                    DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, informeCambio.Solicitud.LineaBase.Id);
+
+                    using (IDataReader reader = DB.ExecuteReader(command))
                     {
-                        informesCambio.Add(InformeCambioMap.ListaSolicitudInforme(reader));
+                        while (reader.Read())
+                        {
+                            informesCambio.Add(InformeCambioMap.ListaSolicitudInforme(reader));
+                        }
                     }
                 }
-            }
+        } else {
+               using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_SEL_PROYECTO_LINEABASE_NONULL"))
+                {
+                    DB.AddInParameter(command, "@CODIGO_PROYECTO", DbType.Int32, informeCambio.Solicitud.ProyectoFase.Proyecto.Id);
+                    DB.AddInParameter(command, "@CODIGO_LINEABASE", DbType.Int32, informeCambio.Solicitud.LineaBase.Id);
 
-            return informesCambio;
+                    using (IDataReader reader = DB.ExecuteReader(command))
+                    {
+                        while (reader.Read())
+                        {
+                            informesCambio.Add(InformeCambioMap.ListaSolicitudInforme(reader));
+                        }
+                    }
+                }
+        }
+        return informesCambio;
         }
 
         /// <summary>

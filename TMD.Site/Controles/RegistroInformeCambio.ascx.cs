@@ -54,7 +54,7 @@ namespace TMD.CF.Site.Controles
 
         protected void ddlLineaBase_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),1), "NombreSolicitud", "IdSolicitud");
+            ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(),1,0), "NombreSolicitud", "IdSolicitud");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnNuevo_", "mostrarDiv('divRegistroInforme');", true);
         }
 

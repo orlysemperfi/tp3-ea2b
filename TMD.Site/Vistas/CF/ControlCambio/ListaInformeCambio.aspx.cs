@@ -102,7 +102,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             grvInformeCambio.DataSource =
-                informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt());
+                informeFachada.ListarPorProyectoLineaBase(ddlProyecto.SelectedValue.ToInt(), ddlLineaBase.SelectedValue.ToInt(), ddlEstado.SelectedValue.ToInt(), 1);
             grvInformeCambio.DataBind();
 
         }

@@ -15,14 +15,14 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         {
         }
          
-        public List<InformeCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase, int estado)
+        public List<InformeCambio> ListarPorProyectoLineaBase(int idProyecto, int idLineaBase, int estado, int conNull)
         {
             return
                 InformeCambioLogica.ListarPorProyectoLineaBase(
                     new InformeCambio
                     {
                         Solicitud = new SolicitudCambio { ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = idProyecto } }, LineaBase = new LineaBase { Id = idLineaBase} },                       
-                    });
+                    }, conNull);
         }
 
         public void Agregar(InformeCambio informeCambio)
