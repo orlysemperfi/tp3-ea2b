@@ -185,7 +185,22 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// <returns>Informe de cambio</returns>
         public InformeCambio ObtenerPorId(int id)
         {
-            throw new NotImplementedException();
+            InformeCambio informeCambio = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_INFORME_CAMBIO_SEL_CODIGO"))
+            {
+                DB.AddInParameter(command, "@CODIGO_INFORME", DbType.Int32, id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    if (reader.Read())
+                    {
+                        informeCambio = InformeCambioMap.Obtener(reader);
+                    }
+                }
+            }
+
+            return informeCambio;
         }
     }
 }

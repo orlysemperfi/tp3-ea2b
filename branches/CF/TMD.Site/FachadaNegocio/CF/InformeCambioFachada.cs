@@ -45,5 +45,10 @@ namespace TMD.CF.Site.FachadaNegocio.CF
         {
             return InformeCambioLogica.ObtenerArchivo(idInformeCambio);
         }
+
+        public InformeCambio ObtenerPorId(int id)
+        {
+            return InformeCambioLogica.ObtenerPorId(id);
+        }
     }
 }

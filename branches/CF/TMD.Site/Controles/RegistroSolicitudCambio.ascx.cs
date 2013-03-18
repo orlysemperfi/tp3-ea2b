@@ -64,7 +64,6 @@ namespace TMD.CF.Site.Controles
                 ddlPrioridad.EnlazarDatos(solicitudFachada.ListarPrioridad(), "Nombre", "Id", -1, solicitud.Prioridad);
 
                 btnGrabar.Visible = false;
-                //pnlSolicitudCambio.Enabled = false;
             }
         }
 
