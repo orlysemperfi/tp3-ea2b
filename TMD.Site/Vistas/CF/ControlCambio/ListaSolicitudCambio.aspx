@@ -37,11 +37,6 @@
                                     <asp:DropDownList ID="ddlLineaBase" runat="server" Width="170px">
                                     </asp:DropDownList>
                                 </td>
-                                <td>
-                                </td>
-                                <td>
-                                    &nbsp;
-                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -57,11 +52,19 @@
                                     </asp:DropDownList>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar Solicitudes"  ValidationGroup="BusquedaValidationGroup"/>
+                                
                                 </td>
                                 <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr align="right">
+                                <td colspan="4" align="right" style="padding-top: 10px;">
+                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar Solicitudes"  ValidationGroup="BusquedaValidationGroup"/>
+                                    &nbsp;
                                     <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" 
                                         Text="Nueva Solicitud" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                             </tr>
                         </table>
@@ -74,6 +77,7 @@
                 <asp:GridView ID="grvSolicitudCambio" runat="server" AutoGenerateColumns="False"
                     OnRowCommand="grvSolicitudCambio_RowCommand" 
                     ondatabound="grvSolicitudCambio_DataBound">
+                    <HeaderStyle CssClass="headGrid" />
                     <EmptyDataTemplate>
                         No hay registros.
                     </EmptyDataTemplate>
@@ -177,7 +181,7 @@
                 <td></td>
                 </tr>
                 <tr>
-                <td>        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
+                <td>        <asp:Button ID="btnCancelarArchivo" runat="server" CssClass="btn-cancelar" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
                 <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar" OnClick="btnGrabarArchcivo_Click" /></td>
                 <td>Archivo <asp:FileUpload ID="fileUpArchivo" runat="server" /></td>
                 </tr>

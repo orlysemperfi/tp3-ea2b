@@ -17,6 +17,10 @@
     /*background:url() center no-repeat transparent;*/
 }
 
+.divFlotante .panel-wrapper {
+    border: none;
+}
+
 .ModalPopupBG
 {
     background-color: #666699;
@@ -517,6 +521,19 @@ input[type="image"].btn-cancelar {
 /*************** NUEVOS 17/03/13 **********************/
 .content .panel-wrapper {
     text-align: left;
+}
+
+#MainContent_pnlBusqueda table,
+#MainContent_upnlLista table {
+    margin: 0 auto;
+}
+
+table th {
+    padding: 2px 7px;
+}
+
+table td {
+    padding: 1px 7px;
 }
 
 .content .panel-wrapper label,

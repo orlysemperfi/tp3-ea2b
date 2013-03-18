@@ -171,7 +171,7 @@
                 <td></td>
                 </tr>
                 <tr>
-                <td>        <asp:Button ID="btnCancelarArchivo" runat="server" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
+                <td>        <asp:Button ID="btnCancelarArchivo" runat="server" CssClass="btn-cancelar" Text="Cancelar" OnClick="btnCancelarArchcivo_Click" />&nbsp;
                 <asp:Button ID="btnGrabarProxy" runat="server" Text="Grabar archivo" OnClick="btnGrabarArchcivo_Click" /></td>
                 <td>Archivo <asp:FileUpload ID="fileUpArchivo" runat="server" /></td>
                 </tr>

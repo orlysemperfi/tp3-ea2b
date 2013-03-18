@@ -26,7 +26,7 @@
                                 <asp:TextBox ID="txtNombreFase" runat="server" Enabled="false"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" 
+                                <asp:Button ID="btnCancelar" cssClass="btn-cancelar" runat="server" OnClick="btnCancelar_Click" 
                                     Text="Cancelar " ValidationGroup="None" />
                             </td>
                         </tr>

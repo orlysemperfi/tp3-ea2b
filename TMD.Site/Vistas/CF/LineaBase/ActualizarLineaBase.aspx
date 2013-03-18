@@ -28,7 +28,7 @@
                             <label>
                                 Fase</label>
                             <asp:DropDownList ID="ddlFase" runat="server" AutoPostBack="True" 
-                                onselectedindexchanged="ddlFase_SelectedIndexChanged" Width="100px">
+                                onselectedindexchanged="ddlFase_SelectedIndexChanged" >
                             </asp:DropDownList>
                             <asp:CompareValidator ID="FaseValidator" runat="server" ControlToValidate="ddlFase"
                                 ErrorMessage="La Fase es requerida." ToolTip="La Fase es requerida." ValidationGroup="GrabarValidationGroup"
@@ -39,7 +39,7 @@
                             <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" 
                                 OnClientClick="javascript: return grabar();" Text="Grabar Linea Base" 
                                 ValidationGroup="GrabarValidationGroup" />
-                            <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" 
+                            <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" CssClass="btn-cancelar"
                                 Text="Cancelar" ValidationGroup="None" />
                         </td>
                     </tr>

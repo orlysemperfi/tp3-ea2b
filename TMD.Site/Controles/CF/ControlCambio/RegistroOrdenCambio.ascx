@@ -8,7 +8,7 @@
         <asp:Button ID="btnGrabar" runat="server" OnClick="btnGrabar_Click" 
                     Text="Grabar Orden" ValidationGroup="GrabarValidationGroup" 
                     OnClientClick="javascript: return grabar();"/>
-        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" 
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" cssClass="btn-cancelar"
             onclick="btnCancelar_Click" />
     </p>
     <p>
