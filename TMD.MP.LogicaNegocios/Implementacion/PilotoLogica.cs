@@ -43,24 +43,6 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             return oPilotoColeccion;
         }
 
-        public List<PilotoEntidad> ObtenerPilotoAsignadasListadoPorFiltros(PilotoEntidad oPilotoFiltro)
-        {
-            iPiloto = new PilotoDataSql();
-
-            List<PilotoEntidad> oPilotoColeccion = new List<PilotoEntidad>();
-            try
-            {
-                oPilotoColeccion = iPiloto.ObtenerPilotoAsignadasListadoPorFiltros(oPilotoFiltro);
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            return oPilotoColeccion;
-        }
-
         public PilotoEntidad ObtenerPilotoPorCodigo(int codigo)
         {
             iPiloto = new PilotoDataSql();

@@ -12,8 +12,6 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         List<PilotoEntidad> ObtenerPilotoListadoPorFiltros(PilotoEntidad oPilotoFiltro);
 
-        List<PilotoEntidad> ObtenerPilotoAsignadasListadoPorFiltros(PilotoEntidad oPilotoFiltro);
-
         PilotoEntidad ObtenerPilotoPorCodigo(int codigo);
         
         #endregion
