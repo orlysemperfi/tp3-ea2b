@@ -17,6 +17,7 @@ namespace TMD.MP.Site.Privado
     public partial class SolucionMejoraFormulario : System.Web.UI.Page
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
+        static int idCodAccion = 1000;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,7 +52,9 @@ namespace TMD.MP.Site.Privado
         {
             SolucionMejoraEntidad SolucionMejora = Sesiones.SolucionMejoraSeleccionada;
             tbxCodigo.Text = String.Format("{0:000}", SolucionMejora.codigo_Solucion);
-            ddlPropuesta.SelectedValue = SolucionMejora.propuesta;
+            ddlPropuesta.SelectedValue = SolucionMejora.codigo_Propuesta.ToString();
+            tbxDescripcion.Text = SolucionMejora.descripcion;
+            ddlEmpleado.SelectedValue = SolucionMejora.codigo_Empleado.ToString();
             CargarListadoAcciones();
 
             if (action == Constantes.ACTION_VIEW)
@@ -157,6 +160,7 @@ namespace TMD.MP.Site.Privado
         private void AddNewRowToGrid()
         {
             AccionesSolucionEntidad oAccion = new AccionesSolucionEntidad();
+            oAccion.codigo = idCodAccion++;
 
             Sesiones.SolucionMejoraSeleccionada.lstAcciones.Add(oAccion);
             gwAcciones.EditIndex = Sesiones.SolucionMejoraSeleccionada.lstAcciones.Count - 1;
