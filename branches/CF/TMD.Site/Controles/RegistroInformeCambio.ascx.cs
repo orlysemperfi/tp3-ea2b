@@ -81,7 +81,7 @@ namespace TMD.CF.Site.Controles
                 ddlProyecto.EnlazarDatos(lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
                 int lineaBaseId = informe.Solicitud.LineaBase.Id;
                 ddlLineaBase.EnlazarDatos(lineaBaseFachada.LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
-                ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(idProyecto, lineaBaseId, 1, 0), "NombreSolicitud", "IdSolicitud");
+                ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(idProyecto, lineaBaseId, 1, 1), "NombreSolicitud", "IdSolicitud");
                 TxtCosto.Text = informe.EstimacionCosto;
                 TxtEsfuerzo.Text = informe.EstimacionEsfuerzo;
                 TxtRecurso.Text = informe.Recursos;
