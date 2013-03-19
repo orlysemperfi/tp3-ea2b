@@ -21,7 +21,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT S.CODIGO, P.CODIGO_PROPUESTA, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE ");
+            strSQL.Append("SELECT S.CODIGO, P.CODIGO_PROPUESTA, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
             strSQL.Append("FROM MP.SOLUCION_MEJORA S ");
             strSQL.Append("INNER JOIN MP.PROPUESTAMEJORA P ON S.CODIGO_PROPUESTA = P.CODIGO_PROPUESTA ");
             strSQL.Append("INNER JOIN MP.ESTADO E ON S.CODIGO_ESTADO = E.CODIGO ");
@@ -66,6 +66,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oSolucionMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
                     oSolucionMejora.propuesta = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oSolucionMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
+                    oSolucionMejora.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
                     oSolucionMejoraColeccion.Add(oSolucionMejora);
                 }
                 dr.Close();
@@ -87,10 +88,36 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            
+            strSQL.Append("SELECT S.CODIGO, P.CODIGO_PROPUESTA, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO, S.CODIGO_EMPLEADO ");
+            strSQL.Append("FROM MP.SOLUCION_MEJORA S ");
+            strSQL.Append("INNER JOIN MP.PROPUESTAMEJORA P ON S.CODIGO_PROPUESTA = P.CODIGO_PROPUESTA ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON S.CODIGO_ESTADO = E.CODIGO ");
+            strSQL.Append("WHERE S.CODIGO = @CODIGO_SOLUCION ");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            sqlCmd.Parameters.Add("@CODIGO_SOLUCION", SqlDbType.Int).Value = codigo;
+
             try
             {
-                
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    oSolucionMejora = new SolucionMejoraEntidad();
+                    oSolucionMejora.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oSolucionMejora.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oSolucionMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
+                    oSolucionMejora.codigo_Empleado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_EMPLEADO"]);
+                    oSolucionMejora.propuesta = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oSolucionMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
+                    oSolucionMejora.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
+                    
+                }
+                dr.Close();
                 return oSolucionMejora;
             }
             catch (System.Exception ex)
@@ -198,7 +225,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO MP.SOLUCION_MEJORA");
+            strSQL.Append("INSERT INTO MP.ESTADO_SOLUCION ");
             strSQL.Append("(CODIGO_SOLUCION,CODIGO_ESTADO,FECHA) ");
             strSQL.Append("VALUES(@CODIGO_SOLUCION,@CODIGO_ESTADO,GETDATE())");
 
@@ -254,8 +281,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             sqlCmd.Parameters.Add("@CODIGO_SOLUCION", SqlDbType.Int).Value = oSolucionMejora.codigo_Solucion;
             sqlCmd.Parameters.Add("@CODIGO_EMPLEADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Empleado;
-            sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.VarChar).Value = oSolucionMejora.codigo_Propuesta;
-            sqlCmd.Parameters.Add("@DESCRIPCION", SqlDbType.Int).Value = oSolucionMejora.descripcion;
+            sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oSolucionMejora.codigo_Propuesta;
+            sqlCmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = oSolucionMejora.descripcion;
             sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oSolucionMejora.codigo_Estado;
 
             try

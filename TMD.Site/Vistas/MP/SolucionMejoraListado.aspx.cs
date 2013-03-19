@@ -185,6 +185,9 @@ namespace TMD.MP.Site.Privado
         protected void btnAgregarSolucion_Click(object sender, EventArgs e)
         {
             Sesiones.SolucionMejoraSeleccionadaRemover();
+
+            Sesiones.SolucionMejoraSeleccionada = new SolucionMejoraEntidad();
+            Sesiones.SolucionMejoraSeleccionada.lstAcciones = new List<AccionesSolucionEntidad>();
             Response.Redirect(Paginas.TMD_MP_SolucionMejoraFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
