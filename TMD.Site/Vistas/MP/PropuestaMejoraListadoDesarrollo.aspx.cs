@@ -189,7 +189,7 @@ namespace TMD.MP.Site.Privado
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                       "err_msg",
-                      "alert('Seleccione al menos una proceso');",
+                      "alert('Seleccione al menos una propuesta');",
                       true);
                 return;
             }
