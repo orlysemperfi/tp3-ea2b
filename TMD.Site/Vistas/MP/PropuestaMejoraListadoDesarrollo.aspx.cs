@@ -189,7 +189,7 @@ namespace TMD.MP.Site.Privado
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                       "err_msg",
-                      "alert('Seleccione al menos un Proceso');",
+                      "alert('Seleccione al menos una proceso');",
                       true);
                 return;
             }
@@ -217,7 +217,7 @@ namespace TMD.MP.Site.Privado
             string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-            "alert('Se actualizaron las Propuestas Seleccionadas al estado En Desarrollo'); window.location='" +
+            "alert('Se actualizaron las propuestas seleccionadas al estado En Desarrollo'); window.location='" +
             newURL + "/PropuestaMejoraDesarrollo.aspx';", true);
 
         }
