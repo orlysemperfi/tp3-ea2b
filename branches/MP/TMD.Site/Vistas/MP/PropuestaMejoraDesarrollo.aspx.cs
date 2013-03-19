@@ -45,16 +45,16 @@ namespace TMD.CF.Site.Vistas.MP
 
             oPropuestaMejoraFiltro.tipo_Propuesta = ddlTipo.SelectedItem.Value;
             List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = oPropuestaMejoraLogica.ObtenerPropuestaMejoraAsignadasListadoPorFiltros(oPropuestaMejoraFiltro);
-            Sesiones.PropuestaMejoraListadoRemover();
-            Sesiones.PropuestaMejoraListado = oPropuestaMejoraColeccion;
-            gvwPropuestaMejoraListado.DataBind();
+            Sesiones.PropuestaMejoraDesarrolloListadoRemover();
+            Sesiones.PropuestaMejoraDesarrolloListado = oPropuestaMejoraColeccion;
+            gvwPropuestaMejoraDesarrolloListado.DataBind();
             //PageIndexChanging();
             //lblMensajeError.Text = "";
         }
 
-        protected List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListado()
+        protected List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraDesarrolloListado()
         {
-            List<PropuestaMejoraEntidad> propuestaMejoraListado = Sesiones.PropuestaMejoraListado;
+            List<PropuestaMejoraEntidad> propuestaMejoraListado = Sesiones.PropuestaMejoraDesarrolloListado;
             if (propuestaMejoraListado == null)
             {
                 return null;
@@ -71,14 +71,14 @@ namespace TMD.CF.Site.Vistas.MP
                 }
             }
         }
-        
+
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarPropuestaMejoraListado();
         }
 
 
-        protected void gvwPropuestaMejoraDesarrollo_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvwPropuestaMejoraDesarrolloListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
             IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
@@ -111,7 +111,7 @@ namespace TMD.CF.Site.Vistas.MP
 
             int count = 0;
 
-            foreach (GridViewRow row in gvwPropuestaMejoraListado.Rows)
+            foreach (GridViewRow row in gvwPropuestaMejoraDesarrolloListado.Rows)
             {
                 CheckBox check = row.FindControl("chkPropuestaSel") as CheckBox;
                 if (check.Checked)
@@ -127,7 +127,7 @@ namespace TMD.CF.Site.Vistas.MP
             }else{
                 PropuestaMejoraEntidad oPropuestaMejoraEntidad = null;
                 IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-                foreach (GridViewRow row in gvwPropuestaMejoraListado.Rows)
+                foreach (GridViewRow row in gvwPropuestaMejoraDesarrolloListado.Rows)
                 {
                     CheckBox check = row.FindControl("chkPropuestaSel") as CheckBox;
                     oPropuestaMejoraEntidad = new PropuestaMejoraEntidad();
@@ -148,7 +148,7 @@ namespace TMD.CF.Site.Vistas.MP
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
             "alert('Se actualizaron las Propuestas Seleccionadas al estado En Desarrollo'); window.location='" +
-            newURL + "/PropuestaMejoraDesarrollo.aspx';", true);
+            newURL + "/PropuestaMejoraListadoDesarrollo.aspx';", true);
 
         }
 
@@ -157,10 +157,10 @@ namespace TMD.CF.Site.Vistas.MP
         //    Response.Redirect(Paginas.TMD_MP_Inicio, true);
         //}
 
-        protected void gvwPropuestaMejoraListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gvwPropuestaMejoraDesarrolloListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gvwPropuestaMejoraListado.PageIndex = e.NewPageIndex;
-            gvwPropuestaMejoraListado.DataBind();
+            gvwPropuestaMejoraDesarrolloListado.PageIndex = e.NewPageIndex;
+            gvwPropuestaMejoraDesarrolloListado.DataBind();
         }
     }
 

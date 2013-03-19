@@ -226,7 +226,14 @@ namespace TMD.MP.Site.Privado
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
+            if (Sesiones.PropuestaMejoraSeleccionada.enDesarrollo == false)
+            {
+                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
+            }
+            else {
+                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraDesarrollo, true);
+            }
+            
         }
 
         protected void gvwIndicadores_RowCommand(object sender, GridViewCommandEventArgs e)

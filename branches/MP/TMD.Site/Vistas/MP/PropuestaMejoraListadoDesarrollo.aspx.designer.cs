@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TMD.CF.Site.Vistas.MP {
+namespace TMD.MP.Site.Privado {
     
     
-    public partial class PropuestaMejoraDesarrollo {
+    public partial class PropuestaMejoraListadoDesarrollo {
         
         /// <summary>
         /// upnlFiltros control.
@@ -85,6 +85,15 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxFechaInicio;
         
         /// <summary>
+        /// CalendarExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
+        
+        /// <summary>
         /// lblA control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace TMD.CF.Site.Vistas.MP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxFechaFin;
+        
+        /// <summary>
+        /// CalendarExtender2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
         
         /// <summary>
         /// btnBuscar control.
@@ -121,13 +139,22 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.Button btnCambiarEstadoEnDesarrollo;
         
         /// <summary>
-        /// gvwPropuestaMejoraDesarrolloListado control.
+        /// upnlPropuestaMejoraListado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvwPropuestaMejoraDesarrolloListado;
+        protected global::System.Web.UI.UpdatePanel upnlPropuestaMejoraListado;
+        
+        /// <summary>
+        /// gvwPropuestaMejoraListado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvwPropuestaMejoraListado;
         
         /// <summary>
         /// lblMensajeError control.
