@@ -65,5 +65,14 @@ namespace TMD.CF.AccesoDatos.Map
                 },
             };
         }
+
+        public static InformeCambio ListaSolicitudSinInforme(IDataReader reader)
+        {
+            return new InformeCambio
+            {
+                Id = reader.GetInt("CODIGO_SOLICITUD"),
+                Nombre = reader.GetString("NOMBRE_SOLICITUD")
+            };
+        }
     }
 }
