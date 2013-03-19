@@ -69,6 +69,7 @@
                 <asp:GridView ID="grvInformeCambio" runat="server" AutoGenerateColumns="False"
                     OnRowCommand="grvInformeCambio_RowCommand" 
                     ondatabound="grvInformeCambio_DataBound">
+                    <HeaderStyle CssClass="headGrid" />
                     <EmptyDataTemplate>
                         No hay registros.
                     </EmptyDataTemplate>

@@ -71,15 +71,15 @@ namespace TMD.CF.Site.Controles
 
         public void CargarInformeExistente(int idInformeCambio)
         {
-            InformeCambio informe = new InformeCambioFachada().ObtenerPorId(idInformeCambio);
+            InformeCambio informe = informeFachada.ObtenerPorId(idInformeCambio);
 
             if (informe != null)
             {
                 txtNombre.Text = informe.Nombre;
                 int idProyecto = informe.Solicitud.ProyectoFase.Proyecto.Id;
-                ddlProyecto.EnlazarDatos(new LineaBaseFachada().ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
+                ddlProyecto.EnlazarDatos(lineaBaseFachada.ListarProyectoPorUsuario(SesionFachada.Usuario.Id), "Nombre", "Id", -1, idProyecto);
                 int lineaBaseId = informe.Solicitud.LineaBase.Id;
-                ddlLineaBase.EnlazarDatos(new LineaBaseFachada().LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
+                ddlLineaBase.EnlazarDatos(lineaBaseFachada.LineaBaseListarPorProyectoCombo(idProyecto), "Nombre", "Id", -1, lineaBaseId);
                 ddlSolicitud.EnlazarDatos(informeFachada.ListarPorProyectoLineaBase(idProyecto, lineaBaseId, 1, 0), "NombreSolicitud", "IdSolicitud");
                 TxtCosto.Text = informe.EstimacionCosto;
                 TxtEsfuerzo.Text = informe.EstimacionEsfuerzo;
