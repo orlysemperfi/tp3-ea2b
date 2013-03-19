@@ -174,7 +174,7 @@
         function grabar() {
             if (Page_ClientValidate('GrabarValidationGroup')) {
                 Page_BlockSubmit = false;
-                return confirm('Desea grabar los datos ingresados?');
+                return true;// confirm('Desea grabar los datos ingresados?');
             }
             Page_BlockSubmit = false;
             return false;

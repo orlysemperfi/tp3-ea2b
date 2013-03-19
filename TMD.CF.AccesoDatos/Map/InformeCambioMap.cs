@@ -57,7 +57,12 @@ namespace TMD.CF.AccesoDatos.Map
                 EstimacionCosto = reader.GetString("ESTIMACION_COSTO"),
                 EstimacionEsfuerzo = reader.GetString("ESTIMACION_ESFUERZO"),
                 Recursos = reader.GetString("RECURSOS"),
-                Solicitud = new SolicitudCambio { Id = reader.GetInt("CODIGO_SOLICITUD"), Nombre = reader.GetString("NOMBRE_SOLICITUD"), LineaBase = new LineaBase { Id = reader.GetInt("CODIGO_LINEA_BASE") }, ProyectoFase = new ProyectoFase { Id = reader.GetInt("CODIGO_PROYECTO")} },
+                Solicitud = new SolicitudCambio
+                {
+                    Id = reader.GetInt("CODIGO_SOLICITUD"),
+                    LineaBase = new LineaBase { Id = reader.GetInt("CODIGO_LINEA_BASE") },
+                    ProyectoFase = new ProyectoFase { Proyecto = new Proyecto { Id = reader.GetInt("CODIGO_PROYECTO") } }
+                },
             };
         }
     }
