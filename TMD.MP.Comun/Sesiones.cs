@@ -98,6 +98,61 @@ namespace TMD.MP.Comun
 
         #endregion
 
+        private const String propuestaMejoraDesarrolloListado = "propuestaMejoraDesarrolloListado";
+        private const String propuestaMejoraDesarrolloSeleccionada = "propuestaMejoraDesarrolloSeleccionada";
+
+        #region "PropuestaMejoraDesarrolloListado"
+
+        public static List<PropuestaMejoraEntidad> PropuestaMejoraDesarrolloListado
+        {
+            get
+            {
+                return (List<PropuestaMejoraEntidad>)HttpContext.Current.Session[propuestaMejoraDesarrolloListado];
+            }
+            set
+            {
+                HttpContext.Current.Session[propuestaMejoraDesarrolloListado] = value;
+            }
+        }
+
+        public static bool PropuestaMejoraDesarrolloListadoEsNulo()
+        {
+            return HttpContext.Current.Session[propuestaMejoraDesarrolloListado] == null;
+        }
+
+        public static void PropuestaMejoraDesarrolloListadoRemover()
+        {
+            HttpContext.Current.Session.Remove(propuestaMejoraDesarrolloListado);
+        }
+
+        #endregion
+
+        #region "PropuestaMejoraDesarrolloSeleccionada"
+
+        public static PropuestaMejoraEntidad PropuestaMejoraDesarrolloSeleccionada
+        {
+            get
+            {
+                return (PropuestaMejoraEntidad)HttpContext.Current.Session[propuestaMejoraDesarrolloSeleccionada];
+            }
+            set
+            {
+                HttpContext.Current.Session[propuestaMejoraDesarrolloSeleccionada] = value;
+            }
+        }
+
+        public static bool PropuestaMejoraSeleccionadaDesarrolloEsNula()
+        {
+            return (HttpContext.Current.Session[propuestaMejoraDesarrolloSeleccionada] == null);
+        }
+
+        public static void PropuestaMejoraSeleccionadaDesarrolloRemover()
+        {
+            HttpContext.Current.Session.Remove(propuestaMejoraDesarrolloSeleccionada);
+        }
+
+        #endregion
+
         #endregion
 
         #region "Indicador"

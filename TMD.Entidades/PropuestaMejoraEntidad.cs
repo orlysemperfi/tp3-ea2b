@@ -26,5 +26,6 @@ namespace TMD.Entidades
         public String nombre_Area { get; set; }
         public String nombre_Estado { get; set; }
         public String nombre_Responsable { get; set; }
+        public Boolean enDesarrollo { get; set; }
     }
 }

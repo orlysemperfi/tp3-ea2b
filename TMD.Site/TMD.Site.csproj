@@ -105,6 +105,7 @@
     <Content Include="App_Data\ActualizarOLD.txt" />
     <Content Include="Styles\tmd-mp.css" />
     <Content Include="Vistas\MP\PilotoFormulario.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\PilotoListado.aspx" />
     <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
@@ -254,6 +255,13 @@
     </Compile>
     <Compile Include="Vistas\MP\PilotoFormulario.aspx.designer.cs">
       <DependentUpon>PilotoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.cs">
+      <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraFormulario.aspx.cs">
       <DependentUpon>SolucionMejoraFormulario.aspx</DependentUpon>

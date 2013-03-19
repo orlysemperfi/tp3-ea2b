@@ -32,14 +32,12 @@
                                 <td>
                                     <asp:Label ID="lblFecha" runat="server" Text="Fecha:" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxFechaInicio" runat="server" Width="75px"></asp:TextBox>
-                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
-                                    </ajaxToolkit:CalendarExtender>
+                                
                                 </td>
                                 <td>
                                     <asp:Label ID="lblA" runat="server" Text="a" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxFechaFin" runat="server" Width="75px"></asp:TextBox>
-                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
-                                    </ajaxToolkit:CalendarExtender>
+
                                 <td>
                                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
                                 </td>
@@ -69,10 +67,10 @@
 <%--    <table border="0" cellpadding="0" cellspacing="0">        
             <tr>
                 <td>--%>
-                    <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" AutoGenerateColumns="false" 
-                        DataSource='<%#ObtenerPropuestaMejoraListado() %>' 
-                        OnRowCommand="gvwPropuestaMejoraDesarrollo_RowCommand" 
-                        Width="920px" AllowPaging="true" PageSize="10" BorderWidth="0px" BorderColor="White" OnPageIndexChanging="gvwPropuestaMejoraListado_PageIndexChanging">
+                    <asp:GridView ID="gvwPropuestaMejoraDesarrolloListado" runat="server" AutoGenerateColumns="false" 
+                        DataSource='<%#ObtenerPropuestaMejoraDesarrolloListado() %>' 
+                        
+                        Width="920px" AllowPaging="true" PageSize="10" BorderWidth="0px" BorderColor="White" >
                         <EmptyDataTemplate>
                                 No existen propuestas con los criterios ingresados.
                         </EmptyDataTemplate>
@@ -90,35 +88,22 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Nombre Propuesta">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("DESCRIPCION") %>' />
+                                    <asp:Label ID="lblDescripcion" runat="server" Text='<%#Eval("DESCRIPCION") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Tipo Propuesta">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("TIPO_PROPUESTA") %>' />
+                                    <asp:Label ID="lblTipoPropuesta" runat="server" Text='<%#Eval("TIPO_PROPUESTA") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Fecha">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblCalificacion" runat="server" Text='<%#Eval("FECHA_REGISTRO") %>' />
+                                    <asp:Label ID="lblFechaRegistro" runat="server" Text='<%#Eval("FECHA_REGISTRO") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>                        
                         </Columns>                        
                     </asp:GridView>
-<%--                </td>
-            </tr>
-        </table>--%>
-<%--        <br />
-        <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-                <td>
-                    
-                </td>
-                <td class="boton-espaciado">
-                    <asp:LinkButton ID="lbtnSalir" runat="server" OnClick="ibtnSalir_Click" CssClass="estilo_boton" Text="Salir"></asp:LinkButton>
-                </td>
-            </tr>
-        </table>--%>
+
         <br />
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>

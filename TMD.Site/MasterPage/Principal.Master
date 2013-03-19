@@ -74,7 +74,7 @@
                             <asp:MenuItem  Text="Propuestas">
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraAprobar.aspx" Text="Aprobar Propuesta"></asp:MenuItem>
-                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraDesarrollo.aspx" Text="Mandar a Desarrollo"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraListadoDesarrollo.aspx" Text="Mandar a Desarrollo"></asp:MenuItem>
                             </asp:MenuItem>
                             <asp:MenuItem Text="Soluciones">
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/SolucionMejoraListado.aspx" Text="Actualizar Información"></asp:MenuItem>
