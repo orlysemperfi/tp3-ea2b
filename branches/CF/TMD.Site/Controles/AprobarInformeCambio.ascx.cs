@@ -4,6 +4,7 @@ using TMD.Core.Extension;
 using TMD.Entidades;
 using TMD.Core;
 using System.Web;
+using System.Web.UI;
 using Microsoft.Practices.Unity;
 
 namespace TMD.CF.Site.Controles
@@ -72,6 +73,7 @@ namespace TMD.CF.Site.Controles
             informeFachada.Aprobar(IdInformeCambio, IdEstado, txtMotivo.Text);
 
             OnEventoGraboInforme();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnGrabar_", "crearMensaje('Aprobación de Informe de Cambio realizada!');", true);
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

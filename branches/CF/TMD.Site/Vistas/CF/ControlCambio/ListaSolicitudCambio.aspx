@@ -24,7 +24,7 @@
                                     <label>
                                         Proyecto</label>
                                     <asp:DropDownList ID="ddlProyecto" runat="server" AutoPostBack="True" script="width: auto;"
-                                        onselectedindexchanged="ddlProyecto_SelectedIndexChanged">
+                                        onselectedindexchanged="ddlProyecto_SelectedIndexChanged" onClientClick="javascript:validarProyecto">
                                     </asp:DropDownList><asp:CompareValidator ID="proyectoValidator" runat="server" ControlToValidate="ddlProyecto"
             ErrorMessage="El proyecto es requerido." ToolTip="El proyecto es requerido."
             ValidationGroup="BusquedaValidationGroup" ValueToCompare="0" CssClass="failureNotification"
@@ -60,7 +60,7 @@
                             </tr>
                             <tr align="right">
                                 <td colspan="4" align="right" style="padding-top: 10px;">
-                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar Solicitudes"  ValidationGroup="BusquedaValidationGroup"/>
+                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar Solicitudes"  ValidationGroup="BusquedaValidationGroup" onClientClick="javascript:return validarProyecto();"/>
                                     &nbsp;
                                     <asp:Button ID="btnNuevo" runat="server" OnClick="btnNuevo_Click" 
                                         Text="Nueva Solicitud" />
@@ -72,6 +72,8 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+    <div id="mensajeError" style="display:none">
+    </div>    
         <asp:UpdatePanel runat="server" ID="upnlLista">
             <ContentTemplate>
                 <asp:GridView ID="grvSolicitudCambio" runat="server" AutoGenerateColumns="False"
@@ -203,21 +205,9 @@
         }
         function validarProyecto() {
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                //alert('Seleccione un Proyecto!');
+                crearMensaje("Seleccione un Proyecto!");
                 return true;
             }
-        }
-
-        function mostrarDiv(idDiv) {
-            document.getElementById(idDiv).style.display = 'inline-block';
-        }
-
-        function ocultarDiv(idDiv) {
-            document.getElementById(idDiv).style.display = 'none';
-        }
-
-        function prueba() {
-            alert("prueba");
         }
     </script>
 </asp:Content>

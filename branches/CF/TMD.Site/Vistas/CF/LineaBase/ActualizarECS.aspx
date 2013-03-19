@@ -73,7 +73,7 @@
                                             <ItemTemplate>
                                                 <asp:ImageButton ID="imgBtnCargar" runat="server" 
                                                     CommandArgument='<%# Eval("Id")%>' CommandName="Cargar" 
-                                                    ImageUrl="~/Imagenes/upload.jpg" ToolTip="Cargar Archivo" />
+                                                    ImageUrl="~/Imagenes/upload.png" ToolTip="Cargar Archivo" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Descargar" ItemStyle-HorizontalAlign="Center" 
@@ -81,7 +81,7 @@
                                             <ItemTemplate>
                                                 <asp:ImageButton ID="imgBtnDescargar" runat="server" 
                                                     CommandArgument='<%# Eval("Id")%>' CommandName="Descarga" 
-                                                    ImageUrl="~/Imagenes/download.jpg" ToolTip="Descargar Archivo" Visible='<%# (Eval("Nombre")!= null) %>' />
+                                                    ImageUrl="~/Imagenes/download.png" ToolTip="Descargar Archivo" Visible='<%# (Eval("Nombre")!= null) %>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

@@ -10,7 +10,7 @@
 
     <div id="listaLB" class="content">
         <h1 class="page-title">
-            LISTA DE LINEA BASE</h1>
+            LISTADO DE LINEAS BASE</h1>
         <div class="panel-wrapper">
             <table style="width: 800px;">
                 <tr>
@@ -34,7 +34,8 @@
                 </tr>
             </table>
         </div>        
-
+        <div id="mensajeError" style="display:none">
+        </div>    
         <asp:UpdatePanel ID="upnlLista" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <asp:GridView ID="grvLineaBase" runat="server" AutoGenerateColumns="False" 
@@ -55,7 +56,7 @@
                     <asp:TemplateField HeaderText="Ver"  ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" >
                         <ItemTemplate>
                             <asp:ImageButton ID="imgBtnVer" ToolTip="Ver" runat="server" 
-                                ImageUrl="~/Imagenes/select.jpg" CommandName="Ver" 
+                                ImageUrl="~/Imagenes/ver.png" CommandName="Ver" 
                                 CommandArgument='<%# Eval("ProyectoFase.Fase.Id")%>' Height="20px" 
                                 Width="19px" />
                         </ItemTemplate>
@@ -92,7 +93,7 @@
     <script type="text/javascript" language="javascript">
         function validarProyecto() {
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                //alert('Seleccione un Proyecto!');
+                crearMensaje('Seleccione un Proyecto!');
                 return true;
             }
         }
