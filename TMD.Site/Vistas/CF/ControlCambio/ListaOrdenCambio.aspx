@@ -50,11 +50,14 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+        <div id="mensajeError" style="display:none">
+        </div>    
         <asp:UpdatePanel runat="server" ID="upnlLista">
             <ContentTemplate>
                 <asp:GridView ID="grvOrdenCambio" runat="server" AutoGenerateColumns="False"
                     OnRowCommand="grvOrdenCambio_RowCommand" 
                     ondatabound="grvOrdenCambio_DataBound">
+                    <HeaderStyle CssClass="headGrid" />
                     <EmptyDataTemplate>
                         No hay registros.
                     </EmptyDataTemplate>
@@ -151,16 +154,9 @@
         }
         function validarProyecto() {
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                //alert('Seleccione un Proyecto!');
+                crearMensaje("Seleccione un Proyecto!");
                 return true;
             }
-        }
-        function mostrarDiv(idDiv) {
-            document.getElementById(idDiv).style.display = 'inline-block';
-        }
-
-        function ocultarDiv(idDiv) {
-            document.getElementById(idDiv).style.display = 'none';
         }
     </script>
 </asp:Content>

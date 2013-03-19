@@ -45,6 +45,8 @@
                     </tr>
                 </table>
             </div>
+    <div id="mensajeError" style="display:none">
+    </div>    
             <div id="form_lineabase" class="panel-wrapper form">
                 <asp:ValidationSummary ID="GrabarValidationSummary" runat="server" CssClass="failureNotification"
                     ValidationGroup="GrabarValidationGroup" />
@@ -184,7 +186,7 @@
         }
         function validarFase() {
             if ($get('<%= ddlFase.ClientID %>').selectedIndex == 0) {
-                //alert('Seleccione una Fase!');
+                crearMensaje('Seleccione una Fase!');
                 return true;
             }
         }

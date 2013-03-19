@@ -106,6 +106,7 @@
     <Content Include="Imagenes\Prioridad\1.ico" />
     <Content Include="Imagenes\rueda.png" />
     <Content Include="Imagenes\user-fields.png" />
+    <Content Include="Scripts\extras.js" />
     <Content Include="Scripts\jquery.cycle.lite.js" />
     <Content Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx" />

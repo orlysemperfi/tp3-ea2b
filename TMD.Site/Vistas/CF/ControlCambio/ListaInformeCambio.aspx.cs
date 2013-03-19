@@ -141,7 +141,7 @@ namespace TMD.CF.Site.Vistas.CF.ControlCambio
 
         public String RecuperarPrioridadImagen(int idPrioridad)
         {
-            return String.Format("~/Imagenes/Prioridad/{0}.ico", idPrioridad);
+            return String.Format("~/Imagenes/Prioridad/{0}.png", idPrioridad);
         }
 
         protected void grvInformeCambio_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)

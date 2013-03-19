@@ -194,29 +194,17 @@
             return false;
         }
 
-        function cerrarDiv(idDiv) {
-            //document.getElementById(idDiv).innerHTML = "";
-            document.getElementById(idDiv).style.display = 'none';
-        }
-
         function validarProyecto() {
             var elemento;
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                elemento = document.createElement("label");
-                elemento.innerHTML = "Seleccione un Proyecto!";
-                document.getElementById("mensajeError").appendChild(elemento);
-                document.getElementById("mensajeError").style.display = 'inline-block';
-                setTimeout("cerrarDiv('mensajeError')", 5000);
+                crearMensaje("Seleccione un Proyecto!");
                 return false;
             }
-        }
-
-        function mostrarDiv(idDiv) {
-            document.getElementById(idDiv).style.display = 'inline-block';
-        }
-
-        function ocultarDiv(idDiv) {
-            document.getElementById(idDiv).style.display = 'none';
+            
+            if ($get('<%= ddlLineaBase.ClientID %>').selectedIndex == 0) {
+                crearMensaje("Seleccione una Línea Base!");
+                return false;
+            }
         }
     </script>
 </asp:Content>

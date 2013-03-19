@@ -67,6 +67,7 @@ namespace TMD.CF.Site.Controles
             OnEventoGraboInforme();
 
             pnlInformeCambio.Enabled = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "_idBtnGrabar_", "crearMensaje('Informe de Cambio creado!');", true);
         }
 
         public void CargarInformeExistente(int idInformeCambio)
