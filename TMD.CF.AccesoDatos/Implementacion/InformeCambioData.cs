@@ -170,7 +170,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
                     {
                         while (reader.Read())
                         {
-                            informesCambio.Add(InformeCambioMap.ListaSolicitudInforme(reader));
+                            informesCambio.Add(InformeCambioMap.ListaSolicitudSinInforme(reader));
                         }
                     }
                 }

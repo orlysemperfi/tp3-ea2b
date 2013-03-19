@@ -202,11 +202,11 @@
         function validarProyecto() {
             var elemento;
             if ($get('<%= ddlProyecto.ClientID %>').selectedIndex == 0) {
-                setTimeout(cerrarDiv('mensajeError'), 5000);
                 elemento = document.createElement("label");
                 elemento.innerHTML = "Seleccione un Proyecto!";
                 document.getElementById("mensajeError").appendChild(elemento);
                 document.getElementById("mensajeError").style.display = 'inline-block';
+                setTimeout("cerrarDiv('mensajeError')", 5000);
                 return false;
             }
         }
