@@ -92,14 +92,13 @@ namespace TMD.MP.Site.Privado
                 oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
                 oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUALITATIVO;
                 oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
+                try
+                {
+                    if (oNewIndicador.codigo != null)
+                        oIndicadorLogica.ActualizarIndicador(oNewIndicador);
+                    else
+                        oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
-                if (oNewIndicador.codigo != null)
-                    oIndicadorLogica.ActualizarIndicador(oNewIndicador);
-                else
-                    oIndicadorLogica.InsertarIndicador(oNewIndicador);
-
-                if (oNewIndicador.action == 0) // OK
-                { 
                     string currentURL = Request.Url.ToString();
                     string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
@@ -107,12 +106,12 @@ namespace TMD.MP.Site.Privado
                     "alert('Indicador Registrado'); window.location='" +
                     newURL + "/IndicadorListado.aspx';", true);
                 }
-                else { //Error
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error",
-                    "alert('Verifique los rangos ingresados');", true);
+                catch (BRuleException ex) 
+                {
+                    lblMensajeError.Text = ex.Message;
+                    lblMensajeError.DataBind();                    
                 }
-
-                
+               
             }
         }
 
