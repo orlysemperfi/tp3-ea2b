@@ -150,16 +150,17 @@ namespace TMD.MP.Site.Privado
         {
             
             IPilotoLogica oPilotoLogica = PilotoLogica.getInstance();
-            if (e.CommandName == "EditarPropuesta") {
+            if (e.CommandName == "EditarPiloto")
+            {
                 PilotoEntidad oPiloto = oPilotoLogica.ObtenerPilotoPorCodigo(Convert.ToInt32(e.CommandArgument));
                 Sesiones.PilotoSeleccionada = oPiloto;
                 //if(oPiloto.codigo_Estado == Convert.ToInt32( Constantes.ESTADO_PROPUESTA.REGISTRADA))
                 //    Response.Redirect(Paginas.TMD_MP_PilotoFormulario+"?Action="+Constantes.ACTION_UPDATE,true);
                 //else
                 //    Response.Redirect(Paginas.TMD_MP_PilotoFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
-            }else if(e.CommandName == "EliminarPropuesta"){
+            }else if(e.CommandName == "EliminarPiloto"){
                 PilotoEntidad oPiloto = oPilotoLogica.ObtenerPilotoPorCodigo(Convert.ToInt32(e.CommandArgument));
-                String strMensaje = "";//oPilotoLogica.BorrarPiloto(oPiloto);
+                String strMensaje = oPilotoLogica.BorrarPiloto(oPiloto);
                 if (strMensaje != null){
                     lblMensajeError.Text = strMensaje;
                 }

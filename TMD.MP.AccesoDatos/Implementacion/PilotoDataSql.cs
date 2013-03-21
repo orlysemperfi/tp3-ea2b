@@ -21,7 +21,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT P.CODIGO, S.CODIGO, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE ");
+            strSQL.Append("SELECT P.CODIGO, S.CODIGO AS CODIGO_SOLUCION, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
             strSQL.Append("FROM MP.PILOTO P ");
             strSQL.Append("INNER JOIN MP.SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
             strSQL.Append("INNER JOIN MP.ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
@@ -58,7 +58,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 {
                     oPiloto = new PilotoEntidad();
                     oPiloto.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
-                    oPiloto.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oPiloto.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_SOLUCION"]);
+                    oPiloto.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
                     oPiloto.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oPiloto.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
                     oPilotoColeccion.Add(oPiloto);
@@ -76,16 +77,63 @@ namespace TMD.MP.AccesoDatos.Implementacion
             }
         }
 
-        public PilotoEntidad ObtenerPilotoPorCodigo(int codigo) {
+        //public PilotoEntidad ObtenerPilotoPorCodigo(int codigo) {
+        //    PilotoEntidad oPiloto = new PilotoEntidad();
+        //    String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
+        //    SqlConnection sqlConn = new SqlConnection(strConn);
+        //    StringBuilder strSQL = new StringBuilder();
+            
+
+        //    try
+        //    {
+               
+        //        return oPiloto;
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        sqlConn.Close();
+        //    }
+        //}
+
+        public PilotoEntidad ObtenerPilotoPorCodigo(int codigo)
+        {
             PilotoEntidad oPiloto = new PilotoEntidad();
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            
+            strSQL.Append("SELECT P.CODIGO, S.CODIGO AS CODIGO_SOLUCION, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
+            strSQL.Append("FROM MP.PILOTO P ");
+            strSQL.Append("INNER JOIN MP.SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
+            strSQL.Append("INNER JOIN MP.ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
+            strSQL.Append("WHERE P.CODIGO = @CODIGO_PILOTO ");
+
+            SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
+            SqlDataReader dr = null;
+            sqlCmd.CommandType = CommandType.Text;
+
+            sqlCmd.Parameters.Add("@CODIGO_PILOTO", SqlDbType.Int).Value = codigo;
 
             try
             {
-               
+                sqlConn.Open();
+                dr = sqlCmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    oPiloto = new PilotoEntidad();
+                    oPiloto.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
+                    oPiloto.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_SOLUCION"]);
+                    oPiloto.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
+                    oPiloto.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oPiloto.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
+
+
+                }
+                dr.Close();
                 return oPiloto;
             }
             catch (System.Exception ex)
@@ -97,6 +145,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 sqlConn.Close();
             }
         }
+
         #endregion
 
         #region "Insert"
