@@ -48,6 +48,7 @@
     <Compile Include="Contrato\IPropuestaMejoraLogica.cs" />
     <Compile Include="Contrato\IUnidadLogica.cs" />
     <Compile Include="Contrato\IUsuarioLogica.cs" />
+    <Compile Include="Excepcion\BRuleException.cs" />
     <Compile Include="Implementacion\AreaLogica.cs" />
     <Compile Include="Implementacion\PilotoLogica.cs" />
     <Compile Include="Implementacion\SolucionMejoraLogica.cs" />

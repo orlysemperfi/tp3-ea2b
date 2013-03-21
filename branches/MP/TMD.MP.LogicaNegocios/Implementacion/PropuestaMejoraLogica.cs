@@ -7,6 +7,7 @@ using TMD.MP.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Excepcion;
 
 namespace TMD.MP.LogicaNegocios.Implementacion
 {

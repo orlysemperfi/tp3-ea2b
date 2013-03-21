@@ -8,6 +8,7 @@ using TMD.MP.Comun;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
+using TMD.MP.LogicaNegocios.Excepcion;
 
 namespace TMD.CF.Site.Vistas.MP
 {
