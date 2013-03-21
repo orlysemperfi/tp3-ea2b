@@ -172,7 +172,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          }
 
 
-         public void BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
+         public void BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora) 
          {
              iPropuestaMejora = new PropuestaMejoraDataSql();
              PropuestaEstadoEntidad oPropuestaEstado = new PropuestaEstadoEntidad();
@@ -190,7 +190,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
              }
              else
              {
-                 throw new Exception(Mensajes.Mensaje_No_Borrar_Propuesta_Mejora);
+                 throw new BRuleException(Mensajes.Mensaje_No_Borrar_Propuesta_Mejora);
              }
          }
 
