@@ -168,13 +168,16 @@ namespace TMD.MP.Site.Privado
                     Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
             }else if(e.CommandName == "EliminarPropuesta"){
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
-                String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
-                if (strMensaje != null){
-                    lblMensajeError.Text = strMensaje;
+                try
+                {
+                    oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
                 }
-                else {
-                    CargarPropuestaMejoraListado();                
-                }                    
+                catch (Exception ex)
+                {
+                    lblMensajeError.Text = ex.Message;
+                }
+                
+                             
             }
         }
 

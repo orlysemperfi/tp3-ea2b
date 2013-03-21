@@ -27,7 +27,7 @@ namespace TMD.MP.LogicaNegocios.Contrato
         void ActualizarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora);
 
 
-        String BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora);
+        void BorrarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora);
 
         #endregion
 
