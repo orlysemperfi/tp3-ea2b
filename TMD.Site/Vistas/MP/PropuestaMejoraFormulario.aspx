@@ -14,12 +14,18 @@
                     <td valign="top">
                         <table border="0" cellpadding="2" cellspacing="2">
                             <tr>
-                                <td align="right">
-                                    Código:
-                                </td>
                                 <td>
-                                    <asp:HiddenField ID="hdnCodigo" runat="server" />
-                                    <asp:TextBox ID="tbxCodigo" runat="server" Enabled="false"></asp:TextBox>                                        
+                                    <table id="tblCodigo" runat="server" style="display:none;">
+                                        <tr>
+                                            <td align="right">
+                                                Código:
+                                            </td>
+                                            <td>
+                                                <asp:HiddenField ID="hdnCodigo" runat="server" />
+                                                <asp:TextBox ID="tbxCodigo" runat="server" Enabled="false"></asp:TextBox>                                        
+                                            </td>                                        
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr>
@@ -75,14 +81,19 @@
                                     <%--<asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />--%>
                                 </td>
                             </tr>
-
                             <tr>
-                                <td align="right">
-                                    Estado:
-                                </td>
                                 <td>
-                                    <asp:TextBox ID="tbxEstado" runat="server" Enabled="false"></asp:TextBox>
-                                </td>
+                                    <table id="tblEstado" runat="server" style="display:none;">
+                                        <tr>
+                                            <td align="right">
+                                                Estado:
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="tbxEstado" runat="server" Enabled="false"></asp:TextBox>
+                                            </td>                                       
+                                        </tr>
+                                    </table>
+                                </td>                                
                             </tr>
                         </table>
                     </td>
@@ -137,7 +148,7 @@
                                 <tr>
                                     <td style="padding-bottom:10px;">
                                         <asp:GridView ID="gvwIndicadores" runat="server" AutoGenerateColumns="false" Width="800px" BorderWidth="0px" BorderColor="White"
-                                            DataSource='<%#ObtenerIndicadorListado() %>' OnRowCommand="gvwIndicadores_RowCommand">
+                                            DataSource='<%#ObtenerIndicadorListado() %>'>
                                             <Columns>
                                                 <asp:TemplateField HeaderText="Codigo" Visible="false">
                                                     <ItemTemplate>

@@ -13,6 +13,15 @@ namespace TMD.MP.Site.Privado {
     public partial class PropuestaMejoraFormulario {
         
         /// <summary>
+        /// tblCodigo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblCodigo;
+        
+        /// <summary>
         /// hdnCodigo control.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,15 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFechaEnvio;
+        
+        /// <summary>
+        /// tblEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tblEstado;
         
         /// <summary>
         /// tbxEstado control.

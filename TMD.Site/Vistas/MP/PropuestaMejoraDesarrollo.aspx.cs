@@ -81,29 +81,29 @@ namespace TMD.CF.Site.Vistas.MP
         protected void gvwPropuestaMejoraDesarrolloListado_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-            if (e.CommandName == "EditarPropuesta")
-            {
-                PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
-                Sesiones.PropuestaMejoraSeleccionada = oPropuestaMejora;
-                if (oPropuestaMejora.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA))
-                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_UPDATE, true);
-                else
-                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
-            }
-            else if (e.CommandName == "EliminarPropuesta")
-            {
-                PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
-                String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
-                if (strMensaje != null)
-                {
-                    lblMensajeError.Text = strMensaje;
-                }
-                else
-                {
-                    CargarPropuestaMejoraListado();
-                }
-            }
+            //IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
+            //if (e.CommandName == "EditarPropuesta")
+            //{
+            //    PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
+            //    Sesiones.PropuestaMejoraSeleccionada = oPropuestaMejora;
+            //    if (oPropuestaMejora.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA))
+            //        Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_UPDATE, true);
+            //    else
+            //        Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
+            //}
+            //else if (e.CommandName == "EliminarPropuesta")
+            //{
+            //    PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
+            //    String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
+            //    if (strMensaje != null)
+            //    {
+            //        lblMensajeError.Text = strMensaje;
+            //    }
+            //    else
+            //    {
+            //        CargarPropuestaMejoraListado();
+            //    }
+            //}
         }
 
         protected void btnCambiarEstadoEnDesarrollo_Click(object sender, EventArgs e)

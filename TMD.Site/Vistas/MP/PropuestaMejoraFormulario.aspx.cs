@@ -33,6 +33,10 @@ namespace TMD.MP.Site.Privado
                     NuevaPropuestaMejora();
                 }
                 else if (action==Constantes.ACTION_UPDATE || action==Constantes.ACTION_VIEW) {
+                    tblCodigo.Style.Remove("display");
+                    tblCodigo.Style.Add("display","block");
+                    tblEstado.Style.Remove("display");
+                    tblEstado.Style.Add("display", "block");
                     CargarPropuestaMejora();
                 }
                 List<IndicadorEntidad> indicadorListado = Sesiones.PropuestaMejoraSeleccionada.lstIndicadores;
@@ -45,7 +49,7 @@ namespace TMD.MP.Site.Privado
         protected void NuevaPropuestaMejora()
         {
             if (Sesiones.PropuestaMejoraSeleccionada == null)
-            {
+            {                
                 Sesiones.PropuestaMejoraSeleccionada = new PropuestaMejoraEntidad();
             }
             gvwIndicadores.DataBind();
@@ -234,19 +238,6 @@ namespace TMD.MP.Site.Privado
                 Response.Redirect(Paginas.TMD_MP_PropuestaMejoraDesarrollo, true);
             }
             
-        }
-
-        protected void gvwIndicadores_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("SeleccionarIndicador"))
-            {
-                CheckBox check = (CheckBox)sender;
-                lblMensajeError.Text = "hola :" + e.CommandArgument;
-                lblMensajeError.Text = lblMensajeError.Text + " chau :" + check.Checked;
-            }
-        }
-        public CascadingDropDownNameValue[] ObtenerProcesosPorArea(string knownCategoryValues, string category) {
-            return null;
         }
 
         public void CargarIndicadoresProceso() {
