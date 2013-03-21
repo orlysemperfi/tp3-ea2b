@@ -117,9 +117,9 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             iPiloto = new PilotoDataSql();
             PilotoEstadoEntidad oPilotoEstado = new PilotoEstadoEntidad();
 
-            if (oPiloto.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_SOLUCION.GENERADA))
+            if (oPiloto.codigo_Estado == Convert.ToInt32(Constantes.ESTADO_PILOTO.GENERADO))
             {
-                oPiloto.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_SOLUCION.ELIMINADA);
+                oPiloto.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PILOTO.ELIMINADO);
                 ActualizarEstadoPiloto(oPiloto);
                 oPilotoEstado.codigo_piloto = oPiloto.codigo;
                 oPilotoEstado.codigo_estado = oPiloto.codigo_Estado;

@@ -12,6 +12,7 @@ namespace TMD.MP.Comun
         public static String TMD_MP_PropuestaMejoraFormulario = "~/Vistas/MP/PropuestaMejoraFormulario.aspx";
         public static String TMD_MP_PropuestaMejoraDesarrollo = "~/Vistas/MP/PropuestaMejoraListadoDesarrollo.aspx";
         public static String TMD_MP_PropuestaMejoraAprobar = "~/Vistas/MP/PropuestaMejoraAprobar.aspx";
+        public static String TMD_MP_PropuestaMejoraAprobarFormulario = "~/Vistas/MP/PropuestaMejoraAprobarFormulario.aspx";
         public static String TMD_MP_EscalaCualitativoFormulario = "~/Vistas/MP/EscalaCualitativoFormulario.aspx";
         public static String TMD_MP_EscalaCuantitativoFormulario = "~/Vistas/MP/EscalaCuantitativoFormulario.aspx";
         public static String TMD_MP_IndicadorFormularioCuali = "~/Vistas/MP/IndicadorFormularioCuali.aspx";
