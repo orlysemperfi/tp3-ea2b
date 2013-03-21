@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BRuleException.cs" />
     <Compile Include="Constantes.cs" />
     <Compile Include="Mensajes.cs" />
     <Compile Include="Paginas.cs" />
