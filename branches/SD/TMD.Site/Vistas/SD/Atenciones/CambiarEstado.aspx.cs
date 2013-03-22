@@ -80,7 +80,10 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
             {
                 lblMensaje.Text ="Debe seleccionar un estado";
             }
-
+            else if (cmbEstado.Text.Trim() == "Cerrado" && txtEstadoActual.Text!= "SOLUCIONADO" )
+            {
+                lblMensaje.Text = "El ticket tiene que estar con el estado SOLUCIONADO";
+            }
             else
             {
                 lblMensaje.Text ="";
@@ -125,6 +128,7 @@ namespace TMD.CF.Site.Vistas.SD.Atenciones
             cmbEstado.Items.Add("Abierto");
             cmbEstado.Items.Add("Asignado");
             cmbEstado.Items.Add("En Proceso");
+            cmbEstado.Items.Add("Cerrado");
           
 
         }
