@@ -46,7 +46,7 @@
     <Reference Include="log4net">
       <HintPath>..\Librerias\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
@@ -295,12 +295,14 @@
     </Compile>
     <Compile Include="MasterPage\Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage\Principal.Master.designer.cs">
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="MasterPage\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -517,12 +519,14 @@
     </Compile>
     <Compile Include="Vistas\MP\PilotoFormulario.aspx.cs">
       <DependentUpon>PilotoFormulario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\PilotoFormulario.aspx.designer.cs">
       <DependentUpon>PilotoFormulario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\PilotoListado.aspx.cs">
       <DependentUpon>PilotoListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\PilotoListado.aspx.designer.cs">
       <DependentUpon>PilotoListado.aspx</DependentUpon>
@@ -536,12 +540,14 @@
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx.cs">
       <DependentUpon>PropuestaMejoraAprobarFormulario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraAprobarFormulario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.cs">
       <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
@@ -562,6 +568,7 @@
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.cs">
       <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
@@ -575,6 +582,7 @@
     </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraFormulario.aspx.cs">
       <DependentUpon>SolucionMejoraFormulario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraFormulario.aspx.designer.cs">
       <DependentUpon>SolucionMejoraFormulario.aspx</DependentUpon>
