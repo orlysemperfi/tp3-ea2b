@@ -1,0 +1,41 @@
+﻿@model TMD.GM.Site.Models.ErrorModel
+           
+@if (Model.btnImpedCancelar_Visible)
+{
+    <div class="error_div" style="margin-top:10px; text-align:left; padding-bottom: 20px">
+    <span>@Html.Raw(@Model.Mensaje)</span>
+</div> }
+else
+{
+    if (ViewBag.foco == 1)
+    {
+        <div class="information_div" style="margin-top:10px; text-align:left; padding-bottom: 20px">
+        <span>@Html.Raw(@Model.Mensaje)</span>
+        </div> 
+    }
+    else
+    {
+    <div class="error_div" style="margin-top:10px; text-align:center; padding-bottom: 20px">
+    <span>@Html.Raw(@Model.Mensaje)</span>
+    </div>
+    } 
+}
+<div style="padding-left:40px">
+    <center>
+    @if (Model.btnContinuar_Visible)
+    {<input type="submit" id="btnContinuar" value="Continuar" onclick="MATER001_PVModal_btnContinuar_Click('@Url.Action("MATCL009R3_Grabar_Continuar", "Principal")')"/>}
+    @if (Model.btnCancelar_Visible)
+    {<input type="submit" id="btnCancelar" value="Cancelar" onclick="MATER001_PVModal_btnCancelar_Click()" />}
+
+    </center>
+</div>
+<input type="hidden" value="@Model.Boton" id="hdfBoton" />
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#ui-dialog-title-ModalMensajeError").text("@Html.Raw(@Model.Titulo)");
+
+    });
+
+</script>

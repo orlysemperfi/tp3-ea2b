@@ -193,52 +193,95 @@ namespace TMD.GM.AccesoDatos.Implementacion
 
                         db.PLAN_MANTENIMIENTO_CABECERA.ApplyCurrentValues(entidad);
 
-                        //Actualizamos el detalle
+                        //Listamos las todas las actividades determinadas del cliente
+                        List<PLAN_MANTENIMIENTO_DETALLE> listActCliente = new List<PLAN_MANTENIMIENTO_DETALLE>(); ;
                         foreach (var item in planBE.listaActividades)
                         {
-                            #region Detalle
-                            if (item.ID_ACTIVIDAD == 0)
+                            listActCliente.Add(new PLAN_MANTENIMIENTO_DETALLE()
                             {
-                                PLAN_MANTENIMIENTO_DETALLE itemDetalle = new PLAN_MANTENIMIENTO_DETALLE()
-                                {
-                                    CODIGO_PLAN = item.CODIGO_PLAN,
-                                    ITEM_ACTIVIDAD = item.ITEM_ACTIVIDAD,
-                                    CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD,
-                                    DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD,
-                                    PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD,
-                                    CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA,
-                                    PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO,
-                                    CODIGO_TIEMPO = item.CODIGO_TIEMPO,
-                                    TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD,
-                                    PROCEDIMIENTOS_PLAN = item.PROCEDIMIENTOS_PLAN,
-                                    OBSERVACIONES_PLAN = item.OBSERVACIONES_PLAN,
-                                };
+                                ID_ACTIVIDAD = item.ID_ACTIVIDAD,
+                                CODIGO_PLAN = item.CODIGO_PLAN,
+                                ITEM_ACTIVIDAD = item.ITEM_ACTIVIDAD,
+                                CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD,
+                                DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD,
+                                PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD,
+                                CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA,
+                                PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO,
+                                CODIGO_TIEMPO = item.CODIGO_TIEMPO,
+                                TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD,
+                                PROCEDIMIENTOS_PLAN = item.PROCEDIMIENTOS_PLAN,
+                                OBSERVACIONES_PLAN = item.OBSERVACIONES_PLAN
+                            });
+                        }
 
-                                db.PLAN_MANTENIMIENTO_DETALLE.AddObject(itemDetalle);
-                            }
-                            else
+                        //Listamos las pruebas asociadas a la clasificacion actalmente
+                        List<PLAN_MANTENIMIENTO_DETALLE> listActServer = (from actividadesServer in db.PLAN_MANTENIMIENTO_DETALLE
+                                                                          where actividadesServer.CODIGO_PLAN == planBE.CODIGO_PLAN
+                                                                          select actividadesServer).ToList();
+
+                        //Listamos las todas las actividades modificadas por el cliente
+                        List<PLAN_MANTENIMIENTO_DETALLE> listActModifica = (from actividadesServer in listActServer
+                                                                            join actividadesClient in listActCliente on actividadesServer.ID_ACTIVIDAD equals actividadesClient.ID_ACTIVIDAD
+                                                                           where actividadesServer.CODIGO_PLAN == planBE.CODIGO_PLAN
+                                                                           select actividadesServer).ToList();
+
+                      
+
+                        var cComparerExcept = new ComparerExcept<PLAN_MANTENIMIENTO_DETALLE>();
+
+                        //Determinamos las nuevas actividades
+                        List<PLAN_MANTENIMIENTO_DETALLE> listActNuevas = listActCliente.Except(listActServer, cComparerExcept).ToList();
+
+                        //Determinamos las pruebas a desasociar
+                        List<PLAN_MANTENIMIENTO_DETALLE> listActElimina = listActServer.Except(listActCliente, cComparerExcept).ToList();
+
+
+                        //Actualizamos el detalle
+                        foreach (var item in listActNuevas)
+                        {
+                            PLAN_MANTENIMIENTO_DETALLE itemDetalle = new PLAN_MANTENIMIENTO_DETALLE()
                             {
-                                PLAN_MANTENIMIENTO_DETALLE itemDetalle = (from u in db.PLAN_MANTENIMIENTO_DETALLE
-                                                                          where (u.ID_ACTIVIDAD == item.ID_ACTIVIDAD)
-                                                                          select u).FirstOrDefault();
-
-                                if (itemDetalle != null)
-                                {
-                                    itemDetalle.ITEM_ACTIVIDAD = item.ITEM_ACTIVIDAD;
-                                    itemDetalle.CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD;
-                                    itemDetalle.DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD;
-                                    itemDetalle.PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD;
-                                    itemDetalle.CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA;
-                                    itemDetalle.PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO;
-                                    itemDetalle.CODIGO_TIEMPO = item.CODIGO_TIEMPO;
-                                    itemDetalle.TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD;
-                                    itemDetalle.PROCEDIMIENTOS_PLAN = item.PROCEDIMIENTOS_PLAN;
-                                    itemDetalle.OBSERVACIONES_PLAN = item.OBSERVACIONES_PLAN;
-
-                                    db.PLAN_MANTENIMIENTO_DETALLE.ApplyCurrentValues(itemDetalle);
-                                }
-                            }
+                                #region Datos
+                                CODIGO_PLAN = item.CODIGO_PLAN,
+                                ITEM_ACTIVIDAD = item.ITEM_ACTIVIDAD,
+                                CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD,
+                                DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD,
+                                PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD,
+                                CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA,
+                                PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO,
+                                CODIGO_TIEMPO = item.CODIGO_TIEMPO,
+                                TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD,
+                                PROCEDIMIENTOS_PLAN = item.PROCEDIMIENTOS_PLAN,
+                                OBSERVACIONES_PLAN = item.OBSERVACIONES_PLAN,
+                                #endregion
+                            };
+                            db.PLAN_MANTENIMIENTO_DETALLE.AddObject(itemDetalle);
+                        }
+                        foreach (var item in listActModifica)
+                        {
+                            PLAN_MANTENIMIENTO_DETALLE itemDetalle = (from u in db.PLAN_MANTENIMIENTO_DETALLE
+                                                                      where (u.ID_ACTIVIDAD == item.ID_ACTIVIDAD)
+                                                                      select u).FirstOrDefault();
+                            #region Datos
+                            itemDetalle.ITEM_ACTIVIDAD = item.ITEM_ACTIVIDAD;
+                            itemDetalle.CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD;
+                            itemDetalle.DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD;
+                            itemDetalle.PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD;
+                            itemDetalle.CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA;
+                            itemDetalle.PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO;
+                            itemDetalle.CODIGO_TIEMPO = item.CODIGO_TIEMPO;
+                            itemDetalle.TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD;
+                            itemDetalle.PROCEDIMIENTOS_PLAN = item.PROCEDIMIENTOS_PLAN;
+                            itemDetalle.OBSERVACIONES_PLAN = item.OBSERVACIONES_PLAN;
                             #endregion
+                            db.PLAN_MANTENIMIENTO_DETALLE.ApplyCurrentValues(itemDetalle);
+                        }
+                        foreach (var item in listActElimina)
+                        {
+                            PLAN_MANTENIMIENTO_DETALLE itemDetalle = (from u in db.PLAN_MANTENIMIENTO_DETALLE
+                                                                      where (u.ID_ACTIVIDAD == item.ID_ACTIVIDAD)
+                                                                      select u).FirstOrDefault();
+                            db.PLAN_MANTENIMIENTO_DETALLE.DeleteObject(itemDetalle);
                         }
 
                         if (db.SaveChanges() < 1)
@@ -282,7 +325,11 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         #region Validacion
                      
                         #endregion
+                        foreach (var item in entidad.PLAN_MANTENIMIENTO_DETALLE)
+                        {
+                            db.PLAN_MANTENIMIENTO_DETALLE.DeleteObject(item);
 
+                        }
                         db.PLAN_MANTENIMIENTO_CABECERA.DeleteObject(entidad);
 
                         if (db.SaveChanges() < 1)
@@ -326,6 +373,7 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     foreach (var itemEntidad in entidad.PLAN_MANTENIMIENTO_DETALLE)
                     {
                         PlanDetalleBE item = new PlanDetalleBE();
+                        item.GUID_ROW     = Guid.NewGuid();
                         item.ID_ACTIVIDAD = itemEntidad.ID_ACTIVIDAD;
                         item.CODIGO_PLAN = itemEntidad.CODIGO_PLAN;
                         item.ITEM_ACTIVIDAD = itemEntidad.ITEM_ACTIVIDAD;

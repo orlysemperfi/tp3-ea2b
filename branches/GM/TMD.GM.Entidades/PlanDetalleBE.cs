@@ -14,7 +14,7 @@ namespace TMD.GM.Entidades
         {}
 
         #region Atributos
-
+        public Guid GUID_ROW { get; set; }
         public int ID_ACTIVIDAD { get; set; }
         public string CODIGO_PLAN { get; set; }
         public int ITEM_ACTIVIDAD { get; set; }

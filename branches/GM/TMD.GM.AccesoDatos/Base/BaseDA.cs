@@ -98,5 +98,14 @@ namespace TMD.GM.AccesoDatos
 
         }
 
+
+        public static string GetSQLConnectionString()
+        {
+            //Data Source=PEDRO-HP;Initial Catalog=BDManten;Persist Security Info=False;User ID=sa;Password=root
+
+            return "Data Source=" + DataSource + ";Initial Catalog=" + InitialCatalog + ";Persist Security Info=False;User ID=" + UserID + ";Password=" + Password;
+
+        }
+
     }
 }

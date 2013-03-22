@@ -27,11 +27,26 @@ namespace TMD.GM.Site
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquerypri").Include(
-                        "~/Scripts/JScriptPrincipal.js"));
+                        "~/Scripts/JScriptPrincipal.js"
+                       ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo")
+                  .Include("~/Scripts/kendo/2012.3.1315/kendo.web.*") // or kendo.all.*
+                  .Include("~/Scripts/kendo/2012.3.1315/kendo.aspnetmvc.*")
+             );
+
+
+            // The Kendo CSS bundle - replace "2012.3.1315" with the Kendo UI version that you are using
+            bundles.Add(new StyleBundle("~/Content/kendo/2012.3.1315/css")
+                  .Include("~/Content/kendo/2012.3.1315/kendo.common.*")
+                  .Include("~/Content/kendo/2012.3.1315/kendo.default.*")
+            );
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/site.css", 
-                "~/Content/custom.css"));
+                "~/Content/custom.css"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -47,15 +62,7 @@ namespace TMD.GM.Site
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            #region Personalizado
-
-            //bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/custom.css"));
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery.calendar-widget.js"));
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/JScriptPrincipal.js"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/jquery-1.7.1.min.js"));
-            
-            #endregion
+            bundles.IgnoreList.Clear();
         }
     }
 }

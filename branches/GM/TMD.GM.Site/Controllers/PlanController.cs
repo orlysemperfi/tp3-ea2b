@@ -53,23 +53,35 @@ namespace TMD.GM.Site.Controllers
 
         public ActionResult PlanRegistrar(string pCodigo, string pNombre, string pEstado)
         {
-            PlanModel model = new PlanModel();
-            model.codigoPlan = pCodigo;
-            model.nombrePlan = pNombre;
-            //model.activo = (pEstado == ConstantesUT.ESTADO_GENERICO.Activo);
-            PlanBE entity = new PlanBE();
-            entity.CODIGO_PLAN = pCodigo;
-            entity.NOMBRE_PLAN = pNombre;
-            entity.ESTADO_PLAN = (pEstado == "true");
-            entity.listaActividades = new List<PlanDetalleBE>();
+            try
+            {
+                PlanModel model = new PlanModel();
+                model.codigoPlan = pCodigo;
+                model.nombrePlan = pNombre;
+                //model.activo = (pEstado == ConstantesUT.ESTADO_GENERICO.Activo);
+                PlanBE entity = new PlanBE();
+                entity.CODIGO_PLAN = pCodigo;
+                entity.NOMBRE_PLAN = pNombre;
+                entity.ESTADO_PLAN = (pEstado == "true");
+                entity.listaActividades = new List<PlanDetalleBE>();
 
-            if (Session["PlanActividadesKey"] == null)
-                Session["PlanActividadesKey"] = new List<PlanDetalleBE>();
-            entity.listaActividades = (List<PlanDetalleBE>)Session["PlanActividadesKey"]; 
+                if (Session["PlanActividadesKey"] == null)
+                    Session["PlanActividadesKey"] = new List<PlanDetalleBE>();
+                entity.listaActividades = (List<PlanDetalleBE>)Session["PlanActividadesKey"];
 
-            planBL.RegistrarPlan(entity);
+                planBL.RegistrarPlan(entity);
 
-            return PartialView("PlanNuevo", model);
+                return PartialView("PlanNuevo", model);
+            }
+            catch(Exception ex)
+            {
+                Response.StatusCode = 500;
+                return PartialView("../Error/MensajeError", new ErrorModel()
+                {
+                    Titulo = "Error",
+                    Mensaje = ex.Message,
+                });
+            }
         }
         public ActionResult PlanActualizar(string pCodigo, string pNombre, string pEstado)
         {
@@ -82,20 +94,25 @@ namespace TMD.GM.Site.Controllers
             entity.NOMBRE_PLAN = pNombre;
             entity.ESTADO_PLAN = (pEstado == "true");
 
-            if (Session["PlanActividadesKey"] == null)
-                Session["PlanActividadesKey"] = new List<PlanDetalleBE>();
-            entity.listaActividades = (List<PlanDetalleBE>)Session["PlanActividadesKey"]; 
+            if (Session[ConstantesUT.SESSION.PlanActividades] == null)
+                Session[ConstantesUT.SESSION.PlanActividades] = new List<PlanDetalleBE>();
+            entity.listaActividades = (List<PlanDetalleBE>)Session[ConstantesUT.SESSION.PlanActividades]; 
 
             planBL.ActualizarPlan(entity);
 
             return PartialView("PlanEdit", model);
         }
-        public ActionResult PlanActividad(string pIdActividad, string pCodigo, int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pProc, string pObse)
+        public ActionResult PlanActividad_Editar(string pGuidActividad)
         {
+            if (Session[ConstantesUT.SESSION.PlanActividades] == null)
+                Session[ConstantesUT.SESSION.PlanActividades] = new List<PlanDetalleBE>();
+
+            List<PlanDetalleBE> lista = (List<PlanDetalleBE>)Session[ConstantesUT.SESSION.PlanActividades];
             PlanActividadModel model = new PlanActividadModel();
-            model.entity = new PlanDetalleBE() {ID_ACTIVIDAD = DataUT.ObjectToInt32(pIdActividad), CODIGO_PLAN = pCodigo, ITEM_ACTIVIDAD = pItem, CODIGO_TIPO_ACTIVIDAD = pTipoActi,
-            DESCRIPCION_ACTIVIDAD = pDesc, PRIORIDAD_ACTIVIDAD = pPrio, CODIGO_FRECUENCIA = pCodiFrec, PERSONAL_REQUERIDO = pPersRequ,
-            CODIGO_TIEMPO = pCodiTiem, TIEMPO_ACTIVIDAD = pTiemActi, PROCEDIMIENTOS_PLAN = pProc, OBSERVACIONES_PLAN = pObse};
+
+            model.entity =  lista.Find(x => x.GUID_ROW.ToString() == pGuidActividad);
+
+            Session[ConstantesUT.SESSION.PlanActividadActual] = model.entity;
 
             List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataTU = new List<SelectListItemBE>();
@@ -129,40 +146,35 @@ namespace TMD.GM.Site.Controllers
                 model.listaFR.Add(new SelectListItem() { Selected = (item.CODIGO == model.entity.CODIGO_FRECUENCIA.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
 
-            return PartialView(model);
+            return PartialView("PlanActividad", model);
         }
 
-        public EmptyResult PlanActividadAceptar(string pIdActividad, string pCodigo, int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pProc, string pObse)
+        public EmptyResult PlanActividadAceptar(int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pProc, string pObse)
         {
-            PlanDetalleBE entity = new PlanDetalleBE()
-            {
-                ID_ACTIVIDAD = DataUT.ObjectToInt32(pIdActividad),
-                CODIGO_PLAN = pCodigo,
-                ITEM_ACTIVIDAD = pItem,
-                CODIGO_TIPO_ACTIVIDAD = pTipoActi,
-                DESCRIPCION_ACTIVIDAD = pDesc,
-                PRIORIDAD_ACTIVIDAD = pPrio,
-                CODIGO_FRECUENCIA = pCodiFrec,
-                PERSONAL_REQUERIDO = pPersRequ,
-                CODIGO_TIEMPO = pCodiTiem,
-                TIEMPO_ACTIVIDAD = pTiemActi,
-                PROCEDIMIENTOS_PLAN = pProc,
-                OBSERVACIONES_PLAN = pObse
-            };
+            PlanDetalleBE entity = (PlanDetalleBE )Session[ConstantesUT.SESSION.PlanActividadActual] ;
 
-            if (Session["PlanActividadesKey"] == null)
-                Session["PlanActividadesKey"] = new List<PlanDetalleBE>();
+            entity.ITEM_ACTIVIDAD = pItem;
+            entity.CODIGO_TIPO_ACTIVIDAD = pTipoActi;
+            entity.DESCRIPCION_ACTIVIDAD = pDesc;
+            entity.PRIORIDAD_ACTIVIDAD = pPrio;
+            entity.CODIGO_FRECUENCIA = pCodiFrec;
+            entity.PERSONAL_REQUERIDO = pPersRequ;
+            entity.CODIGO_TIEMPO = pCodiTiem;
+            entity.TIEMPO_ACTIVIDAD = pTiemActi;
+            entity.PROCEDIMIENTOS_PLAN = pProc;
+            entity.OBSERVACIONES_PLAN = pObse;
+
+            if (Session[ConstantesUT.SESSION.PlanActividades] == null)
+                Session[ConstantesUT.SESSION.PlanActividades] = new List<PlanDetalleBE>();
 
             List<PlanDetalleBE> lista = new List<PlanDetalleBE>();
-            lista = (List<PlanDetalleBE>)Session["PlanActividadesKey"];
+            lista = (List<PlanDetalleBE>)Session[ConstantesUT.SESSION.PlanActividades];
 
             //Verificamos la existencia del registro
 
-            PlanDetalleBE item = lista.Find(x=>x.ID_ACTIVIDAD == entity.ID_ACTIVIDAD);
+            PlanDetalleBE item = lista.Find(x => x.GUID_ROW == entity.GUID_ROW);
             if (item != null)
             {
-                item.ID_ACTIVIDAD = entity.ID_ACTIVIDAD;
-                item.CODIGO_PLAN = entity.CODIGO_PLAN;
                 item.ITEM_ACTIVIDAD = entity.ITEM_ACTIVIDAD;
                 item.CODIGO_TIPO_ACTIVIDAD = entity.CODIGO_TIPO_ACTIVIDAD;
                 item.DESCRIPCION_ACTIVIDAD = entity.DESCRIPCION_ACTIVIDAD;
@@ -178,7 +190,7 @@ namespace TMD.GM.Site.Controllers
             {
                 lista.Add(entity);
             }
-            Session["PlanActividadesKey"] = lista;
+            Session[ConstantesUT.SESSION.PlanActividades] = lista;
 
             return new EmptyResult();  
 
@@ -224,6 +236,21 @@ namespace TMD.GM.Site.Controllers
 
             return PartialView("PlanActividades", model);
         }
+
+        public ActionResult PlanActividades_Eliminar(string pGuidActividad)
+        {
+            PlanModel model = new PlanModel();
+
+            if (Session[ConstantesUT.SESSION.PlanActividades] == null)
+                Session[ConstantesUT.SESSION.PlanActividades] = new List<PlanDetalleBE>();
+
+            model.listaDetalle = (List<PlanDetalleBE>)Session[ConstantesUT.SESSION.PlanActividades];
+            model.listaDetalle.Remove(model.listaDetalle.Find(x => x.GUID_ROW.ToString() == pGuidActividad));
+
+            Session[ConstantesUT.SESSION.PlanActividades] = model.listaDetalle;
+
+            return PartialView("PlanActividades", model);
+        }
         //public ActionResult PlanDetalle()
         //{
         //    PlanActividadModel model = new PlanActividadModel();
@@ -251,10 +278,12 @@ namespace TMD.GM.Site.Controllers
 
         public ActionResult PlanActividadNuevo(string pCodigo)
         {
-             PlanActividadModel model = new PlanActividadModel();
-            model.entity = new PlanDetalleBE() { CODIGO_PLAN = pCodigo, ITEM_ACTIVIDAD = 0, CODIGO_TIPO_ACTIVIDAD = 0,
+            PlanActividadModel model = new PlanActividadModel();
+            model.entity = new PlanDetalleBE() { GUID_ROW= Guid.NewGuid(), CODIGO_PLAN = pCodigo, ITEM_ACTIVIDAD = 0, CODIGO_TIPO_ACTIVIDAD = 0,
             DESCRIPCION_ACTIVIDAD = "", PRIORIDAD_ACTIVIDAD = 0, CODIGO_FRECUENCIA = 0, PERSONAL_REQUERIDO = 0,
             CODIGO_TIEMPO = 0, TIEMPO_ACTIVIDAD = 0, PROCEDIMIENTOS_PLAN = "", OBSERVACIONES_PLAN = "", ID_ACTIVIDAD = 0};
+
+            Session[ConstantesUT.SESSION.PlanActividadActual] = model.entity;
 
             List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataTU = new List<SelectListItemBE>();
@@ -297,6 +326,8 @@ namespace TMD.GM.Site.Controllers
 
 
             model.listaData = planBL.ListarPlanManteTodos();
+
+            
 
             return PartialView( model);
         }

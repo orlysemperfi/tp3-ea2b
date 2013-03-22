@@ -9,6 +9,11 @@
         @Styles.Render("~/Content/themes/base/css")
         
         @Scripts.Render("~/bundles/modernizr")
+
+
+        @Styles.Render("~/Content/kendo/2012.3.1315/css")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/kendo")
     </head>
     <body>
         <header>
@@ -28,10 +33,17 @@
                         <ul id="menu">
                             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li>@Html.ActionLink("Plan", "PlanConsulta", "Plan")</li>
+                            <li>@Html.ActionLink("Equipo", "Index", "Equipo")</li>
+                             <li>@Html.ActionLink("Especialidad", "RedirectEspecialidad", "Solicitud")</li>
                             <li>@Html.ActionLink("Solicitud", "SolicitudConsulta", "Solicitud")</li>
+                             <li>@Html.ActionLink("Orden de Trabajo", "OrdenTrabajoConsulta", "OrdenTrabajo")</li>
+                             <li>@Html.ActionLink("Informe", "RedirectInforme", "Solicitud")</li>
+                             
                            @* <li>@Html.ActionLink("Información", "About", "Home")</li>
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>*@
                         </ul>
+                      @*  <a href="http://localhost:1051/MantEmpleado/frmMantEmpleado.aspx"> Empleado Especialidad</a>
+                        <a href="http://localhost:1051/MantInforme/frmMantInforme.aspx"> Empleado Especialidad</a>*@
                     </nav>
                 </div>
             </div>
@@ -49,10 +61,19 @@
                 </div>
             </div>
         </footer>
-
-        @Scripts.Render("~/bundles/jquery")
+        <div class="divLoadingMensaje" >
+        <strong>
+            <img src="@Url.Content("~/Images/ajax-loader.gif")" alt="Procesando..."/>
+             Procesando...
+        </strong>        
+        </div> 
+    <div class="divLoading">
+    <div id="ModalMensajeError" class="j_modal" title="Mensaje"></div>
+    </div>
+        @*@Scripts.Render("~/bundles/jquery")*@
         @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/jquerypri")
+        @*@Scripts.Render("~/bundles/jquerykendo")*@
         @RenderSection("scripts", required: false)
        
     </body>

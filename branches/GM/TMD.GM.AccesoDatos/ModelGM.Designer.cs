@@ -20,27 +20,28 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO", "ACTIVIDAD_TIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMD.GM.AccesoDatos.ACTIVIDAD_TIPO), "EMPLEADO_ACTIVIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EMPLEADO_ACTIVIDAD), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EMPLEADO_AREA", "AREA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.AREA), "EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EMPLEADO), true)]
-[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_AREA", "AREA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.AREA), "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EMPLEADO_ACTIVIDAD_EMPLEADO", "EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMD.GM.AccesoDatos.EMPLEADO), "EMPLEADO_ACTIVIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EMPLEADO_ACTIVIDAD), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EMPLEADO_EMPLEADO", "EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.EMPLEADO), "EMPLEADO1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EMPLEADO), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EMPLEADO_PERSONA", "PERSONA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PERSONA), "EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EMPLEADO), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EMPLEADO_PUESTO", "PUESTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PUESTO), "EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EMPLEADO), true)]
-[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_EQUIPO_TIPO", "EQUIPO_TIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.EQUIPO_TIPO), "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), true)]
-[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_CABECERA), "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), true)]
-[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), "SOLICITUD_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_CABECERA), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_CABECERA), "SOLICITUD_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_CABECERA), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO", "SOLICITUD_ESTADO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.SOLICITUD_ESTADO), "SOLICITUD_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_CABECERA), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_SOLICITUD_TIPO", "SOLICITUD_TIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.SOLICITUD_TIPO), "SOLICITUD_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_CABECERA), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO", "ACTIVIDAD_TIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.ACTIVIDAD_TIPO), "PLAN_MANTENIMIENTO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO", "ACTIVIDAD_TIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.ACTIVIDAD_TIPO), "SOLICITUD_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_DETALLE), true)]
-[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.FRECUENCIA), "PLAN_MANTENIMIENTO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_DETALLE), true)]
-[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.FRECUENCIA), "SOLICITUD_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_CABECERA), "PLAN_MANTENIMIENTO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD", "PRIORIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PRIORIDAD), "PLAN_MANTENIMIENTO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO", "UNIDAD_TIEMPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.UNIDAD_TIEMPO), "PLAN_MANTENIMIENTO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_PRIORIDAD", "PRIORIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PRIORIDAD), "SOLICITUD_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA", "SOLICITUD_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMD.GM.AccesoDatos.SOLICITUD_CABECERA), "SOLICITUD_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_DETALLE), true)]
 [assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO", "UNIDAD_TIEMPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.UNIDAD_TIEMPO), "SOLICITUD_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_DETALLE), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_AREA", "AREA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.AREA), "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_EQUIPO_TIPO", "EQUIPO_TIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.EQUIPO_TIPO), "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_CABECERA), "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.EQUIPO_COMPUTO), "SOLICITUD_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_CABECERA), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.FRECUENCIA), "PLAN_MANTENIMIENTO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.PLAN_MANTENIMIENTO_DETALLE), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(TMD.GM.AccesoDatos.FRECUENCIA), "SOLICITUD_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.SOLICITUD_DETALLE), true)]
+[assembly: EdmRelationshipAttribute("BDMantenModel", "FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_CABECERA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TMD.GM.AccesoDatos.ORDEN_TRABAJO_CABECERA), "ORDEN_TRABAJO_DETALLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TMD.GM.AccesoDatos.ORDEN_TRABAJO_DETALLE), true)]
 
 #endregion
 
@@ -159,22 +160,6 @@ namespace TMD.GM.AccesoDatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<EQUIPO_COMPUTO> EQUIPO_COMPUTO
-        {
-            get
-            {
-                if ((_EQUIPO_COMPUTO == null))
-                {
-                    _EQUIPO_COMPUTO = base.CreateObjectSet<EQUIPO_COMPUTO>("EQUIPO_COMPUTO");
-                }
-                return _EQUIPO_COMPUTO;
-            }
-        }
-        private ObjectSet<EQUIPO_COMPUTO> _EQUIPO_COMPUTO;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<EQUIPO_TIPO> EQUIPO_TIPO
         {
             get
@@ -187,22 +172,6 @@ namespace TMD.GM.AccesoDatos
             }
         }
         private ObjectSet<EQUIPO_TIPO> _EQUIPO_TIPO;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<FRECUENCIA> FRECUENCIA
-        {
-            get
-            {
-                if ((_FRECUENCIA == null))
-                {
-                    _FRECUENCIA = base.CreateObjectSet<FRECUENCIA>("FRECUENCIA");
-                }
-                return _FRECUENCIA;
-            }
-        }
-        private ObjectSet<FRECUENCIA> _FRECUENCIA;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -443,6 +412,54 @@ namespace TMD.GM.AccesoDatos
             }
         }
         private ObjectSet<SOLICITUD_DETALLE> _SOLICITUD_DETALLE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<EQUIPO_COMPUTO> EQUIPO_COMPUTO
+        {
+            get
+            {
+                if ((_EQUIPO_COMPUTO == null))
+                {
+                    _EQUIPO_COMPUTO = base.CreateObjectSet<EQUIPO_COMPUTO>("EQUIPO_COMPUTO");
+                }
+                return _EQUIPO_COMPUTO;
+            }
+        }
+        private ObjectSet<EQUIPO_COMPUTO> _EQUIPO_COMPUTO;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CALENDARIO_LABORABLE> CALENDARIO_LABORABLE
+        {
+            get
+            {
+                if ((_CALENDARIO_LABORABLE == null))
+                {
+                    _CALENDARIO_LABORABLE = base.CreateObjectSet<CALENDARIO_LABORABLE>("CALENDARIO_LABORABLE");
+                }
+                return _CALENDARIO_LABORABLE;
+            }
+        }
+        private ObjectSet<CALENDARIO_LABORABLE> _CALENDARIO_LABORABLE;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FRECUENCIA> FRECUENCIA
+        {
+            get
+            {
+                if ((_FRECUENCIA == null))
+                {
+                    _FRECUENCIA = base.CreateObjectSet<FRECUENCIA>("FRECUENCIA");
+                }
+                return _FRECUENCIA;
+            }
+        }
+        private ObjectSet<FRECUENCIA> _FRECUENCIA;
 
         #endregion
         #region AddTo Methods
@@ -480,27 +497,11 @@ namespace TMD.GM.AccesoDatos
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the EQUIPO_COMPUTO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToEQUIPO_COMPUTO(EQUIPO_COMPUTO eQUIPO_COMPUTO)
-        {
-            base.AddObject("EQUIPO_COMPUTO", eQUIPO_COMPUTO);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the EQUIPO_TIPO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToEQUIPO_TIPO(EQUIPO_TIPO eQUIPO_TIPO)
         {
             base.AddObject("EQUIPO_TIPO", eQUIPO_TIPO);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the FRECUENCIA EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFRECUENCIA(FRECUENCIA fRECUENCIA)
-        {
-            base.AddObject("FRECUENCIA", fRECUENCIA);
         }
     
         /// <summary>
@@ -621,6 +622,63 @@ namespace TMD.GM.AccesoDatos
         public void AddToSOLICITUD_DETALLE(SOLICITUD_DETALLE sOLICITUD_DETALLE)
         {
             base.AddObject("SOLICITUD_DETALLE", sOLICITUD_DETALLE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the EQUIPO_COMPUTO EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToEQUIPO_COMPUTO(EQUIPO_COMPUTO eQUIPO_COMPUTO)
+        {
+            base.AddObject("EQUIPO_COMPUTO", eQUIPO_COMPUTO);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CALENDARIO_LABORABLE EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCALENDARIO_LABORABLE(CALENDARIO_LABORABLE cALENDARIO_LABORABLE)
+        {
+            base.AddObject("CALENDARIO_LABORABLE", cALENDARIO_LABORABLE);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FRECUENCIA EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFRECUENCIA(FRECUENCIA fRECUENCIA)
+        {
+            base.AddObject("FRECUENCIA", fRECUENCIA);
+        }
+
+        #endregion
+        #region Function Imports
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        /// <param name="fecha_ini">No Metadata Documentation available.</param>
+        /// <param name="fecha_fin">No Metadata Documentation available.</param>
+        public ObjectResult<ORDEN_TRABAJO_CONSULTA> GET_ORDEN_TRABAJO(Nullable<global::System.DateTime> fecha_ini, Nullable<global::System.DateTime> fecha_fin)
+        {
+            ObjectParameter fecha_iniParameter;
+            if (fecha_ini.HasValue)
+            {
+                fecha_iniParameter = new ObjectParameter("fecha_ini", fecha_ini);
+            }
+            else
+            {
+                fecha_iniParameter = new ObjectParameter("fecha_ini", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter fecha_finParameter;
+            if (fecha_fin.HasValue)
+            {
+                fecha_finParameter = new ObjectParameter("fecha_fin", fecha_fin);
+            }
+            else
+            {
+                fecha_finParameter = new ObjectParameter("fecha_fin", typeof(global::System.DateTime));
+            }
+    
+            return base.ExecuteFunction<ORDEN_TRABAJO_CONSULTA>("GET_ORDEN_TRABAJO", fecha_iniParameter, fecha_finParameter);
         }
 
         #endregion
@@ -981,6 +1039,87 @@ namespace TMD.GM.AccesoDatos
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BDMantenModel", Name="CALENDARIO_LABORABLE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CALENDARIO_LABORABLE : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CALENDARIO_LABORABLE object.
+        /// </summary>
+        /// <param name="fECHA_LABORABLE">Initial value of the FECHA_LABORABLE property.</param>
+        /// <param name="hORAS_LABORABLES">Initial value of the HORAS_LABORABLES property.</param>
+        public static CALENDARIO_LABORABLE CreateCALENDARIO_LABORABLE(global::System.DateTime fECHA_LABORABLE, global::System.Int32 hORAS_LABORABLES)
+        {
+            CALENDARIO_LABORABLE cALENDARIO_LABORABLE = new CALENDARIO_LABORABLE();
+            cALENDARIO_LABORABLE.FECHA_LABORABLE = fECHA_LABORABLE;
+            cALENDARIO_LABORABLE.HORAS_LABORABLES = hORAS_LABORABLES;
+            return cALENDARIO_LABORABLE;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FECHA_LABORABLE
+        {
+            get
+            {
+                return _FECHA_LABORABLE;
+            }
+            set
+            {
+                if (_FECHA_LABORABLE != value)
+                {
+                    OnFECHA_LABORABLEChanging(value);
+                    ReportPropertyChanging("FECHA_LABORABLE");
+                    _FECHA_LABORABLE = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("FECHA_LABORABLE");
+                    OnFECHA_LABORABLEChanged();
+                }
+            }
+        }
+        private global::System.DateTime _FECHA_LABORABLE;
+        partial void OnFECHA_LABORABLEChanging(global::System.DateTime value);
+        partial void OnFECHA_LABORABLEChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 HORAS_LABORABLES
+        {
+            get
+            {
+                return _HORAS_LABORABLES;
+            }
+            set
+            {
+                OnHORAS_LABORABLESChanging(value);
+                ReportPropertyChanging("HORAS_LABORABLES");
+                _HORAS_LABORABLES = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("HORAS_LABORABLES");
+                OnHORAS_LABORABLESChanged();
+            }
+        }
+        private global::System.Int32 _HORAS_LABORABLES;
+        partial void OnHORAS_LABORABLESChanging(global::System.Int32 value);
+        partial void OnHORAS_LABORABLESChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -2269,11 +2408,13 @@ namespace TMD.GM.AccesoDatos
         /// </summary>
         /// <param name="cODIGO_FRECUENCIA">Initial value of the CODIGO_FRECUENCIA property.</param>
         /// <param name="dESCRIPCION_FRECUENCIA">Initial value of the DESCRIPCION_FRECUENCIA property.</param>
-        public static FRECUENCIA CreateFRECUENCIA(global::System.Int32 cODIGO_FRECUENCIA, global::System.String dESCRIPCION_FRECUENCIA)
+        /// <param name="dIAS_FRECUENCIA">Initial value of the DIAS_FRECUENCIA property.</param>
+        public static FRECUENCIA CreateFRECUENCIA(global::System.Int32 cODIGO_FRECUENCIA, global::System.String dESCRIPCION_FRECUENCIA, global::System.Int32 dIAS_FRECUENCIA)
         {
             FRECUENCIA fRECUENCIA = new FRECUENCIA();
             fRECUENCIA.CODIGO_FRECUENCIA = cODIGO_FRECUENCIA;
             fRECUENCIA.DESCRIPCION_FRECUENCIA = dESCRIPCION_FRECUENCIA;
+            fRECUENCIA.DIAS_FRECUENCIA = dIAS_FRECUENCIA;
             return fRECUENCIA;
         }
 
@@ -2334,9 +2475,9 @@ namespace TMD.GM.AccesoDatos
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> DIAS_FRECUENCIA
+        public global::System.Int32 DIAS_FRECUENCIA
         {
             get
             {
@@ -2351,8 +2492,8 @@ namespace TMD.GM.AccesoDatos
                 OnDIAS_FRECUENCIAChanged();
             }
         }
-        private Nullable<global::System.Int32> _DIAS_FRECUENCIA;
-        partial void OnDIAS_FRECUENCIAChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _DIAS_FRECUENCIA;
+        partial void OnDIAS_FRECUENCIAChanging(global::System.Int32 value);
         partial void OnDIAS_FRECUENCIAChanged();
 
         #endregion
@@ -2958,6 +3099,31 @@ namespace TMD.GM.AccesoDatos
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_DETALLE")]
+        public EntityCollection<ORDEN_TRABAJO_DETALLE> ORDEN_TRABAJO_DETALLE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ORDEN_TRABAJO_DETALLE>("BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_DETALLE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ORDEN_TRABAJO_DETALLE>("BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_DETALLE", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3186,6 +3352,47 @@ namespace TMD.GM.AccesoDatos
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_CABECERA")]
+        public ORDEN_TRABAJO_CABECERA ORDEN_TRABAJO_CABECERA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ORDEN_TRABAJO_CABECERA>("BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_CABECERA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ORDEN_TRABAJO_CABECERA>("BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_CABECERA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ORDEN_TRABAJO_CABECERA> ORDEN_TRABAJO_CABECERAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ORDEN_TRABAJO_CABECERA>("BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_CABECERA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ORDEN_TRABAJO_CABECERA>("BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA", "ORDEN_TRABAJO_CABECERA", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -3483,28 +3690,6 @@ namespace TMD.GM.AccesoDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "EQUIPO_COMPUTO")]
-        public EntityCollection<EQUIPO_COMPUTO> EQUIPO_COMPUTO
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EQUIPO_COMPUTO>("BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "EQUIPO_COMPUTO");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EQUIPO_COMPUTO>("BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "EQUIPO_COMPUTO", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA", "SOLICITUD_CABECERA")]
         public EntityCollection<SOLICITUD_CABECERA> SOLICITUD_CABECERA
         {
@@ -3539,6 +3724,28 @@ namespace TMD.GM.AccesoDatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PLAN_MANTENIMIENTO_DETALLE>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_DETALLE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "EQUIPO_COMPUTO")]
+        public EntityCollection<EQUIPO_COMPUTO> EQUIPO_COMPUTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EQUIPO_COMPUTO>("BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "EQUIPO_COMPUTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EQUIPO_COMPUTO>("BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA", "EQUIPO_COMPUTO", value);
                 }
             }
         }
@@ -3913,44 +4120,6 @@ namespace TMD.GM.AccesoDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA")]
-        public FRECUENCIA FRECUENCIA
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<FRECUENCIA> FRECUENCIAReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_CABECERA")]
         public PLAN_MANTENIMIENTO_CABECERA PLAN_MANTENIMIENTO_CABECERA
         {
@@ -4055,6 +4224,44 @@ namespace TMD.GM.AccesoDatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UNIDAD_TIEMPO>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO", "UNIDAD_TIEMPO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA")]
+        public FRECUENCIA FRECUENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FRECUENCIA> FRECUENCIAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FRECUENCIA>("BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA", "FRECUENCIA", value);
                 }
             }
         }
@@ -4549,44 +4756,6 @@ namespace TMD.GM.AccesoDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO")]
-        public EQUIPO_COMPUTO EQUIPO_COMPUTO
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<EQUIPO_COMPUTO> EQUIPO_COMPUTOReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA", "PLAN_MANTENIMIENTO_CABECERA")]
         public PLAN_MANTENIMIENTO_CABECERA PLAN_MANTENIMIENTO_CABECERA
         {
@@ -4713,6 +4882,44 @@ namespace TMD.GM.AccesoDatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SOLICITUD_DETALLE>("BDMantenModel.FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA", "SOLICITUD_DETALLE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO")]
+        public EQUIPO_COMPUTO EQUIPO_COMPUTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<EQUIPO_COMPUTO> EQUIPO_COMPUTOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EQUIPO_COMPUTO>("BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO", "EQUIPO_COMPUTO", value);
                 }
             }
         }
@@ -5087,44 +5294,6 @@ namespace TMD.GM.AccesoDatos
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA")]
-        public FRECUENCIA FRECUENCIA
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<FRECUENCIA> FRECUENCIAReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_PRIORIDAD", "PRIORIDAD")]
         public PRIORIDAD PRIORIDAD
         {
@@ -5229,6 +5398,44 @@ namespace TMD.GM.AccesoDatos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UNIDAD_TIEMPO>("BDMantenModel.FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO", "UNIDAD_TIEMPO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BDMantenModel", "FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA")]
+        public FRECUENCIA FRECUENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<FRECUENCIA> FRECUENCIAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<FRECUENCIA>("BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA", "FRECUENCIA", value);
                 }
             }
         }
@@ -5727,6 +5934,206 @@ namespace TMD.GM.AccesoDatos
                 }
             }
         }
+
+        #endregion
+    }
+
+    #endregion
+    #region ComplexTypes
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmComplexTypeAttribute(NamespaceName="BDMantenModel", Name="ORDEN_TRABAJO_CONSULTA")]
+    [DataContractAttribute(IsReference=true)]
+    [Serializable()]
+    public partial class ORDEN_TRABAJO_CONSULTA : ComplexObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ORDEN_TRABAJO_CONSULTA object.
+        /// </summary>
+        /// <param name="nOMBRE_EQUIPO">Initial value of the NOMBRE_EQUIPO property.</param>
+        /// <param name="dESC_AREA">Initial value of the DESC_AREA property.</param>
+        public static ORDEN_TRABAJO_CONSULTA CreateORDEN_TRABAJO_CONSULTA(global::System.String nOMBRE_EQUIPO, global::System.String dESC_AREA)
+        {
+            ORDEN_TRABAJO_CONSULTA oRDEN_TRABAJO_CONSULTA = new ORDEN_TRABAJO_CONSULTA();
+            oRDEN_TRABAJO_CONSULTA.NOMBRE_EQUIPO = nOMBRE_EQUIPO;
+            oRDEN_TRABAJO_CONSULTA.DESC_AREA = dESC_AREA;
+            return oRDEN_TRABAJO_CONSULTA;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NUMERO_SOLICITUD
+        {
+            get
+            {
+                return _NUMERO_SOLICITUD;
+            }
+            set
+            {
+                OnNUMERO_SOLICITUDChanging(value);
+                ReportPropertyChanging("NUMERO_SOLICITUD");
+                _NUMERO_SOLICITUD = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NUMERO_SOLICITUD");
+                OnNUMERO_SOLICITUDChanged();
+            }
+        }
+        private global::System.String _NUMERO_SOLICITUD;
+        partial void OnNUMERO_SOLICITUDChanging(global::System.String value);
+        partial void OnNUMERO_SOLICITUDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NOMBRE_EQUIPO
+        {
+            get
+            {
+                return _NOMBRE_EQUIPO;
+            }
+            set
+            {
+                OnNOMBRE_EQUIPOChanging(value);
+                ReportPropertyChanging("NOMBRE_EQUIPO");
+                _NOMBRE_EQUIPO = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NOMBRE_EQUIPO");
+                OnNOMBRE_EQUIPOChanged();
+            }
+        }
+        private global::System.String _NOMBRE_EQUIPO;
+        partial void OnNOMBRE_EQUIPOChanging(global::System.String value);
+        partial void OnNOMBRE_EQUIPOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MARCA_EQUIPO
+        {
+            get
+            {
+                return _MARCA_EQUIPO;
+            }
+            set
+            {
+                OnMARCA_EQUIPOChanging(value);
+                ReportPropertyChanging("MARCA_EQUIPO");
+                _MARCA_EQUIPO = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MARCA_EQUIPO");
+                OnMARCA_EQUIPOChanged();
+            }
+        }
+        private global::System.String _MARCA_EQUIPO;
+        partial void OnMARCA_EQUIPOChanging(global::System.String value);
+        partial void OnMARCA_EQUIPOChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DESC_AREA
+        {
+            get
+            {
+                return _DESC_AREA;
+            }
+            set
+            {
+                OnDESC_AREAChanging(value);
+                ReportPropertyChanging("DESC_AREA");
+                _DESC_AREA = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("DESC_AREA");
+                OnDESC_AREAChanged();
+            }
+        }
+        private global::System.String _DESC_AREA;
+        partial void OnDESC_AREAChanging(global::System.String value);
+        partial void OnDESC_AREAChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FECHA_INICIO_SOLICITUD
+        {
+            get
+            {
+                return _FECHA_INICIO_SOLICITUD;
+            }
+            set
+            {
+                OnFECHA_INICIO_SOLICITUDChanging(value);
+                ReportPropertyChanging("FECHA_INICIO_SOLICITUD");
+                _FECHA_INICIO_SOLICITUD = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA_INICIO_SOLICITUD");
+                OnFECHA_INICIO_SOLICITUDChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FECHA_INICIO_SOLICITUD;
+        partial void OnFECHA_INICIO_SOLICITUDChanging(Nullable<global::System.DateTime> value);
+        partial void OnFECHA_INICIO_SOLICITUDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FECHA_FIN_SOLICITUD
+        {
+            get
+            {
+                return _FECHA_FIN_SOLICITUD;
+            }
+            set
+            {
+                OnFECHA_FIN_SOLICITUDChanging(value);
+                ReportPropertyChanging("FECHA_FIN_SOLICITUD");
+                _FECHA_FIN_SOLICITUD = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA_FIN_SOLICITUD");
+                OnFECHA_FIN_SOLICITUDChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FECHA_FIN_SOLICITUD;
+        partial void OnFECHA_FIN_SOLICITUDChanging(Nullable<global::System.DateTime> value);
+        partial void OnFECHA_FIN_SOLICITUDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ESTADO_SOLICITUD
+        {
+            get
+            {
+                return _ESTADO_SOLICITUD;
+            }
+            set
+            {
+                OnESTADO_SOLICITUDChanging(value);
+                ReportPropertyChanging("ESTADO_SOLICITUD");
+                _ESTADO_SOLICITUD = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ESTADO_SOLICITUD");
+                OnESTADO_SOLICITUDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ESTADO_SOLICITUD;
+        partial void OnESTADO_SOLICITUDChanging(Nullable<global::System.Int32> value);
+        partial void OnESTADO_SOLICITUDChanged();
 
         #endregion
     }

@@ -17,8 +17,8 @@
     $('#divSolicitud').dialog({ autoOpen: false, width: 750, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#divCalendario').dialog({ autoOpen: false, width: 750, height: 500 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#divEquipos').dialog({ autoOpen: false, width: 750, height: 500 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
-    
-
+    $('#ModalMensajeError').dialog({ autoOpen: false, width: 548, height: 250 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
+   
 
 });
 
@@ -62,14 +62,17 @@ function BuscarPlanesMant(ParamUrl1) {
     });
 }
 function BuscarSolicitudes(ParamUrl1) {
+    
+    var dpIni = $("#dpFechaIni_Consulta").data("kendoDatePicker");
+    var dpFin = $("#dpFechaFin_Consulta").data("kendoDatePicker");
 
     $.ajax({
         type: "post",
         url: ParamUrl1,
         data: {
         pNumSoli: $('#txtNumSolicitud_Consulta').val(),
-            pFechaIni: $("#txtFechaIni_Consulta").val(),
-            pFechaFin: $("#txtFechaFin_Consulta").val(),
+            pFechaIni: dpIni.value(),
+            pFechaFin: dpFin.value(),
             pTipoSoli: $("#ddlTipoSolicitud_Consulta").val(),
             pDocuRefe: $("#txtNumDocuRefe_Consulta").val(),
             pEstaSoli: $("#ddlEstadoSolicitud_Consulta").val(),
@@ -140,7 +143,7 @@ function PlanMantEditar(ParamUrl1, ParamUrl2, ParamCodigo, ParamNombre, ParamEst
 }
 function PlanMantEliminar(ParamUrl1, ParamUrl2, ParamCodigo) {
 
-    if (!confirm('¿Está seguro de eliminar el Plan?')) {
+    if (!confirm('¿Está seguro de eliminar el registro?')) {
         return;
     }
 
@@ -160,47 +163,33 @@ function PlanMantEliminar(ParamUrl1, ParamUrl2, ParamCodigo) {
     });
 }
 
-function PlanActividadEliminar(ParamUrl1, ParamUrl2, ParamCodigo, ParamIdActividad) {
+function PlanActividadEliminar(ParamUrl1, ParamUrl2, ParamGuid) {
 
     if (!confirm('¿Está seguro de eliminar la Actividad?')) {
         return;
     }
-
-//    $.ajax({
-//        type: "post",
-//        url: ParamUrl1,
-//        data: { pCodigo: ParamCodigo },
-//        cache: false,
-//        success: function (data, textStatus, jqXHR) {
-//            BuscarPlanesMant(ParamUrl2)
-//        },
-//        error: function (req, status, error) {
-//            alert("fail: " + req + " " + status + " " + error);
-//        },
-//        complete: function () {
-//        }
-//    });
+     $.ajax({
+                type: "POST",
+                url: ParamUrl1,
+                data: {pGuidActividad : ParamGuid },
+                cache: false,
+                success: function (data, textStatus, jqXHR) {
+                    $("#pnlGridActividades").html(data);
+                },
+                error: function (req, status, error) {
+                    alert("fail: " + req + " " + status + " " + error);
+                },
+                complete: function () {
+                }
+            });
 }
 
-function PlanActividadEditar(ParamUrl1,ParamIdAc, ParamCodi, ParamItem, ParamTipoActi, ParamDesc, ParamPrio,
-ParamCodiFrec,ParamPersRequ, ParamCodiTiem,ParamTiemActi,ParamProc, ParamObse) {
+function PlanActividadEditar(ParamUrl1, ParamGuid) {
 
     $.ajax({
         type: "post",
         url: ParamUrl1,
-        data: { 
-        pIdActividad : ParamIdAc,
-        pCodigo: ParamCodi, 
-        pItem: ParamItem, 
-        pTipoActi: ParamTipoActi, 
-        pDesc: ParamDesc, 
-        pPrio: ParamPrio,
-        pCodiFrec: ParamCodiFrec,
-        pPersRequ: ParamPersRequ, 
-        pCodiTiem: ParamCodiTiem,
-        pTiemActi: ParamTiemActi,
-        pProc: ParamProc, 
-        pObse: ParamObse },
+        data: {pGuidActividad : ParamGuid },
         cache: false,
         success: function (data, textStatus, jqXHR) {
             $("#divActividad").html(data);
@@ -266,26 +255,12 @@ function SolicitudEditar(ParamUrl1, ParamUrl2, ParamNumSoli, ParamFechaSoli, Par
     });
 }
 
-function SolicitudActividadEditar(ParamUrl1, ParamIdAc, ParamNumSoli, ParamItemSoli, ParamDescActi, ParamCodiTipo, ParamCodiPrio,
-ParamCodiFrec, ParamPersRequ, ParamCodiTiem, ParamTiemActi, ParamFechaProg, ParamOrdeTrab) {
+function SolicitudActividadEditar(ParamUrl1, ParamGuid) {
 
     $.ajax({
         type: "post",
         url: ParamUrl1,
-        data: {
-            pIdActividad: ParamIdAc,
-            pNumSoli: ParamNumSoli,
-            pItemSoli: ParamItemSoli,
-            pDescActi: ParamDescActi,
-            pCodiTipo: ParamCodiTipo,
-            pCodiPrio: ParamCodiPrio,
-            pCodiFrec: ParamCodiFrec,
-            pPersRequ: ParamPersRequ,
-            pCodiTiem: ParamCodiTiem,
-            pTiemActi: ParamTiemActi,
-            pFechaProg: ParamFechaProg,
-            pOrdeTrab: ParamOrdeTrab
-        },
+        data: {pGuidActividad: ParamGuid  },
         cache: false,
         success: function (data, textStatus, jqXHR) {
             $("#divActividad").html(data);
@@ -298,7 +273,27 @@ ParamCodiFrec, ParamPersRequ, ParamCodiTiem, ParamTiemActi, ParamFechaProg, Para
         }
     });
 }
+function SolicitudEliminar(ParamUrl1, ParamUrl2, ParamCodigo) {
 
+    if (!confirm('¿Está seguro de eliminar el registro?')) {
+        return;
+    }
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: { pCodigo: ParamCodigo },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            BuscarSolicitudes(ParamUrl2)
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
 function SolicitudActividadNueva(ParamUrl1, ParamNumSoli) {
 
     $.ajax({
@@ -320,8 +315,22 @@ function SolicitudActividadNueva(ParamUrl1, ParamNumSoli) {
     });
 }
 
-function Plan_Aceptar_Click(ParamUrl1) {
+function Plan_Aceptar_Click(ParamUrl1,ParamUrl2) {
+    //Validaciones del cliente
+    if($.trim($('#txtCodigo').val()) == '')
+    {
+        alert('Debe ingresar el código del plan');
+        $('#txtCodigo').focus();
+        return;
+    }
+    if($.trim($('#txtNombre').val()) == '')
+    {
+        alert('Debe ingresar el Nombre del plan');
+        $('#txtNombre').focus();
+        return;
+    }
 
+    //------------------------
     $.ajax({
         type: "post",
         url: ParamUrl1,
@@ -334,9 +343,12 @@ function Plan_Aceptar_Click(ParamUrl1) {
         success: function (data, textStatus, jqXHR) {
             CerrarModalPlanNuevo();
             CerrarModalPlanEditar();
+            BuscarPlanesMant(ParamUrl2);
         },
         error: function (req, status, error) {
-            alert("fail: " + req + " " + status + " " + error);
+//            alert("fail: " + req + " " + status + " " + error);
+                $('#ModalMensajeError').dialog('option', 'modal', true).dialog('open');
+                $("#ModalMensajeError").html(req.responseText);
         },
         complete: function () {
         }
@@ -345,20 +357,22 @@ function Plan_Aceptar_Click(ParamUrl1) {
 function PlanActividad_AceptarClick(ParamUrl1,ParamUrl2) {
    var CodigoPlan = $("#hdCodigoPlan").val();
 
+   var ntbTiempoDura = $("#ntbTiempoDura").data("kendoNumericTextBox");
+   var ntbPersRequ = $("#ntbPersRequ").data("kendoNumericTextBox");
+   var ntbItem = $("#ntbItem").data("kendoNumericTextBox");
+
     $.ajax({
         type: "post",
         url: ParamUrl1,
         data: {
-            pIdActividad: $('#hdIdActividad').val(),
-            pCodigo: $("#hdCodigoPlan").val(),
-            pItem: $("#txtItem").val(),
+            pItem: ntbItem.value(),
             pTipoActi: $("#ddlTipoActividad").val(),
             pDesc: $("#txtActividadDesc").val(),
             pPrio: $("#ddlPrioridad").val(),
             pCodiFrec: $("#ddlFrecuencia").val(),
-            pPersRequ: $("#txtPersRequ").val(),
+            pPersRequ: ntbPersRequ.value(),
             pCodiTiem: $("#ddlTiempoUnme").val(),
-            pTiemActi: $("#txtTiempoDura").val(),
+            pTiemActi: ntbTiempoDura.value(),
             pProc: $("#txtProcedimiento").val(),
             pObse: $("#txtObservaciones").val()
         },
@@ -391,22 +405,24 @@ function PlanActividad_AceptarClick(ParamUrl1,ParamUrl2) {
 
 function SolicitudActividad_AceptarClick(ParamUrl1, ParamUrl2) {
     var Codigo = $("#hdNumeroSoli").val();
-
+    var dpFechaProg = $("#dpFechaProg").data("kendoDatePicker");
+    var fechatmp = dpFechaProg.value();
+    var ntbTiempoDura = $("#ntbTiempoDura").data("kendoNumericTextBox");
+    var ntbPersRequ = $("#ntbPersRequ").data("kendoNumericTextBox");
+    alert(dpFechaProg.value());
     $.ajax({
         type: "post",
         url: ParamUrl1,
         data: {
-            pIdActividad: $('#hdIdActividad').val(),
-            pCodigo: $("#hdNumeroSoli").val(),
             pItem: $("#txtItem").val(),
             pTipoActi: $("#ddlTipoActividad").val(),
             pDesc: $("#txtActividadDesc").val(),
             pPrio: $("#ddlPrioridad").val(),
             pCodiFrec: $("#ddlFrecuencia").val(),
-            pPersRequ: $("#txtPersRequ").val(),
+            pPersRequ: ntbPersRequ.value(),
             pCodiTiem: $("#ddlTiempoUnme").val(),
-            pTiemActi: $("#txtTiempoDura").val(),
-            pFechaProg: $("#txtFechaProg").val(),
+            pTiemActi: ntbTiempoDura.value(),
+            pFechaProg: dpFechaProg.value(),
             pOrdeTrab: $("#txtNumOT").val()
         },
         cache: false,
@@ -435,25 +451,31 @@ function SolicitudActividad_AceptarClick(ParamUrl1, ParamUrl2) {
         }
     });
 }
-function SolicitudRegistrar(ParamUrl1) {
+function SolicitudRegistrar(ParamUrl1,ParamUrl2) {
+
+    var dpSol = $("#dpFechaSol").data("kendoDatePicker");
+    var dpIni = $("#dpFechaIni").data("kendoDatePicker");
+    var dpFin = $("#dpFechaFin").data("kendoDatePicker");
 
     $.ajax({
         type: "post",
         url: ParamUrl1,
         data: {
             pNumSoli: $('#txtNumSolicitud').val(),
-            pFechaSoli: $("#txtFechaSol").val(),
+            pFechaSoli: dpSol.value(),
             pTipoSoli: $("#ddlTipoSolicitud").val(),
             pDocuRefe: $("#txtNumDocuRefe").val(),
-            pFechaIni: $("#txtFechaIni").val(),
-            pFechaFin: $("#txtFechaFin").val(),
+            pFechaIni: dpIni.value(),
+            pFechaFin: dpFin.value(),
             pEstado: $("#ddlEstadoSolicitud").val(),
             pCodiEqui: $("#txtCodigoEquipo").val(),
             pCodiPlan: $("#ddlPlanMante").val(),
+            pCronGene: $("#hdCronogramaGenerado").val(),
         },
         cache: false,
         success: function (data, textStatus, jqXHR) {
             CerrarModalSolicitud();
+            BuscarSolicitudes(ParamUrl2);
         },
         error: function (req, status, error) {
             alert("fail: " + req + " " + status + " " + error);
@@ -461,6 +483,26 @@ function SolicitudRegistrar(ParamUrl1) {
         complete: function () {
         }
     });
+}
+function SolicitudActividadEliminar(ParamUrl1, ParamGuid) {
+
+    if (!confirm('¿Está seguro de eliminar la Actividad?')) {
+        return;
+    }
+     $.ajax({
+                type: "POST",
+                url: ParamUrl1,
+                data: {pGuidActividad : ParamGuid },
+                cache: false,
+                success: function (data, textStatus, jqXHR) {
+                    $("#pnlGridActividades").html(data);
+                },
+                error: function (req, status, error) {
+                    alert("fail: " + req + " " + status + " " + error);
+                },
+                complete: function () {
+                }
+            });
 }
 function EquipoConsulta(ParamUrl1) {
     
@@ -482,15 +524,40 @@ function EquipoConsulta(ParamUrl1) {
 }
 
 
+
 function EquiposEjecutarBusqueda(ParamUrl1) {
     
     $.ajax({
         type: "post",
         url: ParamUrl1,
-        data: "",
+        data: {
+        pCodiEqui: $('#txtCodigoEquipo_Consulta').val(),
+        pNombEqui: $('#txtNombreEquipo_Consulta').val(),
+        pSeriEqui: $('#txtSerieEquipo_Consulta').val(),
+        },
         cache: false,
         success: function (data, textStatus, jqXHR) {
             $("#gridEquipos").html(data);
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+
+function SolicitudGenerarCronograma(ParamUrl1, ParamNumeSoli){
+  $.ajax({
+        type: "POST",
+        url: ParamUrl1,
+        data: { pNumeSoli: ParamNumeSoli,
+        pFechaInicio: $('#txtFechaIni').val(),
+        pFechaFin: $('#txtFechaFin').val()
+        },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            $("#pnlGridActividades").html(data);
         },
         error: function (req, status, error) {
             alert("fail: " + req + " " + status + " " + error);
@@ -506,6 +573,102 @@ function EquipoSeleccionar(ParamCodEqui, ParamNomEqui, ParamDesArea) {
     $("#txtAreaUbi").attr("value", ParamDesArea);
 
     CerrarModalEquipos();
+}
+
+function EquiposNuevo(ParamUrl1) {
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: "",
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            $("#divEquipos").html(data);
+            MostrarModalEquipos();
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+function EquiposEditar(ParamUrl1, ParamCodEquipo) {
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data:{pCodiEqui:ParamCodEquipo },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            $("#divEquipos").html(data);
+            MostrarModalEquipos();
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+
+function EquiposRegistrar(ParamUrl1,ParamUrl2) {
+     var dpFCompra = $("#txtFechaCompra").data("kendoDatePicker");
+     var dpFExpira = $("#txtFechaExpira").data("kendoDatePicker");
+     var dpFUltMan = $("#txtFechaUltiMant").data("kendoDatePicker");
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: {
+            pCodiEqui: $('#txtCodigoEquipo').val(),
+            pNombEqui: $("#txtNombreEquipo").val(),
+            pSerie: $("#txtSerieEquipo").val(),
+            pMarca: $("#txtMarcaEquipo").val(),
+            pModel: $("#txtModeloEquipo").val(),
+            pCarac: $("#txtCaracteristicaEquipo").val(),
+            pFechaComp: dpFCompra.value(),
+            pFechaExpi: dpFExpira.value(),
+            pFechaUltiMant: dpFUltMan.value(),
+            pCodiArea: $("#ddlArea").val(),
+            pCodiTipo: $("#ddlTipoEquipo").val(),
+            pCodiPlan: $("#ddlPlanMant").val(),
+            pProced: $("#txtProcedEquipo").val(),
+            pEstaEqui: $("#checkEstado").val()
+        },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            CerrarModalEquipos();
+            EquiposEjecutarBusqueda(ParamUrl2);
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+
+function EquiposEliminar(ParamUrl1, ParamUrl2, ParamCodigo) {
+
+    if (!confirm('¿Está seguro de eliminar el registro?')) {
+        return;
+    }
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: { pCodigo: ParamCodigo },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            EquiposEjecutarBusqueda(ParamUrl2)
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
 }
 
 function MostrarCalendario(ParamUrl1) {
@@ -582,3 +745,45 @@ function MostrarModalEquipos() {
 function CerrarModalEquipos() {
     $('#divEquipos').dialog('option', 'modal', true).dialog('close');
 };
+
+function BuscarOT(ParamUrl1) {
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: { pd_Fini: $("#txtFechaIni").val(),
+            pd_Ffin: $("#txtFechaFin").val()
+         },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            $("#divGrid").html(data);
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+function NuevaOT(ParamUrl1) {
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: "",
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            $("#divNuevaOT").html(data);
+            MostrarCreaOT();
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+function MostrarCreaOT() {
+    $('#divNuevaOT').dialog('option', 'modal', true).dialog('open');
+    return true;
+}

@@ -124,6 +124,10 @@ namespace TMD.GM.Util
         {
             if (obj == null || obj == DBNull.Value) return ""; else return Convert.ToDateTime(obj).ToString("yyyyMMdd");
         }
+        public static string ObjectToDateTimeStringNull(object obj, string format)
+        {
+            if (obj == null || obj == DBNull.Value) return ""; else return Convert.ToDateTime(obj).ToString(format);
+        }
         public static DateTime StringToDateTime(string str)
         {
             return (string.IsNullOrEmpty(str)) ? DateTime.MinValue : Convert.ToDateTime(str);
@@ -236,6 +240,17 @@ namespace TMD.GM.Util
                 catch { Temp = DateTime.MinValue; }
             return Temp;
         }
+
+        public static DateTime? ObjectToDateNullTimeTryParse(object obj)
+        {
+            DateTime? Temp;
+            if (obj == null)
+                Temp = null;
+            else
+                try { Temp = Convert.ToDateTime(obj); }
+                catch { Temp = null; }
+            return Temp;
+        }
         //public static DateTime? ObjectToDateTimeSQLTryParse(object obj)
         //{
         //    DateTime? Temp;
@@ -260,10 +275,10 @@ namespace TMD.GM.Util
         {
             int Temp;
             if (obj == null)
-                Temp = int.MinValue;
+                Temp = 0;
             else
                 try { Temp = Convert.ToInt32(obj); }
-                catch { Temp = int.MinValue; }
+                catch { Temp = 0; }
             return Temp;
         }
         public static Int64 ObjectToInt64TryParse(object obj)
