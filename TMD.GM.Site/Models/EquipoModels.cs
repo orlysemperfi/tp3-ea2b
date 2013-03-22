@@ -12,7 +12,12 @@ namespace TMD.GM.Site.Models
 {
     public class EquipoModel
     {
+
+        public bool nuevo { get; set; }
         public EquipoBE entity { get; set; }
+        public List<SelectListItem> listaTE { get; set; }
+        public List<SelectListItem> listaAR { get; set; }
+        public List<SelectListItem> listaPM { get; set; }
     }
 
     public class EquipoBusquedaModel
