@@ -4,9 +4,7 @@
       columns: grid.Columns(
     grid.Column("CODIGO_PLAN", "Código", canSort: false),
     grid.Column("NOMBRE_PLAN", "Nombre", canSort: false),
-    grid.Column("ESTADO_PLAN", "Estado", format: @<text>
-    @Html.CheckBox("cbCodPlan", isChecked: item.ESTADO_PLAN ? true : false, htmlAttributes: new { @disabled = "disabled" })
-    </text>, canSort: false),
+    grid.Column("ESTADO_PLAN", "Activo", format: @<text>@(item.ESTADO_PLAN?"Si": "No")</text>, canSort: false),
  grid.Column("", "", format: @<text>
  <a href="#" onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.CODIGO_PLAN','@item.NOMBRE_PLAN',@(item.ESTADO_PLAN ? 1 : 0));">Editar</a>
     </text>, canSort: false),
@@ -16,8 +14,66 @@
          )
         )
 
-
+@*<div id="grid"></div>*@
  @*Html.ActionImageLink("Edit", new { id = item.CODIGO_PLAN }, "btnEditForm", "Editar")
  Html.ActionLink("Visualizar", "Visualizar", "Plan", new { ID = item.CODIGO_PLAN }, null)
  onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@item.CODIGO_PLAN','@NOMBRE_PLAN','@(item.ESTADO_PLAN?1:0)');"
  *@
+@* <script>
+     $(document).ready(function () {
+         var crudServiceBaseUrl = "http://demos.kendoui.com/service",
+                        dataSource = new kendo.data.DataSource({
+                            transport: {
+                                read: {
+                                    url: crudServiceBaseUrl + "/Products",
+                                    dataType: "jsonp"
+                                },
+                                update: {
+                                    url: crudServiceBaseUrl + "/Products/Update",
+                                    dataType: "jsonp"
+                                },
+                                destroy: {
+                                    url: crudServiceBaseUrl + "/Products/Destroy",
+                                    dataType: "jsonp"
+                                },
+                                create: {
+                                    url: crudServiceBaseUrl + "/Products/Create",
+                                    dataType: "jsonp"
+                                },
+                                parameterMap: function (options, operation) {
+                                    if (operation !== "read" && options.models) {
+                                        return { models: kendo.stringify(options.models) };
+                                    }
+                                }
+                            },
+                            batch: true,
+                            pageSize: 30,
+                            schema: {
+                                model: {
+                                    id: "ProductID",
+                                    fields: {
+                                        ProductID: { editable: false, nullable: true },
+                                        ProductName: { validation: { required: true} },
+                                        UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                                        Discontinued: { type: "boolean" },
+                                        UnitsInStock: { type: "number", validation: { min: 0, required: true} }
+                                    }
+                                }
+                            }
+                        });
+
+         $("#grid").kendoGrid({
+             dataSource: dataSource,
+             pageable: true,
+             height: 400,
+             toolbar: ["create"],
+             columns: [
+                            { field: "ProductName", title: "Product Name" },
+                            { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "150px" },
+                            { field: "UnitsInStock", title: "Units In Stock", width: "150px" },
+                            { field: "Discontinued", width: "100px" },
+                            { command: ["edit", "destroy"], title: "&nbsp;", width: "210px"}],
+             editable: "popup"
+         });
+     });
+            </script>*@
