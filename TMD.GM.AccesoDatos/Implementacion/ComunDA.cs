@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data;
 using TMD.GM.Util;
 using TMD.GM.AccesoDatos.Contrato;
+using System.Data.Common;
 
 namespace TMD.GM.AccesoDatos.Implementacion
 {
@@ -62,7 +63,82 @@ namespace TMD.GM.AccesoDatos.Implementacion
             }
         }
 
+        public List<SelectListItemBE> ListarTipoEquipo()
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            List<SelectListItemBE> listaResult = new List<SelectListItemBE>();
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    DbTransaction dbTran = null;
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
 
+                        var listaDatos = (from u in db.EQUIPO_TIPO select u);
+
+                        foreach (var itemEntidad in listaDatos)
+                        {
+                            listaResult.Add(new SelectListItemBE()
+                            {
+                                CODIGO = itemEntidad.CODIGO_TIPO_EQUIPO.ToString(),
+                                DESCRIPCION = itemEntidad.DESCRIPCION_TIPO_EQUIPO,
+                            });
+                        }
+                        return listaResult;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<SelectListItemBE> ListarAreas()
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            List<SelectListItemBE> listaResult = new List<SelectListItemBE>();
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    DbTransaction dbTran = null;
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
+
+                        var listaDatos = (from u in db.AREA select u);
+
+                        foreach (var itemEntidad in listaDatos)
+                        {
+                            listaResult.Add(new SelectListItemBE()
+                            {
+                                CODIGO = itemEntidad.CODIGO_AREA.ToString(),
+                                DESCRIPCION = itemEntidad.DESCRIPCION,
+                            });
+                        }
+                        return listaResult;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<SelectListItemBE> ListarTipoActividad()
         {
             Database oDatabase = BaseDA.GetSqlDatabase;
@@ -120,11 +196,11 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 List<SelectListItemBE> result = new List<SelectListItemBE>();
                 using (IDataReader oReader = oDatabase.ExecuteReader("GET_PRIORIDAD"))
                 {
-                    result.Add(new SelectListItemBE()
-                    {
-                        CODIGO = "0",
-                        DESCRIPCION = "[Todos]",
-                    });
+                    //result.Add(new SelectListItemBE()
+                    //{
+                    //    CODIGO = "0",
+                    //    DESCRIPCION = "[Todos]",
+                    //});
                     while (oReader.Read())
                     {
                         result.Add(new SelectListItemBE()
@@ -149,11 +225,11 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 List<SelectListItemBE> result = new List<SelectListItemBE>();
                 using (IDataReader oReader = oDatabase.ExecuteReader("GET_FRECUENCIA"))
                 {
-                    result.Add(new SelectListItemBE()
-                    {
-                        CODIGO = "0",
-                        DESCRIPCION = "[Todos]",
-                    });
+                    //result.Add(new SelectListItemBE()
+                    //{
+                    //    CODIGO = "0",
+                    //    DESCRIPCION = "[Todos]",
+                    //});
 
                     while (oReader.Read())
                     {

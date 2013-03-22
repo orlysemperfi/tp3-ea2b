@@ -40,18 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\IEmpleadosBL.cs" />
     <Compile Include="Contrato\IEquipoBL.cs" />
     <Compile Include="Contrato\IComunBL.cs" />
-    <Compile Include="Contrato\IEmpleadosBL.cs" />
     <Compile Include="Contrato\IEspecialidadBL.cs" />
     <Compile Include="Contrato\IInformesBL.cs" />
+    <Compile Include="Contrato\IOrdenTrabajoBL.cs" />
     <Compile Include="Contrato\ISolicitudBL.cs" />
     <Compile Include="Contrato\IPlanBL.cs" />
     <Compile Include="Implementacion\ComunBL.cs" />
     <Compile Include="Implementacion\EmpleadosBL.cs" />
+    <Compile Include="Implementacion\EquipoBL.cs" />
     <Compile Include="Implementacion\EspecialidadBL.cs" />
     <Compile Include="Implementacion\InformesBL.cs" />
-    <Compile Include="Implementacion\EquipoBL.cs" />
+    <Compile Include="Implementacion\OrdenTrabajoBL.cs" />
     <Compile Include="Implementacion\PlanBL.cs" />
     <Compile Include="Implementacion\SolicitudBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

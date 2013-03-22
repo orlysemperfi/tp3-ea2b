@@ -29,6 +29,14 @@ namespace TMD.GM.LogicaNegocios.Implementacion
             return instanciaDA.ListarEstadoSolicitud();
         }
 
+        public List<SelectListItemBE> ListarTipoEquipo()
+        {
+            return instanciaDA.ListarTipoEquipo();
+        }
+        public List<SelectListItemBE> ListarAreas()
+        {
+            return instanciaDA.ListarAreas();
+        }
         public List<SelectListItemBE> ListarTipoActividad()
         {
             return instanciaDA.ListarTipoActividad();
