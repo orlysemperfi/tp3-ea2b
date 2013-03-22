@@ -1,5 +1,0 @@
-C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.ServiceDesk.AD-Encuestas.dll
-C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\bin\Debug\TMD.ServiceDesk.AD-Encuestas.pdb
-C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.ServiceDesk.AD-Encuestas.dll
-C:\Users\Hans\Documents\UPC\CICLO 10\IS168 Taller de Proyectos 2\Trabajo Final TP2\Service Desk\CapaDatos\TMD.ServiceDesk.AD-Encuestas\obj\Debug\TMD.ServiceDesk.AD-Encuestas.pdb
