@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TMD.Entidades
 {
+    /// <summary>
+    /// Clase que representa la entidad Proyecto Fase
+    /// </summary>
     public class ProyectoFase
     {
         public int Id { get; set; }

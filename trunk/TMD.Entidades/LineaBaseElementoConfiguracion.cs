@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TMD.Entidades
 {
+    /// <summary>
+    /// Clase que representa la entidad linea base - detalle
+    /// </summary>
     public class LineaBaseElementoConfiguracion
     {
         public int Id { get; set; }
@@ -16,5 +19,6 @@ namespace TMD.Entidades
         public String Nombre { get; set; }
         public String Extension { get; set; }
         public Byte[] Data { get; set; }
+        public String NombreEcs { get; set; }  
     }
 }

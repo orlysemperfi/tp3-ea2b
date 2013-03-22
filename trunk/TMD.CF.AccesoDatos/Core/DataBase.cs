@@ -9,21 +9,28 @@ namespace TMD.CF.AccesoDatos.Core
 {
     public class DataBase
     {
-        protected SqlDatabase DB;
+        protected static SqlDatabase _dataBase;
         private static object syncLock = new object();
-
+        
+        //PATRON: SINGLETON
         public DataBase(String connectionString)
         {
-            if (DB == null)
+            if (_dataBase == null)
             {
                 lock (syncLock)
                 {
-                    if (DB == null)
+                    if (_dataBase == null)
                     {
-                        DB = DatabaseFactory.CreateDatabase(connectionString) as SqlDatabase;
+                        _dataBase = 
+                            DatabaseFactory.CreateDatabase(connectionString) as SqlDatabase;
                     }
                 }
             }
+        }
+
+        public static SqlDatabase DB
+        {
+            get { return _dataBase; }
         }
     }
 }

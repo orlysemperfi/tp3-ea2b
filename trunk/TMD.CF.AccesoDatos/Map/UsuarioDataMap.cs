@@ -26,5 +26,15 @@ namespace TMD.CF.AccesoDatos.Map
                 Nombre = reader.GetString("NOMBRE")
             };
         }
+
+        public static Usuario ObtenerUsuarioProyecto(IDataReader reader)
+        {
+            return new Usuario
+            {
+                Id = reader.GetInt("CODIGO"),
+                Nombre = reader.GetString("NOMBRE"),
+                Rol = reader.GetString("ROL")
+            };
+        }
     }
 }

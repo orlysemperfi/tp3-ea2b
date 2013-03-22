@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +6,8 @@ using TMD.CF.LogicaNegocios.Contrato;
 using TMD.CF.AccesoDatos.Contrato;
 using TMD.Entidades;
 using System.Transactions;
+using TMD.CF.LogicaNegocios.Error;
+using TMD.Core;
 
 namespace TMD.CF.LogicaNegocios.Implementacion
 {
@@ -16,22 +18,28 @@ namespace TMD.CF.LogicaNegocios.Implementacion
     {
         private readonly ILineaBaseData _lineaBaseData;
         private readonly ILineaBaseElementoConfiguracionData _lineaBaseECSData;
+        private readonly IUsuarioProyectoData _usuarioProyectoData;
+        private readonly IProyectoFaseData _proyectoFaseData;
 
-        public LineaBaseLogica(ILineaBaseData lineaBaseData, ILineaBaseElementoConfiguracionData lineaBaseECSData)
+        public LineaBaseLogica(ILineaBaseData lineaBaseData, ILineaBaseElementoConfiguracionData lineaBaseECSData,
+            IUsuarioProyectoData usuarioProyectoData, IProyectoFaseData proyectoFaseData)
         {
             _lineaBaseData = lineaBaseData;
             _lineaBaseECSData = lineaBaseECSData;
+            _usuarioProyectoData = usuarioProyectoData;
+            _proyectoFaseData = proyectoFaseData;
         }
 
         /// <summary>
         /// Agrega un registro a la tabla LineaBase.
         /// </summary>
         /// <param name="lineaBase">LineaBase</param>
-        public void Agregar(LineaBase lineaBase)
-        {
+        public void Agregar(LineaBase lineaBase, UsuarioProyecto usuarioProyecto)
+        {            
             using (var scope = new TransactionScope())
             {
-                _lineaBaseData.Agregar(lineaBase);
+                List<UsuarioProyecto> listaUsuarioProyecto = new List<UsuarioProyecto>();
+                _lineaBaseData.Agregar(lineaBase, usuarioProyecto);
                 lineaBase.LineaBaseECS.ForEach(ecs => _lineaBaseECSData.Agregar(ecs));
 
                 scope.Complete();
@@ -99,12 +107,15 @@ namespace TMD.CF.LogicaNegocios.Implementacion
         /// <returns>byte[]</returns>
         public LineaBaseElementoConfiguracion ObtenerArchivo(int id)
         {
+            LineaBaseElementoConfiguracion elementoConfiguracion = null;
+
             using (var scope = new TransactionScope())
             {
-                return _lineaBaseECSData.ObtenerArchivo(id);
-
-                scope.Complete();
+                elementoConfiguracion = _lineaBaseECSData.ObtenerArchivo(id);
+                scope.Complete();                
             }
+
+            return elementoConfiguracion;
         }
     }
 }

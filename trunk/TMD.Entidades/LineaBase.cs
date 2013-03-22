@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 
 namespace TMD.Entidades
-{
+{   
+    /// <summary>
+    /// Clase que representa a la entidad linea base - cabecera
+    /// </summary>
+
     public class LineaBase : Base
     {
         public int Id { get; set; }

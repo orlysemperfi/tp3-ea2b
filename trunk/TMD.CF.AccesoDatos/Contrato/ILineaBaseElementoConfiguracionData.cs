@@ -42,5 +42,12 @@ namespace TMD.CF.AccesoDatos.Contrato
         /// <param name="id">Id del elemento de configuracion</param>
         /// <returns>LineaBaseElementoConfiguracion</returns>
         LineaBaseElementoConfiguracion ObtenerArchivo(int id);
+
+        /// <summary>
+        /// Recupera un Elemento de Configuracion
+        /// </summary>
+        /// <param name="id">Id del elemento de configuracion</param>
+        /// <returns>LineaBaseElementoConfiguracion</returns>
+        LineaBaseElementoConfiguracion ObtenerPorId(int id);
     }
 }

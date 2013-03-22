@@ -10,6 +10,11 @@ namespace TMD.CF.AccesoDatos.Map
 {
     static class LineaBaseElementoConfiguracionMap
     {
+        /// <summary>
+        /// Clase encargada de mapear los datos de la Entidad LineaBase - Detalle.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public static LineaBaseElementoConfiguracion Select(IDataReader reader)
         {
             return new LineaBaseElementoConfiguracion
@@ -23,6 +28,7 @@ namespace TMD.CF.AccesoDatos.Map
                     Nombre = reader.GetString("ECS_NOMBRE"),
                     Tipo = "DC".Equals(reader.GetString("TIPO")) ? TipoElementoConfiguracion.Documento : TipoElementoConfiguracion.Release
                 },
+                NombreEcs = reader.GetString("ECS_NOMBRE"),
                 Responsable = new Usuario
                 {
                     Id = reader.GetInt("CODIGO_RESPONSABLE")
@@ -34,7 +40,8 @@ namespace TMD.CF.AccesoDatos.Map
                 },
                 LineaBase = new LineaBase
                 {
-                    Id = reader.GetInt("CODIGO_LINEA_BASE")
+                    Id = reader.GetInt("CODIGO_LINEA_BASE"),
+                    ProyectoFase = new ProyectoFase { FechaFin = reader.GetDateTime("FECHA_FIN") }
                 }
             };
         }

@@ -13,6 +13,5 @@ namespace TMD.Entidades
         public double valor { get; set; }
         public int? codigo_Unidad { get; set; }
         public int action { get; set; }
-        public String descripcion_unidad { get; set; }
     }
 }
