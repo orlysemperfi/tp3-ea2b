@@ -169,10 +169,16 @@
     <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
     <Content Include="Vistas\MP\IndicadorListado.aspx" />
     <Content Include="Vistas\MP\Inicio.aspx" />
+    <Content Include="Vistas\MP\PilotoFormulario.aspx" />
+    <Content Include="Vistas\MP\PilotoListado.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraListado.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx" />
     <Content Include="Vistas\MP\Prueba2.aspx" />
+    <Content Include="Vistas\MP\SolucionMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
     <Content Include="Vistas\SD\IngresarSolucion.aspx" />
@@ -286,6 +292,18 @@
     </Compile>
     <Compile Include="FachadaNegocio\CF\SolicitudCambioFachada.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MasterPage\Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Default.aspx.cs">
@@ -497,12 +515,36 @@
     <Compile Include="Vistas\MP\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\MP\PilotoFormulario.aspx.cs">
+      <DependentUpon>PilotoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PilotoFormulario.aspx.designer.cs">
+      <DependentUpon>PilotoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PilotoListado.aspx.cs">
+      <DependentUpon>PilotoListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PilotoListado.aspx.designer.cs">
+      <DependentUpon>PilotoListado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.cs">
       <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx.cs">
+      <DependentUpon>PropuestaMejoraAprobarFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraAprobarFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.cs">
+      <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraFormulario.aspx.cs">
       <DependentUpon>PropuestaMejoraFormulario.aspx</DependentUpon>
@@ -518,12 +560,24 @@
     <Compile Include="Vistas\MP\PropuestaMejoraListado.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraListado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.cs">
+      <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\MP\Prueba2.aspx.cs">
       <DependentUpon>Prueba2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\MP\Prueba2.aspx.designer.cs">
       <DependentUpon>Prueba2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\SolucionMejoraFormulario.aspx.cs">
+      <DependentUpon>SolucionMejoraFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\SolucionMejoraFormulario.aspx.designer.cs">
+      <DependentUpon>SolucionMejoraFormulario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.cs">
       <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
@@ -626,7 +680,10 @@
   <ItemGroup>
     <Content Include="Vistas\MP\TMD-MP.Master" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MasterPage\Principal.Master" />
+    <Content Include="MasterPage\Site.Master" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Vistas\ACP\Site.Master" />
   </ItemGroup>

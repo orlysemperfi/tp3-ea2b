@@ -33,6 +33,10 @@ namespace TMD.MP.Site.Privado
                     NuevaPropuestaMejora();
                 }
                 else if (action==Constantes.ACTION_UPDATE || action==Constantes.ACTION_VIEW) {
+                    tblCodigo.Style.Remove("display");
+                    tblCodigo.Style.Add("display","block");
+                    tblEstado.Style.Remove("display");
+                    tblEstado.Style.Add("display", "block");
                     CargarPropuestaMejora();
                 }
                 List<IndicadorEntidad> indicadorListado = Sesiones.PropuestaMejoraSeleccionada.lstIndicadores;
@@ -45,7 +49,7 @@ namespace TMD.MP.Site.Privado
         protected void NuevaPropuestaMejora()
         {
             if (Sesiones.PropuestaMejoraSeleccionada == null)
-            {
+            {                
                 Sesiones.PropuestaMejoraSeleccionada = new PropuestaMejoraEntidad();
             }
             gvwIndicadores.DataBind();
@@ -154,80 +158,86 @@ namespace TMD.MP.Site.Privado
         //    lblMensajeError.Text = lblMensajeError.Text + " chau :" + check.Checked;
         //}
 
-        protected void lbtnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Validate(lbtnGuardar.ValidationGroup);
+            Validate(btnGuardar.ValidationGroup);
 
             if(IsValid == true){
+                int count = 0;
+
+                foreach (GridViewRow row in gvwIndicadores.Rows)
+                {
+                    CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
+                    if (check.Checked)
+                        count++;
+                }
+                
+                if (count == 0)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                          "err_msg",
+                          "alert('Seleccione al menos un indicador');",
+                          true);
+                    return;
+                }
+                
                 PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
                 IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-                if (validarCampos()) {
-                    oPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
-                    oPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
-                    oPropuestaMejora.codigo_Responsable = Convert.ToInt32(ddlResponsable.SelectedItem.Value);
-                    oPropuestaMejora.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
-                    oPropuestaMejora.descripcion = tbxDescripcion.Text;
-                    oPropuestaMejora.fecha_Envio = Convert.ToDateTime(tbxFechaEnvio.Text);
-                    oPropuestaMejora.causa = tbxCausa.Text;
-                    oPropuestaMejora.beneficios = tbxBeneficios.Text;
-                    oPropuestaMejora.observaciones = tbxObservaciones.Text;
-                    oPropuestaMejora.lstIndicadores = new List<IndicadorEntidad>();
 
-                    IndicadorEntidad oIndicador = null;
-                
-                    foreach (GridViewRow row in gvwIndicadores.Rows)
-                    {
-                        CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
-                        oIndicador = new IndicadorEntidad();
-                        String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
-                        oIndicador.codigo = Convert.ToInt32(llbl);
+                oPropuestaMejora.codigo_Area = Convert.ToInt32(ddlArea.SelectedItem.Value);
+                oPropuestaMejora.tipo_Propuesta = ddlTipoPropuesta.SelectedItem.Text;
+                oPropuestaMejora.codigo_Responsable = Convert.ToInt32(ddlResponsable.SelectedItem.Value);
+                oPropuestaMejora.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedItem.Value);
+                oPropuestaMejora.descripcion = tbxDescripcion.Text;
+                oPropuestaMejora.fecha_Envio = Convert.ToDateTime(tbxFechaEnvio.Text);
+                oPropuestaMejora.causa = tbxCausa.Text;
+                oPropuestaMejora.beneficios = tbxBeneficios.Text;
+                oPropuestaMejora.observaciones = tbxObservaciones.Text;
+                oPropuestaMejora.lstIndicadores = new List<IndicadorEntidad>();
 
-                        if (check.Checked)
-                            oIndicador.marcado = "true";
-                        else
-                            oIndicador.marcado = "false";
-                        oPropuestaMejora.lstIndicadores.Add(oIndicador); 
-                    }
+                IndicadorEntidad oIndicador = null;
 
-                    if (oPropuestaMejora.codigo_Propuesta != null)
-                        oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
+                foreach (GridViewRow row in gvwIndicadores.Rows)
+                {
+                    CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
+                    oIndicador = new IndicadorEntidad();
+                    String llbl = ((Label)row.Cells[0].FindControl("lblCodigo")).Text;
+                    oIndicador.codigo = Convert.ToInt32(llbl);
+
+                    if (check.Checked)
+                        oIndicador.marcado = "true";
                     else
-                    {
-                        oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
-                        oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
-                    }
-                
-                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado);
-                
+                        oIndicador.marcado = "false";
+                    oPropuestaMejora.lstIndicadores.Add(oIndicador);
                 }
+
+                if (oPropuestaMejora.codigo_Propuesta != null)
+                    oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
+                else
+                {
+                    oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
+                    oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+                }
+
+                string currentURL = Request.Url.ToString();
+                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                "alert('Propuesta Registrada'); window.location='" +
+                newURL + "/PropuestaMejoraListado.aspx';", true);
             }
         }
 
-        protected Boolean validarCampos() {
-            Boolean esValido = true;
-
-            if (tbxDescripcion.Text.Equals(""))
-                esValido = false;
-
-            return esValido;
-        }
-
-        protected void lbtnCancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
-        }
-
-        protected void gvwIndicadores_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName.Equals("SeleccionarIndicador"))
+            if (Sesiones.PropuestaMejoraSeleccionada.enDesarrollo == false)
             {
-                CheckBox check = (CheckBox)sender;
-                lblMensajeError.Text = "hola :" + e.CommandArgument;
-                lblMensajeError.Text = lblMensajeError.Text + " chau :" + check.Checked;
+                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
             }
-        }
-        public CascadingDropDownNameValue[] ObtenerProcesosPorArea(string knownCategoryValues, string category) {
-            return null;
+            else {
+                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraDesarrollo, true);
+            }
+            
         }
 
         public void CargarIndicadoresProceso() {
@@ -269,8 +279,10 @@ namespace TMD.MP.Site.Privado
             tbxDescripcion.Enabled = false;
             tbxCausa.Enabled = false;
             tbxBeneficios.Enabled = false;
-            lbtnGuardar.Visible = false;
-            lbtnCancelar.Text = "Salir";
+            btnGuardar.Visible = false;
+            btnCancelar.Text = "Salir";
+            gvwIndicadores.Enabled = false;
+
         }
     }
 }

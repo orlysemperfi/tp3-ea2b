@@ -1,160 +1,169 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" 
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" 
     CodeBehind="IndicadorFormularioCuali.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresFormulario" %>
 
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript" language="javascript">
-        document.getElementById("IndicadorCuantitativo").style.visibility = "hidden";
-    </script>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" language="javascript">
 
-//        function cerrarPopup() {
-//            window.close();
-//        }
-        function mostrarIndicador() {
-            tipo = document.getElementById("ddlTipo").value;
-            if (tipo == "0") {
-                document.getElementById("IndicadorCualitativo").style.visibility = "visible";
-                document.getElementById("IndicadorCuantitativo").style.visibility = "hidden";
-            }
 
-            else {
-                document.getElementById("IndicadorCualitativo").style.visibility = "hidden";
-                document.getElementById("IndicadorCuantitativo").style.visibility = "visible";
-            }
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
 
+            return true;
         }
+
+        function confirmacion() { 
+            if (confirm("¿Seguro que desea actualizar?")) {
+                alert('Se actualizó la información del Indicador');
+                return true;
+            }else
+                return false;
+        }
+
+        function validarRangos() {
+            var tbxLimSuperior = document.getElementById("tbxLimSuperior");
+            var tbxLimInferior = document.getElementById("tbxLimInferior");
+
+
+
+           
+        }
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-    </asp:ToolkitScriptManager>
-    <div class="contenedor-pagina">
-        <div class="contenedor-pagina-titulo">
-            EDICION DE INDICADOR 
-            CUALITATIVO</div>
-        <br />
-        <table border="0" cellpadding="0" cellspacing="0">
-             <tr>
-                <td>
-                    Proceso:</td>
-                <td >
-                    <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox">
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Nombre:
-                </td>
-                <td>
-                    <asp:TextBox ID="tbxNombre" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Frecuencia de Medición:
-                </td>
-                <td>
-                    <asp:TextBox ID="tbxFrecuenciaMed" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Fuente de Medicion:
-                </td>
-                <td>
-                    <asp:TextBox ID="tbxFuenteMed" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Expresion Matematica:
-                </td>
-                <td>
-                    <asp:TextBox ID="tbxExpresionMat" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Plazo:
-                </td>
-                <td>
-                    <asp:TextBox ID="tbxPlaxo" runat="server" CssClass="estilo_textbox"></asp:TextBox>
-                </td>
-            </tr>
-
-        </table>
-    </div>
-    
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td>
-                <asp:LinkButton ID="lbtnAgregarICuali" runat="server" Text="Agregar" 
-                    CssClass="estilo_boton" onclick="lbtnAgregarICuali_Click" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:GridView ID="gwEscalasCuali" runat="server" AutoGenerateColumns="false" DataSource='<%#ObtenerEscalaCualitativoListado() %>' OnRowCommand="gwEscalasCuali_RowCommand">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Codigo">
-                            <ItemTemplate>
-                                <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>'/>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Limite Superior">
-                            <ItemTemplate>
-                                <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Limite Inferior">
-                            <ItemTemplate>
-                                <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("LIMITE_INFERIOR") %>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Calificacion">
-                            <ItemTemplate>
-                                <asp:Label ID="lblCalificacion" runat="server" Text='<%#Eval("CALIFICACION") %>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Principal">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="chkResultadoExpec" runat="server"  Checked='<%#(Eval("PRINCIPAL").ToString()=="1")? true : false %>'/>
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="20px" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbtnEditarCuali" runat="server" Text="Editar" CommandName="Editar" CommandArgument='<%#Eval("CODIGO") %>'/>                                    
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="20px" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="lbtnEliminarCuali" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%#Eval("CODIGO") %>'/>                                    
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" Width="20px" />
-                        </asp:TemplateField>
-                    </Columns>                        
-                </asp:GridView>
-            </td>
-        </tr>
-    </table>
-    
- 
-    <br />
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td>
-                <asp:LinkButton ID="lbtnGuardar" runat="server" OnClick="lbtnGuardar_Click" CssClass="estilo_boton" Text="Guardar"></asp:LinkButton>
-            </td>
-            <td style="padding:5px">
-                <asp:LinkButton ID="lbtnCancelar" runat="server" OnClick="lbtnCancelar_Click" CssClass="estilo_boton" Text="Cancelar"></asp:LinkButton>
-            </td>
-        </tr>
-    </table>
+    <div id="listaSol" class="content">
+        <h1 class="page-title">EDICIÓN DE INDICADOR CUALITATIVO</h1>
+        <div class="panel-wrapper form">
+            <table border="0" cellpadding="0" cellspacing="0">
+                 <tr>
+                    <td>
+                        Proceso:</td>
+                    <td >
+                        <asp:DropDownList ID="ddlProceso" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ValidationGroup="Indicador" ErrorMessage="Seleccione un proceso" Display="None"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nombre:
+                    </td>
+                    <td>
+                        <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="tbxNombre" ValidationGroup="Indicador" ErrorMessage="Ingrese un nombre" Display="None"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Frecuencia de Medición:
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlFrecuenciaMed" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="ddlFrecuenciaMed" InitialValue="0" ValidationGroup="Indicador" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fuente de Medición:
+                    </td>
+                    <td>
+                        <asp:TextBox ID="tbxFuenteMed" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvFuenteMed" runat="server" ControlToValidate="tbxFuenteMed" ValidationGroup="Indicador" ErrorMessage="Ingrese una fuente de medición" Display="None"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Plazo:
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlPlazo" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="ddlPlazo" ValidationGroup="Indicador" InitialValue="0" ErrorMessage="Ingrese un plazo" Display="None"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <fieldset>
+                            <legend>Escalas</legend>
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="padding-bottom:10px;">
+                                        <asp:Button ID="btnAgregarICuali" runat="server" Text="Agregar" 
+                                            onclick="ButtonAdd_Click" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom:10px;">
+                                        <asp:GridView ID="gwEscalasCuali" runat="server" AutoGenerateColumns="false" AllowPaging="false" Width="800px" BorderWidth="0px" BorderColor="White" DataSource='<%#ObtenerEscalaCualitativoListado() %>' OnRowEditing="gwEscalasCuali_RowEditing" OnRowCancelingEdit="gwEscalasCuali_RowCancelingEdit" OnRowUpdating="gwEscalasCuali_RowUpdating" OnRowDeleting="gwEscalasCuali_RowDeleting" AutoGenerateDeleteButton="true" AutoGenerateEditButton="true">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="Código" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblCodigo" runat="server" Text='<%#Eval("CODIGO") %>'/>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Límite Inferior">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblLimInferior" runat="server" Text='<%#Eval("LIMITE_INFERIOR") %>' />
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="tbxLimInferior" runat="server" Text='<%#Eval("LIMITE_INFERIOR") %>' onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Límite Superior">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' />
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="tbxLimSuperior" runat="server" Text='<%#Eval("LIMITE_SUPERIOR") %>' onkeypress="return isNumberKey(event)"></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Calificación">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblCalificacion" runat="server" Text='<%#Eval("CALIFICACION") %>' />
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="tbxCalificacion" runat="server" Text='<%#Eval("CALIFICACION") %>'></asp:TextBox>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Principal">
+                                                    <ItemTemplate>
+                                                        <asp:CheckBox ID="chkPrincipal0" runat="server"  Checked='<%#(Eval("PRINCIPAL").ToString()=="1")? true : false %>' Enabled="false"/>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:CheckBox ID="chkPrincipal" runat="server"  Checked='<%#(Eval("PRINCIPAL").ToString()=="1")? true : false %>' />
+                                                    </EditItemTemplate>
+                                                    <ItemStyle HorizontalAlign="Center" Width=" 0px" />
+                                                </asp:TemplateField>
+                                            </Columns>                        
+                                        </asp:GridView>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <asp:Button ID="btnGuardar" runat="server"  OnClick="btnGuardar_Click"  Text="Guardar" ValidationGroup="Indicador" />
+                    </td>
+                    <td style="padding:5px">
+                        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
+                    </td>
+                    <td>
+                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Indicador" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div> 
     <table border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>
@@ -162,6 +171,4 @@
             </td>
         </tr>
     </table>
- 
-
 </asp:Content>

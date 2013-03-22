@@ -13,15 +13,6 @@ namespace TMD.CF.Site.Vistas.MP {
     public partial class IndicadorFormularioCuanti {
         
         /// <summary>
-        /// ToolkitScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
-        
-        /// <summary>
         /// ddlProceso control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace TMD.CF.Site.Vistas.MP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProceso;
+        
+        /// <summary>
+        /// rfvProceso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProceso;
         
         /// <summary>
         /// tbxNombre control.
@@ -40,13 +40,31 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxNombre;
         
         /// <summary>
-        /// tbxFrecuenciaMed control.
+        /// rfvNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxFrecuenciaMed;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+        
+        /// <summary>
+        /// ddlFrecuenciaMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFrecuenciaMed;
+        
+        /// <summary>
+        /// rfvFrecuenciaMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFrecuenciaMed;
         
         /// <summary>
         /// tbxFuenteMed control.
@@ -58,6 +76,15 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxFuenteMed;
         
         /// <summary>
+        /// rfvFuenteMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFuenteMed;
+        
+        /// <summary>
         /// tbxExpresionMat control.
         /// </summary>
         /// <remarks>
@@ -67,22 +94,40 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.TextBox tbxExpresionMat;
         
         /// <summary>
-        /// tbxPlaxo control.
+        /// rfvExpresionMat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxPlaxo;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvExpresionMat;
         
         /// <summary>
-        /// lbtnAgregarICuanti control.
+        /// ddlPlazo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAgregarICuanti;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPlazo;
+        
+        /// <summary>
+        /// rfvPlazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlazo;
+        
+        /// <summary>
+        /// btnAgregarICuanti control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarICuanti;
         
         /// <summary>
         /// gwEscalasCuanti control.
@@ -94,22 +139,31 @@ namespace TMD.CF.Site.Vistas.MP {
         protected global::System.Web.UI.WebControls.GridView gwEscalasCuanti;
         
         /// <summary>
-        /// lbtnGuardar control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnGuardar;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
         
         /// <summary>
-        /// lbtnCancelar control.
+        /// btnCancelar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// vsumGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vsumGuardar;
         
         /// <summary>
         /// lblMensajeError control.

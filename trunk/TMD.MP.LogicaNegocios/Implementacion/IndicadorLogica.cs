@@ -6,6 +6,7 @@ using TMD.MP.AccesoDatos.Contrato;
 using TMD.MP.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
+using TMD.MP.LogicaNegocios.Excepcion;
 using TMD.MP.Comun;
 namespace TMD.MP.LogicaNegocios.Implementacion
 {
@@ -65,18 +66,28 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #region "Insert"
 
-        public IndicadorEntidad InsertarIndicador(IndicadorEntidad entidad)
+        public void InsertarIndicador(IndicadorEntidad entidad)
         {
             iIndicador = new IndicadorDataSql();
-            IndicadorEntidad oIndicadorEntidad = iIndicador.InsertarIndicador(entidad);
-            if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO) {
-                iEscalaCualitativo = new EscalaCualitativoDataSql();
-                iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
-                foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo) 
+             
+
+            IndicadorEntidad oIndicadorEntidad  = iIndicador.InsertarIndicador(entidad);
+            if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO)
+            {
+                if (ValidarEscalasCuali(entidad))
                 {
-                    oEscalaCualitativo.codigo_Indicador = oIndicadorEntidad.codigo;
-                    
-                    iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+                    iEscalaCualitativo = new EscalaCualitativoDataSql();
+                    iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
+                    foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo)
+                    {
+                        oEscalaCualitativo.codigo_Indicador = oIndicadorEntidad.codigo;
+                        iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+                    }
+                }
+                else
+                {
+                    throw new BRuleException(Mensajes.Mensaje_Verificar_Rangos);
+
                 }
             }
             if (oIndicadorEntidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
@@ -85,11 +96,12 @@ namespace TMD.MP.LogicaNegocios.Implementacion
                 iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(oIndicadorEntidad.codigo));
                 foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
                 {
-                    oEscalaCuantitativo.codigo_Indicador = oIndicadorEntidad.codigo;                    
+                    oEscalaCuantitativo.codigo_Indicador = oIndicadorEntidad.codigo;
                     iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
                 }
             }
-            return oIndicadorEntidad;
+
+
         }
 
         #endregion
@@ -99,7 +111,41 @@ namespace TMD.MP.LogicaNegocios.Implementacion
         public void ActualizarIndicador(IndicadorEntidad entidad) 
         {
             iIndicador = new IndicadorDataSql();
-            iIndicador.ActualizarIndicador(entidad);
+             
+
+                IndicadorEntidad oIndicadorEntidad = iIndicador.ActualizarIndicador(entidad);
+                if (entidad.tipo == Constantes.TIPO_INDICADOR_CUALITATIVO)
+                {
+                    if (ValidarEscalasCuali(entidad))
+                    {
+                        iEscalaCualitativo = new EscalaCualitativoDataSql();
+                        iEscalaCualitativo.EliminarEscalaCualitativoPorIndicador(Convert.ToInt32(entidad.codigo));
+                        foreach (EscalaCualitativoEntidad oEscalaCualitativo in entidad.lstEscalaCualitativo)
+                        {
+                            oEscalaCualitativo.codigo_Indicador = entidad.codigo;
+                            iEscalaCualitativo.InsertarEscalaCualitativo(oEscalaCualitativo);
+                        }
+                    }
+                    else
+                    {
+                        throw new BRuleException(Mensajes.Mensaje_Verificar_Rangos);
+ 
+                    }
+                }
+                if (entidad.tipo == Constantes.TIPO_INDICADOR_CUANTITATIVO)
+                {
+                    iEscalaCuantitativo = new EscalaCuantitativoDataSql();
+                    iEscalaCuantitativo.EliminarEscalaCuantitativoPorIndicador(Convert.ToInt32(entidad.codigo));
+                    foreach (EscalaCuantitativoEntidad oEscalaCuantitativo in entidad.lstEscalaCuantitativo)
+                    {
+                        oEscalaCuantitativo.codigo_Indicador = entidad.codigo;
+                        iEscalaCuantitativo.InsertarEscalaCuantitativo(oEscalaCuantitativo);
+                    }
+                    
+
+                }        
+
+            
         }
 
         #endregion
@@ -115,6 +161,30 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #endregion
 
+        #region "Validate"
+        public Boolean ValidarEscalasCuali(IndicadorEntidad entidad)
+        {
+
+            List<EscalaCualitativoEntidad> lista = entidad.lstEscalaCualitativo;
+
+            for(int i=0;i < lista.Count;i++){
+                int limSuperior = 0;
+                int limInferior = 0;
+                limInferior = Convert.ToInt32(lista.ElementAt(i).limite_inferior);
+                limSuperior = Convert.ToInt32(lista.ElementAt(i).limite_superior);
+                if (limSuperior < limInferior)
+                    return false;
+                if (i > 0) {
+                    int limSuperiorAnt = Convert.ToInt32(lista.ElementAt(i-1).limite_superior);
+                    int limInferiorAnt = Convert.ToInt32(lista.ElementAt(i-1).limite_inferior);
+                    if (limInferior != limSuperiorAnt+1) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion
 
     }
 }

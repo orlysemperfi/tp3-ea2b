@@ -42,13 +42,16 @@
   <ItemGroup>
     <Compile Include="Contrato\IAreaLogica.cs" />
     <Compile Include="Contrato\IIndicadorLogica.cs" />
+    <Compile Include="Contrato\IPilotoLogica.cs" />
     <Compile Include="Contrato\IProcesoLogica.cs" />
     <Compile Include="Contrato\IPropuestaMejoraLogica.cs" />
     <Compile Include="Contrato\ISolucionMejoraLogica.cs" />
     <Compile Include="Contrato\IUnidadLogica.cs" />
     <Compile Include="Contrato\IUsuarioLogica.cs" />
+    <Compile Include="Excepcion\BRuleException.cs" />
     <Compile Include="Implementacion\AreaLogica.cs" />
     <Compile Include="Implementacion\IndicadorLogica.cs" />
+    <Compile Include="Implementacion\PilotoLogica.cs" />
     <Compile Include="Implementacion\ProcesoLogica.cs" />
     <Compile Include="Implementacion\PropuestaMejoraLogica.cs" />
     <Compile Include="Implementacion\SolucionMejoraLogica.cs" />
