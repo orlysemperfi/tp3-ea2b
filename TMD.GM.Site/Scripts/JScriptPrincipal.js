@@ -71,8 +71,8 @@ function BuscarSolicitudes(ParamUrl1) {
         url: ParamUrl1,
         data: {
         pNumSoli: $('#txtNumSolicitud_Consulta').val(),
-            pFechaIni: dpIni.value(),
-            pFechaFin: dpFin.value(),
+            pFechaIni: kendo.toString(dpIni.value(), 'dd/MM/yyyy') ,
+            pFechaFin: kendo.toString(dpFin.value(), 'dd/MM/yyyy'),
             pTipoSoli: $("#ddlTipoSolicitud_Consulta").val(),
             pDocuRefe: $("#txtNumDocuRefe_Consulta").val(),
             pEstaSoli: $("#ddlEstadoSolicitud_Consulta").val(),
@@ -405,11 +405,9 @@ function PlanActividad_AceptarClick(ParamUrl1,ParamUrl2) {
 
 function SolicitudActividad_AceptarClick(ParamUrl1, ParamUrl2) {
     var Codigo = $("#hdNumeroSoli").val();
-    var dpFechaProg = $("#dpFechaProg").data("kendoDatePicker");
-    var fechatmp = dpFechaProg.value();
+    var dpFechaProg = $("#dpFechaProg").data("kendoDatePicker");   
     var ntbTiempoDura = $("#ntbTiempoDura").data("kendoNumericTextBox");
     var ntbPersRequ = $("#ntbPersRequ").data("kendoNumericTextBox");
-    alert(dpFechaProg.value());
     $.ajax({
         type: "post",
         url: ParamUrl1,
@@ -422,7 +420,7 @@ function SolicitudActividad_AceptarClick(ParamUrl1, ParamUrl2) {
             pPersRequ: ntbPersRequ.value(),
             pCodiTiem: $("#ddlTiempoUnme").val(),
             pTiemActi: ntbTiempoDura.value(),
-            pFechaProg: dpFechaProg.value(),
+            pFechaProg: kendo.toString(dpFechaProg.value(), 'dd/MM/yyyy'),
             pOrdeTrab: $("#txtNumOT").val()
         },
         cache: false,
@@ -462,11 +460,11 @@ function SolicitudRegistrar(ParamUrl1,ParamUrl2) {
         url: ParamUrl1,
         data: {
             pNumSoli: $('#txtNumSolicitud').val(),
-            pFechaSoli: dpSol.value(),
+            pFechaSoli: kendo.toString(dpSol.value(), 'dd/MM/yyyy') ,
             pTipoSoli: $("#ddlTipoSolicitud").val(),
             pDocuRefe: $("#txtNumDocuRefe").val(),
-            pFechaIni: dpIni.value(),
-            pFechaFin: dpFin.value(),
+            pFechaIni: kendo.toString(dpIni.value(), 'dd/MM/yyyy') ,
+            pFechaFin: kendo.toString(dpFin.value(), 'dd/MM/yyyy') ,
             pEstado: $("#ddlEstadoSolicitud").val(),
             pCodiEqui: $("#txtCodigoEquipo").val(),
             pCodiPlan: $("#ddlPlanMante").val(),
@@ -627,9 +625,9 @@ function EquiposRegistrar(ParamUrl1,ParamUrl2) {
             pMarca: $("#txtMarcaEquipo").val(),
             pModel: $("#txtModeloEquipo").val(),
             pCarac: $("#txtCaracteristicaEquipo").val(),
-            pFechaComp: dpFCompra.value(),
-            pFechaExpi: dpFExpira.value(),
-            pFechaUltiMant: dpFUltMan.value(),
+            pFechaComp: kendo.toString(dpFCompra.value(), 'dd/MM/yyyy') ,
+            pFechaExpi: kendo.toString(dpFExpira.value(), 'dd/MM/yyyy') ,
+            pFechaUltiMant: kendo.toString(dpFUltMan.value(), 'dd/MM/yyyy') ,
             pCodiArea: $("#ddlArea").val(),
             pCodiTipo: $("#ddlTipoEquipo").val(),
             pCodiPlan: $("#ddlPlanMant").val(),
