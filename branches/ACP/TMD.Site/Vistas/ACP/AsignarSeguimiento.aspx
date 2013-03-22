@@ -54,7 +54,11 @@
         //*****************************************************************************
         function End_fSaveData(arg) {
             var mData = arg.split(":::")
-            if (mData[0] == "1") {             
+            if (mData[0] == "1") {
+                if (mData[1] != "") {
+                    alert(mData[1]);
+                    return;
+                }           
                 var idAuditoria = $("#__IdAuditoria").val();                
                 try { parent.arrRefFunctions["asignarseguimiento.refresh"](idAuditoria); } catch (e) { }
                 window.parent.CloseMultiPopup("keyAsignarSeguimientoHallazgo");

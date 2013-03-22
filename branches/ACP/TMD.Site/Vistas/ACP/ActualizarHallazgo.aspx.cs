@@ -256,6 +256,7 @@ namespace TMD.ACP.Site
             //    oFile.ModificarArchivo(nIdArc, nIdOri, "H");
             //}
 
+            UploadFile.lArchivos.Clear();
         }
 
         public void AgregarHallazgo()

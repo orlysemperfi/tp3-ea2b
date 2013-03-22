@@ -104,9 +104,9 @@
         <label style="width:140px;">Jefe de Proceso: </label><asp:Label ID="lblResponsable" runat="server"  Font-Names="Arial" Font-Size="10pt"></asp:Label></br>           
     </div>
     <div style="float:right;text-align:right;font-weight:bold;">
-    <label style="">Nro:<asp:Label ID="lblAuditoria" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></label></br>      
-    <label style="">Fecha Inicio:<asp:Label ID="lblFecIni" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></label></br>      
-    <label style="">Fecha Fin:<asp:Label ID="lblFecFin" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></label></br>      
+    <label style="">Nro:</label><asp:Label ID="lblAuditoria" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></br>      
+    <label style="">Fecha Inicio:</label><asp:Label ID="lblFecIni" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></br>      
+    <label style="">Fecha Fin:</label><asp:Label ID="lblFecFin" runat="server" Font-Names="Arial" Font-Size="10pt"></asp:Label></br>      
     </div>
     </div>
 

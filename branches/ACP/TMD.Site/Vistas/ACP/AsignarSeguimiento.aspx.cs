@@ -16,7 +16,7 @@ namespace TMD.ACP.Site.Vistas.ACP
     {
         int idAuditoria = 0;
         int idHallazgo = 0;
-
+        static DateTime dFecCompromiso;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -59,7 +59,9 @@ namespace TMD.ACP.Site.Vistas.ACP
                     if (lstHallazgos[0].FechaSeguimiento.HasValue)
                         txtFechaSeguimiento.Text = lstHallazgos[0].FechaSeguimiento.Value.ToShortDateString();
                     if (lstHallazgos[0].IdAuditorSeguimiento.HasValue)
-                        ddlResponsable.SelectedValue = lstHallazgos[0].IdAuditorSeguimiento.Value.ToString();                
+                        ddlResponsable.SelectedValue = lstHallazgos[0].IdAuditorSeguimiento.Value.ToString();
+
+                    dFecCompromiso = Convert.ToDateTime(litFechaCompromiso.Text);
                 }
             }
             catch (Exception ex)
@@ -70,15 +72,43 @@ namespace TMD.ACP.Site.Vistas.ACP
 
         public void GrabarHallazgo(){
 
+            string strMensaje = "";
             int idHallazgo = Convert.ToInt32(Request["__IdHallazgo"]);
             Hallazgo hallazgo = new Hallazgo();
             hallazgo.IdHallazgo = Convert.ToInt32(Request["__IdHallazgo"]);
             hallazgo.FechaSeguimiento = Convert.ToDateTime(Request["txtFechaSeguimiento"]);
             hallazgo.IdAuditorSeguimiento = Convert.ToInt32(Request["ddlResponsable"]);
             hallazgo.Estado = EstadoHallazgo.Asignado;
-            TMD.Site.Controladora.ACP.HallazgoControladora.GrabarHallazgoSeguimiento(hallazgo);
 
+            if (GetMonthSpan(hallazgo.FechaSeguimiento.Value, dFecCompromiso) > 3)
+            {
+                strMensaje = "La fecha de compromiso no puede ser mayor de 3 meses pasada la auditoria.";
+            }
+            else
+            {
+                TMD.Site.Controladora.ACP.HallazgoControladora.GrabarHallazgoSeguimiento(hallazgo);
+            }
             AddCallbackValue("1");
+            AddCallbackValue(strMensaje);
        }
+
+        public int GetMonthSpan(DateTime newdt, DateTime olddt)
+        {
+            Int32 anios;
+            Int32 meses;
+            Int32 dias;
+
+            anios = (newdt.Year - olddt.Year);
+            meses = (newdt.Month - olddt.Month);
+            dias = (newdt.Day - olddt.Day);
+
+            if (meses < 0)
+            {
+                anios -= 1;
+                meses += 12;
+            }
+
+            return meses;
+        }
     }
 }

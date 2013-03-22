@@ -15,7 +15,7 @@ namespace TMD.ACP.Site.Vistas.ACP
     public partial class ActualizarPlanAccion : BasePage 
     {
         int idHallazgo=0;
-
+        static DateTime dFecIni, dFecFin;
         protected void Page_Load(object sender, EventArgs e)
         {           
             this.
@@ -47,6 +47,8 @@ namespace TMD.ACP.Site.Vistas.ACP
                         lblResponsable.Text = eAuditoria.ObjEntidadAuditada.Responsable;
                         lblFecIni.Text = eAuditoria.FechaInicio.ToShortDateString();
                         lblFecFin.Text = eAuditoria.FechaFin.ToShortDateString();
+                        dFecIni = eAuditoria.FechaInicio;
+                        dFecFin = eAuditoria.FechaFin;
                     }
 
                     lblIdHallazgo.Text = Convert.ToString(lstHallazgos[0].IdHallazgo);
@@ -72,8 +74,9 @@ namespace TMD.ACP.Site.Vistas.ACP
             if (lstHallazgos.Count >= 1)
             {
                 Hallazgo hallazgo = lstHallazgos[0];
+                hallazgo.Causa = Convert.ToString(Request["ctl00$MainContent$txtCausa"]);
                 hallazgo.AccionCorrectiva = Convert.ToString(Request["ctl00$MainContent$txtAccionCorrectiva"]);
-                hallazgo.AccionPreventiva = Convert.ToString(Request["ctl00$MainContent$txttxtAccionPreventiva"]);
+                hallazgo.AccionPreventiva = Convert.ToString(Request["ctl00$MainContent$txtAccionPreventiva"]);
                 hallazgo.FechaCompromiso = Convert.ToDateTime(Request["ctl00$MainContent$txtFechaCompromiso"]);
                 
                 TMD.Site.Controladora.ACP.HallazgoControladora.ModificarHallazgoSeguimiento(hallazgo);
@@ -88,18 +91,26 @@ namespace TMD.ACP.Site.Vistas.ACP
                 string strMensaje = "";
 
                 int idHallazgo = Convert.ToInt32(Request["ctl00$MainContent$__IdHallazgo"]);
-                DateTime dFecCompromiso = Convert.ToDateTime(Request["ctl00$MainContent$txtFechaCompromiso"]);
+                DateTime dFecCompromiso = Convert.ToDateTime(Request["ctl00$MainContent$txtFechaCompromiso"]);                
 
                 if (dFecCompromiso < DateTime.Today)
                 {
                     strMensaje = "La fecha de compromiso ingresada debe ser mayor a la fecha actual";
                 }
                 //validacion de fecha compromiso > a fecha ini de auditoria
-                else if (TMD.Site.Controladora.ACP.HallazgoControladora.ValidarUpdate(idHallazgo, dFecCompromiso))
+                //else if (TMD.Site.Controladora.ACP.HallazgoControladora.ValidarUpdate(idHallazgo, dFecCompromiso))
+                //{
+                //    strMensaje = "La fecha de compromiso debe ser mayor a la fecha inicio de la Auditoria";
+                //}
+                else if (dFecCompromiso < dFecFin)
                 {
-                    strMensaje = "La fecha de compromiso debe ser mayor a la fecha inicio de la Auditoria";
+                    strMensaje = "La fecha de compromiso debe ser mayor a la fecha final de la Auditoria";
                 }
-
+                else if (GetMonthSpan(dFecCompromiso, dFecFin) > 3)
+                {
+                    strMensaje = "La fecha de compromiso no puede ser mayor de 3 meses pasada la auditoria.";
+                }
+                
                 AddCallbackValue(strMensaje == "" ? "1" : "2");
                 AddCallbackValue(strMensaje);
             }
@@ -108,6 +119,25 @@ namespace TMD.ACP.Site.Vistas.ACP
                 AddCallbackValue("0");
                 AddCallbackValue(ex.Message);
             }
+        }
+
+        public int GetMonthSpan(DateTime newdt, DateTime olddt)
+        {
+            Int32 anios;
+            Int32 meses;
+            Int32 dias;
+
+            anios = (newdt.Year - olddt.Year);
+            meses = (newdt.Month - olddt.Month);
+            dias = (newdt.Day - olddt.Day);
+
+            if (meses < 0)
+            {
+                anios -= 1;
+                meses += 12;
+            }
+
+            return meses;
         }
 
     }
