@@ -15,6 +15,7 @@ namespace TMD.GM.Entidades
 
         #region Atributos
 
+        public Guid GUID_ROW { get; set; }
         public int ID_ACTIVIDAD { get; set; }
         public string NUMERO_SOLICITUD { get; set; }
         public int ITEM_SOLICITUD { get; set; }
@@ -29,7 +30,7 @@ namespace TMD.GM.Entidades
         public int CODIGO_TIEMPO { get; set; }
         public string DESCRIPCION_TIEMPO { get; set; }
         public int TIEMPO_ACTIVIDAD { get; set; }
-        public DateTime FECHA_PROGRAMACION { get; set; }
+        public DateTime? FECHA_PROGRAMACION { get; set; }
         public string ORDEN_TRABAJO { get; set; }
         #endregion
     }

@@ -1,45 +1,92 @@
 ﻿@model TMD.GM.Site.Models.SolicitudModel
 <fieldset>
-<span class="labelForm">N° Solicitud:</span>
-@Html.TextBox("txtNumSolicitud",Model.solicitudBE.NUMERO_SOLICITUD, new { @class = "txtForm", @readonly = "readonly" })
+<fieldset class="fieldset_left">
+<span>N° Solicitud</span><br />
+<input id="txtNumSolicitud" type="text" class="k-textbox" value="@Model.solicitudBE.NUMERO_SOLICITUD" style="width: 150px;" readonly="readonly" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Estado de solicitud</span><br />
+@{if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Aperturado)
+  {
+      @Html.DropDownList("ddlEstadoSolicitud", Model.listaES, new { @class = "ddlForm", @disabled = "disabled", style = "width: 150px;" })
+  }
+  else
+  { 
+      @Html.DropDownList("ddlEstadoSolicitud", Model.listaES, new { @class = "ddlForm", style = "width: 150px;" })
+  }
+}
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Tipo de solicitud</span><br />
+@Html.DropDownList("ddlTipoSolicitud", Model.listaTS, new { @class = "ddlForm", style = "width: 150px;" })
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset  class="fieldset_left">
+<span>Fecha</span><br />
+<input id="dpFechaSol"  value="@Model.solicitudBE.FECHA_SOLICITUD" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Documento Referencia</span><br />
+<input id="txtNumDocuRefe" type="text" class="k-textbox" value="@Model.solicitudBE.DOCUMENTO_REFERENCIA" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Plan mantenimiento</span><br />
+@Html.DropDownList("ddlPlanMante", Model.listaPM, new { @class = "ddlForm", style = "width: 300px;" })
+</fieldset>
+</fieldset>
 
-<span class="labelForm">Estado de solicitud:</span>
-@Html.DropDownList("ddlEstadoSolicitud", Model.listaES, new { @class = "ddlForm", @disabled = "disabled" })
-</fieldset>
 <fieldset>
-<span class="labelForm">Fecha</span>
-@Html.TextBox("txtFechaSol", String.Format("{0:dd/MM/yyyy}", Model.solicitudBE.FECHA_SOLICITUD), new { @class = "txtFormFecha" })
-<span class="labelForm">Tipo de solicitud</span>
-@Html.DropDownList("ddlTipoSolicitud",Model.listaTS, new { @class = "ddlForm" })
-<span class="labelForm">Doc. Referencia</span>
-@Html.TextBox("txtNumDocuRefe",Model.solicitudBE.DOCUMENTO_REFERENCIA, new { @class = "txtForm" })
+<fieldset  class="fieldset_left">
+<span>Equipo</span><br />
+<input id="txtCodigoEquipo" type="text" class="k-textbox" value="@Model.solicitudBE.CODIGO_EQUIPO" readonly="readonly" style="width:150px;" />
+<input id="txtNombreEquipo" type="text" class="k-textbox" value="" style="width:200px;" readonly="readonly"/>
 </fieldset>
+<fieldset  class="fieldset_left">
+<br />
+<button id="btnBuscarEquipo" class="k-button" onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")')" >...</button>
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Área de Ubicación</span><br />
+<input id="txtAreaUbi" type="text" class="k-textbox" value="" style="width:200px;" readonly="readonly"/>
+</fieldset>
+</fieldset>
+
 <fieldset>
-<span class="labelForm">Equipo</span>
-@Html.TextBox("txtCodigoEquipo", Model.solicitudBE.CODIGO_EQUIPO, new { @class = "txtForm" })
-@Html.TextBox("txtNombreEquipo", "", new { @class = "txtForm", style = "width: 200px;", @readonly = "readonly" })
-<input id="btnBuscarEquipo" type="button" value="..." onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")')"/>
-<span class="labelForm">Área de Ubicación</span>
-@Html.TextBox("txtAreaUbi", "", new { @class = "txtForm", @readonly = "readonly" })
+<fieldset  class="fieldset_left">
+<span>Desde</span><br />
+<input id="dpFechaIni" value="@Model.solicitudBE.FECHA_INICIO_SOLICITUD" style="width:150px;" />
 </fieldset>
+<fieldset  class="fieldset_left">
+<span>Hasta</span><br />
+<input id="dpFechaFin" value="@Model.solicitudBE.FECHA_FIN_SOLICITUD" style="width:150px;" />
+</fieldset>
+
+</fieldset>
+
+
 <fieldset>
-<span class="labelForm">Plan mantenimiento</span>
-@Html.DropDownList("ddlPlanMante",Model.listaPM, new { @class = "ddlForm" })
-<span class="labelForm">Desde</span>
-@Html.TextBox("txtFechaIni", String.Format("{0:dd/MM/yyyy}", Model.solicitudBE.FECHA_INICIO_SOLICITUD), new { @class = "txtFormFecha" })
-<span class="labelForm">Hasta</span>
-@Html.TextBox("txtFechaFin", String.Format("{0:dd/MM/yyyy}", Model.solicitudBE.FECHA_FIN_SOLICITUD), new { @class = "txtFormFecha" })
-<input id="btnGenerar" type="button" value="Generar Cronograma" />
+@{if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Aperturado)
+  {
+ <button id="btnGenerar" class="k-button" onclick="SolicitudGenerarCronograma('@Url.Action("GenerarCronograma", "Solicitud")', '@Model.solicitudBE.NUMERO_SOLICITUD')"><span class="k-icon k-i-custom"></span> Generar Cronograma</button>
+  }
+  }
+ <button id="btnNuevo" class="k-button" onclick="SolicitudActividadNueva('@Url.Action("SolicitudActividadNueva", "Solicitud")', '@Model.solicitudBE.NUMERO_SOLICITUD')"><span class="k-icon k-i-plus"></span> Nueva Actividad</button>
+ <button id="btnVerCalendario" class="k-button" onclick="MostrarCalendario('@Url.Action("CalendarioActividades", "Solicitud")')"><span class="k-icon k-i-calendar"></span> Ver Cronograma</button>
+ <button id="btnGrabar" class="k-button" onclick="SolicitudRegistrar('@Url.Action("SolicitudActualizar", "Solicitud")','@Url.Action("Solicitudes", "Solicitud")')"><span class="k-icon k-i-tick"></span> Grabar Solicitud</button>
+ <button id="btnRetornar" class="k-button" onclick="CerrarModalSolicitud()"><span class="k-icon k-i-close"></span> Retornar</button>
 </fieldset>
+<br />
+<div class="k-block"><div class="k-header">Actividades</div>
 <div id="pnlGridActividades"></div>
-<fieldset>
-<input id="btnNuevo" type="button" value="Nueva Actividad" onclick="SolicitudActividadNueva('@Url.Action("SolicitudActividadNueva", "Solicitud")', '@Model.solicitudBE.NUMERO_SOLICITUD')"  />
-<input id="btnVerCalendario" type="button" value="Ver Calendario de Cronograma" onclick="MostrarCalendario('@Url.Action("CalendarioActividades", "Solicitud")')" />
-</fieldset>
-<fieldset>
-<input id="btnGrabar" type="button" value="Grabar Solicitud" />
-<input id="btnRetornar" type="button" value="Retornar" onclick="CerrarModalSolicitud()" />
-
-</fieldset>
+</div>
 
 
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#dpFechaSol").kendoDatePicker({ format: "dd/MM/yyyy" });
+        $("#dpFechaIni").kendoDatePicker({ format: "dd/MM/yyyy" });
+        $("#dpFechaFin").kendoDatePicker({ format: "dd/MM/yyyy" });
+    });
+</script>

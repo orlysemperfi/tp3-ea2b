@@ -11,8 +11,11 @@ namespace TMD.GM.LogicaNegocios.Contrato
         SolicitudBE ObtenerSolicitudNueva();
         List<SolicitudBE> ObtenerSolicitudes(SolicitudFiltroBE filtro);
 
-        void RegistrarSolicitud(SolicitudBE planBE);
-        void ActualizarSolicitud(SolicitudBE planBE);
-        SolicitudBE VisualizarSolicitud(SolicitudBE planBE);
+        void RegistrarSolicitud(SolicitudBE itemBE);
+        void ActualizarSolicitud(SolicitudBE itemBE);
+        void EliminarSolicitud(SolicitudBE itemBE);
+        SolicitudBE VisualizarSolicitud(SolicitudBE itemBE);
+
+        List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE);
     }
 }
