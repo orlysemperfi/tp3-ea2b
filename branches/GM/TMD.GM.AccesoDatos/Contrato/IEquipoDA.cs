@@ -9,5 +9,10 @@ namespace TMD.GM.AccesoDatos.Contrato
     public interface IEquipoDA
     {
         List<EquipoBE> BuscarEquipos();
+        List<EquipoBE> ListarEquiposTodos(EquipoBE equipoBE);
+        void Registrar(EquipoBE equipoBE);
+        void Actualizar(EquipoBE equipoBE);
+        void Eliminar(EquipoBE equipoBE);
+        EquipoBE Visualizar(EquipoBE equipoBE);
     }
 }

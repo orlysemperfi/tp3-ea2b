@@ -23,6 +23,28 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             return instanciaDA.BuscarEquipos();
         }
+        public List<EquipoBE> ListarEquiposTodos(EquipoBE equipoBE)
+        {
+            return instanciaDA.ListarEquiposTodos(equipoBE   );
+        }
+        public void Registrar(EquipoBE equipoBE)
+        {
+            instanciaDA.Registrar(equipoBE);
+        }
 
+        public void Actualizar(EquipoBE equipoBE)
+        {
+            instanciaDA.Actualizar(equipoBE);
+        }
+
+        public void Eliminar(EquipoBE equipoBE)
+        {
+            instanciaDA.Eliminar(equipoBE);
+        }
+        public EquipoBE Visualizar(EquipoBE equipoBE)
+        {
+            return instanciaDA.Visualizar(equipoBE);
+        }
+        
     }
 }
