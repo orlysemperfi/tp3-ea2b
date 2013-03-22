@@ -4,43 +4,76 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
+using System.Configuration;
+using TMD.Core.Logger;
 
 namespace TMD.CF.Site
 {
-    public class Global : System.Web.HttpApplication
+    public interface IContainerAccessor
     {
+        IUnityContainer Container { get; }
+    }
+
+    public class Global : System.Web.HttpApplication, IContainerAccessor
+    {
+        private static IUnityContainer _container;
+
+        public static IUnityContainer Container
+        {
+            get
+            {
+                return _container;
+            }
+            set
+            {
+                _container = value;
+            }
+        }
+
+        IUnityContainer IContainerAccessor.Container
+        {
+            get
+            {
+                return Container;
+            }
+        }
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
-
+            BuildContainer();
         }
 
         void Application_End(object sender, EventArgs e)
         {
-            //  Code that runs on application shutdown
+            CleanUp();
         }
 
         void Application_Error(object sender, EventArgs e)
         {
-            // Code that runs when an unhandled error occurs
-            //ICollection<string> categories = new List<string>();
-            //categories.Add("General");
-            //ApplicationLogger.Write(Server.GetLastError().Message, categories, 1, 1, System.Diagnostics.TraceEventType.Error, "Error Global", null);
+            Exception error = Server.GetLastError();
+            Log logger = new Log();
+            logger.RegistrarError(error);
+
         }
 
-        void Session_Start(object sender, EventArgs e)
+        private static void BuildContainer()
         {
-            // Code that runs when a new session is started
+            UnityConfigurationSection section =
+                            (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
+
+            IUnityContainer unitContainer = new UnityContainer();
+            unitContainer.LoadConfiguration(section);
+            Container = unitContainer;
         }
 
-        void Session_End(object sender, EventArgs e)
+        private static void CleanUp()
         {
-            // Code that runs when a session ends. 
-            // Note: The Session_End event is raised only when the sessionstate mode
-            // is set to InProc in the Web.config file. If session mode is set to StateServer 
-            // or SQLServer, the event is not raised.
-
+            if (Container != null)
+            {
+                Container.Dispose();
+            }
         }
 
     }

@@ -25,7 +25,7 @@ namespace TMD.CF.AccesoDatos.Implementacion
         /// Agrega un registro a la tabla LineaBase.
         /// </summary>
         /// <param name="lineaBase">LineaBase</param>
-        public void Agregar(LineaBase lineaBase)
+        public void Agregar(LineaBase lineaBase, UsuarioProyecto usuarioProyecto)
         {
             using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LINEA_BASE_INS"))
             {
@@ -114,6 +114,31 @@ namespace TMD.CF.AccesoDatos.Implementacion
 
                 DB.ExecuteNonQuery(command);
             }
+        }
+
+        /// <summary>
+        /// Obtiene una linea base por el Id
+        /// </summary>
+        /// <param name="id">Id Linea base</param>
+        /// <returns>Objeto Linea Base</returns>
+        public LineaBase ObtenerPorid(int id)
+        {
+            LineaBase lineaBase = null;
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.USP_LINEA_BASE_SEL_CODIGO"))
+            {
+                DB.AddInParameter(command, "@CODIGO", DbType.Int32, id);
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    if (reader.Read())
+                    {
+                        lineaBase = LineaBaseMap.Select(reader);
+                    }
+                }
+            }
+
+            return lineaBase;
         }
     }
 }

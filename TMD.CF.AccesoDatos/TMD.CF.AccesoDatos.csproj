@@ -38,11 +38,14 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="log4net">
+      <HintPath>..\Librerias\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
@@ -61,30 +64,46 @@
   <ItemGroup>
     <Compile Include="Contrato\IElementoConfiguracionData.cs" />
     <Compile Include="Contrato\IFaseData.cs" />
+    <Compile Include="Contrato\IInformeCambioData.cs" />
     <Compile Include="Contrato\ILineaBaseData.cs" />
     <Compile Include="Contrato\ILineaBaseElementoConfiguracionData.cs" />
+    <Compile Include="Contrato\IOrdenCambioData.cs" />
     <Compile Include="Contrato\IProyectoData.cs" />
     <Compile Include="Contrato\IProyectoFaseData.cs" />
+    <Compile Include="Contrato\ISolicitudCambioData.cs" />
     <Compile Include="Contrato\IUsuarioData.cs" />
+    <Compile Include="Contrato\IUsuarioProyectoData.cs" />
     <Compile Include="Core\DataBase.cs" />
     <Compile Include="Implementacion\ElementoConfiguracionData.cs" />
+    <Compile Include="Implementacion\InformeCambioData.cs" />
     <Compile Include="Implementacion\LineaBaseData.cs" />
     <Compile Include="Implementacion\LineaBaseElementoConfiguracionData.cs" />
+    <Compile Include="Implementacion\OrdenCambioData.cs" />
     <Compile Include="Implementacion\ProyectoFaseData.cs" />
+    <Compile Include="Implementacion\SolicitudCambioData.cs" />
     <Compile Include="Implementacion\UsuarioData.cs" />
+    <Compile Include="Implementacion\UsuarioProyectoData.cs" />
     <Compile Include="Map\ElementoConfiguracionMap.cs" />
+    <Compile Include="Map\InformeCambioMap.cs" />
     <Compile Include="Map\LineaBaseElementoConfiguracionMap.cs" />
     <Compile Include="Map\LineaBaseMap.cs" />
+    <Compile Include="Map\OrdenCambioMap.cs" />
     <Compile Include="Map\ProyectoDataMap.cs" />
     <Compile Include="Implementacion\FaseData.cs" />
     <Compile Include="Implementacion\ProyectoData.cs" />
     <Compile Include="Map\FaseDataMap.cs" />
     <Compile Include="Map\ProyectoFaseDataMap.cs" />
+    <Compile Include="Map\SolicitudCambioMap.cs" />
     <Compile Include="Map\UsuarioDataMap.cs" />
+    <Compile Include="Map\UsuarioProyectoMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TMD.Core\TMD.Core.csproj">
+      <Project>{A1458C90-1DFA-4F07-A8E3-F3F0BF953216}</Project>
+      <Name>TMD.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TMD.Entidades\TMD.Entidades.csproj">
       <Project>{106F46E5-0855-453E-9C06-B67D1EE7A00F}</Project>
       <Name>TMD.Entidades</Name>

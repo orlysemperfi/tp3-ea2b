@@ -1,5 +1,26 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
+.divFlotante 
+{
+/*﻿    padding-left:5px;
+    ﻿padding-top:5px;    */
+    width:auto;
+    height:auto;
+    top:25%;
+    left:50%;
+    margin-left: -200px;
+    margin-top: 50px;
+    background-color: #FFFFFF;    
+    border: 1px solid #000000;  
+    position:absolute;
+	z-index:100;
+    /*background:url() center no-repeat transparent;*/
+}
+
+.divFlotante .panel-wrapper {
+    border: none;
+}
+
 .ModalPopupBG
 {
     background-color: #666699;
@@ -9,57 +30,58 @@
 
 
 .popup_Container {
-	background-color:#FFFFFF;
-	border:2px solid #000000;
-	padding: 0px 0px 0px 0px;
+﻿  background-color:#FFFFFF;
+﻿  border:2px solid #000000;
+﻿  padding: 0px 0px 0px 0px;
 }
 
 .popupConfirmation
 {
-	width: 300px;
-	height: 200px;
+﻿  width: 300px;
+﻿  height: 200px;
 }
 
 .popup_Titlebar {
-	background: url(/imagenes/titlebar_bg.jpg);
-	height: 29px;
+﻿  background: url(/imagenes/titlebar_bg.jpg);
+﻿  height: 29px;
 }
 
 .popup_Body
 {
-	padding:15px 15px 15px 15px;
-	font-family:Arial;
-	font-weight:bold;
-	font-size:12px;
-	line-height:15pt;
-	clear:both;
-	padding:20px;
+﻿  padding:15px 15px 15px 15px;
+﻿  font-family:Arial;
+﻿  font-weight:bold;
+﻿  font-size:12px;
+﻿  line-height:15pt;
+﻿  clear:both;
+﻿  padding:20px;
 }
 
 .TitlebarLeft 
 {
-	float:left;
-	padding-left:5px;
-	padding-top:5px;
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight:bold;
-	font-size:12px;
-	color:#FFFFFF;
+﻿  float:left;
+﻿  padding-left:5px;
+﻿  padding-top:5px;
+﻿  font-family:Arial, Helvetica, sans-serif;
+﻿  font-weight:bold;
+﻿  font-size:12px;
+﻿  color:#FFFFFF;
 }
+
 .TitlebarRight 
-{	
-	background-position:right;
-	background-repeat:no-repeat;
-	height:15px;
-	width:16px;
-	float:right;
-	margin-right:5px;
-	margin-top:5px;
+{﻿  
+﻿  background-position:right;
+﻿  background-repeat:no-repeat;
+﻿  height:15px;
+﻿  width:16px;
+﻿  float:right;
+﻿  margin-right:5px;
+﻿  margin-top:5px;
 }
 
 .popup_Buttons
 {
-	margin:10px;
+﻿  margin:10px;
 }
 
 body   
@@ -88,9 +110,8 @@ a:active
     color: #034af3;
 }
 
-p
-{
-    margin-bottom: 10px;
+p {
+    margin: 7px 0;
     line-height: 1.6em;
 }
 
@@ -282,19 +303,17 @@ legend
 
 input.textEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
 }
 
 input.passwordEntry 
 {
-    width: 320px;
     border: 1px solid #ccc;
 }
 
 div.accountInfo
 {
-    width: 80%;
+    width: auto;
 }
 
 /* MISC  
@@ -352,6 +371,11 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+.fieldEdit
+{
+   
+    background:#CCFF66;
 }
 
 
@@ -485,3 +509,43 @@ div.accountInfo
     right: -23px;
     top: -21px;
     width: 35px;
+}
+
+input[type="submit"].btn-cancelar,
+input[type="image"].btn-cancelar {
+    background: #d4d7dc;
+    color: #85878a;
+}
+
+
+/*************** NUEVOS 17/03/13 **********************/
+.content .panel-wrapper {
+    text-align: left;
+}
+
+#MainContent_pnlBusqueda table,
+#MainContent_upnlLista table {
+    margin: 0 auto;
+}
+
+table th {
+    padding: 2px 7px;
+}
+
+table td {
+    padding: 1px 7px;
+}
+
+.content .panel-wrapper label,
+.label-field {
+    min-width: 100px;
+    float: left;
+}
+
+#frm-actualizar-sc .label-field {
+    min-width: 170px;
+}
+
+#frm-actualizar-sc select {
+    min-width: 246px;
+}

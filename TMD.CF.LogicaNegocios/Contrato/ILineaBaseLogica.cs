@@ -15,7 +15,7 @@ namespace TMD.CF.LogicaNegocios.Contrato
         /// Agrega un registro a la tabla LineaBase.
         /// </summary>
         /// <param name="lineaBase">LineaBase</param>
-        void Agregar(LineaBase lineaBase);
+        void Agregar(LineaBase lineaBase, UsuarioProyecto usuarioProyecto);
 
         /// <summary>
         /// Lista las lineas base de una fase de un proyecto.

@@ -74,11 +74,14 @@
     <Compile Include="Hallazgo.cs" />
     <Compile Include="IndicadorEntidad.cs" />
     <Compile Include="Informe.cs" />
+    <Compile Include="InformeCambio.cs" />
     <Compile Include="Integrante.cs" />
     <Compile Include="LineaBase.cs" />
     <Compile Include="LineaBaseElementoConfiguracion.cs" />
     <Compile Include="Norma.cs" />
+    <Compile Include="OrdenCambio.cs" />
     <Compile Include="OrdenTrabajo.cs" />
+    <Compile Include="Parametro.cs" />
     <Compile Include="PerfilRRHH.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="PlanMantenimiento.cs" />
@@ -92,8 +95,8 @@
     <Compile Include="Release.cs" />
     <Compile Include="Rutina.cs" />
     <Compile Include="Servicio.cs" />
+    <Compile Include="SolicitudCambio.cs" />
     <Compile Include="SolicitudMantenimiento.cs" />
-    <Compile Include="SolucionMejoraEntidad.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketCMDB.cs" />
     <Compile Include="TipoElementoConfiguracion.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioCliente.cs" />
     <Compile Include="UsuarioEntidad.cs" />
+    <Compile Include="UsuarioProyecto.cs" />
     <Compile Include="Version.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

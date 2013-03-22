@@ -17,5 +17,19 @@ namespace TMD.CF.LogicaNegocios.Contrato
         /// <param name="proyecto">Proyecto</param>
         /// <returns>Lista Usuario</returns>
         List<Usuario> ListaPorProyecto(Proyecto proyecto);
+
+        /// <summary>
+        /// Lista los usuarios por rol
+        /// </summary>
+        /// <param name="rol">rol</param>
+        /// <returns>Lista los usuarios por rol</returns>
+        List<Usuario> ListaPorRol(String rol);
+
+        /// <summary>
+        /// Obtiene un usuario por el login
+        /// </summary>
+        /// <param name="proyecto">Login usuario</param>
+        /// <returns>Usuario</returns>
+        Usuario ObtenerUsuario(string login);
     }
 }

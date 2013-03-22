@@ -9,7 +9,8 @@ namespace TMD.Entidades
     {
         public int Id { get; set; }
         public String Nombre { get; set; }
-        //Agregado por Service Desk
         public String Alias { get; set; }
+        public String Rol { get; set; }
+        public String Login { get; set; }
     }
 }
