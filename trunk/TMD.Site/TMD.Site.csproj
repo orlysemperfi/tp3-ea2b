@@ -148,6 +148,17 @@
     <Content Include="Vistas\CF\LineaBase\ActualizarECS.aspx" />
     <Content Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx" />
     <Content Include="Vistas\CF\LineaBase\ListaLineaBase.aspx" />
+    <Content Include="Vistas\MP\EscalaCualitativoFormulario.aspx" />
+    <Content Include="Vistas\MP\EscalaCuantitativoFormulario.aspx" />
+    <Content Include="Vistas\MP\IndicadorFormularioCuali.aspx" />
+    <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
+    <Content Include="Vistas\MP\IndicadorListado.aspx" />
+    <Content Include="Vistas\MP\Inicio.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraFormulario.aspx" />
+    <Content Include="Vistas\MP\PropuestaMejoraListado.aspx" />
+    <Content Include="Vistas\MP\Prueba2.aspx" />
+    <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -331,6 +342,90 @@
     <Compile Include="Vistas\CF\LineaBase\ListaLineaBase.aspx.designer.cs">
       <DependentUpon>ListaLineaBase.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\MP\EscalaCualitativoFormulario.aspx.cs">
+      <DependentUpon>EscalaCualitativoFormulario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\EscalaCualitativoFormulario.aspx.designer.cs">
+      <DependentUpon>EscalaCualitativoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.cs">
+      <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.designer.cs">
+      <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuali.aspx.cs">
+      <DependentUpon>IndicadorFormularioCuali.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuali.aspx.designer.cs">
+      <DependentUpon>IndicadorFormularioCuali.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuanti.aspx.cs">
+      <DependentUpon>IndicadorFormularioCuanti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorFormularioCuanti.aspx.designer.cs">
+      <DependentUpon>IndicadorFormularioCuanti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorListado.aspx.cs">
+      <DependentUpon>IndicadorListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\IndicadorListado.aspx.designer.cs">
+      <DependentUpon>IndicadorListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.cs">
+      <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraAprobar.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraAprobar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraFormulario.aspx.cs">
+      <DependentUpon>PropuestaMejoraFormulario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraFormulario.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraListado.aspx.cs">
+      <DependentUpon>PropuestaMejoraListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\PropuestaMejoraListado.aspx.designer.cs">
+      <DependentUpon>PropuestaMejoraListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\Prueba2.aspx.cs">
+      <DependentUpon>Prueba2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\Prueba2.aspx.designer.cs">
+      <DependentUpon>Prueba2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.cs">
+      <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.designer.cs">
+      <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MP\TMD-MP.Master.cs">
+      <DependentUpon>TMD-MP.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\MP\TMD-MP.Master.designer.cs">
+      <DependentUpon>TMD-MP.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -353,6 +448,14 @@
       <Project>{1ED7F34A-504A-4BA9-A9A2-DDED2E15DB61}</Project>
       <Name>TMD.CF.LogicaNegocios</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TMD.MP.Comun\TMD.MP.Comun.csproj">
+      <Project>{33880C96-3055-42AB-9F69-85550D058261}</Project>
+      <Name>TMD.MP.Comun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.MP.LogicaNegocios\TMD.MP.LogicaNegocios.csproj">
+      <Project>{202836F6-D587-495C-867A-2E8F00A87408}</Project>
+      <Name>TMD.MP.LogicaNegocios</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TMD.Strings\TMD.Strings.csproj">
       <Project>{5ECB613B-8ED1-4427-83AA-1615B9E0E319}</Project>
       <Name>TMD.Strings</Name>
@@ -365,6 +468,9 @@
     <Content Include="Unity.config">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Vistas\MP\TMD-MP.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
