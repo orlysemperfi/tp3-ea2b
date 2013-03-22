@@ -251,7 +251,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             sqlCmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = entidad.nombre;
             sqlCmd.Parameters.Add("@FRECUENCIA_MEDICION", SqlDbType.VarChar).Value = entidad.frecuencia_Medicion;
             sqlCmd.Parameters.Add("@FUENTE_MEDICION", SqlDbType.VarChar).Value = entidad.fuente_Medicion;
-            sqlCmd.Parameters.Add("@EXPRESION_MATEMATICA", SqlDbType.VarChar).Value = entidad.expresion_Matematica;
+            sqlCmd.Parameters.Add("@EXPRESION_MATEMATICA", SqlDbType.VarChar).Value = (entidad.expresion_Matematica!=null)?entidad.expresion_Matematica:"";
             sqlCmd.Parameters.Add("@PLAZO", SqlDbType.VarChar).Value = entidad.plazo;
             sqlCmd.Parameters.Add("@TIPO", SqlDbType.Int).Value = entidad.tipo;
             sqlCmd.Parameters.Add("@CODIGO_PROCESO", SqlDbType.Int).Value = entidad.codigo_Proceso;
@@ -319,7 +319,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
         #endregion
 
         #region "Update"
-        public void ActualizarIndicador(IndicadorEntidad entidad)
+        public IndicadorEntidad ActualizarIndicador(IndicadorEntidad entidad)
         {
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
@@ -356,6 +356,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             {
                 sqlConn.Close();
             }
+            return entidad;
         }
         #endregion
 

@@ -8,6 +8,7 @@ using TMD.Entidades;
 using TMD.MP.Comun;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
+using TMD.MP.LogicaNegocios.Excepcion;
 
 namespace TMD.MP.Site.Privado
 {
@@ -43,7 +44,8 @@ namespace TMD.MP.Site.Privado
             List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = oPropuestaMejoraLogica.ObtenerPropuestaMejoraListadoPorFiltros(oPropuestaMejoraFiltro);
             Sesiones.PropuestaMejoraListadoRemover();
             Sesiones.PropuestaMejoraListado = oPropuestaMejoraColeccion;
-            PageIndexChanging();
+            //PageIndexChanging();
+            gvwPropuestaMejoraListado.DataBind();
             lblMensajeError.Text = "";
         }
 
@@ -66,92 +68,9 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void lbtnBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarPropuestaMejoraListado();
-        }
-
-        protected void ibtnIzquierdaTodo_Click(object sender, EventArgs e)
-        {
-            gvwPropuestaMejoraListado.PageIndex = 0;
-            PageIndexChanging();
-        }
-
-        protected void ibtnIzquierda_Click(object sender, EventArgs e)
-        {
-            if (gvwPropuestaMejoraListado.PageIndex > 0)
-                gvwPropuestaMejoraListado.PageIndex = gvwPropuestaMejoraListado.PageIndex - 1;
-            else
-                gvwPropuestaMejoraListado.PageIndex = 0;
-            PageIndexChanging();
-        }
-
-        protected void ibtnDerecha_Click(object sender, EventArgs e)
-        {
-            if (gvwPropuestaMejoraListado.PageIndex < gvwPropuestaMejoraListado.PageCount - 1)
-                gvwPropuestaMejoraListado.PageIndex = gvwPropuestaMejoraListado.PageIndex + 1;
-            else
-                gvwPropuestaMejoraListado.PageIndex = gvwPropuestaMejoraListado.PageCount - 1;
-            PageIndexChanging();
-        }
-
-        protected void ibtnDerechaTodo_Click(object sender, EventArgs e)
-        {
-            gvwPropuestaMejoraListado.PageIndex = gvwPropuestaMejoraListado.PageCount - 1;
-            PageIndexChanging();
-        }
-
-        protected void tbxPaginaActual_TextChanged(object sender, EventArgs e)
-        {
-            gvwPropuestaMejoraListado.PageIndex = Convert.ToInt32(tbxPaginaActual.Text) - 1;
-            PageIndexChanging();
-        }
-
-        protected void PageIndexChanging() {
-            gvwPropuestaMejoraListado.DataBind();
-            List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = Sesiones.PropuestaMejoraListado;
-
-            if (oPropuestaMejoraColeccion.Count > 0)
-            {
-                divMensaje.Visible = false;
-                lblMensaje.Text = "";
-                tblPropuestaMejoraListado.Visible = true;
-                divLinea.Visible = true;
-                tblPaginacion.Visible = true;
-
-                tbxPaginaActual.Text = Convert.ToString(gvwPropuestaMejoraListado.PageIndex + 1);
-                lblNumeroPaginas.Text = Convert.ToString(gvwPropuestaMejoraListado.PageCount);
-                if (gvwPropuestaMejoraListado.PageIndex == gvwPropuestaMejoraListado.PageCount - 1)
-                {
-                    if (oPropuestaMejoraColeccion.Count % gvwPropuestaMejoraListado.PageCount == 0)
-                    {
-                        if (gvwPropuestaMejoraListado.PageSize > oPropuestaMejoraColeccion.Count)
-                        {
-                            lblNumeroRegistros.Text = (gvwPropuestaMejoraListado.PageSize - oPropuestaMejoraColeccion.Count) + " - " + oPropuestaMejoraColeccion.Count + " de " + oPropuestaMejoraColeccion.Count + " registros";
-                        }
-                        else
-                        {
-                            lblNumeroRegistros.Text = (oPropuestaMejoraColeccion.Count - gvwPropuestaMejoraListado.PageSize + 1) + " - " + oPropuestaMejoraColeccion.Count + " de " + oPropuestaMejoraColeccion.Count + " registros";
-                        }
-                    }
-                    else
-                    {
-                        lblNumeroRegistros.Text = (oPropuestaMejoraColeccion.Count - (oPropuestaMejoraColeccion.Count % gvwPropuestaMejoraListado.PageCount) + 1) + " - " + oPropuestaMejoraColeccion.Count + " de " + oPropuestaMejoraColeccion.Count + " registros";
-                    }
-                }
-                else
-                {
-                    lblNumeroRegistros.Text = ((gvwPropuestaMejoraListado.PageSize * (gvwPropuestaMejoraListado.PageIndex)) + 1) + " - " + (gvwPropuestaMejoraListado.PageSize * (gvwPropuestaMejoraListado.PageIndex + 1)) + " de " + oPropuestaMejoraColeccion.Count + " registros";
-                }
-            }
-            else
-            {
-                divMensaje.Visible = true;
-                lblMensaje.Text = Mensajes.Mensaje_No_Propuesta_Mejora;
-                tblPropuestaMejoraListado.Visible = false;
-                divLinea.Visible = false;
-                tblPaginacion.Visible = false;
-            }
         }
 
         protected void gvwPropuestaMejoraListado_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -167,25 +86,30 @@ namespace TMD.MP.Site.Privado
                     Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
             }else if(e.CommandName == "EliminarPropuesta"){
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
-                String strMensaje = oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
-                if (strMensaje != null){
-                    lblMensajeError.Text = strMensaje;
+                try
+                {
+                    oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
                 }
-                else {
-                    CargarPropuestaMejoraListado();                
-                }                    
+                catch (BRuleException ex)
+                {
+                    lblMensajeError.Text = ex.Message;
+                    lblMensajeError.DataBind();
+                }
+                
+                             
             }
         }
 
-        protected void ibtnAgregarPropuesta_Click(object sender, EventArgs e)
+        protected void btnAgregarPropuesta_Click(object sender, EventArgs e)
         {
             Sesiones.PropuestaMejoraSeleccionadaRemover();
             Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
         }
 
-        protected void ibtnSalir_Click(object sender, EventArgs e)
+        protected void gvwPropuestaMejoraListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            Response.Redirect(Paginas.TMD_MP_Inicio, true);
+            gvwPropuestaMejoraListado.PageIndex = e.NewPageIndex;
+            gvwPropuestaMejoraListado.DataBind();
         }
     }
 }

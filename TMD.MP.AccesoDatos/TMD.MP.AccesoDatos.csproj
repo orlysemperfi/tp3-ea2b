@@ -41,20 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrato\IAccionesSolucionData.cs" />
     <Compile Include="Contrato\IAreaData.cs" />
     <Compile Include="Contrato\IEscalaCualitativoData.cs" />
     <Compile Include="Contrato\IEscalaCuantitativoData.cs" />
     <Compile Include="Contrato\IIndicadorData.cs" />
+    <Compile Include="Contrato\IPilotoData.cs" />
     <Compile Include="Contrato\IProcesoData.cs" />
     <Compile Include="Contrato\IPropuestaMejoraData.cs" />
     <Compile Include="Contrato\ISolucionMejoraData.cs" />
     <Compile Include="Contrato\IUnidadData.cs" />
     <Compile Include="Contrato\IUsuarioData.cs" />
+    <Compile Include="Implementacion\AccionesSolucionDataSql.cs" />
     <Compile Include="Implementacion\AreaDataSql.cs" />
     <Compile Include="Implementacion\BaseDataSql.cs" />
     <Compile Include="Implementacion\EscalaCualitativoDataSql.cs" />
     <Compile Include="Implementacion\EscalaCuantitativoDataSql.cs" />
     <Compile Include="Implementacion\IndicadorDataSql.cs" />
+    <Compile Include="Implementacion\PilotoDataSql.cs" />
     <Compile Include="Implementacion\ProcesoDataSql.cs" />
     <Compile Include="Implementacion\PropuestaMejoraDataSql.cs" />
     <Compile Include="Implementacion\SolucionMejoraDataSql.cs" />

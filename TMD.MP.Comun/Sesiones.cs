@@ -98,6 +98,61 @@ namespace TMD.MP.Comun
 
         #endregion
 
+        private const String propuestaMejoraDesarrolloListado = "propuestaMejoraDesarrolloListado";
+        private const String propuestaMejoraDesarrolloSeleccionada = "propuestaMejoraDesarrolloSeleccionada";
+
+        #region "PropuestaMejoraDesarrolloListado"
+
+        public static List<PropuestaMejoraEntidad> PropuestaMejoraDesarrolloListado
+        {
+            get
+            {
+                return (List<PropuestaMejoraEntidad>)HttpContext.Current.Session[propuestaMejoraDesarrolloListado];
+            }
+            set
+            {
+                HttpContext.Current.Session[propuestaMejoraDesarrolloListado] = value;
+            }
+        }
+
+        public static bool PropuestaMejoraDesarrolloListadoEsNulo()
+        {
+            return HttpContext.Current.Session[propuestaMejoraDesarrolloListado] == null;
+        }
+
+        public static void PropuestaMejoraDesarrolloListadoRemover()
+        {
+            HttpContext.Current.Session.Remove(propuestaMejoraDesarrolloListado);
+        }
+
+        #endregion
+
+        #region "PropuestaMejoraDesarrolloSeleccionada"
+
+        public static PropuestaMejoraEntidad PropuestaMejoraDesarrolloSeleccionada
+        {
+            get
+            {
+                return (PropuestaMejoraEntidad)HttpContext.Current.Session[propuestaMejoraDesarrolloSeleccionada];
+            }
+            set
+            {
+                HttpContext.Current.Session[propuestaMejoraDesarrolloSeleccionada] = value;
+            }
+        }
+
+        public static bool PropuestaMejoraSeleccionadaDesarrolloEsNula()
+        {
+            return (HttpContext.Current.Session[propuestaMejoraDesarrolloSeleccionada] == null);
+        }
+
+        public static void PropuestaMejoraSeleccionadaDesarrolloRemover()
+        {
+            HttpContext.Current.Session.Remove(propuestaMejoraDesarrolloSeleccionada);
+        }
+
+        #endregion
+
         #endregion
 
         #region "Indicador"
@@ -159,5 +214,124 @@ namespace TMD.MP.Comun
         #endregion
 
         #endregion
+
+        #region "SolucionMejora"
+
+        private const String solucionMejoraListado = "solucionMejoraListado";
+        private const String solucionMejoraSeleccionada = "solucionMejoraSeleccionada";
+
+        #region "SolucionMejoraListado"
+
+        public static List<SolucionMejoraEntidad> SolucionMejoraListado
+        {
+            get
+            {
+                return (List<SolucionMejoraEntidad>)HttpContext.Current.Session[solucionMejoraListado];
+            }
+            set
+            {
+                HttpContext.Current.Session[solucionMejoraListado] = value;
+            }
+        }
+
+        public static bool SolucionMejoraListadoEsNulo()
+        {
+            return HttpContext.Current.Session[solucionMejoraListado] == null;
+        }
+
+        public static void SolucionMejoraListadoRemover()
+        {
+            HttpContext.Current.Session.Remove(solucionMejoraListado);
+        }
+
+        #endregion
+
+        #region "SolucionMejoraSeleccionada"
+
+        public static SolucionMejoraEntidad SolucionMejoraSeleccionada
+        {
+            get
+            {
+                return (SolucionMejoraEntidad)HttpContext.Current.Session[solucionMejoraSeleccionada];
+            }
+            set
+            {
+                HttpContext.Current.Session[solucionMejoraSeleccionada] = value;
+            }
+        }
+
+        public static bool SolucionMejoraSeleccionadaEsNula()
+        {
+            return (HttpContext.Current.Session[solucionMejoraSeleccionada] == null);
+        }
+
+        public static void SolucionMejoraSeleccionadaRemover()
+        {
+            HttpContext.Current.Session.Remove(solucionMejoraSeleccionada);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region "Piloto"
+
+        private const String pilotoListado = "pilotoListado";
+        private const String pilotoSeleccionada = "pilotoSeleccionada";
+
+        #region "PilotoListado"
+
+        public static List<PilotoEntidad> PilotoListado
+        {
+            get
+            {
+                return (List<PilotoEntidad>)HttpContext.Current.Session[pilotoListado];
+            }
+            set
+            {
+                HttpContext.Current.Session[pilotoListado] = value;
+            }
+        }
+
+        public static bool PilotoListadoEsNulo()
+        {
+            return HttpContext.Current.Session[pilotoListado] == null;
+        }
+
+        public static void PilotoListadoRemover()
+        {
+            HttpContext.Current.Session.Remove(pilotoListado);
+        }
+
+        #endregion
+
+        #region "PilotoSeleccionada"
+
+        public static PilotoEntidad PilotoSeleccionada
+        {
+            get
+            {
+                return (PilotoEntidad)HttpContext.Current.Session[pilotoSeleccionada];
+            }
+            set
+            {
+                HttpContext.Current.Session[pilotoSeleccionada] = value;
+            }
+        }
+
+        public static bool PilotoSeleccionadaEsNula()
+        {
+            return (HttpContext.Current.Session[pilotoSeleccionada] == null);
+        }
+
+        public static void PilotoSeleccionadaRemover()
+        {
+            HttpContext.Current.Session.Remove(pilotoSeleccionada);
+        }
+
+        #endregion
+
+        #endregion
+
     }
 }

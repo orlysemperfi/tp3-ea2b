@@ -8,6 +8,8 @@ using TMD.MP.Comun;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
+using TMD.MP.LogicaNegocios.Excepcion;
+using System.Data;
 
 namespace TMD.MP.Site.Privado
 {
@@ -15,7 +17,7 @@ namespace TMD.MP.Site.Privado
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
         int idIndicador = 0; //0:Insertar 1:Actualizar
-        
+        static int idCodEscala = 1000;
         
        
         protected void Page_Load(object sender, EventArgs e)
@@ -25,17 +27,33 @@ namespace TMD.MP.Site.Privado
                 CargarProceso();
                 CargarEscalaCualitativo();
                 action = Convert.ToInt32(Request.QueryString["Action"]);
+                CargarPlazo();
+                CargarFrecuencia();
                 CargarIndicador();
-                /*if (action == Constantes.ACTION_INSERT)
-                {
-                    NuevoIndicador();
-                }
-                else if (action == Constantes.ACTION_UPDATE)
-                {
-                    CargarIndicador();
-                }*/
 
             }
+        }
+
+        protected void CargarPlazo() 
+        {
+            ddlPlazo.Items.Add(new ListItem("[Seleccionar]","0"));
+            ddlPlazo.Items.Add(new ListItem("3 meses", "3 meses"));
+            ddlPlazo.Items.Add(new ListItem("6 meses", "6 meses"));
+            ddlPlazo.Items.Add(new ListItem("1 año", "1 año"));
+            ddlPlazo.Items.Add(new ListItem("2 años", "2 años"));
+            ddlPlazo.Items.Add(new ListItem("3 años", "3 años"));
+            ddlPlazo.DataBind();
+        }
+
+        protected void CargarFrecuencia()
+        {
+            ddlFrecuenciaMed.Items.Add(new ListItem("[Seleccionar]", "0"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Diaria", "Diaria"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Semanal", "Semanal"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Mensual", "Mensual"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Semestral", "Semestral"));
+            ddlFrecuenciaMed.Items.Add(new ListItem("Anual", "Anual"));
+            ddlFrecuenciaMed.DataBind();
         }
 
         protected void NuevoIndicador()
@@ -49,41 +67,56 @@ namespace TMD.MP.Site.Privado
             
         }
 
-
         protected void CargarIndicador()
         {
             IndicadorEntidad indicador = Sesiones.IndicadorSeleccionado;
             ddlProceso.SelectedValue = indicador.codigo_Proceso.ToString();
             tbxNombre.Text = indicador.nombre;
-            tbxFrecuenciaMed.Text = indicador.frecuencia_Medicion;
+            ddlFrecuenciaMed.SelectedValue = indicador.frecuencia_Medicion;
             tbxFuenteMed.Text = indicador.fuente_Medicion;
-            tbxExpresionMat.Text = indicador.expresion_Matematica;
-            tbxPlaxo.Text = indicador.plazo;
+            ddlPlazo.SelectedValue = indicador.plazo;
             CargarListadoEscalas();
         }
 
-        protected void lbtnGuardar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
-            IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
-            oNewIndicador.nombre = tbxNombre.Text;
-            oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
-            oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
-            oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
-            oNewIndicador.plazo = tbxPlaxo.Text;
-            oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
-            oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUALITATIVO;
-            oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
-    
-            if (oNewIndicador.codigo != null)
-                oIndicadorLogica.ActualizarIndicador(oNewIndicador);
-            else
-                oIndicadorLogica.InsertarIndicador(oNewIndicador);
+            Validate(btnGuardar.ValidationGroup);
 
-            Response.Redirect(Paginas.TMD_MP_IndicadorListado);
+            if (IsValid == true)
+            {
+                IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
+                IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
+                oNewIndicador.nombre = tbxNombre.Text;
+                oNewIndicador.frecuencia_Medicion = ddlFrecuenciaMed.SelectedItem.ToString();
+                oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
+                oNewIndicador.plazo = ddlPlazo.SelectedItem.ToString();
+                oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
+                oNewIndicador.tipo = Constantes.TIPO_INDICADOR_CUALITATIVO;
+                oNewIndicador.estado = Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO);
+                try
+                {
+                    if (oNewIndicador.codigo != null)
+                        oIndicadorLogica.ActualizarIndicador(oNewIndicador);
+                    else
+                        oIndicadorLogica.InsertarIndicador(oNewIndicador);
+
+                    string currentURL = Request.Url.ToString();
+                    string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                    "alert('Indicador Registrado'); window.location='" +
+                    newURL + "/IndicadorListado.aspx';", true);
+                }
+                catch (BRuleException ex) 
+                {
+                    lblMensajeError.Text = ex.Message;
+                    lblMensajeError.DataBind();                    
+                }
+               
+            }
         }
 
-        protected void lbtnCancelar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect(Paginas.TMD_MP_IndicadorListado, true);
         }
@@ -151,24 +184,6 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void lbtnBuscar_Click(object sender, EventArgs e)
-        { 
-        
-        }
-
-
-        protected void lbtnAgregarICuali_Click(object sender, EventArgs e)
-        {
-            IndicadorEntidad oNewIndicador = Sesiones.IndicadorSeleccionado;
-            oNewIndicador.nombre = tbxNombre.Text;
-            oNewIndicador.frecuencia_Medicion = tbxFrecuenciaMed.Text;
-            oNewIndicador.fuente_Medicion = tbxFuenteMed.Text;
-            oNewIndicador.expresion_Matematica = tbxExpresionMat.Text;
-            oNewIndicador.plazo = tbxPlaxo.Text;
-            oNewIndicador.codigo_Proceso = Convert.ToInt32(ddlProceso.SelectedValue);
-            Response.Redirect(Paginas.TMD_MP_EscalaCualitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
-        }
-
         protected void CargarProceso()
         {
             IProcesoLogica oProcesoLogica = ProcesoLogica.getInstance();
@@ -215,34 +230,80 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void gwEscalasCuali_RowCommand(object sender, GridViewCommandEventArgs e)
+
+        protected void gwEscalasCuali_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();
-            if (e.CommandName == "Eliminar")
-            {
-                  RemoverEscalaCualiSesion(Convert.ToInt32(e.CommandArgument));
-                               
-            }
-            if (e.CommandName == "Editar")
-            {
-                Response.Redirect(Paginas.TMD_MP_EscalaCualitativoFormulario + "?Action=" + Constantes.ACTION_UPDATE + "&Codigo=" + Convert.ToInt32(e.CommandArgument), true);
-            }
+            gwEscalasCuali.EditIndex = e.NewEditIndex;
+            gwEscalasCuali.DataBind();
+
         }
-        protected void RemoverEscalaCualiSesion(int codigo) {
-            EscalaCualitativoEntidad oEscalaCualitativo = null;
-            foreach(EscalaCualitativoEntidad obj in Sesiones.IndicadorSeleccionado.lstEscalaCualitativo)
+
+        protected void gwEscalasCuali_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)gwEscalasCuali.Rows[e.RowIndex];
+            Label lblCodigo = (Label)row.FindControl("lblCodigo");
+            TextBox tbxLimSuperior = (TextBox)row.FindControl("tbxLimSuperior");
+            TextBox tbxLimInferior = (TextBox)row.FindControl("tbxLimInferior");
+            TextBox tbxCalificacion = (TextBox)row.FindControl("tbxCalificacion");
+            CheckBox chkPrincipal = (CheckBox)row.FindControl("chkPrincipal");
+
+            gwEscalasCuali.EditIndex = -1;
+            
+            foreach (EscalaCualitativoEntidad obj in Sesiones.IndicadorSeleccionado.lstEscalaCualitativo)
             {
-                if (obj.codigo == codigo)
+                if (obj.codigo == Convert.ToInt32(lblCodigo.Text))
                 {
-                    oEscalaCualitativo = obj;
+                    obj.limite_inferior = tbxLimInferior.Text;
+                    obj.limite_superior = tbxLimSuperior.Text;
+                    obj.calificacion = tbxCalificacion.Text;
+                    obj.principal = (chkPrincipal.Checked) ? 1 : 0;
                 }
             }
-            if (oEscalaCualitativo!=null)
-                Sesiones.IndicadorSeleccionado.lstEscalaCualitativo.Remove(oEscalaCualitativo);
-            else
-                lblMensajeError.Text = "La escala cualitativa no puede ser borrada.";
-            CargarEscalaCualitativo();
             
+            gwEscalasCuali.DataBind();
+
         }
+
+        protected void gwEscalasCuali_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gwEscalasCuali.EditIndex = -1;
+            gwEscalasCuali.DataBind();
+        }
+
+        protected void gwEscalasCuali_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = (GridViewRow)gwEscalasCuali.Rows[e.RowIndex];
+            Label lblCodigo = (Label)row.FindControl("lblCodigo");
+            EscalaCualitativoEntidad oEscalaCualitativo = null;
+            foreach (EscalaCualitativoEntidad obj in Sesiones.IndicadorSeleccionado.lstEscalaCualitativo)
+            {
+                if (obj.codigo == Convert.ToInt32(lblCodigo.Text))
+                {
+                    oEscalaCualitativo = obj;
+                    break;
+                }
+            }
+            
+
+            Sesiones.IndicadorSeleccionado.lstEscalaCualitativo.Remove(oEscalaCualitativo);
+
+            gwEscalasCuali.DataBind();
+        }
+
+        private void AddNewRowToGrid()
+        {
+            EscalaCualitativoEntidad oEscalaCualitativo = new EscalaCualitativoEntidad();
+            oEscalaCualitativo.codigo = idCodEscala++;
+            
+            Sesiones.IndicadorSeleccionado.lstEscalaCualitativo.Add(oEscalaCualitativo);
+            gwEscalasCuali.EditIndex = Sesiones.IndicadorSeleccionado.lstEscalaCualitativo.Count - 1;
+            gwEscalasCuali.DataBind();
+        }
+
+        protected void ButtonAdd_Click(object sender, EventArgs e)
+        {
+            AddNewRowToGrid();
+        }
+
     }
 }

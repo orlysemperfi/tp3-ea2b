@@ -1,51 +1,60 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vistas/MP/TMD-MP.Master" AutoEventWireup="true" CodeBehind="IndicadorListado.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresListado" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" CodeBehind="IndicadorListado.aspx.cs" Inherits="TMD.MP.Site.Privado.IndicadoresListado" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
+    <div id="listaSol" class="content">
+        <h1 class="page-title">LISTADO DE INDICADORES</h1>
+        <div class="panel-wrapper">
+            <asp:UpdatePanel ID="upnlFiltros" runat="server">
+                <ContentTemplate>
+                    <asp:Panel runat="server" ID="pnlFiltros">
+                        <table border="0" cellpadding="0" cellspacing="0" style="width: 800px;">
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblNombre" runat="server" Text="Nombre:" Width="50px"></asp:Label>
+                                    <asp:TextBox ID="tbxNombre" runat="server" Width="150px"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblTipo" runat="server" Text="Tipo:" Width="50px"></asp:Label>
+                                    <asp:DropDownList ID="ddlTipo" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblArea" runat="server" Text="Área:" Width="50px"></asp:Label>
+                                    <asp:DropDownList ID="ddlArea" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblProceso" runat="server" Text="Proceso:" Width="50px"></asp:Label>
+                                    <asp:DropDownList ID="ddlProceso" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
+                                <td>
+                                    <asp:Button ID="btnAgregarIndicadorCuali" runat="server" OnClick="btnAgregarIndicadorCuali_Click" Text="Agregar Cualitativo" />
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnAgregarIndicadorCuanti" runat="server" OnClick="btnAgregarIndicadorCuanti_Click" Text="Agregar Cuantitativo" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                    </asp:Panel>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
     <asp:UpdatePanel ID="upnlIndicadorListado" runat="server">
     <ContentTemplate>
-    <div class="contenedor-pagina">
-        <div class="contenedor-pagina-titulo">
-            LISTADO DE INDICADORES
-        </div>
-        <br />
-        <table border="0" cellpadding="0" cellspacing="0">
-            <tr>
-                <td>
-                    Nombre:
-                </td>
-                <td class="textbox-espaciado">
-                    <asp:TextBox ID="tbxNombre" runat="server" CssClass="estilo_textbox" Width="150px"></asp:TextBox>
-                </td>
-                <td class="textbox-espaciado">
-                    Tipo:
-                </td>
-                <td class="textbox-espaciado">
-                    <asp:DropDownList ID="ddlTipo" runat="server" CssClass="estilo_combobox">
-                    </asp:DropDownList>
-                </td>
-                <td class="textbox-espaciado">
-                    Area:
-                </td>
-                <td class="textbox-espaciado">
-                    <asp:DropDownList ID="ddlArea" runat="server" CssClass="estilo_combobox">
-                    </asp:DropDownList>
-                </td>
-                <td class="textbox-espaciado">
-                    Proceso:
-                </td>
-                <td class="textbox-espaciado">
-                    <asp:DropDownList ID="ddlProceso" runat="server" CssClass="estilo_combobox">
-                    </asp:DropDownList>
-                </td>
-                <td class="textbox-espaciado">
-                    <asp:LinkButton ID="lbtnBuscar" runat="server" OnClick="lbtnBuscar_Click" CssClass="estilo_boton" Text="Buscar"></asp:LinkButton>
-                </td>
-            </tr>
-        </table>
-        <div id="divMensaje" runat="server">
+    <%--<div class="contenedor-pagina">--%>
+
+<%--        <div id="divMensaje" runat="server">
             <br />
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
@@ -54,17 +63,18 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div>--%>
         <br />
-        <table id="tblIndicadorListado" runat="server" border="0" cellpadding="0" cellspacing="0">
+<%--        <table id="tblIndicadorListado" runat="server" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td>                    
-                    <asp:GridView ID="gvwIndicadorListado" runat="server" CssClass="tabla-grilla" 
+                <td>   --%>                 
+                    <asp:GridView ID="gvwIndicadorListado" runat="server" 
                         Width="920px" AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
                         DataSource='<%#ObtenerIndicadorListado()%>' BorderWidth="0px" 
-                        BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand" >
-                        <HeaderStyle CssClass="tabla-grilla-cabecera" />
-                        <RowStyle CssClass="tabla-grilla-filas" />
+                        BorderColor="White" OnRowCommand="gvwIndicadorListado_RowCommand" OnPageIndexChanging="gvwIndicadorListado_PageIndexChanging">
+                        <EmptyDataTemplate>
+                                No existen indicadores con los criterios ingresados.
+                        </EmptyDataTemplate>
                         <Columns>
                             <asp:TemplateField HeaderText="Código">
                                 <ItemTemplate>
@@ -92,24 +102,22 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarIndicador" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>                           
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Inactivar" CommandName="InactivarIndicador" CommandArgument='<%#Eval("CODIGO") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEliminar" runat="server" Text="Inactivar" CommandName="InactivarIndicador" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
-                        </Columns>
-                        <PagerTemplate>
-                        </PagerTemplate>                   
+                        </Columns>                  
                     </asp:GridView>
-                </td>
+<%--                </td>
             </tr>
-        </table>
-        <div id="divLinea" runat="server" class="linea-separadora">
+        </table>--%>
+<%--        <div id="divLinea" runat="server" class="linea-separadora">
         </div>
         <table id="tblPaginacion" runat="server" border="0" cellpadding="0" cellspacing="0" style="width:100%">
             <tr>                
@@ -145,20 +153,20 @@
                 </td>
             </tr>
         </table>
-        <br />
-        <table border="0" cellpadding="0" cellspacing="0">
+        <br />--%>
+<%--        <table border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
-                    <asp:LinkButton ID="lbtnAgregarIndicadorCuali" runat="server" OnClick="ibtnAgregarIndicadorCuali_Click" CssClass="estilo_boton" Text="Agregar Cualitativo"></asp:LinkButton>
+                    
                 </td>
-                 <td>
-                    <asp:LinkButton ID="lbtnAgregarIndicadorCuanti" runat="server" OnClick="ibtnAgregarIndicadorCuanti_Click" CssClass="estilo_boton" Text="Agregar Cuantitativo"></asp:LinkButton>
+                <td class="boton-espaciado">
+                    
                 </td>
                 <td class="boton-espaciado">
                     <asp:LinkButton ID="lbtnSalir" runat="server" OnClick="ibtnSalir_Click" CssClass="estilo_boton" Text="Salir"></asp:LinkButton>
                 </td>
             </tr>
-        </table>
+        </table>--%>
         <br />
         <table border="0" cellpadding="0" cellspacing="0">
             <tr>
@@ -167,9 +175,9 @@
                 </td>
             </tr>
         </table>
-    </div>
+    <%--</div>--%>
     </ContentTemplate>
-    <Triggers>
+<%--    <Triggers>
         <asp:AsyncPostBackTrigger ControlID="lbtnBuscar" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnIzquierdaTodo" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnIzquierda" EventName="Click" />
@@ -178,6 +186,6 @@
         <asp:AsyncPostBackTrigger ControlID="lbtnDerechaTodo" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicadorCuali" EventName="Click" />
         <asp:AsyncPostBackTrigger ControlID="lbtnAgregarIndicadorCuanti" EventName="Click" />
-    </Triggers>
+    </Triggers>--%>
     </asp:UpdatePanel>
 </asp:Content>
