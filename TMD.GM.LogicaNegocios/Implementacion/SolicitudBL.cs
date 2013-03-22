@@ -29,18 +29,25 @@ namespace TMD.GM.LogicaNegocios.Implementacion
             return instanciaDA.ObtenerSolicitudes( filtro);
         }
 
-        public void RegistrarSolicitud(SolicitudBE SolicitudBE)
+        public void RegistrarSolicitud(SolicitudBE solicitudBE)
         {
-            instanciaDA.RegistrarSolicitud(SolicitudBE);
+            instanciaDA.RegistrarSolicitud(solicitudBE);
         }
-
-        public void ActualizarSolicitud(SolicitudBE SolicitudBE)
+        public void EliminarSolicitud(SolicitudBE solicitudBE)
         {
-            instanciaDA.ActualizarSolicitud(SolicitudBE);
+            instanciaDA.EliminarSolicitud(solicitudBE);
         }
-        public SolicitudBE VisualizarSolicitud(SolicitudBE SolicitudBE)
+        public void ActualizarSolicitud(SolicitudBE solicitudBE)
         {
-            return instanciaDA.VisualizarSolicitud(SolicitudBE);
+            instanciaDA.ActualizarSolicitud(solicitudBE);
+        }
+        public SolicitudBE VisualizarSolicitud(SolicitudBE solicitudBE)
+        {
+            return instanciaDA.VisualizarSolicitud(solicitudBE);
+        }
+        public List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE)
+        {
+            return instanciaDA.GenerarCronograma(solicitudBE);
         }
     }
 }

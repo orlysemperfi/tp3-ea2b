@@ -26,7 +26,7 @@ namespace TMD.GM.Site.Models
         public List<SelectListItem> listaES { get; set; }
         public List<SelectListItem> listaPM { get; set; }
         public SolicitudBE solicitudBE { get; set; }
-
+        public bool cronogramGenerado { get; set; }
     }
 
     public class SolicitudConsultaModel

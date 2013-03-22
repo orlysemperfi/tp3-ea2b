@@ -3,39 +3,64 @@
     ViewBag.Title = "Solicitud";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Mantenimiento de Solicitudes</h2>
 
-<h2>Solicitud</h2>
 <fieldset>
-N° Solicitud:
-@Html.TextBox("txtNumSolicitud_Consulta","", new { @class = "txtForm" })
-Desde
-@Html.TextBox("txtFechaIni_Consulta", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
-Hasta
-@Html.TextBox("txtFechaFin_Consulta", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
-Tipo de solicitud:
+<fieldset class="fieldset_left">
+<span>N° Solicitud</span><br />
+<input id="txtNumSolicitud_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Documento Referencia</span><br />
+<input id="txtNumDocuRefe_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Desde</span><br />
+<input id="dpFechaIni_Consulta" value="" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Hasta</span><br />
+<input id="dpFechaFin_Consulta" value="" style="width:150px;" />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Tipo de solicitud</span><br />
 @Html.DropDownList("ddlTipoSolicitud_Consulta", Model.listaTS, new { @class = "ddlForm" })
 </fieldset>
-<fieldset>
-Documento Referencia:
-@Html.TextBox("txtNumDocuRefe_Consulta", "", new { @class = "txtForm" })
-Estado de solicitud:
+<fieldset  class="fieldset_left">
+<span>Estado solicitud</span><br />
 @Html.DropDownList("ddlEstadoSolicitud_Consulta", Model.listaES, new { @class = "ddlForm" })
-Código de equipo:
-@Html.TextBox("txtCodigoEquipo_Consulta", "", new { @class = "txtForm" })
-<input id="btnBuscarEquipo" type="button" value="..."  onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")')"/>
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Plan mantenimiento</span><br />
+@Html.DropDownList("ddlPlanMante_Consulta", Model.listaPM, new { @class = "ddlForm", @style="width:300px" })
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Código de equipo</span><br />
+<input id="txtCodigoEquipo_Consulta" type="text" class="k-textbox" value="" style="width: 120px;" />
+<button id="btnBuscarEquipo" class="k-button" onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")')" >...</button>
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Nombre equipo</span><br />
+<input id="txtNombreEquipo_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+
 </fieldset>
 <fieldset>
-Nombre equipo:
-@Html.TextBox("txtNombreEquipo_Consulta", "", new { @class = "txtForm" })
-Plan mantenimiento:
-@Html.DropDownList("ddlPlanMante_Consulta", Model.listaPM, new { @class = "ddlForm" })
-<input id="btnBuscar" type="button" value="Buscar" onclick="BuscarSolicitudes('@Url.Action("Solicitudes", "Solicitud")')" />
+<button id="btnNuevo" class="k-button" onclick="SolicitudNueva('@Url.Action("SolicitudNueva", "Solicitud")')" ><span class="k-icon k-i-plus"></span> Nueva Solicitud</button>
+<button id="btnBuscar" class="k-button" onclick="BuscarSolicitudes('@Url.Action("Solicitudes", "Solicitud")')" ><span class="k-icon k-i-search"></span> Buscar</button>
 </fieldset>
-<fieldset>
+<br />
+<div class="k-block"><div class="k-header">Solicitudes</div>
 <div id="divGridSolicitudesConsulta"></div>
-</fieldset>
+</div>
 <fieldset>
-<input id="btnNuevo" type="button" value="Nueva Solicitud" onclick="SolicitudNueva('@Url.Action("SolicitudNueva", "Solicitud")')"/>
+
 <div id="divSolicitud" class="j_modal" title="Solicitud"></div>
 <div id="divActividad" class="j_modal" title="Actividad"></div>
 <div id="divCalendario" class="j_modal" title="Calendario de Actividades"></div>
@@ -43,3 +68,10 @@ Plan mantenimiento:
 
 
 </fieldset>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#dpFechaIni_Consulta").kendoDatePicker({ format: "dd/MM/yyyy" });
+        $("#dpFechaFin_Consulta").kendoDatePicker({ format: "dd/MM/yyyy" });
+    });
+</script>
