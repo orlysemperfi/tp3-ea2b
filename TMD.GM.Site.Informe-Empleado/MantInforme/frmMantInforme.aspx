@@ -29,7 +29,7 @@
                 <tr>
                     <td>
                         &nbsp;
-                        <img src="../Images/logo.jpg" /></td>
+                        <a href="http://localhost:41000/"><img src="../Images/logo.jpg" /></a> </td>
                 </tr>
                 <tr>
                     <td bgcolor="#E9E9E9" align="center">
