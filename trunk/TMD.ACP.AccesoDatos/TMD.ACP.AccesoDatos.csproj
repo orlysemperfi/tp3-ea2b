@@ -52,6 +52,7 @@
     <Compile Include="Contrato\IAuditoriaData.cs" />
     <Compile Include="Contrato\ICapituloData.cs" />
     <Compile Include="Contrato\IEmpleadoData.cs" />
+    <Compile Include="Contrato\IEntidadAuditadaData.cs" />
     <Compile Include="Contrato\IHallazgoData.cs" />
     <Compile Include="Contrato\INormaData.cs" />
     <Compile Include="Contrato\IPreguntaVerificacionData.cs" />
@@ -67,6 +68,7 @@
     </Compile>
     <Compile Include="Implementacion\DLArchivo.cs" />
     <Compile Include="Implementacion\EmpleadoData.cs" />
+    <Compile Include="Implementacion\EntidadAuditadaData.cs" />
     <Compile Include="Implementacion\HallazgoData.cs" />
     <Compile Include="Implementacion\NormaData.cs" />
     <Compile Include="Implementacion\PreguntaVerificacionData.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Map\AuditoriaDataMap.cs" />
     <Compile Include="Map\CapituloDataMap.cs" />
     <Compile Include="Map\EmpleadoDataMap.cs" />
+    <Compile Include="Map\EntidadAuditadaDataMap.cs" />
     <Compile Include="Map\HallazgoDataMap.cs" />
     <Compile Include="Map\NormaDataMap.cs" />
     <Compile Include="Map\PreguntaVerificacionDataMap.cs" />
