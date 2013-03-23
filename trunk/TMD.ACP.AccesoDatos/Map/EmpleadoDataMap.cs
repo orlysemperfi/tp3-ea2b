@@ -14,13 +14,12 @@ namespace TMD.ACP.AccesoDatos.Map
         public static EmpleadoEntidad SelectEmpleado(IDataReader reader)
         {
             EmpleadoEntidad objEmpleado = new EmpleadoEntidad();
-            //PENDIENTE DE REVISION
-            objEmpleado.codigo = reader.GetInt("idEmpleado");            
+            objEmpleado.codigo = reader.GetInt("CODIGO_EMPLEADO");            
             objEmpleado.nombre = reader.GetString("nombres");
             objEmpleado.apellidopaterno = reader.GetString("apepat");
             objEmpleado.apellidomaterno = reader.GetString("apemat");
-            //objEmpleado.ObjArea.IdArea = reader.GetInt("idArea");
-            //objEmpleado.ObjArea.NombreArea = reader.GetString("nombreArea");
+            objEmpleado.ObjArea.codigo = reader.GetInt("CODIGO_AREA");
+            objEmpleado.ObjArea.descripcion = reader.GetString("nombreArea");            
             return objEmpleado;
         }
     }
