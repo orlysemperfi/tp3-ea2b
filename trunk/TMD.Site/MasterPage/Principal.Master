@@ -35,11 +35,10 @@
 <body>
     <form id="form1" runat="server">
     <div class="page">
-            <div class="header">
-
-                <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server">             
-                </ajaxToolkit:ToolkitScriptManager> 
+            <div class="header">           
                 
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
                  <%--<asp:Literal ID="Literal1" runat="server"></asp:Literal>--%>
                  <%--<div id="banner"></div>--%>
 
