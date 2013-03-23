@@ -47,18 +47,22 @@
     <Compile Include="Contrato\IAuditorLogica.cs" />
     <Compile Include="Contrato\ICapituloLogica.cs" />
     <Compile Include="Contrato\IEmpleadoLogica.cs" />
+    <Compile Include="Contrato\IEntidadAuditadaLogica.cs" />
     <Compile Include="Contrato\IHallazgoLogica.cs" />
     <Compile Include="Contrato\INormaLogica.cs" />
     <Compile Include="Contrato\IPreguntaVerificacionLogica.cs" />
+    <Compile Include="Contrato\IProgramaAnualLogica.cs" />
     <Compile Include="Implementacion\ActividadLogica.cs" />
     <Compile Include="Implementacion\ArchivoLogica.cs" />
     <Compile Include="Implementacion\AuditoriaLogica.cs" />
     <Compile Include="Implementacion\AuditorLogica.cs" />
     <Compile Include="Implementacion\CapituloLogica.cs" />
     <Compile Include="Implementacion\EmpleadoLogica.cs" />
+    <Compile Include="Implementacion\EntidadAuditadaLogica.cs" />
     <Compile Include="Implementacion\HallazgoLogica.cs" />
     <Compile Include="Implementacion\NormaLogica.cs" />
     <Compile Include="Implementacion\PreguntaVerificacionLogica.cs" />
+    <Compile Include="Implementacion\ProgramaAnualLogica.cs" />
     <Compile Include="Implementacion\ReporteLogica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
