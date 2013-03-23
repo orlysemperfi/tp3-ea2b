@@ -82,6 +82,14 @@
                             <asp:MenuItem Text="Pilotos">
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/PilotoListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                             </asp:MenuItem>
+                            <asp:MenuItem Text="Auditoría" Value="Auditoria">
+                                <asp:MenuItem Text="Actualizar Programa Anual" NavigateUrl="~/Vistas/ACP/ProgramaAuditoria.aspx" />
+                                <asp:MenuItem Text="Actualizar Plan de Auditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
+                                <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
+                                <asp:MenuItem Text="Actualizar Plan de Acción" NavigateUrl="~/Vistas/ACP/ListaPlanAccion.aspx" />
+                                <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" NavigateUrl="~/Vistas/ACP/ListaSeguimientoHallazgo.aspx" />
+                                <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" NavigateUrl="~/Vistas/ACP/ListaActSeguimientoHallazgo.aspx" />
+                            </asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>

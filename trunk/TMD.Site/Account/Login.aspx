@@ -21,7 +21,7 @@
     <td class="style2">
     <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false"
         MembershipProvider="None" OnAuthenticate="LoginUser_Authenticate" FailureText="Su intento de inicio de sesión no se realizó correctamente. Por favor, inténtelo de nuevo."
-        DestinationPageUrl="~/Index.aspx">
+        DestinationPageUrl="~/Inicio.aspx">
         <LayoutTemplate>
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
