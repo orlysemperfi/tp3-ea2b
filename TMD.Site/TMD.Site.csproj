@@ -43,6 +43,13 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\Librerias\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\Librerias\log4net.dll</HintPath>
     </Reference>
@@ -74,6 +81,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
@@ -146,15 +154,65 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Vistas\ACP\ActualizarHallazgo.aspx" />
+    <Content Include="Vistas\ACP\ActualizarPlanAccion.aspx" />
+    <Content Include="Vistas\ACP\ActualizarPlanAuditoria.aspx" />
+    <Content Include="Vistas\ACP\ActualizarSeguimientoHallazgo.aspx" />
+    <Content Include="Vistas\ACP\AsignarSeguimiento.aspx" />
     <Content Include="Vistas\ACP\ConsultaAuditoria.aspx" />
     <Content Include="Vistas\ACP\ConsultarAuditor.aspx" />
-    <Content Include="Vistas\ACP\Dashboard.aspx" />
+    <Content Include="Vistas\ACP\ConsultarEntidadAuditada.aspx" />
+    <Content Include="Vistas\ACP\css\jquery-ui.css" />
+    <Content Include="Vistas\ACP\css\jquery.ui.base.css" />
+    <Content Include="Vistas\ACP\css\layout-default-latest.css" />
+    <Content Include="Vistas\ACP\css\themes\jquery.ui.accordion.css" />
+    <Content Include="Vistas\ACP\css\themes\jquery.ui.all.css" />
+    <Content Include="Vistas\ACP\css\themes\jquery.ui.core.css" />
+    <Content Include="Vistas\ACP\js\AjaxEdit.js" />
+    <Content Include="Vistas\ACP\js\debug.js" />
+    <Content Include="Vistas\ACP\js\facebox\add-item.png" />
+    <Content Include="Vistas\ACP\js\facebox\bg.gif" />
+    <Content Include="Vistas\ACP\js\facebox\bgfooter.gif" />
+    <Content Include="Vistas\ACP\js\facebox\bgheader.gif" />
+    <Content Include="Vistas\ACP\js\facebox\cancel.png" />
+    <Content Include="Vistas\ACP\js\facebox\close.gif" />
+    <Content Include="Vistas\ACP\js\facebox\facebox.css" />
+    <Content Include="Vistas\ACP\js\facebox\facebox.js" />
+    <Content Include="Vistas\ACP\js\facebox\loading.gif" />
+    <Content Include="Vistas\ACP\js\facebox\print.png" />
+    <Content Include="Vistas\ACP\js\facebox\save-and-new.png" />
+    <Content Include="Vistas\ACP\js\facebox\save.gif" />
+    <Content Include="Vistas\ACP\js\facebox\save.png" />
+    <Content Include="Vistas\ACP\js\global.js" />
+    <Content Include="Vistas\ACP\js\jquery-1.8.3.js" />
+    <Content Include="Vistas\ACP\js\jquery-latest.js" />
+    <Content Include="Vistas\ACP\js\jquery-ui-latest.js" />
+    <Content Include="Vistas\ACP\js\jquery-ui.js" />
+    <Content Include="Vistas\ACP\js\jquery.js" />
+    <Content Include="Vistas\ACP\js\jquery.layout-latest.js" />
+    <Content Include="Vistas\ACP\js\jquery.layout.js" />
+    <Content Include="Vistas\ACP\js\jquery.layout.min.js" />
+    <Content Include="Vistas\ACP\js\jquery.layout.resizePaneAccordions-1.0.js" />
+    <Content Include="Vistas\ACP\js\jquery.layout.resizePaneAccordions.min-1.0.js" />
+    <Content Include="Vistas\ACP\js\jquery.ui.all.js" />
+    <Content Include="Vistas\ACP\js\themeswitchertool.js" />
+    <Content Include="Vistas\ACP\js\utils.js" />
+    <Content Include="Vistas\ACP\ListaActSeguimientoHallazgo.aspx" />
+    <Content Include="Vistas\ACP\ListaPlanAccion.aspx" />
     <Content Include="Vistas\ACP\ListaPlanAuditoria.aspx" />
+    <Content Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx" />
     <Content Include="Vistas\ACP\MantenerHallazgo.aspx" />
-    <Content Include="Vistas\ACP\PlanAuditoria.aspx" />
     <Content Include="Vistas\ACP\Principal.aspx" />
+    <Content Include="Vistas\ACP\ProgramaAuditoria.aspx" />
+    <Content Include="Vistas\ACP\RegistrarAuditoria.aspx" />
+    <Content Include="Vistas\ACP\Reportes\RptPlanAuditoriaView.aspx" />
+    <Content Include="Vistas\ACP\SaveAttachment.aspx" />
+    <Content Include="Vistas\ACP\Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Vistas\ACP\Scripts\jquery-1.4.1.js" />
+    <Content Include="Vistas\ACP\Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Vistas\ACP\Styles\Site.css" />
+    <Content Include="Vistas\ACP\Styles\style.css" />
     <Content Include="Vistas\ACP\UploadFile.aspx" />
-    <Content Include="Vistas\ACP\WebForm1.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaOrdenCambio.aspx" />
     <Content Include="Vistas\CF\ControlCambio\ListaSolicitudCambio.aspx" />
@@ -228,6 +286,11 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controladora\ACP\AuditorControladora.cs" />
+    <Compile Include="Controladora\ACP\AuditoriaControladora.cs" />
+    <Compile Include="Controladora\ACP\HallazgoControladora.cs" />
+    <Compile Include="Controladora\ACP\PreguntaVerificacionControladora.cs" />
+    <Compile Include="Controladora\Base.cs" />
     <Compile Include="Controles\CF\ControlCambio\RegistroOrdenCambio.ascx.cs">
       <DependentUpon>RegistroOrdenCambio.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -306,6 +369,7 @@
     <Compile Include="MasterPage\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Presentadora\ACP\ProgramaAnualPresentadora.cs" />
     <Compile Include="Util\ControlUtil.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -347,12 +411,48 @@
       <DependentUpon>SitePublic.Master</DependentUpon>
     </Compile>
     <Compile Include="Util\SesionFachada.cs" />
-    <Compile Include="Vistas\ACP\BasePage.cs">
+    <Compile Include="Vistas\ACP\ActualizarHallazgo.aspx.cs">
+      <DependentUpon>ActualizarHallazgo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\ACP\BasicPage.cs">
+    <Compile Include="Vistas\ACP\ActualizarHallazgo.aspx.designer.cs">
+      <DependentUpon>ActualizarHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActualizarPlanAccion.aspx.cs">
+      <DependentUpon>ActualizarPlanAccion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Vistas\ACP\ActualizarPlanAccion.aspx.designer.cs">
+      <DependentUpon>ActualizarPlanAccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActualizarPlanAuditoria.aspx.cs">
+      <DependentUpon>ActualizarPlanAuditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActualizarPlanAuditoria.aspx.designer.cs">
+      <DependentUpon>ActualizarPlanAuditoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActualizarSeguimientoHallazgo.aspx.cs">
+      <DependentUpon>ActualizarSeguimientoHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActualizarSeguimientoHallazgo.aspx.designer.cs">
+      <DependentUpon>ActualizarSeguimientoHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\AsignarSeguimiento.aspx.cs">
+      <DependentUpon>AsignarSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\AsignarSeguimiento.aspx.designer.cs">
+      <DependentUpon>AsignarSeguimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\base\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\base\BasicPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\base\Data.cs" />
     <Compile Include="Vistas\ACP\ConsultaAuditoria.aspx.cs">
       <DependentUpon>ConsultaAuditoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,21 +467,41 @@
     <Compile Include="Vistas\ACP\ConsultarAuditor.aspx.designer.cs">
       <DependentUpon>ConsultarAuditor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\ACP\Contact.cs" />
-    <Compile Include="Vistas\ACP\Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="Vistas\ACP\ConsultarEntidadAuditada.aspx.cs">
+      <DependentUpon>ConsultarEntidadAuditada.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\ACP\Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="Vistas\ACP\ConsultarEntidadAuditada.aspx.designer.cs">
+      <DependentUpon>ConsultarEntidadAuditada.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\ACP\Data.cs" />
+    <Compile Include="Vistas\ACP\IProgramaAnualVista.cs" />
+    <Compile Include="Vistas\ACP\ListaActSeguimientoHallazgo.aspx.cs">
+      <DependentUpon>ListaActSeguimientoHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaActSeguimientoHallazgo.aspx.designer.cs">
+      <DependentUpon>ListaActSeguimientoHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaPlanAccion.aspx.cs">
+      <DependentUpon>ListaPlanAccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaPlanAccion.aspx.designer.cs">
+      <DependentUpon>ListaPlanAccion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ACP\ListaPlanAuditoria.aspx.cs">
       <DependentUpon>ListaPlanAuditoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Vistas\ACP\ListaPlanAuditoria.aspx.designer.cs">
       <DependentUpon>ListaPlanAuditoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx.cs">
+      <DependentUpon>ListaSeguimientoHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx.designer.cs">
+      <DependentUpon>ListaSeguimientoHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ACP\MantenerHallazgo.aspx.cs">
       <DependentUpon>MantenerHallazgo.aspx</DependentUpon>
@@ -390,13 +510,6 @@
     <Compile Include="Vistas\ACP\MantenerHallazgo.aspx.designer.cs">
       <DependentUpon>MantenerHallazgo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\ACP\PlanAuditoria.aspx.cs">
-      <DependentUpon>PlanAuditoria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\PlanAuditoria.aspx.designer.cs">
-      <DependentUpon>PlanAuditoria.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\ACP\Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -404,12 +517,41 @@
     <Compile Include="Vistas\ACP\Principal.aspx.designer.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\ACP\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="Vistas\ACP\ProgramaAuditoria.aspx.cs">
+      <DependentUpon>ProgramaAuditoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\ACP\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="Vistas\ACP\ProgramaAuditoria.aspx.designer.cs">
+      <DependentUpon>ProgramaAuditoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\RegistrarAuditoria.aspx.cs">
+      <DependentUpon>RegistrarAuditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\RegistrarAuditoria.aspx.designer.cs">
+      <DependentUpon>RegistrarAuditoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\Reportes\dsRepPlanAuditoria.Designer.cs" />
+    <Compile Include="Vistas\ACP\Reportes\dsRepPlanAuditoria1.Designer.cs" />
+    <Compile Include="Vistas\ACP\Reportes\rptPlanAuditoria.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\Reportes\rptPlanAuditoria1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\Reportes\RptPlanAuditoriaView.aspx.cs">
+      <DependentUpon>RptPlanAuditoriaView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\Reportes\RptPlanAuditoriaView.aspx.designer.cs">
+      <DependentUpon>RptPlanAuditoriaView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\SaveAttachment.aspx.cs">
+      <DependentUpon>SaveAttachment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\SaveAttachment.aspx.designer.cs">
+      <DependentUpon>SaveAttachment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ACP\UploadFile.aspx.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>
@@ -417,13 +559,6 @@
     </Compile>
     <Compile Include="Vistas\ACP\UploadFile.aspx.designer.cs">
       <DependentUpon>UploadFile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\ACP\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\ACP\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\CF\ControlCambio\ListaInformeCambio.aspx.cs">
       <DependentUpon>ListaInformeCambio.aspx</DependentUpon>
@@ -692,7 +827,28 @@
     <Content Include="MasterPage\Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Vistas\ACP\Site.Master" />
+    <None Include="Vistas\ACP\js\facebox\Thumbs.db" />
+    <None Include="Vistas\ACP\js\facebox\vssver2.scc" />
+    <None Include="Vistas\ACP\Reportes\dsRepPlanAuditoria.xsc">
+      <DependentUpon>dsRepPlanAuditoria.xsd</DependentUpon>
+    </None>
+    <None Include="Vistas\ACP\Reportes\dsRepPlanAuditoria.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRepPlanAuditoria2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Vistas\ACP\Reportes\dsRepPlanAuditoria.xss">
+      <DependentUpon>dsRepPlanAuditoria.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Vistas\ACP\Reportes\rptPlanAuditoria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPlanAuditoria2.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
