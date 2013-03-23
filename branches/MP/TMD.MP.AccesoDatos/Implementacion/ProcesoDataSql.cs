@@ -23,7 +23,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT CODIGO,CODIGO_AREA,NOMBRE,OBJETIVO,ALCANCE ");
-            strSQL.Append("FROM TMD.MP.PROCESO");
+            strSQL.Append("FROM PROCESO");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;

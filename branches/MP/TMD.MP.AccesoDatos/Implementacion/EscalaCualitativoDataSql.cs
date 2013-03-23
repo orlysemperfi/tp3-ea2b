@@ -23,7 +23,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT [CODIGO], [CODIGO_INDICADOR], [LIMITE_INFERIOR], [LIMITE_SUPERIOR], [CALIFICACION],[PRINCIPAL] ");
-            strSQL.Append("FROM [TMD].[MP].[ESCALA_CUALITATIVO] ");
+            strSQL.Append("FROM [ESCALA_CUALITATIVO] ");
             strSQL.Append("WHERE [CODIGO_INDICADOR]=@CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -69,7 +69,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [TMD].[MP].[ESCALA_CUALITATIVO] ([CODIGO_INDICADOR],[LIMITE_INFERIOR],[LIMITE_SUPERIOR],[CALIFICACION],[PRINCIPAL]) ");
+            strSQL.Append("INSERT INTO [ESCALA_CUALITATIVO] ([CODIGO_INDICADOR],[LIMITE_INFERIOR],[LIMITE_SUPERIOR],[CALIFICACION],[PRINCIPAL]) ");
             strSQL.Append("VALUES (@CODIGO_INDICADOR,@LIMITE_INFERIOR,@LIMITE_SUPERIOR,@CALIFICACION,@PRINCIPAL) ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -104,7 +104,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE [TMD].[MP].[ESCALA_CUALITATIVO] SET [CODIGO_INDICADOR] = @CODIGO_INDICADOR,[LIMITE_INFERIOR] =@LIMITE_INFERIOR,[LIMITE_SUPERIOR] = @LIMITE_SUPERIOR,[CALIFICACION] = @CALIFICACION ");
+            strSQL.Append("UPDATE [ESCALA_CUALITATIVO] SET [CODIGO_INDICADOR] = @CODIGO_INDICADOR,[LIMITE_INFERIOR] =@LIMITE_INFERIOR,[LIMITE_SUPERIOR] = @LIMITE_SUPERIOR,[CALIFICACION] = @CALIFICACION ");
             strSQL.Append("WHERE [CODIGO] = @CODIGO ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -139,7 +139,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("DELETE FROM [TMD].[MP].[ESCALA_CUALITATIVO] ");
+            strSQL.Append("DELETE FROM [ESCALA_CUALITATIVO] ");
             strSQL.Append("WHERE [CODIGO_INDICADOR] = @CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);

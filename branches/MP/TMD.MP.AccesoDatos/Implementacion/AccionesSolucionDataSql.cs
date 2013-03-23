@@ -23,7 +23,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT [CODIGO], [DESCRIPCION] ");
-            strSQL.Append("FROM [TMD].[MP].[ACCIONES_SOLUCION] ");
+            strSQL.Append("FROM [ACCIONES_SOLUCION] ");
             strSQL.Append("WHERE [CODIGO_SOLUCION]=@CODIGO_SOLUCION ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -65,7 +65,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [TMD].[MP].[ACCIONES_SOLUCION] ([CODIGO_SOLUCION],[DESCRIPCION]) ");
+            strSQL.Append("INSERT INTO [ACCIONES_SOLUCION] ([CODIGO_SOLUCION],[DESCRIPCION]) ");
             strSQL.Append("VALUES (@CODIGO_SOLUCION,@DESCRIPCION) ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -97,7 +97,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE [TMD].[MP].[ACCIONES_SOLUCION] SET [CODIGO_SOLUCION] = @CODIGO_SOLUCION,[DESCRIPCION] =@DESCRIPCION ");
+            strSQL.Append("UPDATE [ACCIONES_SOLUCION] SET [CODIGO_SOLUCION] = @CODIGO_SOLUCION,[DESCRIPCION] =@DESCRIPCION ");
             strSQL.Append("WHERE [CODIGO] = @CODIGO ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -130,7 +130,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("DELETE FROM [TMD].[MP].[ACCIONES_SOLUCION] ");
+            strSQL.Append("DELETE FROM [ACCIONES_SOLUCION] ");
             strSQL.Append("WHERE [CODIGO_SOLUCION] = @CODIGO_SOLUCION ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);

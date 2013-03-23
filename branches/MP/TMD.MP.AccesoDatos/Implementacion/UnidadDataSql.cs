@@ -22,7 +22,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
           String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
           SqlConnection sqlConn = new SqlConnection(strConn);
           StringBuilder strSQL = new StringBuilder();
-          strSQL.Append("SELECT CODIGO,MEDIDA,DESCRIPCION FROM MP.UNIDAD");
+          strSQL.Append("SELECT CODIGO,MEDIDA,DESCRIPCION FROM UNIDAD");
           SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
           SqlDataReader dr = null;
           sqlCmd.CommandType = CommandType.Text;
