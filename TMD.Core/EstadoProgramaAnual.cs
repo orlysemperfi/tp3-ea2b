@@ -5,10 +5,10 @@ using System.Text;
 
 namespace TMD.Core
 {
-    public static class EstadoHallazgo
+    public static class EstadoProgramaAnual
     {
         public const string Creado = "CREADO";
-        public const string Planificado = "PLANIFICADO";
-        public const string Asignado = "ASIGNADO"; 
+        public const string Autorizado = "AUTORIZADO";
+        public const string Rechazado = "RECHAZADO";
     }
 }
