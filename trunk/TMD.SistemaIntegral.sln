@@ -10,43 +10,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.CapaPresentacion", "04.CapaPresentacion", "{08B7FC44-7B5E-4BB7-8788-EC80964918D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Librerias", "00.Librerias", "{9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnterpriseLibrary", "EnterpriseLibrary", "{C0E9B76F-EF91-49FC-AE92-A83680DE6C8C}"
 	ProjectSection(SolutionItems) = preProject
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Caching.Database.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Caching.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+		Librerias\AjaxControlToolkit.dll = Librerias\AjaxControlToolkit.dll
+		Librerias\log4net.dll = Librerias\log4net.dll
 		Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Common.dll
 		Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Data.dll
 		Librerias\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Logging.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Logging.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Security.Cache.CachingStore.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Security.Cache.CachingStore.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Security.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Security.dll
-		Librerias\Microsoft.Practices.EnterpriseLibrary.Validation.dll = Librerias\Microsoft.Practices.EnterpriseLibrary.Validation.dll
 		Librerias\Microsoft.Practices.ServiceLocation.dll = Librerias\Microsoft.Practices.ServiceLocation.dll
 		Librerias\Microsoft.Practices.Unity.Configuration.dll = Librerias\Microsoft.Practices.Unity.Configuration.dll
 		Librerias\Microsoft.Practices.Unity.dll = Librerias\Microsoft.Practices.Unity.dll
 		Librerias\Microsoft.Practices.Unity.Interception.dll = Librerias\Microsoft.Practices.Unity.Interception.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mock", "Mock", "{D279FDE5-0877-4D76-AF7B-845F50EEDD73}"
-	ProjectSection(SolutionItems) = preProject
-		Librerias\Rhino.Mocks.dll = Librerias\Rhino.Mocks.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AjaxControlTOolkit", "AjaxControlTOolkit", "{018B614F-5867-4B19-AACB-974A8FBC00F7}"
-	ProjectSection(SolutionItems) = preProject
-		Librerias\AjaxControlToolkit.dll = Librerias\AjaxControlToolkit.dll
-		..\CHRISTIAN\Desktop\Validators.dll = ..\CHRISTIAN\Desktop\Validators.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportViewer", "ReportViewer", "{4A1D6B32-DC9D-47E1-A546-C763E8E69CDC}"
-	ProjectSection(SolutionItems) = preProject
-		Librerias\Microsoft.ReportViewer.Common.dll = Librerias\Microsoft.ReportViewer.Common.dll
-		Librerias\Microsoft.ReportViewer.WebForms.dll = Librerias\Microsoft.ReportViewer.WebForms.dll
+		Librerias\Validators.dll = Librerias\Validators.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.Core", "TMD.Core\TMD.Core.csproj", "{A1458C90-1DFA-4F07-A8E3-F3F0BF953216}"
@@ -84,10 +58,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.GM.LogicaNegocios", "TMD.GM.LogicaNegocios\TMD.GM.LogicaNegocios.csproj", "{610AEC74-2EEF-4432-92A2-880E1CC9E722}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TMD.GestionConfiguracion.vsmdi
 	EndGlobalSection
@@ -186,9 +156,9 @@ Global
 		{1CBD7696-77DD-4078-93AA-2C24E29587F2} = {7E81BCD7-87D8-4EB1-96EF-26230DD01F98}
 		{610AEC74-2EEF-4432-92A2-880E1CC9E722} = {7E81BCD7-87D8-4EB1-96EF-26230DD01F98}
 		{8E4B6AF7-458B-4FEF-9879-B66C16B3441D} = {08B7FC44-7B5E-4BB7-8788-EC80964918D6}
-		{C0E9B76F-EF91-49FC-AE92-A83680DE6C8C} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
-		{D279FDE5-0877-4D76-AF7B-845F50EEDD73} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
-		{018B614F-5867-4B19-AACB-974A8FBC00F7} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
-		{4A1D6B32-DC9D-47E1-A546-C763E8E69CDC} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
