@@ -68,6 +68,22 @@
                     <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                         <Items>
                             <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Inicio"/>
+                            <asp:MenuItem Text="Gestion de la Configuración" Selectable="False">
+                            <asp:MenuItem Text="Linea Base" Value="LineaBase" Selectable="False">
+                                <asp:MenuItem Text="Actualizar Linea Base" Value="ListarLineaBase" NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=0" />
+                                <asp:MenuItem Text="Actualizar Elemento de Configuración" Value="ListarLineaBase"
+                                    NavigateUrl="~/Vistas/CF/LineaBase/ListaLineaBase.aspx?carga=1" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Solicitud de Cambio" Selectable="False">
+                                <asp:MenuItem Text="Lista Solicitud de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaSolicitudCambio.aspx"/>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Informe de Cambio" Selectable="False">
+                                <asp:MenuItem Text="Lista de Informe de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaInformeCambio.aspx"/>
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Orden Cambio" Selectable="False">
+                                <asp:MenuItem Text="Lista Orden de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaOrdenCambio.aspx"/>
+                            </asp:MenuItem>
+                        </asp:MenuItem>
                             <asp:MenuItem Text="Indicadores">
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                             </asp:MenuItem>
