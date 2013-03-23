@@ -90,6 +90,7 @@
     <Compile Include="PlanMantenimiento.cs" />
     <Compile Include="PreguntaVerificacion.cs" />
     <Compile Include="ProcesoEntidad.cs" />
+    <Compile Include="ProgramaAnualAuditoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropuestaEstadoEntidad.cs" />
     <Compile Include="PropuestaMejoraEntidad.cs" />
