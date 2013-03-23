@@ -8,22 +8,22 @@ namespace TMD.Entidades
     public class Auditoria
     {
         public int? IdAuditoria { get; set; }
-
         public int AnhoAuditoria { get; set; }
-
         private EntidadAuditada objEntidadAuditada = new EntidadAuditada();
         public EntidadAuditada ObjEntidadAuditada
-        { 
-            get{return objEntidadAuditada;}
-            set{objEntidadAuditada = value;}
+        {
+            get { return objEntidadAuditada; }
+            set { objEntidadAuditada = value; }
         }
-
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public string Estado { get; set; }
         public string Alcance { get; set; }
         public string Objetivo { get; set; }
         public bool? IndCheckListEstablecido { get; set; }
+        public int idPrograma { get; set; }
+        public string nombreArchivoL { get; set; }
+        public string nombreArchivoF { get; set; }
     }
 
 }
