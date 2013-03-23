@@ -91,5 +91,78 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
 
             return strRespuesta;
         }
+
+        public List<Auditoria> ObtenerAuditoriasSeguimiento(int anhoAuditoria)
+        {
+            List<Auditoria> lstBusqueda = _objData.ObtenerAuditoriasSeguimiento(anhoAuditoria);
+            List<Auditoria> lstAuditorias = new List<Auditoria>();
+            foreach(Auditoria e in lstBusqueda){
+                if(e.Estado.Equals(EstadoAuditoria.Realizado))
+                    lstAuditorias.Add(e);
+            }
+            return lstAuditorias;
+        }
+
+        public List<Hallazgo> Obtener_Anio(int AnhoAuditoria)
+        {
+            return _objData.Obtener_Anio(AnhoAuditoria);
+        }
+
+
+        public List<Hallazgo> ObtenerHallazgosSeguimiento(int idAuditoria, int idHallazgo, string estado)
+        {
+            List<Hallazgo> lstBusqueda = _objData.ObtenerHallazgosSeguimiento(idAuditoria, idHallazgo);
+            List<Hallazgo> lstHallazgos = new List<Hallazgo>();
+            foreach (Hallazgo e in lstBusqueda)
+            {
+                if (estado.Equals(""))
+                {
+                    if (e.Estado.Equals(EstadoHallazgo.Planificado) || e.Estado.Equals(EstadoHallazgo.Asignado))
+                        lstHallazgos.Add(e);
+                }
+                else
+                {
+                    if (e.Estado.Equals(estado))
+                        lstHallazgos.Add(e);
+                }
+            }
+            return lstHallazgos;
+        }
+
+        public string GrabarHallazgoSeguimiento(Hallazgo eHallazgo)
+        {
+            string strRespuesta = string.Empty;
+            _objData.GrabarHallazgoSeguimiento(eHallazgo);
+            return strRespuesta;
+        }
+
+        public List<Hallazgo> ObtenerHallazgosSeguimientoAsignadoPorPeriodo(int anhoAuditoria, int idHallazgo)
+        {
+            List<Hallazgo> lstBusqueda = _objData.ObtenerHallazgosSeguimientoPorPeriodo(anhoAuditoria, idHallazgo);
+            List<Hallazgo> lstHallazgos = new List<Hallazgo>();
+            foreach (Hallazgo e in lstBusqueda)
+            {
+                if (e.Estado.Equals(EstadoHallazgo.Asignado))
+                    lstHallazgos.Add(e);
+            }
+            return lstHallazgos;
+        }
+
+        public List<Hallazgo> ObtenerHallazgosSeguimiento_PlanAccion(int idHallazgo)
+        {
+            return _objData.ObtenerHallazgosSeguimiento_PlanAccion(idHallazgo);
+        }
+        
+        public string ModificarHallazgoSeguimiento(Hallazgo eHallazgo)
+        {
+            string strRespuesta = string.Empty;
+            _objData.ModificarHallazgoSeguimiento(eHallazgo);
+            return strRespuesta;
+        }
+
+        public bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso)
+        {
+            return _objData.ValidarUpdate(IdHallazgo, dFecCompromiso);
+        }
     }
 }

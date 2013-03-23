@@ -41,5 +41,35 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
             eAuditoria.Estado = EstadoAuditoria.Planificado;
             _objData.GrabarPlanAuditoria(eAuditoria);
         }
+
+        public ProgramaAnualAuditoria ObtenerProgramaAnualAuditorias()
+        {
+            return _objData.ObtenerProgramaAnualAuditorias();
+        }
+
+        public List<Auditoria> ListarAuditoriasPorAnio(int anhoAuditoria)
+        {
+            return _objData.ListarAuditoriasPorAnio(anhoAuditoria);
+        }
+
+        public int GrabarProgramaAnualAuditoria(ProgramaAnualAuditoria eProgramaAnual)
+        {
+            eProgramaAnual.Estado = EstadoProgramaAnual.Creado;
+            int idPrograma = _objData.GrabarProgramaAnualAuditoria(eProgramaAnual);
+
+            foreach (Auditoria eAuditoria in eProgramaAnual.ObjAuditorias)
+            {
+                eAuditoria.idPrograma = idPrograma;
+                eAuditoria.Estado = EstadoAuditoria.Creado;
+                _objData.GrabarAuditoria(eAuditoria);
+            }
+
+            return idPrograma;
+        }
+
+        public bool ValidarAuditoria(int idEntidadAuditada)
+        {
+            return _objData.ValidarAuditoria(idEntidadAuditada);
+        }
     }
 }
