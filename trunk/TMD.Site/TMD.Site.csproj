@@ -227,7 +227,6 @@
     <Content Include="Vistas\MP\IndicadorFormularioCuali.aspx" />
     <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
     <Content Include="Vistas\MP\IndicadorListado.aspx" />
-    <Content Include="Vistas\MP\Inicio.aspx" />
     <Content Include="Vistas\MP\PilotoFormulario.aspx" />
     <Content Include="Vistas\MP\PilotoListado.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
@@ -645,13 +644,6 @@
     </Compile>
     <Compile Include="Vistas\MP\IndicadorListado.aspx.designer.cs">
       <DependentUpon>IndicadorListado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MP\PilotoFormulario.aspx.cs">
       <DependentUpon>PilotoFormulario.aspx</DependentUpon>

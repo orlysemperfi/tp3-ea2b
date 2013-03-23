@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TMD.Entidades;
 using TMD.MP.AccesoDatos.Contrato;
+using TMD.MP.AccesoDatos.Implementacion;
 using TMD.MP.Comun;
 using System.Data.SqlClient;
 using System.Data;
@@ -22,9 +23,9 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT P.CODIGO, S.CODIGO AS CODIGO_SOLUCION, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
-            strSQL.Append("FROM MP.PILOTO P ");
-            strSQL.Append("INNER JOIN MP.SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
-            strSQL.Append("INNER JOIN MP.ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
+            strSQL.Append("FROM PILOTO P ");
+            strSQL.Append("INNER JOIN SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
+            strSQL.Append("INNER JOIN ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
             strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_SOLUCION_ELIMINADA + "' ");
             if (oPilotoFiltro != null)
             {
@@ -106,9 +107,9 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT P.CODIGO, S.CODIGO AS CODIGO_SOLUCION, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
-            strSQL.Append("FROM MP.PILOTO P ");
-            strSQL.Append("INNER JOIN MP.SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
-            strSQL.Append("INNER JOIN MP.ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
+            strSQL.Append("FROM PILOTO P ");
+            strSQL.Append("INNER JOIN SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
+            strSQL.Append("INNER JOIN ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
             strSQL.Append("WHERE P.CODIGO = @CODIGO_PILOTO ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -155,7 +156,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [MP].[PILOTO]");
+            strSQL.Append("INSERT INTO [PILOTO]");
             strSQL.Append("(CODIGO_EMPLEADO,CODIGO_SOLUCION,FECHA_INICIO_IMPL,FECHA_FIN_IMPL,DESCRIPCION,CODIGO_ESTADO) ");
             strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_SOLUCION,@FECHA_INICIO_IMPL,@FECHA_FIN_IMPL,@DESCRIPCION,@CODIGO_ESTADO)");
 
@@ -202,7 +203,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO MP.ESTADO_PILOTO");
+            strSQL.Append("INSERT INTO ESTADO_PILOTO");
             strSQL.Append("(CODIGO_PILOTO,CODIGO_ESTADO,FECHA) ");
             strSQL.Append("VALUES(@CODIGO_PILOTO,@CODIGO_ESTADO,GETDATE())");
 
@@ -248,7 +249,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.PILOTO SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO = @CODIGO_PILOTO");
+            strSQL.Append("UPDATE PILOTO SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO = @CODIGO_PILOTO");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
@@ -275,7 +276,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.PILOTO SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO = @CODIGO");
+            strSQL.Append("UPDATE PILOTO SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO = @CODIGO");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 

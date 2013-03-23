@@ -8,6 +8,7 @@ using TMD.MP.Comun;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using TMD.MP.AccesoDatos.Implementacion;
 
 namespace TMD.MP.AccesoDatos.Implementacion
 {
@@ -22,7 +23,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT I.CODIGO,I.NOMBRE,I.EXPRESION_MATEMATICA,I.FRECUENCIA_MEDICION,I.FUENTE_MEDICION,I.PLAZO,I.TIPO,PRI.SELECCIONADO ");
-            strSQL.Append("FROM MP.INDICADOR I,MP.PROPUESTA_INDICADOR PRI ");
+            strSQL.Append("FROM INDICADOR I,PROPUESTA_INDICADOR PRI ");
             strSQL.Append("WHERE I.CODIGO = PRI.CODIGO_INDICADOR AND PRI.CODIGO_PROPUESTA=@CODIGO_PROPUESTA ");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
@@ -68,7 +69,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT I.CODIGO AS CODIGO_INDICADOR, I.NOMBRE, I.EXPRESION_MATEMATICA, I.FRECUENCIA_MEDICION, I.FUENTE_MEDICION, I.PLAZO, I.TIPO ");
-            strSQL.Append("FROM MP.INDICADOR I INNER JOIN MP.PROCESO P ON P.CODIGO = I.CODIGO_PROCESO ");
+            strSQL.Append("FROM INDICADOR I INNER JOIN PROCESO P ON P.CODIGO = I.CODIGO_PROCESO ");
             strSQL.Append("WHERE I.ESTADO = " +Convert.ToInt32(Constantes.ESTADO_INDICADOR.ACTIVO));
 
             if (oIndicadorFiltro != null)
@@ -142,7 +143,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT CODIGO,NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO,CODIGO_PROCESO,REEMPLAZA_INDICADOR,ESTADO,'false' AS MARCADO ");
-            strSQL.Append("FROM MP.INDICADOR ");
+            strSQL.Append("FROM INDICADOR ");
             strSQL.Append("WHERE CODIGO_PROCESO = @CODIGO_PROCESO");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
@@ -191,7 +192,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT CODIGO,NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,");
             strSQL.Append("PLAZO,TIPO,CODIGO_PROCESO,REEMPLAZA_INDICADOR,ESTADO ");
-            strSQL.Append("FROM TMD.MP.INDICADOR ");
+            strSQL.Append("FROM INDICADOR ");
             strSQL.Append("WHERE CODIGO=@CODIGO_INDICADOR");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -241,7 +242,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             StringBuilder strSQL = new StringBuilder();
             
             int affectedRows = 0;
-            strSQL.Append("INSERT INTO MP.INDICADOR ");
+            strSQL.Append("INSERT INTO INDICADOR ");
             strSQL.Append("(NOMBRE,EXPRESION_MATEMATICA,FRECUENCIA_MEDICION,FUENTE_MEDICION,PLAZO,TIPO,CODIGO_PROCESO,ESTADO) ");
             strSQL.Append("VALUES(@NOMBRE,@EXPRESION_MATEMATICA,@FRECUENCIA_MEDICION,@FUENTE_MEDICION,@PLAZO,@TIPO,@CODIGO_PROCESO,@ESTADO)");            
 
@@ -324,7 +325,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.INDICADOR ");
+            strSQL.Append("UPDATE INDICADOR ");
             strSQL.Append("SET NOMBRE = @NOMBRE,EXPRESION_MATEMATICA= @EXPRESION_MATEMATICA,FRECUENCIA_MEDICION = @FRECUENCIA_MEDICION, ");
             strSQL.Append("FUENTE_MEDICION=@FUENTE_MEDICION,PLAZO=@PLAZO,TIPO=@TIPO, CODIGO_PROCESO=@CODIGO_PROCESO, ");
             strSQL.Append("REEMPLAZA_INDICADOR=@REEMPLAZA_INDICADOR, ESTADO=@ESTADO ");
@@ -367,7 +368,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("DELETE FROM MP.PROPUESTA_INDICADOR ");
+            strSQL.Append("DELETE FROM PROPUESTA_INDICADOR ");
             strSQL.Append("WHERE CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
 
