@@ -23,7 +23,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT CODIGO_AREA, DESCRIPCION ");
-            strSQL.Append("FROM GEN.AREA ");
+            strSQL.Append("FROM AREA ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;

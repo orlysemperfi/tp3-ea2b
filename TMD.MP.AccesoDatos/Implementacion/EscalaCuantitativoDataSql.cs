@@ -23,7 +23,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
 
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT EC.CODIGO, EC.CODIGO_INDICADOR, EC.SIGNO, EC.VALOR, EC.CODIGO_UNIDAD,U.DESCRIPCION ");
-            strSQL.Append("FROM MP.ESCALA_CUANTITATIVO EC , MP.UNIDAD U ");
+            strSQL.Append("FROM ESCALA_CUANTITATIVO EC , UNIDAD U ");
             strSQL.Append("WHERE EC.CODIGO_UNIDAD = U.CODIGO AND [CODIGO_INDICADOR]=@CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -68,7 +68,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [TMD].[MP].[ESCALA_CUANTITATIVO] ([CODIGO_INDICADOR],[SIGNO],[VALOR],[CODIGO_UNIDAD]) ");
+            strSQL.Append("INSERT INTO [ESCALA_CUANTITATIVO] ([CODIGO_INDICADOR],[SIGNO],[VALOR],[CODIGO_UNIDAD]) ");
             strSQL.Append("VALUES (@CODIGO_INDICADOR,@SIGNO,@VALOR,@CODIGO_UNIDAD) ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -102,7 +102,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE [TMD].[MP].[ESCALA_CUANTITATIVO] SET [CODIGO_INDICADOR] = @CODIGO_INDICADOR,[SIGNO] = @SIGNO,[VALOR] = @VALOR,[CODIGO_UNIDAD] = @CODIGO_UNIDAD ");
+            strSQL.Append("UPDATE [ESCALA_CUANTITATIVO] SET [CODIGO_INDICADOR] = @CODIGO_INDICADOR,[SIGNO] = @SIGNO,[VALOR] = @VALOR,[CODIGO_UNIDAD] = @CODIGO_UNIDAD ");
             strSQL.Append("WHERE [CODIGO] = @CODIGO ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -137,7 +137,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
 
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("DELETE FROM [TMD].[MP].[ESCALA_CUANTITATIVO] ");
+            strSQL.Append("DELETE FROM [ESCALA_CUANTITATIVO] ");
             strSQL.Append("WHERE [CODIGO_INDICADOR] = @CODIGO_INDICADOR ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);

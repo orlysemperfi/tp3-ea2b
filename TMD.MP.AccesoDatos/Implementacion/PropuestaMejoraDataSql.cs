@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TMD.Entidades;
 using TMD.MP.AccesoDatos.Contrato;
+using TMD.MP.AccesoDatos.Implementacion;
 using TMD.MP.Comun;
 using System.Data.SqlClient;
 using System.Data;
@@ -25,10 +26,10 @@ namespace TMD.MP.AccesoDatos.Implementacion
             strSQL.Append("P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, ");
             strSQL.Append("P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO, ");
             strSQL.Append("R.APELLIDO_PATERNO +' '+R.APELLIDO_MATERNO+', '+R.NOMBRE_PERSONA AS NOMBRE_COMPLETO ");
-            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
-            strSQL.Append("INNER JOIN GEN.AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
-            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
-            strSQL.Append("INNER JOIN GEN.PERSONA R ON R.CODIGO_PERSONA = P.CODIGO_RESPONSABLE ");
+            strSQL.Append("FROM PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
+            strSQL.Append("INNER JOIN ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("INNER JOIN PERSONA R ON R.CODIGO_PERSONA = P.CODIGO_RESPONSABLE ");
             strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_PROPUESTA_ELIMINADA + "' ");
             if (oPropuestaMejoraFiltro != null)
             {
@@ -106,10 +107,10 @@ namespace TMD.MP.AccesoDatos.Implementacion
             strSQL.Append("P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, ");
             strSQL.Append("P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO, ");
             strSQL.Append("R.APELLIDO_PATERNO +' '+R.APELLIDO_MATERNO+', '+R.NOMBRE_PERSONA AS NOMBRE_COMPLETO ");
-            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
-            strSQL.Append("INNER JOIN GEN.AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
-            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
-            strSQL.Append("INNER JOIN GEN.PERSONA R ON R.CODIGO_PERSONA = P.CODIGO_RESPONSABLE ");
+            strSQL.Append("FROM PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN AREA A ON A.CODIGO_AREA = P.CODIGO_AREA ");
+            strSQL.Append("INNER JOIN ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("INNER JOIN PERSONA R ON R.CODIGO_PERSONA = P.CODIGO_RESPONSABLE ");
             strSQL.Append("WHERE E.NOMBRE = '" + Constantes.ESTADO_PROPUESTA_ASIGNADA + "' ");
             if (oPropuestaMejoraFiltro != null)
             {
@@ -182,8 +183,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.CODIGO_AREA, P.TIPO_PROPUESTA, P.CODIGO_RESPONSABLE, P.FECHA_ENVIO, P.CODIGO_PROCESO, P.FECHA_REGISTRO, P.DESCRIPCION, P.CAUSA, P.BENEFICIOS, P.OBSERVACIONES, P.CODIGO_ESTADO, E.NOMBRE AS NOMBRE_ESTADO ");
-            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
-            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("FROM PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
             strSQL.Append("WHERE P.CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -234,8 +235,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
             strSQL.Append("SELECT P.CODIGO_PROPUESTA, P.DESCRIPCION ");
-            strSQL.Append("FROM MP.PROPUESTAMEJORA P ");
-            strSQL.Append("INNER JOIN MP.ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
+            strSQL.Append("FROM PROPUESTAMEJORA P ");
+            strSQL.Append("INNER JOIN ESTADO E ON E.CODIGO = P.CODIGO_ESTADO ");
             strSQL.Append("WHERE E.NOMBRE = '" + estado + "' ");
             
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
@@ -376,7 +377,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.PROPUESTAMEJORA SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
+            strSQL.Append("UPDATE PROPUESTAMEJORA SET CODIGO_ESTADO = @CODIGO_ESTADO WHERE CODIGO_PROPUESTA = @CODIGO_PROPUESTA");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             sqlCmd.CommandType = CommandType.Text;
 
@@ -403,7 +404,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("UPDATE MP.PROPUESTAMEJORA SET ");
+            strSQL.Append("UPDATE PROPUESTAMEJORA SET ");
             strSQL.Append("CODIGO_AREA=@CODIGO_AREA, TIPO_PROPUESTA=@TIPO_PROPUESTA,CODIGO_RESPONSABLE=@CODIGO_RESPONSABLE,");
             strSQL.Append("FECHA_ENVIO=@FECHA_ENVIO,CODIGO_PROCESO=@CODIGO_PROCESO,DESCRIPCION=@DESCRIPCION,CAUSA=@CAUSA,");
             strSQL.Append("BENEFICIOS=@BENEFICIOS,OBSERVACIONES=@OBSERVACIONES,CODIGO_ESTADO=@CODIGO_ESTADO ");

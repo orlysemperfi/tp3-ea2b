@@ -86,6 +86,7 @@
                                 <asp:MenuItem Text="Lista Orden de Cambio" NavigateUrl="~/Vistas/CF/ControlCambio/ListaOrdenCambio.aspx"/>
                             </asp:MenuItem>
                         </asp:MenuItem>
+                            <asp:MenuItem Text="Definición y Mejora de Procesos" Selectable="False">
                             <asp:MenuItem Text="Indicadores">
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                             </asp:MenuItem>
@@ -100,7 +101,8 @@
                             <asp:MenuItem Text="Pilotos">
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/PilotoListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                             </asp:MenuItem>
-                            <asp:MenuItem Text="Auditoría" Value="Auditoria">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Auditoría de Procesos" Value="Auditoria">
                                 <asp:MenuItem Text="Actualizar Programa Anual" NavigateUrl="~/Vistas/ACP/ProgramaAuditoria.aspx" />
                                 <asp:MenuItem Text="Actualizar Plan de Auditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
                                 <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
@@ -127,9 +129,6 @@
                     </td>
                     <td>
                         <h5 > (C) Copyright 2012-2013 </h5>
-                    </td>
-                    <td>
-                        <h5 > Grupo Definición y Mejora de Procesos</h5>
                     </td>
                 </tr>
             </table>
