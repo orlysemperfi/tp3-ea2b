@@ -22,7 +22,7 @@ namespace TMD.CF.AccesoDatos.Map
         {
             return new Usuario
             {
-                Id = reader.GetInt("CODIGO"),
+                Id = reader.GetInt("CODIGO_USUARIO"),
                 Nombre = reader.GetString("NOMBRE")
             };
         }
@@ -31,7 +31,7 @@ namespace TMD.CF.AccesoDatos.Map
         {
             return new Usuario
             {
-                Id = reader.GetInt("CODIGO"),
+                Id = reader.GetInt("CODIGO_USUARIO"),
                 Nombre = reader.GetString("NOMBRE"),
                 Rol = reader.GetString("ROL")
             };
