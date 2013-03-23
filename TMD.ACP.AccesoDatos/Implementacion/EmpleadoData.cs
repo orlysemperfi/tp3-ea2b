@@ -53,5 +53,24 @@ namespace TMD.ACP.AccesoDatos.Implementacion
             }
             return eEmpleado;
         }
+
+        public List<EmpleadoEntidad> ListarEmpleadosPorArea(int idArea)
+        {
+            List<EmpleadoEntidad> lista = new List<EmpleadoEntidad>();
+
+            using (DbCommand command = DB.GetStoredProcCommand("dbo.ACP_SP_LISTAR_EMPLEADOS_POR_AREA"))
+            {
+                DB.AddInParameter(command, "@idArea", DbType.Int32, idArea);
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(EmpleadoDataMap.SelectEmpleado(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
     }
 }
