@@ -10,5 +10,6 @@ namespace TMD.ACP.AccesoDatos.Contrato
     {
         List<EmpleadoEntidad> ListarEmpleados();
         EmpleadoEntidad ObtenerEmpleado(int idEmpleado);
+        List<EmpleadoEntidad> ListarEmpleadosPorArea(int idArea);
     }
 }
