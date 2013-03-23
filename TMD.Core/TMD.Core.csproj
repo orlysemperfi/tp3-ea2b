@@ -57,6 +57,7 @@
     <Compile Include="EstadoActividad.cs" />
     <Compile Include="EstadoAuditoria.cs" />
     <Compile Include="EstadoHallazgo.cs" />
+    <Compile Include="EstadoProgramaAnual.cs" />
     <Compile Include="Extension\Cadena.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Logger\Log.cs" />
