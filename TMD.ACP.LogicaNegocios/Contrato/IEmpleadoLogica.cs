@@ -10,5 +10,7 @@ namespace TMD.ACP.LogicaNegocios.Contrato
     {
         List<EmpleadoEntidad> ListarEmpleados();
         EmpleadoEntidad ObtenerEmpleado(int idEmpleado);
+        List<EmpleadoEntidad> ListarEmpleadosPorArea(int idArea);
+        List<EmpleadoEntidad> ListarEmpleadosAuditores();
     }
 }

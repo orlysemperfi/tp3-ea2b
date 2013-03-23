@@ -12,5 +12,15 @@ namespace TMD.ACP.LogicaNegocios.Contrato
         string Modificar(Hallazgo hallazgo);
         string Eliminar(int idHallazgo);
         List<Hallazgo> Obtener(Hallazgo filtro);
+        List<Auditoria> ObtenerAuditoriasSeguimiento(int anhoAuditoria);
+        List<Hallazgo> ObtenerHallazgosSeguimiento(int idAuditoria, int idHallazgo, string estado);
+        string GrabarHallazgoSeguimiento(Hallazgo eHallazgo);
+
+        List<Hallazgo> Obtener_Anio(int AnhoAuditoria);
+        List<Hallazgo> ObtenerHallazgosSeguimientoAsignadoPorPeriodo(int anhoAuditoria, int idHallazgo);
+        List<Hallazgo> ObtenerHallazgosSeguimiento_PlanAccion(int idHallazgo);
+        string ModificarHallazgoSeguimiento(Hallazgo eHallazgo);
+        bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso);
+
     }
 }
