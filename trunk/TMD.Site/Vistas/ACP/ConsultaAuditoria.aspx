@@ -1,11 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true"
     CodeBehind="ConsultaAuditoria.aspx.cs" Inherits="TMD.ACP.Site._ConsultaAuditoria" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ButtonContent" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
  <div>
         <h1 style="text-align:center">Listado de Auditorías Planificadas</h1>
     
@@ -13,15 +10,9 @@
 
         <div style="padding:10px 10px 10px 10px;height:20px;font-family:Arial;">
         <div style="float:left">
-            <label>Periodo:</label><label>2012</label>
+            <label>Periodo:</label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
         </div>
-         <div style="float:right">
-            Nro:<label style="font-weight:bold;"></label><label>PA00001</label>     
-         </div>
-         </div>
-
-
-
+        </div>
     <br />
     <div id="divGvLista">
         <asp:GridView ID="gvAuditoria" runat="server" 

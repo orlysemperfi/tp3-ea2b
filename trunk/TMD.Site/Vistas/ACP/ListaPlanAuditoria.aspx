@@ -1,22 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListaPlanAuditoria.aspx.cs" Inherits="TMD.ACP.Site.ListaPlanAuditoria" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true"
+    CodeBehind="ListaPlanAuditoria.aspx.cs" Inherits="TMD.ACP.Site.ListaPlanAuditoria" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+  <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-    <title></title>
-    
-
-    <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+<div>
          <h1 style="text-align:center">Listado de Auditorías</h1>
 
          <div style="padding:10px 10px 10px 10px;height:20px;font-family:Arial;">
             <div style="float:left">
-                <label>Periodo:</label><label>2012</label>
+                <label>Periodo: </label><asp:Literal ID="litPeriodo" runat="server"></asp:Literal>
             </div>        
          </div>
 
@@ -75,7 +69,5 @@
         </div>
 
     </div>
+</asp:Content>
 
-    </form>
-</body>
-</html>

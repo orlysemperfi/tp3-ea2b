@@ -14,23 +14,20 @@ namespace TMD.ACP.Site
 {
     public partial class _ConsultaAuditoria : System.Web.UI.Page
     {
-        private IAuditoriaLogica _auditoriaLogica;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            _auditoriaLogica = new AuditoriaLogica();
-
             CargarControles();
         }
 
         private void CargarControles()
         {
+            litPeriodo.Text = Convert.ToString(DateTime.Today.Year);
             Auditoria oFiltroAuditoria = new Auditoria();
             oFiltroAuditoria.AnhoAuditoria = DateTime.Today.Year;
             oFiltroAuditoria.Estado = EstadoAuditoria.Planificado;
             oFiltroAuditoria.IdAuditoria = null;
             oFiltroAuditoria.IndCheckListEstablecido = true;
-            List<Auditoria> lstAuditorias = _auditoriaLogica.Obtener(oFiltroAuditoria);
+            List<Auditoria> lstAuditorias = TMD.Site.Controladora.ACP.AuditoriaControladora.ObtenerPlanAuditoriaPorID(oFiltroAuditoria);
 
             try
             {
@@ -39,10 +36,7 @@ namespace TMD.ACP.Site
                 gvAuditoria.DataBind();
             }
             catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException(ex, "WebSiteExceptionPolicy");
-                lblError.ForeColor = System.Drawing.Color.Red;
-                lblError.Text = "Error al Realizar la Transacción"; 
+            {            
                 return;
             }           
         }
@@ -56,14 +50,13 @@ namespace TMD.ACP.Site
                     Auditoria oAudi = (Auditoria)e.Row.DataItem;
                     Literal l;
                     l = (Literal)e.Row.FindControl("ltrlIdaudi");
-                    if (l != null) l.Text = Helper.Right("00000" + oAudi.IdAuditoria.ToString(), 5);
+                    if (l != null) l.Text = oAudi.IdAuditoria.ToString();
 
                     l = (Literal)e.Row.FindControl("ltrlEntAudi");
                     if (l != null) l.Text = oAudi.ObjEntidadAuditada.NombreEntidadAuditada;
 
                     l = (Literal)e.Row.FindControl("ltrlNomArea");
-                    //if (l != null) l.Text = oAudi.ObjEntidadAuditada.ObjArea.NombreArea;
-                    if (l != null) l.Text = "AREA";
+                    if (l != null) l.Text = oAudi.ObjEntidadAuditada.ObjArea.descripcion;
 
                     l = (Literal)e.Row.FindControl("ltrlFecIni");
                     if (l != null) l.Text = oAudi.FechaInicio.ToString("dd/MM/yyyy");
@@ -76,10 +69,7 @@ namespace TMD.ACP.Site
                 }
             }
             catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException(ex, "WebSiteExceptionPolicy");
-                lblError.ForeColor = System.Drawing.Color.Red;
-                lblError.Text = "Error al Realizar la Transacción"; 
+            {             
                 return;
             }
         }
@@ -93,15 +83,12 @@ namespace TMD.ACP.Site
                     gvAuditoria.SelectedIndex = gvAuditoria.Rows[Convert.ToInt32(e.CommandArgument)].RowIndex;
                 }
                 string sIdAuditoria = gvAuditoria.SelectedDataKey["idAuditoria"].ToString();
-                Response.Redirect("MantenerHallazgo.aspx?idAuditoria=" +
+                Response.Redirect("ActualizarHallazgo.aspx?idAuditoria=" +
                     sIdAuditoria);
 
             }
             catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException(ex, "WebSiteExceptionPolicy");
-                lblError.ForeColor = System.Drawing.Color.Red;
-                lblError.Text = "Error al Realizar la Transacción"; 
+            {               
                 return;
             }
         }
