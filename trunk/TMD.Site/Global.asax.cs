@@ -55,7 +55,7 @@ namespace TMD.CF.Site
             Exception error = Server.GetLastError();
             Log logger = new Log();
             logger.RegistrarError(error);
-
+            HttpContext.Current.Response.Redirect("Inicio.aspx");
         }
 
         private static void BuildContainer()
