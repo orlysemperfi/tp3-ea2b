@@ -14,18 +14,17 @@ namespace TMD.ACP.Site
 {
     public partial class ConsultarAuditor : System.Web.UI.Page
     {
-        IEmpleadoLogica _empleadoLogica;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            _empleadoLogica = new EmpleadoLogica();
-            CargarEmpleados();
 
+            string strIds = Request.QueryString["ids"];
+            __Ids.Value = strIds;
+            CargarEmpleados();
         }
 
         private void CargarEmpleados()
-        {                        
-            List<EmpleadoEntidad> lstEmpleados = _empleadoLogica.ListarEmpleados();
+        {
+            List<EmpleadoEntidad> lstEmpleados = TMD.Site.Controladora.ACP.HallazgoControladora.ListarEmpleadosAuditores();
             try
             {
                 rptEmpleados.DataSource = lstEmpleados;
@@ -46,16 +45,11 @@ namespace TMD.ACP.Site
                 Label lblApePaterno = (Label)e.Item.FindControl("lblApePaterno");
                 Label lblApeMaterno = (Label)e.Item.FindControl("lblApeMaterno");
                 Label lblArea = (Label)e.Item.FindControl("lblArea");
-
-                //lblNombres.Text = eEmpleado.nombres;
-                //lblApePaterno.Text = eEmpleado.apepat;
-                //lblApeMaterno.Text = eEmpleado.apemat;
-                //lblArea.Text = eEmpleado.ObjArea.NombreArea;
-
+               
                 lblNombres.Text = eEmpleado.nombre;
                 lblApePaterno.Text = eEmpleado.apellidopaterno;
                 lblApeMaterno.Text = eEmpleado.apellidomaterno;
-                lblArea.Text = "AREA";
+                lblArea.Text = eEmpleado.ObjArea.descripcion;
             }
         }
 

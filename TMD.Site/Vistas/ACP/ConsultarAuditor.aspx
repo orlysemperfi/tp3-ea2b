@@ -10,17 +10,28 @@
     <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
     <script type="text/javascript">
 
+    //*****************************************************************************
+        $(document).ready(function () {            
+            var ids = $('#__Ids').val();
+            if (ids != "") {                
+                var myArray = ids.split(',');
+                for (var i = 0; i < myArray.length; i++) {                                   
+                    $('#chk' + myArray[i]).attr('checked', true)
+                }
+            }
+        });
+    //*****************************************************************************
     function fSaveData(){
         var sList = '';
         $('input[type=checkbox]').each(function () {
             if ($(this).val()!=''){
                 if (this.checked) sList = (sList == "" ? $(this).val() : sList + "," + $(this).val());
             }
-        });
-        //parent.parent.setTimeout(function () { fListarAuditoresSeleccionados(sList); }, 1000)
-        try { parent.parent.arrRefFunctions["auditor.refresh"](sList); } catch (e) { }
-        window.parent.parent.CloseMultiPopup("keyConsultarAuditor");
+        });       
+        try { parent.arrRefFunctions["auditor.refresh"](sList); } catch (e) { }
+        window.parent.CloseMultiPopup("keyConsultarAuditor");
     }
+    //*****************************************************************************
 
     </script>
 
@@ -28,7 +39,7 @@
 <body>
     <form id="form1" runat="server">    
     <div style="margin:0px 10px 0px 10px">
-        
+        <asp:HiddenField id="__Ids" runat="server" Value=""/>
         <div style="font-weight:bold;font-family:arial; font-size:14px; margin:5px 0px 5px 0px">LISTADO DE EMPLEADOS</div>
       
         <asp:Repeater ID="rptEmpleados" runat="server" 
@@ -48,7 +59,7 @@
             <ItemTemplate>
             <tr class="RowStyle">
             <td align="center">
-                <input type="checkbox" id="chk<%# Eval("idEmpleado")%>" value="<%# Eval("idEmpleado")%>"  />               
+                <input type="checkbox" id="chk<%# Eval("codigo")%>" value="<%# Eval("codigo")%>"  />               
             </td>
             <td align="left"><asp:Label ID="lblNombres" runat="server"></asp:Label></td>
             <td align="left"><asp:Label ID="lblApePaterno" runat="server"></asp:Label></td>

@@ -90,8 +90,7 @@ namespace TMD.ACP.Site
 
             }
             catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException(ex, "WebSiteExceptionPolicy");
+            {             
                 return;
             }
         }

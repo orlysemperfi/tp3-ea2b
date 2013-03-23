@@ -5,10 +5,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+
+        <link rel="stylesheet" type="text/css" href="Styles/Site.css" />
+          
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    
+    <script type="text/javascript">
+    //*****************************************************************************
+    function fSaveData(){
+    }
+    //*****************************************************************************
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div style="margin:20px 20px 20px 20px">
         <span style="color: #003399; font-family: Arial">
         <strong>Documentos Adjuntos</strong></span><br />
         <asp:FileUpload ID="fUpload" runat="server" />

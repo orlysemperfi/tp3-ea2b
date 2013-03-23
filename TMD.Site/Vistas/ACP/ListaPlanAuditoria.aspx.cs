@@ -13,20 +13,17 @@ namespace TMD.ACP.Site
 {
     public partial class ListaPlanAuditoria : System.Web.UI.Page
     {
-        private IAuditoriaLogica _auditoriaLogica;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            _auditoriaLogica = new AuditoriaLogica();
-
             CargarControles();
         }
 
         private void CargarControles()
         {
-            List<Auditoria> lstAuditorias = _auditoriaLogica.ListarPlanAuditorias(DateTime.Today.Year,EstadoAuditoria.Autorizado,EstadoAuditoria.Planificado);
+            List<Auditoria> lstAuditorias = TMD.Site.Controladora.ACP.AuditoriaControladora.ListarPlanAuditorias(DateTime.Today.Year, EstadoAuditoria.Autorizado, EstadoAuditoria.Planificado);
             try
-            {                
+            {
+                litPeriodo.Text = Convert.ToString(DateTime.Today.Year);
                 gvAuditoria.DataSource = lstAuditorias;
                 gvAuditoria.DataBind();
             }
@@ -47,7 +44,7 @@ namespace TMD.ACP.Site
                     Auditoria oAudi = (Auditoria)e.Row.DataItem;
                     Literal l;
                     l = (Literal)e.Row.FindControl("ltrlIdaudi");
-                    if (l != null) l.Text = Helper.Right("00000" + oAudi.IdAuditoria.ToString(), 5);
+                    if (l != null) l.Text = oAudi.IdAuditoria.ToString();
 
                     l = (Literal)e.Row.FindControl("ltrlEntAudi");
                     if (l != null) l.Text = oAudi.ObjEntidadAuditada.NombreEntidadAuditada;
@@ -83,9 +80,9 @@ namespace TMD.ACP.Site
                     gvAuditoria.SelectedIndex = gvAuditoria.Rows[Convert.ToInt32(e.CommandArgument)].RowIndex;
                 }
                 string sIdAuditoria = gvAuditoria.SelectedDataKey["idAuditoria"].ToString();                
-                Response.Redirect("PlanAuditoria.aspx?idAuditoria=" + sIdAuditoria);
+                Response.Redirect("ActualizarPlanAuditoria.aspx?idAuditoria=" + sIdAuditoria, false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 lblError.ForeColor = System.Drawing.Color.Red;
                 lblError.Text = "Error al Realizar la Transacción";

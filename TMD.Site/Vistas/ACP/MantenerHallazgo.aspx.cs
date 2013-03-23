@@ -14,25 +14,12 @@ using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 namespace TMD.ACP.Site
 {
     public partial class _MantenerHallazgo : System.Web.UI.Page
-    //public partial class _MantenerHallazgo : BasePage
     {
-        private IAuditoriaLogica _auditoriaLogica;
-        private INormaLogica _normaLogica;
-        private ICapituloLogica _capituloLogica;
-        private IPreguntaVerificacionLogica _preguntaverifLogica;
-        private IHallazgoLogica _hallazgoLogica;
-
         static int nIdPregunta;
         static int nOpc = 0;
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            _auditoriaLogica = new AuditoriaLogica();
-            _normaLogica = new NormaLogica();
-            _capituloLogica = new CapituloLogica();
-            _preguntaverifLogica = new PreguntaVerificacionLogica();
-            _hallazgoLogica = new HallazgoLogica();
-
             lblAuditoria.Text = Helper.Right("00000" + Convert.ToString(Request.QueryString[0]), 5);
 
             CargarDatos();
@@ -53,7 +40,7 @@ namespace TMD.ACP.Site
                 oFiltroAuditoria.Estado = null;
                 oFiltroAuditoria.IdAuditoria = Convert.ToInt32(lblAuditoria.Text);
                 oFiltroAuditoria.IndCheckListEstablecido = true;
-                List<Auditoria> lstAuditorias = _auditoriaLogica.Obtener(oFiltroAuditoria);
+                List<Auditoria> lstAuditorias = TMD.Site.Controladora.ACP.AuditoriaControladora.ObtenerPlanAuditoriaPorID(oFiltroAuditoria);
 
                 if (lstAuditorias.Count >= 1)
                 {
@@ -77,7 +64,7 @@ namespace TMD.ACP.Site
             try
             {
                 lblError.Text = "";
-                List<Norma> lstNormas = _normaLogica.Obtener(null);
+                List<Norma> lstNormas = TMD.Site.Controladora.ACP.PreguntaVerificacionControladora.ObtenerNorma(null);
                 cboNorma.DataSource = lstNormas;
                 cboNorma.DataTextField = "descripcionNorma";
                 cboNorma.DataValueField = "idNorma";
@@ -100,7 +87,7 @@ namespace TMD.ACP.Site
             {
                 lblError.Text = "";
                 Int32 nIdNorma = (cboNorma.SelectedValue.Equals("") == true ? 0 : Convert.ToInt32(cboNorma.SelectedValue));
-                List<Capitulo> lstCapitulos = _capituloLogica.Obtener(nIdNorma, null);
+                List<Capitulo> lstCapitulos = TMD.Site.Controladora.ACP.PreguntaVerificacionControladora.ObtenerCapitulo(nIdNorma, null);
                 cboCapitulo.DataSource = lstCapitulos;
                 cboCapitulo.DataTextField = "descripcionCapitulo";
                 cboCapitulo.DataValueField = "idCapitulo";
@@ -122,7 +109,7 @@ namespace TMD.ACP.Site
                 lblError.Text = "";
                 Int32 nIdNorma = (cboNorma.SelectedValue.Equals("") == true ? 0 : Convert.ToInt32(cboNorma.SelectedValue));
                 Int32 nIdCapitulo = (cboCapitulo.SelectedValue.Equals("") == true ? 0 : Convert.ToInt32(cboCapitulo.SelectedValue));
-                List<PreguntaVerificacion> lstPreguntas = _preguntaverifLogica.Obtener(Convert.ToInt32(lblAuditoria.Text), nIdNorma, nIdCapitulo);
+                List<PreguntaVerificacion> lstPreguntas = TMD.Site.Controladora.ACP.PreguntaVerificacionControladora.ObtenerPreguntaVerificacion(Convert.ToInt32(lblAuditoria.Text), nIdNorma, nIdCapitulo);
                 gvPreguntaVerif.DataSource = lstPreguntas;
                 gvPreguntaVerif.DataBind();
             }
@@ -145,7 +132,7 @@ namespace TMD.ACP.Site
                 oHallazgo.IdPreguntaVerificacion = nIdPreguntaVerif;
                 oHallazgo.IdHallazgo = null;
                 oHallazgo.TipoHallazgo = "";
-                List<Hallazgo> lstHallazgo = _hallazgoLogica.Obtener(oHallazgo);
+                List<Hallazgo> lstHallazgo = TMD.Site.Controladora.ACP.HallazgoControladora.ObtenerHallazgo(oHallazgo);
 
                 if (lstHallazgo.Count > 0)
                 {
@@ -326,7 +313,7 @@ namespace TMD.ACP.Site
                 oPregunta.Sustento = tSustento.Text;
                 oPregunta.Porcentaje = Convert.ToDecimal(dPorcentaje.SelectedValue);
 
-                _preguntaverifLogica.Modificar(oPregunta);
+                TMD.Site.Controladora.ACP.PreguntaVerificacionControladora.ModificarPreguntaVerificacion(oPregunta);
 
                 gvPreguntaVerif.EditIndex = -1;
 
@@ -433,7 +420,7 @@ namespace TMD.ACP.Site
                 oHallazgo.TipoHallazgo = cbTipo.SelectedValue.ToString();
                 oHallazgo.Estado = EstadoAuditoria.Creado;
 
-                string sRpta = _hallazgoLogica.Modificar(oHallazgo);
+                string sRpta = TMD.Site.Controladora.ACP.HallazgoControladora.ModificarrHallazgo(oHallazgo);
                 var oFile = new ArchivoLogica();
                 for (int i = 0; i < UploadFile.lArchivos.Count; i++)
                 {
@@ -480,7 +467,7 @@ namespace TMD.ACP.Site
         {
             Literal lId = (Literal)gvHallazgo.Rows[e.RowIndex].FindControl("lblId");
             int id = Convert.ToInt32(lId.Text);
-            _hallazgoLogica.Eliminar(id);
+            TMD.Site.Controladora.ACP.HallazgoControladora.EliminarHallazgo(id);
             ListarHallazgos(nIdPregunta);
             var oFile = new ArchivoLogica();
             oFile.EliminarGrupoArchivos(id, "H");
@@ -539,7 +526,7 @@ namespace TMD.ACP.Site
                     oHallazgo.IdPreguntaVerificacion = nIdPregunta;
                     oHallazgo.TipoHallazgo = cbTipo.SelectedValue.ToString();
 
-                    int nIdOri = _hallazgoLogica.Agregar(oHallazgo);
+                    int nIdOri = TMD.Site.Controladora.ACP.HallazgoControladora.AgregarHallazgo(oHallazgo);
 
                     var oFile = new ArchivoLogica();
                     for (int i = 0; i < UploadFile.lArchivos.Count; i++)
