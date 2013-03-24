@@ -292,7 +292,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
 
-            strSQL.Append("INSERT INTO [TMD].[MP].[PROPUESTA_INDICADOR] ([CODIGO_PROPUESTA],[CODIGO_INDICADOR],[SELECCIONADO]) ");
+            strSQL.Append("INSERT INTO [PROPUESTA_INDICADOR] ([CODIGO_PROPUESTA],[CODIGO_INDICADOR],[SELECCIONADO]) ");
             strSQL.Append("VALUES (@CODIGO_PROPUESTA,@CODIGO_INDICADOR,@SELECCIONADO) ");
 
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);

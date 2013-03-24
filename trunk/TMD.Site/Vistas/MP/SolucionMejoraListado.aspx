@@ -1,8 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" CodeBehind="SolucionMejoraListado.aspx.cs" Inherits="TMD.MP.Site.Privado.SolucionMejoraListado" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../ACP/css/jquery-ui.css" />    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=tbxFechaInicio.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#<%=tbxFechaInicio.ClientID %>").datepicker();
+            $("#<%=tbxFechaFin.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#<%=tbxFechaFin.ClientID %>").datepicker();
+        });
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
@@ -33,14 +43,10 @@
                                 <td>
                                     <asp:Label ID="lblFecha" runat="server" Text="Fecha:" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxFechaInicio" runat="server" Width="75px"></asp:TextBox>
-                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbxFechaInicio" Format="dd/MM/yyyy">
-                                    </ajaxToolkit:CalendarExtender>
                                 </td>
                                 <td>
                                     <asp:Label ID="lblA" runat="server" Text="a" Width="50px"></asp:Label>
                                     <asp:TextBox ID="tbxFechaFin" runat="server" Width="75px"></asp:TextBox>
-                                    <ajaxToolkit:CalendarExtender ID="CalendarExtender2" runat="server" TargetControlID="tbxFechaFin" Format="dd/MM/yyyy">
-                                    </ajaxToolkit:CalendarExtender>
                                 <td>
                                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
                                 </td>

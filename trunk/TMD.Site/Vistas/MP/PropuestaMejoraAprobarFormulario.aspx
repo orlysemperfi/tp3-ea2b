@@ -2,12 +2,17 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" 
 CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraAprobarFormulario" %>
 
-
-
-
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../ACP/css/jquery-ui.css" />    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=tbxFechaEnvio.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#<%=tbxFechaEnvio.ClientID %>").datepicker();
+        });
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
@@ -72,9 +77,6 @@ CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Priv
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tbxFechaEnvio" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="tbxFechaEnvio_CalendarExtender" runat="server" Format="dd/MM/yyyy"
-                                        TargetControlID="tbxFechaEnvio">
-                                    </asp:CalendarExtender>
                                     <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" />
                                     <%--<asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />--%>
                                 </td>

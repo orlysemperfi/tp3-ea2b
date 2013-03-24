@@ -181,7 +181,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("INSERT INTO [MP].[SOLUCION_MEJORA]");
+            strSQL.Append("INSERT INTO [SOLUCION_MEJORA]");
             strSQL.Append("(CODIGO_EMPLEADO,CODIGO_PROPUESTA,DESCRIPCION,FECHA_APROBACION,CODIGO_ESTADO) ");
             strSQL.Append("VALUES(@CODIGO_EMPLEADO,@CODIGO_PROPUESTA,@DESCRIPCION,GETDATE(),@CODIGO_ESTADO)");
 

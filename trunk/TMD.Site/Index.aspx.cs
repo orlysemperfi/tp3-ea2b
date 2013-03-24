@@ -11,7 +11,7 @@ namespace TMD.GC.Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("inicio.aspx");
+            Response.Redirect("Inicio.aspx");
         }
     }
 }

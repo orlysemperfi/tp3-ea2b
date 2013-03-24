@@ -170,11 +170,6 @@ namespace TMD.CF.Site.Vistas.MP
 
         }
 
-        protected void btnAgregarICuanti_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Paginas.TMD_MP_EscalaCuantitativoFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
-        }
-
         protected void CargarEscalaCuantitativo()
         {
             IIndicadorLogica oIndicadorLogica = IndicadorLogica.getInstance();

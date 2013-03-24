@@ -1,9 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true"
     CodeBehind="PilotoFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.PilotoFormulario" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="../ACP/css/jquery-ui.css" />    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=tbxFechaInicio.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#<%=tbxFechaInicio.ClientID %>").datepicker();
+            $("#<%=tbxFechaFin.ClientID %>").datepicker({ dateFormat: 'dd/mm/yy' });
+            $("#<%=tbxFechaFin.ClientID %>").datepicker();
+        });
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
@@ -30,10 +40,7 @@
                                     Fecha Inicio:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbxFechaInicio" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="tbxFechaInicio_CalendarExtender" runat="server" Format="dd/MM/yyyy"
-                                        TargetControlID="tbxFechaInicio">
-                                    </asp:CalendarExtender>
+                                    <asp:TextBox ID="tbxFechaInicio" runat="server"></asp:TextBox>                                    
                                     <asp:RequiredFieldValidator ID="rfvFechaInicio" runat="server" ControlToValidate="tbxFechaInicio" ErrorMessage="Ingrese una fecha de Inicio" ValidationGroup="Piloto" Display="None" />
                                 </td>
                             </tr>
@@ -42,10 +49,7 @@
                                     Fecha Fin:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbxFechaFin" runat="server"></asp:TextBox>
-                                    <asp:CalendarExtender ID="tbxFechaFin_CalendarExtender" runat="server" Format="dd/MM/yyyy"
-                                        TargetControlID="tbxFechaFin">
-                                    </asp:CalendarExtender>
+                                    <asp:TextBox ID="tbxFechaFin" runat="server"></asp:TextBox>                                    
                                     <asp:RequiredFieldValidator ID="rfvFechaFin" runat="server" ControlToValidate="tbxFechaFin" ErrorMessage="Ingrese una fecha de Fin" ValidationGroup="Piloto" Display="None" />
                                 </td>
                             </tr>

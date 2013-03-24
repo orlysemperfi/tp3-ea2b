@@ -40,15 +40,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.TextBox tbxFechaInicio;
         
         /// <summary>
-        /// tbxFechaInicio_CalendarExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender tbxFechaInicio_CalendarExtender;
-        
-        /// <summary>
         /// rfvFechaInicio control.
         /// </summary>
         /// <remarks>
@@ -65,15 +56,6 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxFechaFin;
-        
-        /// <summary>
-        /// tbxFechaFin_CalendarExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender tbxFechaFin_CalendarExtender;
         
         /// <summary>
         /// rfvFechaFin control.

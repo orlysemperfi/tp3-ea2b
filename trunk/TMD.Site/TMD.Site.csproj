@@ -222,8 +222,6 @@
     <Content Include="Vistas\CF\LineaBase\ActualizarLineaBase.aspx" />
     <Content Include="Vistas\CF\LineaBase\ListaLineaBase.aspx" />
     <Content Include="Vistas\GM\PlanMantenimientoNuevo.aspx" />
-    <Content Include="Vistas\MP\EscalaCualitativoFormulario.aspx" />
-    <Content Include="Vistas\MP\EscalaCuantitativoFormulario.aspx" />
     <Content Include="Vistas\MP\IndicadorFormularioCuali.aspx" />
     <Content Include="Vistas\MP\IndicadorFormularioCuanti.aspx" />
     <Content Include="Vistas\MP\IndicadorListado.aspx" />
@@ -231,11 +229,9 @@
     <Content Include="Vistas\MP\PilotoListado.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraAprobar.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx" />
-    <Content Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraListado.aspx" />
     <Content Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx" />
-    <Content Include="Vistas\MP\Prueba2.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
     <Content Include="Vistas\SD\Atenciones.aspx" />
@@ -610,20 +606,6 @@
     <Compile Include="Vistas\GM\PlanMantenimientoNuevo.aspx.designer.cs">
       <DependentUpon>PlanMantenimientoNuevo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\MP\EscalaCualitativoFormulario.aspx.cs">
-      <DependentUpon>EscalaCualitativoFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\EscalaCualitativoFormulario.aspx.designer.cs">
-      <DependentUpon>EscalaCualitativoFormulario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.cs">
-      <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\EscalaCuantitativoFormulario.aspx.designer.cs">
-      <DependentUpon>EscalaCuantitativoFormulario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\MP\IndicadorFormularioCuali.aspx.cs">
       <DependentUpon>IndicadorFormularioCuali.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -673,13 +655,6 @@
     <Compile Include="Vistas\MP\PropuestaMejoraAprobarFormulario.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraAprobarFormulario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.cs">
-      <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\PropuestaMejoraDesarrollo.aspx.designer.cs">
-      <DependentUpon>PropuestaMejoraDesarrollo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\MP\PropuestaMejoraFormulario.aspx.cs">
       <DependentUpon>PropuestaMejoraFormulario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -701,13 +676,6 @@
     <Compile Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx.designer.cs">
       <DependentUpon>PropuestaMejoraListadoDesarrollo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\MP\Prueba2.aspx.cs">
-      <DependentUpon>Prueba2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\Prueba2.aspx.designer.cs">
-      <DependentUpon>Prueba2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraFormulario.aspx.cs">
       <DependentUpon>SolucionMejoraFormulario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,13 +689,6 @@
     </Compile>
     <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.designer.cs">
       <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\MP\TMD-MP.Master.cs">
-      <DependentUpon>TMD-MP.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vistas\MP\TMD-MP.Master.designer.cs">
-      <DependentUpon>TMD-MP.Master</DependentUpon>
     </Compile>
     <Compile Include="Vistas\SD\Atenciones.aspx.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
@@ -814,9 +775,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Vistas\MP\TMD-MP.Master" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="MasterPage\Principal.Master" />
     <Content Include="MasterPage\Site.Master" />
   </ItemGroup>
@@ -852,7 +810,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2189</DevelopmentServerPort>
+          <DevelopmentServerPort>3329</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
