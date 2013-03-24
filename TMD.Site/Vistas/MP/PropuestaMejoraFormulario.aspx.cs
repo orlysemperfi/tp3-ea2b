@@ -136,7 +136,7 @@ namespace TMD.MP.Site.Privado
             List<UsuarioEntidad> oUsuarioColeccion = oAreaLogica.ObtenerListaEmpleadosTodas();
             ddlResponsable.DataSource = oUsuarioColeccion;
             ddlResponsable.DataTextField = "NOMBRE_COMPLETO";
-            ddlResponsable.DataValueField = "CODIGO_PERSONA";
+            ddlResponsable.DataValueField = "CODIGO_USUARIO";
             ddlResponsable.DataBind();
             ddlResponsable.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
