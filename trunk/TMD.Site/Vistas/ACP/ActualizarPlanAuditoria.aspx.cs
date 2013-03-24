@@ -148,15 +148,28 @@ namespace TMD.CF.Site.Vistas.ACP
         public void QuitarAuditor(string id)
         {
             int idCodigo = Convert.ToInt32(id);
-            EmpleadoEntidad eEmpleado = DataAuditores.Auditores.Single(e => e.codigo == idCodigo);
-            DataAuditores.Auditores.Remove(eEmpleado);
+            string strMensaje = "";
 
-            rptEquipoAuditor.DataSource = DataAuditores.Auditores;
-            rptEquipoAuditor.DataBind();
+            //validar
+            Actividad eActividad = DataActividades.Actividades.Find(e => e.IdAuditor == idCodigo);
+
+            if (eActividad != null)
+            { 
+                strMensaje = "No se puede eliminar, existen actividades asignadas al auditor";
+            }
+            else
+            {
+                EmpleadoEntidad eEmpleado = DataAuditores.Auditores.Single(e => e.codigo == idCodigo);
+                DataAuditores.Auditores.Remove(eEmpleado);
+
+                rptEquipoAuditor.DataSource = DataAuditores.Auditores;
+                rptEquipoAuditor.DataBind();
+            }
 
             AddCallbackValue("1");
             AddCallbackControl(rptEquipoAuditor);
             AddCallbackValue(DataAuditores.Auditores.Count.ToString());
+            AddCallbackValue(strMensaje);
         }
 
         public static DataActividades DataActividades { get; set; }

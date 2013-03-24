@@ -111,8 +111,13 @@
     function End_fQuitarAuditor(arg) {
         var mData = arg.split(":::")
         if (mData[0] == "1") {
-            $("#divEquipoAuditor").html(mData[1]);
-            fListarActividadesAuditoria();            
+            if (mData[3] == "") {
+                $("#divEquipoAuditor").html(mData[1]);
+                fListarActividadesAuditoria();
+            }
+            else {
+                alert(mData[3]);
+            }
         }
     }
     //*****************************************************************************
