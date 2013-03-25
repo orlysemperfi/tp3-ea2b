@@ -1,0 +1,84 @@
+﻿/*
+Layout.css
+Creado 29/09/2012
+TMD
+
+*/
+
+.panel-wrapper {
+    padding: 5px 2%;
+    width: 96%; 
+    border: 1px solid #B6B7BC;
+    margin: 10px 0;
+}
+
+label,
+.label-field {
+    padding-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4B6C9E;
+}
+
+.content {
+    padding: 0;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="submit"],
+input[type="image"],
+input[type="password"] {
+    border: 1px solid #496077;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 2px;
+}
+
+
+input[type="submit"] {
+    cursor: pointer;
+    background: #465C71;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #BFCBD6;
+    color: #465C71;
+}
+
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="password"]:focus,
+input[type="password"]:hover,
+select:hover {
+    border: 2px solid #4B6C9E;
+    padding: 1px;
+}
+
+select {
+    padding: 2px;
+    border: 1px solid #496077;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.headGrid {
+    background: #53718d;
+    color: #fff;
+}
+
+.headGrid th {
+    border: 1px solid #000;
+    padding: 4px 7px;
+}
