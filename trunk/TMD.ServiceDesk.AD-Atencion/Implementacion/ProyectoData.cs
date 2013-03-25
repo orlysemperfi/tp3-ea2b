@@ -6,13 +6,13 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Contrato;
-using TMD.SD.AccesoDatos_Atencion.Core;
-using TMD.SD.AccesoDatos_Atencion.Map;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Core;
+using TMD.DBO.AccesoDatos_Atencion.Map;
 using TMD.Entidades;
 
 
-namespace TMD.SD.AccesoDatos_Atencion.Implementacion
+namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
 {
   
 
@@ -34,7 +34,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             List<Proyecto> _listaProyectos = new List<Proyecto>();
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_UsuarioCliente_ListaProyectos"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_UsuarioCliente_ListaProyectos"))
             {
                 DB.AddInParameter(command, "@USUARIO", DbType.Int32, codigoUsuarioCliente);
 
@@ -62,7 +62,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             List<Proyecto> _listaProyectos = new List<Proyecto>();
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Proyecto_ListaProyectosUsuarioClienteServicio"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Proyecto_ListaProyectosUsuarioClienteServicio"))
             {
                 DB.AddInParameter(command, "@CLIENTE", DbType.Int32, codigoCliente);
                 DB.AddInParameter(command, "@USUARIO", DbType.Int32, codigoUsuarioCliente);

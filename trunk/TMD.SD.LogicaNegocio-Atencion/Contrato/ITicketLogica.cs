@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.DBO.LogicaNegocio_Atencion.Contrato;
 using TMD.Entidades;
-using TMD.SD.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
 
-namespace TMD.SD.LogicaNegocio_Atencion.Contrato
+namespace TMD.DBO.LogicaNegocio_Atencion.Contrato
 {
     public interface ITicketLogica
     {
@@ -26,5 +26,12 @@ namespace TMD.SD.LogicaNegocio_Atencion.Contrato
         Ticket datosTicket(int numeroTicket);
         TicketCMDB datosTicketCMDB(int numeroTicket);
         void registrarSolucion(int numeroTicket, String solucion, int codigoEquipo, int codigoEspecialista);
+        void registrarSeguimiento(SeguimientoTicket seguimientoTicket);
+        List<SeguimientoTicket> listaSeguimientos(int numeroTicket,String TipoSeguimiento);
+        void escalarTicketEspecialista(Ticket ticket);
+        void registrarDocumentoTicket(DocumentoTicket documentoTicket);
+        void cambiarEstadoTicket(Ticket ticket);
+        List<DocumentoTicket> listaDocumentosTickets(int numeroTicket);
+        
     }
 }

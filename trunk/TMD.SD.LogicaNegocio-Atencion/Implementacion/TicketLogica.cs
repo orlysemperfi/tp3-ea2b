@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.DBO.LogicaNegocio_Atencion.Contrato;
 using TMD.Entidades;
-using TMD.SD.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
 
-namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
+namespace TMD.DBO.LogicaNegocio_Atencion.Implementacion
 {
     public class TicketLogica : ITicketLogica
     {
@@ -59,5 +59,35 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
         {
             _ticketData.registrarSolucion(numeroTicket, solucion, codigoEquipo, codigoEspecialista);
         }
+        public void registrarSeguimiento(SeguimientoTicket seguimientoTicket)
+        {
+            _ticketData.registrarSeguimiento (seguimientoTicket);
+        }
+
+        public List<SeguimientoTicket> listaSeguimientos(int numeroTicket, String tipoSeguimiento)
+        {
+            return _ticketData.listaSeguimientos(numeroTicket,  tipoSeguimiento);
+        }
+
+        public void escalarTicketEspecialista(Ticket ticket)
+        {
+            _ticketData.escalarTicketEspecialista(ticket);
+        }
+
+        public void registrarDocumentoTicket(DocumentoTicket documentoTicket)
+        {
+            _ticketData.registrarDocumentoTicket(documentoTicket);
+        }
+
+        public void cambiarEstadoTicket(Ticket ticket)
+        {
+            _ticketData.cambiarEstadoTicket(ticket);
+        }
+
+        public List<DocumentoTicket> listaDocumentosTickets(int numeroTicket)
+        {
+            return _ticketData.listaDocumentosTickets(numeroTicket);
+        }
+
     }
 }

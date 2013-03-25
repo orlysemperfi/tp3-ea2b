@@ -6,33 +6,38 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Contrato;
-using TMD.SD.AccesoDatos_Atencion.Core;
-using TMD.SD.AccesoDatos_Atencion.Map;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Core;
+using TMD.DBO.AccesoDatos_Atencion.Map;
 using TMD.Entidades;
 
 
-namespace TMD.SD.AccesoDatos_Atencion.Implementacion
+namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
 {
    
     public class ServiciosData : DataBase, IServicioData
     {
 
-        public ServiciosData(String connectionString)
-            : base(connectionString)
+        public ServiciosData(String connectionString)  : base(connectionString)
         {
 
 
         }
 
 
-        public ProyectoServicioSede datosServicioSLA(int codigoProyecto, int codigoServicio, int codigoSede)
+        public ProyectoServicioSede datosServicioSLA(ProyectoServicioSede datosServicioSLA)
         {
             ProyectoServicioSede _datosServicioSLA = new ProyectoServicioSede();
+            int codigoProyecto, codigoServicio, codigoSede;
+
             //try
             //{
 
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Proyecto_Servicio_Sede"))
+            codigoProyecto = datosServicioSLA.Codigo_Proyecto;
+            codigoServicio = datosServicioSLA.Codigo_Servicio ;
+            codigoSede = datosServicioSLA.Codigo_Sede ;
+ 
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Proyecto_Servicio_Sede"))
             {
                 DB.AddInParameter(command, "@PROYECTO", DbType.Int32, codigoProyecto);
                 DB.AddInParameter(command, "@SERVICIO", DbType.Int32, codigoServicio);
@@ -63,7 +68,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             //try
             //{
             
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Servicio_ListaServiciosUsuarioCliente"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Servicio_ListaServiciosUsuarioCliente"))
             {
                 DB.AddInParameter(command, "@USUARIO", DbType.Int32, codigoUsuarioCliente);
                 DB.AddInParameter(command, "@CLIENTE", DbType.Int32, codigoCliente);
@@ -90,5 +95,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
     }
 
+   
+    
 
 }

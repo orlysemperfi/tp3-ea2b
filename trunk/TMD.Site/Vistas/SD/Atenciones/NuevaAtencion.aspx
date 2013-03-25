@@ -25,9 +25,30 @@
         {
             height: 24px;
         }
+        .style9
+        {
+            width: 167px;
+            height: 30px;
+        }
+        .style10
+        {
+            height: 30px;
+        }
+        
+        .style11
+        {
+            width: 167px;
+            height: 36px;
+        }
+        .style12
+        {
+            height: 36px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+     <ContentTemplate>
     <table class="style1">
         <tr>
             <td class="style2" colspan="4">
@@ -121,12 +142,17 @@
             </td>
         </tr>
         <tr>
-            <td class="style3">
+            <td class="style9">
                 <asp:Label ID="Label3" runat="server" Text="Descripcion breve:"></asp:Label>
             </td>
-            <td colspan="3">
+            <td colspan="3" class="style10">
                 <asp:TextBox ID="txtDescripcionBreve" runat="server" Height="23px" 
-                    MaxLength="50" Width="623px" CssClass="fieldEdit"></asp:TextBox>
+                    MaxLength="50" Width="482px" CssClass="fieldEdit"></asp:TextBox>
+                <asp:CustomValidator ID="CVDescripcionBreve" runat="server" 
+                    ControlToValidate="txtDescripcionBreve" 
+                    ErrorMessage="Debe ingresar 15 caracteres como mínimo" 
+                    onservervalidate="CustomValidator1_ServerValidate" 
+                    ValidateEmptyText="True" ForeColor="Red" ValidationGroup="ValidarAtencion"></asp:CustomValidator>
             </td>
         </tr>
         <tr>
@@ -178,28 +204,47 @@
             </td>
         </tr>
         <tr>
-            <td class="style3">
-                Descripción detallada:</td>
+            <td class="style3" valign="top">
+                Descripción detallada:<br />
+                (min=20 y max=1000 carácteres)</td>
             <td colspan="3">
                 <asp:TextBox ID="txtDescripcionDetallada" runat="server" Height="94px" 
-                    MaxLength="200" Rows="10" Width="622px" CssClass="fieldEdit"></asp:TextBox>
+                    MaxLength="1000" Rows="10" Width="696px" CssClass="fieldEdit" 
+                    ValidationGroup="ValidarAtencion"></asp:TextBox><br />
+                <asp:CustomValidator ID="CVDescripcionDetallada" runat="server" 
+                    ErrorMessage="Debe ingresar 20 caracteres como mínimo" 
+                    onservervalidate="CVDescripcionDetallada_ServerValidate" 
+                    ValidateEmptyText="True" ValidationGroup="ValidarAtencion" ForeColor="Red" 
+                    ControlToValidate="txtDescripcionDetallada"></asp:CustomValidator>
             </td>
         </tr>
         <tr>
             <td class="style3">
                 &nbsp;</td>
             <td colspan="3">
-                &nbsp;</td>
+                <asp:ValidationSummary ID="ValidarCampos" runat="server" ForeColor="Red" 
+                    ShowMessageBox="True" ShowSummary="False" 
+                    HeaderText="Validación de campos" ValidationGroup="ValidarAtencion" 
+                    Width="579px" />
+            </td>
         </tr>
         <tr>
-            <td class="style3">
+            <td class="style11">
                 <asp:Button ID="btnGrabar" runat="server" onclick="btnGrabar_Click" 
-                    Text="Grabar" Width="100px" />
+                    Text="Grabar" Width="100px" ValidationGroup="ValidarAtencion" />
             </td>
-            <td colspan="3">
+            <td colspan="3" class="style12">
                 <asp:Button ID="btnCancelar" runat="server" onclick="btnCancelar_Click" 
                     Text="Cancelar" Width="77px" />
             </td>
         </tr>
+        <tr>
+            <td class="style11">
+                &nbsp;</td>
+            <td colspan="3" class="style12">
+                &nbsp;</td>
+        </tr>
     </table>
+    </ContentTemplate>     
+    </asp:UpdatePanel> 
 </asp:Content>

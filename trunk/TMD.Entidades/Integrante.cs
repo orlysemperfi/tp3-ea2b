@@ -13,7 +13,7 @@ namespace TMD.Entidades
         public String Alias_Empleado { get; set; }
         public String Correo_Empleado { get; set; }
         public String Nombre_Empleado_Proyecto { get; set; }
-
+        public String Nombre_Nivel_Carga { get; set; }
         
     }
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.DBO.LogicaNegocio_Atencion.Contrato;
 using TMD.Entidades;
-using TMD.SD.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
 
-namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
+namespace TMD.DBO.LogicaNegocio_Atencion.Implementacion
 {
   
     public class ServicioLogica : IServicioLogica
@@ -29,10 +29,22 @@ namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
             return _servicioData.listaServiciosUsuarioCliente(codigoCliente, codigoUsuarioCliente);
         }
 
-        public ProyectoServicioSede datosServicioSLA(int codigoProyecto, int codigoServicio, int codigoSede)
+        public ProyectoServicioSede datosServicioSLA(ProyectoServicioSede datosServicioSLA)
         {
-            return _servicioData.datosServicioSLA(codigoProyecto, codigoServicio, codigoSede);
+            return _servicioData.datosServicioSLA (datosServicioSLA);
         }
+
+        public DateTime obtenerFechaExpiración(DateTime fechaRegistro,ProyectoServicioSede proyectoServicioSede)
+        {
+            ProyectoServicioSede _proyectoServicioSede;
+            DateTime fechaExpiracion;
+
+            _proyectoServicioSede= _servicioData.datosServicioSLA(proyectoServicioSede);
+
+            fechaExpiracion = fechaRegistro.AddMinutes(_proyectoServicioSede.Tiempo_Respuesta);
+            return fechaExpiracion;
+        }
+
 
     }
 

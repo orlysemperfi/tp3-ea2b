@@ -5,10 +5,10 @@ using System.Text;
 
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Util;
+using TMD.DBO.AccesoDatos_Atencion.Util;
 using TMD.Entidades;
 
-namespace TMD.SD.AccesoDatos_Atencion.Map
+namespace TMD.DBO.AccesoDatos_Atencion.Map
 {
     static class TicketDataMap
     {
@@ -33,7 +33,14 @@ namespace TMD.SD.AccesoDatos_Atencion.Map
                     Prioridad_Ticket = reader.GetInt("PRIORIDAD_TICKET"),
                     Fecha_Registro=reader.GetDateTime ("FECHA_REGISTRO_TICKET"),
                     Fecha_Expiracion = reader.GetDateTime("FECHA_EXPIRACION_TICKET"),
-                    Codigo_Equipo=reader.GetInt("CODIGO_EQUIPO")
+                    Codigo_Equipo=reader.GetInt("CODIGO_EQUIPO"),
+                    Solucion_Ticket  = reader.GetString("SOLUCION_TICKET"),
+                    Codigo_Proyecto =reader.GetInt("CODIGO_PROYECTO"),
+                    Codigo_Servicio = reader.GetInt("CODIGO_SERVICIO"),
+                    Codigo_Sede = reader.GetInt("CODIGO_SEDE"),
+                    Ultimo_Seguimiento = reader.GetBigInt("ULTIMA_SECUENCIA_SEGUIMIENTO_TICKET"),
+                    Ultimo_Adicional = reader.GetBigInt("ULTIMA_SECUENCIA_ADICIONAL_TICKET")
+                    
                 };
         }
     }

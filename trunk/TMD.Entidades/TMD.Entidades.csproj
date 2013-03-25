@@ -62,6 +62,7 @@
     <Compile Include="DetallePlanMantenimiento.cs" />
     <Compile Include="DetalleSolicitud.cs" />
     <Compile Include="Documento.cs" />
+    <Compile Include="DocumentoTicket.cs" />
     <Compile Include="ElementoConfiguracion.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoEntidad.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="ProyectoServicioSede.cs" />
     <Compile Include="Release.cs" />
     <Compile Include="Rutina.cs" />
+    <Compile Include="SeguimientoTicket.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="SolicitudCambio.cs" />
     <Compile Include="SolicitudMantenimiento.cs" />

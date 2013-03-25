@@ -6,15 +6,15 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Contrato;
-using TMD.SD.AccesoDatos_Atencion.Core;
-using TMD.SD.AccesoDatos_Atencion.Map;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Core;
+using TMD.DBO.AccesoDatos_Atencion.Map;
 using TMD.Entidades;
 
 
 
 
-namespace TMD.SD.AccesoDatos_Atencion.Implementacion
+namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
 {
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             List<Integrante> listaIntegrante = new List<Integrante>();
             //try
             //{
-                using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Integrante_Lista"))
+                using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Integrante_Lista"))
                 {
                     DB.AddInParameter(command, "@Proyecto", DbType.Int32, CodigoProyecto);
                     DB.AddInParameter(command, "@Nivel", DbType.String, "ANALISTA");
@@ -66,7 +66,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             List<Integrante> listaIntegrante = new List<Integrante>();
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Integrante_ListaCompleta"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Integrante_ListaCompleta"))
             {
                 DB.AddInParameter(command, "@Nivel", DbType.String, nivel);
 
@@ -93,7 +93,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             List<Integrante> listaIntegrante = new List<Integrante>();
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Integrante_Lista"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Integrante_Lista"))
             {
                 DB.AddInParameter(command, "@Proyecto", DbType.Int32, CodigoProyecto);
                 DB.AddInParameter(command, "@Servicio", DbType.Int32, CodigoServicio);
@@ -118,13 +118,42 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
         }
 
+        public List<Integrante> listaEspecialistaProyectoServicioSedeCarga(int CodigoProyecto, int CodigoServicio, int CodigoSede)
+        {
+            List<Integrante> listaIntegrante = new List<Integrante>();
+            //try
+            //{
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Integrante_Lista_Carga"))
+            {
+                DB.AddInParameter(command, "@Proyecto", DbType.Int32, CodigoProyecto);
+                DB.AddInParameter(command, "@Servicio", DbType.Int32, CodigoServicio);
+                DB.AddInParameter(command, "@Sede", DbType.Int32, CodigoSede);
+                DB.AddInParameter(command, "@Nivel", DbType.String, "ESPECIALISTA");
+
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        listaIntegrante.Add(IntegranteDataMap.Select(reader));
+                    }
+                }
+            }
+
+            //}
+            //catch
+            //{
+
+            //}
+            return listaIntegrante;
+
+        }
 
         public List<Equipo> listaEquiposEspecialista(int CodigoProyecto, int CodigoServicio, int CodigoSede, int CodigoEmpleado)
         {
             List<Equipo> listaEquipos = new List<Equipo>();
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Equipo_ListaEquiposPSSNivelEmpleado"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Equipo_ListaEquiposPSSNivelEmpleado"))
             {
                 DB.AddInParameter(command, "@Proyecto", DbType.Int32, CodigoProyecto);
                 DB.AddInParameter(command, "@Servicio", DbType.Int32, CodigoServicio);
