@@ -33,10 +33,10 @@ namespace TMD.MP.Site.Privado
                     NuevaPropuestaMejora();
                 }
                 else if (action==Constantes.ACTION_UPDATE || action==Constantes.ACTION_VIEW) {
-                    tblCodigo.Style.Remove("display");
-                    tblCodigo.Style.Add("display","block");
-                    tblEstado.Style.Remove("display");
-                    tblEstado.Style.Add("display", "block");
+                    //tblCodigo.Style.Remove("display");
+                    //tblCodigo.Style.Add("display","block");
+                    //tblEstado.Style.Remove("display");
+                    //tblEstado.Style.Add("display", "block");
                     CargarPropuestaMejora();
                 }
                 List<IndicadorEntidad> indicadorListado = Sesiones.PropuestaMejoraSeleccionada.lstIndicadores;
