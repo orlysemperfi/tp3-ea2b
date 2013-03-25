@@ -51,7 +51,11 @@ namespace TMD.MP.Site.Privado
         {
             PilotoEntidad Piloto = Sesiones.PilotoSeleccionada;
             tbxCodigo.Text = String.Format("{0:000}", Piloto.codigo);
-            ddlSolucion.SelectedValue = Piloto.solucion;
+            tbxFechaInicio.Text=  Convert.ToString(Piloto.fecha_Inicio);
+            tbxFechaFin.Text = Convert.ToString(Piloto.fecha_Fin);
+            ddlSolucion.SelectedValue = Convert.ToString(Piloto.codigo_Solucion);
+            ddlEmpleado.SelectedValue = Convert.ToString(Piloto.codigo_Empleado);
+            tbxDescripcion.Text = Piloto.descripcion;
 
             if (action == Constantes.ACTION_VIEW)
                 CargarModoView();
@@ -110,11 +114,11 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarEmpleado()
         {
-            IUsuarioLogica oAreaLogica = UsuarioLogica.getInstance();
-            List<UsuarioEntidad> oUsuarioColeccion = oAreaLogica.ObtenerListaEmpleadosTodas();
+            IUsuarioLogica oUsuarioLogica = UsuarioLogica.getInstance();
+            List<UsuarioEntidad> oUsuarioColeccion = oUsuarioLogica.ObtenerListaEmpleadosTodas();
             ddlEmpleado.DataSource = oUsuarioColeccion;
             ddlEmpleado.DataTextField = "NOMBRE_COMPLETO";
-            ddlEmpleado.DataValueField = "CODIGO_PERSONA";
+            ddlEmpleado.DataValueField = "CODIGO_USUARIO";
             ddlEmpleado.DataBind();
             ddlEmpleado.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
