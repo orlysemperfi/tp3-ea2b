@@ -1,15 +1,35 @@
 ﻿@model TMD.GM.Site.Models.SolicitudModel
 @{ WebGrid grid = new WebGrid(Model.solicitudBE.listaActividades, canPage: false, canSort: false);}
- @grid.GetHtml(
+ @grid.GetHtml(htmlAttributes: new { id = "tableActividades" },
       columns: grid.Columns(
       grid.Column("ITEM_SOLICITUD", "Item"),
            grid.Column("DESCRIPCION_ACTIVIDAD", "Actividad"),
            grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
-           grid.Column("DESCRIPCION_PRIORIDAD_ACTIVIDAD", "Prioridad"),
+           //grid.Column("DESCRIPCION_PRIORIDAD_ACTIVIDAD", "Prioridad"),
         grid.Column("FECHA_PROGRAMACION", "Fecha", format: @<text>@TMD.GM.Util.DataUT.ObjectToDateTimeStringNull(item.FECHA_PROGRAMACION, "dd/MM/yyyy")</text>),
         grid.Column("ORDEN_TRABAJO", "OT"),
-         grid.Column("", "", format: @<text><a href="#" onclick="SolicitudActividadEditar('@Url.Action("SolicitudActividadEditar", "Solicitud")', '@item.GUID_ROW.ToString()');">Editar</a></text>),
-        grid.Column("", "", format: @<text><a href="#" onclick="SolicitudActividadEliminar('@Url.Action("SolicitudActividadEliminar", "Solicitud")','@item.GUID_ROW.ToString()');">Eliminar</a></text>)
+        grid.Column("OPCIONES", "Opciones", format: @<text>
+        <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="SolicitudActividadEditar('@Url.Action("SolicitudActividadEditar", "Solicitud")', '@item.GUID_ROW.ToString()');"><span class="k-icon k-edit"></span>Editar</a>
+        <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="SolicitudActividadEliminar('@Url.Action("SolicitudActividadEliminar", "Solicitud")','@item.GUID_ROW.ToString()');"><span class="k-icon k-delete"></span>Eliminar</a>
+        </text>)
          )
         )
 @Html.Hidden("hdCronogramaGenerado",Model.cronogramGenerado?"1":"0")
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableActividades").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "ITEM_SOLICITUD", title: "Item", width: "50px" },
+            { field: "DESCRIPCION_ACTIVIDAD", title: "Actividad", width: "200px" },
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
+//            { field: "DESCRIPCION_PRIORIDAD_ACTIVIDAD", title: "Prioridad", width: "50px" },
+            { field: "FECHA_PROGRAMACION", title: "Fecha", width: "50px" },
+            { field: "ORDEN_TRABAJO", title: "OT", width: "100px" },
+            {field: "OPCIONES", title: "Opciones", width: "100px"}]
+        });
+    });
+    
+</script>

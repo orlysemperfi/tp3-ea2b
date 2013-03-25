@@ -17,5 +17,6 @@ namespace TMD.GM.LogicaNegocios.Contrato
         SolicitudBE VisualizarSolicitud(SolicitudBE itemBE);
 
         List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE);
+        CronogramaBE ActividadesCronograma(DateTime fecha);
     }
 }

@@ -15,5 +15,6 @@ namespace TMD.GM.AccesoDatos.Contrato
         void EliminarSolicitud(SolicitudBE solicitudBE);
         SolicitudBE VisualizarSolicitud(SolicitudBE planBE);
         List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE);
+        CronogramaBE ActividadesCronograma(DateTime fecha);
     }
 }

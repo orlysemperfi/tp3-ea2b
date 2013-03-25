@@ -49,5 +49,9 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             return instanciaDA.GenerarCronograma(solicitudBE);
         }
+        public CronogramaBE ActividadesCronograma(DateTime fecha)
+        {
+            return instanciaDA.ActividadesCronograma(fecha);
+        }
     }
 }

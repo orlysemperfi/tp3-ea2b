@@ -303,12 +303,14 @@ namespace TMD.GM.AccesoDatos.Implementacion
 
                         if (entidad == null)
                             throw new Exception(ConstantesUT.MENSAJES_ERROR.NoExiste);
-
+                        
                         #region Validacion
 
                         #endregion
 
-                        db.SOLICITUD_CABECERA.DeleteObject(entidad);
+                        //db.SOLICITUD_CABECERA.DeleteObject(entidad);
+                        entidad.ESTADO_SOLICITUD = ConstantesUT.ESTADO_SOLICITUD.Anulado;
+                        db.SOLICITUD_CABECERA.ApplyCurrentValues(entidad);
 
                         if (db.SaveChanges() < 1)
                         {
@@ -419,15 +421,13 @@ namespace TMD.GM.AccesoDatos.Implementacion
 
                     var detallePlan = (from u in db.PLAN_MANTENIMIENTO_DETALLE where u.CODIGO_PLAN == entidad.CODIGO_PLAN select u);
 
-                    int numVeces = 0;
-                    int rest = 0;
-
                     foreach (var itemEntidad in detallePlan)
                     {
-                        numVeces = Math.DivRem((solicitudBE.FECHA_FIN_SOLICITUD - solicitudBE.FECHA_INICIO_SOLICITUD).Days, itemEntidad.FRECUENCIA.DIAS_FRECUENCIA, out rest);
-
-                        for (int i = 0; i < numVeces; i++)
+                        DateTime fecha = solicitudBE.FECHA_INICIO_SOLICITUD;
+                        
+                        while (fecha <= solicitudBE.FECHA_FIN_SOLICITUD)
                         {
+                            #region Datos
                             SolicitudDetalleBE item = new SolicitudDetalleBE();
                             item.ID_ACTIVIDAD = 0;
                             item.NUMERO_SOLICITUD = solicitudBE.NUMERO_SOLICITUD;
@@ -442,18 +442,121 @@ namespace TMD.GM.AccesoDatos.Implementacion
                             item.CODIGO_TIEMPO = DataUT.ObjectToInt32(itemEntidad.CODIGO_TIEMPO);
                             item.DESCRIPCION_TIEMPO = itemEntidad.UNIDAD_TIEMPO.DESCRIPCION_TIEMPO;
                             item.TIEMPO_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.TIEMPO_ACTIVIDAD);
-                            item.FECHA_PROGRAMACION = solicitudBE.FECHA_INICIO_SOLICITUD.AddDays((i) * itemEntidad.FRECUENCIA.DIAS_FRECUENCIA);
+                            item.FECHA_PROGRAMACION = fecha;
                             item.ORDEN_TRABAJO = "";
-
+                            #endregion
                             listaResult.Add(item);
+
+                            switch (itemEntidad.FRECUENCIA.CODIGO_FRECUENCIA)
+                            {
+                                #region Incrementamos los dias segun la frecuencia
+                                case ConstantesUT.FRECUENCIA.Diario:
+                                    fecha = fecha.AddDays(1);
+                                    break;
+                                case ConstantesUT.FRECUENCIA.Semanal:
+                                    fecha = fecha.AddDays(7);
+                                    break;
+                                case ConstantesUT.FRECUENCIA.Quincenal:
+                                    fecha = fecha.AddDays(14);
+                                    break;
+                                case ConstantesUT.FRECUENCIA.Mensual:
+                                    fecha = fecha.AddMonths(1);
+                                    break;
+                                case ConstantesUT.FRECUENCIA.Trimestral:
+                                    fecha = fecha.AddMonths(3);
+                                    break;
+                                case ConstantesUT.FRECUENCIA.Semestral:
+                                    fecha = fecha.AddMonths(6);
+                                    break;
+                                case ConstantesUT.FRECUENCIA.Anual:
+                                    fecha = fecha.AddYears(1);
+                                    break;
+                                default:
+                                    break;
+                                #endregion
+                            }
+                           
                         }
-
-
                         
                     }
 
                 }
                 return listaResult;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public CronogramaBE ActividadesCronograma(DateTime fecha)
+        {
+            try
+            {
+                CronogramaBE result = new CronogramaBE();
+                result.listaActividades = new List<SolicitudDetalleBE>();
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    if (db.Connection.State == System.Data.ConnectionState.Closed)
+                        db.Connection.Open();
+
+                    #region Actividades
+                    var listaActividadData =  (from u in db.SOLICITUD_DETALLE where u.FECHA_PROGRAMACION == fecha select u).ToList() ;
+
+                    foreach (var itemEntidad in listaActividadData)
+                    {
+                        SolicitudDetalleBE item = new SolicitudDetalleBE();
+                        item.ID_ACTIVIDAD = itemEntidad.ID_ACTIVIDAD;
+                        item.NUMERO_SOLICITUD = itemEntidad.NUMERO_SOLICITUD;
+                        item.ITEM_SOLICITUD = itemEntidad.ITEM_SOLICITUD;
+                        item.CODIGO_TIPO_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.CODIGO_TIPO_ACTIVIDAD);
+                        item.DESCRIPCION_TIPO_ACTIVIDAD = itemEntidad.ACTIVIDAD_TIPO.DESCRIPCION_TIPO_ACTIVIDAD;
+                        item.DESCRIPCION_ACTIVIDAD = itemEntidad.DESCRIPCION_ACTIVIDAD;
+                        item.PRIORIDAD_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.PRIORIDAD_ACTIVIDAD);
+                        item.CODIGO_FRECUENCIA = DataUT.ObjectToInt32(itemEntidad.CODIGO_FRECUENCIA);
+                        item.DESCRIPCION_FRECUENCIA = itemEntidad.FRECUENCIA.DESCRIPCION_FRECUENCIA;
+                        item.PERSONAL_REQUERIDO = DataUT.ObjectToInt32(itemEntidad.PERSONAL_REQUERIDO);
+                        item.CODIGO_TIEMPO = DataUT.ObjectToInt32(itemEntidad.CODIGO_TIEMPO);
+                        item.DESCRIPCION_TIEMPO = itemEntidad.UNIDAD_TIEMPO.DESCRIPCION_TIEMPO;
+                        item.TIEMPO_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.TIEMPO_ACTIVIDAD);
+                        item.FECHA_PROGRAMACION = DataUT.ObjectToDateTime(itemEntidad.FECHA_PROGRAMACION);
+                        item.ORDEN_TRABAJO = itemEntidad.ORDEN_TRABAJO;
+
+                        result.listaActividades.Add(item);
+                    }
+                    #endregion
+
+                    #region PERSONAL_DISPONIBLE
+
+                    List<ACTIVIDAD_TIPO> listaActividades = (from actividades in result.listaActividades
+                                                  select  new ACTIVIDAD_TIPO { CODIGO_TIPO_ACTIVIDAD = actividades.CODIGO_TIPO_ACTIVIDAD }).Distinct().ToList();
+
+                    int numPersonalDisp = (from emplActi in db.EMPLEADO_ACTIVIDAD
+                                          join tipoActi in db.ACTIVIDAD_TIPO on emplActi.CODIGO_TIPO_ACTIVIDAD equals tipoActi.CODIGO_TIPO_ACTIVIDAD
+                                          join emp in db.EMPLEADO on emplActi.CODIGO_EMPLEADO equals emp.CODIGO_EMPLEADO
+                                          select emp).Count();
+
+                    result.PERSONAL_DISPONIBLE = numPersonalDisp;
+                    #endregion
+
+                    #region HORAS_LABORABLES
+                    CALENDARIO_LABORABLE calendario = (from cal in db.CALENDARIO_LABORABLE
+                                                      where cal.FECHA_LABORABLE == fecha
+                                                      select cal).FirstOrDefault();
+
+                    if (calendario != null)
+                    {
+                        result.HORAS_LABORABLES = calendario.HORAS_LABORABLES;
+                    }
+
+                    #endregion
+
+                    result.HORAS_DISPONIBLE = result.PERSONAL_DISPONIBLE * result.HORAS_LABORABLES;
+                    result.HORAS_EMPLEADAS = (from actividades in result.listaActividades
+                                              select actividades.TIEMPO_ACTIVIDAD).Sum() ;
+                }
+                return result;
             }
             catch (Exception ex)
             {
