@@ -918,6 +918,9 @@
   <ItemGroup>
     <Content Include="Views\Error\MensajeError.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Solicitud\CalendarioDetalle.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -934,7 +937,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>41000</DevelopmentServerPort>
+          <DevelopmentServerPort>5101</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

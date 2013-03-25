@@ -1,79 +1,30 @@
 ﻿@model TMD.GM.Site.Models.PlanConsultaModel
-@{ WebGrid grid = new WebGrid(Model.listaData, canPage: false);}
- @grid.GetHtml(
+@{ WebGrid grid = new WebGrid(Model.listaData, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tablePlanes" },
       columns: grid.Columns(
-    grid.Column("CODIGO_PLAN", "Código", canSort: false),
-    grid.Column("NOMBRE_PLAN", "Nombre", canSort: false),
-    grid.Column("ESTADO_PLAN", "Activo", format: @<text>@(item.ESTADO_PLAN?"Si": "No")</text>, canSort: false),
- grid.Column("", "", format: @<text>
- <a href="#" onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.CODIGO_PLAN','@item.NOMBRE_PLAN',@(item.ESTADO_PLAN ? 1 : 0));">Editar</a>
-    </text>, canSort: false),
- grid.Column("", "", format: @<text>
- <a href="#" onclick="PlanMantEliminar('@Url.Action("PlanEliminar", "Plan")','@Url.Action("Planes", "Plan")','@item.CODIGO_PLAN');">Eliminar</a>
-    </text>, canSort: false)
+    grid.Column("CODIGO_PLAN", "Código"),
+    grid.Column("NOMBRE_PLAN", "Nombre"),
+    grid.Column("ESTADO_PLAN", "Activo", format: @<text>@(item.ESTADO_PLAN?"Si": "No")</text>),
+    grid.Column("OPCIONES", "Opciones", format: @<text>
+    <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.CODIGO_PLAN','@item.NOMBRE_PLAN',@(item.ESTADO_PLAN ? 1 : 0));"><span class="k-icon k-edit"></span>Editar</a>
+    @{if (item.ESTADO_PLAN)
+    {
+    <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="PlanMantEliminar('@Url.Action("PlanEliminar", "Plan")','@Url.Action("Planes", "Plan")','@item.CODIGO_PLAN');"><span class="k-icon k-delete"></span>Eliminar</a>
+    }}
+    </text>)
          )
         )
 
-@*<div id="grid"></div>*@
- @*Html.ActionImageLink("Edit", new { id = item.CODIGO_PLAN }, "btnEditForm", "Editar")
- Html.ActionLink("Visualizar", "Visualizar", "Plan", new { ID = item.CODIGO_PLAN }, null)
- onclick="PlanMantEditar('@Url.Action("PlanEdit", "Plan")','@item.CODIGO_PLAN','@NOMBRE_PLAN','@(item.ESTADO_PLAN?1:0)');"
- *@
-@* <script>
-     $(document).ready(function () {
-         var crudServiceBaseUrl = "http://demos.kendoui.com/service",
-                        dataSource = new kendo.data.DataSource({
-                            transport: {
-                                read: {
-                                    url: crudServiceBaseUrl + "/Products",
-                                    dataType: "jsonp"
-                                },
-                                update: {
-                                    url: crudServiceBaseUrl + "/Products/Update",
-                                    dataType: "jsonp"
-                                },
-                                destroy: {
-                                    url: crudServiceBaseUrl + "/Products/Destroy",
-                                    dataType: "jsonp"
-                                },
-                                create: {
-                                    url: crudServiceBaseUrl + "/Products/Create",
-                                    dataType: "jsonp"
-                                },
-                                parameterMap: function (options, operation) {
-                                    if (operation !== "read" && options.models) {
-                                        return { models: kendo.stringify(options.models) };
-                                    }
-                                }
-                            },
-                            batch: true,
-                            pageSize: 30,
-                            schema: {
-                                model: {
-                                    id: "ProductID",
-                                    fields: {
-                                        ProductID: { editable: false, nullable: true },
-                                        ProductName: { validation: { required: true} },
-                                        UnitPrice: { type: "number", validation: { required: true, min: 1} },
-                                        Discontinued: { type: "boolean" },
-                                        UnitsInStock: { type: "number", validation: { min: 0, required: true} }
-                                    }
-                                }
-                            }
-                        });
-
-         $("#grid").kendoGrid({
-             dataSource: dataSource,
-             pageable: true,
-             height: 400,
-             toolbar: ["create"],
-             columns: [
-                            { field: "ProductName", title: "Product Name" },
-                            { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "150px" },
-                            { field: "UnitsInStock", title: "Units In Stock", width: "150px" },
-                            { field: "Discontinued", width: "100px" },
-                            { command: ["edit", "destroy"], title: "&nbsp;", width: "210px"}],
-             editable: "popup"
-         });
-     });
-            </script>*@
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tablePlanes").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "CODIGO_PLAN", title: "Código", width: "50px" },
+            { field: "NOMBRE_PLAN", title: "Nombre", width: "300px" },
+            { field: "ESTADO_PLAN", title: "Activo", width: "50px" },
+            { field: "OPCIONES", title: "Opciones", width: "100px"}]
+        });
+    });
+    
+</script>

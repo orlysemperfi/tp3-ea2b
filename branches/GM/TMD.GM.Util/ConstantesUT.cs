@@ -11,9 +11,10 @@ namespace TMD.GM.Util
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
         public struct ESTADO_SOLICITUD
         {
-            public const int Anulado = -1;
             public const int Aperturado = 1;
             public const int Programado = 2;
+            public const int Anulado = 4;
+
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
@@ -21,6 +22,18 @@ namespace TMD.GM.Util
         {
             public const int Activo = 1;
             public const int Inactivo = 0;
+        }
+
+        [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
+        public struct FRECUENCIA
+        {
+            public const int Diario = 1;
+            public const int Semanal = 2;
+            public const int Quincenal = 3;
+            public const int Mensual = 4;
+            public const int Trimestral = 5;
+            public const int Semestral = 6;
+            public const int Anual = 7;
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]

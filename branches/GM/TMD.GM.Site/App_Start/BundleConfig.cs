@@ -34,6 +34,7 @@ namespace TMD.GM.Site
             bundles.Add(new ScriptBundle("~/bundles/kendo")
                   .Include("~/Scripts/kendo/2012.3.1315/kendo.web.*") // or kendo.all.*
                   .Include("~/Scripts/kendo/2012.3.1315/kendo.aspnetmvc.*")
+                  .Include("~/Scripts/kendo/2012.3.1315/cultures/kendo.culture.es-PE.min.js")
              );
 
 

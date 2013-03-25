@@ -53,6 +53,12 @@ namespace TMD.GM.AccesoDatos
                     return true;
                 return (x as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD.Equals((y as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD);
             }
+            else if (typeof(T) == typeof(ACTIVIDAD_TIPO))
+            {
+                if ((x as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD == 0)
+                    return true;
+                return (x as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD.Equals((y as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD);
+            }
 
             else
                 throw new NotImplementedException();

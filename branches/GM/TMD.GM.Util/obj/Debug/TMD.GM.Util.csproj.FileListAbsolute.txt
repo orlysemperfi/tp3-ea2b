@@ -3,3 +3,8 @@ D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Util\bin\Debug\TMD.GM.Util.pdb
 D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Util\obj\Debug\ResolveAssemblyReference.cache
 D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Util\obj\Debug\TMD.GM.Util.dll
 D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Util\obj\Debug\TMD.GM.Util.pdb
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\bin\Debug\TMD.GM.Util.dll
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\bin\Debug\TMD.GM.Util.pdb
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\obj\Debug\ResolveAssemblyReference.cache
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\obj\Debug\TMD.GM.Util.dll
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\obj\Debug\TMD.GM.Util.pdb

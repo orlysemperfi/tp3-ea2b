@@ -12,9 +12,9 @@
         $(this).hide();
     });
     $('#divActividad').dialog({ autoOpen: false, width: 750, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
-    $('#divPlanNuevo').dialog({ autoOpen: false, width: 750, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
-    $('#divPlanEditar').dialog({ autoOpen: false, width: 750, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();  
-    $('#divSolicitud').dialog({ autoOpen: false, width: 750, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
+    $('#divPlanNuevo').dialog({ autoOpen: false, width: 1000, height: 450 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
+    $('#divPlanEditar').dialog({ autoOpen: false, width: 1000, height: 450 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();  
+    $('#divSolicitud').dialog({ autoOpen: false, width: 1000, height: 560 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#divCalendario').dialog({ autoOpen: false, width: 750, height: 500 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#divEquipos').dialog({ autoOpen: false, width: 750, height: 500 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#ModalMensajeError').dialog({ autoOpen: false, width: 548, height: 250 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
@@ -546,16 +546,21 @@ function EquiposEjecutarBusqueda(ParamUrl1) {
 }
 
 function SolicitudGenerarCronograma(ParamUrl1, ParamNumeSoli){
+
+ var dpIni = $("#dpFechaIni").data("kendoDatePicker");
+    var dpFin = $("#dpFechaFin").data("kendoDatePicker");
   $.ajax({
         type: "POST",
         url: ParamUrl1,
         data: { pNumeSoli: ParamNumeSoli,
-        pFechaInicio: $('#txtFechaIni').val(),
-        pFechaFin: $('#txtFechaFin').val()
+        pFechaInicio:  kendo.toString(dpIni.value(), 'dd/MM/yyyy'),
+        pFechaFin: kendo.toString(dpFin.value(), 'dd/MM/yyyy') 
         },
         cache: false,
         success: function (data, textStatus, jqXHR) {
             $("#pnlGridActividades").html(data);
+            $('#btnVerCalendario').prop('disabled', false).removeClass('k-state-disabled');
+            
         },
         error: function (req, status, error) {
             alert("fail: " + req + " " + status + " " + error);
