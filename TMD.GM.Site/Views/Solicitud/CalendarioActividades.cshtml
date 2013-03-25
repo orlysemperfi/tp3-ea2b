@@ -2,7 +2,7 @@
 <fieldset>
 Seleccione la fecha programada para ver Actividades
 </fieldset>
-<fieldset style="font-size:8pt">
+@*<fieldset style="font-size:8pt">
 <div style="float:left; border:1px solid #000000; height:150px; padding:5px">
 @(new HtmlString( Html.Calendar("calendarioA", DateTime.Now)))
 </div>
@@ -12,34 +12,101 @@ Seleccione la fecha programada para ver Actividades
 <div style="float:left; border:1px solid #000000; height:150px; padding:5px">
 @(new HtmlString(Html.Calendar("calendarioC", DateTime.Now.AddMonths(2))))
 </div>
+</fieldset>*@
+ <div id="calendarA" style="width: 220px;"></div>
+ <div id="calendarB" style="width: 220px;"></div>
+ <div id="calendarC" style="width: 220px;"></div>
+
+<fieldset>
+<span>Fecha seleccionada</span><br />
+<input id="txtFechaSel" type="text" class="k-textbox" value="" style="width: 150px;" readonly="readonly" />
 </fieldset>
 <fieldset>
-Fecha seleccionada
-@Html.TextBox("txtFechaSel", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
-</fieldset>
-<fieldset>
-<fieldset style="float:left">(</fieldset>
-<fieldset style="float:left">
-<legend>Personal disponible</legend>
-@Html.TextBox("txtPersonalDisp", "", new { @class = "txtForm" })
-</fieldset>
-<fieldset style="float:left">*</fieldset>
-<fieldset style="float:left">
-<legend>Horas laborables</legend>
-@Html.TextBox("txtHorasLabo", "", new { @class = "txtForm" })
-</fieldset>
-<fieldset style="float:left">) = </fieldset>
-<fieldset style="float:left">
-<legend>Horas disponibles</legend>
-@Html.TextBox("txtHorasDisp", "", new { @class = "txtForm" })
-</fieldset>
-<fieldset style="float:left">
-<legend>Horas empleadas</legend>
-@Html.TextBox("txtHorasEmpl", "", new { @class = "txtForm" })
-</fieldset>
-</fieldset>
-<fieldset>
- <button id="btnRetornar" class="k-button" onclick="CerrarModalCalendario()" >Retornar</button>
+ <button id="btnRetornar" class="k-button" onclick="CerrarModalCalendario()" ><span class="k-icon k-i-close"></span> Retornar</button>
 </fieldset>
 
+<div id="divCalendarioDetalle">
+</div>
 
+ <script language="javascript" type="text/javascript">
+     function onChangeA() {
+        var fecha = kendo.toString(this.value(), 'dd/MM/yyyy');
+        $("#txtFechaSel").attr("value",fecha);
+
+        $("#calendarB").data("kendoCalendar").value(null);
+        $("#calendarC").data("kendoCalendar").value(null);
+        $.ajax({
+            type: "post",
+            url: "/Solicitud/CalendarioDetalle",
+            data: {pFecha:  fecha},
+            cache: false,
+            success: function (data, textStatus, jqXHR) {
+              $("#divCalendarioDetalle").html(data);
+            },
+            error: function (req, status, error) {alert("fail: " + req + " " + status + " " + error);},
+            complete: function () {}
+        });
+     }
+
+     function onChangeB() {
+         var fecha = kendo.toString(this.value(), 'dd/MM/yyyy');
+        $("#txtFechaSel").attr("value",fecha);
+
+        $("#calendarA").data("kendoCalendar").value(null);
+        $("#calendarC").data("kendoCalendar").value(null);
+        $.ajax({
+            type: "post",
+            url: "/Solicitud/CalendarioDetalle",
+            data: {pFecha:  fecha},
+            cache: false,
+            success: function (data, textStatus, jqXHR) {
+              $("#divCalendarioDetalle").html(data);
+            },
+            error: function (req, status, error) {alert("fail: " + req + " " + status + " " + error);},
+            complete: function () {}
+        });
+     }
+
+     function onChangeC() {
+         var fecha = kendo.toString(this.value(), 'dd/MM/yyyy');
+        $("#txtFechaSel").attr("value",fecha);
+
+        $("#calendarA").data("kendoCalendar").value(null);
+        $("#calendarB").data("kendoCalendar").value(null);
+        $.ajax({
+            type: "post",
+            url: "/Solicitud/CalendarioDetalle",
+            data: {pFecha:  fecha},
+            cache: false,
+            success: function (data, textStatus, jqXHR) {
+              $("#divCalendarioDetalle").html(data);
+            },
+            error: function (req, status, error) {alert("fail: " + req + " " + status + " " + error);},
+            complete: function () {}
+        });
+     }
+
+     $("#calendarA").kendoCalendar({
+         culture: "es-PE",
+        format: "dd/MM/yyyy",
+         change: onChangeA,
+         min: new Date(@DateTime.Now.Year,@DateTime.Now.Month -1 ,1),
+         footer:" "
+         
+//         min: new Date(2013,1,1),
+     });
+     $("#calendarB").kendoCalendar({
+         culture: "es-PE",
+         format: "dd/MM/yyyy",    
+         change: onChangeB,
+          min: new Date(@DateTime.Now.Year,@DateTime.Now.Month  ,1),
+          footer:" "
+     });
+     $("#calendarC").kendoCalendar({
+         culture: "es-PE",
+         format: "dd/MM/yyyy",
+         change: onChangeC,
+          min: new Date(@DateTime.Now.Year,@DateTime.Now.Month +1  ,1),
+          footer:" "
+     });
+</script>

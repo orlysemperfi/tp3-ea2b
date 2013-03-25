@@ -324,7 +324,7 @@ namespace TMD.GM.Site.Controllers
 
         }
 
-        public EmptyResult SolicitudActividadAceptar(int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, DateTime? pFechaProg, string pOrdeTrab)
+        public EmptyResult SolicitudActividadAceptar(int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pFechaProg, string pOrdeTrab)
         {
             SolicitudDetalleBE entity = (SolicitudDetalleBE)Session[ConstantesUT.SESSION.SolicitudActividadActual];
 
@@ -518,6 +518,24 @@ namespace TMD.GM.Site.Controllers
             Session["SolicitudActividadesKey"] = model.solicitudBE.listaActividades;
 
             return PartialView("SolicitudActividades",model);
+        }
+
+        public ActionResult CalendarioDetalle(string pFecha)
+        {
+            
+            DateTime fecha ;
+            if (!DateTime.TryParse(pFecha, out fecha))
+                return null;
+
+            CronogramaBE entity = solicitudBL.ActividadesCronograma(fecha);
+            ViewBag.listaActividades = entity.listaActividades;
+
+            ViewBag.PersonalDisp = entity.PERSONAL_DISPONIBLE;
+            ViewBag.HorasLabo = entity.HORAS_LABORABLES;
+            ViewBag.HorasDisp = entity.HORAS_DISPONIBLE;
+            ViewBag.HorasEmpl = entity.HORAS_EMPLEADAS;
+
+            return PartialView();
         }
     }
 }
