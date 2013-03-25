@@ -61,8 +61,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT  U.CODIGO_USUARIO, U.NOMBRE AS NOMBRE_COMPLETO ");
-            strSQL.Append("FROM USUARIO U");
+            strSQL.Append("SELECT E.CODIGO_EMPLEADO, E.APEPAT +' '+ E.APEMAT +', '+ E.NOMBRES AS NOMBRE_COMPLETO ");
+            strSQL.Append("FROM EMPLEADO E");
             SqlCommand sqlCmd = new SqlCommand(strSQL.ToString(), sqlConn);
             SqlDataReader dr = null;
             sqlCmd.CommandType = CommandType.Text;
@@ -75,7 +75,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 while (dr.Read())
                 {
                     oUsuario = new UsuarioEntidad();
-                    oUsuario.codigo_Usuario = Utilitario.getDefaultOrStringDBValue(dr["CODIGO_USUARIO"]);
+                    oUsuario.codigo_Usuario = Utilitario.getDefaultOrStringDBValue(dr["CODIGO_EMPLEADO"]);
                     oUsuario.nombre_completo = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE_COMPLETO"]);
                     oUsuarioColeccion.Add(oUsuario);
                 }
