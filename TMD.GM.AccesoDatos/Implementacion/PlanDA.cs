@@ -325,12 +325,9 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         #region Validacion
                      
                         #endregion
-                        foreach (var item in entidad.PLAN_MANTENIMIENTO_DETALLE)
-                        {
-                            db.PLAN_MANTENIMIENTO_DETALLE.DeleteObject(item);
-
-                        }
-                        db.PLAN_MANTENIMIENTO_CABECERA.DeleteObject(entidad);
+                        entidad.ESTADO_PLAN = ConstantesUT.ESTADO_GENERICO.Inactivo;
+                        //db.PLAN_MANTENIMIENTO_CABECERA.DeleteObject(entidad);
+                        db.PLAN_MANTENIMIENTO_CABECERA.ApplyCurrentValues(entidad);
 
                         if (db.SaveChanges() < 1)
                         {
