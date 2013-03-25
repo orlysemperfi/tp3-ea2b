@@ -153,7 +153,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         {
 
             IUsuarioClienteLogica usuarioCliente = new UsuarioClienteLogica(new UsuarioClienteData("TMD"));
-            aliasIntegrante = SesionFachada.Usuario.Alias.ToString();
+            aliasIntegrante = SesionFachada.Usuario.Nombre.ToString();
 
 
             cmbUsuarioCliente.DataSource = usuarioCliente.listaUsuarioCliente(aliasIntegrante);
