@@ -7,6 +7,7 @@ using TMD.MP.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.Comun;
+using TMD.MP.LogicaNegocios.Excepcion;
 
 namespace TMD.MP.LogicaNegocios.Implementacion
 {
@@ -138,7 +139,6 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             }
         }
 
-
         public void ActualizarEstadoSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
         {
             iSolucionMejora = new SolucionMejoraDataSql();
@@ -153,8 +153,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             }
         }
 
-
-        public String BorrarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
+        public void BorrarSolucionMejora(SolucionMejoraEntidad oSolucionMejora)
         {
             iSolucionMejora = new SolucionMejoraDataSql();
             SolucionEstadoEntidad oSolucionEstado = new SolucionEstadoEntidad();
@@ -167,14 +166,13 @@ namespace TMD.MP.LogicaNegocios.Implementacion
                 oSolucionEstado.codigo_estado = oSolucionMejora.codigo_Estado;
 
                 iSolucionMejora.InsertarSolucionMejoraEstado(oSolucionEstado);
-
-                return null;
             }
             else
             {
-                return Mensajes.Mensaje_No_Borrar_Solucion_Mejora;
+                throw new BRuleException(Mensajes.Mensaje_No_Borrar_Propuesta_Mejora);
             }
         }
+
 
         #endregion
 

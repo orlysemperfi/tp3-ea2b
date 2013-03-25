@@ -94,13 +94,13 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.Button btnAgregarAccion;
         
         /// <summary>
-        /// gwAcciones control.
+        /// gvwAcciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gwAcciones;
+        protected global::System.Web.UI.WebControls.GridView gvwAcciones;
         
         /// <summary>
         /// btnGuardar control.

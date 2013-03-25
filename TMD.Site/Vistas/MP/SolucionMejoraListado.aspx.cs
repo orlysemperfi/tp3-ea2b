@@ -8,6 +8,7 @@ using TMD.Entidades;
 using TMD.MP.Comun;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
+using TMD.MP.LogicaNegocios.Excepcion;
 
 namespace TMD.MP.Site.Privado
 {
@@ -170,15 +171,17 @@ namespace TMD.MP.Site.Privado
             else if (e.CommandName == "EliminarSolucion")
             {
                 SolucionMejoraEntidad oSolucionMejora = oSolucionMejoraLogica.ObtenerSolucionMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
-                String strMensaje = oSolucionMejoraLogica.BorrarSolucionMejora(oSolucionMejora);
-                if (strMensaje != null)
+
+                try
                 {
-                    lblMensajeError.Text = strMensaje;
+                    oSolucionMejoraLogica.BorrarSolucionMejora(oSolucionMejora);
                 }
-                else
+                catch (BRuleException ex)
                 {
-                    CargarSolucionMejoraListado();
+                    lblMensajeError.Text = ex.Message;
+                    lblMensajeError.DataBind();
                 }
+
             }
         }
 
