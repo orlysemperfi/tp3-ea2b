@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.DBO.LogicaNegocio_Atencion.Contrato;
 using TMD.Entidades;
-using TMD.SD.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
 
 
-namespace TMD.SD.LogicaNegocio_Atencion.Contrato
+namespace TMD.DBO.LogicaNegocio_Atencion.Contrato
 {
   
 

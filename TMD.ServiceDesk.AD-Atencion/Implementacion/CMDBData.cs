@@ -6,12 +6,12 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Contrato;
-using TMD.SD.AccesoDatos_Atencion.Core;
-using TMD.SD.AccesoDatos_Atencion.Map;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Core;
+using TMD.DBO.AccesoDatos_Atencion.Map;
 using TMD.Entidades;
 
-namespace TMD.SD.AccesoDatos_Atencion.Implementacion
+namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
 {
 
     public class CMDBData : DataBase, ICMDBData
@@ -32,7 +32,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             //try
             //{
 
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_CMDB_ListaCompleta"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_CMDB_ListaCompleta"))
             {
                 DB.AddInParameter(command, "@PROYECTO", DbType.Int32, codigoProyecto);
                 using (IDataReader reader = DB.ExecuteReader(command))

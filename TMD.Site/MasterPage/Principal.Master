@@ -110,6 +110,14 @@
                                 <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" NavigateUrl="~/Vistas/ACP/ListaSeguimientoHallazgo.aspx" />
                                 <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" NavigateUrl="~/Vistas/ACP/ListaActSeguimientoHallazgo.aspx" />
                             </asp:MenuItem>
+
+                            <asp:MenuItem Text="Service Desk" Value="Service">
+                                <asp:MenuItem  Text="Atenciones">
+                                    <asp:MenuItem Text="Tickets" NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=n" />
+                                    <asp:MenuItem Text="Solucionar Tickets" NavigateUrl="~/Vistas/SD/Atenciones/Atenciones.aspx?accion=s"  />
+                                    <asp:MenuItem Text="Seguimiento de Tickets" NavigateUrl="~/Vistas/SD/Seguimiento/Atenciones.aspx" />
+                                </asp:MenuItem>
+                            </asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>

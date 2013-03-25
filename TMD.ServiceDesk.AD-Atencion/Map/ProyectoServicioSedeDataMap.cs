@@ -5,11 +5,11 @@ using System.Text;
 
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Util;
+using TMD.DBO.AccesoDatos_Atencion.Util;
 using TMD.Entidades;
 
 
-namespace TMD.SD.AccesoDatos_Atencion.Map
+namespace TMD.DBO.AccesoDatos_Atencion.Map
 {
 
     static class ProyectoServicioSedeDataMap
@@ -22,11 +22,11 @@ namespace TMD.SD.AccesoDatos_Atencion.Map
                 Nombre_Servicio = reader.GetString("NOMBRE_SERVICIO"),
                 Descripcion_Servicio = reader.GetString("DESCRIPCION_SERVICIO"),
 
-                //Codigo_Proyecto = reader.GetInt("CODIGO_PROYECTO"),
+                Codigo_Proyecto = reader.GetInt("CODIGO_PROYECTO"),
                 //Nombre_Proyecto = reader.GetString("NOMBRE_PROYECTO"),
-                //Codigo_Sede = reader.GetInt("CODIGO_SEDE"),
+                Codigo_Sede = reader.GetInt("CODIGO_SEDE"),
                 //Nombre_Sede = reader.GetString("NOMBRE_SEDE"),
-                //Codigo_SLA = reader.GetInt("CODIGO_EQUIPO"),
+                Codigo_SLA = reader.GetInt("CODIGO_SLA"),
                 Nombre_SLA = reader.GetString("NOMBRE_SLA"),
                 Codigo_Detalle_SLA = reader.GetInt("CODIGO_DETALLE_SLA"),
                 Urgencia = reader.GetSmallInt("URGENCIA_DETALLE_SLA"),

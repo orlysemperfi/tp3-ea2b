@@ -43,6 +43,15 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\Librerias\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="AppLimit.CloudComputing.SharpBox">
+      <HintPath>..\packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\AppLimit.CloudComputing.SharpBox.dll</HintPath>
+    </Reference>
+    <Reference Include="AppLimit.CloudComputing.SharpBox.ExperimentalProvider">
+      <HintPath>..\packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\AppLimit.CloudComputing.SharpBox.ExperimentalProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="AppLimit.CloudComputing.SharpBox.MockProvider">
+      <HintPath>..\packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\AppLimit.CloudComputing.SharpBox.MockProvider.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -234,9 +243,14 @@
     <Content Include="Vistas\MP\PropuestaMejoraListadoDesarrollo.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraFormulario.aspx" />
     <Content Include="Vistas\MP\SolucionMejoraListado.aspx" />
-    <Content Include="Vistas\SD\Atenciones.aspx" />
-    <Content Include="Vistas\SD\IngresarSolucion.aspx" />
-    <Content Include="Vistas\SD\NuevaAtencion.aspx" />
+    <Content Include="Vistas\SD\Atenciones\AdjuntarDocumento.aspx" />
+    <Content Include="Vistas\SD\Atenciones\Atenciones.aspx" />
+    <Content Include="Vistas\SD\Atenciones\CambiarEstado.aspx" />
+    <Content Include="Vistas\SD\Atenciones\EscalarTicket.aspx" />
+    <Content Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx" />
+    <Content Include="Vistas\SD\Atenciones\IngresarSolucion.aspx" />
+    <Content Include="Vistas\SD\Atenciones\NuevaAtencion.aspx" />
+    <Content Include="Vistas\SD\Atenciones\WebForm1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -690,26 +704,61 @@
     <Compile Include="Vistas\MP\SolucionMejoraListado.aspx.designer.cs">
       <DependentUpon>SolucionMejoraListado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\SD\Atenciones.aspx.cs">
+    <Compile Include="Vistas\SD\Atenciones\AdjuntarDocumento.aspx.cs">
+      <DependentUpon>AdjuntarDocumento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\AdjuntarDocumento.aspx.designer.cs">
+      <DependentUpon>AdjuntarDocumento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\Atenciones.aspx.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\SD\Atenciones.aspx.designer.cs">
+    <Compile Include="Vistas\SD\Atenciones\Atenciones.aspx.designer.cs">
       <DependentUpon>Atenciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\SD\IngresarSolucion.aspx.cs">
+    <Compile Include="Vistas\SD\Atenciones\CambiarEstado.aspx.cs">
+      <DependentUpon>CambiarEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\CambiarEstado.aspx.designer.cs">
+      <DependentUpon>CambiarEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\EscalarTicket.aspx.cs">
+      <DependentUpon>EscalarTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\EscalarTicket.aspx.designer.cs">
+      <DependentUpon>EscalarTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx.cs">
+      <DependentUpon>IngresarSeguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\IngresarSeguimiento.aspx.designer.cs">
+      <DependentUpon>IngresarSeguimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\IngresarSolucion.aspx.cs">
       <DependentUpon>IngresarSolucion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\SD\IngresarSolucion.aspx.designer.cs">
+    <Compile Include="Vistas\SD\Atenciones\IngresarSolucion.aspx.designer.cs">
       <DependentUpon>IngresarSolucion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\SD\NuevaAtencion.aspx.cs">
+    <Compile Include="Vistas\SD\Atenciones\NuevaAtencion.aspx.cs">
       <DependentUpon>NuevaAtencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\SD\NuevaAtencion.aspx.designer.cs">
+    <Compile Include="Vistas\SD\Atenciones\NuevaAtencion.aspx.designer.cs">
       <DependentUpon>NuevaAtencion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\SD\Atenciones\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -802,6 +851,9 @@
       <LastGenOutput>rptPlanAuditoria2.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Vistas\SD\Seguimiento\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
@@ -812,8 +864,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3329</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/TMD.SiteT</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -7,12 +7,12 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 
-using TMD.SD.AccesoDatos_Atencion.Contrato;
-using TMD.SD.AccesoDatos_Atencion.Core;
-using TMD.SD.AccesoDatos_Atencion.Map;
+using TMD.DBO.AccesoDatos_Atencion.Contrato;
+using TMD.DBO.AccesoDatos_Atencion.Core;
+using TMD.DBO.AccesoDatos_Atencion.Map;
 using TMD.Entidades;
 
-namespace TMD.SD.AccesoDatos_Atencion.Implementacion
+namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
 {
     public class UsuarioClienteData : DataBase, IUsuarioClienteData
     {
@@ -32,7 +32,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
             List<UsuarioCliente> _listaUsuarioCliente = new List<UsuarioCliente>();
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_Integrante_Usuario_Cliente"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Integrante_Usuario_Cliente"))
             {
                 DB.AddInParameter(command, "@ALIAS_EMPLEADO", DbType.String, AliasIntegrante);
 
@@ -61,7 +61,7 @@ namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 
             //try
             //{
-            using (DbCommand command = DB.GetStoredProcCommand("SD.usp_UsuarioCliente_Datos"))
+            using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_UsuarioCliente_Datos"))
             {
                 DB.AddInParameter(command, "@USUARIO", DbType.Int32, codigoUsuarioCliente);
 

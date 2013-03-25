@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using System.Globalization;
 
 using TMD.Entidades;
-using TMD.SD.LogicaNegocio_Atencion.Contrato;
-using TMD.SD.LogicaNegocio_Atencion.Implementacion;
-using TMD.SD.AccesoDatos_Atencion.Implementacion;
+using TMD.DBO.LogicaNegocio_Atencion.Contrato;
+using TMD.DBO.LogicaNegocio_Atencion.Implementacion;
+using TMD.DBO.AccesoDatos_Atencion.Implementacion;
 
 using TMD.CF.Site.Util;
 
@@ -36,8 +36,8 @@ namespace TMD.ServiceDesk.Site.Atenciones
             int numeroTicket;
             accionRegistro = Request.QueryString["registro"];
 
-            Session["CodigoCliente"] = 0;
-            Session["CodigoSede"] = 0;
+                Session["CodigoCliente"] = 0;
+                Session["CodigoSede"] = 0;
             
 
             //pageAnterior = Request.ServerVariables["HTTP_REFERER"].ToLower();
@@ -63,27 +63,28 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Atenciones/Atenciones.aspx");
+            
+            Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
         }
 
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-                       
-            ITicketLogica ticket = new TicketLogica(new TicketData("BDServiceDesk"));
+            string script;
+
+            if (Page.IsValid ==false )
+            {
+                return; 
+            }
+            ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
             Ticket Datosticket = new Ticket();
 
             int codigoCliente = Convert.ToInt32(Session["CodigoCliente"]);
             int codigoSede = Convert.ToInt32(Session["CodigoSede"]);
             
-            if (txtDescripcionBreve.Text=="" || txtDescripcionDetallada.Text=="") 
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Falta ingresar datos')</script>");
-                return;
-            }
-
+            Datosticket.Fecha_Registro = Convert.ToDateTime(txtFechaRegistro.Text);
             Datosticket.Tipo_Registro_Ticket = cmbTipoRegistro.SelectedValue.ToUpper();
             Datosticket.Tipo_Atencion_Ticket = cmbTipoAtencion.SelectedValue.ToUpper();
-            Datosticket.Fecha_Expiracion = DateTime.Now.AddHours(30);
+            Datosticket.Fecha_Expiracion = Convert.ToDateTime(txtFechaExpiracion.Text);
             Datosticket.Descripcion_Corta = txtDescripcionBreve.Text;
             Datosticket.Descripcion_Larga = txtDescripcionDetallada.Text;
             Datosticket.Tiempo_Resolucion = tiempoRespuesta;
@@ -103,7 +104,9 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
                 Int32 numeroTicket = ticket.agregarTicket(Datosticket);
                 ticket.agregarTicketCMDB(numeroTicket,Convert.ToInt32(cmbCMDB.SelectedValue));
-
+                
+                script = "alert(Se generó el ticket No '{0}');";
+                script = string.Format(script, numeroTicket);
 
             }
             else
@@ -112,11 +115,15 @@ namespace TMD.ServiceDesk.Site.Atenciones
                 Datosticket.Codigo_Asignado = Convert.ToInt32(cmbEspecialista.SelectedValue);
                 Datosticket.Codigo_Ult_Modif = SesionFachada.Usuario.Id;
                 ticket.modificarTicket(Datosticket);
+
+                script = "alert(Se actualizó el ticket No '{0}');";
+                script = string.Format(script, Datosticket.Codigo_Ticket);
             }
-            //ticket.agregarTicket()
 
 
-            Response.Redirect("~/Atenciones/Atenciones.aspx");
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", script, false);
+
+            Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
         }
 
       
@@ -145,7 +152,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         private void onCargarUsuarioClientes()
         {
 
-            IUsuarioClienteLogica usuarioCliente = new UsuarioClienteLogica(new UsuarioClienteData("BDServiceDesk"));
+            IUsuarioClienteLogica usuarioCliente = new UsuarioClienteLogica(new UsuarioClienteData("TMD"));
             aliasIntegrante = SesionFachada.Usuario.Alias.ToString();
 
 
@@ -157,7 +164,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
         private void onCargarDatosUsuario()
         {
-            IUsuarioClienteLogica usuarioCliente = new UsuarioClienteLogica(new UsuarioClienteData("BDServiceDesk"));
+            IUsuarioClienteLogica usuarioCliente = new UsuarioClienteLogica(new UsuarioClienteData("TMD"));
             UsuarioCliente datosusuarioCliente = usuarioCliente.datosUsuarioCliente(Convert.ToInt32(cmbUsuarioCliente.SelectedValue));
             txtSede.Text = datosusuarioCliente.Nombre_Sede;
             txtCliente.Text = datosusuarioCliente.Nombre_Cliente;
@@ -172,7 +179,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         private void onCargarServicios()
         {
             //Obtener lista de servicios
-            IServicioLogica servicios = new ServicioLogica(new ServiciosData("BDServiceDesk"));
+            IServicioLogica servicios = new ServicioLogica(new ServiciosData("TMD"));
             cmbServicio.DataSource = servicios.listaServiciosUsuarioCliente(Convert.ToInt32(lblcodcliente.Text), Convert.ToInt32(cmbUsuarioCliente.SelectedValue));
             cmbServicio.DataTextField = "Nombre_Servicio";
             cmbServicio.DataValueField = "Codigo_Servicio";
@@ -183,7 +190,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         private void onCargarProyectos()
         {
             //Obtener proyectos del usario-cliente - Servicio
-            IProyectoLogica proyecto = new ProyectoLogica(new ProyectoData("BDServiceDesk"));
+            IProyectoLogica proyecto = new ProyectoLogica(new ProyectoData("TMD"));
             cmbProyecto.DataSource = proyecto.listaProyectosUsuarioClienteServicio(Convert.ToInt32(lblcodcliente.Text),Convert.ToInt32(cmbUsuarioCliente.SelectedValue),Convert.ToInt32(cmbServicio.SelectedValue)  );
             cmbProyecto.DataTextField = "Nombre_Proyecto";
             cmbProyecto.DataValueField = "Codigo_Proyecto";
@@ -197,14 +204,15 @@ namespace TMD.ServiceDesk.Site.Atenciones
         private void onCargarSLA()
         {
             //Obtener proyectos del usario-cliente - Servicio
-            IServicioLogica servicios = new ServicioLogica(new ServiciosData("BDServiceDesk"));
+            IServicioLogica servicios = new ServicioLogica(new ServiciosData("TMD"));
             int codigoSede=Convert.ToInt32(Session["CodigoSede"]);
             ProyectoServicioSede datosServicioSLA = new ProyectoServicioSede();
-
-            datosServicioSLA = servicios.datosServicioSLA(Convert.ToInt32(cmbProyecto.SelectedValue), Convert.ToInt32(cmbServicio.SelectedValue), codigoSede);
+            
+            datosServicioSLA = servicios.datosServicioSLA(new ProyectoServicioSede {Codigo_Proyecto =Convert.ToInt32(cmbProyecto.SelectedValue),Codigo_Servicio =Convert.ToInt32(cmbServicio.SelectedValue),Codigo_Sede =codigoSede});
             txtSLA.Text = datosServicioSLA.Nombre_SLA;
-            txtPrioridad.Text = datosServicioSLA.Prioridad.ToString();
-            txtFechaExpiracion.Text = Convert.ToDateTime(txtFechaRegistro.Text).AddMinutes(datosServicioSLA.Tiempo_Respuesta).ToString();
+            if (txtPrioridad.Text == "")  txtPrioridad.Text = datosServicioSLA.Prioridad.ToString();
+            
+            txtFechaExpiracion.Text = servicios.obtenerFechaExpiración(Convert.ToDateTime(txtFechaRegistro.Text), datosServicioSLA).ToString();
             tiempoRespuesta = datosServicioSLA.Tiempo_Respuesta;
 
         }
@@ -212,13 +220,13 @@ namespace TMD.ServiceDesk.Site.Atenciones
         private void onCargarEspecialistas()
         {
             //Obtener proyectos del usario-cliente - Servicio
-            IIntegranteLogica integrante = new IntegranteLogica(new IntegranteData("BDServiceDesk"));
+            IIntegranteLogica integrante = new IntegranteLogica(new IntegranteData("TMD"));
             int codigoSede = Convert.ToInt32(Session["CodigoSede"]);
             ProyectoServicioSede datosServicioSLA = new ProyectoServicioSede();
 
             cmbEspecialista .DataSource= integrante.listaEspecialistaProyectoServicioSede(Convert.ToInt32(cmbProyecto.SelectedValue), Convert.ToInt32(cmbServicio.SelectedValue), codigoSede);
             cmbEspecialista.DataTextField = "NOMBRE_EMPLEADO";
-            cmbEspecialista.DataValueField = "CODIGO_INTEGRANTE";
+            cmbEspecialista.DataValueField = "CODIGO_EMPLEADO";  //INTEGRANTE";
             cmbEspecialista.DataBind();
             onCargarEquipo();
  
@@ -229,7 +237,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         {
 
             //Obtener proyectos del usario-cliente - Servicio
-            IIntegranteLogica integrante = new IntegranteLogica(new IntegranteData("BDServiceDesk"));
+            IIntegranteLogica integrante = new IntegranteLogica(new IntegranteData("TMD"));
             int codigoSede = Convert.ToInt32(Session["CodigoSede"]);
             ProyectoServicioSede datosServicioSLA = new ProyectoServicioSede();
 
@@ -243,7 +251,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
         {
 
             //Obtener proyectos del usario-cliente - Servicio
-            ICMDBLogica cMDB = new CMDBLogica(new CMDBData("BDServiceDesk"));
+            ICMDBLogica cMDB = new CMDBLogica(new CMDBData("TMD"));
             
             ProyectoServicioSede datosServicioSLA = new ProyectoServicioSede();
 
@@ -258,16 +266,17 @@ namespace TMD.ServiceDesk.Site.Atenciones
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
             
-            ITicketLogica ticket = new TicketLogica(new TicketData("BDServiceDesk"));
+            ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
             Ticket datosTicket = ticket.datosTicket(numeroTicket);
 
             txtNroTicket.Text = datosTicket.Codigo_Ticket.ToString();
-            txtFechaRegistro.Text = datosTicket.Fecha_Expiracion.ToString();
+            txtFechaRegistro.Text = datosTicket.Fecha_Registro.ToString();
             txtFechaExpiracion.Text = datosTicket.Fecha_Expiracion.ToString();
             txtDescripcionBreve.Text = datosTicket.Descripcion_Corta;
             txtDescripcionDetallada.Text = datosTicket.Descripcion_Larga;
             cmbTipoAtencion.Text = myTI.ToTitleCase(datosTicket.Tipo_Atencion_Ticket.ToLower());
             cmbTipoRegistro.Text = myTI.ToTitleCase(datosTicket.Tipo_Registro_Ticket.ToLower());
+            txtPrioridad.Text = datosTicket.Prioridad_Ticket.ToString();
 
             onCargarUsuarioClientes();
             cmbUsuarioCliente.SelectedValue =datosTicket.Codigo_Usuario.ToString();
@@ -276,10 +285,21 @@ namespace TMD.ServiceDesk.Site.Atenciones
             cmbProyecto.SelectedValue = datosTicket.Codigo_Proyecto.ToString();
             cmbEspecialista.SelectedValue = datosTicket.Codigo_Asignado.ToString();
             cmbEquipo.SelectedValue = datosTicket.Codigo_Equipo.ToString();
-
+            
+    
             string codigoCMDB=ticket.datosTicketCMDB(numeroTicket).Codigo_CMDB.ToString();
             if (codigoCMDB == "0") cmbCMDB.SelectedIndex = -1;
 
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = args.Value.Length >= 15;
+        }
+
+        protected void CVDescripcionDetallada_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = args.Value.Length >= 20;
         }
 
     }

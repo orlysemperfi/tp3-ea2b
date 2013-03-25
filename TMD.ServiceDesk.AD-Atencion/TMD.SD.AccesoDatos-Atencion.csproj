@@ -67,6 +67,8 @@
     <Compile Include="Map\ServicioDataMap.cs" />
     <Compile Include="Map\TicketCMDBDataMap.cs" />
     <Compile Include="Map\TicketDataMap.cs" />
+    <Compile Include="Map\TicketDocumentoDataMap.cs" />
+    <Compile Include="Map\TicketSeguimientoDataMap.cs" />
     <Compile Include="Map\UsuarioClienteDataMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />

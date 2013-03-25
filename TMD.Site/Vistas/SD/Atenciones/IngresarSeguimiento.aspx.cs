@@ -7,20 +7,20 @@ using System.Web.UI.WebControls;
 using System.Globalization;
 
 using TMD.Entidades;
-using TMD.SD.LogicaNegocio_Atencion.Contrato;
-using TMD.SD.LogicaNegocio_Atencion.Implementacion;
-using TMD.SD.AccesoDatos_Atencion.Implementacion;
+using TMD.DBO.LogicaNegocio_Atencion.Contrato;
+using TMD.DBO.LogicaNegocio_Atencion.Implementacion;
+using TMD.DBO.AccesoDatos_Atencion.Implementacion;
 
 using TMD.CF.Site.Util;
 
-namespace TMD.ServiceDesk.Site.Atenciones
+namespace TMD.CF.Site.Vistas.DBO.Atenciones
 {
-    public partial class IngresarSolucion : System.Web.UI.Page
+    public partial class IngresarSeguimiento : System.Web.UI.Page
     {
         static string accionRegistro;
         static int numeroTicket;
         static int codigoEquipo;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -29,41 +29,47 @@ namespace TMD.ServiceDesk.Site.Atenciones
             }
         }
 
+        protected void btnGrabar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void OnInitPage()
         {
-            
+
             //Cargar la info del ticket
             numeroTicket = Convert.ToInt32(Request.QueryString["nroticket"]);
             onCargarTicket(numeroTicket);
-            
-
 
         }
+
         protected void btnSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Atenciones/Atenciones.aspx");
+            Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
         }
 
-        protected void btnDocumentacion_Click(object sender, EventArgs e)
+        protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Invocara a la opción adjuntar documentos')</script>");
-        }
-
-        protected void btnGrabar_Click(object sender, EventArgs e)
-        {
-            ITicketLogica ticket = new TicketLogica(new TicketData("BDServiceDesk"));
+            ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
             Ticket datosTicket = ticket.datosTicket(numeroTicket);
-
+            SeguimientoTicket seguimientoTicket;
+            int codigoSeguimiento=1;
+ 
             int codigoEspecialista = SesionFachada.Usuario.Id;
-            if (txtSolucion.Text.Trim()=="") 
+            if (txtSeguimiento.Text.Trim() == "")
             {
                 //"Favor de ingresar el texto de la solución"
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Favor de ingresar el detalle de la solución')</script>");
             }
             else
             {
-                ticket.registrarSolucion(numeroTicket, txtSolucion.Text, codigoEquipo, codigoEspecialista);
-                Response.Redirect("~/Atenciones/Atenciones.aspx");
+                codigoSeguimiento = grdSeguimiento.Rows.Count + 1;
+
+                seguimientoTicket = new SeguimientoTicket { Codigo_Ticket = numeroTicket, Descripcion_Seguimiento = txtSeguimiento.Text, 
+                     Codigo_Seguimiento =codigoSeguimiento, Codigo_Equipo = codigoEquipo, Codigo_Integrante = codigoEspecialista, Fecha_Registro = DateTime.Now,Tipo_Seguimiento="SEGUIMIENTO" };
+                ticket.registrarSeguimiento (seguimientoTicket);
+                Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
             }
         }
 
@@ -71,8 +77,8 @@ namespace TMD.ServiceDesk.Site.Atenciones
         {
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
-            
-            ITicketLogica ticket = new TicketLogica(new TicketData("BDServiceDesk"));
+
+            ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
             Ticket datosTicket = ticket.datosTicket(numeroTicket);
 
             txtNroTicket.Text = datosTicket.Codigo_Ticket.ToString();
@@ -84,13 +90,20 @@ namespace TMD.ServiceDesk.Site.Atenciones
             txtUsuario.Text = datosTicket.Nombre_UsuarioCliente;
             txtServicio.Text = datosTicket.Nombre_Servicio;
             codigoEquipo = datosTicket.Codigo_Equipo;
-            
+
+            //Llenar la grilla
+            grdSeguimiento.DataSource = ticket.listaSeguimientos(datosTicket.Codigo_Ticket,"TODOS");
+            grdSeguimiento.DataBind(); 
+
+
         }
 
-        protected void btnBDC_Click(object sender, EventArgs e)
+        protected void txtNroTicket_TextChanged(object sender, EventArgs e)
         {
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "RegisterStartupScript", "<script>serverCall('Invocara a la consulta de Base del Conocimiento')</script>");
+
         }
 
+        
+        
     }
 }
