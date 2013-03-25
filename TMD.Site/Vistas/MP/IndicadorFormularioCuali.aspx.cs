@@ -109,8 +109,8 @@ namespace TMD.MP.Site.Privado
                 }
                 catch (BRuleException ex) 
                 {
-                    lblMensajeError.Text = ex.Message;
-                    lblMensajeError.DataBind();                    
+                    //lblMensajeError.Text = ex.Message;
+                    //lblMensajeError.DataBind();                    
                 }
                
             }

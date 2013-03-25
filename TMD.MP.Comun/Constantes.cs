@@ -101,28 +101,28 @@ namespace TMD.MP.Comun
 
         #region "NOMBRE TABLAS"
 
-        public static String TABLA_ACCIONES_SOLUCION = "MP.ACCIONES_SOLUCION";
-        public static String TABLA_ARTEFACTO_PROCESO = "MP.ARTEFACTO_PROCESO";
-        public static String TABLA_ESCALA_CUALITATIVO = "MP.ESCALA_CUALITATIVO";
-        public static String TABLA_ESCALA_CUANTITATIVO = "MP.ESCALA_CUANTITATIVO";
-        public static String TABLA_ESTADO = "MP.ESTADO";
-        public static String TABLA_ESTADO_PILOTO = "MP.ESTADO_PILOTO";
-        public static String TABLA_ESTADO_SOLUCION = "MP.ESTADO_SOLUCION";
-        public static String TABLA_INDICADOR = "MP.INDICADOR";
-        public static String TABLA_INDICADOR_VALOR = "MP.INDICADOR_VALOR";
-        public static String TABLA_LECCION_APRENDIDA_PROCESO = "MP.LECCION_APRENDIDA_PROCESO";
-        public static String TABLA_LECCIONES_APRENDIDAS = "MP.LECCIONES_APRENDIDAS";
-        public static String TABLA_OBSERVACIONES_PILOTO = "MP.OBSERVACIONES_PILOTO";
-        public static String TABLA_PILOTO = "MP.PILOTO";
-        public static String TABLA_PILOTO_ESTADO = "MP.ESTADO_PILOTO";
-        public static String TABLA_PLAN_DESPLIEGUE = "MP.PLAN_DESPLIEGUE";
-        public static String TABLA_PROCESO = "MP.PROCESO";
-        public static String TABLA_PROPUESTA_ESTADO = "MP.PROPUESTA_ESTADO";
-        public static String TABLA_PROPUESTA_INDICADOR = "MP.PROPUESTA_INDICADOR";
-        public static String TABLA_PROPUESTAMEJORA = "MP.PROPUESTAMEJORA";
-        public static String TABLA_SOLUCION_MEJORA = "MP.SOLUCION_MEJORA";
-        public static String TABLA_SOLUCION_ESTADO = "MP.ESTADO_SOLUCION";
-        public static String TABLA_UNIDAD = "MP.UNIDAD";
+        public static String TABLA_ACCIONES_SOLUCION = "ACCIONES_SOLUCION";
+        public static String TABLA_ARTEFACTO_PROCESO = "ARTEFACTO_PROCESO";
+        public static String TABLA_ESCALA_CUALITATIVO = "ESCALA_CUALITATIVO";
+        public static String TABLA_ESCALA_CUANTITATIVO = "ESCALA_CUANTITATIVO";
+        public static String TABLA_ESTADO = "ESTADO";
+        public static String TABLA_ESTADO_PILOTO = "ESTADO_PILOTO";
+        public static String TABLA_ESTADO_SOLUCION = "ESTADO_SOLUCION";
+        public static String TABLA_INDICADOR = "INDICADOR";
+        public static String TABLA_INDICADOR_VALOR = "INDICADOR_VALOR";
+        public static String TABLA_LECCION_APRENDIDA_PROCESO = "LECCION_APRENDIDA_PROCESO";
+        public static String TABLA_LECCIONES_APRENDIDAS = "LECCIONES_APRENDIDAS";
+        public static String TABLA_OBSERVACIONES_PILOTO = "OBSERVACIONES_PILOTO";
+        public static String TABLA_PILOTO = "PILOTO";
+        public static String TABLA_PILOTO_ESTADO = "ESTADO_PILOTO";
+        public static String TABLA_PLAN_DESPLIEGUE = "PLAN_DESPLIEGUE";
+        public static String TABLA_PROCESO = "PROCESO";
+        public static String TABLA_PROPUESTA_ESTADO = "PROPUESTA_ESTADO";
+        public static String TABLA_PROPUESTA_INDICADOR = "PROPUESTA_INDICADOR";
+        public static String TABLA_PROPUESTAMEJORA = "PROPUESTAMEJORA";
+        public static String TABLA_SOLUCION_MEJORA = "SOLUCION_MEJORA";
+        public static String TABLA_SOLUCION_ESTADO = "ESTADO_SOLUCION";
+        public static String TABLA_UNIDAD = "UNIDAD";
 
         #endregion
 
