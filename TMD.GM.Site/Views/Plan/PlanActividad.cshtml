@@ -1,0 +1,62 @@
+﻿@model TMD.GM.Site.Models.PlanActividadModel
+@Html.Hidden("hdIdActividad", Model.entity.ID_ACTIVIDAD)
+@Html.Hidden("hdCodigoPlan", Model.entity.CODIGO_PLAN)
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Item</span><br />
+<input id="ntbItem" type="number" value="@Model.entity.ITEM_ACTIVIDAD" min="0" max="100" step="1" style="width:80px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Descripción</span><br />
+<input id="txtActividadDesc" type="text" class="k-textbox" value="@Model.entity.DESCRIPCION_ACTIVIDAD" style = "width: 300px;" />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Tipo actividad</span><br />
+@Html.DropDownList("ddlTipoActividad", Model.listaTA, new { @class = "ddlForm" })
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Personal requerido</span><br />
+<input id="ntbPersRequ" type="number" value="@Model.entity.PERSONAL_REQUERIDO" min="0" max="100" step="1" style="width:80px;" />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Tiempo</span><br />
+<input id="ntbTiempoDura" type="number" value="@Model.entity.TIEMPO_ACTIVIDAD" min="0" max="100" step="1" style="width:80px;" />
+@Html.DropDownList("ddlTiempoUnme", Model.listaTU, new { @class = "ddlForm" })
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Priodidad</span><br />
+@Html.DropDownList("ddlPrioridad", Model.listaPR, new { @class = "ddlForm", style = "width: 150px;" })
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Frecuencia</span><br />
+@Html.DropDownList("ddlFrecuencia", Model.listaFR, new { @class = "ddlForm", style = "width: 150px;" })
+</fieldset>
+</fieldset>
+<fieldset>
+Procedimiento:<br />
+ <textarea id="txtProcedimiento" rows="5" cols="30" class="k-textbox" style="width:420px;height:40px">@Model.entity.PROCEDIMIENTOS_PLAN</textarea>
+</fieldset>
+<fieldset>
+Observaciones: <br />
+<textarea id="txtObservaciones" rows="5" cols="30" class="k-textbox" style="width:420px;height:40px">@Model.entity.OBSERVACIONES_PLAN</textarea>
+</fieldset>
+<fieldset>
+<button id="btnAceptar" class="k-button" onclick="PlanActividad_AceptarClick('@Url.Action("PlanActividadAceptar", "Plan")', '@Url.Action("PlanActividades_Actualizar", "Plan")');"><span class="k-icon k-i-tick"></span> Aceptar</button>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalActividadEditar()"><span class="k-icon k-i-close"></span> Retornar</button>
+</fieldset>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#ntbTiempoDura").kendoNumericTextBox({ format: "n0" });
+        $("#ntbPersRequ").kendoNumericTextBox({ format: "n0" });
+        $("#ntbItem").kendoNumericTextBox({ format: "n0" });
+        
+    });
+</script>

@@ -1,0 +1,36 @@
+﻿@model TMD.GM.Site.Models.PlanModel
+@{ WebGrid grid = new WebGrid(Model.listaDetalle, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableActividades" },
+    columns: grid.Columns(
+    grid.Column("ITEM_ACTIVIDAD", "Item"),
+    grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
+    grid.Column("DESCRIPCION_ACTIVIDAD", "Descripción" ),
+    //grid.Column("PRIORIDAD_ACTIVIDAD", "Prioridad"),
+    grid.Column("DESCRIPCION_FRECUENCIA", "Frecuencia"),
+    //grid.Column("PERSONAL_REQUERIDO", "Personal"),
+    grid.Column("TIEMPO_ACTIVIDAD", "Tiempo"),
+    grid.Column("DESCRIPCION_TIEMPO", "Medida"),
+    grid.Column("OPCIONES", "Opciones", format: @<text>
+        <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="PlanActividadEditar('@Url.Action("PlanActividad_Editar", "Plan")','@item.GUID_ROW.ToString()');"><span class="k-icon k-edit"></span>Editar</a>
+        <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="PlanActividadEliminar('@Url.Action("PlanActividades_Eliminar", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.GUID_ROW.ToString()');"><span class="k-icon k-delete"></span>Eliminar</a>
+        </text>)
+         )
+        )
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableActividades").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "ITEM_ACTIVIDAD", title: "Item", width: "50px" },
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
+            { field: "DESCRIPCION_ACTIVIDAD", title: "Descripción", width: "200px" },
+//            { field: "PRIORIDAD_ACTIVIDAD", title: "Prioridad", width: "50px" },
+            { field: "DESCRIPCION_FRECUENCIA", title: "Frecuencia", width: "50px" },
+//            { field: "PERSONAL_REQUERIDO", title: "Personal", width: "50px" },
+            { field: "TIEMPO_ACTIVIDAD", title: "Tiempo", width: "50px" },
+            { field: "DESCRIPCION_TIEMPO", title: "Medida", width: "50px" },
+            { field: "OPCIONES", title: "Opciones", width: "100px"}]
+        });
+    });
+    
+</script>

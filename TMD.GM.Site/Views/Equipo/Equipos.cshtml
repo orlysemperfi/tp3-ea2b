@@ -1,0 +1,17 @@
+﻿@model TMD.GM.Site.Models.EquipoBusquedaModel
+@{ WebGrid grid = new WebGrid(Model.listaEquipos, canPage: false, canSort: false);}
+ @grid.GetHtml( 
+    columns: grid.Columns(
+    grid.Column("CODIGO_EQUIPO", "Código"),
+    grid.Column("NOMBRE_EQUIPO", "Nombre"),
+    grid.Column("SERIE_EQUIPO", "Serie"),
+    grid.Column("MARCA_EQUIPO", "Marca"),
+    grid.Column("", "", format: @<text><a href="#" onclick="EquipoSeleccionar('@item.CODIGO_EQUIPO','@item.NOMBRE_EQUIPO','@item.DESCRIPCION_AREA');">Seleccionar</a></text>)
+    )
+)
+
+
+ 
+
+
+ 

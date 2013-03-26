@@ -1,0 +1,10 @@
+D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Entidades\obj\Debug\ResolveAssemblyReference.cache
+D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.dll
+D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.pdb
+D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Entidades\obj\Debug\TMD.GM.Entidades.dll
+D:\CARLOS\UPC\MATEN\MvcApplicationManten\TMD.GM.Entidades\obj\Debug\TMD.GM.Entidades.pdb
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.dll
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Entidades\bin\Debug\TMD.GM.Entidades.pdb
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Entidades\obj\Debug\ResolveAssemblyReference.cache
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Entidades\obj\Debug\TMD.GM.Entidades.dll
+D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Entidades\obj\Debug\TMD.GM.Entidades.pdb
