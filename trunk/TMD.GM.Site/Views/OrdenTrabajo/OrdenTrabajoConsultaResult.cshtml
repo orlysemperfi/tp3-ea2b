@@ -1,0 +1,14 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoConsultaModels
+@{ WebGrid grid = new WebGrid(Model.listaData);}
+@grid.GetHtml(
+      columns: grid.Columns(
+                                  grid.Column("NUMERO_SOLICITUD", " Nro. Solicitud ", canSort: false),
+                                  grid.Column("NOMBRE_EQUIPO", " Equipo ", canSort: false),
+                                  grid.Column("MARCA_EQUIPO", " Marca ", canSort: false),
+                                  grid.Column("DESC_AREA", " Area ", canSort: false),
+                                  grid.Column("FECHA_INICIO_SOLICITUD", " Fec. Ini. ", canSort: false),
+                                  grid.Column("FECHA_FIN_SOLICITUD", " Fec. Fin ", canSort: false)                                                                            
+                            )
+             )
+  
+

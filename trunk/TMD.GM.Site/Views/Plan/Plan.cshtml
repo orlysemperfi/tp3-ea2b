@@ -1,0 +1,43 @@
+﻿@model TMD.GM.Site.Models.PlanModel
+@{
+    ViewBag.Title = "Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Plan</h2>
+<fieldset>
+Código plan:
+@Html.TextBox("txtCodigo",Model.codigoPlan, new { @class = "txtForm", @readonly = "readonly" })
+</fieldset>
+<fieldset>
+Nombre plan:
+@Html.TextBox("txtNombre", "", new { @class = "txtForm", style = "width: 200px;" })
+</fieldset>
+<fieldset>
+Activo:
+@Html.CheckBox("checkEstado", Model.activo, new { @class = "txtForm" })
+</fieldset>
+@{ WebGrid grid = new WebGrid(Model.listaDetalle, rowsPerPage: 2);}
+ @grid.GetHtml(
+      columns: grid.Columns(
+          grid.Column("ITEM_ACTIVIDAD", "Item"),
+          grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
+          grid.Column("DESCRIPCION_ACTIVIDAD", "Descripción"),
+          grid.Column("PRIORIDAD_ACTIVIDAD", "Prioridad"),
+          grid.Column("DESCRIPCION_FRECUENCIA", "Frecuencia"),
+          grid.Column("PERSONAL_REQUERIDO", "Personal"),
+          grid.Column("TIEMPO_ACTIVIDAD", "Tiempo"),
+          grid.Column("DESCRIPCION_TIEMPO", "Medida"),
+          grid.Column("PROCEDIMIENTOS_PLAN", "Procedimiento"),
+          grid.Column("OBSERVACIONES_PLAN", "Observaciones")
+         )
+        )
+    
+<fieldset>
+<input type="submit" class="left" id="btnAgregar" value="Agregar" onclick = "Plan_BtnAgregar_click('@Url.Action("PlanDetallePV", "Plan")')" />
+ 
+<input id="btnGrabar" type="button" value="Grabar" />
+<input id="btnRetornar" type="button" value="Retornar" />
+</fieldset>
+<div id="pnlPlanDetalle" class="j_modal" title="Actividad - Plan"></div>
+

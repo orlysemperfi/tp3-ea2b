@@ -1,0 +1,28 @@
+﻿@model TMD.GM.Site.Models.EquipoBusquedaModel
+@{ WebGrid grid = new WebGrid(Model.listaEquipos, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableEquipos" },
+      columns: grid.Columns(
+      grid.Column("CODIGO_EQUIPO", "Código"),
+      grid.Column("NOMBRE_EQUIPO", "Nombre"),
+    grid.Column("SERIE_EQUIPO", "Serie"),
+         grid.Column("MARCA_EQUIPO", "Marca"),
+        grid.Column("OPCIONES", "Opciones", format: @<text>
+        <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="EquiposEditar('@Url.Action("Editar", "Equipo")','@item.CODIGO_EQUIPO');"><span class="k-icon k-edit"></span>Editar</a>
+        <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="EquiposEliminar('@Url.Action("Eliminar", "Equipo")','@Url.Action("EquiposTodos", "Equipo")','@item.CODIGO_EQUIPO');"><span class="k-icon k-delete"></span>Eliminar</a>
+        </text>)
+         )
+        )
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableEquipos").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "CODIGO_EQUIPO", title: "Código", width: "50px" },
+            { field: "NOMBRE_EQUIPO", title: "Nombre", width: "200px" },
+            { field: "SERIE_EQUIPO", title: "Serie", width: "100px" },
+            { field: "MARCA_EQUIPO", title: "Marca", width: "100px" },
+            { field: "OPCIONES", title: "Opciones", width: "150px"}]
+        });
+    });
+    
+</script>

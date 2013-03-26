@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "OrdenTrabajoConsulta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Ordenes de Trabajo</h2>
+<table>
+    <tr>
+        <td>
+            <fieldset class="divbox">
+                <legend><strong>Seleccionar Periodo (relación de Mntto. pendientes) </strong></legend>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                Desde Mntto. pendiente emitido el:
+                            </td>
+                            <td>@Html.TextBox("txtFechaIni", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td align="right">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Hasta Mntto. pendiente emitido al:
+                            </td>
+                            <td>@Html.TextBox("txtFechaFin", String.Format("{0:dd/MM/yyyy}", DateTime.Now.Date), new { @class = "txtFormFecha" })
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+        </td>
+        <td width="80px">
+            <fieldset>
+                <legend><strong>&nbsp;</strong></legend>
+                <div>
+                    <table>
+                        <tr>
+                            <td align="left">
+                                <input id="btnBuscar" type="button" value="Buscar" style="width: 70px" onclick="BuscarOT('@Url.Action("OrdenTrabajoConsultaResult", "OrdenTrabajo")');"/>
+                                <input id="btnVerOT" type="button" value="Ver O.T." style="width: 70px" />
+                                <input id="btnNuevo" type="button" value="Nueva O.T." style="width: 70px"  onclick="NuevaOT('@Url.Action("OrdenTrabajoCrear", "OrdenTrabajo")');"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <fieldset>
+                <div id="divGrid">
+                </div>
+            </fieldset>
+        </td>
+    </tr>
+</table>
+<div id="divNuevaOT">
+</div>

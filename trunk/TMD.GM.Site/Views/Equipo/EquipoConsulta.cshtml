@@ -1,0 +1,23 @@
+﻿<fieldset>
+<fieldset class="fieldset_left">
+<span>Código equipo</span><br />
+<input id="txtCodigoEquipo" type="text" class="k-textbox" value="" style="width: 100px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Nombre equipo</span><br />
+<input id="txtNombreEquipo" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>N° Serie</span><br />
+<input id="txtSerieEquipo" type="text" class="k-textbox" value="" style="width: 100px;" />
+</fieldset>
+</fieldset>
+<fieldset>
+<button id="btnBuscarEquipos" class="k-button" onclick="EquiposEjecutarBusqueda('@Url.Action("Equipos", "Equipo")');"><span class="k-icon k-i-search"></span> Buscar</button>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalEquipos()"><span class="k-icon k-i-close"></span> Retornar</button>
+</fieldset>
+<br />
+<div class="k-block"><div class="k-header k-shadow">Equipos</div>
+<div id="gridEquipos"></div>
+</div>
+
