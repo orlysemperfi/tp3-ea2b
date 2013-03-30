@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/Principal.Master" AutoEventWireup="true" CodeBehind="PropuestaMejoraAprobar.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraAprobar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
   <link rel="stylesheet" href="../ACP/css/jquery-ui.css" />    
 
@@ -22,7 +22,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
-        <h1 class="page-title">PROPUESTAS DE MEJORAs por aprobar</h1>
+        <h1 class="page-title">PROPUESTAS DE MEJORAS POR APROBAR</h1>
         <div class="panel-wrapper">
             <asp:UpdatePanel ID="upnlFiltros" runat="server">
                 <ContentTemplate>
@@ -49,11 +49,11 @@
                             <tr>
                                 <td>
                                     <asp:Label ID="lblFecha" runat="server" Text="Fecha:" Width="50px"></asp:Label>
-                                    <asp:TextBox ID="tbxFechaInicio" runat="server" Width="75px"></asp:TextBox>
+                                    <asp:TextBox ID="tbxFechaInicio" runat="server" Width="75px" CssClass="datepicker"></asp:TextBox>
                                 </td>
                                 <td>
                                     <asp:Label ID="lblA" runat="server" Text="a" Width="50px"></asp:Label>
-                                    <asp:TextBox ID="tbxFechaFin" runat="server" Width="75px"></asp:TextBox>
+                                    <asp:TextBox ID="tbxFechaFin" runat="server" Width="75px" CssClass="datepicker"></asp:TextBox>
                                 <td>
                                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
                                 </td>
@@ -73,7 +73,7 @@
                
                         <asp:GridView ID="gvwPropuestaMejoraListado" runat="server" Width="920px" 
                             AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
-                            DataSource='<%#ObtenerPropuestaMejoraListado() %>' BorderWidth="0px" 
+                            DataSource='<%#ObtenerPropuestaMejoraRegistrado() %>' BorderWidth="0px" 
                             BorderColor="White" OnRowCommand="gvwPropuestaMejoraListado_RowCommand" 
                             OnPageIndexChanging="gvwPropuestaMejoraListado_PageIndexChanging" 
                             >
@@ -119,7 +119,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbtnVer" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "REGISTRADA" ? "" : "Ver" %>' CommandName="VerPropuestaAprobar" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                        <asp:LinkButton ID="lbtnVer" runat="server" Text='Ver' CommandName="VerPropuestaAprobar" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link"></asp:LinkButton>                                        
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="20px" />
                                 </asp:TemplateField>

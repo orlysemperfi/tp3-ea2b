@@ -64,7 +64,7 @@
                                 <td>
                                     <asp:DropDownList ID="ddlTipoPropuesta" runat="server">
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="rfvTipoPropuesta" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un tipo de propuesta" ValidationGroup="Propuesta" Display="None" />
+                                    <asp:RequiredFieldValidator ID="rfvTipoPropuesta" runat="server" ControlToValidate="ddlTipoPropuesta" InitialValue="0" ErrorMessage="Seleccione un tipo de propuesta" ValidationGroup="Propuesta" Display="None" />
                                 </td>
                             </tr>
                             <tr>
@@ -205,6 +205,7 @@
                         <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
                     </td>
                     <td>
+                        <asp:CustomValidator ID="cvIndicador" runat="server" ValidationGroup="Propuesta" ErrorMessage="Seleccione un indicador" OnServerValidate="cvIndicador_ServerValidate" ForeColor="Red" Display="Dynamic"></asp:CustomValidator>
                         <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Propuesta" />
                     </td>
                 </tr>
