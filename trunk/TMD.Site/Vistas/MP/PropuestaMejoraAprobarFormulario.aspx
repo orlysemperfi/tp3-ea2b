@@ -3,7 +3,7 @@
 CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Privado.PropuestaMejoraAprobarFormulario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
   <link rel="stylesheet" href="../ACP/css/jquery-ui.css" />    
 
@@ -16,7 +16,7 @@ CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Priv
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
-        <h1 class="page-title">EDICIÓN DE PROPUESTA DE MEJORA</h1>
+        <h1 class="page-title">PROPUESTA DE MEJORA</h1>
         <div class="panel-wrapper form">
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
@@ -76,7 +76,7 @@ CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Priv
                                     Fecha de Envío:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbxFechaEnvio" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="tbxFechaEnvio" runat="server" CssClass="datepicker"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" />
                                     <%--<asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />--%>
                                 </td>

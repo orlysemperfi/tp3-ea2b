@@ -43,6 +43,7 @@ namespace TMD.MP.Site.Privado
                 oPropuestaMejoraFiltro.fecha_Registro_Fin = Convert.ToDateTime(tbxFechaFin.Text.ToString());
 
             oPropuestaMejoraFiltro.tipo_Propuesta = ddlTipo.SelectedItem.Value;
+            oPropuestaMejoraFiltro.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
             List<PropuestaMejoraEntidad> oPropuestaMejoraColeccion = oPropuestaMejoraLogica.ObtenerPropuestaMejoraListadoPorFiltros(oPropuestaMejoraFiltro);
             Sesiones.PropuestaMejoraListadoRemover();
             Sesiones.PropuestaMejoraListado = oPropuestaMejoraColeccion;
@@ -51,7 +52,7 @@ namespace TMD.MP.Site.Privado
             lblMensajeError.Text = "";
         }
 
-        protected List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListado()
+        protected List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraRegistrado()
         {
             List<PropuestaMejoraEntidad> propuestaMejoraListado = Sesiones.PropuestaMejoraListado;
             if (propuestaMejoraListado == null)
@@ -87,7 +88,7 @@ namespace TMD.MP.Site.Privado
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
                 Sesiones.PropuestaMejoraSeleccionada = oPropuestaMejora;
 
-                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraAprobarFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
+                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraAprobarFormulario + "?Action=" + Constantes.ACTION_UPDATE, true);
              
                 
             }
