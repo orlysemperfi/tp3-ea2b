@@ -1,0 +1,1843 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDMantenModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BDMantenModelStoreContainer">
+          <EntitySet Name="ACTIVIDAD_TIPO" EntityType="BDMantenModel.Store.ACTIVIDAD_TIPO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AREA" EntityType="BDMantenModel.Store.AREA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CALENDARIO_LABORABLE" EntityType="BDMantenModel.Store.CALENDARIO_LABORABLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EMPLEADO" EntityType="BDMantenModel.Store.EMPLEADO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EMPLEADO_ACTIVIDAD" EntityType="BDMantenModel.Store.EMPLEADO_ACTIVIDAD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EQUIPO_COMPUTO" EntityType="BDMantenModel.Store.EQUIPO_COMPUTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EQUIPO_TIPO" EntityType="BDMantenModel.Store.EQUIPO_TIPO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FRECUENCIA" EntityType="BDMantenModel.Store.FRECUENCIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="INFORME_CABECERA" EntityType="BDMantenModel.Store.INFORME_CABECERA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="INFORME_DETALLE" EntityType="BDMantenModel.Store.INFORME_DETALLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ORDEN_TRABAJO_CABECERA" EntityType="BDMantenModel.Store.ORDEN_TRABAJO_CABECERA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ORDEN_TRABAJO_DETALLE" EntityType="BDMantenModel.Store.ORDEN_TRABAJO_DETALLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PERSONA" EntityType="BDMantenModel.Store.PERSONA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PLAN_MANTENIMIENTO_CABECERA" EntityType="BDMantenModel.Store.PLAN_MANTENIMIENTO_CABECERA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PLAN_MANTENIMIENTO_DETALLE" EntityType="BDMantenModel.Store.PLAN_MANTENIMIENTO_DETALLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRIORIDAD" EntityType="BDMantenModel.Store.PRIORIDAD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PUESTO" EntityType="BDMantenModel.Store.PUESTO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOLICITUD_CABECERA" EntityType="BDMantenModel.Store.SOLICITUD_CABECERA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOLICITUD_DETALLE" EntityType="BDMantenModel.Store.SOLICITUD_DETALLE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOLICITUD_ESTADO" EntityType="BDMantenModel.Store.SOLICITUD_ESTADO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOLICITUD_TIPO" EntityType="BDMantenModel.Store.SOLICITUD_TIPO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="BDMantenModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UNIDAD_TIEMPO" EntityType="BDMantenModel.Store.UNIDAD_TIEMPO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO" Association="BDMantenModel.Store.FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO">
+            <End Role="ACTIVIDAD_TIPO" EntitySet="ACTIVIDAD_TIPO" />
+            <End Role="EMPLEADO_ACTIVIDAD" EntitySet="EMPLEADO_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_ACTIVIDAD_EMPLEADO" Association="BDMantenModel.Store.FK_EMPLEADO_ACTIVIDAD_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="EMPLEADO_ACTIVIDAD" EntitySet="EMPLEADO_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_AREA" Association="BDMantenModel.Store.FK_EMPLEADO_AREA">
+            <End Role="AREA" EntitySet="AREA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_EMPLEADO" Association="BDMantenModel.Store.FK_EMPLEADO_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="EMPLEADO1" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_PERSONA" Association="BDMantenModel.Store.FK_EMPLEADO_PERSONA">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_PUESTO" Association="BDMantenModel.Store.FK_EMPLEADO_PUESTO">
+            <End Role="PUESTO" EntitySet="PUESTO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPO_COMPUTO_AREA" Association="BDMantenModel.Store.FK_EQUIPO_COMPUTO_AREA">
+            <End Role="AREA" EntitySet="AREA" />
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPO_COMPUTO_EQUIPO_TIPO" Association="BDMantenModel.Store.FK_EQUIPO_COMPUTO_EQUIPO_TIPO">
+            <End Role="EQUIPO_TIPO" EntitySet="EQUIPO_TIPO" />
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA" Association="BDMantenModel.Store.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA">
+            <End Role="PLAN_MANTENIMIENTO_CABECERA" EntitySet="PLAN_MANTENIMIENTO_CABECERA" />
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA" Association="BDMantenModel.Store.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA">
+            <End Role="ORDEN_TRABAJO_CABECERA" EntitySet="ORDEN_TRABAJO_CABECERA" />
+            <End Role="ORDEN_TRABAJO_DETALLE" EntitySet="ORDEN_TRABAJO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO" Association="BDMantenModel.Store.FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO">
+            <End Role="ACTIVIDAD_TIPO" EntitySet="ACTIVIDAD_TIPO" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA" Association="BDMantenModel.Store.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA">
+            <End Role="FRECUENCIA" EntitySet="FRECUENCIA" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA" Association="BDMantenModel.Store.FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA">
+            <End Role="PLAN_MANTENIMIENTO_CABECERA" EntitySet="PLAN_MANTENIMIENTO_CABECERA" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD" Association="BDMantenModel.Store.FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD">
+            <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO" Association="BDMantenModel.Store.FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO">
+            <End Role="UNIDAD_TIEMPO" EntitySet="UNIDAD_TIEMPO" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO" Association="BDMantenModel.Store.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO">
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA" Association="BDMantenModel.Store.FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA">
+            <End Role="PLAN_MANTENIMIENTO_CABECERA" EntitySet="PLAN_MANTENIMIENTO_CABECERA" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO" Association="BDMantenModel.Store.FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO">
+            <End Role="SOLICITUD_ESTADO" EntitySet="SOLICITUD_ESTADO" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_SOLICITUD_TIPO" Association="BDMantenModel.Store.FK_SOLICITUD_CABECERA_SOLICITUD_TIPO">
+            <End Role="SOLICITUD_TIPO" EntitySet="SOLICITUD_TIPO" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO" Association="BDMantenModel.Store.FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO">
+            <End Role="ACTIVIDAD_TIPO" EntitySet="ACTIVIDAD_TIPO" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_FRECUENCIA" Association="BDMantenModel.Store.FK_SOLICITUD_DETALLE_FRECUENCIA">
+            <End Role="FRECUENCIA" EntitySet="FRECUENCIA" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_PRIORIDAD" Association="BDMantenModel.Store.FK_SOLICITUD_DETALLE_PRIORIDAD">
+            <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA" Association="BDMantenModel.Store.FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA">
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO" Association="BDMantenModel.Store.FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO">
+            <End Role="UNIDAD_TIEMPO" EntitySet="UNIDAD_TIEMPO" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ACTIVIDAD_TIPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+          </Key>
+          <Property Name="CODIGO_TIPO_ACTIVIDAD" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_TIPO_ACTIVIDAD" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="AREA">
+          <Key>
+            <PropertyRef Name="CODIGO_AREA" />
+          </Key>
+          <Property Name="CODIGO_AREA" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="VISION" Type="varchar" MaxLength="50" />
+          <Property Name="MISION" Type="varchar" MaxLength="50" />
+          <Property Name="CODIGO_ORGANIZACION" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CALENDARIO_LABORABLE">
+          <Key>
+            <PropertyRef Name="FECHA_LABORABLE" />
+          </Key>
+          <Property Name="FECHA_LABORABLE" Type="datetime" Nullable="false" />
+          <Property Name="HORAS_LABORABLES" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="CODIGO_EMPLEADO" />
+          </Key>
+          <Property Name="CODIGO_EMPLEADO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_AREA" Type="int" />
+          <Property Name="CODIGO_PUESTO" Type="int" />
+          <Property Name="SUELDO" Type="decimal" Scale="2" />
+          <Property Name="FECHA_INICIO_CONTRATO" Type="datetime" />
+          <Property Name="FECHA_FIN_CONTRATO" Type="datetime" />
+          <Property Name="CODIGO_JEFE" Type="int" />
+          <Property Name="HORA_INGRESO" Type="datetime" />
+          <Property Name="HORA_SALIDA" Type="datetime" />
+          <Property Name="CODIGO_PERSONA" Type="int" />
+        </EntityType>
+        <EntityType Name="EMPLEADO_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="CODIGO_EMPLEADO" />
+            <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+          </Key>
+          <Property Name="CODIGO_EMPLEADO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_TIPO_ACTIVIDAD" Type="int" Nullable="false" />
+          <Property Name="ESPECIALIDAD" Type="int" />
+        </EntityType>
+        <EntityType Name="EQUIPO_COMPUTO">
+          <Key>
+            <PropertyRef Name="CODIGO_EQUIPO" />
+          </Key>
+          <Property Name="CODIGO_EQUIPO" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_EQUIPO" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="SERIE_EQUIPO" Type="varchar" MaxLength="50" />
+          <Property Name="MARCA_EQUIPO" Type="varchar" MaxLength="50" />
+          <Property Name="MODELO_EQUIPO" Type="varchar" MaxLength="50" />
+          <Property Name="CARACTERISTICAS_EQUIPO" Type="varchar" MaxLength="250" />
+          <Property Name="FECHA_COMPRA" Type="datetime" />
+          <Property Name="FECHA_EXPIRACION_GARANTIA" Type="datetime" />
+          <Property Name="FECHA_ULTIMO_MANTENIMIENTO_EQUIPO" Type="datetime" />
+          <Property Name="CODIGO_AREA" Type="int" />
+          <Property Name="CODIGO_TIPO_EQUIPO" Type="int" />
+          <Property Name="CODIGO_PLAN" Type="varchar" MaxLength="50" />
+          <Property Name="PROCEDENCIA_EQUIPO" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO_EQUIPO" Type="int" />
+        </EntityType>
+        <EntityType Name="EQUIPO_TIPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIPO_EQUIPO" />
+          </Key>
+          <Property Name="CODIGO_TIPO_EQUIPO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_TIPO_EQUIPO" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FRECUENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_FRECUENCIA" />
+          </Key>
+          <Property Name="CODIGO_FRECUENCIA" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_FRECUENCIA" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="DIAS_FRECUENCIA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INFORME_CABECERA">
+          <Key>
+            <PropertyRef Name="NUMERO_INFORME" />
+          </Key>
+          <Property Name="NUMERO_INFORME" Type="int" Nullable="false" />
+          <Property Name="FECHA_INFORME" Type="datetime" />
+          <Property Name="CODIGO_EMPLEADO" Type="int" />
+          <Property Name="OBSERVACION_EMPLEADO" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="INFORME_DETALLE">
+          <Key>
+            <PropertyRef Name="NUMERO_INFORME" />
+            <PropertyRef Name="ITEM_INFORME" />
+          </Key>
+          <Property Name="NUMERO_INFORME" Type="int" Nullable="false" />
+          <Property Name="ITEM_INFORME" Type="int" Nullable="false" />
+          <Property Name="NUMERO_ORDEN" Type="varchar" MaxLength="50" />
+          <Property Name="ITEM_ORDEN" Type="int" />
+          <Property Name="RESULTADO_ATENCION" Type="varchar" MaxLength="250" />
+          <Property Name="OBSERVACION_ATENCION" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ORDEN_TRABAJO_CABECERA">
+          <Key>
+            <PropertyRef Name="NUMERO_ORDEN" />
+          </Key>
+          <Property Name="NUMERO_ORDEN" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FECHA_EMISION_ORDEN" Type="datetime" />
+          <Property Name="FECHA_INICIO_ORDEN" Type="datetime" />
+          <Property Name="FECHA_FIN_ORDEN" Type="datetime" />
+          <Property Name="HORAS_TRABAJO_ORDEN" Type="decimal" Scale="2" />
+          <Property Name="OBSERVACIONES_ORDEN" Type="varchar" MaxLength="250" />
+          <Property Name="CODIGO_EMPLEADO" Type="int" />
+          <Property Name="NUMERO_SOLICITUD" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO_ORDEN" Type="int" />
+        </EntityType>
+        <EntityType Name="ORDEN_TRABAJO_DETALLE">
+          <Key>
+            <PropertyRef Name="NUMERO_ORDEN" />
+            <PropertyRef Name="ITEM_ORDEN" />
+          </Key>
+          <Property Name="NUMERO_ORDEN" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ITEM_ORDEN" Type="int" Nullable="false" />
+          <Property Name="NUMERO_SOLICITUD" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_INICIO_ACTIVIDAD" Type="datetime" />
+          <Property Name="ITEM_SOLICITUD" Type="int" />
+          <Property Name="FECHA_FIN_ACTIVIDAD" Type="datetime" />
+          <Property Name="FECHA_PROGRAMADA" Type="datetime" />
+          <Property Name="RESULTADO_ATENCION" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="CODIGO_PERSONA" />
+          </Key>
+          <Property Name="CODIGO_PERSONA" Type="int" Nullable="false" />
+          <Property Name="NOMBRES" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="APELLIDO_PATERNO" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="APELLIDO_MATERNO" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DNI_PERSONA" Type="varchar" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="PLAN_MANTENIMIENTO_CABECERA">
+          <Key>
+            <PropertyRef Name="CODIGO_PLAN" />
+          </Key>
+          <Property Name="CODIGO_PLAN" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="NOMBRE_PLAN" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="ESTADO_PLAN" Type="int" />
+        </EntityType>
+        <EntityType Name="PLAN_MANTENIMIENTO_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGO_PLAN" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ITEM_ACTIVIDAD" Type="int" Nullable="false" />
+          <Property Name="CODIGO_TIPO_ACTIVIDAD" Type="int" />
+          <Property Name="DESCRIPCION_ACTIVIDAD" Type="varchar" MaxLength="250" />
+          <Property Name="PRIORIDAD_ACTIVIDAD" Type="int" />
+          <Property Name="CODIGO_FRECUENCIA" Type="int" />
+          <Property Name="PERSONAL_REQUERIDO" Type="int" />
+          <Property Name="CODIGO_TIEMPO" Type="int" />
+          <Property Name="TIEMPO_ACTIVIDAD" Type="int" />
+          <Property Name="PROCEDIMIENTOS_PLAN" Type="varchar" MaxLength="250" />
+          <Property Name="OBSERVACIONES_PLAN" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="PRIORIDAD">
+          <Key>
+            <PropertyRef Name="CODIGO_PRIORIDAD" />
+          </Key>
+          <Property Name="CODIGO_PRIORIDAD" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_PRIORIDAD" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="PUESTO">
+          <Key>
+            <PropertyRef Name="CODIGO_PUESTO" />
+          </Key>
+          <Property Name="CODIGO_PUESTO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_PUESTO" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_CABECERA">
+          <Key>
+            <PropertyRef Name="NUMERO_SOLICITUD" />
+          </Key>
+          <Property Name="NUMERO_SOLICITUD" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FECHA_SOLICITUD" Type="datetime" />
+          <Property Name="TIPO_SOLICITUD" Type="int" />
+          <Property Name="DOCUMENTO_REFERENCIA" Type="varchar" MaxLength="50" />
+          <Property Name="FECHA_INICIO_SOLICITUD" Type="datetime" />
+          <Property Name="FECHA_FIN_SOLICITUD" Type="datetime" />
+          <Property Name="ESTADO_SOLICITUD" Type="int" />
+          <Property Name="CODIGO_EQUIPO" Type="int" />
+          <Property Name="CODIGO_PLAN" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Name="ID_ACTIVIDAD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NUMERO_SOLICITUD" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ITEM_SOLICITUD" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_ACTIVIDAD" Type="varchar" MaxLength="250" />
+          <Property Name="CODIGO_TIPO_ACTIVIDAD" Type="int" />
+          <Property Name="PRIORIDAD_ACTIVIDAD" Type="int" />
+          <Property Name="CODIGO_FRECUENCIA" Type="int" />
+          <Property Name="PERSONAL_REQUERIDO" Type="int" />
+          <Property Name="CODIGO_TIEMPO" Type="int" />
+          <Property Name="TIEMPO_ACTIVIDAD" Type="int" />
+          <Property Name="FECHA_PROGRAMACION" Type="datetime" />
+          <Property Name="ORDEN_TRABAJO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_ESTADO">
+          <Key>
+            <PropertyRef Name="CODIGO_ESTADO_SOLICITUD" />
+          </Key>
+          <Property Name="CODIGO_ESTADO_SOLICITUD" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_ESTADO_SOLICITUD" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_TIPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIPO_SOLICITUD" />
+          </Key>
+          <Property Name="CODIGO_TIPO_SOLICITUD" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_TIPO_SOLICITUD" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UNIDAD_TIEMPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIEMPO" />
+          </Key>
+          <Property Name="CODIGO_TIEMPO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION_TIEMPO" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO">
+          <End Role="ACTIVIDAD_TIPO" Type="BDMantenModel.Store.ACTIVIDAD_TIPO" Multiplicity="1" />
+          <End Role="EMPLEADO_ACTIVIDAD" Type="BDMantenModel.Store.EMPLEADO_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="EMPLEADO_ACTIVIDAD">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_ACTIVIDAD_EMPLEADO">
+          <End Role="EMPLEADO" Type="BDMantenModel.Store.EMPLEADO" Multiplicity="1" />
+          <End Role="EMPLEADO_ACTIVIDAD" Type="BDMantenModel.Store.EMPLEADO_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_EMPLEADO" />
+            </Principal>
+            <Dependent Role="EMPLEADO_ACTIVIDAD">
+              <PropertyRef Name="CODIGO_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_AREA">
+          <End Role="AREA" Type="BDMantenModel.Store.AREA" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="BDMantenModel.Store.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AREA">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_EMPLEADO">
+          <End Role="EMPLEADO" Type="BDMantenModel.Store.EMPLEADO" Multiplicity="0..1" />
+          <End Role="EMPLEADO1" Type="BDMantenModel.Store.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_EMPLEADO" />
+            </Principal>
+            <Dependent Role="EMPLEADO1">
+              <PropertyRef Name="CODIGO_JEFE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_PERSONA">
+          <End Role="PERSONA" Type="BDMantenModel.Store.PERSONA" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="BDMantenModel.Store.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="CODIGO_PERSONA" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_PERSONA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_PUESTO">
+          <End Role="PUESTO" Type="BDMantenModel.Store.PUESTO" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="BDMantenModel.Store.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUESTO">
+              <PropertyRef Name="CODIGO_PUESTO" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_PUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPO_COMPUTO_AREA">
+          <End Role="AREA" Type="BDMantenModel.Store.AREA" Multiplicity="0..1" />
+          <End Role="EQUIPO_COMPUTO" Type="BDMantenModel.Store.EQUIPO_COMPUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AREA">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Principal>
+            <Dependent Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPO_COMPUTO_EQUIPO_TIPO">
+          <End Role="EQUIPO_TIPO" Type="BDMantenModel.Store.EQUIPO_TIPO" Multiplicity="0..1" />
+          <End Role="EQUIPO_COMPUTO" Type="BDMantenModel.Store.EQUIPO_COMPUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPO_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_EQUIPO" />
+            </Principal>
+            <Dependent Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_TIPO_EQUIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA">
+          <End Role="PLAN_MANTENIMIENTO_CABECERA" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_CABECERA" Multiplicity="0..1" />
+          <End Role="EQUIPO_COMPUTO" Type="BDMantenModel.Store.EQUIPO_COMPUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_MANTENIMIENTO_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Principal>
+            <Dependent Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA">
+          <End Role="ORDEN_TRABAJO_CABECERA" Type="BDMantenModel.Store.ORDEN_TRABAJO_CABECERA" Multiplicity="1" />
+          <End Role="ORDEN_TRABAJO_DETALLE" Type="BDMantenModel.Store.ORDEN_TRABAJO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDEN_TRABAJO_CABECERA">
+              <PropertyRef Name="NUMERO_ORDEN" />
+            </Principal>
+            <Dependent Role="ORDEN_TRABAJO_DETALLE">
+              <PropertyRef Name="NUMERO_ORDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO">
+          <End Role="ACTIVIDAD_TIPO" Type="BDMantenModel.Store.ACTIVIDAD_TIPO" Multiplicity="0..1" />
+          <End Role="PLAN_MANTENIMIENTO_DETALLE" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA">
+          <End Role="FRECUENCIA" Type="BDMantenModel.Store.FRECUENCIA" Multiplicity="0..1" />
+          <End Role="PLAN_MANTENIMIENTO_DETALLE" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FRECUENCIA">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA">
+          <End Role="PLAN_MANTENIMIENTO_CABECERA" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_CABECERA" Multiplicity="1" />
+          <End Role="PLAN_MANTENIMIENTO_DETALLE" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_MANTENIMIENTO_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD">
+          <End Role="PRIORIDAD" Type="BDMantenModel.Store.PRIORIDAD" Multiplicity="0..1" />
+          <End Role="PLAN_MANTENIMIENTO_DETALLE" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRIORIDAD">
+              <PropertyRef Name="CODIGO_PRIORIDAD" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="PRIORIDAD_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO">
+          <End Role="UNIDAD_TIEMPO" Type="BDMantenModel.Store.UNIDAD_TIEMPO" Multiplicity="0..1" />
+          <End Role="PLAN_MANTENIMIENTO_DETALLE" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIDAD_TIEMPO">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO">
+          <End Role="EQUIPO_COMPUTO" Type="BDMantenModel.Store.EQUIPO_COMPUTO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.Store.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_EQUIPO" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="CODIGO_EQUIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA">
+          <End Role="PLAN_MANTENIMIENTO_CABECERA" Type="BDMantenModel.Store.PLAN_MANTENIMIENTO_CABECERA" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.Store.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_MANTENIMIENTO_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO">
+          <End Role="SOLICITUD_ESTADO" Type="BDMantenModel.Store.SOLICITUD_ESTADO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.Store.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_ESTADO">
+              <PropertyRef Name="CODIGO_ESTADO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_SOLICITUD_TIPO">
+          <End Role="SOLICITUD_TIPO" Type="BDMantenModel.Store.SOLICITUD_TIPO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.Store.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="TIPO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO">
+          <End Role="ACTIVIDAD_TIPO" Type="BDMantenModel.Store.ACTIVIDAD_TIPO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_DETALLE" Type="BDMantenModel.Store.SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_FRECUENCIA">
+          <End Role="FRECUENCIA" Type="BDMantenModel.Store.FRECUENCIA" Multiplicity="0..1" />
+          <End Role="SOLICITUD_DETALLE" Type="BDMantenModel.Store.SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FRECUENCIA">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_PRIORIDAD">
+          <End Role="PRIORIDAD" Type="BDMantenModel.Store.PRIORIDAD" Multiplicity="0..1" />
+          <End Role="SOLICITUD_DETALLE" Type="BDMantenModel.Store.SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRIORIDAD">
+              <PropertyRef Name="CODIGO_PRIORIDAD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="PRIORIDAD_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA">
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.Store.SOLICITUD_CABECERA" Multiplicity="1" />
+          <End Role="SOLICITUD_DETALLE" Type="BDMantenModel.Store.SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="NUMERO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="NUMERO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO">
+          <End Role="UNIDAD_TIEMPO" Type="BDMantenModel.Store.UNIDAD_TIEMPO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_DETALLE" Type="BDMantenModel.Store.SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIDAD_TIEMPO">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GET_ORDEN_TRABAJO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="datetime" Mode="In" />
+          <Parameter Name="fecha_fin" Type="datetime" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDMantenModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BDMantenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTIVIDAD_TIPO" EntityType="BDMantenModel.ACTIVIDAD_TIPO" />
+          <EntitySet Name="AREA" EntityType="BDMantenModel.AREA" />
+          <EntitySet Name="EMPLEADO" EntityType="BDMantenModel.EMPLEADO" />
+          <EntitySet Name="EMPLEADO_ACTIVIDAD" EntityType="BDMantenModel.EMPLEADO_ACTIVIDAD" />
+          <EntitySet Name="EQUIPO_TIPO" EntityType="BDMantenModel.EQUIPO_TIPO" />
+          <EntitySet Name="INFORME_CABECERA" EntityType="BDMantenModel.INFORME_CABECERA" />
+          <EntitySet Name="INFORME_DETALLE" EntityType="BDMantenModel.INFORME_DETALLE" />
+          <EntitySet Name="ORDEN_TRABAJO_CABECERA" EntityType="BDMantenModel.ORDEN_TRABAJO_CABECERA" />
+          <EntitySet Name="ORDEN_TRABAJO_DETALLE" EntityType="BDMantenModel.ORDEN_TRABAJO_DETALLE" />
+          <EntitySet Name="PERSONA" EntityType="BDMantenModel.PERSONA" />
+          <EntitySet Name="PLAN_MANTENIMIENTO_CABECERA" EntityType="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA" />
+          <EntitySet Name="PRIORIDAD" EntityType="BDMantenModel.PRIORIDAD" />
+          <EntitySet Name="PUESTO" EntityType="BDMantenModel.PUESTO" />
+          <EntitySet Name="SOLICITUD_CABECERA" EntityType="BDMantenModel.SOLICITUD_CABECERA" />
+          <EntitySet Name="SOLICITUD_ESTADO" EntityType="BDMantenModel.SOLICITUD_ESTADO" />
+          <EntitySet Name="SOLICITUD_TIPO" EntityType="BDMantenModel.SOLICITUD_TIPO" />
+          <EntitySet Name="sysdiagrams" EntityType="BDMantenModel.sysdiagrams" />
+          <EntitySet Name="UNIDAD_TIEMPO" EntityType="BDMantenModel.UNIDAD_TIEMPO" />
+          <AssociationSet Name="FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO" Association="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO">
+            <End Role="ACTIVIDAD_TIPO" EntitySet="ACTIVIDAD_TIPO" />
+            <End Role="EMPLEADO_ACTIVIDAD" EntitySet="EMPLEADO_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_AREA" Association="BDMantenModel.FK_EMPLEADO_AREA">
+            <End Role="AREA" EntitySet="AREA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_ACTIVIDAD_EMPLEADO" Association="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="EMPLEADO_ACTIVIDAD" EntitySet="EMPLEADO_ACTIVIDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_EMPLEADO" Association="BDMantenModel.FK_EMPLEADO_EMPLEADO">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="EMPLEADO1" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_PERSONA" Association="BDMantenModel.FK_EMPLEADO_PERSONA">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_PUESTO" Association="BDMantenModel.FK_EMPLEADO_PUESTO">
+            <End Role="PUESTO" EntitySet="PUESTO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA" Association="BDMantenModel.FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA">
+            <End Role="PLAN_MANTENIMIENTO_CABECERA" EntitySet="PLAN_MANTENIMIENTO_CABECERA" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO" Association="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO">
+            <End Role="SOLICITUD_ESTADO" EntitySet="SOLICITUD_ESTADO" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_SOLICITUD_TIPO" Association="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_TIPO">
+            <End Role="SOLICITUD_TIPO" EntitySet="SOLICITUD_TIPO" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <EntitySet Name="PLAN_MANTENIMIENTO_DETALLE" EntityType="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" />
+          <EntitySet Name="SOLICITUD_DETALLE" EntityType="BDMantenModel.SOLICITUD_DETALLE" />
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO" Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO">
+            <End Role="ACTIVIDAD_TIPO" EntitySet="ACTIVIDAD_TIPO" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO" Association="BDMantenModel.FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO">
+            <End Role="ACTIVIDAD_TIPO" EntitySet="ACTIVIDAD_TIPO" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA" Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA">
+            <End Role="PLAN_MANTENIMIENTO_CABECERA" EntitySet="PLAN_MANTENIMIENTO_CABECERA" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD" Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD">
+            <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO" Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO">
+            <End Role="UNIDAD_TIEMPO" EntitySet="UNIDAD_TIEMPO" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_PRIORIDAD" Association="BDMantenModel.FK_SOLICITUD_DETALLE_PRIORIDAD">
+            <End Role="PRIORIDAD" EntitySet="PRIORIDAD" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA" Association="BDMantenModel.FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA">
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO" Association="BDMantenModel.FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO">
+            <End Role="UNIDAD_TIEMPO" EntitySet="UNIDAD_TIEMPO" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <EntitySet Name="EQUIPO_COMPUTO" EntityType="BDMantenModel.EQUIPO_COMPUTO" />
+          <AssociationSet Name="FK_EQUIPO_COMPUTO_AREA" Association="BDMantenModel.FK_EQUIPO_COMPUTO_AREA">
+            <End Role="AREA" EntitySet="AREA" />
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPO_COMPUTO_EQUIPO_TIPO" Association="BDMantenModel.FK_EQUIPO_COMPUTO_EQUIPO_TIPO">
+            <End Role="EQUIPO_TIPO" EntitySet="EQUIPO_TIPO" />
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA" Association="BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA">
+            <End Role="PLAN_MANTENIMIENTO_CABECERA" EntitySet="PLAN_MANTENIMIENTO_CABECERA" />
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO" Association="BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO">
+            <End Role="EQUIPO_COMPUTO" EntitySet="EQUIPO_COMPUTO" />
+            <End Role="SOLICITUD_CABECERA" EntitySet="SOLICITUD_CABECERA" />
+          </AssociationSet>
+          <EntitySet Name="CALENDARIO_LABORABLE" EntityType="BDMantenModel.CALENDARIO_LABORABLE" />
+          <EntitySet Name="FRECUENCIA" EntityType="BDMantenModel.FRECUENCIA" />
+          <AssociationSet Name="FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA" Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA">
+            <End Role="FRECUENCIA" EntitySet="FRECUENCIA" />
+            <End Role="PLAN_MANTENIMIENTO_DETALLE" EntitySet="PLAN_MANTENIMIENTO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOLICITUD_DETALLE_FRECUENCIA" Association="BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA">
+            <End Role="FRECUENCIA" EntitySet="FRECUENCIA" />
+            <End Role="SOLICITUD_DETALLE" EntitySet="SOLICITUD_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA" Association="BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA">
+            <End Role="ORDEN_TRABAJO_CABECERA" EntitySet="ORDEN_TRABAJO_CABECERA" />
+            <End Role="ORDEN_TRABAJO_DETALLE" EntitySet="ORDEN_TRABAJO_DETALLE" />
+          </AssociationSet>
+          <FunctionImport Name="GET_ORDEN_TRABAJO" ReturnType="Collection(BDMantenModel.ORDEN_TRABAJO_CONSULTA)">
+            <Parameter Name="fecha_ini" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="ACTIVIDAD_TIPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+          </Key>
+          <Property Name="CODIGO_TIPO_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_TIPO_ACTIVIDAD" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EMPLEADO_ACTIVIDAD" Relationship="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO" FromRole="ACTIVIDAD_TIPO" ToRole="EMPLEADO_ACTIVIDAD" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_DETALLE" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO" FromRole="ACTIVIDAD_TIPO" ToRole="PLAN_MANTENIMIENTO_DETALLE" />
+          <NavigationProperty Name="SOLICITUD_DETALLE" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO" FromRole="ACTIVIDAD_TIPO" ToRole="SOLICITUD_DETALLE" />
+        </EntityType>
+        <EntityType Name="AREA">
+          <Key>
+            <PropertyRef Name="CODIGO_AREA" />
+          </Key>
+          <Property Name="CODIGO_AREA" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="VISION" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MISION" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CODIGO_ORGANIZACION" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EMPLEADO" Relationship="BDMantenModel.FK_EMPLEADO_AREA" FromRole="AREA" ToRole="EMPLEADO" />
+          <NavigationProperty Name="EQUIPO_COMPUTO" Relationship="BDMantenModel.FK_EQUIPO_COMPUTO_AREA" FromRole="AREA" ToRole="EQUIPO_COMPUTO" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="CODIGO_EMPLEADO" />
+          </Key>
+          <Property Name="CODIGO_EMPLEADO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_AREA" Type="Int32" />
+          <Property Name="CODIGO_PUESTO" Type="Int32" />
+          <Property Name="SUELDO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FECHA_INICIO_CONTRATO" Type="DateTime" />
+          <Property Name="FECHA_FIN_CONTRATO" Type="DateTime" />
+          <Property Name="CODIGO_JEFE" Type="Int32" />
+          <Property Name="HORA_INGRESO" Type="DateTime" />
+          <Property Name="HORA_SALIDA" Type="DateTime" />
+          <Property Name="CODIGO_PERSONA" Type="Int32" />
+          <NavigationProperty Name="AREA" Relationship="BDMantenModel.FK_EMPLEADO_AREA" FromRole="EMPLEADO" ToRole="AREA" />
+          <NavigationProperty Name="EMPLEADO_ACTIVIDAD" Relationship="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_EMPLEADO" FromRole="EMPLEADO" ToRole="EMPLEADO_ACTIVIDAD" />
+          <NavigationProperty Name="EMPLEADO1" Relationship="BDMantenModel.FK_EMPLEADO_EMPLEADO" FromRole="EMPLEADO" ToRole="EMPLEADO1" />
+          <NavigationProperty Name="EMPLEADO2" Relationship="BDMantenModel.FK_EMPLEADO_EMPLEADO" FromRole="EMPLEADO1" ToRole="EMPLEADO" />
+          <NavigationProperty Name="PERSONA" Relationship="BDMantenModel.FK_EMPLEADO_PERSONA" FromRole="EMPLEADO" ToRole="PERSONA" />
+          <NavigationProperty Name="PUESTO" Relationship="BDMantenModel.FK_EMPLEADO_PUESTO" FromRole="EMPLEADO" ToRole="PUESTO" />
+        </EntityType>
+        <EntityType Name="EMPLEADO_ACTIVIDAD">
+          <Key>
+            <PropertyRef Name="CODIGO_EMPLEADO" />
+            <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+          </Key>
+          <Property Name="CODIGO_EMPLEADO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_TIPO_ACTIVIDAD" Type="Int32" Nullable="false" />
+          <Property Name="ESPECIALIDAD" Type="Int32" />
+          <NavigationProperty Name="ACTIVIDAD_TIPO" Relationship="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO" FromRole="EMPLEADO_ACTIVIDAD" ToRole="ACTIVIDAD_TIPO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_EMPLEADO" FromRole="EMPLEADO_ACTIVIDAD" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="EQUIPO_TIPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIPO_EQUIPO" />
+          </Key>
+          <Property Name="CODIGO_TIPO_EQUIPO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_TIPO_EQUIPO" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EQUIPO_COMPUTO" Relationship="BDMantenModel.FK_EQUIPO_COMPUTO_EQUIPO_TIPO" FromRole="EQUIPO_TIPO" ToRole="EQUIPO_COMPUTO" />
+        </EntityType>
+        <EntityType Name="INFORME_CABECERA">
+          <Key>
+            <PropertyRef Name="NUMERO_INFORME" />
+          </Key>
+          <Property Name="NUMERO_INFORME" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_INFORME" Type="DateTime" />
+          <Property Name="CODIGO_EMPLEADO" Type="Int32" />
+          <Property Name="OBSERVACION_EMPLEADO" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="INFORME_DETALLE">
+          <Key>
+            <PropertyRef Name="NUMERO_INFORME" />
+            <PropertyRef Name="ITEM_INFORME" />
+          </Key>
+          <Property Name="NUMERO_INFORME" Type="Int32" Nullable="false" />
+          <Property Name="ITEM_INFORME" Type="Int32" Nullable="false" />
+          <Property Name="NUMERO_ORDEN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ITEM_ORDEN" Type="Int32" />
+          <Property Name="RESULTADO_ATENCION" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="OBSERVACION_ATENCION" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ORDEN_TRABAJO_CABECERA">
+          <Key>
+            <PropertyRef Name="NUMERO_ORDEN" />
+          </Key>
+          <Property Name="NUMERO_ORDEN" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FECHA_EMISION_ORDEN" Type="DateTime" />
+          <Property Name="FECHA_INICIO_ORDEN" Type="DateTime" />
+          <Property Name="FECHA_FIN_ORDEN" Type="DateTime" />
+          <Property Name="HORAS_TRABAJO_ORDEN" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OBSERVACIONES_ORDEN" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="CODIGO_EMPLEADO" Type="Int32" />
+          <Property Name="NUMERO_SOLICITUD" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ESTADO_ORDEN" Type="Int32" />
+          <NavigationProperty Name="ORDEN_TRABAJO_DETALLE" Relationship="BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA" FromRole="ORDEN_TRABAJO_CABECERA" ToRole="ORDEN_TRABAJO_DETALLE" />
+        </EntityType>
+        <EntityType Name="ORDEN_TRABAJO_DETALLE">
+          <Key>
+            <PropertyRef Name="NUMERO_ORDEN" />
+            <PropertyRef Name="ITEM_ORDEN" />
+          </Key>
+          <Property Name="NUMERO_ORDEN" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ITEM_ORDEN" Type="Int32" Nullable="false" />
+          <Property Name="NUMERO_SOLICITUD" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FECHA_INICIO_ACTIVIDAD" Type="DateTime" />
+          <Property Name="ITEM_SOLICITUD" Type="Int32" />
+          <Property Name="FECHA_FIN_ACTIVIDAD" Type="DateTime" />
+          <Property Name="FECHA_PROGRAMADA" Type="DateTime" />
+          <Property Name="RESULTADO_ATENCION" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ORDEN_TRABAJO_CABECERA" Relationship="BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA" FromRole="ORDEN_TRABAJO_DETALLE" ToRole="ORDEN_TRABAJO_CABECERA" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="CODIGO_PERSONA" />
+          </Key>
+          <Property Name="CODIGO_PERSONA" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRES" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="APELLIDO_PATERNO" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="APELLIDO_MATERNO" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DNI_PERSONA" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EMPLEADO" Relationship="BDMantenModel.FK_EMPLEADO_PERSONA" FromRole="PERSONA" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="PLAN_MANTENIMIENTO_CABECERA">
+          <Key>
+            <PropertyRef Name="CODIGO_PLAN" />
+          </Key>
+          <Property Name="CODIGO_PLAN" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NOMBRE_PLAN" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="ESTADO_PLAN" Type="Int32" />
+          <NavigationProperty Name="SOLICITUD_CABECERA" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA" FromRole="PLAN_MANTENIMIENTO_CABECERA" ToRole="SOLICITUD_CABECERA" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_DETALLE" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA" FromRole="PLAN_MANTENIMIENTO_CABECERA" ToRole="PLAN_MANTENIMIENTO_DETALLE" />
+          <NavigationProperty Name="EQUIPO_COMPUTO" Relationship="BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA" FromRole="PLAN_MANTENIMIENTO_CABECERA" ToRole="EQUIPO_COMPUTO" />
+        </EntityType>
+        <EntityType Name="PRIORIDAD">
+          <Key>
+            <PropertyRef Name="CODIGO_PRIORIDAD" />
+          </Key>
+          <Property Name="CODIGO_PRIORIDAD" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_PRIORIDAD" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_DETALLE" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD" FromRole="PRIORIDAD" ToRole="PLAN_MANTENIMIENTO_DETALLE" />
+          <NavigationProperty Name="SOLICITUD_DETALLE" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_PRIORIDAD" FromRole="PRIORIDAD" ToRole="SOLICITUD_DETALLE" />
+        </EntityType>
+        <EntityType Name="PUESTO">
+          <Key>
+            <PropertyRef Name="CODIGO_PUESTO" />
+          </Key>
+          <Property Name="CODIGO_PUESTO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_PUESTO" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EMPLEADO" Relationship="BDMantenModel.FK_EMPLEADO_PUESTO" FromRole="PUESTO" ToRole="EMPLEADO" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_CABECERA">
+          <Key>
+            <PropertyRef Name="NUMERO_SOLICITUD" />
+          </Key>
+          <Property Name="NUMERO_SOLICITUD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FECHA_SOLICITUD" Type="DateTime" />
+          <Property Name="TIPO_SOLICITUD" Type="Int32" />
+          <Property Name="DOCUMENTO_REFERENCIA" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FECHA_INICIO_SOLICITUD" Type="DateTime" />
+          <Property Name="FECHA_FIN_SOLICITUD" Type="DateTime" />
+          <Property Name="ESTADO_SOLICITUD" Type="Int32" />
+          <Property Name="CODIGO_EQUIPO" Type="Int32" />
+          <Property Name="CODIGO_PLAN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_CABECERA" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA" FromRole="SOLICITUD_CABECERA" ToRole="PLAN_MANTENIMIENTO_CABECERA" />
+          <NavigationProperty Name="SOLICITUD_ESTADO" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO" FromRole="SOLICITUD_CABECERA" ToRole="SOLICITUD_ESTADO" />
+          <NavigationProperty Name="SOLICITUD_TIPO" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_TIPO" FromRole="SOLICITUD_CABECERA" ToRole="SOLICITUD_TIPO" />
+          <NavigationProperty Name="SOLICITUD_DETALLE" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA" FromRole="SOLICITUD_CABECERA" ToRole="SOLICITUD_DETALLE" />
+          <NavigationProperty Name="EQUIPO_COMPUTO" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO" FromRole="SOLICITUD_CABECERA" ToRole="EQUIPO_COMPUTO" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_ESTADO">
+          <Key>
+            <PropertyRef Name="CODIGO_ESTADO_SOLICITUD" />
+          </Key>
+          <Property Name="CODIGO_ESTADO_SOLICITUD" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_ESTADO_SOLICITUD" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SOLICITUD_CABECERA" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO" FromRole="SOLICITUD_ESTADO" ToRole="SOLICITUD_CABECERA" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_TIPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIPO_SOLICITUD" />
+          </Key>
+          <Property Name="CODIGO_TIPO_SOLICITUD" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_TIPO_SOLICITUD" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SOLICITUD_CABECERA" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_TIPO" FromRole="SOLICITUD_TIPO" ToRole="SOLICITUD_CABECERA" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UNIDAD_TIEMPO">
+          <Key>
+            <PropertyRef Name="CODIGO_TIEMPO" />
+          </Key>
+          <Property Name="CODIGO_TIEMPO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION_TIEMPO" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_DETALLE" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO" FromRole="UNIDAD_TIEMPO" ToRole="PLAN_MANTENIMIENTO_DETALLE" />
+          <NavigationProperty Name="SOLICITUD_DETALLE" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO" FromRole="UNIDAD_TIEMPO" ToRole="SOLICITUD_DETALLE" />
+        </EntityType>
+        <Association Name="FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO">
+          <End Role="ACTIVIDAD_TIPO" Type="BDMantenModel.ACTIVIDAD_TIPO" Multiplicity="1" />
+          <End Role="EMPLEADO_ACTIVIDAD" Type="BDMantenModel.EMPLEADO_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="EMPLEADO_ACTIVIDAD">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_AREA">
+          <End Role="AREA" Type="BDMantenModel.AREA" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="BDMantenModel.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AREA">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_ACTIVIDAD_EMPLEADO">
+          <End Role="EMPLEADO" Type="BDMantenModel.EMPLEADO" Multiplicity="1" />
+          <End Role="EMPLEADO_ACTIVIDAD" Type="BDMantenModel.EMPLEADO_ACTIVIDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_EMPLEADO" />
+            </Principal>
+            <Dependent Role="EMPLEADO_ACTIVIDAD">
+              <PropertyRef Name="CODIGO_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_EMPLEADO">
+          <End Role="EMPLEADO" Type="BDMantenModel.EMPLEADO" Multiplicity="0..1" />
+          <End Role="EMPLEADO1" Type="BDMantenModel.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_EMPLEADO" />
+            </Principal>
+            <Dependent Role="EMPLEADO1">
+              <PropertyRef Name="CODIGO_JEFE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_PERSONA">
+          <End Role="PERSONA" Type="BDMantenModel.PERSONA" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="BDMantenModel.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="CODIGO_PERSONA" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_PERSONA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_PUESTO">
+          <End Role="PUESTO" Type="BDMantenModel.PUESTO" Multiplicity="0..1" />
+          <End Role="EMPLEADO" Type="BDMantenModel.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUESTO">
+              <PropertyRef Name="CODIGO_PUESTO" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="CODIGO_PUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA">
+          <End Role="PLAN_MANTENIMIENTO_CABECERA" Type="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_MANTENIMIENTO_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO">
+          <End Role="SOLICITUD_ESTADO" Type="BDMantenModel.SOLICITUD_ESTADO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_ESTADO">
+              <PropertyRef Name="CODIGO_ESTADO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="ESTADO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_SOLICITUD_TIPO">
+          <End Role="SOLICITUD_TIPO" Type="BDMantenModel.SOLICITUD_TIPO" Multiplicity="0..1" />
+          <End Role="SOLICITUD_CABECERA" Type="BDMantenModel.SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="TIPO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PLAN_MANTENIMIENTO_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Type="Int32" Name="ID_ACTIVIDAD" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CODIGO_PLAN" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ITEM_ACTIVIDAD" Nullable="false" />
+          <Property Type="Int32" Name="CODIGO_TIPO_ACTIVIDAD" />
+          <Property Type="String" Name="DESCRIPCION_ACTIVIDAD" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PRIORIDAD_ACTIVIDAD" />
+          <Property Type="Int32" Name="CODIGO_FRECUENCIA" />
+          <Property Type="Int32" Name="PERSONAL_REQUERIDO" />
+          <Property Type="Int32" Name="CODIGO_TIEMPO" />
+          <Property Type="Int32" Name="TIEMPO_ACTIVIDAD" />
+          <Property Type="String" Name="PROCEDIMIENTOS_PLAN" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OBSERVACIONES_PLAN" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD_TIPO" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO" FromRole="PLAN_MANTENIMIENTO_DETALLE" ToRole="ACTIVIDAD_TIPO" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_CABECERA" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA" FromRole="PLAN_MANTENIMIENTO_DETALLE" ToRole="PLAN_MANTENIMIENTO_CABECERA" />
+          <NavigationProperty Name="PRIORIDAD" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD" FromRole="PLAN_MANTENIMIENTO_DETALLE" ToRole="PRIORIDAD" />
+          <NavigationProperty Name="UNIDAD_TIEMPO" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO" FromRole="PLAN_MANTENIMIENTO_DETALLE" ToRole="UNIDAD_TIEMPO" />
+          <NavigationProperty Name="FRECUENCIA" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA" FromRole="PLAN_MANTENIMIENTO_DETALLE" ToRole="FRECUENCIA" />
+        </EntityType>
+        <EntityType Name="SOLICITUD_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_ACTIVIDAD" />
+          </Key>
+          <Property Type="Int32" Name="ID_ACTIVIDAD" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NUMERO_SOLICITUD" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ITEM_SOLICITUD" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_ACTIVIDAD" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CODIGO_TIPO_ACTIVIDAD" />
+          <Property Type="Int32" Name="PRIORIDAD_ACTIVIDAD" />
+          <Property Type="Int32" Name="CODIGO_FRECUENCIA" />
+          <Property Type="Int32" Name="PERSONAL_REQUERIDO" />
+          <Property Type="Int32" Name="CODIGO_TIEMPO" />
+          <Property Type="Int32" Name="TIEMPO_ACTIVIDAD" />
+          <Property Type="DateTime" Name="FECHA_PROGRAMACION" />
+          <Property Type="String" Name="ORDEN_TRABAJO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIVIDAD_TIPO" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO" FromRole="SOLICITUD_DETALLE" ToRole="ACTIVIDAD_TIPO" />
+          <NavigationProperty Name="PRIORIDAD" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_PRIORIDAD" FromRole="SOLICITUD_DETALLE" ToRole="PRIORIDAD" />
+          <NavigationProperty Name="SOLICITUD_CABECERA" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA" FromRole="SOLICITUD_DETALLE" ToRole="SOLICITUD_CABECERA" />
+          <NavigationProperty Name="UNIDAD_TIEMPO" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO" FromRole="SOLICITUD_DETALLE" ToRole="UNIDAD_TIEMPO" />
+          <NavigationProperty Name="FRECUENCIA" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA" FromRole="SOLICITUD_DETALLE" ToRole="FRECUENCIA" />
+        </EntityType>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO">
+          <End Type="BDMantenModel.ACTIVIDAD_TIPO" Role="ACTIVIDAD_TIPO" Multiplicity="0..1" />
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" Role="PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO">
+          <End Type="BDMantenModel.ACTIVIDAD_TIPO" Role="ACTIVIDAD_TIPO" Multiplicity="0..1" />
+          <End Type="BDMantenModel.SOLICITUD_DETALLE" Role="SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTIVIDAD_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="CODIGO_TIPO_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA">
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA" Role="PLAN_MANTENIMIENTO_CABECERA" Multiplicity="1" />
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" Role="PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_MANTENIMIENTO_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD">
+          <End Type="BDMantenModel.PRIORIDAD" Role="PRIORIDAD" Multiplicity="0..1" />
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" Role="PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRIORIDAD">
+              <PropertyRef Name="CODIGO_PRIORIDAD" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="PRIORIDAD_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO">
+          <End Type="BDMantenModel.UNIDAD_TIEMPO" Role="UNIDAD_TIEMPO" Multiplicity="0..1" />
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" Role="PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIDAD_TIEMPO">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_PRIORIDAD">
+          <End Type="BDMantenModel.PRIORIDAD" Role="PRIORIDAD" Multiplicity="0..1" />
+          <End Type="BDMantenModel.SOLICITUD_DETALLE" Role="SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRIORIDAD">
+              <PropertyRef Name="CODIGO_PRIORIDAD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="PRIORIDAD_ACTIVIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA">
+          <End Type="BDMantenModel.SOLICITUD_CABECERA" Role="SOLICITUD_CABECERA" Multiplicity="1" />
+          <End Type="BDMantenModel.SOLICITUD_DETALLE" Role="SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="NUMERO_SOLICITUD" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="NUMERO_SOLICITUD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO">
+          <End Type="BDMantenModel.UNIDAD_TIEMPO" Role="UNIDAD_TIEMPO" Multiplicity="0..1" />
+          <End Type="BDMantenModel.SOLICITUD_DETALLE" Role="SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIDAD_TIEMPO">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="CODIGO_TIEMPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EQUIPO_COMPUTO">
+          <Key>
+            <PropertyRef Name="CODIGO_EQUIPO" />
+          </Key>
+          <Property Type="Int32" Name="CODIGO_EQUIPO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NOMBRE_EQUIPO" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SERIE_EQUIPO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MARCA_EQUIPO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MODELO_EQUIPO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CARACTERISTICAS_EQUIPO" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FECHA_COMPRA" />
+          <Property Type="DateTime" Name="FECHA_EXPIRACION_GARANTIA" />
+          <Property Type="DateTime" Name="FECHA_ULTIMO_MANTENIMIENTO_EQUIPO" />
+          <Property Type="Int32" Name="CODIGO_AREA" />
+          <Property Type="Int32" Name="CODIGO_TIPO_EQUIPO" />
+          <Property Type="String" Name="CODIGO_PLAN" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROCEDENCIA_EQUIPO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ESTADO_EQUIPO" />
+          <NavigationProperty Name="AREA" Relationship="BDMantenModel.FK_EQUIPO_COMPUTO_AREA" FromRole="EQUIPO_COMPUTO" ToRole="AREA" />
+          <NavigationProperty Name="EQUIPO_TIPO" Relationship="BDMantenModel.FK_EQUIPO_COMPUTO_EQUIPO_TIPO" FromRole="EQUIPO_COMPUTO" ToRole="EQUIPO_TIPO" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_CABECERA" Relationship="BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA" FromRole="EQUIPO_COMPUTO" ToRole="PLAN_MANTENIMIENTO_CABECERA" />
+          <NavigationProperty Name="SOLICITUD_CABECERA" Relationship="BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO" FromRole="EQUIPO_COMPUTO" ToRole="SOLICITUD_CABECERA" />
+        </EntityType>
+        <Association Name="FK_EQUIPO_COMPUTO_AREA">
+          <End Type="BDMantenModel.AREA" Role="AREA" Multiplicity="0..1" />
+          <End Type="BDMantenModel.EQUIPO_COMPUTO" Role="EQUIPO_COMPUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AREA">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Principal>
+            <Dependent Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_AREA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPO_COMPUTO_EQUIPO_TIPO">
+          <End Type="BDMantenModel.EQUIPO_TIPO" Role="EQUIPO_TIPO" Multiplicity="0..1" />
+          <End Type="BDMantenModel.EQUIPO_COMPUTO" Role="EQUIPO_COMPUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPO_TIPO">
+              <PropertyRef Name="CODIGO_TIPO_EQUIPO" />
+            </Principal>
+            <Dependent Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_TIPO_EQUIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA">
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA" Role="PLAN_MANTENIMIENTO_CABECERA" Multiplicity="0..1" />
+          <End Type="BDMantenModel.EQUIPO_COMPUTO" Role="EQUIPO_COMPUTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAN_MANTENIMIENTO_CABECERA">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Principal>
+            <Dependent Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_PLAN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO">
+          <End Type="BDMantenModel.EQUIPO_COMPUTO" Role="EQUIPO_COMPUTO" Multiplicity="0..1" />
+          <End Type="BDMantenModel.SOLICITUD_CABECERA" Role="SOLICITUD_CABECERA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EQUIPO_COMPUTO">
+              <PropertyRef Name="CODIGO_EQUIPO" />
+            </Principal>
+            <Dependent Role="SOLICITUD_CABECERA">
+              <PropertyRef Name="CODIGO_EQUIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CALENDARIO_LABORABLE">
+          <Key>
+            <PropertyRef Name="FECHA_LABORABLE" />
+          </Key>
+          <Property Type="DateTime" Name="FECHA_LABORABLE" Nullable="false" />
+          <Property Type="Int32" Name="HORAS_LABORABLES" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FRECUENCIA">
+          <Key>
+            <PropertyRef Name="CODIGO_FRECUENCIA" />
+          </Key>
+          <Property Type="Int32" Name="CODIGO_FRECUENCIA" Nullable="false" />
+          <Property Type="String" Name="DESCRIPCION_FRECUENCIA" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DIAS_FRECUENCIA" Nullable="false" />
+          <NavigationProperty Name="PLAN_MANTENIMIENTO_DETALLE" Relationship="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA" FromRole="FRECUENCIA" ToRole="PLAN_MANTENIMIENTO_DETALLE" />
+          <NavigationProperty Name="SOLICITUD_DETALLE" Relationship="BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA" FromRole="FRECUENCIA" ToRole="SOLICITUD_DETALLE" />
+        </EntityType>
+        <Association Name="FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA">
+          <End Type="BDMantenModel.FRECUENCIA" Role="FRECUENCIA" Multiplicity="0..1" />
+          <End Type="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" Role="PLAN_MANTENIMIENTO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FRECUENCIA">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Principal>
+            <Dependent Role="PLAN_MANTENIMIENTO_DETALLE">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOLICITUD_DETALLE_FRECUENCIA">
+          <End Type="BDMantenModel.FRECUENCIA" Role="FRECUENCIA" Multiplicity="0..1" />
+          <End Type="BDMantenModel.SOLICITUD_DETALLE" Role="SOLICITUD_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FRECUENCIA">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Principal>
+            <Dependent Role="SOLICITUD_DETALLE">
+              <PropertyRef Name="CODIGO_FRECUENCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA">
+          <End Type="BDMantenModel.ORDEN_TRABAJO_CABECERA" Role="ORDEN_TRABAJO_CABECERA" Multiplicity="1" />
+          <End Type="BDMantenModel.ORDEN_TRABAJO_DETALLE" Role="ORDEN_TRABAJO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDEN_TRABAJO_CABECERA">
+              <PropertyRef Name="NUMERO_ORDEN" />
+            </Principal>
+            <Dependent Role="ORDEN_TRABAJO_DETALLE">
+              <PropertyRef Name="NUMERO_ORDEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ORDEN_TRABAJO_CONSULTA">
+          <Property Type="String" Name="NUMERO_SOLICITUD" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NOMBRE_EQUIPO" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="MARCA_EQUIPO" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DESC_AREA" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="FECHA_INICIO_SOLICITUD" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FECHA_FIN_SOLICITUD" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ESTADO_SOLICITUD" Nullable="true" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDMantenModelStoreContainer" CdmEntityContainer="BDMantenEntities">
+          <EntitySetMapping Name="ACTIVIDAD_TIPO"><EntityTypeMapping TypeName="BDMantenModel.ACTIVIDAD_TIPO"><MappingFragment StoreEntitySet="ACTIVIDAD_TIPO">
+            <ScalarProperty Name="CODIGO_TIPO_ACTIVIDAD" ColumnName="CODIGO_TIPO_ACTIVIDAD" />
+            <ScalarProperty Name="DESCRIPCION_TIPO_ACTIVIDAD" ColumnName="DESCRIPCION_TIPO_ACTIVIDAD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AREA"><EntityTypeMapping TypeName="BDMantenModel.AREA"><MappingFragment StoreEntitySet="AREA">
+            <ScalarProperty Name="CODIGO_AREA" ColumnName="CODIGO_AREA" />
+            <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+            <ScalarProperty Name="VISION" ColumnName="VISION" />
+            <ScalarProperty Name="MISION" ColumnName="MISION" />
+            <ScalarProperty Name="CODIGO_ORGANIZACION" ColumnName="CODIGO_ORGANIZACION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO"><EntityTypeMapping TypeName="BDMantenModel.EMPLEADO"><MappingFragment StoreEntitySet="EMPLEADO">
+            <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+            <ScalarProperty Name="CODIGO_AREA" ColumnName="CODIGO_AREA" />
+            <ScalarProperty Name="CODIGO_PUESTO" ColumnName="CODIGO_PUESTO" />
+            <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+            <ScalarProperty Name="FECHA_INICIO_CONTRATO" ColumnName="FECHA_INICIO_CONTRATO" />
+            <ScalarProperty Name="FECHA_FIN_CONTRATO" ColumnName="FECHA_FIN_CONTRATO" />
+            <ScalarProperty Name="CODIGO_JEFE" ColumnName="CODIGO_JEFE" />
+            <ScalarProperty Name="HORA_INGRESO" ColumnName="HORA_INGRESO" />
+            <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
+            <ScalarProperty Name="CODIGO_PERSONA" ColumnName="CODIGO_PERSONA" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO_ACTIVIDAD"><EntityTypeMapping TypeName="BDMantenModel.EMPLEADO_ACTIVIDAD"><MappingFragment StoreEntitySet="EMPLEADO_ACTIVIDAD">
+            <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+            <ScalarProperty Name="CODIGO_TIPO_ACTIVIDAD" ColumnName="CODIGO_TIPO_ACTIVIDAD" />
+            <ScalarProperty Name="ESPECIALIDAD" ColumnName="ESPECIALIDAD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="EQUIPO_TIPO"><EntityTypeMapping TypeName="BDMantenModel.EQUIPO_TIPO"><MappingFragment StoreEntitySet="EQUIPO_TIPO">
+            <ScalarProperty Name="CODIGO_TIPO_EQUIPO" ColumnName="CODIGO_TIPO_EQUIPO" />
+            <ScalarProperty Name="DESCRIPCION_TIPO_EQUIPO" ColumnName="DESCRIPCION_TIPO_EQUIPO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="INFORME_CABECERA"><EntityTypeMapping TypeName="BDMantenModel.INFORME_CABECERA"><MappingFragment StoreEntitySet="INFORME_CABECERA">
+            <ScalarProperty Name="NUMERO_INFORME" ColumnName="NUMERO_INFORME" />
+            <ScalarProperty Name="FECHA_INFORME" ColumnName="FECHA_INFORME" />
+            <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+            <ScalarProperty Name="OBSERVACION_EMPLEADO" ColumnName="OBSERVACION_EMPLEADO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="INFORME_DETALLE"><EntityTypeMapping TypeName="BDMantenModel.INFORME_DETALLE"><MappingFragment StoreEntitySet="INFORME_DETALLE">
+            <ScalarProperty Name="NUMERO_INFORME" ColumnName="NUMERO_INFORME" />
+            <ScalarProperty Name="ITEM_INFORME" ColumnName="ITEM_INFORME" />
+            <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
+            <ScalarProperty Name="ITEM_ORDEN" ColumnName="ITEM_ORDEN" />
+            <ScalarProperty Name="RESULTADO_ATENCION" ColumnName="RESULTADO_ATENCION" />
+            <ScalarProperty Name="OBSERVACION_ATENCION" ColumnName="OBSERVACION_ATENCION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ORDEN_TRABAJO_CABECERA"><EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_CABECERA"><MappingFragment StoreEntitySet="ORDEN_TRABAJO_CABECERA">
+            <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
+            <ScalarProperty Name="FECHA_EMISION_ORDEN" ColumnName="FECHA_EMISION_ORDEN" />
+            <ScalarProperty Name="FECHA_INICIO_ORDEN" ColumnName="FECHA_INICIO_ORDEN" />
+            <ScalarProperty Name="FECHA_FIN_ORDEN" ColumnName="FECHA_FIN_ORDEN" />
+            <ScalarProperty Name="HORAS_TRABAJO_ORDEN" ColumnName="HORAS_TRABAJO_ORDEN" />
+            <ScalarProperty Name="OBSERVACIONES_ORDEN" ColumnName="OBSERVACIONES_ORDEN" />
+            <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+            <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+            <ScalarProperty Name="ESTADO_ORDEN" ColumnName="ESTADO_ORDEN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ORDEN_TRABAJO_DETALLE"><EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_DETALLE"><MappingFragment StoreEntitySet="ORDEN_TRABAJO_DETALLE">
+            <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
+            <ScalarProperty Name="ITEM_ORDEN" ColumnName="ITEM_ORDEN" />
+            <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+            <ScalarProperty Name="FECHA_INICIO_ACTIVIDAD" ColumnName="FECHA_INICIO_ACTIVIDAD" />
+            <ScalarProperty Name="ITEM_SOLICITUD" ColumnName="ITEM_SOLICITUD" />
+            <ScalarProperty Name="FECHA_FIN_ACTIVIDAD" ColumnName="FECHA_FIN_ACTIVIDAD" />
+            <ScalarProperty Name="FECHA_PROGRAMADA" ColumnName="FECHA_PROGRAMADA" />
+            <ScalarProperty Name="RESULTADO_ATENCION" ColumnName="RESULTADO_ATENCION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PERSONA"><EntityTypeMapping TypeName="BDMantenModel.PERSONA"><MappingFragment StoreEntitySet="PERSONA">
+            <ScalarProperty Name="CODIGO_PERSONA" ColumnName="CODIGO_PERSONA" />
+            <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+            <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+            <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+            <ScalarProperty Name="DNI_PERSONA" ColumnName="DNI_PERSONA" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PLAN_MANTENIMIENTO_CABECERA"><EntityTypeMapping TypeName="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA"><MappingFragment StoreEntitySet="PLAN_MANTENIMIENTO_CABECERA">
+            <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
+            <ScalarProperty Name="NOMBRE_PLAN" ColumnName="NOMBRE_PLAN" />
+            <ScalarProperty Name="ESTADO_PLAN" ColumnName="ESTADO_PLAN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PRIORIDAD"><EntityTypeMapping TypeName="BDMantenModel.PRIORIDAD"><MappingFragment StoreEntitySet="PRIORIDAD">
+            <ScalarProperty Name="CODIGO_PRIORIDAD" ColumnName="CODIGO_PRIORIDAD" />
+            <ScalarProperty Name="DESCRIPCION_PRIORIDAD" ColumnName="DESCRIPCION_PRIORIDAD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PUESTO"><EntityTypeMapping TypeName="BDMantenModel.PUESTO"><MappingFragment StoreEntitySet="PUESTO">
+            <ScalarProperty Name="CODIGO_PUESTO" ColumnName="CODIGO_PUESTO" />
+            <ScalarProperty Name="DESCRIPCION_PUESTO" ColumnName="DESCRIPCION_PUESTO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_CABECERA"><EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_CABECERA"><MappingFragment StoreEntitySet="SOLICITUD_CABECERA">
+            <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+            <ScalarProperty Name="FECHA_SOLICITUD" ColumnName="FECHA_SOLICITUD" />
+            <ScalarProperty Name="TIPO_SOLICITUD" ColumnName="TIPO_SOLICITUD" />
+            <ScalarProperty Name="DOCUMENTO_REFERENCIA" ColumnName="DOCUMENTO_REFERENCIA" />
+            <ScalarProperty Name="FECHA_INICIO_SOLICITUD" ColumnName="FECHA_INICIO_SOLICITUD" />
+            <ScalarProperty Name="FECHA_FIN_SOLICITUD" ColumnName="FECHA_FIN_SOLICITUD" />
+            <ScalarProperty Name="ESTADO_SOLICITUD" ColumnName="ESTADO_SOLICITUD" />
+            <ScalarProperty Name="CODIGO_EQUIPO" ColumnName="CODIGO_EQUIPO" />
+            <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_ESTADO"><EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_ESTADO"><MappingFragment StoreEntitySet="SOLICITUD_ESTADO">
+            <ScalarProperty Name="CODIGO_ESTADO_SOLICITUD" ColumnName="CODIGO_ESTADO_SOLICITUD" />
+            <ScalarProperty Name="DESCRIPCION_ESTADO_SOLICITUD" ColumnName="DESCRIPCION_ESTADO_SOLICITUD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_TIPO"><EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_TIPO"><MappingFragment StoreEntitySet="SOLICITUD_TIPO">
+            <ScalarProperty Name="CODIGO_TIPO_SOLICITUD" ColumnName="CODIGO_TIPO_SOLICITUD" />
+            <ScalarProperty Name="DESCRIPCION_TIPO_SOLICITUD" ColumnName="DESCRIPCION_TIPO_SOLICITUD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="BDMantenModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UNIDAD_TIEMPO"><EntityTypeMapping TypeName="BDMantenModel.UNIDAD_TIEMPO"><MappingFragment StoreEntitySet="UNIDAD_TIEMPO">
+            <ScalarProperty Name="CODIGO_TIEMPO" ColumnName="CODIGO_TIEMPO" />
+            <ScalarProperty Name="DESCRIPCION_TIEMPO" ColumnName="DESCRIPCION_TIEMPO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PLAN_MANTENIMIENTO_DETALLE">
+            <EntityTypeMapping TypeName="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE">
+              <MappingFragment StoreEntitySet="PLAN_MANTENIMIENTO_DETALLE">
+                <ScalarProperty Name="OBSERVACIONES_PLAN" ColumnName="OBSERVACIONES_PLAN" />
+                <ScalarProperty Name="PROCEDIMIENTOS_PLAN" ColumnName="PROCEDIMIENTOS_PLAN" />
+                <ScalarProperty Name="TIEMPO_ACTIVIDAD" ColumnName="TIEMPO_ACTIVIDAD" />
+                <ScalarProperty Name="CODIGO_TIEMPO" ColumnName="CODIGO_TIEMPO" />
+                <ScalarProperty Name="PERSONAL_REQUERIDO" ColumnName="PERSONAL_REQUERIDO" />
+                <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
+                <ScalarProperty Name="PRIORIDAD_ACTIVIDAD" ColumnName="PRIORIDAD_ACTIVIDAD" />
+                <ScalarProperty Name="DESCRIPCION_ACTIVIDAD" ColumnName="DESCRIPCION_ACTIVIDAD" />
+                <ScalarProperty Name="CODIGO_TIPO_ACTIVIDAD" ColumnName="CODIGO_TIPO_ACTIVIDAD" />
+                <ScalarProperty Name="ITEM_ACTIVIDAD" ColumnName="ITEM_ACTIVIDAD" />
+                <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOLICITUD_DETALLE">
+            <EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_DETALLE">
+              <MappingFragment StoreEntitySet="SOLICITUD_DETALLE">
+                <ScalarProperty Name="ORDEN_TRABAJO" ColumnName="ORDEN_TRABAJO" />
+                <ScalarProperty Name="FECHA_PROGRAMACION" ColumnName="FECHA_PROGRAMACION" />
+                <ScalarProperty Name="TIEMPO_ACTIVIDAD" ColumnName="TIEMPO_ACTIVIDAD" />
+                <ScalarProperty Name="CODIGO_TIEMPO" ColumnName="CODIGO_TIEMPO" />
+                <ScalarProperty Name="PERSONAL_REQUERIDO" ColumnName="PERSONAL_REQUERIDO" />
+                <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
+                <ScalarProperty Name="PRIORIDAD_ACTIVIDAD" ColumnName="PRIORIDAD_ACTIVIDAD" />
+                <ScalarProperty Name="CODIGO_TIPO_ACTIVIDAD" ColumnName="CODIGO_TIPO_ACTIVIDAD" />
+                <ScalarProperty Name="DESCRIPCION_ACTIVIDAD" ColumnName="DESCRIPCION_ACTIVIDAD" />
+                <ScalarProperty Name="ITEM_SOLICITUD" ColumnName="ITEM_SOLICITUD" />
+                <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+                <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EQUIPO_COMPUTO">
+            <EntityTypeMapping TypeName="BDMantenModel.EQUIPO_COMPUTO">
+              <MappingFragment StoreEntitySet="EQUIPO_COMPUTO">
+                <ScalarProperty Name="ESTADO_EQUIPO" ColumnName="ESTADO_EQUIPO" />
+                <ScalarProperty Name="PROCEDENCIA_EQUIPO" ColumnName="PROCEDENCIA_EQUIPO" />
+                <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
+                <ScalarProperty Name="CODIGO_TIPO_EQUIPO" ColumnName="CODIGO_TIPO_EQUIPO" />
+                <ScalarProperty Name="CODIGO_AREA" ColumnName="CODIGO_AREA" />
+                <ScalarProperty Name="FECHA_ULTIMO_MANTENIMIENTO_EQUIPO" ColumnName="FECHA_ULTIMO_MANTENIMIENTO_EQUIPO" />
+                <ScalarProperty Name="FECHA_EXPIRACION_GARANTIA" ColumnName="FECHA_EXPIRACION_GARANTIA" />
+                <ScalarProperty Name="FECHA_COMPRA" ColumnName="FECHA_COMPRA" />
+                <ScalarProperty Name="CARACTERISTICAS_EQUIPO" ColumnName="CARACTERISTICAS_EQUIPO" />
+                <ScalarProperty Name="MODELO_EQUIPO" ColumnName="MODELO_EQUIPO" />
+                <ScalarProperty Name="MARCA_EQUIPO" ColumnName="MARCA_EQUIPO" />
+                <ScalarProperty Name="SERIE_EQUIPO" ColumnName="SERIE_EQUIPO" />
+                <ScalarProperty Name="NOMBRE_EQUIPO" ColumnName="NOMBRE_EQUIPO" />
+                <ScalarProperty Name="CODIGO_EQUIPO" ColumnName="CODIGO_EQUIPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CALENDARIO_LABORABLE">
+            <EntityTypeMapping TypeName="BDMantenModel.CALENDARIO_LABORABLE">
+              <MappingFragment StoreEntitySet="CALENDARIO_LABORABLE">
+                <ScalarProperty Name="HORAS_LABORABLES" ColumnName="HORAS_LABORABLES" />
+                <ScalarProperty Name="FECHA_LABORABLE" ColumnName="FECHA_LABORABLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FRECUENCIA">
+            <EntityTypeMapping TypeName="BDMantenModel.FRECUENCIA">
+              <MappingFragment StoreEntitySet="FRECUENCIA">
+                <ScalarProperty Name="DIAS_FRECUENCIA" ColumnName="DIAS_FRECUENCIA" />
+                <ScalarProperty Name="DESCRIPCION_FRECUENCIA" ColumnName="DESCRIPCION_FRECUENCIA" />
+                <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GET_ORDEN_TRABAJO" FunctionName="BDMantenModel.Store.GET_ORDEN_TRABAJO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_CONSULTA">
+                <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+                <ScalarProperty Name="NOMBRE_EQUIPO" ColumnName="NOMBRE_EQUIPO" />
+                <ScalarProperty Name="MARCA_EQUIPO" ColumnName="MARCA_EQUIPO" />
+                <ScalarProperty Name="DESC_AREA" ColumnName="DESC_AREA" />
+                <ScalarProperty Name="FECHA_INICIO_SOLICITUD" ColumnName="FECHA_INICIO_SOLICITUD" />
+                <ScalarProperty Name="FECHA_FIN_SOLICITUD" ColumnName="FECHA_FIN_SOLICITUD" />
+                <ScalarProperty Name="ESTADO_SOLICITUD" ColumnName="ESTADO_SOLICITUD" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ModelGM">
+        <EntityTypeShape EntityType="BDMantenModel.ACTIVIDAD_TIPO" Width="1.5" PointX="6" PointY="1" Height="1.9802864583333333" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.AREA" Width="1.5" PointX="0.75" PointY="4.875" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.EMPLEADO" Width="1.5" PointX="3" PointY="4" Height="4.0956022135416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.EMPLEADO_ACTIVIDAD" Width="1.5" PointX="8.25" PointY="5" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.EQUIPO_TIPO" Width="1.5" PointX="3.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.INFORME_CABECERA" Width="1.5" PointX="5.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.INFORME_DETALLE" Width="1.5" PointX="7.75" PointY="10.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.ORDEN_TRABAJO_CABECERA" Width="1.5" PointX="9.75" PointY="10.75" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.ORDEN_TRABAJO_DETALLE" Width="1.5" PointX="0.75" PointY="11.75" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.PERSONA" Width="1.5" PointX="0.75" PointY="1.75" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA" Width="1.5" PointX="3.75" PointY="9.125" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.PRIORIDAD" Width="1.5" PointX="11.75" PointY="8.75" Height="1.4033821614583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.PUESTO" Width="1.5" PointX="0.75" PointY="8.625" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.SOLICITUD_CABECERA" Width="1.5" PointX="11.25" PointY="4.125" Height="3.7109993489583388" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.SOLICITUD_ESTADO" Width="1.5" PointX="9" PointY="2" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.SOLICITUD_TIPO" Width="1.5" PointX="9" PointY="8.375" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="11.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMantenModel.UNIDAD_TIEMPO" Width="1.5" PointX="11.25" PointY="1.125" Height="1.4033821614583331" IsExpanded="true" />
+        <AssociationConnector Association="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_ACTIVIDAD_TIPO" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="1.7401655156250002" />
+          <ConnectorPoint PointX="8.59375" PointY="1.7401655156250002" />
+          <ConnectorPoint PointX="8.59375" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EMPLEADO_AREA" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.0574446614583328" />
+          <ConnectorPoint PointX="3" PointY="6.0574446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EMPLEADO_ACTIVIDAD_EMPLEADO" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.953127" PointY="8.0956022135416674" />
+          <ConnectorPoint PointX="3.953127" PointY="8.480205078124996" />
+          <ConnectorPoint PointX="4.994791666666667" PointY="8.480205078124996" />
+          <ConnectorPoint PointX="5.161458333333333" PointY="8.480205078124996" />
+          <ConnectorPoint PointX="7.875" PointY="8.480205078124996" />
+          <ConnectorPoint PointX="7.875" PointY="5.9901432291666667" />
+          <ConnectorPoint PointX="8.25" PointY="5.9901432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EMPLEADO_EMPLEADO" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.5319230769230767" PointY="4" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="3.75" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="3.75" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="4" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EMPLEADO_PERSONA" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.079091796875" />
+          <ConnectorPoint PointX="3.2347090384615385" PointY="3.079091796875" />
+          <ConnectorPoint PointX="3.2347090384615385" PointY="4" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EMPLEADO_PUESTO" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.84375" />
+          <ConnectorPoint PointX="3.34375" PointY="8.84375" />
+          <ConnectorPoint PointX="3.34375" PointY="8.0956022135416674" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_CABECERA_PLAN_MANTENIMIENTO_CABECERA" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="10.211293945312502" />
+          <ConnectorPoint PointX="5.5" PointY="10.211293945312502" />
+          <ConnectorPoint PointX="5.5" PointY="9.5" />
+          <ConnectorPoint PointX="8.4166666666666661" PointY="9.5" />
+          <ConnectorPoint PointX="8.5833333333333339" PointY="9.5" />
+          <ConnectorPoint PointX="8.75" PointY="9.5" />
+          <ConnectorPoint PointX="8.75" PointY="8.125" />
+          <ConnectorPoint PointX="11.385416666666666" PointY="8.125" />
+          <ConnectorPoint PointX="11.552083333333334" PointY="8.125" />
+          <ConnectorPoint PointX="12" PointY="8.125" />
+          <ConnectorPoint PointX="12" PointY="7.8359993489583388" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_ESTADO" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.0703125" PointY="3.5956835937500031" />
+          <ConnectorPoint PointX="10.0703125" PointY="4.53125" />
+          <ConnectorPoint PointX="11.25" PointY="4.53125" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_CABECERA_SOLICITUD_TIPO" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.5" PointY="8.53125" />
+          <ConnectorPoint PointX="11.46875" PointY="8.53125" />
+          <ConnectorPoint PointX="11.46875" PointY="7.8359993489583388" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE" Width="1.5" PointX="19.5" PointY="4" Height="4.2879036458333388" />
+        <EntityTypeShape EntityType="BDMantenModel.SOLICITUD_DETALLE" Width="1.5" PointX="16.5" PointY="3.625" Height="4.2879036458333388" />
+        <AssociationConnector Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_ACTIVIDAD_TIPO" >
+          <ConnectorPoint PointX="7.5" PointY="2.54283503125" />
+          <ConnectorPoint PointX="8.5104166666666661" PointY="2.5428350312499997" />
+          <ConnectorPoint PointX="8.6770833333333339" PointY="2.54283503125" />
+          <ConnectorPoint PointX="8.75" PointY="2.54283503125" />
+          <ConnectorPoint PointX="8.75" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="9.9869791666666661" PointY="3.8613085937500027" />
+          <ConnectorPoint PointX="10.153645833333334" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="12.947916666666666" PointY="3.8613085937500027" />
+          <ConnectorPoint PointX="13.114583333333334" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="13.291666666666666" PointY="3.8613085937500027" />
+          <ConnectorPoint PointX="13.458333333333334" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="3.8613085937500027" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="14.447919166666667" PointY="3.8613085937500027" />
+          <ConnectorPoint PointX="14.614585833333335" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="16.25" PointY="3.8613085937500031" />
+          <ConnectorPoint PointX="16.25" PointY="3.3749999999999991" />
+          <ConnectorPoint PointX="19.883461760416669" PointY="3.3749999999999987" />
+          <ConnectorPoint PointX="20.050128427083333" PointY="3.3749999999999991" />
+          <ConnectorPoint PointX="20.4960941875" PointY="3.3749999999999991" />
+          <ConnectorPoint PointX="20.4960941875" PointY="4" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_DETALLE_ACTIVIDAD_TIPO" >
+          <ConnectorPoint PointX="7.5" PointY="1.7401655156250002" />
+          <ConnectorPoint PointX="8.875" PointY="1.7401655156250002" />
+          <ConnectorPoint PointX="8.875" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="9.9869791666666661" PointY="3.8769335937500027" />
+          <ConnectorPoint PointX="10.153645833333334" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="12.947916666666666" PointY="3.8769335937500027" />
+          <ConnectorPoint PointX="13.114583333333334" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="13.291666666666666" PointY="3.8769335937500027" />
+          <ConnectorPoint PointX="13.458333333333334" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="3.8769335937500027" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="14.447919166666667" PointY="3.8769335937500027" />
+          <ConnectorPoint PointX="14.614585833333335" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="16.1875" PointY="3.8769335937500031" />
+          <ConnectorPoint PointX="16.1875" PointY="3.3593749999999991" />
+          <ConnectorPoint PointX="17.4960941875" PointY="3.3593749999999991" />
+          <ConnectorPoint PointX="17.4960941875" PointY="3.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PLAN_MANTENIMIENTO_CABECERA" >
+          <ConnectorPoint PointX="5.25" PointY="10.785692917968753" />
+          <ConnectorPoint PointX="5.5" PointY="10.785692917968753" />
+          <ConnectorPoint PointX="5.5" PointY="9.625" />
+          <ConnectorPoint PointX="8.5" PointY="9.625" />
+          <ConnectorPoint PointX="8.5" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="11.385416666666666" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="11.552083333333334" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="12.947916666666666" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="13.114583333333334" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="19.25" PointY="8.2254036458333317" />
+          <ConnectorPoint PointX="19.25" PointY="8.5379036458333335" />
+          <ConnectorPoint PointX="19.879676110026043" PointY="8.5379036458333335" />
+          <ConnectorPoint PointX="20.046342776692708" PointY="8.5379036458333335" />
+          <ConnectorPoint PointX="20.488523886718749" PointY="8.5379036458333335" />
+          <ConnectorPoint PointX="20.488523886718749" PointY="8.2879036458333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_PRIORIDAD" >
+          <ConnectorPoint PointX="13.25" PointY="9.6439925130208337" />
+          <ConnectorPoint PointX="19.963009443359375" PointY="9.6439925130208337" />
+          <ConnectorPoint PointX="19.963009443359375" PointY="8.2879036458333335" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_UNIDAD_TIEMPO" >
+          <ConnectorPoint PointX="12.75" PointY="2.8864455645032043" />
+          <ConnectorPoint PointX="13.15153946153846" PointY="3.2879850260416656" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="3.2879850260416652" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="3.2879850260416656" />
+          <ConnectorPoint PointX="14.447919166666667" PointY="3.2879850260416652" />
+          <ConnectorPoint PointX="14.614585833333335" PointY="3.2879850260416656" />
+          <ConnectorPoint PointX="19.96679509375" PointY="3.2879850260416656" />
+          <ConnectorPoint PointX="19.96679509375" PointY="4" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_DETALLE_PRIORIDAD" >
+          <ConnectorPoint PointX="13.03125" PointY="8.75" />
+          <ConnectorPoint PointX="13.03125" PointY="3.7431542968750011" />
+          <ConnectorPoint PointX="13.291666666666666" PointY="3.7431542968750007" />
+          <ConnectorPoint PointX="13.458333333333334" PointY="3.7431542968750011" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="3.7431542968750007" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="3.7431542968750011" />
+          <ConnectorPoint PointX="14.447919166666667" PointY="3.7431542968750007" />
+          <ConnectorPoint PointX="14.614585833333335" PointY="3.7431542968750011" />
+          <ConnectorPoint PointX="16.104166666666668" PointY="3.7431542968750002" />
+          <ConnectorPoint PointX="16.333333333333332" PointY="3.7431542968750011" />
+          <ConnectorPoint PointX="16.5" PointY="3.7431542968750011" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_DETALLE_SOLICITUD_CABECERA" >
+          <ConnectorPoint PointX="12.75" PointY="5.9804996744791694" />
+          <ConnectorPoint PointX="12.947916666666666" PointY="5.9804996744791685" />
+          <ConnectorPoint PointX="13.114583333333334" PointY="5.9804996744791694" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="5.9804996744791685" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="5.9804996744791694" />
+          <ConnectorPoint PointX="14.447919166666667" PointY="5.9804996744791685" />
+          <ConnectorPoint PointX="14.614585833333335" PointY="5.9804996744791694" />
+          <ConnectorPoint PointX="16.5" PointY="5.9804996744791694" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_DETALLE_UNIDAD_TIEMPO" >
+          <ConnectorPoint PointX="12.725769230769231" PointY="2.9129850260416661" />
+          <ConnectorPoint PointX="13.375" PointY="3.5622157952724347" />
+          <ConnectorPoint PointX="13.375" PointY="4.8974641341145926" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="4.8974641341145917" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="4.8974641341145926" />
+          <ConnectorPoint PointX="14.447919166666667" PointY="4.8974641341145917" />
+          <ConnectorPoint PointX="14.614585833333335" PointY="4.8974641341145926" />
+          <ConnectorPoint PointX="16.5" PointY="4.8974641341145926" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BDMantenModel.EQUIPO_COMPUTO" Width="1.5" PointX="6" PointY="3.75" Height="4.480205078124996" />
+        <AssociationConnector Association="BDMantenModel.FK_EQUIPO_COMPUTO_AREA" >
+          <ConnectorPoint PointX="1.5" PointY="7.2398893229166656" />
+          <ConnectorPoint PointX="1.5" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="3.2604166666666665" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="3.4270833333333335" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="3.8697936666666664" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="4.0364603333333333" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="4.994791666666667" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="5.161458333333333" PointY="8.1941536458333317" />
+          <ConnectorPoint PointX="6" PointY="8.1941536458333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EQUIPO_COMPUTO_EQUIPO_TIPO" >
+          <ConnectorPoint PointX="4.90625" PointY="2.34568359375" />
+          <ConnectorPoint PointX="4.90625" PointY="3.8437500000000004" />
+          <ConnectorPoint PointX="6" PointY="3.8437500000000004" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_EQUIPO_COMPUTO_PLAN_MANTENIMIENTO_CABECERA" >
+          <ConnectorPoint PointX="5.078125" PointY="9.125" />
+          <ConnectorPoint PointX="5.078125" PointY="3.8750024999999941" />
+          <ConnectorPoint PointX="6" PointY="3.8750024999999941" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_CABECERA_EQUIPO_COMPUTO" >
+          <ConnectorPoint PointX="7.5" PointY="7.4393929036458326" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="7.4393929036458317" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="7.4393929036458326" />
+          <ConnectorPoint PointX="11.25" PointY="7.4393929036458326" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BDMantenModel.CALENDARIO_LABORABLE" Width="1.5" PointX="3.375" PointY="12.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="BDMantenModel.FRECUENCIA" Width="1.5" PointX="13.375" PointY="0.875" Height="1.9802864583333388" />
+        <AssociationConnector Association="BDMantenModel.FK_PLAN_MANTENIMIENTO_DETALLE_FRECUENCIA" >
+          <ConnectorPoint PointX="14.125" PointY="2.8552864583333388" />
+          <ConnectorPoint PointX="14.125" PointY="8.1004036458333317" />
+          <ConnectorPoint PointX="19.5" PointY="8.1004036458333317" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_SOLICITUD_DETALLE_FRECUENCIA" >
+          <ConnectorPoint PointX="14.5312525" PointY="2.8552864583333388" />
+          <ConnectorPoint PointX="14.5312525" PointY="6.9779541601562443" />
+          <ConnectorPoint PointX="16.5" PointY="6.9779541601562443" />
+        </AssociationConnector>
+        <AssociationConnector Association="BDMantenModel.FK_ORDEN_TRABAJO_DETALLE_ORDEN_TRABAJO_CABECERA" >
+          <ConnectorPoint PointX="10.5" PointY="13.691793619791666" />
+          <ConnectorPoint PointX="10.5" PointY="14.357687174479162" />
+          <ConnectorPoint PointX="2.25" PointY="14.357687174479162" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

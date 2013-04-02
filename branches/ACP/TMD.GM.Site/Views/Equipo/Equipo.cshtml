@@ -1,0 +1,95 @@
+﻿@model TMD.GM.Site.Models.EquipoModel
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Código equipo</span><br />
+<input id="txtCodigoEquipo" type="text" class="k-textbox" value="@Model.entity.CODIGO_EQUIPO" style = "width: 100px;" readonly="readonly"  />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Nombre equipo</span><br />
+<input id="txtNombreEquipo" type="text" class="k-textbox" value="@Model.entity.NOMBRE_EQUIPO" style = "width: 200px;"  />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>N° Serie</span><br />
+<input id="txtSerieEquipo" type="text" class="k-textbox" value="@Model.entity.SERIE_EQUIPO" style = "width: 150px;"  />
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Marca</span><br />
+<input id="txtMarcaEquipo" type="text" class="k-textbox" value="@Model.entity.MARCA_EQUIPO" style = "width: 150px;"  />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Modelo</span><br />
+<input id="txtModeloEquipo" type="text" class="k-textbox" value="@Model.entity.MODELO_EQUIPO" style = "width: 150px;"  />
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Características</span><br />
+<textarea id="txtCaracteristicaEquipo" rows="5" cols="30" class="k-textbox" style="width:420px;height:40px">@Model.entity.CARACTERISTICAS_EQUIPO</textarea>
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Fecha de compra</span><br />
+<input id="txtFechaCompra" value="@Model.entity.FECHA_COMPRA" style="width:150px;" />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Expira garantía</span><br />
+<input id="txtFechaExpira" value="@Model.entity.FECHA_EXPIRACION_GARANTIA" style="width:150px;" />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Último mantenimiento</span><br />
+<input id="txtFechaUltiMant" value="@Model.entity.FECHA_ULTIMO_MANTENIMIENTO_EQUIPO" style="width:150px;" disabled="disabled"/>
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Area</span><br />
+@Html.DropDownList("ddlArea",Model.listaAR, new { @class = "ddlForm" })
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Tipo de equipo</span><br />
+@Html.DropDownList("ddlTipoEquipo",Model.listaTE, new { @class = "ddlForm" })
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Plan mantenimiento</span><br />
+@Html.DropDownList("ddlPlanMant", Model.listaPM, new { @class = "ddlForm", @style = "width:300px;" })
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Procedencia</span><br />
+<input id="txtProcedEquipo" type="text" class="k-textbox" value="@Model.entity.PROCEDENCIA_EQUIPO" style = "width: 100px;"  />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Activo</span><br />
+@Html.CheckBox("checkEstado", Model.entity.ESTADO_EQUIPO, new { @class = "txtForm" })
+</fieldset>
+</fieldset>
+
+<fieldset>
+@{if (Model.nuevo)
+  {
+    <button id="btnRegistrar" class="k-button" onclick="EquiposRegistrar('@Url.Action("Registrar", "Equipo")','@Url.Action("EquiposTodos", "Equipo")');"><span class="k-icon k-i-tick"></span> Grabar</button>
+  }
+  else
+  {
+    <button id="btnRegistrar" class="k-button" onclick="EquiposRegistrar('@Url.Action("Actualizar", "Equipo")','@Url.Action("EquiposTodos", "Equipo")');" ><span class="k-icon k-i-tick"></span> Grabar</button>
+    }
+}
+<button id="btnRetornar" class="k-button" onclick="CerrarModalEquipos()"><span class="k-icon k-i-close"></span> Retornar</button>
+
+</fieldset>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#txtFechaCompra").kendoDatePicker({ format: "dd/MM/yyyy" });
+        $("#txtFechaExpira").kendoDatePicker({ format: "dd/MM/yyyy" });
+        $("#txtFechaUltiMant").kendoDatePicker({ format: "dd/MM/yyyy" });
+    });
+</script>
