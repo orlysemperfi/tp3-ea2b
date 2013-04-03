@@ -17,5 +17,11 @@ namespace TMD.ACP.AccesoDatos.Contrato
         int GrabarProgramaAnualAuditoria(ProgramaAnualAuditoria eProgramaAnual);
         void GrabarAuditoria(Auditoria eAuditoria);
         bool ValidarAuditoria(int idEntidadAuditada);
+        void AprobarAuditoria(Auditoria eAuditoria);
+        void AprobarProgramaAnualAuditoria(ProgramaAnualAuditoria eProgramaAnual);
+        void RechazarProgramaAnualAuditoria(ProgramaAnualAuditoria eProgramaAnual);
+        void RechazarAuditoria(Auditoria eAuditoria);
+        void GrabarInformeFinalAuditoria(Auditoria eAuditoria);
+        Auditoria ObtenerInformeFinalPorAuditoria(int idAuditoria);
     }
 }

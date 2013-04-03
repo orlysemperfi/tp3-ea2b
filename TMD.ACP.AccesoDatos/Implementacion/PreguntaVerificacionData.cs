@@ -54,5 +54,47 @@ namespace TMD.ACP.AccesoDatos.Implementacion
                 DB.ExecuteNonQuery(command);
             }
         }
+
+        public void GrabarPreguntaVerificacion(PreguntaVerificacion ePreguntaVerificacion)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT INTO AC_PREGUNTA_VERIFICACION (idAuditoria,idPreguntaVerificacion,descripcionPregunta,idNorma,idCapitulo) ");            
+            sb.Append(string.Format("VALUES ({0},{1},'{2}',{3},{4}) ", ePreguntaVerificacion.ObjAuditoria.IdAuditoria, ePreguntaVerificacion.idPreguntaVerificacion, ePreguntaVerificacion.DescripcionPregunta, ePreguntaVerificacion.IdNorma,ePreguntaVerificacion.IdCapitulo));            
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {
+                DB.ExecuteNonQuery(command);
+            }
+        }
+
+
+
+
+        public List<PreguntaVerificacion> ObtenerListaPreguntaVerificacionPorAuditoria(int idAuditoria)
+        {
+            List<PreguntaVerificacion> lista = new List<PreguntaVerificacion>();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("SELECT ");
+            sb.Append("idAuditoria,idPreguntaVerificacion,descripcionPregunta,idNorma,idCapitulo,respuesta,sustento,porcentaje ");
+            sb.Append("FROM AC_PREGUNTA_VERIFICACION ");
+            sb.Append(string.Format("WHERE idAuditoria = {0} ", idAuditoria));          
+
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(PreguntaVerificacionDataMap.SelectPreguntaVerificacionPorAuditoria(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        
+
     }
 }

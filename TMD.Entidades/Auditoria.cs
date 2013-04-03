@@ -24,6 +24,10 @@ namespace TMD.Entidades
         public int idPrograma { get; set; }
         public string nombreArchivoL { get; set; }
         public string nombreArchivoF { get; set; }
+        public int duracion { get; set; }
+        public string resultado { get; set; }
+        public string conclusion { get; set; }
+        public string recomendacion { get; set; }
     }
 
 }

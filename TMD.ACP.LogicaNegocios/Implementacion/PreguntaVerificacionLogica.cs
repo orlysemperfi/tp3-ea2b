@@ -29,5 +29,24 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
         {
             _objData.Modificar(item);
         }
+
+        public void GrabarPreguntaVerificacion(int idAuditoria,List<DetallePreguntaBase> oListaPreguntaBase)
+        {
+            foreach (DetallePreguntaBase ePreguntaBase in oListaPreguntaBase)
+            {
+                PreguntaVerificacion ePreguntaVerificacion = new PreguntaVerificacion();
+                ePreguntaVerificacion.ObjAuditoria.IdAuditoria = idAuditoria;
+                ePreguntaVerificacion.idPreguntaVerificacion = ePreguntaBase.IdPreguntaBase;
+                ePreguntaVerificacion.DescripcionPregunta = ePreguntaBase.DescripcionPregunta;
+                ePreguntaVerificacion.IdNorma = ePreguntaBase.IdNorma;
+                ePreguntaVerificacion.IdCapitulo = ePreguntaBase.IdCapitulo;
+                _objData.GrabarPreguntaVerificacion(ePreguntaVerificacion);
+            }
+        }
+
+        public List<PreguntaVerificacion> ObtenerListaPreguntaVerificacionPorAuditoria(int idAuditoria)
+        {
+            return _objData.ObtenerListaPreguntaVerificacionPorAuditoria(idAuditoria);
+        }        
     }
 }

@@ -104,5 +104,31 @@ namespace TMD.ACP.AccesoDatos.Map
             objAuditoria.ObjEntidadAuditada.Responsable = reader.GetString("NOMBREEMPLEADO");
             return objAuditoria;
         }
+
+        public static Auditoria SelectInformeFinalAuditoria(IDataReader reader)
+        {
+            Auditoria objAuditoria = new Auditoria();
+
+            objAuditoria.IdAuditoria = reader.GetInt("CODIGO_AUDITORIA");
+            objAuditoria.ObjEntidadAuditada.IdEntidadAuditada = reader.GetInt("idEntidadAuditada");
+            objAuditoria.ObjEntidadAuditada.NombreEntidadAuditada = reader.GetString("nombreEntidad");
+
+            objAuditoria.ObjEntidadAuditada.ObjArea.codigo = reader.GetInt("CODIGO_AREA");
+            objAuditoria.ObjEntidadAuditada.ObjArea.descripcion = reader.GetString("nombreArea");
+
+            objAuditoria.FechaInicio = reader.GetDateTime("FECHA_INICIO");
+            objAuditoria.FechaFin = reader.GetDateTime("FECHA_FIN");
+            objAuditoria.Objetivo = reader.GetString("objetivo");
+            objAuditoria.Alcance = reader.GetString("alcance");
+            objAuditoria.ObjEntidadAuditada.Responsable = reader.GetString("responsableProyecto");
+            objAuditoria.nombreArchivoL = reader.GetString("NOMBRE_ARCHIVO_L");
+            objAuditoria.nombreArchivoF = reader.GetString("NOMBRE_ARCHIVO_F");
+            objAuditoria.resultado = reader.GetString("RESULTADO");            
+            objAuditoria.conclusion = reader.GetString("CONCLUSION");
+            objAuditoria.recomendacion = reader.GetString("RECOMENDACION");
+            objAuditoria.Estado = reader.GetString("ESTADO");
+                        
+            return objAuditoria;
+        }
     }
 }

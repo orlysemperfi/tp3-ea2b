@@ -169,10 +169,14 @@
     <Content Include="Vistas\ACP\ActualizarPlanAccion.aspx" />
     <Content Include="Vistas\ACP\ActualizarPlanAuditoria.aspx" />
     <Content Include="Vistas\ACP\ActualizarSeguimientoHallazgo.aspx" />
+    <Content Include="Vistas\ACP\AprobarProgramaAuditoria.aspx" />
     <Content Include="Vistas\ACP\AsignarSeguimiento.aspx" />
     <Content Include="Vistas\ACP\ConsultaAuditoria.aspx" />
     <Content Include="Vistas\ACP\ConsultarAuditor.aspx" />
     <Content Include="Vistas\ACP\ConsultarEntidadAuditada.aspx" />
+    <Content Include="Vistas\ACP\ActListaVerificacion.aspx" />
+    <Content Include="Vistas\ACP\ActResultadoFinalAuditoria.aspx" />
+    <Content Include="Vistas\ACP\ResultadoFinalAuditoria.aspx" />
     <Content Include="Vistas\ACP\css\jquery-ui.css" />
     <Content Include="Vistas\ACP\css\jquery.ui.base.css" />
     <Content Include="Vistas\ACP\css\layout-default-latest.css" />
@@ -212,6 +216,7 @@
     <Content Include="Vistas\ACP\ListaPlanAccion.aspx" />
     <Content Include="Vistas\ACP\ListaPlanAuditoria.aspx" />
     <Content Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx" />
+    <Content Include="Vistas\ACP\ListaVerificacion.aspx" />
     <Content Include="Vistas\ACP\MantenerHallazgo.aspx" />
     <Content Include="Vistas\ACP\Principal.aspx" />
     <Content Include="Vistas\ACP\ProgramaAuditoria.aspx" />
@@ -450,6 +455,13 @@
     <Compile Include="Vistas\ACP\ActualizarSeguimientoHallazgo.aspx.designer.cs">
       <DependentUpon>ActualizarSeguimientoHallazgo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ACP\AprobarProgramaAuditoria.aspx.cs">
+      <DependentUpon>AprobarProgramaAuditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\AprobarProgramaAuditoria.aspx.designer.cs">
+      <DependentUpon>AprobarProgramaAuditoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ACP\AsignarSeguimiento.aspx.cs">
       <DependentUpon>AsignarSeguimiento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -485,6 +497,27 @@
     <Compile Include="Vistas\ACP\ConsultarEntidadAuditada.aspx.designer.cs">
       <DependentUpon>ConsultarEntidadAuditada.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ACP\ActListaVerificacion.aspx.cs">
+      <DependentUpon>ActListaVerificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActListaVerificacion.aspx.designer.cs">
+      <DependentUpon>ActListaVerificacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActResultadoFinalAuditoria.aspx.cs">
+      <DependentUpon>ActResultadoFinalAuditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ActResultadoFinalAuditoria.aspx.designer.cs">
+      <DependentUpon>ActResultadoFinalAuditoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ResultadoFinalAuditoria.aspx.cs">
+      <DependentUpon>ResultadoFinalAuditoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ResultadoFinalAuditoria.aspx.designer.cs">
+      <DependentUpon>ResultadoFinalAuditoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ACP\IProgramaAnualVista.cs" />
     <Compile Include="Vistas\ACP\ListaActSeguimientoHallazgo.aspx.cs">
       <DependentUpon>ListaActSeguimientoHallazgo.aspx</DependentUpon>
@@ -513,6 +546,13 @@
     </Compile>
     <Compile Include="Vistas\ACP\ListaSeguimientoHallazgo.aspx.designer.cs">
       <DependentUpon>ListaSeguimientoHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaVerificacion.aspx.cs">
+      <DependentUpon>ListaVerificacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\ACP\ListaVerificacion.aspx.designer.cs">
+      <DependentUpon>ListaVerificacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ACP\MantenerHallazgo.aspx.cs">
       <DependentUpon>MantenerHallazgo.aspx</DependentUpon>
