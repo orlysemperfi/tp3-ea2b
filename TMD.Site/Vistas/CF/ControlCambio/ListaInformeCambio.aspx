@@ -59,7 +59,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-    <center></cner><div id="mensajeError" style="display:none;text-align:center;color:Red"></center>
+    <div id="mensajeError" style="display:none">
     </div>    
     </div>
             <asp:UpdatePanel runat="server" ID="upnlLista">

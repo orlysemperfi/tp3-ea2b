@@ -22,7 +22,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT S.CODIGO, P.CODIGO_PROPUESTA, S.DESCRIPCION DESC_SOLUCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
+            strSQL.Append("SELECT S.CODIGO, P.CODIGO_PROPUESTA, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
             strSQL.Append("FROM SOLUCION_MEJORA S ");
             strSQL.Append("INNER JOIN PROPUESTAMEJORA P ON S.CODIGO_PROPUESTA = P.CODIGO_PROPUESTA ");
             strSQL.Append("INNER JOIN ESTADO E ON S.CODIGO_ESTADO = E.CODIGO ");
@@ -63,7 +63,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 {
                     oSolucionMejora = new SolucionMejoraEntidad();
                     oSolucionMejora.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
-                    oSolucionMejora.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESC_SOLUCION"]);
+                    oSolucionMejora.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oSolucionMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
                     oSolucionMejora.propuesta = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oSolucionMejora.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);

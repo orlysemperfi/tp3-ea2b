@@ -90,31 +90,13 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Solucion">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblSolucion" runat="server" Text='<%#Eval("CODIGO_SOLUCION","{0:000}") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="100px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Descripcion">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblDescripcion" runat="server" Text='<%#Eval("DESCRIPCION") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="100px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Inicio">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblInicio" runat="server" Text='<%#Eval("FECHA_INICIO") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="100px" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Fin">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblFin" runat="server" Text='<%#Eval("FECHA_FIN") %>' />
+                                    <asp:Label ID="lblDescripcion" runat="server" Text='<%#Eval("CODIGO_SOLUCION","{0:000}") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="100px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "GENERADO" ? "Editar" : "Ver" %>' CommandName="EditarPiloto" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "REGISTRADA" ? "Editar" : "Ver" %>' CommandName="EditarPropuesta" CommandArgument='<%#Eval("CODIGO") %>'></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

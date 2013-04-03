@@ -14,6 +14,7 @@ namespace TMD.Site.Controladora.ACP
         private static readonly ICapituloLogica _capituloLogica = new CapituloLogica();
         private static readonly INormaLogica _normaLogica = new NormaLogica();
         private static readonly IPreguntaVerificacionLogica _preguntaVerificacionLogica = new PreguntaVerificacionLogica();
+        private static readonly IPreguntaBaseLogica _preguntaBaseLogica = new PreguntaBaseLogica();
 
         public static List<Capitulo> ObtenerCapitulo(int idNorma, int? idCapitulo)
         {
@@ -34,5 +35,21 @@ namespace TMD.Site.Controladora.ACP
         {
             _preguntaVerificacionLogica.Modificar(oPreguntaVerificacion);
         }
+
+        public static List<DetallePreguntaBase> ListarDetallePreguntasBase()
+        {
+           return _preguntaBaseLogica.ListarDetallePreguntasBase();
+        }
+
+        public static void GrabarPreguntaVerificacion(int idAuditoria, List<DetallePreguntaBase> oListaPreguntaBase)
+        {
+            _preguntaVerificacionLogica.GrabarPreguntaVerificacion(idAuditoria,oListaPreguntaBase);
+        }
+
+        public static List<PreguntaVerificacion> ObtenerListaPreguntaVerificacionPorAuditoria(int idAuditoria)
+        {
+            return _preguntaVerificacionLogica.ObtenerListaPreguntaVerificacionPorAuditoria(idAuditoria);
+        }
+
     }
 }

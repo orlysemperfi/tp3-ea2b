@@ -13,10 +13,14 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
     public class AuditoriaLogica : IAuditoriaLogica
     {
         private readonly IAuditoriaData _objData;
+        private readonly IPreguntaVerificacionData _objPreguntaVerificacionData;
+        private readonly IHallazgoData _objHallazgoData;
 
         public AuditoriaLogica()
         {
             _objData = new AuditoriaData("TMD");
+            _objPreguntaVerificacionData = new PreguntaVerificacionData("TMD");
+            _objHallazgoData = new HallazgoData("TMD");
         }
 
         public List<Auditoria> Obtener(Auditoria filtro)
@@ -71,5 +75,46 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
         {
             return _objData.ValidarAuditoria(idEntidadAuditada);
         }
+
+        public string GrabarInformeFinalAuditoria(Auditoria eAuditoria)
+        {
+            bool blnExisteRespuesta=true;
+            string msjError = "";
+            List<PreguntaVerificacion> listPreguntaVerificacion = _objPreguntaVerificacionData.ObtenerListaPreguntaVerificacionPorAuditoria(eAuditoria.IdAuditoria.Value);
+            foreach(PreguntaVerificacion ePreguntaVerificacion in listPreguntaVerificacion)
+            {                
+                if (ePreguntaVerificacion.Respuesta.HasValue){
+                    if (ePreguntaVerificacion.Respuesta.Value == false){
+                        List<Hallazgo> lstHallazgos = _objHallazgoData.ObtenerHallazgosPorPreguntaVerificacion(eAuditoria.IdAuditoria.Value, ePreguntaVerificacion.idPreguntaVerificacion);
+                        if (lstHallazgos.Count == 0){
+                            blnExisteRespuesta = false;
+                            msjError = "No existen hallazgos para las preguntas de verificación que no cumplen.";
+                            break;
+                        }                    
+                    }
+                }else{
+                    blnExisteRespuesta = false;
+                    msjError = "Existen preguntas de verificación que no han sido respondidas.";
+                    break;
+                }
+            }
+
+            if (blnExisteRespuesta)
+            {
+                eAuditoria.Estado = EstadoAuditoria.Realizado;
+                _objData.GrabarInformeFinalAuditoria(eAuditoria);
+            }
+
+            return msjError;            
+        }
+
+
+        public Auditoria ObtenerInformeFinalPorAuditoria(int idAuditoria)
+        {
+            return _objData.ObtenerInformeFinalPorAuditoria(idAuditoria);
+        }
+
+
+       
     }
 }
