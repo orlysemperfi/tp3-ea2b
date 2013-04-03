@@ -55,6 +55,7 @@
     <Compile Include="Contrato\IEntidadAuditadaData.cs" />
     <Compile Include="Contrato\IHallazgoData.cs" />
     <Compile Include="Contrato\INormaData.cs" />
+    <Compile Include="Contrato\IPreguntaBaseData.cs" />
     <Compile Include="Contrato\IPreguntaVerificacionData.cs" />
     <Compile Include="Core\DataBase.cs" />
     <Compile Include="Implementacion\ActividadData.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Implementacion\EntidadAuditadaData.cs" />
     <Compile Include="Implementacion\HallazgoData.cs" />
     <Compile Include="Implementacion\NormaData.cs" />
+    <Compile Include="Implementacion\PreguntaBaseData.cs" />
     <Compile Include="Implementacion\PreguntaVerificacionData.cs" />
     <Compile Include="Implementacion\ReporteData.cs" />
     <Compile Include="Map\ActividadDataMap.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Map\EntidadAuditadaDataMap.cs" />
     <Compile Include="Map\HallazgoDataMap.cs" />
     <Compile Include="Map\NormaDataMap.cs" />
+    <Compile Include="Map\PreguntaBaseDataMap.cs" />
     <Compile Include="Map\PreguntaVerificacionDataMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

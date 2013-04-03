@@ -271,5 +271,35 @@ namespace TMD.ACP.AccesoDatos.Implementacion
             }
             return count > 0 ? true : false;
         }
+
+        public List<Hallazgo> ObtenerHallazgosPorPreguntaVerificacion(int idAuditoria, int idPreguntaVerificacion)
+        {
+            List<Hallazgo> lista = new List<Hallazgo>();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("SELECT ");
+            sb.Append("H.idHallazgo,H.idAuditoria,H.idPreguntaVerificacion,P.descripcionPregunta, H.tipoHallazgo,H.descripcion, ");
+            sb.Append("H.fechaCompromiso,H.fechaSeguimiento,H.comentarioSeguimiento,H.idAuditorSeguimiento, ");
+            sb.Append("(E.NOMBRES + E.APEPAT + E.APEMAT) AS responsableSeguimiento,H.estado ");
+            sb.Append("FROM AC_HALLAZGO H ");
+            sb.Append("INNER JOIN AC_PREGUNTA_VERIFICACION P ON H.idAuditoria = P.idAuditoria AND H.idPreguntaVerificacion = P.idPreguntaVerificacion ");
+            sb.Append("LEFT JOIN EMPLEADO E ON H.idAuditorSeguimiento = E.CODIGO_EMPLEADO ");
+            sb.Append(string.Format("WHERE (H.idAuditoria = {0}) ", idAuditoria));
+            sb.Append(string.Format("AND (H.idPreguntaVerificacion = {0} OR {0} = 0) ", idPreguntaVerificacion));
+
+            using (DbCommand command = DB.GetSqlStringCommand(sb.ToString()))
+            {
+                using (IDataReader reader = DB.ExecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(HallazgoDataMap.ObtenerHallazgosSeguimiento(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
     }
 }

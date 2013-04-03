@@ -7,19 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TMD.ACP.Site.Vistas.ACP {
+namespace TMD.ACP.Site {
     
     
-    public partial class ActualizarSeguimientoHallazgo {
+    public partial class ActListaVerificacion {
         
         /// <summary>
-        /// __IdHallazgo control.
+        /// __IdAuditoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField @__IdHallazgo;
+        protected global::System.Web.UI.WebControls.HiddenField @__IdAuditoria;
+        
+        /// <summary>
+        /// __IsView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField @__IsView;
         
         /// <summary>
         /// lblDescrip control.
@@ -58,57 +67,12 @@ namespace TMD.ACP.Site.Vistas.ACP {
         protected global::System.Web.UI.WebControls.Label lblAuditoria;
         
         /// <summary>
-        /// lblDescripcion control.
+        /// rptPreguntas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescripcion;
-        
-        /// <summary>
-        /// lblEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEstado;
-        
-        /// <summary>
-        /// lblTipo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipo;
-        
-        /// <summary>
-        /// lblIdHallazgo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIdHallazgo;
-        
-        /// <summary>
-        /// ddlEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
-        
-        /// <summary>
-        /// txtComentarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComentarios;
+        protected global::System.Web.UI.WebControls.Repeater rptPreguntas;
     }
 }

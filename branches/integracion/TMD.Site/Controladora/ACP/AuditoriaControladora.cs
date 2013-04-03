@@ -14,6 +14,7 @@ namespace TMD.Site.Controladora.ACP
         private static readonly IActividadLogica _actividadLogica = new ActividadLogica();
         private static readonly IEmpleadoLogica _empleadoLogica = new EmpleadoLogica();
         private static readonly IEntidadAuditadaLogica _entidadAuditadaLogica = new EntidadAuditadaLogica();
+        private static readonly IProgramaAnualLogica _programaAnualLogica = new ProgramaAnualLogica();
 
         public static Auditoria ObtenerPlanAuditoriaPorID(int idAuditoria)
         {
@@ -86,6 +87,32 @@ namespace TMD.Site.Controladora.ACP
         {
             return _auditoriaLogica.ValidarAuditoria(idEntidadAuditada);
         }
+
+        public static ProgramaAnualAuditoria ObtenerProgramaAnualDeAuditoria(int IdUsuario)
+        {
+            return _programaAnualLogica.ObtenerProgramaAnualDeAuditoria(IdUsuario);
+        }
+
+        public static void AprobarProgramaAnual(ProgramaAnualAuditoria oProgramaAnual)
+        {
+            _programaAnualLogica.AprobarProgramaAnual(oProgramaAnual);
+        }
+
+        public static void RechazarProgramaAnual(ProgramaAnualAuditoria oProgramaAnual)
+        {
+            _programaAnualLogica.RechazarProgramaAnual(oProgramaAnual);
+        }
+
+        public static string GrabarInformeFinalAuditoria(Auditoria auditoria)
+        {
+            return _auditoriaLogica.GrabarInformeFinalAuditoria(auditoria);
+        }
+
+        public static Auditoria ObtenerInformeFinalPorAuditoria(int IdAuditoria)
+        {
+            return _auditoriaLogica.ObtenerInformeFinalPorAuditoria(IdAuditoria);
+        }
+        
 
         #endregion
     }

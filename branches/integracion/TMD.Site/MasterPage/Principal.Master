@@ -103,12 +103,25 @@
                             </asp:MenuItem>
                             </asp:MenuItem>
                             <asp:MenuItem Text="Auditoría de Procesos" Value="Auditoria">
+
+                            <asp:MenuItem Text="Planificación de Auditoría">
                                 <asp:MenuItem Text="Actualizar Programa Anual" NavigateUrl="~/Vistas/ACP/ProgramaAuditoria.aspx" />
+                                <asp:MenuItem Text="Aprobar Programa Anual" NavigateUrl="~/Vistas/ACP/AprobarProgramaAuditoria.aspx" />
+                            </asp:MenuItem>
+
+                            <asp:MenuItem Text="Realización de Auditoría">
                                 <asp:MenuItem Text="Actualizar Plan de Auditoria" NavigateUrl="~/Vistas/ACP/ListaPlanAuditoria.aspx" />
+                                <asp:MenuItem Text="Actualizar Lista de Verificacion" NavigateUrl="~/Vistas/ACP/ListaVerificacion.aspx" />                                                         
                                 <asp:MenuItem Text="Actualizar Hallazgos de Auditoría" NavigateUrl="~/Vistas/ACP/ConsultaAuditoria.aspx" />                           
+                                <asp:MenuItem Text="Actualizar Resultados de Auditoría" NavigateUrl="~/Vistas/ACP/ResultadoFinalAuditoria.aspx" />
+                            </asp:MenuItem>
+
+                             <asp:MenuItem Text="Seguimiento de Auditoría">
                                 <asp:MenuItem Text="Actualizar Plan de Acción" NavigateUrl="~/Vistas/ACP/ListaPlanAccion.aspx" />
                                 <asp:MenuItem Text="Asignar Seguimiento de Hallazgos" NavigateUrl="~/Vistas/ACP/ListaSeguimientoHallazgo.aspx" />
                                 <asp:MenuItem Text="Actualizar seguimiento de Hallazgos" NavigateUrl="~/Vistas/ACP/ListaActSeguimientoHallazgo.aspx" />
+                            </asp:MenuItem>
+
                             </asp:MenuItem>
 
                             <asp:MenuItem Text="Service Desk" Value="Service">

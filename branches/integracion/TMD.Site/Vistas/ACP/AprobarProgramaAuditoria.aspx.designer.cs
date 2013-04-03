@@ -7,63 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceDesk {
+namespace TMD.ACP.Site {
     
     
-    public partial class Principal {
+    public partial class AprobarProgramaAuditoria {
         
         /// <summary>
-        /// HeadContent control.
+        /// __IsView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.HiddenField @__IsView;
         
         /// <summary>
-        /// form1 control.
+        /// lblPeriodo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblPeriodo;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// lblElaboradoPor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Label lblElaboradoPor;
         
         /// <summary>
-        /// HeadLoginView control.
+        /// lblAprobadoPor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
+        protected global::System.Web.UI.WebControls.Label lblAprobadoPor;
         
         /// <summary>
-        /// NavigationMenu control.
+        /// lblIdPrograma control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+        protected global::System.Web.UI.WebControls.Label lblIdPrograma;
         
         /// <summary>
-        /// MainContent control.
+        /// lblEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Label lblEstado;
+        
+        /// <summary>
+        /// rptProgramaAnual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptProgramaAnual;
     }
 }
