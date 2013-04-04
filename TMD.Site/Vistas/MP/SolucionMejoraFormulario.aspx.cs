@@ -110,7 +110,7 @@ namespace TMD.MP.Site.Privado
                 {
                     Sesiones.SolucionMejoraSeleccionada.lstAcciones = oSolucionMejoraLogica.ObtenerListaAccionesSolucionPorSolucion(Convert.ToInt32(codigo_solucion));
                 }
-                gvwAcciones.DataBind();
+                gwAcciones.DataBind();
             }
 
 
@@ -131,14 +131,15 @@ namespace TMD.MP.Site.Privado
 
         protected void CargarEmpleado()
         {
-            IUsuarioLogica oUsuarioLogica = UsuarioLogica.getInstance();
-            List<UsuarioEntidad> oUsuarioColeccion = oUsuarioLogica.ObtenerListaEmpleadosTodas();
+            IUsuarioLogica oAreaLogica = UsuarioLogica.getInstance();
+            List<UsuarioEntidad> oUsuarioColeccion = oAreaLogica.ObtenerListaEmpleadosTodas();
             ddlEmpleado.DataSource = oUsuarioColeccion;
             ddlEmpleado.DataTextField = "NOMBRE_COMPLETO";
-            ddlEmpleado.DataValueField = "CODIGO_USUARIO";
+            ddlEmpleado.DataValueField = "CODIGO_PERSONA";
             ddlEmpleado.DataBind();
             ddlEmpleado.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
+
 
         protected void CargarPropuesta()
         {
@@ -162,9 +163,10 @@ namespace TMD.MP.Site.Privado
             oAccion.codigo = idCodAccion++;
 
             Sesiones.SolucionMejoraSeleccionada.lstAcciones.Add(oAccion);
-            gvwAcciones.EditIndex = Sesiones.SolucionMejoraSeleccionada.lstAcciones.Count - 1;
-            gvwAcciones.DataBind();
+            gwAcciones.EditIndex = Sesiones.SolucionMejoraSeleccionada.lstAcciones.Count - 1;
+            gwAcciones.DataBind();
         }
+
 
         protected void CargarAccionesSolucion()
         {
@@ -177,7 +179,7 @@ namespace TMD.MP.Site.Privado
 
 
             }
-            gvwAcciones.DataBind();
+            gwAcciones.DataBind();
 
         }
         
@@ -204,20 +206,20 @@ namespace TMD.MP.Site.Privado
             }
         }
 
-        protected void gvwAcciones_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void gwAcciones_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            gvwAcciones.EditIndex = e.NewEditIndex;
-            gvwAcciones.DataBind();
+            gwAcciones.EditIndex = e.NewEditIndex;
+            gwAcciones.DataBind();
 
         }
 
-        protected void gvwAcciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void gwAcciones_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            GridViewRow row = (GridViewRow)gvwAcciones.Rows[e.RowIndex];
+            GridViewRow row = (GridViewRow)gwAcciones.Rows[e.RowIndex];
             Label lblCodigo = (Label)row.FindControl("lblCodigo");
             TextBox tbxAccion = (TextBox)row.FindControl("tbxAccion");
 
-            gvwAcciones.EditIndex = -1;
+            gwAcciones.EditIndex = -1;
 
             foreach (AccionesSolucionEntidad obj in Sesiones.SolucionMejoraSeleccionada.lstAcciones)
             {
@@ -227,19 +229,19 @@ namespace TMD.MP.Site.Privado
                 }
             }
 
-            gvwAcciones.DataBind();
+            gwAcciones.DataBind();
 
         }
 
-        protected void gvwAcciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void gwAcciones_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            gvwAcciones.EditIndex = -1;
-            gvwAcciones.DataBind();
+            gwAcciones.EditIndex = -1;
+            gwAcciones.DataBind();
         }
 
-        protected void gvwAcciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void gwAcciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            GridViewRow row = (GridViewRow)gvwAcciones.Rows[e.RowIndex];
+            GridViewRow row = (GridViewRow)gwAcciones.Rows[e.RowIndex];
             Label lblCodigo = (Label)row.FindControl("lblCodigo");
             AccionesSolucionEntidad oAcciones = null;
             foreach (AccionesSolucionEntidad obj in Sesiones.SolucionMejoraSeleccionada.lstAcciones)
@@ -254,7 +256,7 @@ namespace TMD.MP.Site.Privado
 
             Sesiones.SolucionMejoraSeleccionada.lstAcciones.Remove(oAcciones);
 
-            gvwAcciones.DataBind();
+            gwAcciones.DataBind();
         }
 
     }

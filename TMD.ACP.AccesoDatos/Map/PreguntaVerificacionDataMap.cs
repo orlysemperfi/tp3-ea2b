@@ -22,5 +22,19 @@ namespace TMD.ACP.AccesoDatos.Map
                 CantidadPlanif=reader.GetInt("nCantPlan")
             };
         }
+
+        public static PreguntaVerificacion SelectPreguntaVerificacionPorAuditoria(IDataReader reader)
+        {
+            return new PreguntaVerificacion
+            {               
+                idPreguntaVerificacion = reader.GetInt("idPreguntaVerificacion"),
+                DescripcionPregunta = reader.GetString("descripcionPregunta"),
+                IdNorma = reader.GetInt("idNorma"),
+                IdCapitulo = reader.GetInt("idCapitulo"),
+                Respuesta = reader.GetBoolNull("respuesta"),
+                Sustento = reader.GetString("sustento"),
+                Porcentaje = reader.GetDecimalNul("porcentaje")                
+            };
+        }
     }
 }

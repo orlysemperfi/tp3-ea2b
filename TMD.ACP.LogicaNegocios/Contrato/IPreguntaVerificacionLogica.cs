@@ -10,5 +10,7 @@ namespace TMD.ACP.LogicaNegocios.Contrato
     {
         List<PreguntaVerificacion> Obtener(int idAuditoria, int idNorma, int idCapitulo);
         void Modificar(PreguntaVerificacion item);
+        void GrabarPreguntaVerificacion(int idAuditoria, List<DetallePreguntaBase> oListaPreguntaBase);
+        List<PreguntaVerificacion> ObtenerListaPreguntaVerificacionPorAuditoria(int idAuditoria);
     }
 }

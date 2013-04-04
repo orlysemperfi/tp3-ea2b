@@ -220,15 +220,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.Button btnCancelar;
         
         /// <summary>
-        /// cvIndicador control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvIndicador;
-        
-        /// <summary>
         /// vsumGuardar control.
         /// </summary>
         /// <remarks>

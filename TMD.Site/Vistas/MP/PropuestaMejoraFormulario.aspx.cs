@@ -17,7 +17,7 @@ namespace TMD.MP.Site.Privado
     public partial class PropuestaMejoraFormulario : System.Web.UI.Page
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
-        static int hasIndicador = 1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -163,26 +163,23 @@ namespace TMD.MP.Site.Privado
             Validate(btnGuardar.ValidationGroup);
 
             if(IsValid == true){
-                //int count = 0;
+                int count = 0;
 
-                //foreach (GridViewRow row in gvwIndicadores.Rows)
-                //{
-                //    CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
-                //    if (check.Checked)
-                //        count++;
-                //}
+                foreach (GridViewRow row in gvwIndicadores.Rows)
+                {
+                    CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
+                    if (check.Checked)
+                        count++;
+                }
                 
-                //if (count == 0)
-                //{
-                //    hasIndicador = 0;
-                //    //ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-                //    //      "err_msg",
-                //    //      "alert('Seleccione al menos un indicador');",
-                //    //      false);
-                //    //return;
-                //    //ClientScript.RegisterClientScriptBlock(this.GetType(), "JSScriptBlock", "<script type='text/javascript'>alert('Seleccione al menos un indicador');</script>");
-                //    //return;
-                //}
+                if (count == 0)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                          "err_msg",
+                          "alert('Seleccione al menos un indicador');",
+                          true);
+                    return;
+                }
                 
                 PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
                 IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
@@ -287,25 +284,5 @@ namespace TMD.MP.Site.Privado
             gvwIndicadores.Enabled = false;
 
         }
-
-        protected void cvIndicador_ServerValidate(object sender, ServerValidateEventArgs e)
-        {
-            int count = 0;
-
-            foreach (GridViewRow row in gvwIndicadores.Rows)
-            {
-                CheckBox check = row.FindControl("chkIndicadorSel") as CheckBox;
-                if (check.Checked)
-                    count++;
-            }
-
-            if (count == 0)
-            {
-                e.IsValid = false;
-            }
-            else {
-                e.IsValid = true;
-            }
-        }
-    }   
+    }
 }
