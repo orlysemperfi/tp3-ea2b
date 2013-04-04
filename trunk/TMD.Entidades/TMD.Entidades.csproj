@@ -89,6 +89,7 @@
     <Compile Include="PilotoEntidad.cs" />
     <Compile Include="PilotoEstadoEntidad.cs" />
     <Compile Include="PlanMantenimiento.cs" />
+    <Compile Include="DetallePreguntaBase.cs" />
     <Compile Include="PreguntaVerificacion.cs" />
     <Compile Include="ProcesoEntidad.cs" />
     <Compile Include="ProgramaAnualAuditoria.cs" />

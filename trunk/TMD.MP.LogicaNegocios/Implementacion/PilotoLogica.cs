@@ -7,7 +7,6 @@ using TMD.MP.AccesoDatos.Implementacion;
 using TMD.Entidades;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.Comun;
-using TMD.MP.LogicaNegocios.Excepcion;
 
 namespace TMD.MP.LogicaNegocios.Implementacion
 {
@@ -81,6 +80,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
         #region "Update"
 
+
         public void ActualizarPiloto(PilotoEntidad oPiloto)
         {
             iPiloto = new PilotoDataSql();
@@ -96,6 +96,7 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             }
         }
 
+
         public void ActualizarEstadoPiloto(PilotoEntidad oPiloto)
         {
             iPiloto = new PilotoDataSql();
@@ -110,7 +111,8 @@ namespace TMD.MP.LogicaNegocios.Implementacion
             }
         }
 
-        public void BorrarPiloto(PilotoEntidad oPiloto)
+
+        public String BorrarPiloto(PilotoEntidad oPiloto)
         {
             iPiloto = new PilotoDataSql();
             PilotoEstadoEntidad oPilotoEstado = new PilotoEstadoEntidad();
@@ -124,12 +126,12 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
                 iPiloto.InsertarPilotoEstado(oPilotoEstado);
 
+                return null;
             }
             else
             {
-                throw new BRuleException(Mensajes.Mensaje_No_Borrar_Piloto);
+                return Mensajes.Mensaje_No_Borrar_Piloto;
             }
-
         }
 
         #endregion

@@ -122,7 +122,7 @@ namespace TMD.MP.Site.Privado
             List<UsuarioEntidad> oUsuarioColeccion = oAreaLogica.ObtenerListaEmpleadosTodas();
             ddlResponsable.DataSource = oUsuarioColeccion;
             ddlResponsable.DataTextField = "NOMBRE_COMPLETO";
-            ddlResponsable.DataValueField = "CODIGO_USUARIO";
+            ddlResponsable.DataValueField = "CODIGO_PERSONA";
             ddlResponsable.DataBind();
             ddlResponsable.Items.Insert(0, new ListItem("[Seleccionar]", "0"));
         }
@@ -146,24 +146,17 @@ namespace TMD.MP.Site.Privado
             if (IsValid == true)
             {
 
-               
-                IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-                PropuestaMejoraEntidad oPropuestaMejoraFiltro = Sesiones.PropuestaMejoraSeleccionada;
-
-
-                oPropuestaMejoraFiltro.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.APROBADA);
                 
-                oPropuestaMejoraLogica.ActualizarEstadoPropuestaMejora(oPropuestaMejoraFiltro);
+                //IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
 
-                string currentURL = Request.Url.ToString();
-                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+                //oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+              
+                //string currentURL = Request.Url.ToString();
+                //string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-                "alert('Propuesta Aprobada'); window.location='" +
-                newURL + "/PropuestaMejoraAprobar.aspx';", true);
-
-                
-               
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                //"alert('Propuesta Aprobada'); window.location='" +
+                //newURL + "/PropuestaMejoraListado.aspx';", true);
             }
         }
 
@@ -174,25 +167,23 @@ namespace TMD.MP.Site.Privado
             if (IsValid == true)
             {
 
-                IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
-                PropuestaMejoraEntidad oPropuestaMejoraFiltro = Sesiones.PropuestaMejoraSeleccionada;
 
+                //IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
 
-                oPropuestaMejoraFiltro.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.RECHAZADA);
-                oPropuestaMejoraLogica.ActualizarEstadoPropuestaMejora(oPropuestaMejoraFiltro);
+                ////oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
 
-                string currentURL = Request.Url.ToString();
-                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+                //string currentURL = Request.Url.ToString();
+                //string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-                "alert('Propuesta Rechazada'); window.location='" +
-                newURL + "/PropuestaMejoraAprobar.aspx';", true);
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                //"alert('Propuesta Registrada'); window.location='" +
+                //newURL + "/PropuestaMejoraListado.aspx';", true);
             }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraAprobar, true);
+            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
         }
 
         protected void gvwIndicadores_RowCommand(object sender, GridViewCommandEventArgs e)
