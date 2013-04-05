@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\EquipoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdenTrabajoController.cs" />
@@ -183,9 +184,9 @@
     <Compile Include="Helpers\CalendarExtensions.cs" />
     <Compile Include="Helpers\HelperExtensions.cs" />
     <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\EmpleadoModels.cs" />
     <Compile Include="Models\EquipoModels.cs" />
     <Compile Include="Models\ErrorModels.cs" />
-    <Compile Include="Models\OrdenTrabajoConsultaModels.cs" />
     <Compile Include="Models\OrdenTrabajoModels.cs" />
     <Compile Include="Models\PlanModels.cs" />
     <Compile Include="Models\SolicitudModels.cs" />
@@ -849,9 +850,6 @@
     <Content Include="Views\Solicitud\CalendarioActividades.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\NuevaActividad.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Plan\PlanActividad.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -860,7 +858,7 @@
       <Name>TMD.GM.Entidades</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMD.GM.LogicaNegocios\TMD.GM.LogicaNegocios.csproj">
-      <Project>{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}</Project>
+      <Project>{610AEC74-2EEF-4432-92A2-880E1CC9E722}</Project>
       <Name>TMD.GM.LogicaNegocios</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMD.GM.Util\TMD.GM.Util.csproj">
@@ -875,13 +873,10 @@
     <Content Include="Views\Plan\Planes.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plan\PlanNuevo.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Solicitud\Solicitudes.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plan\PlanEdit.cshtml" />
+    <Content Include="Views\Plan\Plan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Solicitud\SolicitudActividades.cshtml" />
@@ -899,9 +894,6 @@
     <Content Include="Views\Equipo\EquipoConsulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\SolicitudNueva.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Equipo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -911,15 +903,52 @@
     <Content Include="Views\Equipo\Equipo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\OrdenTrabajo\OrdenTrabajoConsulta.cshtml" />
-    <Content Include="Views\OrdenTrabajo\OrdenTrabajoConsultaResult.cshtml" />
-    <Content Include="Views\OrdenTrabajo\OrdenTrabajoCrear.cshtml" />
+    <Content Include="Views\OrdenTrabajo\OrdenesTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Error\MensajeError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Solicitud\CalendarioDetalle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Consulta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Empleado\BuscarResultado.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Empleado\Buscar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\OrdenTrabajo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Actividades.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Generar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\EquiposPendientes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ActividadesPendientes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\AsignacionResponsable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ActividadesPendientesResumen.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ListarActividadResponsables.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\EspecialidadesResponsable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ActividadesEquipo.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -936,8 +965,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5101</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>1050</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -29,16 +29,24 @@ namespace TMD.GM.Site.Controllers
         {
             return View();
         }
-        public ActionResult EquipoConsulta()
-        {
-            return PartialView();
-        }
-
-        public ActionResult Equipos()
+        public ActionResult EquipoConsulta(string pFormProc)
         {
             EquipoBusquedaModel model = new EquipoBusquedaModel();
-            model.listaEquipos = equipoBL.BuscarEquipos();
+            model.formProcedencia = pFormProc;
+            return PartialView(model);
+        }
 
+        public ActionResult Equipos(string pCodiEqui, string pNombEqui, string pSeriEqui,string pFormProc)
+        {
+            EquipoBusquedaModel model = new EquipoBusquedaModel();
+            EquipoBE equipoBE = new EquipoBE()
+            {
+                CODIGO_EQUIPO = pCodiEqui,
+                NOMBRE_EQUIPO = pNombEqui,
+                SERIE_EQUIPO = pSeriEqui
+            };
+            model.listaEquipos = equipoBL.BuscarEquipos(equipoBE);
+            model.formProcedencia = pFormProc;
             return PartialView( model);
         }
         public ActionResult EquiposTodos(string pCodiEqui, string pNombEqui, string pSeriEqui)
@@ -46,7 +54,7 @@ namespace TMD.GM.Site.Controllers
             EquipoBusquedaModel model = new EquipoBusquedaModel();
             EquipoBE equipoBE = new EquipoBE()
             {
-                CODIGO_EQUIPO = DataUT.ObjectToIntTryParse(pCodiEqui),
+                CODIGO_EQUIPO = pCodiEqui,
                 NOMBRE_EQUIPO = pNombEqui,
                 SERIE_EQUIPO = pSeriEqui
             };
@@ -60,7 +68,7 @@ namespace TMD.GM.Site.Controllers
             model.nuevo = true;
             model.entity = new EquipoBE()
             {
-                CODIGO_EQUIPO = 0,
+                CODIGO_EQUIPO = "",
                 NOMBRE_EQUIPO = "",
                 SERIE_EQUIPO = "",
                 MARCA_EQUIPO = "",
@@ -72,21 +80,24 @@ namespace TMD.GM.Site.Controllers
                 CODIGO_AREA = 0,
                 CODIGO_TIPO_EQUIPO = 0,
                 CODIGO_PLAN = "",
-                PROCEDENCIA_EQUIPO = "",
+                PROCEDENCIA_EQUIPO = ConstantesUT.PROCEDENCIA.Propio,
                 ESTADO_EQUIPO = true
             };
 
             List<SelectListItemBE> listaDataTE = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataAR = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataPM = new List<SelectListItemBE>();
+            List<SelectListItemBE> listaDataPR = new List<SelectListItemBE>();
 
             listaDataTE = comunBL.ListarTipoEquipo();
             listaDataAR = comunBL.ListarAreas();
             listaDataPM = planBL.ListarPlanMante();
+            listaDataPR = comunBL.ListarProcedencia();
 
             model.listaTE = new List<SelectListItem>();
             model.listaAR = new List<SelectListItem>();
             model.listaPM = new List<SelectListItem>();
+            model.listaPR = new List<SelectListItem>();
 
 
             foreach (var item in listaDataTE)
@@ -100,6 +111,10 @@ namespace TMD.GM.Site.Controllers
             foreach (var item in listaDataPM)
             {
                 model.listaPM.Add(new SelectListItem() { Selected = (item.CODIGO == model.entity.CODIGO_PLAN), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
+            }
+            foreach (var item in listaDataPR)
+            {
+                model.listaPR.Add(new SelectListItem() { Selected = (item.CODIGO == model.entity.PROCEDENCIA_EQUIPO.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
 
             return PartialView("Equipo",model);
@@ -108,19 +123,22 @@ namespace TMD.GM.Site.Controllers
         {
             EquipoModel model = new EquipoModel();
             model.nuevo = false;
-            model.entity = equipoBL.Visualizar(new EquipoBE() { CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodiEqui) });
+            model.entity = equipoBL.Visualizar(new EquipoBE() { CODIGO_EQUIPO = pCodiEqui });
 
             List<SelectListItemBE> listaDataTE = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataAR = new List<SelectListItemBE>();
             List<SelectListItemBE> listaDataPM = new List<SelectListItemBE>();
+            List<SelectListItemBE> listaDataPR = new List<SelectListItemBE>();
 
             listaDataTE = comunBL.ListarTipoEquipo();
             listaDataAR = comunBL.ListarAreas();
             listaDataPM = planBL.ListarPlanMante();
+            listaDataPR = comunBL.ListarProcedencia();
 
             model.listaTE = new List<SelectListItem>();
             model.listaAR = new List<SelectListItem>();
             model.listaPM = new List<SelectListItem>();
+            model.listaPR = new List<SelectListItem>();
 
 
             foreach (var item in listaDataTE)
@@ -135,32 +153,39 @@ namespace TMD.GM.Site.Controllers
             {
                 model.listaPM.Add(new SelectListItem() { Selected = (item.CODIGO == model.entity.CODIGO_PLAN), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
-
+            foreach (var item in listaDataPR)
+            {
+                model.listaPR.Add(new SelectListItem() { Selected = (item.CODIGO == model.entity.PROCEDENCIA_EQUIPO.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
+            }
             return PartialView("Equipo", model);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
         public EmptyResult Registrar(string pCodiEqui, string pNombEqui,string pSerie,string pMarca, string pModel, string pCarac, string pFechaComp, string pFechaExpi, string pFechaUltiMant,
             string pCodiArea, string pCodiTipo, string pCodiPlan, string pProced, string pEstaEqui)
         {
-            EquipoBE entity = new EquipoBE()
+            if (ModelState.IsValid)
             {
-                CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodiEqui),
-                NOMBRE_EQUIPO = pNombEqui,
-                SERIE_EQUIPO = pSerie,
-                MARCA_EQUIPO = pMarca,
-                MODELO_EQUIPO = pModel,
-                CARACTERISTICAS_EQUIPO = pCarac,
-                FECHA_COMPRA = DataUT.ObjectToDateNullTimeTryParse(pFechaComp),
-                FECHA_EXPIRACION_GARANTIA = DataUT.ObjectToDateNullTimeTryParse(pFechaExpi),
-                FECHA_ULTIMO_MANTENIMIENTO_EQUIPO = DataUT.ObjectToDateNullTimeTryParse(pFechaUltiMant),
-                CODIGO_AREA = DataUT.ObjectToInt32(pCodiArea),
-                CODIGO_TIPO_EQUIPO = DataUT.ObjectToInt32(pCodiTipo),
-                CODIGO_PLAN = pCodiPlan,
-                PROCEDENCIA_EQUIPO = pProced,
-                ESTADO_EQUIPO = (pEstaEqui == "true")
-            };
-            equipoBL.Registrar(entity);
-
+                EquipoBE entity = new EquipoBE()
+                {
+                    CODIGO_EQUIPO = pCodiEqui,
+                    NOMBRE_EQUIPO = pNombEqui,
+                    SERIE_EQUIPO = pSerie,
+                    MARCA_EQUIPO = pMarca,
+                    MODELO_EQUIPO = pModel,
+                    CARACTERISTICAS_EQUIPO = pCarac,
+                    FECHA_COMPRA = DataUT.ObjectToDateNullTimeTryParse(pFechaComp),
+                    FECHA_EXPIRACION_GARANTIA = DataUT.ObjectToDateNullTimeTryParse(pFechaExpi),
+                    FECHA_ULTIMO_MANTENIMIENTO_EQUIPO = DataUT.ObjectToDateNullTimeTryParse(pFechaUltiMant),
+                    CODIGO_AREA = DataUT.ObjectToInt32(pCodiArea),
+                    CODIGO_TIPO_EQUIPO = DataUT.ObjectToInt32(pCodiTipo),
+                    CODIGO_PLAN = pCodiPlan,
+                    PROCEDENCIA_EQUIPO = DataUT.ObjectToInt32(pProced),
+                    ESTADO_EQUIPO = (pEstaEqui == "true")
+                };
+                equipoBL.Registrar(entity);
+            }
             return new EmptyResult();
         }
 
@@ -169,7 +194,7 @@ namespace TMD.GM.Site.Controllers
         {
             EquipoBE entity = new EquipoBE()
             {
-                CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodiEqui),
+                CODIGO_EQUIPO = pCodiEqui,
                 NOMBRE_EQUIPO = pNombEqui,
                 SERIE_EQUIPO = pSerie,
                 MARCA_EQUIPO = pMarca,
@@ -181,7 +206,7 @@ namespace TMD.GM.Site.Controllers
                 CODIGO_AREA = DataUT.ObjectToInt32(pCodiArea),
                 CODIGO_TIPO_EQUIPO = DataUT.ObjectToInt32(pCodiTipo),
                 CODIGO_PLAN = pCodiPlan,
-                PROCEDENCIA_EQUIPO = pProced,
+                PROCEDENCIA_EQUIPO = DataUT.ObjectToInt32(pProced),
                 ESTADO_EQUIPO = (pEstaEqui == "true")
             };
             equipoBL.Actualizar(entity);
@@ -191,8 +216,8 @@ namespace TMD.GM.Site.Controllers
 
         public EmptyResult Eliminar(string pCodigo)
         {
-           
-            equipoBL.Eliminar(new EquipoBE() {  CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodigo)});
+
+            equipoBL.Eliminar(new EquipoBE() { CODIGO_EQUIPO = pCodigo });
 
             return new EmptyResult();
         }

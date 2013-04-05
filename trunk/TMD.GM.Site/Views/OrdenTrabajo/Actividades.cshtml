@@ -1,0 +1,34 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoModel
+@{ WebGrid grid = new WebGrid(Model.entity.listaActividades, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableActividades" },
+    columns: grid.Columns(
+    grid.Column("ITEM_ORDEN", "Item"),
+    grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
+    grid.Column("DESCRIPCION_ACTIVIDAD", "Actividad" ),
+    grid.Column("FECHA_PROGRAMADA", "F. programada"),
+    grid.Column("FECHA_INICIO_ACTIVIDAD", "Inicio Atención"),
+    grid.Column("FECHA_FIN_ACTIVIDAD", "Fin Atención"),
+         grid.Column("RESULTADO_ATENCION", "Resultado"),
+    grid.Column("OPCIONES", "Opciones", format: @<text>
+        <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="PlanActividadEditar('@Url.Action("PlanActividad_Editar", "Plan")','@item.GUID_ROW.ToString()');"><span class="k-icon k-edit"></span>Editar</a>
+        <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="PlanActividadEliminar('@Url.Action("PlanActividades_Eliminar", "Plan")','@Url.Action("PlanActividades", "Plan")','@item.GUID_ROW.ToString()');"><span class="k-icon k-delete"></span>Eliminar</a>
+        </text>)
+         )
+        )
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableActividades").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "ITEM_ACTIVIDAD", title: "Item", width: "30px" },
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
+            { field: "DESCRIPCION_ACTIVIDAD", title: "Descripción", width: "200px" },
+            { field: "FECHA_PROGRAMADA", title: "F. programada", width: "50px" },
+            { field: "FECHA_INICIO_ACTIVIDAD", title: "Inicio Atención", width: "100px" },
+            { field: "FECHA_FIN_ACTIVIDAD", title: "Fin Atención", width: "100px" },
+            { field: "RESULTADO_ATENCION", title: "Resultado", width: "50px" },
+            { field: "OPCIONES", title: "Opciones", width: "100px"}]
+        });
+    });
+    
+</script>

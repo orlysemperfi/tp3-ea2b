@@ -131,6 +131,14 @@
                                     <asp:MenuItem Text="Seguimiento de Tickets" NavigateUrl="~/Vistas/SD/Seguimiento/Atenciones.aspx" />
                                 </asp:MenuItem>
                             </asp:MenuItem>
+                            <asp:MenuItem Text="Gestion de Mantenimiento" Value="Service">
+                                <asp:MenuItem Text="Actualizar Equipos de Computo" NavigateUrl="http://localhost:1050/Equipo" />
+                                <asp:MenuItem Text="Plan de Mantenimiento" NavigateUrl="http://localhost:1050/Plan/PlanConsulta" />
+                                <asp:MenuItem Text="Actualizar Solicitudes" NavigateUrl="http://localhost:1050/Solicitud/SolicitudConsulta" />
+                                <asp:MenuItem Text="Actualizar Orden de Trabajo" NavigateUrl="http://localhost:1050/OrdenTrabajo/OrdenTrabajoConsulta" />
+                                <asp:MenuItem Text="Actualizar Especialidad de Empleado " NavigateUrl="http://localhost:1051/MantEmpleado/frmMantEmpleado.aspx" />
+                                <asp:MenuItem Text="Registrar Informe de Mantenimiento" NavigateUrl="http://localhost:1051/MantInforme/frmMantInforme.aspx" />
+                            </asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>

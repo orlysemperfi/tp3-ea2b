@@ -2,7 +2,7 @@
 <fieldset>
 <fieldset class="fieldset_left">
 <span>N° Solicitud</span><br />
-<input id="txtNumSolicitud" type="text" class="k-textbox" value="@Model.solicitudBE.NUMERO_SOLICITUD" style="width: 150px;" readonly="readonly" />
+<input id="txtNumSolicitud" type="text" class="k-textbox" value="@Model.solicitudBE.NUMERO_SOLICITUD" style="width: 150px;"  />
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Estado de solicitud</span><br />
@@ -31,10 +31,7 @@
 <span>Documento Referencia</span><br />
 <input id="txtNumDocuRefe" type="text" class="k-textbox" value="@Model.solicitudBE.DOCUMENTO_REFERENCIA" style="width:150px;" />
 </fieldset>
-<fieldset  class="fieldset_left">
-<span>Plan mantenimiento</span><br />
-@Html.DropDownList("ddlPlanMante", Model.listaPM, new { @class = "ddlForm", style = "width: 300px;" })
-</fieldset>
+
 </fieldset>
 
 <fieldset>
@@ -45,24 +42,25 @@
 </fieldset>
 <fieldset  class="fieldset_left">
 <br />
-<button id="btnBuscarEquipo" class="k-button" onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")')" >...</button>
+<button id="btnBuscarEquipo" class="k-button" onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")','PagePopup')" >...</button>
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Área de Ubicación</span><br />
 <input id="txtAreaUbi" type="text" class="k-textbox" value="" style="width:200px;" readonly="readonly"/>
 </fieldset>
+<fieldset  class="fieldset_left">
+<span>Plan mantenimiento</span><br />
+@Html.DropDownList("ddlPlanMante", Model.listaPM, new { @class = "ddlForm", style = "width: 300px;" })
 </fieldset>
-
+</fieldset>
+<div class="k-block"><div class="k-header k-shadow">Actividades</div>
+<div id="pnlGridActividades" style = "height:252px"></div>
+</div>
+<br />
 <fieldset>
 <button id="btnGrabar" class="k-button" onclick="SolicitudRegistrar('@Url.Action("SolicitudRegistrar", "Solicitud")','@Url.Action("Solicitudes", "Solicitud")')" ><span class="k-icon k-i-tick"></span> Grabar Solicitud</button>
 <button id="btnRetornar" class="k-button" onclick="CerrarModalSolicitud()" ><span class="k-icon k-i-close"></span> Retornar</button>
 </fieldset>
-
-<br />
-<div class="k-block"><div class="k-header k-shadow">Actividades</div>
-<div id="pnlGridActividades"></div>
-</div>
-
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
         $("#dpFechaSol").kendoDatePicker({ format: "dd/MM/yyyy" });

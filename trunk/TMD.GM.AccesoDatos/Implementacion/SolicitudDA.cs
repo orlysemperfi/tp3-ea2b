@@ -59,8 +59,9 @@ namespace TMD.GM.AccesoDatos.Implementacion
                             FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(oReader["FECHA_FIN_SOLICITUD"]),
                             ESTADO_SOLICITUD = DataUT.ObjectToInt32(oReader["ESTADO_SOLICITUD"]),
                             DESCRIPCION_ESTADO_SOLICITUD = DataUT.ObjectToString(oReader["DESCRIPCION_ESTADO_SOLICITUD"]),
-                            CODIGO_EQUIPO = DataUT.ObjectToInt32(oReader["CODIGO_EQUIPO"]),
+                            CODIGO_EQUIPO = DataUT.ObjectToString(oReader["CODIGO_EQUIPO"]),
                             NOMBRE_EQUIPO = DataUT.ObjectToString(oReader["NOMBRE_EQUIPO"]),
+                            DESCRIPCION_AREA = DataUT.ObjectToString(oReader["DESCRIPCION_AREA"]),
                             CODIGO_PLAN = DataUT.ObjectToString(oReader["CODIGO_PLAN"]),
                             NOMBRE_PLAN = DataUT.ObjectToString(oReader["NOMBRE_PLAN"]),
                         });
@@ -341,8 +342,14 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     if (db.Connection.State == System.Data.ConnectionState.Closed)
                         db.Connection.Open();
 
-                    SOLICITUD_CABECERA entidad = (from u in db.SOLICITUD_CABECERA where u.NUMERO_SOLICITUD == SolicitudBE.NUMERO_SOLICITUD select u).FirstOrDefault(); ;
+                    SOLICITUD_CABECERA entidad = (from u in db.SOLICITUD_CABECERA where u.NUMERO_SOLICITUD == SolicitudBE.NUMERO_SOLICITUD select u).FirstOrDefault(); 
+                    EQUIPO_COMPUTO equipo =  (from e in db.EQUIPO_COMPUTO
+                                              join s in db.SOLICITUD_CABECERA on e.CODIGO_EQUIPO equals s.CODIGO_EQUIPO
+                                              where s.NUMERO_SOLICITUD == SolicitudBE.NUMERO_SOLICITUD select e).FirstOrDefault();
 
+                    AREA area = (from a in db.AREA
+                                 join e in db.EQUIPO_COMPUTO on a.CODIGO_AREA equals e.CODIGO_AREA
+                                 select a).FirstOrDefault();
                     if (entidad == null)
                         throw new Exception(ConstantesUT.MENSAJES_ERROR.NoExiste);
 
@@ -352,7 +359,11 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     SolicitudBE.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(entidad.FECHA_INICIO_SOLICITUD);
                     SolicitudBE.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(entidad.FECHA_FIN_SOLICITUD);
                     SolicitudBE.ESTADO_SOLICITUD = DataUT.ObjectToInt32(entidad.ESTADO_SOLICITUD);
-                    SolicitudBE.CODIGO_EQUIPO = DataUT.ObjectToInt32(entidad.CODIGO_EQUIPO);
+                    SolicitudBE.CODIGO_EQUIPO = DataUT.ObjectToString(entidad.CODIGO_EQUIPO);
+                    if (equipo != null)
+                        SolicitudBE.NOMBRE_EQUIPO = equipo.NOMBRE_EQUIPO;
+                    if (area != null)
+                        SolicitudBE.DESCRIPCION_AREA = area.DESCRIPCION;
                     SolicitudBE.CODIGO_PLAN = entidad.CODIGO_PLAN;
 
                     SolicitudBE.listaActividades = new List<SolicitudDetalleBE>();
@@ -420,18 +431,20 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     #endregion
 
                     var detallePlan = (from u in db.PLAN_MANTENIMIENTO_DETALLE where u.CODIGO_PLAN == entidad.CODIGO_PLAN select u);
-
+                    int index = 0;
                     foreach (var itemEntidad in detallePlan)
                     {
                         DateTime fecha = solicitudBE.FECHA_INICIO_SOLICITUD;
                         
                         while (fecha <= solicitudBE.FECHA_FIN_SOLICITUD)
                         {
+                            index++;
                             #region Datos
                             SolicitudDetalleBE item = new SolicitudDetalleBE();
                             item.ID_ACTIVIDAD = 0;
                             item.NUMERO_SOLICITUD = solicitudBE.NUMERO_SOLICITUD;
-                            item.ITEM_SOLICITUD = itemEntidad.ITEM_ACTIVIDAD;
+                            item.ITEM_SOLICITUD = index;
+                            item.GUID_ROW = Guid.NewGuid();
                             item.CODIGO_TIPO_ACTIVIDAD = DataUT.ObjectToInt32(itemEntidad.CODIGO_TIPO_ACTIVIDAD);
                             item.DESCRIPCION_TIPO_ACTIVIDAD = itemEntidad.ACTIVIDAD_TIPO.DESCRIPCION_TIPO_ACTIVIDAD;
                             item.DESCRIPCION_ACTIVIDAD = itemEntidad.DESCRIPCION_ACTIVIDAD;
