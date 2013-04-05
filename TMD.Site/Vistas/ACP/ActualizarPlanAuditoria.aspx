@@ -422,7 +422,7 @@
             <li><a href="#tabs-1">Plan</a></li>
             <li><a href="#tabs-2">Cronograma</a></li>            
         </ul>
-        <div id="tabs-1" style="height:350px;">
+        <div id="tabs-1" style="height:300px;">
             <div class="divCampo">
              <span><asp:Literal ID="Literal1" runat="server" Text="Objetivo: "></asp:Literal></span><span><asp:TextBox ID="txtObjetivo" runat="server" TextMode="MultiLine" Width="400" Height="50" Enabled="false"></asp:TextBox></span>
              </div>
@@ -517,16 +517,16 @@
                 <td align="left" style="width:120px">                               
                        <asp:Literal ID="litAuditor" runat="server"/>                      
                 </td>
-                <td align="left" style="width:130px">
+                <td align="left" style="width:200px">
                 <asp:Literal ID="litDescripcionActividad" runat="server" Text='<%# Eval("descripcionActividad") %>' />                
                 </td>
-                <td align="left" style="width:80px">
+                <td align="left" style="width:120px">
                  <asp:Literal ID="litLugar" runat="server" Text='<%# Eval("lugar") %>' />                
                 </td>
-                <td align="left" style="width:80px">
+                <td align="left" style="width:100px">
                     <asp:Literal ID="litFechaInicio" runat="server" Text='<%# Eval("fechaInicio") %>' />                                    
                 </td>
-                <td align="left" style="width:80px">                
+                <td align="left" style="width:100px">                
                 <asp:Literal ID="litFechaFin" runat="server" Text='<%# Eval("fechaFin") %>' />                
                 </td>
                 <td align="center" style="width:60px">               
@@ -544,17 +544,17 @@
                      <td align="left" style="width:120px">    
                         <asp:DropDownList ID="ddlAuditor" runat="server" Width="120"></asp:DropDownList>
                      </td> 
-                     <td align="left" style="width:130px">                          
-                        <asp:TextBox ID="txtDescripcionActividad" runat="server" Text='<%# Eval("descripcionActividad") %>' Width="130"/>
+                     <td align="left" style="width:200px">                          
+                        <asp:TextBox ID="txtDescripcionActividad" runat="server" Text='<%# Eval("descripcionActividad") %>' Width="200"/>
                      </td> 
-                     <td align="left" style="width:80px">    
-                        <asp:TextBox ID="txtLugar" runat="server" Text='<%# Eval("lugar") %>' Width="80"/>
+                     <td align="left" style="width:120px">    
+                        <asp:TextBox ID="txtLugar" runat="server" Text='<%# Eval("lugar") %>' Width="120"/>
                      </td> 
-                     <td align="left" style="width:80px">    
-                        <asp:TextBox ID="txtFechaInicio" runat="server" Text='<%# Eval("fechaInicio") %>' Width="80" CssClass="datepicker"/>
+                     <td align="left" style="width:100px">    
+                        <asp:TextBox ID="txtFechaInicio" runat="server" Text='<%# Eval("fechaInicio") %>' Width="100" CssClass="datepicker"/>
                      </td> 
-                     <td align="left" style="width:80px">    
-                        <asp:TextBox ID="txtFechaFin" runat="server" Text='<%# Eval("fechaFin") %>' Width="80" CssClass="datepicker"/>                
+                     <td align="left" style="width:100px">    
+                        <asp:TextBox ID="txtFechaFin" runat="server" Text='<%# Eval("fechaFin") %>' Width="100" CssClass="datepicker"/>                
                      </td> 
                      <td align="center" style="width:60px"> 
                         <a id="lnkGrabarActividad" class="cLnkSaveActividad" href="javascript:fGrabarActividadAuditoria(<%# Eval("idActividad")%>);">Grabar</a>
@@ -573,17 +573,17 @@
                     <td align="left" style="width:120px">
                     <asp:DropDownList ID="ddlNuevoAuditor" runat="server" Width="120"></asp:DropDownList>
                     </td>
-                    <td align="left" style="width:130px">
-                    <asp:TextBox ID="txtNuevoDescripcionActividad" runat="server" Width="130"/>                
+                    <td align="left" style="width:200px">
+                    <asp:TextBox ID="txtNuevoDescripcionActividad" runat="server" Width="200"/>                
                     </td>
-                    <td align="left" style="width:80px">
+                    <td align="left" style="width:120px">
                     <asp:TextBox ID="txtNuevoLugar" runat="server" Width="120"/> 
                     </td>
-                    <td align="left" style="width:80px">                
-                    <asp:TextBox ID="txtNuevoFechaInicio" runat="server" Width="80" ReadOnly="true" CssClass="datepicker"/>
+                    <td align="left" style="width:100px">                
+                    <asp:TextBox ID="txtNuevoFechaInicio" runat="server" Width="100" ReadOnly="true" CssClass="datepicker"/>
                     </td>
-                    <td align="left" style="width:80px">
-                        <asp:TextBox ID="txtNuevoFechaFin" runat="server" Width="80" ReadOnly="true" CssClass="datepicker"/>                
+                    <td align="left" style="width:100px">
+                        <asp:TextBox ID="txtNuevoFechaFin" runat="server" Width="120" ReadOnly="true" CssClass="datepicker"/>                
                     </td>
                     <td align="center" style="width:60px">                
                     <a id="lnkAddActividad" href="javascript:fAgregarActividadAuditoria();">Agregar</a>

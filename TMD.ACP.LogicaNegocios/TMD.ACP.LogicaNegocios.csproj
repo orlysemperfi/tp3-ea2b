@@ -50,7 +50,6 @@
     <Compile Include="Contrato\IEntidadAuditadaLogica.cs" />
     <Compile Include="Contrato\IHallazgoLogica.cs" />
     <Compile Include="Contrato\INormaLogica.cs" />
-    <Compile Include="Contrato\IPreguntaBaseLogica.cs" />
     <Compile Include="Contrato\IPreguntaVerificacionLogica.cs" />
     <Compile Include="Contrato\IProgramaAnualLogica.cs" />
     <Compile Include="Implementacion\ActividadLogica.cs" />
@@ -62,7 +61,6 @@
     <Compile Include="Implementacion\EntidadAuditadaLogica.cs" />
     <Compile Include="Implementacion\HallazgoLogica.cs" />
     <Compile Include="Implementacion\NormaLogica.cs" />
-    <Compile Include="Implementacion\PreguntaBaseLogica.cs" />
     <Compile Include="Implementacion\PreguntaVerificacionLogica.cs" />
     <Compile Include="Implementacion\ProgramaAnualLogica.cs" />
     <Compile Include="Implementacion\ReporteLogica.cs" />

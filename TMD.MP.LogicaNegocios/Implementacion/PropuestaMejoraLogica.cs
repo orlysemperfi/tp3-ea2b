@@ -106,8 +106,24 @@ namespace TMD.MP.LogicaNegocios.Implementacion
          #region "Insert"
          public void InsertarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
          {
+             oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
              iPropuestaMejora = new PropuestaMejoraDataSql();
              iIndicador = new IndicadorDataSql();
+             int count = 0;
+             if (oPropuestaMejora.lstIndicadores != null)
+             {
+                 foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
+                 {
+                     if (oIndicador.marcado.Equals("true"))
+                     {
+                         count++;
+                     }
+                 }
+             }
+             if (count == 0)
+             {
+                 throw new BRuleException(Mensajes.Mensaje_Seleccionar_Indicador);
+             }
              PropuestaEstadoEntidad oPropuestaEstado = new PropuestaEstadoEntidad();
              
              oPropuestaMejora = iPropuestaMejora.InsertarPropuestaMejora(oPropuestaMejora);
@@ -149,27 +165,34 @@ namespace TMD.MP.LogicaNegocios.Implementacion
 
          public void ActualizarPropuestaMejora(PropuestaMejoraEntidad oPropuestaMejora)
          {
-             iPropuestaMejora = new PropuestaMejoraDataSql();
-             iIndicador = new IndicadorDataSql();
+            iPropuestaMejora = new PropuestaMejoraDataSql();
+            iIndicador = new IndicadorDataSql();
+            int count=0;
+            if (oPropuestaMejora.lstIndicadores != null)
+            {
+                foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
+                {
+                    if(oIndicador.marcado.Equals("true")){
+                        count++;
+                    }
+                }
+            }
+            if (count==0){
+                throw new BRuleException(Mensajes.Mensaje_Seleccionar_Indicador);
+            }
+            iPropuestaMejora.ActualizarPropuestaMejora(oPropuestaMejora);
 
-             try
-             {
-                 iPropuestaMejora.ActualizarPropuestaMejora(oPropuestaMejora);
+            if (oPropuestaMejora.lstIndicadores != null)
+            {
+                iIndicador.EliminarIndicadorPorPropuesta(Convert.ToInt32(oPropuestaMejora.codigo_Propuesta));
+                foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
+                {
+                    oIndicador.codigo_Propuesta = Convert.ToInt32(oPropuestaMejora.codigo_Propuesta);
+                    iIndicador.InsertarPropuestaIndicador(oIndicador);
+                }
+            }
+            
 
-                 if (oPropuestaMejora.lstIndicadores != null)
-                 {
-                     iIndicador.EliminarIndicadorPorPropuesta(Convert.ToInt32(oPropuestaMejora.codigo_Propuesta));
-                     foreach (IndicadorEntidad oIndicador in oPropuestaMejora.lstIndicadores)
-                     {
-                         oIndicador.codigo_Propuesta = Convert.ToInt32(oPropuestaMejora.codigo_Propuesta);
-                         iIndicador.InsertarPropuestaIndicador(oIndicador);
-                     }
-                 }
-             }
-             catch (Exception ex)
-             {
-                 throw ex;
-             }
          }
 
 

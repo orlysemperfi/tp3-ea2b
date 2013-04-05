@@ -64,13 +64,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{60
 		packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\AppLimit.CloudComputing.SharpBox.MockProvider.dll = packages\AppLimit.CloudComputing.SharpBox.1.2.0.542\lib\net40-full\AppLimit.CloudComputing.SharpBox.MockProvider.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Test", "05.Test", "{C1817172-5FF0-45A5-B1D6-F1DDEC599372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.MP.UnitTest", "TMD.MP.UnitTest\TMD.MP.UnitTest.csproj", "{3EE24E3D-3752-47AA-8D13-746833EA5EE1}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
 		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = TMD.GestionConfiguracion.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +146,10 @@ Global
 		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{610AEC74-2EEF-4432-92A2-880E1CC9E722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE24E3D-3752-47AA-8D13-746833EA5EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE24E3D-3752-47AA-8D13-746833EA5EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE24E3D-3752-47AA-8D13-746833EA5EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE24E3D-3752-47AA-8D13-746833EA5EE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,5 +173,6 @@ Global
 		{610AEC74-2EEF-4432-92A2-880E1CC9E722} = {7E81BCD7-87D8-4EB1-96EF-26230DD01F98}
 		{8E4B6AF7-458B-4FEF-9879-B66C16B3441D} = {08B7FC44-7B5E-4BB7-8788-EC80964918D6}
 		{606551B2-72B7-4402-BE4D-3ABA1A870EF4} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
+		{3EE24E3D-3752-47AA-8D13-746833EA5EE1} = {C1817172-5FF0-45A5-B1D6-F1DDEC599372}
 	EndGlobalSection
 EndGlobal

@@ -16,7 +16,5 @@ namespace TMD.ACP.LogicaNegocios.Contrato
         List<Auditoria> ListarAuditoriasPorAnio(int anhoAuditoria);
         int GrabarProgramaAnualAuditoria(ProgramaAnualAuditoria eProgramaAnual);
         bool ValidarAuditoria(int idEntidadAuditada);
-        string GrabarInformeFinalAuditoria(Auditoria eAuditoria);
-        Auditoria ObtenerInformeFinalPorAuditoria(int idAuditoria);
     }
 }

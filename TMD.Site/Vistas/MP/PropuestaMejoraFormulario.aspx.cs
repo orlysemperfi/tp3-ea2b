@@ -11,7 +11,7 @@ using TMD.Entidades;
 using TMD.MP.Comun;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
-
+using TMD.MP.LogicaNegocios.Excepcion;
 namespace TMD.MP.Site.Privado
 {
     public partial class PropuestaMejoraFormulario : System.Web.UI.Page
@@ -163,7 +163,7 @@ namespace TMD.MP.Site.Privado
             Validate(btnGuardar.ValidationGroup);
 
             if(IsValid == true){
-                int count = 0;
+                /*int count = 0;
 
                 foreach (GridViewRow row in gvwIndicadores.Rows)
                 {
@@ -179,7 +179,7 @@ namespace TMD.MP.Site.Privado
                           "alert('Seleccione al menos un indicador');",
                           true);
                     return;
-                }
+                }*/
                 
                 PropuestaMejoraEntidad oPropuestaMejora = Sesiones.PropuestaMejoraSeleccionada; //new PropuestaMejoraEntidad();
                 IPropuestaMejoraLogica oPropuestaMejoraLogica = PropuestaMejoraLogica.getInstance();
@@ -210,21 +210,27 @@ namespace TMD.MP.Site.Privado
                         oIndicador.marcado = "false";
                     oPropuestaMejora.lstIndicadores.Add(oIndicador);
                 }
-
-                if (oPropuestaMejora.codigo_Propuesta != null)
-                    oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
-                else
+                try
                 {
-                    oPropuestaMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PROPUESTA.REGISTRADA);
-                    oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+                    if (oPropuestaMejora.codigo_Propuesta != null)
+                        oPropuestaMejoraLogica.ActualizarPropuestaMejora(oPropuestaMejora);
+                    else
+                    {
+                        oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
+                    }
+                    string currentURL = Request.Url.ToString();
+                    string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+                    "alert('Propuesta Registrada'); window.location='" +
+                    newURL + "/PropuestaMejoraListado.aspx';", true);
                 }
+                catch (BRuleException ex) {
+                    lblMensajeError.Text = ex.Message;
+                    lblMensajeError.DataBind();
+                }
+            
 
-                string currentURL = Request.Url.ToString();
-                string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-                "alert('Propuesta Registrada'); window.location='" +
-                newURL + "/PropuestaMejoraListado.aspx';", true);
             }
         }
 

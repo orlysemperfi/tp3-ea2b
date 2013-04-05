@@ -10,8 +10,6 @@ namespace TMD.ACP.LogicaNegocios.Contrato
     {
         ProgramaAnualAuditoria ObtenerProgramaAnualDeAuditoria(int idUsuario);
 
-        void GrabarProgramaAnual(ref ProgramaAnualAuditoria oProgramaAnualAuditoria);
-        void AprobarProgramaAnual(ProgramaAnualAuditoria oProgramaAnual);
-        void RechazarProgramaAnual(ProgramaAnualAuditoria oProgramaAnual);
+        void GrabarProgramaAnual(ref ProgramaAnualAuditoria oProgramaAnualAuditoria);          
     }
 }

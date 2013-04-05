@@ -37,6 +37,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     strSQL.Append("AND P.CODIGO_PROPUESTA = @CODIGO_PROPUESTA ");
                 if (oPropuestaMejoraFiltro.tipo_Propuesta != String.Empty)
                     strSQL.Append("AND P.TIPO_PROPUESTA = @TIPO_PROPUESTA ");
+                if (oPropuestaMejoraFiltro.codigo_Estado != null && oPropuestaMejoraFiltro.codigo_Estado != 0)
+                    strSQL.Append("AND P.CODIGO_ESTADO = @CODIGO_ESTADO ");
                 if(oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
                     strSQL.Append("AND DATEDIFF(DAY, P.FECHA_REGISTRO, @FECHA_REGISTRO_INICIO) <= 0 ");
                 if(oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
@@ -53,6 +55,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     sqlCmd.Parameters.Add("@CODIGO_PROPUESTA", SqlDbType.Int).Value = oPropuestaMejoraFiltro.codigo_Propuesta;
                 if (oPropuestaMejoraFiltro.tipo_Propuesta != String.Empty)
                     sqlCmd.Parameters.Add("@TIPO_PROPUESTA", SqlDbType.VarChar).Value = oPropuestaMejoraFiltro.tipo_Propuesta;
+                if (oPropuestaMejoraFiltro.codigo_Estado != null && oPropuestaMejoraFiltro.codigo_Estado != 0)
+                    sqlCmd.Parameters.Add("@CODIGO_ESTADO", SqlDbType.Int).Value = oPropuestaMejoraFiltro.codigo_Estado;
                 if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)
                     sqlCmd.Parameters.Add("@FECHA_REGISTRO_INICIO", SqlDbType.DateTime).Value = oPropuestaMejoraFiltro.fecha_Registro_Inicio;
                 if (oPropuestaMejoraFiltro.fecha_Registro_Inicio != null)

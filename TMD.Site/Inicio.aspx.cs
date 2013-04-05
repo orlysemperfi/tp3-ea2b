@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using TMD.CF.Site.Util;
 using TMD.Entidades;
+using System.Web.Security;
 
 
 namespace ServiceDesk
@@ -15,11 +16,11 @@ namespace ServiceDesk
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (SesionFachada.Usuario == null)
             {
-                OnInitPage();
-            }
-            
+                FormsAuthentication.SignOut();
+                Response.Redirect("~/Account/Login.aspx");
+            }           
             
         }
 

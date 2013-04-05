@@ -163,6 +163,6 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
         public bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso)
         {
             return _objData.ValidarUpdate(IdHallazgo, dFecCompromiso);
-        }        
+        }
     }
 }

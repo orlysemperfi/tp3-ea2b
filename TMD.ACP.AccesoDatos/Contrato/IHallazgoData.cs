@@ -21,6 +21,5 @@ namespace TMD.ACP.AccesoDatos.Contrato
         List<Hallazgo> ObtenerHallazgosSeguimiento_PlanAccion(int idHallazgo);
         void ModificarHallazgoSeguimiento(Hallazgo eHallazgo);
         bool ValidarUpdate(Int32 IdHallazgo, DateTime dFecCompromiso);
-        List<Hallazgo> ObtenerHallazgosPorPreguntaVerificacion(int idAuditoria, int idPreguntaVerificacion);
     }
 }

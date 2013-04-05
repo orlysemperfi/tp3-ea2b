@@ -20,9 +20,6 @@ namespace TMD.Entidades
         public string Sustento { get; set; }
         public decimal? Porcentaje { get; set; }
         public int CantidadPlanif { get; set; }
-        public int IdCapitulo { get; set; }
-        public int IdNorma { get; set; }        
-        
 
     }
 }

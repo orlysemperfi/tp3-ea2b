@@ -65,29 +65,5 @@ namespace TMD.ACP.LogicaNegocios.Implementacion
 
             oProgramaAnual.ObjAuditorias = _objData.ListarAuditoriasPorAnio(oProgramaAnual.AnhoPrograma);
         }
-
-        public void AprobarProgramaAnual(ProgramaAnualAuditoria oProgramaAnual)
-        {
-            oProgramaAnual.Estado = EstadoProgramaAnual.Autorizado;
-            _objData.AprobarProgramaAnualAuditoria(oProgramaAnual);
-
-            foreach (Auditoria eAuditoria in oProgramaAnual.ObjAuditorias)
-            {
-                eAuditoria.Estado = EstadoAuditoria.Autorizado;
-                _objData.AprobarAuditoria(eAuditoria);
-            }          
-        }
-
-        public void RechazarProgramaAnual(ProgramaAnualAuditoria oProgramaAnual)
-        {
-            oProgramaAnual.Estado = EstadoProgramaAnual.Rechazado;
-           
-            foreach (Auditoria eAuditoria in oProgramaAnual.ObjAuditorias)
-            {                
-                _objData.RechazarAuditoria(eAuditoria);
-            }
-
-            _objData.RechazarProgramaAnualAuditoria(oProgramaAnual);
-        }
     }
 }

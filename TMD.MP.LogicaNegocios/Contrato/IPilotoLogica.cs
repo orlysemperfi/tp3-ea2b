@@ -20,7 +20,7 @@ namespace TMD.MP.LogicaNegocios.Contrato
 
         void ActualizarPiloto(PilotoEntidad oPiloto);
 
-        String BorrarPiloto(PilotoEntidad oPiloto);
+        void BorrarPiloto(PilotoEntidad oPiloto);
 
         #endregion
 

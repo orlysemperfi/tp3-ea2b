@@ -89,6 +89,7 @@ namespace TMD.MP.Site.Privado
                 try
                 {
                     oPropuestaMejoraLogica.BorrarPropuestaMejora(oPropuestaMejora);
+                    CargarPropuestaMejoraListado();
                 }
                 catch (BRuleException ex)
                 {
