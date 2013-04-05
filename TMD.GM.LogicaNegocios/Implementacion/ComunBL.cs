@@ -28,6 +28,10 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             return instanciaDA.ListarEstadoSolicitud();
         }
+        public List<SelectListItemBE> ListarEstadoOT()
+        {
+            return instanciaDA.ListarEstadoOT();
+        }
 
         public List<SelectListItemBE> ListarTipoEquipo()
         {
@@ -52,6 +56,10 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         public List<SelectListItemBE> ListarFrecuencia()
         {
             return instanciaDA.ListarFrecuencia();
+        }
+        public List<SelectListItemBE> ListarProcedencia()
+        {
+            return instanciaDA.ListarProcedencia();
         }
     }
 }

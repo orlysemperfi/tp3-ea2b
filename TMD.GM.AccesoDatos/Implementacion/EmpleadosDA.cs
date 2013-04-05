@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using TMD.GM.Util;
 using TMD.GM.AccesoDatos.Contrato;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data.Common;
 
 namespace TMD.GM.AccesoDatos.Implementacion
 {
@@ -43,6 +44,56 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     }
                 }
                 return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<EmpleadosBE> BuscarEmpleados(EmpleadosBE empleadosBE)
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            List<EmpleadosBE> listaResult = new List<EmpleadosBE>();
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
+
+                        var listaDatos = (from e in db.EMPLEADO
+                                          join p in db.PERSONA on e.CODIGO_EMPLEADO equals p.CODIGO_PERSONA
+                                          join pu in db.PUESTO on e.CODIGO_PUESTO equals pu.CODIGO_PUESTO
+                                          where (p.NRO_DOCUMENTO.Contains(empleadosBE.DNI_PERSONA) || empleadosBE.DNI_PERSONA == "")
+                                              &&
+                                              ((p.NOMBRE_PERSONA + p.APELLIDO_MATERNO + p.APELLIDO_PATERNO).Contains(empleadosBE.NOMBRE_COMPLETO) || empleadosBE.NOMBRE_COMPLETO == "")
+                                          select new { CODIGO_EMPLEADO = e.CODIGO_EMPLEADO,
+                                                       DNI_PERSONA = p.NRO_DOCUMENTO, 
+                                              NOMBRE_COMPLETO = p.NOMBRE_PERSONA + " " + p.APELLIDO_PATERNO + " " + p.APELLIDO_MATERNO,
+                                              DESCRIPCION_PUESTO = pu.DESCRIPCION
+                                          });
+
+                        foreach (var itemEntidad in listaDatos)
+                        {
+                            listaResult.Add(new EmpleadosBE()
+                            {
+                                CODIGO_EMPLEADO = itemEntidad.CODIGO_EMPLEADO,
+                                DNI_PERSONA = itemEntidad.DNI_PERSONA,
+                                NOMBRE_COMPLETO = itemEntidad.NOMBRE_COMPLETO,
+                                DESCRIPCION_PUESTO = itemEntidad.DESCRIPCION_PUESTO,
+                            });
+                        }
+                        return listaResult;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
             }
             catch (Exception ex)
             {

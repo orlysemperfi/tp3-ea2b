@@ -1,0 +1,49 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoEquipoModel
+<fieldset>
+
+<fieldset class="fieldset_left">
+<div class="k-block"><div class="k-header k-shadow">Datos del Equipo</div>
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Nombre</span>
+@Html.TextBoxFor(m => m.entity.NOMBRE_EQUIPO, htmlAttributes: new { @id = "txtNombEqui_LAR", @class = "k-textbox", @style = "width: 200px;", @disabled = "disabled" })
+</fieldset>
+</fieldset>
+<div id="divGridOTEquipoActividades" style="height:152px; width:400px;">
+
+</div>
+</div>
+</fieldset>
+<fieldset class="fieldset_left">
+<div class="k-block"><div class="k-header k-shadow">Datos del Responsable</div>
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Código</span>
+@Html.TextBoxFor(m => m.entity.CODIGO_RESPONSABLE, htmlAttributes: new { @id = "txtCodiResp_LAR", @class = "k-textbox", @style = "width: 50px;", @disabled = "disabled"})
+</fieldset>
+<fieldset class="fieldset_left">
+<button class="k-button" onclick="EmpleadoConsulta('@Url.Action("Buscar", "Empleado")','PageAsigna')" >...</button>
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Nombre</span>
+@Html.TextBoxFor(m => m.entity.NOMBRE_RESPONSABLE, htmlAttributes: new { @id = "txtNombResp_LAR", @class = "k-textbox", @style = "width: 200px;", @disabled = "disabled" })
+</fieldset>
+</fieldset>
+<div id="divGridOTResponsableActividades" style="height:152px; width:400px;">
+
+</div>
+</div>
+</fieldset>
+</fieldset>
+<br />
+<br />
+<fieldset>
+<button id="btnSeleccionar" class="k-button" onclick="OTAsignaResponsableEquipoCheck('@Url.Action("AsignaResponsableEquipoCheck", "OrdenTrabajo")','@Url.Action("AsignacionResponsable", "OrdenTrabajo")', '@Model.entity.CODIGO_EQUIPO' )" ><span class="k-icon k-i-tick"></span>Seleccionar</button>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalOTActividadesResponsable();" ><span class="k-icon k-i-close"></span>Retornar</button>
+</fieldset>
+
+<script language="javascript" type="text/javascript">
+   
+
+    
+</script>

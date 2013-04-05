@@ -10,11 +10,14 @@ namespace TMD.GM.AccesoDatos.Contrato
     {
         List<SelectListItemBE> ListarTipoMante();
         List<SelectListItemBE> ListarEstadoSolicitud();
+        List<SelectListItemBE> ListarEstadoOT();
         List<SelectListItemBE> ListarTipoActividad();
         List<SelectListItemBE> ListarTipoEquipo();
         List<SelectListItemBE> ListarAreas();
         List<SelectListItemBE> ListarTiempoUniMed();
         List<SelectListItemBE> ListarPrioridad();
         List<SelectListItemBE> ListarFrecuencia();
+        List<SelectListItemBE> ListarProcedencia();
+        
     }
 }

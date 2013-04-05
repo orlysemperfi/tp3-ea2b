@@ -86,9 +86,10 @@ namespace TMD.GM.Site.Controllers
 
             return PartialView("Solicitudes", model);
         }
-        public ActionResult SolicitudEditar(string pNumSoli, string pFechaSoli, string pTipoSoli, string pDocuRefe, string pFechaIni, string pFechaFin, string pEstado, string pCodiEqui, string pCodiPlan)
+        public ActionResult SolicitudEditar(string pNumSoli, string pFechaSoli, string pTipoSoli, string pDocuRefe, string pFechaIni, string pFechaFin, string pEstado, string pCodiEqui, string pCodiPlan, string pNombEqui, string pDescArea)
         {
             SolicitudModel model = new SolicitudModel();
+            model.opcion = ConstantesUT.OPCION.Editar;
 
             model.solicitudBE = new SolicitudBE()
             {
@@ -99,7 +100,9 @@ namespace TMD.GM.Site.Controllers
                 FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni),
                 FECHA_FIN_SOLICITUD =DataUT.ObjectToDateTime( pFechaFin),
                 ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado),
-                CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodiEqui),
+                CODIGO_EQUIPO = DataUT.ObjectToString(pCodiEqui),
+                NOMBRE_EQUIPO = pNombEqui,
+                DESCRIPCION_AREA = pDescArea,
                 CODIGO_PLAN = pCodiPlan
             };
 
@@ -117,6 +120,7 @@ namespace TMD.GM.Site.Controllers
             model.listaPM = new List<SelectListItem>();
 
 
+
             foreach (var item in listaDataTS)
             {
                 model.listaTS.Add(new SelectListItem() { Selected = (item.CODIGO == model.solicitudBE.TIPO_SOLICITUD.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
@@ -129,9 +133,8 @@ namespace TMD.GM.Site.Controllers
             {
                 model.listaPM.Add(new SelectListItem() { Selected = (item.CODIGO == model.solicitudBE.CODIGO_PLAN), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
-            //ViewBag.ddlTipoSolicitud = listaTS;
-            //ViewBag.ddlEstadoSolicitud = listaES;
-            //ViewBag.ddlPlanMante = listaPM;
+
+            Session[ConstantesUT.SESSION.SolicitudActividades] = null;
 
             return PartialView("Solicitud",model);
         }
@@ -146,7 +149,9 @@ namespace TMD.GM.Site.Controllers
             listaDataTS = comunBL.ListarTipoMante();
             listaDataES = comunBL.ListarEstadoSolicitud();
             listaDataPM = planBL.ListarPlanMante();
-            model.solicitudBE = solicitudBL.ObtenerSolicitudNueva();
+            //model.solicitudBE = solicitudBL.ObtenerSolicitudNueva();
+            model.solicitudBE = new SolicitudBE();
+            model.opcion = ConstantesUT.OPCION.Nuevo;
 
             model.solicitudBE.FECHA_SOLICITUD = DateTime.Now.Date;
             model.solicitudBE.FECHA_INICIO_SOLICITUD = DateTime.Now.Date;
@@ -169,36 +174,33 @@ namespace TMD.GM.Site.Controllers
             {
                 model.listaPM.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
-            //ViewBag.ddlTipoSolicitud = listaTS;
-            //ViewBag.ddlEstadoSolicitud = listaES;
-            //ViewBag.ddlPlanMante = listaPM;
 
-            return PartialView("SolicitudNueva", model);
+            Session[ConstantesUT.SESSION.SolicitudActividades] = null;
+
+            return PartialView("Solicitud", model);
         }
         public ActionResult SolicitudActividades(string pNumSoli)
         {
             SolicitudModel model = new SolicitudModel();
-
             SolicitudBE entity = new SolicitudBE() { NUMERO_SOLICITUD = pNumSoli };
             entity = solicitudBL.VisualizarSolicitud(entity);
             model.solicitudBE = entity;
 
             model.solicitudBE.listaActividades = entity.listaActividades;
 
-            Session["SolicitudActividadesKey"] = entity.listaActividades;
+            Session[ConstantesUT.SESSION.SolicitudActividades] = entity.listaActividades;
 
             return PartialView(model);
-
         }
 
         public ActionResult SolicitudActividades_Actualiza(string pNumSoli)
         {
             SolicitudModel model = new SolicitudModel();
 
-            if (Session["SolicitudActividadesKey"] == null)
-                Session["SolicitudActividadesKey"] = new List<SolicitudDetalleBE>();
+            if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
+                Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
             model.solicitudBE = new SolicitudBE() { NUMERO_SOLICITUD = pNumSoli };
-            model.solicitudBE.listaActividades = (List<SolicitudDetalleBE>)Session["SolicitudActividadesKey"];
+            model.solicitudBE.listaActividades = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
 
 
             return PartialView("SolicitudActividades", model);
@@ -211,9 +213,36 @@ namespace TMD.GM.Site.Controllers
 
             if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
                 Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
+
+            List<SolicitudDetalleBE> listaTmp = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
+            model.solicitudBE = new SolicitudBE();
+
+            //model.solicitudBE.listaActividades = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
+            //model.solicitudBE.listaActividades.Remove(model.solicitudBE.listaActividades.Find(x => x.GUID_ROW.ToString() == pGuidActividad));
+
+            listaTmp.Remove(listaTmp.Find(x => x.GUID_ROW.ToString() == pGuidActividad));
+            model.solicitudBE.listaActividades = new List<SolicitudDetalleBE>();
+            int index = 0;
+            foreach (var item in listaTmp)
+            {
+                index++;
+                item.ITEM_SOLICITUD = index;
+                model.solicitudBE.listaActividades.Add(item);
+            }
+            model.cronogramGenerado = (model.solicitudBE.listaActividades.Count>0);
+            Session[ConstantesUT.SESSION.SolicitudActividades] = model.solicitudBE.listaActividades;
+
+            return PartialView("SolicitudActividades", model);
+        }
+        public ActionResult SolicitudActividadEliminarTodas()
+        {
+            SolicitudModel model = new SolicitudModel();
+
+            if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
+                Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
             model.solicitudBE = new SolicitudBE();
             model.solicitudBE.listaActividades = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
-            model.solicitudBE.listaActividades.Remove(model.solicitudBE.listaActividades.Find(x => x.GUID_ROW.ToString() == pGuidActividad));
+            model.solicitudBE.listaActividades.Clear();
 
             Session[ConstantesUT.SESSION.SolicitudActividades] = model.solicitudBE.listaActividades;
 
@@ -226,7 +255,6 @@ namespace TMD.GM.Site.Controllers
                 Session[ConstantesUT.SESSION.SolicitudActividades] = new List<PlanDetalleBE>();
 
             List<SolicitudDetalleBE> lista = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
-
             SolicitudActividadModel model = new SolicitudActividadModel();
 
             model.solicitudDetalleBE = lista.Find(x => x.GUID_ROW.ToString() == pGuidActividad);
@@ -265,24 +293,24 @@ namespace TMD.GM.Site.Controllers
                 model.listaFR.Add(new SelectListItem() { Selected = (item.CODIGO == model.solicitudDetalleBE.CODIGO_FRECUENCIA.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
 
-
             return PartialView("SolicitudActividad",model);
-
         }
 
         public ActionResult SolicitudActividadNueva(string pNumSoli)
         {
-            SolicitudActividadModel model = new SolicitudActividadModel();
+            if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
+                Session[ConstantesUT.SESSION.SolicitudActividades] = new List<PlanDetalleBE>();
+            List<SolicitudDetalleBE> lista = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
 
+            SolicitudActividadModel model = new SolicitudActividadModel();
             model.solicitudDetalleBE = new SolicitudDetalleBE()
             {
                 GUID_ROW = Guid.NewGuid(),
                 NUMERO_SOLICITUD = pNumSoli,
-                ITEM_SOLICITUD = 0,
+                ITEM_SOLICITUD = lista.Count + 1,
                 DESCRIPCION_ACTIVIDAD = string.Empty,
                 CODIGO_TIPO_ACTIVIDAD = 0,PRIORIDAD_ACTIVIDAD = 0,CODIGO_FRECUENCIA = 0,PERSONAL_REQUERIDO = 0,
                 CODIGO_TIEMPO = 0,TIEMPO_ACTIVIDAD = 0,FECHA_PROGRAMACION = DateTime.Now.Date,ORDEN_TRABAJO = string.Empty,
-
             };
 
             Session[ConstantesUT.SESSION.SolicitudActividadActual] = model.solicitudDetalleBE;
@@ -319,9 +347,7 @@ namespace TMD.GM.Site.Controllers
                 model.listaFR.Add(new SelectListItem() { Selected = (item.CODIGO == model.solicitudDetalleBE.CODIGO_FRECUENCIA.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
 
-
             return PartialView("SolicitudActividad", model);
-
         }
 
         public EmptyResult SolicitudActividadAceptar(int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pFechaProg, string pOrdeTrab)
@@ -381,7 +407,7 @@ namespace TMD.GM.Site.Controllers
             entity.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni);
             entity.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(pFechaFin) ;
             entity.ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado) ;
-            entity.CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodiEqui);
+            entity.CODIGO_EQUIPO = pCodiEqui;
             entity.CODIGO_PLAN = pCodiPlan;
             entity.listaActividades = new List<SolicitudDetalleBE>();
 
@@ -399,16 +425,18 @@ namespace TMD.GM.Site.Controllers
             entity.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni);
             entity.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(pFechaFin);
             entity.ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado);
-            entity.CODIGO_EQUIPO = DataUT.ObjectToInt32(pCodiEqui);
+            entity.CODIGO_EQUIPO = DataUT.ObjectToString(pCodiEqui);
             entity.CODIGO_PLAN = pCodiPlan;
+            
+
 
             entity.ESTADO_SOLICITUD = (entity.ESTADO_SOLICITUD == ConstantesUT.ESTADO_SOLICITUD.Aperturado && pCronGene == "1") ? ConstantesUT.ESTADO_SOLICITUD.Programado : entity.ESTADO_SOLICITUD;
 
             entity.listaActividades = new List<SolicitudDetalleBE>();
 
-            if (Session["SolicitudActividadesKey"] == null)
-                Session["SolicitudActividadesKey"] = new List<SolicitudDetalleBE>();
-            entity.listaActividades = (List<SolicitudDetalleBE>)Session["SolicitudActividadesKey"];
+            if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
+                Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
+            entity.listaActividades = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
 
             solicitudBL.ActualizarSolicitud(entity);
 
@@ -455,44 +483,44 @@ namespace TMD.GM.Site.Controllers
 
             return PartialView(model);
         }
-        public ActionResult NuevaActividad()
-        {
-            SolicitudActividadModel model = new SolicitudActividadModel();
+        //public ActionResult NuevaActividad()
+        //{
+        //    SolicitudActividadModel model = new SolicitudActividadModel();
 
-            List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
-            List<SelectListItemBE> listaDataTU = new List<SelectListItemBE>();
-            List<SelectListItemBE> listaDataPR = new List<SelectListItemBE>();
-            List<SelectListItemBE> listaDataFR = new List<SelectListItemBE>();
+        //    List<SelectListItemBE> listaDataTA = new List<SelectListItemBE>();
+        //    List<SelectListItemBE> listaDataTU = new List<SelectListItemBE>();
+        //    List<SelectListItemBE> listaDataPR = new List<SelectListItemBE>();
+        //    List<SelectListItemBE> listaDataFR = new List<SelectListItemBE>();
 
-            listaDataTA = comunBL.ListarTipoActividad();
-            listaDataTU = comunBL.ListarTiempoUniMed();
-            listaDataPR = comunBL.ListarPrioridad();
-            listaDataFR = comunBL.ListarFrecuencia();
+        //    listaDataTA = comunBL.ListarTipoActividad();
+        //    listaDataTU = comunBL.ListarTiempoUniMed();
+        //    listaDataPR = comunBL.ListarPrioridad();
+        //    listaDataFR = comunBL.ListarFrecuencia();
 
-            model.listaTA = new List<SelectListItem>();
-            model.listaTU = new List<SelectListItem>();
-            model.listaPR = new List<SelectListItem>();
-            model.listaFR = new List<SelectListItem>();
+        //    model.listaTA = new List<SelectListItem>();
+        //    model.listaTU = new List<SelectListItem>();
+        //    model.listaPR = new List<SelectListItem>();
+        //    model.listaFR = new List<SelectListItem>();
 
-            foreach (var item in listaDataTA)
-            {
-                model.listaTA.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
-            }
-            foreach (var item in listaDataTU)
-            {
-                model.listaTU.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
-            }
-            foreach (var item in listaDataPR)
-            {
-                model.listaPR.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
-            }
-            foreach (var item in listaDataFR)
-            {
-                model.listaFR.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
-            }
+        //    foreach (var item in listaDataTA)
+        //    {
+        //        model.listaTA.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
+        //    }
+        //    foreach (var item in listaDataTU)
+        //    {
+        //        model.listaTU.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
+        //    }
+        //    foreach (var item in listaDataPR)
+        //    {
+        //        model.listaPR.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
+        //    }
+        //    foreach (var item in listaDataFR)
+        //    {
+        //        model.listaFR.Add(new SelectListItem() { Selected = false, Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
+        //    }
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
         public ActionResult GenerarCronograma(string pNumeSoli, string pFechaInicio, string pFechaFin)
         {
@@ -515,7 +543,7 @@ namespace TMD.GM.Site.Controllers
             else
                 model.cronogramGenerado = false;
 
-            Session["SolicitudActividadesKey"] = model.solicitudBE.listaActividades;
+            Session[ConstantesUT.SESSION.SolicitudActividades] = model.solicitudBE.listaActividades;
 
             return PartialView("SolicitudActividades",model);
         }

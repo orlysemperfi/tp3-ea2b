@@ -1,0 +1,17 @@
+﻿@{ WebGrid grid = new WebGrid(Model.listaEspecialidadEquipo, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableTipoActividadesEquipo_LAR" },columns: grid.Columns(grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipos de Actividad a realizar"))
+ )
+
+
+ <script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+         $("#tableTipoActividadesEquipo_LAR").kendoGrid({
+             height: 150,
+             columns: [
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipos de Actividad a realizar" }
+           ]
+         });
+
+     });
+    
+</script>

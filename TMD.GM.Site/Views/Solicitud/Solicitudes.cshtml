@@ -6,18 +6,18 @@
            //grid.Column("FECHA_SOLICITUD", "Fecha", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>),
             grid.Column("DESCRIPCION_TIPO_SOLICITUD", "Tipo"),
             //grid.Column("DOCUMENTO_REFERENCIA", "Doc. referencia"),
-            grid.Column("FECHA_INICIO_SOLICITUD", "Inicio", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>),
-            grid.Column("FECHA_FIN_SOLICITUD", "Fin", format: @<text>@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")</text>),
+            grid.Column("FECHA_INICIO_SOLICITUD", "Inicio", format: @<text>@item.FECHA_INICIO_SOLICITUD.ToString("dd/MM/yyyy")</text>),
+            grid.Column("FECHA_FIN_SOLICITUD", "Fin", format: @<text>@item.FECHA_FIN_SOLICITUD.ToString("dd/MM/yyyy")</text>),
             grid.Column("DESCRIPCION_ESTADO_SOLICITUD", "Estado"),
             grid.Column("NOMBRE_EQUIPO", "Equipo"),
             //grid.Column("CODIGO_PLAN", "Plan"),
             grid.Column("OPCIONES", "Opciones", format: @<text>
         <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="SolicitudEditar('@Url.Action("SolicitudEditar", "Solicitud")','@Url.Action("SolicitudActividades", "Solicitud")',
          '@item.NUMERO_SOLICITUD','@item.FECHA_SOLICITUD.ToString("dd/MM/yyyy")','@item.TIPO_SOLICITUD','@item.DOCUMENTO_REFERENCIA','@item.FECHA_INICIO_SOLICITUD.ToString("dd/MM/yyyy")',
-         '@item.FECHA_FIN_SOLICITUD.ToString("dd/MM/yyyy")','@item.ESTADO_SOLICITUD','@item.CODIGO_EQUIPO','@item.CODIGO_PLAN');"><span class="k-icon k-edit"></span>Editar</a>
+         '@item.FECHA_FIN_SOLICITUD.ToString("dd/MM/yyyy")','@item.ESTADO_SOLICITUD','@item.CODIGO_EQUIPO','@item.CODIGO_PLAN','@item.NOMBRE_EQUIPO','@item.DESCRIPCION_AREA');"><span class="k-icon k-edit"></span>Editar</a>
           @{if (item.ESTADO_SOLICITUD != TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
          {
-        <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="SolicitudEliminar('@Url.Action("SolicitudEliminar", "Solicitud")','@Url.Action("Solicitudes", "Solicitud")','@item.NUMERO_SOLICITUD');"><span class="k-icon k-delete"></span>Eliminar</a>
+        <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="SolicitudEliminar('@Url.Action("SolicitudEliminar", "Solicitud")','@Url.Action("Solicitudes", "Solicitud")','@item.NUMERO_SOLICITUD');"><span class="k-icon k-delete"></span>Anular</a>
         }}
         </text>)
          )

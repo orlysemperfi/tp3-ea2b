@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ConstantesUT.cs" />
     <Compile Include="DataUT.cs" />
+    <Compile Include="ListUT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

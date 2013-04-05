@@ -10,10 +10,39 @@ using TMD.GM.Entidades;
 
 namespace TMD.GM.Site.Models
 {
-    public class OrdenTrabajoModels
+    public class OrdenTrabajoModel
     {
-        public List<OrdenTrabajoBE> listaDetalle { get; set; }
-        public string NumeroOrden { get; set; }
+        public List<SelectListItem> listaES { get; set; }
+        public int opcion { get; set; }
+        public OrdenTrabajoBE entity { get; set; }
+
+
         
+    }
+
+    public class OrdenTrabajoConsultaModel
+    {
+        public List<OrdenTrabajoBE> listaData { get; set; }
+        public List<SelectListItem> listaES { get; set; }
+        public DateTime fechaIni { get; set; }
+        public DateTime fechaFin { get; set; }
+
+
+    }
+
+    public class OrdenTrabajoGeneraModel
+    {
+        public DateTime fechaIni { get; set; }
+        public DateTime fechaFin { get; set; }
+
+        public List<OrdenTrabajoEquipoBE> listaEquiposPendientes { get; set; }
+        public List<OrdenTrabajoDetalleBE> listaActividadesPendientes { get; set; }
+    }
+
+    public class OrdenTrabajoEquipoModel
+    {
+        public OrdenTrabajoEquipoBE entity { get; set; }
+        public List<EspecialidadBE> listaEspecialidadEquipo { get; set; }
+        public List<EspecialidadBE> listaEspecialidadResponsable { get; set; }
     }
 }

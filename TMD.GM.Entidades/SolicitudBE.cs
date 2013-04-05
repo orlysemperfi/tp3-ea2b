@@ -23,8 +23,9 @@ namespace TMD.GM.Entidades
         public DateTime FECHA_FIN_SOLICITUD { get; set; }
         public int ESTADO_SOLICITUD { get; set; }
         public string DESCRIPCION_ESTADO_SOLICITUD { get; set; }
-        public int CODIGO_EQUIPO { get; set; }
+        public string CODIGO_EQUIPO { get; set; }
         public string NOMBRE_EQUIPO { get; set; }
+        public string DESCRIPCION_AREA { get; set; }
         public string CODIGO_PLAN { get; set; }
         public string NOMBRE_PLAN { get; set; }
 

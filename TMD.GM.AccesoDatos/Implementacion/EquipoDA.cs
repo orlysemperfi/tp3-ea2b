@@ -13,7 +13,7 @@ namespace TMD.GM.AccesoDatos.Implementacion
 {
     public class EquipoDA : IEquipoDA
     {
-        public List<EquipoBE> BuscarEquipos()
+        public List<EquipoBE> BuscarEquipos(EquipoBE equipoBE)
         {
             Database oDatabase = BaseDA.GetSqlDatabase;
             List<EquipoBE> listaResult = new List<EquipoBE>();
@@ -27,7 +27,11 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         if (db.Connection.State == System.Data.ConnectionState.Closed)
                             db.Connection.Open();
 
-                        var listaDatos = (from u in db.EQUIPO_COMPUTO where u.ESTADO_EQUIPO == ConstantesUT.ESTADO_GENERICO.Activo select u);
+                        var listaDatos = (from u in db.EQUIPO_COMPUTO where u.ESTADO_EQUIPO == ConstantesUT.ESTADO_GENERICO.Activo 
+                                          && (u.CODIGO_EQUIPO == equipoBE.CODIGO_EQUIPO || equipoBE.CODIGO_EQUIPO == "")
+                                          && (u.NOMBRE_EQUIPO.Contains(equipoBE.NOMBRE_EQUIPO) || equipoBE.NOMBRE_EQUIPO == "")
+                                          && (u.SERIE_EQUIPO.Contains( equipoBE.SERIE_EQUIPO) || equipoBE.SERIE_EQUIPO == "")
+                                          select u);
 
                         foreach (var itemEntidad in listaDatos)
                         {
@@ -82,6 +86,7 @@ namespace TMD.GM.AccesoDatos.Implementacion
 
                         EQUIPO_COMPUTO entidad = new EQUIPO_COMPUTO();
 
+                        entidad.CODIGO_EQUIPO = equipoBE.CODIGO_EQUIPO;
                         entidad.NOMBRE_EQUIPO = equipoBE.NOMBRE_EQUIPO;
                         entidad.SERIE_EQUIPO = equipoBE.SERIE_EQUIPO;
                         entidad.MARCA_EQUIPO = equipoBE.MARCA_EQUIPO;
@@ -104,6 +109,10 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         EQUIPO_COMPUTO entidadActual = (from u in db.EQUIPO_COMPUTO where u.NOMBRE_EQUIPO == equipoBE.NOMBRE_EQUIPO select u).FirstOrDefault();
                         if (entidadActual != null)
                             throw new Exception(ConstantesUT.MENSAJES_ERROR.YaExisteNombre);
+
+                        entidadActual = (from u in db.EQUIPO_COMPUTO where u.SERIE_EQUIPO == equipoBE.SERIE_EQUIPO select u).FirstOrDefault();
+                        if (entidadActual != null)
+                            throw new Exception(ConstantesUT.MENSAJES_ERROR.YaExisteNumSerie);
                         #endregion
 
                         db.EQUIPO_COMPUTO.AddObject(entidad);
@@ -148,11 +157,17 @@ namespace TMD.GM.AccesoDatos.Implementacion
 
                         #region Validacion
                         EQUIPO_COMPUTO entidadActual = (from u in db.EQUIPO_COMPUTO
-                                                        where (u.NOMBRE_EQUIPO == equipoBE.NOMBRE_EQUIPO &&
-                                                                         u.CODIGO_EQUIPO != equipoBE.CODIGO_EQUIPO)
+                                                        where (u.NOMBRE_EQUIPO == equipoBE.NOMBRE_EQUIPO && u.CODIGO_EQUIPO != equipoBE.CODIGO_EQUIPO)
                                                                      select u).FirstOrDefault();
                         if (entidadActual != null)
                             throw new Exception(ConstantesUT.MENSAJES_ERROR.YaExisteNombre);
+
+                        entidadActual = (from u in db.EQUIPO_COMPUTO 
+                                         where u.SERIE_EQUIPO == equipoBE.SERIE_EQUIPO && u.CODIGO_EQUIPO != equipoBE.CODIGO_EQUIPO
+                                         select u).FirstOrDefault();
+                        if (entidadActual != null)
+                            throw new Exception(ConstantesUT.MENSAJES_ERROR.YaExisteNumSerie);
+
                         #endregion
 
 
@@ -250,8 +265,8 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         if (db.Connection.State == System.Data.ConnectionState.Closed)
                             db.Connection.Open();
 
-                        var listaDatos = (from u in db.EQUIPO_COMPUTO 
-                                          where (u.CODIGO_EQUIPO == equipoBE.CODIGO_EQUIPO || equipoBE.CODIGO_EQUIPO == 0)
+                        var listaDatos = (from u in db.EQUIPO_COMPUTO
+                                          where (u.CODIGO_EQUIPO == equipoBE.CODIGO_EQUIPO || equipoBE.CODIGO_EQUIPO == "")
                                           && (u.NOMBRE_EQUIPO.Contains(equipoBE.NOMBRE_EQUIPO) || equipoBE.NOMBRE_EQUIPO == "")
                                           && (u.SERIE_EQUIPO.Contains( equipoBE.SERIE_EQUIPO) || equipoBE.SERIE_EQUIPO == "")
                                           select u);

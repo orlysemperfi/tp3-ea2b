@@ -19,9 +19,9 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         }
         #endregion
 
-        public List<EquipoBE> BuscarEquipos()
+        public List<EquipoBE> BuscarEquipos(EquipoBE equipoBE)
         {
-            return instanciaDA.BuscarEquipos();
+            return instanciaDA.BuscarEquipos(equipoBE);
         }
         public List<EquipoBE> ListarEquiposTodos(EquipoBE equipoBE)
         {

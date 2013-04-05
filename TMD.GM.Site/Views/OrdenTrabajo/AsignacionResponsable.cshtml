@@ -1,0 +1,44 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoGeneraModel
+<div style="display:block;">
+<fieldset>
+@{ WebGrid grid = new WebGrid(Model.listaEquiposPendientes, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableOTEquiposResumen" },
+    columns: grid.Columns(
+    grid.Column("NOMBRE_EQUIPO", "Equipo"),
+    grid.Column("CANTIDAD_ACTIVIDADES", "# Actividades"),
+    grid.Column("VER_ACTIVIDADES", "Actividades", format: @<text><a class="k-button k-button-icontext k-grid-edit" href="#" 
+    onclick="OTActividadesResumen('@Url.Action("ActividadesPendientesResumen", "OrdenTrabajo")','@item.CODIGO_EQUIPO');"><span class="k-icon k-i-arrow-e"></span>Ver</a></text>),
+    grid.Column("TIEMPO_ESTIMADO", "Tiempo estimado"),
+    grid.Column("NOMBRE_RESPONSABLE", "Nombre Responsable"),
+    grid.Column("CANTIDAD_OT_ASIGNADAS", "# OT Asignadas"),
+    grid.Column("HORAS_OT_ASIGNADAS", "# Horas Asignadas"),
+    grid.Column("ASIGNAR", "Asignar", format: @<text><a class="k-button k-button-icontext k-grid-edit" href="#" 
+    onclick="OTListarActividadResponsables('@Url.Action("ListarActividadResponsables", "OrdenTrabajo")','@Url.Action("ActividadesEquipo", "OrdenTrabajo")','@Url.Action("EspecialidadesResponsable", "OrdenTrabajo")','@item.CODIGO_EQUIPO','@item.CODIGO_RESPONSABLE');"><span class="k-icon k-i-arrow-e"></span>Asignar</a></text>)
+    )
+)
+</fieldset>
+<br />
+<br />
+<fieldset>
+<button id="btnGenerar" class="k-button" onclick="OTGenerarConfirma('@Url.Action("GenerarConfirma", "OrdenTrabajo")')" ><span class="k-icon k-i-tick"></span>Generar Orden(es) de Trabajo</button>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalOTAsignaResponsable();" ><span class="k-icon k-i-close"></span>Retornar</button>
+</fieldset>
+</div>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableOTEquiposResumen").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "NOMBRE_EQUIPO", title: "Equipo", width: "100px" },
+            { field: "CANTIDAD_ACTIVIDADES", title: "# Actividades", width: "30px" },
+            { field: "VER_ACTIVIDADES", title: "Actividades", width: "50px" },
+            { field: "TIEMPO_ESTIMADO", title: "Tiempo estimado", width: "50px" },
+            { field: "NOMBRE_RESPONSABLE", title: "Nombre Responsable", width: "100px" },
+           { field: "CANTIDAD_OT_ASIGNADAS", title: "# OT Asignadas", width: "50px" },
+           { field: "HORAS_OT_ASIGNADAS", title: "# Horas Asignadas", width: "50px" },
+            { field: "OPCIONES", title: "Asignar", width: "50px" }
+            ]
+        });
+    });
+    
+</script>
