@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DAArchivo">
+  <DataContextMoniker Name="/DAArchivoDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1e98b7ae-5625-4890-b7e9-c5760575d202" absoluteBounds="1.375, 1.375, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/DAArchivoDataContext/AC_ARCHIVO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d2b6aae-5982-4436-a535-1fa4d74faf31" absoluteBounds="1.3900000000000001, 1.835, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
