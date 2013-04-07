@@ -1,0 +1,21 @@
+﻿@{ WebGrid grid = new WebGrid(Model.listaEspecialidadResponsable, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableTipoActividadesResponsable_LAR" }, columns:
+             grid.Columns(grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipos de Actividad a realizar"),
+                     grid.Column("ESPECIALIDAD", "Especialidad", format: @<text>@Html.CheckBox("checkboxActi", isChecked: item.ESPECIALIDAD ? true : false, htmlAttributes: new { @disabled = "disabled" })</text>)
+           )
+ )
+
+
+ <script language="javascript" type="text/javascript">
+     $(document).ready(function () {
+
+         $("#tableTipoActividadesResponsable_LAR").kendoGrid({
+             height: 150,
+             columns: [
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipos de Actividad a realizar" },
+            { field: "ESPECIALIDAD", title: "Especialidad" }
+           ]
+         });
+     });
+    
+</script>

@@ -1,0 +1,36 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoGeneraModel
+@{ WebGrid grid = new WebGrid(Model.listaActividadesPendientes, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableActividades" },
+    columns: grid.Columns(
+        grid.Column("SELECT", "Sel.", format: 
+        @<text>
+        @Html.CheckBox("checkboxActi", isChecked: item.CHECKED ? true : false, 
+        htmlAttributes: new { @id = string.Concat("checkboxActi", item.ID_ACTIVIDAD),
+                              @onchange = "OTActividadCheck('" + Url.Action("ChangeActividadPendiente", "OrdenTrabajo") + "','" + item.ID_ACTIVIDAD + "','" + item.CODIGO_EQUIPO + "','" + string.Concat("checkboxActi", item.ID_ACTIVIDAD) + "');"
+        })
+        </text>),
+        grid.Column("ITEM_ORDEN", "Item"),
+        grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
+        grid.Column("DESCRIPCION_ACTIVIDAD", "Actividad"),
+        grid.Column("FECHA_PROGRAMADA", "F. programada", format: @<text>@TMD.GM.Util.DataUT.ObjectToDateTimeStringNull(item.FECHA_PROGRAMADA, "dd/MM/yyyy")</text>),
+        grid.Column("FECHA_CRONOGRAMA", "F. cronograma",format: @<text>@TMD.GM.Util.DataUT.ObjectToDateTimeStringNull(item.FECHA_CRONOGRAMA, "dd/MM/yyyy")</text>),
+        grid.Column("TIEMPO_ACTIVIDAD_TEXTO", "Tiempo")
+         )
+        )
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableActividades").kendoGrid({
+            height: 200,
+            columns: [
+            { field: "SELECT", title: "Sel.", width: "20px" },
+            { field: "ITEM_ORDEN", title: "Item", width: "30px" },
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
+            { field: "DESCRIPCION_ACTIVIDAD", title: "Descripción", width: "200px" },
+            { field: "FECHA_PROGRAMADA", title: "F. programada", width: "50px" },
+            { field: "FECHA_CRONOGRAMA", title: "F. cronograma", width: "50px" },
+            { field: "TIEMPO_ACTIVIDAD_TEXTO", title: "Tiempo", width: "50px" }
+           ]
+        });
+    });
+    
+</script>

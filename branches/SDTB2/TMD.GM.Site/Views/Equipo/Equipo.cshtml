@@ -1,0 +1,103 @@
+﻿@model TMD.GM.Site.Models.EquipoModel
+@Html.AntiForgeryToken()
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CODIGO_EQUIPO)
+@Html.TextBoxFor(m => m.entity.CODIGO_EQUIPO, htmlAttributes: new { @id = "txtCodigoEquipo", @class = "k-textbox", @style = "width: 100px;" })
+@Html.ValidationMessageFor(model => model.entity.CODIGO_EQUIPO)
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.NOMBRE_EQUIPO)
+@Html.TextBoxFor(m => m.entity.NOMBRE_EQUIPO, htmlAttributes: new { @id = "txtNombreEquipo", @class = "k-textbox", @style = "width: 200px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.SERIE_EQUIPO)
+@Html.TextBoxFor(m => m.entity.SERIE_EQUIPO, htmlAttributes: new { @id = "txtSerieEquipo", @class = "k-textbox", @style = "width: 150px;" })
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.MARCA_EQUIPO)
+@Html.TextBoxFor(m => m.entity.MARCA_EQUIPO, htmlAttributes: new { @id = "txtMarcaEquipo", @class = "k-textbox", @style = "width: 150px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.MODELO_EQUIPO)
+@Html.TextBoxFor(m => m.entity.MODELO_EQUIPO, htmlAttributes: new { @id = "txtModeloEquipo", @class = "k-textbox", @style = "width: 150px;" })
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CARACTERISTICAS_EQUIPO)
+@Html.TextAreaFor(m => m.entity.CARACTERISTICAS_EQUIPO, htmlAttributes: new { @id = "txtCaracteristicaEquipo", @class = "k-textbox", @style = "width:420px;height:40px;", @rows = "5", @cols = "30" })
+@*<textarea id="txtCaracteristicaEquipo" rows="5" cols="30" class="k-textbox" style="width:420px;height:40px">@Model.entity.CARACTERISTICAS_EQUIPO</textarea>*@
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.FECHA_COMPRA)
+@Html.TextBoxFor(m => m.entity.FECHA_COMPRA, htmlAttributes: new { @id = "txtFechaCompra", @style = "width: 150px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.FECHA_EXPIRACION_GARANTIA)
+@Html.TextBoxFor(m => m.entity.FECHA_EXPIRACION_GARANTIA, htmlAttributes: new { @id = "txtFechaExpira", @style = "width: 150px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.FECHA_ULTIMO_MANTENIMIENTO_EQUIPO)
+@Html.TextBoxFor(m => m.entity.FECHA_ULTIMO_MANTENIMIENTO_EQUIPO, htmlAttributes: new { @id = "txtFechaUltiMant", @style = "width: 150px;", @disabled = "disabled" })
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CODIGO_AREA)
+@Html.DropDownList("ddlArea", Model.listaAR, new { @style = "width:150;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CODIGO_TIPO_EQUIPO)
+@Html.DropDownList("ddlTipoEquipo", Model.listaTE, new { @style = "width:150;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CODIGO_PLAN)
+@Html.DropDownList("ddlPlanMant", Model.listaPM, new { @style = "width:300px;" })
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.PROCEDENCIA_EQUIPO)
+@Html.DropDownList("ddlProcedEquipo", Model.listaPR, new {@style = "width:150;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.ESTADO_EQUIPO)
+@Html.CheckBox("checkEstado", Model.entity.ESTADO_EQUIPO, new { @class = "txtForm" })
+</fieldset>
+</fieldset>
+
+<fieldset>
+@{if (Model.nuevo)
+  {
+    <button id="btnRegistrar" class="k-button" onclick="EquiposRegistrar('@Url.Action("Registrar", "Equipo")','@Url.Action("EquiposTodos", "Equipo")');"><span class="k-icon k-i-tick"></span> Grabar</button>
+  }
+  else
+  {
+    <button id="btnRegistrar" class="k-button" onclick="EquiposRegistrar('@Url.Action("Actualizar", "Equipo")','@Url.Action("EquiposTodos", "Equipo")');" ><span class="k-icon k-i-tick"></span> Grabar</button>
+    }
+}
+<button id="btnRetornar" class="k-button" onclick="CerrarModalEquipos()"><span class="k-icon k-i-close"></span> Retornar</button>
+
+</fieldset>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#txtFechaCompra").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#txtFechaExpira").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#txtFechaUltiMant").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+
+        $("#ddlArea").kendoComboBox();
+        $("#ddlTipoEquipo").kendoComboBox();
+        $("#ddlPlanMant").kendoComboBox();
+        $("#ddlProcedEquipo").kendoComboBox();
+    });
+</script>

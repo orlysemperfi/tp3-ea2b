@@ -1,0 +1,28 @@
+﻿@model TMD.GM.Site.Models.EmpleadoBusquedaModel
+@{ WebGrid grid = new WebGrid(Model.listaEmpleados, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableEquipos" },
+    columns: grid.Columns(
+         grid.Column("CODIGO_EMPLEADO", "Código"),
+         grid.Column("NOMBRE_COMPLETO", "Nombre"),
+         grid.Column("DNI_PERSONA", "DNI"),
+         grid.Column("DESCRIPCION_PUESTO", "Cargo"),
+    grid.Column("OPCIONES", "Opciones", format: @<text>
+    <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="EmpleadoSeleccionar('@item.CODIGO_EMPLEADO','@item.NOMBRE_COMPLETO');"><span class="k-icon k-i-expand"></span>Seleccionar</a>
+    </text>)
+    )
+)
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableEquipos").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "CODIGO_EMPLEADO", title: "Código", width: "50px" },
+            { field: "NOMBRE_COMPLETO", title: "Nombre", width: "200px" },
+            { field: "DNI_PERSONA", title: "DNI", width: "100px" },
+            { field: "DESCRIPCION_PUESTO", title: "Cargo", width: "100px" },
+            { field: "OPCIONES", title: "Opciones", width: "100px"}]
+        });
+    });
+    
+</script>

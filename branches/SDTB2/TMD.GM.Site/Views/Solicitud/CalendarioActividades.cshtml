@@ -1,0 +1,66 @@
+﻿@model TMD.GM.Site.Models.SolicitudModel
+<fieldset>
+Seleccione la fecha programada para ver Actividades
+</fieldset>
+
+<fieldset>
+<fieldset  class="fieldset_left">
+<div class="k-block"><div class="k-header k-shadow">Calendario</div>
+<div style="height:310px" >
+@*<span>Fecha programada para ver Actividades</span><br />*@
+ <div id="calendar" style="width: 220px;"></div>
+ <br />
+ <fieldset>
+ <br />
+<span>Fecha seleccionada</span><br />
+<input id="txtFechaSel" type="text" class="k-textbox" value="" style="width: 150px;" readonly="readonly" />
+</fieldset>
+</div>
+</div>
+
+</fieldset>
+<fieldset  class="fieldset_left">
+<div class="k-block"><div class="k-header k-shadow">Actividades</div>
+<div id="divCalendarioDetalle" style="width: 600px; height:310px" ></div>
+</div>
+</fieldset>
+
+</fieldset>
+
+
+
+
+<fieldset>
+ <button id="btnRetornar" class="k-button" onclick="CerrarModalCalendario()" ><span class="k-icon k-i-close"></span> Retornar</button>
+</fieldset>
+
+
+
+ <script language="javascript" type="text/javascript">
+     function onChange() {
+         var fecha = kendo.toString(this.value(), 'dd/MM/yyyy');
+         $("#txtFechaSel").attr("value", fecha);
+         $.ajax({
+             type: "post",
+             url: "/Solicitud/CalendarioDetalle",
+             data: { pFecha: fecha },
+             cache: false,
+             success: function (data, textStatus, jqXHR) {
+                 $("#divCalendarioDetalle").html(data);
+             },
+             error: function (req, status, error) { alert("fail: " + req + " " + status + " " + error); },
+             complete: function () { }
+         });
+
+     }
+
+     $("#calendar").kendoCalendar({
+         culture: "es-PE",
+        format: "dd/MM/yyyy",
+         change: onChange,
+//         value: new Date(@DateTime.Now.Year,@DateTime.Now.Month ,@DateTime.Now.Day),
+         footer:""
+         
+     });
+    
+</script>

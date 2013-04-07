@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C88B5E5-8CCB-4968-A25F-36DF0E3EC98C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TMD.GM.AccesoDatos</RootNamespace>
+    <AssemblyName>TMD.GM.AccesoDatos</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseDA.cs" />
+    <Compile Include="Base\SQLHelper.cs" />
+    <Compile Include="UtilListGenericDA.cs" />
+    <Compile Include="Contrato\IEmpleadosDA.cs" />
+    <Compile Include="Contrato\IEquipoDA.cs" />
+    <Compile Include="Contrato\IComunDA.cs" />
+    <Compile Include="Contrato\IEspecialidadDA.cs" />
+    <Compile Include="Contrato\IInformesDA.cs" />
+    <Compile Include="Contrato\IOrdenTrabajoDA.cs" />
+    <Compile Include="Contrato\IPlanDA.cs" />
+    <Compile Include="Contrato\ISolicitudDA.cs" />
+    <Compile Include="Implementacion\ComunDA.cs" />
+    <Compile Include="Implementacion\EmpleadosDA.cs" />
+    <Compile Include="Implementacion\EquipoDA.cs" />
+    <Compile Include="Implementacion\EspecialidadDA.cs" />
+    <Compile Include="Implementacion\InformesDA.cs" />
+    <Compile Include="Implementacion\OrdenTrabajoDA.cs" />
+    <Compile Include="Implementacion\PlanDA.cs" />
+    <Compile Include="Implementacion\SolicitudDA.cs" />
+    <Compile Include="ModelGM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.dll" />
+    <Content Include="bin\Debug\Microsoft.Practices.Unity.Interception.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TMD.GM.Entidades\TMD.GM.Entidades.csproj">
+      <Project>{F6B316C4-0778-4BD1-9D17-044E191E74A1}</Project>
+      <Name>TMD.GM.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TMD.GM.Util\TMD.GM.Util.csproj">
+      <Project>{057E073B-A43F-4D13-90A4-49EBEEF9A904}</Project>
+      <Name>TMD.GM.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ModelGM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelGM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,68 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoModel
+@Html.AntiForgeryToken()
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.NUMERO_ORDEN)
+@Html.TextBoxFor(m => m.entity.NUMERO_ORDEN, htmlAttributes: new { @id = "txtNumOrden", @class = "k-textbox", @style = "width: 150px;" })
+@Html.ValidationMessageFor(model => model.entity.NUMERO_ORDEN)
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.NUMERO_SOLICITUD)
+@Html.TextBoxFor(m => m.entity.NUMERO_SOLICITUD, htmlAttributes: new { @id = "txtNumSolicitud", @class = "k-textbox", @style = "width: 150px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.ESTADO_ORDEN)
+@Html.DropDownList("ddlEstadoOT", Model.listaES, new { @style = "width:150;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.FECHA_INICIO_ORDEN)
+@Html.TextBoxFor(m => m.entity.FECHA_INICIO_ORDEN, htmlAttributes: new { @id = "txtFechaIni", @style = "width: 150px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.FECHA_FIN_ORDEN)
+@Html.TextBoxFor(m => m.entity.FECHA_FIN_ORDEN, htmlAttributes: new { @id = "txtFechaFin", @style = "width: 150px;" })
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.FECHA_EMISION_ORDEN)
+@Html.TextBoxFor(m => m.entity.FECHA_EMISION_ORDEN, htmlAttributes: new { @id = "txtFechaEmi", @style = "width: 150px;", @disabled = "disabled" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CODIGO_EMPLEADO)
+@Html.TextBoxFor(m => m.entity.CODIGO_EMPLEADO, htmlAttributes: new { @id = "txtCodiEmpl", @class = "k-textbox", @style = "width: 50px;" })
+@Html.TextBoxFor(m => m.entity.NOMBRE_EMPLEADO, htmlAttributes: new { @id = "txtNombEmpl", @class = "k-textbox", @style = "width: 200px;", @disabled = "disabled" })
+<button id="btnBuscarResponsable" class="k-button" onclick="EmpleadoConsulta('@Url.Action("Buscar", "Empleado")','PagePopup')" >...</button>
+</fieldset>
+</fieldset>
+
+
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.OBSERVACIONES_ORDEN)
+@Html.TextAreaFor(m => m.entity.OBSERVACIONES_ORDEN, htmlAttributes: new { @id = "txtObse", @class = "k-textbox", @style = "width:420px;height:40px;", @rows = "5", @cols = "30" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.HORAS_TRABAJO_ORDEN)
+@Html.TextBoxFor(m => m.entity.HORAS_TRABAJO_ORDEN, htmlAttributes: new { @id = "txtHoraTrab", @style = "width: 150px;" })
+</fieldset>
+
+</fieldset>
+<br />
+<div class="k-block"><div class="k-header k-shadow">Actividades</div>
+<div id="divGridOTActividades" style="height:252px"></div>
+</div>
+<br />
+<fieldset>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalOT()"><span class="k-icon k-i-close"></span> Retornar</button>
+</fieldset>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#txtFechaEmi").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#txtFechaIni").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#txtFechaFin").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#ddlEstadoOT").kendoComboBox();
+        $("#txtHoraTrab").kendoNumericTextBox({ format: "n2" });
+    });
+</script>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Consulta de planes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Planes de mantenimiento</h2>
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Codigo</span><br />
+<input id="txtCodigo_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Nombre</span><br />
+<input id="txtNombre_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+</fieldset>
+<fieldset>
+<button id="btnNuevo" class="k-button" onclick="PlanMantNuevo('@Url.Action("PlanNuevo", "Plan")');"><span class="k-icon k-i-plus"></span> Nuevo Plan</button>
+<button id="btnBuscar" class="k-button" onclick="BuscarPlanesMant('@Url.Action("Planes", "Plan")');"><span class="k-icon k-i-search"></span> Buscar</button>
+</fieldset>
+<br />
+<fieldset>
+<div class="k-block"><div class="k-header k-shadow">Planes</div>
+<div id="divGrid" style="font-size:1.0em; font-family:'Segoe UI', Verdana, Helvetica, Sans-Serif"></div>
+</div>
+<div id="divPlan" class="j_modal" title="Plan"></div>
+<div id="divActividad" class="j_modal" title="Actividad"></div>
+</fieldset>

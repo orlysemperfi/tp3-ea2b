@@ -1,0 +1,66 @@
+﻿@model TMD.GM.Site.Models.SolicitudActividadModel
+@Html.Hidden("hdIdActividad", Model.solicitudDetalleBE.ID_ACTIVIDAD)
+@Html.Hidden("hdNumeroSoli", Model.solicitudDetalleBE.NUMERO_SOLICITUD)
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Item Actividad</span><br />
+<input id="txtItem" type="text" class="k-textbox" value="@Model.solicitudDetalleBE.ITEM_SOLICITUD" style="width: 150px;" readonly="readonly" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Descripción</span><br />
+<input id="txtActividadDesc" type="text" class="k-textbox" value="@Model.solicitudDetalleBE.DESCRIPCION_ACTIVIDAD" style="width: 300px;"  />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Tipo Actividad</span><br />
+@Html.DropDownList("ddlTipoActividad", Model.listaTA, new { @class = "ddlForm", style = "width: 150px;" })
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Personal requerido</span><br />
+<input id="ntbPersRequ" type="number" value="@Model.solicitudDetalleBE.PERSONAL_REQUERIDO" min="0" max="100" step="1" style="width:80px;" />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Tiempo</span><br />
+<input id="ntbTiempoDura" type="number" value="@Model.solicitudDetalleBE.TIEMPO_ACTIVIDAD" min="0" max="100" step="1" style="width:80px;" />
+@Html.DropDownList("ddlTiempoUnme", Model.listaTU, new { @class = "ddlForm" })
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Priodidad</span><br />
+@Html.DropDownList("ddlPrioridad", Model.listaPR, new { @class = "ddlForm", style = "width: 150px;" })
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Frecuencia</span><br />
+@Html.DropDownList("ddlFrecuencia", Model.listaFR, new { @class = "ddlForm", style = "width: 150px;" })
+</fieldset>
+</fieldset>
+
+
+<fieldset>
+<fieldset  class="fieldset_left">
+<span>Fecha programada</span><br />
+<input id="dpFechaProg"  value="@Model.solicitudDetalleBE.FECHA_PROGRAMACION" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>N° Orden Trabajo</span><br />
+<input id="txtNumOT" type="text" class="k-textbox" value="@Model.solicitudDetalleBE.ORDEN_TRABAJO" style="width: 150px;"  />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<button id="btnGrabar" class="k-button" onclick="SolicitudActividad_AceptarClick('@Url.Action("SolicitudActividadAceptar", "Solicitud")','@Url.Action("SolicitudActividades_Actualiza", "Solicitud")')"  ><span class="k-icon k-i-tick"></span> Grabar Actividad</button>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalActividadEditar()" ><span class="k-icon k-i-close"></span> Retornar</button>
+</fieldset>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#ntbTiempoDura").kendoNumericTextBox({ format: "n0" });
+        $("#ntbPersRequ").kendoNumericTextBox({ format: "n0" });
+        $("#dpFechaProg").kendoDatePicker({ format: "dd/MM/yyyy" });
+    });
+</script>

@@ -1,0 +1,42 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoGeneraModel
+@{ WebGrid grid = new WebGrid(Model.listaEquiposPendientes, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableOTEquipos" },
+    columns: grid.Columns(
+    grid.Column("SELECT", "Sel.", format: 
+    @*@<text><input type="checkbox" id="@string.Concat("checkboxEqui",item.CODIGO_EQUIPO)" 
+    onchange="OTEquipoCheck('@Url.Action("ChangeEquipoPendiente", "OrdenTrabajo")','@item.CODIGO_EQUIPO','@item.NUMERO_SOLICITUD','@string.Concat("checkboxEqui", item.CODIGO_EQUIPO)');" /></text>*@
+ @<text>
+        @Html.CheckBox("checkboxEqui", isChecked: item.CHECKED ? true : false,
+                 htmlAttributes: new
+                 {
+                     @id = string.Concat("checkboxEqui", item.CODIGO_EQUIPO),
+                     @onchange = "OTEquipoCheck('" + Url.Action("ChangeEquipoPendiente", "OrdenTrabajo") + "','" + item.CODIGO_EQUIPO + "','" + item.NUMERO_SOLICITUD + "','" + string.Concat("checkboxEqui", item.CODIGO_EQUIPO) + "');"
+                 })
+        </text>),
+ 
+    grid.Column("CODIGO_EQUIPO", "Código"),
+    grid.Column("NOMBRE_EQUIPO", "Descripción"),
+    grid.Column("DESCRIPCION_TIPO_EQUIPO", "Tipo"),
+    grid.Column("NOMBRE_PLAN", "Plan mantenimiento"),
+    grid.Column("NUMERO_SOLICITUD", "N° Solicitud"),
+    grid.Column("OPCIONES", "Ver", format: @<text><a class="k-button k-button-icontext k-grid-edit" style="min-width:20px!important" href="#" 
+        onclick="OTEquipoActividades('@Url.Action("ActividadesPendientes", "OrdenTrabajo")','@item.CODIGO_EQUIPO');"><span class="k-icon k-i-arrow-e"></span></a></text>)
+         )
+        )
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableOTEquipos").kendoGrid({
+            height: 200,
+            columns: [
+            { field: "SELECT", title: "Sel.", width: "20px" },
+            { field: "CODIGO_EQUIPO", title: "Código", width: "40px" },
+            { field: "NOMBRE_EQUIPO", title: "Descripción", width: "100px" },
+            { field: "DESCRIPCION_TIPO_EQUIPO", title: "Tipo", width: "50px" },
+            { field: "NOMBRE_PLAN", title: "Plan mantenimiento", width: "100px" },
+           { field: "NUMERO_SOLICITUD", title: "N° Solicitud", width: "50px" },
+            { field: "OPCIONES", title: "Ver", width: "20px" }
+            ]
+        });
+    });
+    
+</script>

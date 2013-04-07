@@ -1,0 +1,32 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoConsultaModel
+@{ WebGrid grid = new WebGrid(Model.listaData, canPage: false, canSort: false);}
+@grid.GetHtml(htmlAttributes: new { id = "tableOT" },
+      columns: grid.Columns(
+            grid.Column("NUMERO_ORDEN", "N° OT"),
+                grid.Column("FECHA_EMISION_ORDEN", "Fecha", format: @<text>@item.FECHA_EMISION_ORDEN.ToString("dd/MM/yyyy")</text>),
+                grid.Column("NOMBRE_EMPLEADO", "Responsable"),
+                grid.Column("HORAS_TRABAJO_ORDEN", "Horas trabajo"),
+                grid.Column("NUMERO_SOLICITUD", "N° Solicitud"),
+                grid.Column("DESCRIPCION_ESTADO", "Estado OT")
+                                                                                       
+       )
+    )
+)
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableOT").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "NUMERO_ORDEN", title: "N° OT", width: "100px" },
+            { field: "FECHA_EMISION_ORDEN", title: "Fecha", width: "80px" },
+            { field: "NOMBRE_EMPLEADO", title: "Responsable", width: "250px" },
+            { field: "HORAS_TRABAJO_ORDEN", title: "Horas trabajo", width: "50px" },
+            { field: "NUMERO_SOLICITUD", title: "N° Solicitud", width: "100px" },
+            { field: "DESCRIPCION_ESTADO", title: "Estado OT", width: "80px" }]
+        });
+    });
+    
+</script>
+  
+

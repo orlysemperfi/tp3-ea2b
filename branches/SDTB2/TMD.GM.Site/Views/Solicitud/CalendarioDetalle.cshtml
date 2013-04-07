@@ -1,0 +1,41 @@
+﻿
+@{ WebGrid grid = new WebGrid(ViewBag.listaActividades, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableActividadesCronograma" },
+columns: grid.Columns(
+    grid.Column("DESCRIPCION_ACTIVIDAD", "Actividad"),
+    grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
+    grid.Column("TIEMPO_ACTIVIDAD", "Tiempo")
+    )
+)
+<fieldset>
+<fieldset class="fieldset_left">
+<span>Personal disponible</span><br />
+<span>(</span><input id="txtPersonalDisp" type="text" class="k-textbox" value="@ViewBag.PersonalDisp" style="width: 100px;" readonly="readonly" /><span>*</span>
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Horas laborables</span><br />
+<input id="txtHorasLabo" type="text" class="k-textbox" value="@ViewBag.HorasLabo" style="width: 100px;" readonly="readonly" /><span>) =</span>
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Horas disponibles</span><br />
+<input id="txtHorasDisp" type="text" class="k-textbox" value="@ViewBag.HorasDisp" style="width: 100px;" readonly="readonly" />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Horas empleadas</span><br />
+<span>|</span><input id="txtHorasEmpl" type="text" class="k-textbox" value="@ViewBag.HorasEmpl" style="width: 100px;" readonly="readonly" />
+</fieldset>
+</fieldset>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableActividadesCronograma").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "DESCRIPCION_ACTIVIDAD", title: "Actividad", width: "150px" },
+            { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
+            { field: "TIEMPO_ACTIVIDAD", title: "Tiempo", width: "50px"}]
+        });
+    });
+    
+</script>
+
+

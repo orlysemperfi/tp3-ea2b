@@ -1,0 +1,30 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoGeneraModel
+@{ WebGrid grid = new WebGrid(Model.listaActividadesPendientes, canPage: false, canSort: false);}
+ @grid.GetHtml(htmlAttributes: new { id = "tableActividadesResumen" },
+    columns: grid.Columns(
+    grid.Column("ITEM_ORDEN", "Item"),
+    grid.Column("DESCRIPCION_TIPO_ACTIVIDAD", "Tipo"),
+    grid.Column("DESCRIPCION_ACTIVIDAD", "Actividad"),
+    grid.Column("FECHA_PROGRAMADA", "F. programada", format: @<text>@TMD.GM.Util.DataUT.ObjectToDateTimeStringNull(item.FECHA_PROGRAMADA, "dd/MM/yyyy")</text>),
+    grid.Column("TIEMPO_ACTIVIDAD_TEXTO", "Tiempo")
+    )
+ )
+ <br />
+ <br />
+ <fieldset>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalOTActividadesResumen();" ><span class="k-icon k-i-close"></span>Retornar</button>
+</fieldset>
+<script language="javascript" type="text/javascript">
+$(document).ready(function () {
+    $("#tableActividadesResumen").kendoGrid({
+        height: 200,
+        columns: [
+        { field: "ITEM_ORDEN", title: "Item", width: "30px" },
+        { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
+        { field: "DESCRIPCION_ACTIVIDAD", title: "Descripción", width: "200px" },
+        { field: "FECHA_PROGRAMADA", title: "F. programada", width: "50px" },
+        { field: "TIEMPO_ACTIVIDAD_TEXTO", title: "Tiempo", width: "50px" }
+        ]
+    });
+});
+</script>
