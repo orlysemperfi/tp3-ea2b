@@ -16,7 +16,13 @@ namespace TMD.MP.Site.Privado
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            String sucess = "false";
             if (!Page.IsPostBack) {
+                sucess = Request.QueryString["sucess"];
+                if (sucess == "true")
+                    lblMensajeConfirmacion.Text = "Piloto Registrado";
+                else
+                    lblMensajeConfirmacion.Text = "";
                 CargarPilotoListado();
             }
         }
@@ -60,6 +66,7 @@ namespace TMD.MP.Site.Privado
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            lblMensajeConfirmacion.Text = "";
             CargarPilotoListado();
         }
 

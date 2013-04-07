@@ -108,12 +108,13 @@ namespace TMD.CF.Site.Vistas.MP
                 else
                     oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
-                string currentURL = Request.Url.ToString();
+                /*string currentURL = Request.Url.ToString();
                 string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
                 "alert('Indicador Registrado'); window.location='" +
-                newURL + "/IndicadorListado.aspx';", true);
+                newURL + "/IndicadorListado.aspx';", true);*/
+                Response.Redirect(Paginas.TMD_MP_IndicadorListado + "?sucess=true", true);
 
             }
         }

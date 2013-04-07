@@ -84,12 +84,14 @@ namespace TMD.MP.Site.Privado
                     oSolucionMejoraLogica.InsertarSolucionMejora(oSolucionMejora);
                 }
 
-                string currentURL = Request.Url.ToString();
+                /*string currentURL = Request.Url.ToString();
                 string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
                 "alert('Solucion Registrada'); window.location='" +
-                newURL + "/SolucionMejoraListado.aspx';", true);
+                newURL + "/SolucionMejoraListado.aspx';", true);*/
+
+                Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado + "?sucess=true", true);
             }
         }
 

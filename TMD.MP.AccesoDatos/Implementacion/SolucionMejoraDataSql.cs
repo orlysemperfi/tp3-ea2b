@@ -110,7 +110,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
                 {
                     oSolucionMejora = new SolucionMejoraEntidad();
                     oSolucionMejora.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
-                    oSolucionMejora.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oSolucionMejora.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oSolucionMejora.codigo_Propuesta = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_PROPUESTA"]);
                     oSolucionMejora.codigo_Empleado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_EMPLEADO"]);
                     oSolucionMejora.propuesta = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);

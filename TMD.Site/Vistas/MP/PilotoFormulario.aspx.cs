@@ -86,12 +86,15 @@ namespace TMD.MP.Site.Privado
                     oPilotoLogica.InsertarPiloto(oPiloto);
                 }
 
-                string currentURL = Request.Url.ToString();
+                /*string currentURL = Request.Url.ToString();
                 string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
                 "alert('Piloto Registrado'); window.location='" +
-                newURL + "/PilotoListado.aspx';", true);
+                newURL + "/PilotoListado.aspx';", true);*/
+
+                Response.Redirect(Paginas.TMD_MP_PilotoListado + "?sucess=true", true);
+                
             }
         }
 
