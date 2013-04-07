@@ -12,12 +12,14 @@ using TMD.MP.Comun;
 using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
 using TMD.MP.LogicaNegocios.Excepcion;
+using System.Threading;
+using System.Drawing;
 namespace TMD.MP.Site.Privado
 {
     public partial class PropuestaMejoraFormulario : System.Web.UI.Page
     {
         int action = Constantes.ACTION_INSERT; //0:Insertar 1:Actualizar
-
+        TimeSpan waitTime = new TimeSpan(0, 0, 2);
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -218,12 +220,11 @@ namespace TMD.MP.Site.Privado
                     {
                         oPropuestaMejoraLogica.InsertarPropuestaMejora(oPropuestaMejora);
                     }
-                    string currentURL = Request.Url.ToString();
-                    string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
+                    
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
-                    "alert('Propuesta Registrada'); window.location='" +
-                    newURL + "/PropuestaMejoraListado.aspx';", true);
+                    
+                    Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado + "?sucess=true", true);
+
                 }
                 catch (BRuleException ex) {
                     lblMensajeError.Text = ex.Message;

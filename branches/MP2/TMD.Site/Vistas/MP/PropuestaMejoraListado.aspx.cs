@@ -10,13 +10,21 @@ using TMD.MP.LogicaNegocios.Contrato;
 using TMD.MP.LogicaNegocios.Implementacion;
 using TMD.MP.LogicaNegocios.Excepcion;
 
+
 namespace TMD.MP.Site.Privado
 {
     public partial class PropuestaMejoraLista : System.Web.UI.Page
     {
+        String sucess = "false";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack) {
+                sucess = Request.QueryString["sucess"];
+
+                if (sucess == "true")
+                    lblMensajeConfirmacion.Text = "Propuesta Registrada";
+                else
+                    lblMensajeConfirmacion.Text = "";
                 CargarTipoPropuesta();
                 CargarPropuestaMejoraListado();
             }
@@ -46,7 +54,7 @@ namespace TMD.MP.Site.Privado
             Sesiones.PropuestaMejoraListado = oPropuestaMejoraColeccion;
             //PageIndexChanging();
             gvwPropuestaMejoraListado.DataBind();
-            lblMensajeError.Text = "";
+            lblMensajeError.Text = "";            
         }
 
         protected List<PropuestaMejoraEntidad> ObtenerPropuestaMejoraListado()
@@ -58,6 +66,7 @@ namespace TMD.MP.Site.Privado
             }
             else
             {
+                
                 if (propuestaMejoraListado.Count == 0)
                 {
                     return null;
@@ -71,6 +80,8 @@ namespace TMD.MP.Site.Privado
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarPropuestaMejoraListado();
+            lblMensajeConfirmacion.Text = "";
+            
         }
 
         protected void gvwPropuestaMejoraListado_RowCommand(object sender, GridViewCommandEventArgs e)

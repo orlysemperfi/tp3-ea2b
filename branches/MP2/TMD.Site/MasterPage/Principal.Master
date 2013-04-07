@@ -91,7 +91,7 @@
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/IndicadorListado.aspx" Text="Actualizar Información"></asp:MenuItem>
                             </asp:MenuItem>
                             <asp:MenuItem  Text="Propuestas">
-                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx" Text="Actualizar Información"></asp:MenuItem>
+                                <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraListado.aspx?sucess=false" Text="Actualizar Información"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraAprobar.aspx" Text="Aprobar Propuesta"></asp:MenuItem>
                                 <asp:MenuItem NavigateUrl="~/Vistas/MP/PropuestaMejoraListadoDesarrollo.aspx" Text="Enviar a Desarrollo"></asp:MenuItem>
                             </asp:MenuItem>

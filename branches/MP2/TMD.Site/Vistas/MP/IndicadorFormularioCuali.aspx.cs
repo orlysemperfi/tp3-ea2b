@@ -100,17 +100,19 @@ namespace TMD.MP.Site.Privado
                     else
                         oIndicadorLogica.InsertarIndicador(oNewIndicador);
 
-                    string currentURL = Request.Url.ToString();
+                    /*string currentURL = Request.Url.ToString();
                     string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
                     "alert('Indicador Registrado'); window.location='" +
-                    newURL + "/IndicadorListado.aspx';", true);
+                    newURL + "/IndicadorListado.aspx';", true);*/
+                    Response.Redirect(Paginas.TMD_MP_IndicadorListado + "?sucess=true", true);
+
                 }
                 catch (BRuleException ex) 
                 {
-                    //lblMensajeError.Text = ex.Message;
-                    //lblMensajeError.DataBind();                    
+                    lblMensajeError.Text = ex.Message;
+                    lblMensajeError.DataBind();                    
                 }
                
             }

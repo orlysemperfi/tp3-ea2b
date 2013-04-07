@@ -181,6 +181,7 @@
             <tr>
                 <td>
                     <asp:Label ID="lblMensajeError" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="lblMensajeConfirmacion" runat="server" ForeColor="Green"></asp:Label>
                 </td>
             </tr>
         </table>

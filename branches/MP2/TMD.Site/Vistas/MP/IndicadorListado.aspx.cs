@@ -13,11 +13,17 @@ using TMD.MP.LogicaNegocios.Excepcion;
 namespace TMD.MP.Site.Privado
 {
     public partial class IndicadoresListado : System.Web.UI.Page
-    {
+    {   
         protected void Page_Load(object sender, EventArgs e)
         {
+            String sucess = "false";
             if (!Page.IsPostBack)
             {
+                sucess = Request.QueryString["sucess"];
+                if (sucess == "true")
+                    lblMensajeConfirmacion.Text = "Indicador Registrado";
+                else
+                    lblMensajeConfirmacion.Text = "";
                 CargarTipoIndicador();                
                 CargarArea();
                 CargarProceso();
@@ -97,6 +103,7 @@ namespace TMD.MP.Site.Privado
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            lblMensajeConfirmacion.Text = "";
             CargarIndicadorListado();
         }
 
