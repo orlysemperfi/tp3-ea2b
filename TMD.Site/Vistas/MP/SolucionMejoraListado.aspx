@@ -103,7 +103,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text="Editar" CommandName="EditarSolucion" CommandArgument='<%#Eval("CODIGO_SOLUCION") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                    <asp:LinkButton ID="lbtnEditar" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "APROBADA" ? "Ver" : "Editar" %>' CommandName="EditarSolucion" CommandArgument='<%#Eval("CODIGO_SOLUCION") %>' CssClass="table-grilla-link"></asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
