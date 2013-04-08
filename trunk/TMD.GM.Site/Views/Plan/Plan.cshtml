@@ -10,7 +10,15 @@
 </fieldset>
 <fieldset class="fieldset_left">
 <span>Activo</span><br />
+@if (Model.opcion == TMD.GM.Util.ConstantesUT.OPCION.Editar)
+{
 @Html.CheckBox("checkEstado", Model.activo, new { @class = "txtForm" })
+}
+else if (Model.opcion == TMD.GM.Util.ConstantesUT.OPCION.Nuevo)
+{
+@Html.CheckBox("checkEstado", Model.activo, new { @class = "txtForm", @disabled="disabled" })
+}
+
 </fieldset>
 <fieldset class="fieldset_left">
 <br />

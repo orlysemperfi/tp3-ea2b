@@ -102,27 +102,38 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         entidad.CODIGO_EQUIPO = solicitudBE.CODIGO_EQUIPO;
                         entidad.CODIGO_PLAN = solicitudBE.CODIGO_PLAN;
 
-                        
+                        #region Validamos que el equipo no pertenescaa una solictud aun pendiente
+
+                        var solicitudPendiente = (from s in db.SOLICITUD_CABECERA where s.CODIGO_EQUIPO == entidad.CODIGO_EQUIPO 
+                                                      && s.ESTADO_SOLICITUD != ConstantesUT.ESTADO_SOLICITUD.Completado
+                                                      && s.ESTADO_SOLICITUD != ConstantesUT.ESTADO_SOLICITUD.Anulado
+                                                      select s).FirstOrDefault();
+
+                        if (solicitudPendiente != null)
+                            throw new Exception("Ya existe una solicitud con N° " + solicitudPendiente.NUMERO_SOLICITUD + " asociada al equipo");
+
+
+                        #endregion
 
                         db.SOLICITUD_CABECERA.AddObject(entidad);
 
-                        //foreach (var item in solicitudBE.listaActividades)
-                        //{
-                        //    SOLICITUD_DETALLE itemEntidad = new SOLICITUD_DETALLE();
-                        //    itemEntidad.NUMERO_SOLICITUD = entidad.NUMERO_SOLICITUD;
-                        //    itemEntidad.ITEM_SOLICITUD = item.ITEM_SOLICITUD;
-                        //    itemEntidad.CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD;
-                        //    itemEntidad.DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD;
-                        //    itemEntidad.PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD;
-                        //    itemEntidad.CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA;
-                        //    itemEntidad.PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO;
-                        //    itemEntidad.CODIGO_TIEMPO = item.CODIGO_TIEMPO;
-                        //    itemEntidad.TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD;
-                        //    itemEntidad.FECHA_PROGRAMACION = item.FECHA_PROGRAMACION;
-                        //    itemEntidad.ORDEN_TRABAJO = item.ORDEN_TRABAJO;
+                        foreach (var item in solicitudBE.listaActividades)
+                        {
+                            SOLICITUD_DETALLE itemEntidad = new SOLICITUD_DETALLE();
+                            itemEntidad.NUMERO_SOLICITUD = entidad.NUMERO_SOLICITUD;
+                            itemEntidad.ITEM_SOLICITUD = item.ITEM_SOLICITUD;
+                            itemEntidad.CODIGO_TIPO_ACTIVIDAD = item.CODIGO_TIPO_ACTIVIDAD;
+                            itemEntidad.DESCRIPCION_ACTIVIDAD = item.DESCRIPCION_ACTIVIDAD;
+                            itemEntidad.PRIORIDAD_ACTIVIDAD = item.PRIORIDAD_ACTIVIDAD;
+                            itemEntidad.CODIGO_FRECUENCIA = item.CODIGO_FRECUENCIA;
+                            itemEntidad.PERSONAL_REQUERIDO = item.PERSONAL_REQUERIDO;
+                            itemEntidad.CODIGO_TIEMPO = item.CODIGO_TIEMPO;
+                            itemEntidad.TIEMPO_ACTIVIDAD = item.TIEMPO_ACTIVIDAD;
+                            itemEntidad.FECHA_PROGRAMACION = item.FECHA_PROGRAMACION;
+                            itemEntidad.ORDEN_TRABAJO = item.ORDEN_TRABAJO;
 
-                        //    db.SOLICITUD_DETALLE.AddObject(itemEntidad);
-                        //}
+                            db.SOLICITUD_DETALLE.AddObject(itemEntidad);
+                        }
 
                         if (db.SaveChanges() < 1)
                         {
@@ -399,6 +410,41 @@ namespace TMD.GM.AccesoDatos.Implementacion
             }
         }
 
+        public DateTime? ObtenerFechaHabilitada(DateTime fecha, BDMantenEntities db)
+        {
+            
+            if(fecha.DayOfWeek == DayOfWeek.Sunday)
+                return ObtenerFechaHabilitada(fecha.AddDays(1), db);
+
+            var fechaBD = (from f in db.CALENDARIO_LABORABLE where f.FECHA_LABORABLE == fecha select f).FirstOrDefault();
+            if (fechaBD!= null)
+                return ObtenerFechaHabilitada(fecha.AddDays(1), db);
+
+            return null;
+ 
+        }
+
+        public bool EsFechaHabilitada(DateTime fecha)
+        {
+            using (var db = BaseDA.GetEntityDatabase)
+            {
+                return FechaHabilitada(fecha, db);
+            }
+
+        }
+        private bool FechaHabilitada(DateTime fecha, BDMantenEntities db)
+        {
+
+            if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                return false;
+
+            var fechaBD = (from f in db.CALENDARIO_LABORABLE where f.FECHA_LABORABLE == fecha select f).FirstOrDefault();
+            if (fechaBD != null)
+                return false;
+
+            return true;
+
+        }
         public List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE)
         {
             try
@@ -439,6 +485,13 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         while (fecha <= solicitudBE.FECHA_FIN_SOLICITUD)
                         {
                             index++;
+
+                            #region Validaciones: Excluir domingos y feriados
+
+
+                            fecha = ObtenerFechaHabilitada(fecha, db).Value;
+
+                            #endregion
                             #region Datos
                             SolicitudDetalleBE item = new SolicitudDetalleBE();
                             item.ID_ACTIVIDAD = 0;
@@ -553,18 +606,19 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     result.PERSONAL_DISPONIBLE = numPersonalDisp;
                     #endregion
 
-                    #region HORAS_LABORABLES
-                    CALENDARIO_LABORABLE calendario = (from cal in db.CALENDARIO_LABORABLE
-                                                      where cal.FECHA_LABORABLE == fecha
-                                                      select cal).FirstOrDefault();
+                    //#region HORAS_LABORABLES
+                    //CALENDARIO_LABORABLE calendario = (from cal in db.CALENDARIO_LABORABLE
+                    //                                  where cal.FECHA_LABORABLE == fecha
+                    //                                  select cal).FirstOrDefault();
 
-                    if (calendario != null)
-                    {
-                        result.HORAS_LABORABLES = calendario.HORAS_LABORABLES;
-                    }
+                    //if (calendario != null)
+                    //{
+                    //    result.HORAS_LABORABLES = calendario.HORAS_LABORABLES;
+                    //}
 
-                    #endregion
+                    //#endregion
 
+                    result.HORAS_LABORABLES = ConstantesUT.PARAMETROS.HorasLaborables;
                     result.HORAS_DISPONIBLE = result.PERSONAL_DISPONIBLE * result.HORAS_LABORABLES;
                     result.HORAS_EMPLEADAS = (from actividades in result.listaActividades
                                               select actividades.TIEMPO_ACTIVIDAD).Sum() ;

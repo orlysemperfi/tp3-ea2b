@@ -2,12 +2,7 @@
 <fieldset>
 <fieldset class="fieldset_left">
 <span>N° Solicitud</span><br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
-{   <input id="txtNumSolicitud" type="text" class="k-textbox" value="@Model.solicitudBE.NUMERO_SOLICITUD" style="width: 150px;" readonly="readonly" />
-}
-else
-{   <input id="txtNumSolicitud" type="text" class="k-textbox" value="@Model.solicitudBE.NUMERO_SOLICITUD" style="width: 150px;" />
-}
+ <input id="txtNumSolicitud" type="text" class="k-textbox" value="@Model.solicitudBE.NUMERO_SOLICITUD" style="width: 150px;" readonly="readonly" />
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Estado de solicitud</span><br />
@@ -15,7 +10,7 @@ else
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Tipo de solicitud</span><br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado )
 {
     @Html.DropDownList("ddlTipoSolicitud", Model.listaTS, new { @class = "ddlForm", style = "width: 150px;", @disabled = "disabled" })
 }
@@ -26,14 +21,14 @@ else
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Desde</span><br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
 {   <input id="dpFechaIni" value="@Model.solicitudBE.FECHA_INICIO_SOLICITUD" style="width:150px;" disabled="disabled" />}
 else
 {   <input id="dpFechaIni" value="@Model.solicitudBE.FECHA_INICIO_SOLICITUD" style="width:150px;" />}
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Hasta</span><br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
 {   <input id="dpFechaFin" value="@Model.solicitudBE.FECHA_FIN_SOLICITUD" style="width:150px;" disabled="disabled" />}
 else
 {   <input id="dpFechaFin" value="@Model.solicitudBE.FECHA_FIN_SOLICITUD" style="width:150px;" />}
@@ -42,14 +37,14 @@ else
 <fieldset>
 <fieldset  class="fieldset_left">
 <span>Fecha</span><br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
 {   <input id="dpFechaSol"  value="@Model.solicitudBE.FECHA_SOLICITUD" style="width:150px;" disabled="disabled"/>}
 else
 {   <input id="dpFechaSol"  value="@Model.solicitudBE.FECHA_SOLICITUD" style="width:150px;" />}
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Documento Referencia</span><br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
 {   <input id="txtNumDocuRefe" type="text" class="k-textbox" value="@Model.solicitudBE.DOCUMENTO_REFERENCIA" style="width:150px;" readonly="readonly"/>}
 else
 {   <input id="txtNumDocuRefe" type="text" class="k-textbox" value="@Model.solicitudBE.DOCUMENTO_REFERENCIA" style="width:150px;" />}
@@ -65,7 +60,7 @@ else
 </fieldset>
 <fieldset  class="fieldset_left">
 <br />
-@if (Model.solicitudBE.ESTADO_SOLICITUD != TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD != TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado && Model.solicitudBE.ESTADO_SOLICITUD != TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
 {   <button id="btnBuscarEquipoSolicitud" class="k-button" onclick="EquipoConsulta('@Url.Action("EquipoConsulta", "Equipo")','PagePopup')" >...</button>}
 
 </fieldset>
@@ -101,7 +96,7 @@ else
  }
  else
  {
-     if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+     if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
      {  <button id="btnNuevaActividad" class="k-button k-state-disabled" disabled="disabled" ><span class="k-icon k-i-plus"></span> Nueva Actividad</button>
         <button id="btnEliminarAct" class="k-button k-state-disabled" disabled="disabled" ><span class="k-icon k-i-close"></span>Eliminar Actividades</button>
      }
@@ -119,7 +114,7 @@ else
 </div>
 <br/>
 <fieldset>
-@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado)
+@if (Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Anulado || Model.solicitudBE.ESTADO_SOLICITUD == TMD.GM.Util.ConstantesUT.ESTADO_SOLICITUD.Completado)
 {   <button id="btnGrabar" class="k-button k-state-disabled" disabled="disabled" ><span class="k-icon k-i-tick"></span> Actualizar Solicitud</button>}
 else
 {

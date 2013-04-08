@@ -62,6 +62,7 @@ namespace TMD.GM.AccesoDatos.Implementacion
                             HORAS_TRABAJO_ORDEN = DataUT.ObjectToDecimal(oReader["HORAS_TRABAJO_ORDEN"]),
                             NUMERO_SOLICITUD = DataUT.ObjectToString(oReader["NUMERO_SOLICITUD"]),
                             DESCRIPCION_ESTADO = DataUT.ObjectToString(oReader["DESCRIPCION_ESTADO_OT"]),
+                            ESTADO_ORDEN = DataUT.ObjectToInt32(oReader["ESTADO_ORDEN"]),
                         });
                     }
                 }
@@ -378,6 +379,12 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     entidad.HORAS_TRABAJO_ORDEN = entidadActual.HORAS_TRABAJO_ORDEN;
                     entidad.OBSERVACIONES_ORDEN = entidadActual.OBSERVACIONES_ORDEN;
                     entidad.CODIGO_EMPLEADO = entidadActual.CODIGO_EMPLEADO;
+                    PERSONA entidadEmpleado = (from e in db.PERSONA where e.CODIGO_PERSONA == entidadActual.CODIGO_EMPLEADO select e).FirstOrDefault();
+                    if (entidadEmpleado != null)
+                    {
+                        entidad.NOMBRE_EMPLEADO = entidadEmpleado.NOMBRE_PERSONA + " " + entidadEmpleado.APELLIDO_PATERNO + " " + entidadEmpleado.APELLIDO_MATERNO;
+                    }
+                    entidad.CODIGO_EMPLEADO = entidadActual.CODIGO_EMPLEADO;
                     entidad.NUMERO_SOLICITUD = entidadActual.NUMERO_SOLICITUD;
                     entidad.ESTADO_ORDEN = entidadActual.ESTADO_ORDEN;
 
@@ -416,10 +423,26 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     if (db.Connection.State == System.Data.ConnectionState.Closed)
                         db.Connection.Open();
 
-                    var detalleActual = (from OTD in db.ORDEN_TRABAJO_DETALLE 
-                                                            join OT in db.ORDEN_TRABAJO_CABECERA on OTD.NUMERO_ORDEN equals OT.NUMERO_ORDEN
-                                                            where OT.NUMERO_ORDEN == entidad.NUMERO_ORDEN
-                                                            select OTD);
+                    var detalleActual = (from OTD in db.ORDEN_TRABAJO_DETALLE
+                                         join OT in db.ORDEN_TRABAJO_CABECERA on OTD.NUMERO_ORDEN equals OT.NUMERO_ORDEN
+                                         join S in db.SOLICITUD_CABECERA on OT.NUMERO_SOLICITUD equals S.NUMERO_SOLICITUD
+                                         join SD in db.SOLICITUD_DETALLE on S.NUMERO_SOLICITUD equals SD.NUMERO_SOLICITUD
+                                         join TA in db.ACTIVIDAD_TIPO on SD.CODIGO_TIPO_ACTIVIDAD equals TA.CODIGO_TIPO_ACTIVIDAD
+                                         where OT.NUMERO_ORDEN == entidad.NUMERO_ORDEN
+                                         select new {
+                                             ID_ACTIVIDAD = OTD.ID_ACTIVIDAD,
+                                             DESCRIPCION_ACTIVIDAD = SD.DESCRIPCION_ACTIVIDAD,
+                                             DESCRIPCION_TIPO_ACTIVIDAD = TA.DESCRIPCION_TIPO_ACTIVIDAD,
+                                             NUMERO_ORDEN = OTD.NUMERO_ORDEN,
+                                             ITEM_ORDEN = OTD.ITEM_ORDEN,
+                                             NUMERO_SOLICITUD = OTD.NUMERO_SOLICITUD,
+                                             FECHA_INICIO_ACTIVIDAD = OTD.FECHA_INICIO_ACTIVIDAD,
+                                             ITEM_SOLICITUD = OTD.ITEM_SOLICITUD,
+                                             FECHA_FIN_ACTIVIDAD = OTD.FECHA_FIN_ACTIVIDAD,
+                                             FECHA_PROGRAMADA = OTD.FECHA_PROGRAMADA,
+                                             RESULTADO_ATENCION = OTD.RESULTADO_ATENCION,
+
+                                         });
 
                     if (entidad == null)
                         throw new Exception(ConstantesUT.MENSAJES_ERROR.NoExiste);
@@ -430,6 +453,8 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         OrdenTrabajoDetalleBE item = new OrdenTrabajoDetalleBE();
                         item.GUID_ROW = Guid.NewGuid();
                         item.ID_ACTIVIDAD = itemEntidad.ID_ACTIVIDAD;
+                        item.DESCRIPCION_ACTIVIDAD = itemEntidad.DESCRIPCION_ACTIVIDAD;
+                        item.DESCRIPCION_TIPO_ACTIVIDAD = itemEntidad.DESCRIPCION_TIPO_ACTIVIDAD;
                         item.NUMERO_ORDEN = itemEntidad.NUMERO_ORDEN;
                         item.ITEM_ORDEN = itemEntidad.ITEM_ORDEN;
                         item.NUMERO_SOLICITUD = itemEntidad.NUMERO_SOLICITUD;
@@ -468,6 +493,8 @@ namespace TMD.GM.AccesoDatos.Implementacion
                             DESCRIPCION_TIPO_EQUIPO = DataUT.ObjectToString(oReader["DESCRIPCION_TIPO_EQUIPO"]),
                             NOMBRE_PLAN = DataUT.ObjectToString(oReader["NOMBRE_PLAN"]),
                             NUMERO_SOLICITUD = DataUT.ObjectToString(oReader["NUMERO_SOLICITUD"]),
+                            FECHA_INICIO_ORDEN = filtro.FECHA_INICIO_ORDEN,
+                            FECHA_FIN_ORDEN = filtro.FECHA_FIN_ORDEN,
                         });
                     }
                 }
@@ -527,9 +554,35 @@ namespace TMD.GM.AccesoDatos.Implementacion
                             FECHA_CRONOGRAMA = DataUT.ObjectToDateTimeNull(oReader["FECHA_CRONOGRAMA"]),
                             TIEMPO_ACTIVIDAD = DataUT.ObjectToDecimal(oReader["TIEMPO_ACTIVIDAD"]),
                             DESCRIPCION_TIEMPO = DataUT.ObjectToString(oReader["DESCRIPCION_TIEMPO"]),
+                            CODIGO_TIEMPO = DataUT.ObjectToInt32(oReader["CODIGO_TIEMPO"]),
                             TIEMPO_ACTIVIDAD_TEXTO = String.Format("{0:0.##}", DataUT.ObjectToDecimal(oReader["TIEMPO_ACTIVIDAD"])) + " " + DataUT.ObjectToString(oReader["DESCRIPCION_TIEMPO"]),
                             CODIGO_EQUIPO = filtro.CODIGO_EQUIPO
                         });
+                    }
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public OrdenTrabajoEquipoBE ObtenerDisponibilidadResponsable(OrdenTrabajoFiltroBE filtro)
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            try
+            {
+                OrdenTrabajoEquipoBE result = new OrdenTrabajoEquipoBE();
+                using (IDataReader oReader = oDatabase.ExecuteReader("GET_DISPONIBILIDAD_RESPONSABLE", filtro.CODIGO_EMPLEADO))
+                {
+                    while (oReader.Read())
+                    {
+                        result = new OrdenTrabajoEquipoBE()
+                        {
+                            CANTIDAD_OT_ASIGNADAS = DataUT.ObjectToInt32(oReader["CANTIDAD_OT"]),
+                            HORAS_OT_ASIGNADAS = DataUT.ObjectToDecimal(oReader["HORAS_OT"]),
+                        };
                     }
                 }
                 return result;

@@ -20,7 +20,7 @@
     grid.Column("NOMBRE_PLAN", "Plan mantenimiento"),
     grid.Column("NUMERO_SOLICITUD", "N° Solicitud"),
     grid.Column("OPCIONES", "Ver", format: @<text><a class="k-button k-button-icontext k-grid-edit" style="min-width:20px!important" href="#" 
-        onclick="OTEquipoActividades('@Url.Action("ActividadesPendientes", "OrdenTrabajo")','@item.CODIGO_EQUIPO');"><span class="k-icon k-i-arrow-e"></span></a></text>)
+        onclick="OTEquipoActividades('@Url.Action("ActividadesPendientes", "OrdenTrabajo")','@item.CODIGO_EQUIPO','@item.NOMBRE_EQUIPO');"><span class="k-icon k-i-arrow-e"></span></a></text>)
          )
         )
 <script language="javascript" type="text/javascript">

@@ -15,7 +15,7 @@ namespace TMD.GM.AccesoDatos
 
         #region Constantes
         private static string DataSource = @"CARLOS-PC";
-        private static string InitialCatalog = "TMD";
+        private static string InitialCatalog = "BDManten";
         private static string UserID = "sa";
         private static string Password = "1234";
         private static bool IntegratedSecurity = false;

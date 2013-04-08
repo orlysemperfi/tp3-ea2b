@@ -37,7 +37,7 @@
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Nombre del Responsable</span><br />
-<input id="txtNombreResp_ConsultaPrincipal" type="text" class="k-textbox" value="" style="width: 150px;" readonly="readonly" />
+<input id="txtNombreResp_ConsultaPrincipal" type="text" class="k-textbox" value="" style="width: 300px;" readonly="readonly" />
 </fieldset>
 </fieldset>
 
@@ -58,6 +58,8 @@
 <div id="divResponsables" class="j_modal" title="Responsables"></div>
 <div id="divActividadesResumen" class="j_modal" title="Actividades"></div>
 <div id="divActividadesResponsable" class="j_modal" title="Responsable"></div>
+<div id="divActividadOT" class="j_modal" title="Actividad"></div>
+
 
 </fieldset>
 
@@ -66,5 +68,11 @@
         $("#dpFechaIni_Consulta").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
         $("#dpFechaFin_Consulta").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
         $("#ddlEstadoOT_Consulta").kendoComboBox();
+    });
+
+    $("#txtCodigoResp_ConsultaPrincipal").keyup(function () {
+        if ($.trim($(this).val()) == '') {
+            $("#txtNombreResp_ConsultaPrincipal").attr("value", "");
+        }
     });
 </script>

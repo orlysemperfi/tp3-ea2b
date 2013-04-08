@@ -18,5 +18,6 @@ namespace TMD.GM.AccesoDatos.Contrato
         List<OrdenTrabajoEquipoBE> ListarEquiposPendientes(OrdenTrabajoFiltroBE filtro);
         List<OrdenTrabajoDetalleBE> ListarActividadesEquiposPendientes(OrdenTrabajoFiltroBE filtro);
         OrdenTrabajoBE ObtenerOrdenTrabajoNueva();
+        OrdenTrabajoEquipoBE ObtenerDisponibilidadResponsable(OrdenTrabajoFiltroBE filtro);
     }
 }

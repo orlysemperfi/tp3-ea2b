@@ -42,5 +42,10 @@ namespace TMD.GM.Entidades
         [Display(Name = "Duración de OT asignadas (Horas)")]
         public decimal HORAS_OT_ASIGNADAS { get; set; }
 
+        public DateTime? FECHA_INICIO_ORDEN { get; set; }
+        public DateTime? FECHA_FIN_ORDEN { get; set; }
+        
+        
+
     }
 }

@@ -16,5 +16,6 @@ namespace TMD.GM.AccesoDatos.Contrato
         SolicitudBE VisualizarSolicitud(SolicitudBE planBE);
         List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE);
         CronogramaBE ActividadesCronograma(DateTime fecha);
+        bool EsFechaHabilitada(DateTime fecha);
     }
 }
