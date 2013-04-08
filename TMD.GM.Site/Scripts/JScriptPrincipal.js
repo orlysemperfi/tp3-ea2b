@@ -22,6 +22,7 @@
     $('#divAsignacionReponsable').dialog({ autoOpen: false, width: 1000, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#divActividadesResumen').dialog({ autoOpen: false, width: 750, height: 300 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     $('#divActividadesResponsable').dialog({ autoOpen: false, width: 900, height: 500 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
+    $('#divActividadOT').dialog({ autoOpen: false, width: 800, height: 400 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
     
     $('#ModalMensajeError').dialog({ autoOpen: false, width: 548, height: 250 }).parent('.ui-dialog').find('.ui-dialog-titlebar-close').hide();
    
@@ -353,9 +354,10 @@ function Plan_Aceptar_Click(ParamUrl1,ParamUrl2) {
             BuscarPlanesMant(ParamUrl2);
         },
         error: function (req, status, error) {
-//            alert("fail: " + req + " " + status + " " + error);
-                $('#ModalMensajeError').dialog('option', 'modal', true).dialog('open');
-                $("#ModalMensajeError").html(req.responseText);
+            //            alert("fail: " + req + " " + status + " " + error);
+            $("#ModalMensajeError").html(req.responseText);
+            MostrarModalError();
+
         },
         complete: function () {
         }
@@ -450,7 +452,7 @@ function SolicitudActividad_AceptarClick(ParamUrl1, ParamUrl2) {
             pTipoActi: $("#ddlTipoActividad").val(),
             pDesc: $("#txtActividadDesc").val(),
             pPrio: $("#ddlPrioridad").val(),
-            pCodiFrec: $("#ddlFrecuencia").val(),
+            pCodiFrec: 0, //$("#ddlFrecuencia").val(),
             pPersRequ: ntbPersRequ.value(),
             pCodiTiem: $("#ddlTiempoUnme").val(),
             pTiemActi: ntbTiempoDura.value(),
@@ -477,7 +479,27 @@ function SolicitudActividad_AceptarClick(ParamUrl1, ParamUrl2) {
             });
         },
         error: function (req, status, error) {
-            alert("fail: " + req + " " + status + " " + error);
+            //alert("fail: " + req + " " + status + " " + error);
+
+            CerrarModalActividadEditar();
+            //Actualizar la grilla de actividades
+            $.ajax({
+                type: "POST",
+                url: ParamUrl2,
+                data: { pNumSoli: Codigo },
+                cache: false,
+                success: function (data, textStatus, jqXHR) {
+                    $("#pnlGridActividades").html(data);
+                },
+                error: function (req, status, error) {
+                    alert("fail: " + req + " " + status + " " + error);
+                },
+                complete: function () {
+                }
+            });
+
+            $("#ModalMensajeError").html(req.responseText);
+            MostrarModalError();
         },
         complete: function () {
         }
@@ -529,7 +551,9 @@ function SolicitudRegistrar(ParamUrl1,ParamUrl2) {
             BuscarSolicitudes(ParamUrl2);
         },
         error: function (req, status, error) {
-            alert("fail: " + req + " " + status + " " + error);
+            //alert("fail: " + req + " " + status + " " + error);
+            $("#ModalMensajeError").html(req.responseText);
+            MostrarModalError();
         },
         complete: function () {
         }
@@ -637,7 +661,9 @@ function SolicitudGenerarCronograma(ParamUrl1, ParamNumeSoli){
             
         },
         error: function (req, status, error) {
-            alert("fail: " + req + " " + status + " " + error);
+            //alert("fail: " + req + " " + status + " " + error);
+            $("#ModalMensajeError").html(req.responseText);
+            MostrarModalError();
         },
         complete: function () {
         }
@@ -969,6 +995,19 @@ function CerrarModalOTActividadesResponsable() {
     $('#divActividadesResponsable').dialog('option', 'modal', true).dialog('close');
 };
 
+function MostrarModalError() {
+    $('#ModalMensajeError').dialog('option', 'modal', true).dialog('open');
+};
+
+function MostrarModalOTActividad() {
+    $('#divActividadOT').dialog('option', 'modal', true).dialog('open');
+    return true;
+};
+function CerrarModalOTActividad() {
+    $('#divActividadOT').dialog('option', 'modal', true).dialog('close');
+};
+
+
 function BuscarOT(ParamUrl1) {
 
     var dpFIni = $("#dpFechaIni_Consulta").data("kendoDatePicker");
@@ -1076,6 +1115,28 @@ function OrdenTrabajoEditar(ParamUrl1, ParamUrl2, ParamNumOrden) {
         }
     });
 }
+
+function OTEliminar(ParamUrl1, ParamUrl2, ParamCodigo) {
+
+    if (!confirm('¿Está seguro de eliminar el registro?')) {
+        return;
+    }
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: { pCodigo: ParamCodigo },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            BuscarOT(ParamUrl2)
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
 function OTGenerar(ParamUrl1) {
 
     $.ajax({
@@ -1119,8 +1180,10 @@ function OTEquipoPendiente(ParamUrl1) {
     });
 }
 
-function OTEquipoActividades(ParamUrl1, ParamCodiEqui) {
+function OTEquipoActividades(ParamUrl1, ParamCodiEqui, ParamNombEqui) {
 
+//    $("#txtCodiEmpl").attr("value", ParamNombEqui);
+    $("#lblNombEqui_Genera").text(ParamNombEqui);
     $.ajax({
         type: "post",
         url: ParamUrl1,
@@ -1171,6 +1234,8 @@ function OTActividadCheck(ParamUrl1, ParamIdActi,ParamCodiEqui, ParamCheckbox) {
 
 function OTAsignarResponsable(ParamUrl1) {
 
+   
+
     $.ajax({
         type: "post",
         url: ParamUrl1,
@@ -1181,7 +1246,10 @@ function OTAsignarResponsable(ParamUrl1) {
             MostrarModalOTAsignaResponsable();
         },
         error: function (req, status, error) {
-            alert("fail: " + req + " " + status + " " + error);
+            //            alert("fail: " + req + " " + status + " " + error);
+
+            $("#ModalMensajeError").html(req.responseText);
+            MostrarModalError();
         },
         complete: function () {
         }
@@ -1307,3 +1375,95 @@ function OTGenerarConfirma(ParamUrl1) {
 }
 
 
+function OTActualizar(ParamUrl1, ParamUrl2) {
+
+    if (!confirm('¿Está seguro de actualizar el registro?')) {
+        return;
+    }
+
+    var dpFIni = $("#txtFechaIni").data("kendoDatePicker");
+    var dpFFin = $("#txtFechaFin").data("kendoDatePicker");
+    var ddlEstado = $("#ddlEstadoOT_Consulta").data("kendoComboBox");
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: { 
+        pFechaIni:kendo.toString(dpFIni.value(), 'dd/MM/yyyy hh:mm tt'), 
+        pFechaFin:kendo.toString(dpFFin.value(), 'dd/MM/yyyy hh:mm tt'),
+        pObse: $("#txtObse").val(),
+        pCodiResp: $("#txtCodiEmpl").val(), 
+        pCodiEsta:ddlEstado.value()
+         },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            BuscarOT(ParamUrl2)
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+
+function OTActividad_Editar(ParamUrl1, ParamGuid) {
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: { pGuidActividad: ParamGuid },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            $("#divActividadOT").html(data);
+            MostrarModalOTActividad();
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}
+
+function OTActividad_Actualizar(ParamUrl1, ParamUrl2) {
+
+
+    var CodigoPlan = $("#hdCodigoOT").val();
+
+    var dpIni = $("#txtFechaIni_Actividad").data("kendoDateTimePicker");
+    var dpFin = $("#txtFechaFin_Actividad").data("kendoDateTimePicker");
+
+    $.ajax({
+        type: "post",
+        url: ParamUrl1,
+        data: {
+            pItemOrde: $("#txtItemOrden_Actividad").val(),
+            pFechaIni: kendo.toString(dpIni.value(), 'dd/MM/yyyy hh:mm tt'),
+            pFechaFin: kendo.toString(dpFin.value(), 'dd/MM/yyyy hh:mm tt')
+        },
+        cache: false,
+        success: function (data, textStatus, jqXHR) {
+            CerrarModalOTActividad();
+            //Actualizar la grilla de actividades
+            $.ajax({
+                type: "POST",
+                url: ParamUrl2,
+                data: { pCodigo: CodigoPlan },
+                cache: false,
+                success: function (data, textStatus, jqXHR) {
+                    $("#divGridOTActividades").html(data);
+                },
+                error: function (req, status, error) {
+                    alert("fail: " + req + " " + status + " " + error);
+                },
+                complete: function () {
+                }
+            });
+        },
+        error: function (req, status, error) {
+            alert("fail: " + req + " " + status + " " + error);
+        },
+        complete: function () {
+        }
+    });
+}

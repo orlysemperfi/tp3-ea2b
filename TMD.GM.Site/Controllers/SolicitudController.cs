@@ -149,8 +149,8 @@ namespace TMD.GM.Site.Controllers
             listaDataTS = comunBL.ListarTipoMante();
             listaDataES = comunBL.ListarEstadoSolicitud();
             listaDataPM = planBL.ListarPlanMante();
-            //model.solicitudBE = solicitudBL.ObtenerSolicitudNueva();
-            model.solicitudBE = new SolicitudBE();
+            model.solicitudBE = solicitudBL.ObtenerSolicitudNueva();
+            //model.solicitudBE = new SolicitudBE();
             model.opcion = ConstantesUT.OPCION.Nuevo;
 
             model.solicitudBE.FECHA_SOLICITUD = DateTime.Now.Date;
@@ -187,6 +187,9 @@ namespace TMD.GM.Site.Controllers
             model.solicitudBE = entity;
 
             model.solicitudBE.listaActividades = entity.listaActividades;
+
+            if (entity.ESTADO_SOLICITUD == ConstantesUT.ESTADO_SOLICITUD.Completado || entity.ESTADO_SOLICITUD == ConstantesUT.ESTADO_SOLICITUD.Anulado)
+                model.cronogramGenerado = true;
 
             Session[ConstantesUT.SESSION.SolicitudActividades] = entity.listaActividades;
 
@@ -350,97 +353,137 @@ namespace TMD.GM.Site.Controllers
             return PartialView("SolicitudActividad", model);
         }
 
-        public EmptyResult SolicitudActividadAceptar(int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pFechaProg, string pOrdeTrab)
+        public ActionResult SolicitudActividadAceptar(int pItem, int pTipoActi, string pDesc, int pPrio, int pCodiFrec, int pPersRequ, int pCodiTiem, int pTiemActi, string pFechaProg, string pOrdeTrab)
         {
-            SolicitudDetalleBE entity = (SolicitudDetalleBE)Session[ConstantesUT.SESSION.SolicitudActividadActual];
-
-            entity.ITEM_SOLICITUD = pItem;
-            entity.CODIGO_TIPO_ACTIVIDAD = pTipoActi;
-            entity.DESCRIPCION_ACTIVIDAD = pDesc;
-            entity.PRIORIDAD_ACTIVIDAD = pPrio;
-            entity.CODIGO_FRECUENCIA = pCodiFrec;
-            entity.PERSONAL_REQUERIDO = pPersRequ;
-            entity.CODIGO_TIEMPO = pCodiTiem;
-            entity.TIEMPO_ACTIVIDAD = pTiemActi;
-            entity.FECHA_PROGRAMACION = DataUT.ObjectToDateNullTimeTryParse(pFechaProg);
-            entity.ORDEN_TRABAJO = pOrdeTrab;
-
-            if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
-                Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
-
-            List<SolicitudDetalleBE> lista = new List<SolicitudDetalleBE>();
-            lista = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
-
-            //Verificamos la existencia del registro
-
-            SolicitudDetalleBE item = lista.Find(x => x.GUID_ROW == entity.GUID_ROW);
-            if (item != null)
+            try
             {
-                item.ITEM_SOLICITUD = entity.ITEM_SOLICITUD;
-                item.CODIGO_TIPO_ACTIVIDAD = entity.CODIGO_TIPO_ACTIVIDAD;
-                item.DESCRIPCION_ACTIVIDAD = entity.DESCRIPCION_ACTIVIDAD;
-                item.PRIORIDAD_ACTIVIDAD = entity.PRIORIDAD_ACTIVIDAD;
-                item.CODIGO_FRECUENCIA = entity.CODIGO_FRECUENCIA;
-                item.PERSONAL_REQUERIDO = entity.PERSONAL_REQUERIDO;
-                item.CODIGO_TIEMPO = entity.CODIGO_TIEMPO;
-                item.TIEMPO_ACTIVIDAD = entity.TIEMPO_ACTIVIDAD;
-                item.FECHA_PROGRAMACION = entity.FECHA_PROGRAMACION;
-                item.ORDEN_TRABAJO = entity.ORDEN_TRABAJO;
+                SolicitudDetalleBE entity = (SolicitudDetalleBE)Session[ConstantesUT.SESSION.SolicitudActividadActual];
+
+                entity.ITEM_SOLICITUD = pItem;
+                entity.CODIGO_TIPO_ACTIVIDAD = pTipoActi;
+                entity.DESCRIPCION_ACTIVIDAD = pDesc;
+                entity.PRIORIDAD_ACTIVIDAD = pPrio;
+                //entity.CODIGO_FRECUENCIA = pCodiFrec;
+                entity.PERSONAL_REQUERIDO = pPersRequ;
+                entity.CODIGO_TIEMPO = pCodiTiem;
+                entity.TIEMPO_ACTIVIDAD = pTiemActi;
+                entity.FECHA_PROGRAMACION = DataUT.ObjectToDateNullTimeTryParse(pFechaProg);
+                entity.ORDEN_TRABAJO = pOrdeTrab;
+
+                if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
+                    Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
+
+                List<SolicitudDetalleBE> lista = new List<SolicitudDetalleBE>();
+                lista = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
+
+                //Verificamos la existencia del registro
+
+                SolicitudDetalleBE item = lista.Find(x => x.GUID_ROW == entity.GUID_ROW);
+                if (item != null)
+                {
+                    item.ITEM_SOLICITUD = entity.ITEM_SOLICITUD;
+                    item.CODIGO_TIPO_ACTIVIDAD = entity.CODIGO_TIPO_ACTIVIDAD;
+                    item.DESCRIPCION_ACTIVIDAD = entity.DESCRIPCION_ACTIVIDAD;
+                    item.PRIORIDAD_ACTIVIDAD = entity.PRIORIDAD_ACTIVIDAD;
+                    item.CODIGO_FRECUENCIA = entity.CODIGO_FRECUENCIA;
+                    item.PERSONAL_REQUERIDO = entity.PERSONAL_REQUERIDO;
+                    item.CODIGO_TIEMPO = entity.CODIGO_TIEMPO;
+                    item.TIEMPO_ACTIVIDAD = entity.TIEMPO_ACTIVIDAD;
+                    item.FECHA_PROGRAMACION = entity.FECHA_PROGRAMACION;
+                    item.ORDEN_TRABAJO = entity.ORDEN_TRABAJO;
+                }
+                else
+                {
+                    lista.Add(entity);
+                }
+                Session[ConstantesUT.SESSION.SolicitudActividades] = lista;
+
+                if (!solicitudBL.EsFechaHabilitada(entity.FECHA_PROGRAMACION.Value))
+                    throw new Exception("Advertencia: La fecha seleccionada es un día NO LABORABLE");
+
+                return new EmptyResult();
             }
-            else
+
+            catch (Exception ex)
             {
-                lista.Add(entity);
+                Response.StatusCode = 500;
+                return PartialView("../Error/MensajeError", new ErrorModel()
+                {
+                    Titulo = "Error",
+                    Mensaje = ex.Message,
+                });
             }
-            Session[ConstantesUT.SESSION.SolicitudActividades] = lista;
-
-            return new EmptyResult();
-
         }
 
-        public EmptyResult SolicitudRegistrar(string pNumSoli, string pFechaSoli, string pTipoSoli, string pDocuRefe, string pFechaIni, string pFechaFin, string pEstado, string pCodiEqui, string pCodiPlan)
+        public ActionResult SolicitudRegistrar(string pNumSoli, string pFechaSoli, string pTipoSoli, string pDocuRefe, string pFechaIni, string pFechaFin, string pEstado, string pCodiEqui, string pCodiPlan)
         {
-            SolicitudBE entity = new SolicitudBE();
-            entity.NUMERO_SOLICITUD = pNumSoli;
-            entity.FECHA_SOLICITUD = DataUT.ObjectToDateTime(pFechaSoli);
-            entity.TIPO_SOLICITUD = DataUT.ObjectToInt32(pTipoSoli);
-            entity.DOCUMENTO_REFERENCIA = pDocuRefe;
-            entity.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni);
-            entity.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(pFechaFin) ;
-            entity.ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado) ;
-            entity.CODIGO_EQUIPO = pCodiEqui;
-            entity.CODIGO_PLAN = pCodiPlan;
-            entity.listaActividades = new List<SolicitudDetalleBE>();
+            try
+            {
+                SolicitudBE entity = new SolicitudBE();
+                entity.NUMERO_SOLICITUD = pNumSoli;
+                entity.FECHA_SOLICITUD = DataUT.ObjectToDateTime(pFechaSoli);
+                entity.TIPO_SOLICITUD = DataUT.ObjectToInt32(pTipoSoli);
+                entity.DOCUMENTO_REFERENCIA = pDocuRefe;
+                entity.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni);
+                entity.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(pFechaFin);
+                entity.ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado);
+                entity.CODIGO_EQUIPO = pCodiEqui;
+                entity.CODIGO_PLAN = pCodiPlan;
+                entity.listaActividades = new List<SolicitudDetalleBE>();
 
-            solicitudBL.RegistrarSolicitud(entity);
+                solicitudBL.RegistrarSolicitud(entity);
 
-            return new EmptyResult();
+                return new EmptyResult();
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return PartialView("../Error/MensajeError", new ErrorModel()
+                {
+                    Titulo = "Error",
+                    Mensaje = ex.Message,
+                });
+            }
         }
-        public EmptyResult SolicitudActualizar(string pNumSoli, string pFechaSoli, string pTipoSoli, string pDocuRefe, string pFechaIni, string pFechaFin, string pEstado, string pCodiEqui, string pCodiPlan, string pCronGene)
+        public ActionResult SolicitudActualizar(string pNumSoli, string pFechaSoli, string pTipoSoli, string pDocuRefe, string pFechaIni, string pFechaFin, string pEstado, string pCodiEqui, string pCodiPlan, string pCronGene)
         {
-            SolicitudBE entity = new SolicitudBE();
-            entity.NUMERO_SOLICITUD = pNumSoli;
-            entity.FECHA_SOLICITUD = DataUT.ObjectToDateTime(pFechaSoli);
-            entity.TIPO_SOLICITUD = DataUT.ObjectToInt32(pTipoSoli);
-            entity.DOCUMENTO_REFERENCIA = pDocuRefe;
-            entity.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni);
-            entity.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(pFechaFin);
-            entity.ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado);
-            entity.CODIGO_EQUIPO = DataUT.ObjectToString(pCodiEqui);
-            entity.CODIGO_PLAN = pCodiPlan;
+            try
+            {
+                SolicitudBE entity = new SolicitudBE();
+                entity.NUMERO_SOLICITUD = pNumSoli;
+                entity.FECHA_SOLICITUD = DataUT.ObjectToDateTime(pFechaSoli);
+                entity.TIPO_SOLICITUD = DataUT.ObjectToInt32(pTipoSoli);
+                entity.DOCUMENTO_REFERENCIA = pDocuRefe;
+                entity.FECHA_INICIO_SOLICITUD = DataUT.ObjectToDateTime(pFechaIni);
+                entity.FECHA_FIN_SOLICITUD = DataUT.ObjectToDateTime(pFechaFin);
+                entity.ESTADO_SOLICITUD = DataUT.ObjectToInt32(pEstado);
+                entity.CODIGO_EQUIPO = DataUT.ObjectToString(pCodiEqui);
+                entity.CODIGO_PLAN = pCodiPlan;
             
 
 
-            entity.ESTADO_SOLICITUD = (entity.ESTADO_SOLICITUD == ConstantesUT.ESTADO_SOLICITUD.Aperturado && pCronGene == "1") ? ConstantesUT.ESTADO_SOLICITUD.Programado : entity.ESTADO_SOLICITUD;
+                entity.ESTADO_SOLICITUD = (entity.ESTADO_SOLICITUD == ConstantesUT.ESTADO_SOLICITUD.Aperturado && pCronGene == "1") ? ConstantesUT.ESTADO_SOLICITUD.Programado : entity.ESTADO_SOLICITUD;
 
-            entity.listaActividades = new List<SolicitudDetalleBE>();
+                entity.listaActividades = new List<SolicitudDetalleBE>();
 
-            if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
-                Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
-            entity.listaActividades = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
+                if (Session[ConstantesUT.SESSION.SolicitudActividades] == null)
+                    Session[ConstantesUT.SESSION.SolicitudActividades] = new List<SolicitudDetalleBE>();
+                entity.listaActividades = (List<SolicitudDetalleBE>)Session[ConstantesUT.SESSION.SolicitudActividades];
 
-            solicitudBL.ActualizarSolicitud(entity);
+                solicitudBL.ActualizarSolicitud(entity);
 
-            return new EmptyResult() ;
+                return new EmptyResult() ;
+
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return PartialView("../Error/MensajeError", new ErrorModel()
+                {
+                    Titulo = "Error",
+                    Mensaje = ex.Message,
+                });
+            }
         }
         public EmptyResult SolicitudEliminar(string pCodigo)
         {
@@ -524,28 +567,43 @@ namespace TMD.GM.Site.Controllers
 
         public ActionResult GenerarCronograma(string pNumeSoli, string pFechaInicio, string pFechaFin)
         {
-            SolicitudModel model = new SolicitudModel();
+            try
+            {
+                SolicitudModel model = new SolicitudModel();
 
-            DateTime fechaInicio, fechaFin;
+                DateTime fechaInicio, fechaFin;
 
-            if (!DateTime.TryParse(pFechaInicio, out fechaInicio))
-                throw new Exception("Rango de fecha no válido");
+                if (!DateTime.TryParse(pFechaInicio, out fechaInicio))
+                    throw new Exception("Rango de fecha no válido");
 
-            if (!DateTime.TryParse(pFechaFin, out fechaFin))
-                throw new Exception("Rango de fecha no válido");
+                if (!DateTime.TryParse(pFechaFin, out fechaFin))
+                    throw new Exception("Rango de fecha no válido");
 
-            model.solicitudBE = new SolicitudBE() { NUMERO_SOLICITUD = pNumeSoli , FECHA_INICIO_SOLICITUD = fechaInicio , FECHA_FIN_SOLICITUD = fechaFin};
+                if (fechaInicio <= fechaFin)
+                    throw new Exception("La fecha inicial debe ser mayor a la fecha final");
 
-            model.solicitudBE.listaActividades = solicitudBL.GenerarCronograma(model.solicitudBE);
+                model.solicitudBE = new SolicitudBE() { NUMERO_SOLICITUD = pNumeSoli, FECHA_INICIO_SOLICITUD = fechaInicio, FECHA_FIN_SOLICITUD = fechaFin };
 
-            if (model.solicitudBE.listaActividades.Count > 0)
-                model.cronogramGenerado = true;
-            else
-                model.cronogramGenerado = false;
+                model.solicitudBE.listaActividades = solicitudBL.GenerarCronograma(model.solicitudBE);
 
-            Session[ConstantesUT.SESSION.SolicitudActividades] = model.solicitudBE.listaActividades;
+                if (model.solicitudBE.listaActividades.Count > 0)
+                    model.cronogramGenerado = true;
+                else
+                    model.cronogramGenerado = false;
 
-            return PartialView("SolicitudActividades",model);
+                Session[ConstantesUT.SESSION.SolicitudActividades] = model.solicitudBE.listaActividades;
+
+                return PartialView("SolicitudActividades", model);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return PartialView("../Error/MensajeError", new ErrorModel()
+                {
+                    Titulo = "Error",
+                    Mensaje = ex.Message,
+                });
+            }
         }
 
         public ActionResult CalendarioDetalle(string pFecha)

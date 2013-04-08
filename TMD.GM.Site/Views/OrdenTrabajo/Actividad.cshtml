@@ -1,0 +1,59 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoActividadModel
+@Html.AntiForgeryToken()
+@Html.Hidden("hdIdActividad", Model.entityActividad.ID_ACTIVIDAD)
+@Html.Hidden("hdCodigoOT", Model.entityOrden.NUMERO_ORDEN)
+<fieldset>
+<fieldset class="fieldset_left" style = "width:150px">
+@Html.LabelFor(m => m.entityActividad.ITEM_ORDEN)
+@Html.TextBoxFor(m => m.entityActividad.ITEM_ORDEN, htmlAttributes: new { @id = "txtItemOrden_Actividad", @class = "k-textbox", @style = "width: 50px;", @disabled = "disabled" })
+</fieldset>
+<fieldset class="fieldset_left" style = "width:150px">
+@Html.LabelFor(m => m.entityActividad.ITEM_SOLICITUD)
+@Html.TextBoxFor(m => m.entityActividad.ITEM_SOLICITUD, htmlAttributes: new { @id = "txtItemSolicitud_Actividad", @class = "k-textbox", @style = "width: 50px;", @disabled = "disabled" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entityActividad.FECHA_INICIO_ACTIVIDAD)
+
+@if (Model.entityOrden.ESTADO_ORDEN == TMD.GM.Util.ConstantesUT.ESTADO_ORDEN.Anulada)
+{@Html.TextBox("txtFechaIni_Actividad", TMD.GM.Util.DataUT.ObjectToStringFromDatetimeNull(Model.entityActividad.FECHA_INICIO_ACTIVIDAD, "dd/MM/yyyy hh:mm tt"), htmlAttributes: new { @id = "txtFechaIni_Actividad", @style = "width: 170px;", @disabled = "disabled" })}
+else
+{@Html.TextBox("txtFechaIni_Actividad", TMD.GM.Util.DataUT.ObjectToStringFromDatetimeNull(Model.entityActividad.FECHA_INICIO_ACTIVIDAD, "dd/MM/yyyy hh:mm tt"), htmlAttributes: new { @id = "txtFechaIni_Actividad", @style = "width: 170px;" })
+    }
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entityActividad.FECHA_FIN_ACTIVIDAD)
+@if (Model.entityOrden.ESTADO_ORDEN == TMD.GM.Util.ConstantesUT.ESTADO_ORDEN.Anulada)
+{@Html.TextBox("txtFechaFin_Actividad", TMD.GM.Util.DataUT.ObjectToStringFromDatetimeNull(Model.entityActividad.FECHA_FIN_ACTIVIDAD, "dd/MM/yyyy hh:mm tt"), htmlAttributes: new { @id = "txtFechaFin_Actividad", @style = "width: 170px;", @disabled = "disabled" })}
+else
+{@Html.TextBox("txtFechaFin_Actividad", TMD.GM.Util.DataUT.ObjectToStringFromDatetimeNull(Model.entityActividad.FECHA_FIN_ACTIVIDAD, "dd/MM/yyyy hh:mm tt"), htmlAttributes: new { @id = "txtFechaFin_Actividad", @style = "width: 170px;" })}
+</fieldset>
+</fieldset>
+
+<br />
+<fieldset>
+@if (Model.entityOrden.ESTADO_ORDEN != TMD.GM.Util.ConstantesUT.ESTADO_ORDEN.Anulada)
+{
+<button id="btnActualizar_Actividad" class="k-button" onclick="OTActividad_Actualizar('@Url.Action("Actividad_Actualizar", "OrdenTrabajo")','@Url.Action("Actividades_Actualizar", "OrdenTrabajo")')"><span class="k-icon k-i-tick"></span> Actualizar Orden</button>
+}
+<button id="btnRetornar_Actividad" class="k-button" onclick="CerrarModalOTActividad()"><span class="k-icon k-i-close"></span> Retornar</button>
+</fieldset>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#txtFechaIni_Actividad").kendoDateTimePicker({ culture: "es-PE", format: "dd/MM/yyyy hh:mm tt" });
+        $("#txtFechaFin_Actividad").kendoDateTimePicker({ culture: "es-PE", format: "dd/MM/yyyy hh:mm tt" });
+
+//        $("#Pruebita").kendoDateTimePicker({ culture: "es-PE", format: "dd/MM/yyyy hh:mm tt" });
+//        $("#datetimepicker").kendoDateTimePicker();
+
+//        var datetimepicker = $("#datetimepicker").data("kendoDateTimePicker");
+//        var dpInPrueba = $("#Pruebita").data("kendoDateTimePicker");
+
+//        $("#get").click(function () {
+//            alert(datetimepicker.value());
+//        });
+
+//        $("#getTEST").click(function () {
+//            alert(dpInPrueba.value());
+//        });
+    });
+</script>

@@ -45,4 +45,10 @@ namespace TMD.GM.Site.Models
         public List<EspecialidadBE> listaEspecialidadEquipo { get; set; }
         public List<EspecialidadBE> listaEspecialidadResponsable { get; set; }
     }
+
+    public class OrdenTrabajoActividadModel
+    {
+        public OrdenTrabajoDetalleBE entityActividad { get; set; }
+        public OrdenTrabajoBE entityOrden { get; set; }
+    }
 }

@@ -13,6 +13,7 @@ namespace TMD.GM.Util
         {
             public const int Aperturado = 1;
             public const int Programado = 2;
+            public const int Completado = 3;
             public const int Anulado = 4;
         }
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
@@ -28,6 +29,17 @@ namespace TMD.GM.Util
         {
             public const int Activo = 1;
             public const int Inactivo = 0;
+        }
+
+        [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
+        public struct UNIDAD_TIEMPO
+        {
+            public const int D = 1;
+            public const int H = 2;
+            public const int M = 3;
+            public const string desTiempoDefault = "minuto(s)";
+
+
         }
 
         [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
@@ -65,6 +77,7 @@ namespace TMD.GM.Util
 
             public const string OTActividadActual = "OTActividadKey";
             public const string OTActividades = "OTActividadesKey";
+            public const string OTActual = "OTActualKey";
 
             public const string OTEquiposPendientes = "OTEquiposPendientesKey";
             public const string OTActividadesPendientes = "OTActividadesPendientesKey";
@@ -88,6 +101,13 @@ namespace TMD.GM.Util
         {
             public const int Propio = 1;
             public const int Externo = 2;
+        }
+
+
+        [SuppressMessage("Microsoft.Performance", "CA1815:OverrideEqualsAndOperatorEqualsOnValueTypes")]
+        public struct PARAMETROS
+        {
+            public const int HorasLaborables = 8;
         }
     }
 }

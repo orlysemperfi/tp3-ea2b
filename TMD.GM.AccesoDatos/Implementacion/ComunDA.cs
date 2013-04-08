@@ -242,7 +242,7 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         result.Add(new SelectListItemBE()
                         {
                             CODIGO = DataUT.ObjectToString(oReader["CODIGO"]),
-                            DESCRIPCION = DataUT.ObjectToString(oReader["DESCRIPCION"]),
+                            DESCRIPCION = DataUT.ObjectToString(oReader["NOMBRE"]),
                         });
                     }
                 }

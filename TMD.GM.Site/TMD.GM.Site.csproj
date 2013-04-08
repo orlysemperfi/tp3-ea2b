@@ -858,7 +858,7 @@
       <Name>TMD.GM.Entidades</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMD.GM.LogicaNegocios\TMD.GM.LogicaNegocios.csproj">
-      <Project>{610AEC74-2EEF-4432-92A2-880E1CC9E722}</Project>
+      <Project>{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}</Project>
       <Name>TMD.GM.LogicaNegocios</Name>
     </ProjectReference>
     <ProjectReference Include="..\TMD.GM.Util\TMD.GM.Util.csproj">
@@ -949,6 +949,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\OrdenTrabajo\ActividadesEquipo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Actividad.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

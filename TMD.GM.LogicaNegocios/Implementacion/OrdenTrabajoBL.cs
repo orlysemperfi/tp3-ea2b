@@ -63,5 +63,9 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             instanciaDA.Registrar(entidades);
         }
+        public OrdenTrabajoEquipoBE ObtenerDisponibilidadResponsable(OrdenTrabajoFiltroBE filtro)
+        {
+            return instanciaDA.ObtenerDisponibilidadResponsable(filtro);
+        }
     }
 }

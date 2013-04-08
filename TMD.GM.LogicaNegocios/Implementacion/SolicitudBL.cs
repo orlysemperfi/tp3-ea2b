@@ -53,5 +53,9 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             return instanciaDA.ActividadesCronograma(fecha);
         }
+        public bool EsFechaHabilitada(DateTime fecha)
+        {
+            return instanciaDA.EsFechaHabilitada(fecha);
+        }
     }
 }

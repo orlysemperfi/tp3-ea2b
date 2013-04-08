@@ -74,6 +74,8 @@ namespace TMD.GM.Site.Controllers
                 if (Session[ConstantesUT.SESSION.PlanActividades] == null)
                     Session[ConstantesUT.SESSION.PlanActividades] = new List<PlanDetalleBE>();
                 entity.listaActividades = (List<PlanDetalleBE>)Session[ConstantesUT.SESSION.PlanActividades];
+                if (entity.listaActividades.Count == 0)
+                    throw new Exception("Debe agregar como mínimo una actividad");
 
                 planBL.RegistrarPlan(entity);
 

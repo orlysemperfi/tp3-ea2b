@@ -139,8 +139,9 @@ namespace TMD.GM.Site.Controllers
             {
                 model.listaES.Add(new SelectListItem() { Selected = (item.CODIGO == model.entity.ESTADO_ORDEN.ToString()), Value = item.CODIGO.ToString(), Text = item.DESCRIPCION });
             }
-            
+
             Session[ConstantesUT.SESSION.OTActividades] = null;
+            Session[ConstantesUT.SESSION.OTActual] = model.entity;
 
             return PartialView("OrdenTrabajo", model);
         }
@@ -245,7 +246,8 @@ namespace TMD.GM.Site.Controllers
                 OrdenTrabajoEquipoBE actual = listaEquiposPedientes.Find(x => x.CODIGO_EQUIPO == pCodiEqui);
                 OrdenTrabajoEquipoBE itemAdd = listaEquiposCheck.Find(x => x.CODIGO_EQUIPO == pCodiEqui);
                 if (itemAdd == null)
-                    listaEquiposCheck.Add(new OrdenTrabajoEquipoBE() { CODIGO_EQUIPO = pCodiEqui, NUMERO_SOLICITUD = pNumSoli, NOMBRE_EQUIPO = actual.NOMBRE_EQUIPO });
+                    listaEquiposCheck.Add(new OrdenTrabajoEquipoBE() { CODIGO_EQUIPO = pCodiEqui, NUMERO_SOLICITUD = pNumSoli, NOMBRE_EQUIPO = actual.NOMBRE_EQUIPO,
+                    FECHA_INICIO_ORDEN = actual.FECHA_INICIO_ORDEN, FECHA_FIN_ORDEN = actual.FECHA_FIN_ORDEN});
             }
 
             Session[ConstantesUT.SESSION.OTEquiposCheck] = listaEquiposCheck;
@@ -279,6 +281,8 @@ namespace TMD.GM.Site.Controllers
                         ID_ACTIVIDAD = DataUT.ObjectToIntTryParse(pIdActi), 
                         CODIGO_EQUIPO = pCodiEqui,
                         ITEM_ORDEN = actual.ITEM_ORDEN,
+                        CODIGO_TIEMPO = actual.CODIGO_TIEMPO,
+                        TIEMPO_ACTIVIDAD = actual.TIEMPO_ACTIVIDAD,
                         TIEMPO_ACTIVIDAD_TEXTO = actual.TIEMPO_ACTIVIDAD_TEXTO,
                         DESCRIPCION_ACTIVIDAD = actual.DESCRIPCION_ACTIVIDAD,
                         DESCRIPCION_TIPO_ACTIVIDAD = actual.DESCRIPCION_TIPO_ACTIVIDAD,
@@ -308,27 +312,41 @@ namespace TMD.GM.Site.Controllers
                 Session[ConstantesUT.SESSION.OTActividadesCheck] = new List<OrdenTrabajoDetalleBE>();
             List<OrdenTrabajoDetalleBE> listaActividadesCheck = (List<OrdenTrabajoDetalleBE>)Session[ConstantesUT.SESSION.OTActividadesCheck];
 
+            if (listaEquiposCheck.Count == 0)
+            {
+                Response.StatusCode = 500;
+                return PartialView("../Error/MensajeError", new ErrorModel()
+                {
+                    Titulo = "Notificación",
+                    Mensaje = "No se ha seleccionado ningún equipo",
+                });
+            } 
+            
             foreach (var item in listaEquiposCheck)
             {
                 OrdenTrabajoEquipoBE itemLista = new OrdenTrabajoEquipoBE();
                 List<OrdenTrabajoDetalleBE> listaDetalle = listaActividadesCheck.FindAll(x => x.CODIGO_EQUIPO == item.CODIGO_EQUIPO);
 
+                decimal tiempo = listaActividadesCheck.Where(x => x.CODIGO_TIEMPO == ConstantesUT.UNIDAD_TIEMPO.M).Sum(x => x.TIEMPO_ACTIVIDAD) +
+                    listaActividadesCheck.Where(x => x.CODIGO_TIEMPO == ConstantesUT.UNIDAD_TIEMPO.H).Sum(x => x.TIEMPO_ACTIVIDAD)*60 +
+                    listaActividadesCheck.Where(x => x.CODIGO_TIEMPO == ConstantesUT.UNIDAD_TIEMPO.D).Sum(x => x.TIEMPO_ACTIVIDAD) * 1440;
+
+                OrdenTrabajoEquipoBE itemBD = ordenTrabajoBL.ObtenerDisponibilidadResponsable(new OrdenTrabajoFiltroBE() { CODIGO_EMPLEADO = item.CODIGO_RESPONSABLE });
+
                 itemLista.CODIGO_EQUIPO = item.CODIGO_EQUIPO;
                 itemLista.NOMBRE_EQUIPO = item.NOMBRE_EQUIPO;
                 itemLista.CANTIDAD_ACTIVIDADES = listaDetalle.Count;
-                itemLista.TIEMPO_ESTIMADO = DataUT.ObjectToString( listaDetalle.Sum(x=>x.TIEMPO_ACTIVIDAD)) ;
+                itemLista.TIEMPO_ESTIMADO = String.Format("{0:0.##}", tiempo) + " " + ConstantesUT.UNIDAD_TIEMPO.desTiempoDefault;
                 itemLista.CODIGO_RESPONSABLE = item.CODIGO_RESPONSABLE;
                 itemLista.NOMBRE_RESPONSABLE = item.NOMBRE_RESPONSABLE;
-                itemLista.CANTIDAD_OT_ASIGNADAS = 0;
-                itemLista.HORAS_OT_ASIGNADAS = 0;
+                itemLista.CANTIDAD_OT_ASIGNADAS = itemBD.CANTIDAD_OT_ASIGNADAS;
+                itemLista.HORAS_OT_ASIGNADAS = itemBD.HORAS_OT_ASIGNADAS;
 
                 if (itemLista != null)
                 {
                     model.listaEquiposPendientes.Add(itemLista);
                 }
-                
             }
-
             return PartialView(model);
         }
 
@@ -424,10 +442,10 @@ namespace TMD.GM.Site.Controllers
                 List<OrdenTrabajoDetalleBE> listaDetalle = listaActividadesCheck.FindAll(x => x.CODIGO_EQUIPO == item.CODIGO_EQUIPO);
 
                 OrdenTrabajoBE nuevaOrden = new OrdenTrabajoBE();
-                nuevaOrden.NUMERO_ORDEN = "";
+                nuevaOrden.NUMERO_ORDEN = ""; // Se autogenera luego
                 nuevaOrden.FECHA_EMISION_ORDEN = DateTime.Now.Date;
-                nuevaOrden.FECHA_INICIO_ORDEN = null;
-                nuevaOrden.FECHA_FIN_ORDEN = null;
+                nuevaOrden.FECHA_INICIO_ORDEN = item.FECHA_INICIO_ORDEN;
+                nuevaOrden.FECHA_FIN_ORDEN = item.FECHA_FIN_ORDEN;
                 nuevaOrden.HORAS_TRABAJO_ORDEN = listaDetalle.Sum(x => x.TIEMPO_ACTIVIDAD)/60;
                 nuevaOrden.OBSERVACIONES_ORDEN = "";
                 nuevaOrden.CODIGO_EMPLEADO = item.CODIGO_RESPONSABLE;
@@ -447,6 +465,103 @@ namespace TMD.GM.Site.Controllers
 
             return new EmptyResult();
 
+        }
+
+        public EmptyResult Actualizar(string pFechaIni, string pFechaFin, string pObse, string pCodiResp, string pCodiEsta)
+        {
+            OrdenTrabajoBE actualOrden = (OrdenTrabajoBE)Session[ConstantesUT.SESSION.OTActual];
+
+            actualOrden.FECHA_INICIO_ORDEN = DataUT.ObjectToDateTimeNull(pFechaIni);
+            actualOrden.FECHA_FIN_ORDEN = DataUT.ObjectToDateTimeNull(pFechaFin);
+            //actualOrden.HORAS_TRABAJO_ORDEN = listaDetalle.Sum(x => x.TIEMPO_ACTIVIDAD) / 60;
+            actualOrden.OBSERVACIONES_ORDEN = pObse;
+            actualOrden.CODIGO_EMPLEADO = DataUT.ObjectToInt32Null(pCodiResp);
+            actualOrden.ESTADO_ORDEN = DataUT.ObjectToInt32(pCodiEsta);
+
+            ordenTrabajoBL.Actualizar(actualOrden);
+
+            return new EmptyResult();
+
+        }
+
+        public ActionResult Actividad_Editar(string pGuidActividad)
+        {
+            if (Session[ConstantesUT.SESSION.OTActividades] == null)
+                Session[ConstantesUT.SESSION.OTActividades] = new List<OrdenTrabajoDetalleBE>();
+
+            List<OrdenTrabajoDetalleBE> lista = (List<OrdenTrabajoDetalleBE>)Session[ConstantesUT.SESSION.OTActividades];
+            OrdenTrabajoActividadModel model = new OrdenTrabajoActividadModel();
+
+            model.entityOrden = (OrdenTrabajoBE)Session[ConstantesUT.SESSION.OTActual];
+            model.entityActividad = lista.Find(x => x.GUID_ROW.ToString() == pGuidActividad);
+
+            Session[ConstantesUT.SESSION.OTActividadActual] = model.entityActividad;
+
+
+            return PartialView("Actividad", model);
+        }
+        //public ActionResult Actividad_Actualizar(string pGuidActividad)
+        //{
+        //    if (Session[ConstantesUT.SESSION.OTActividades] == null)
+        //        Session[ConstantesUT.SESSION.OTActividades] = new List<OrdenTrabajoDetalleBE>();
+
+        //    List<OrdenTrabajoDetalleBE> lista = (List<OrdenTrabajoDetalleBE>)Session[ConstantesUT.SESSION.OTActividades];
+        //    OrdenTrabajoActividadModel model = new OrdenTrabajoActividadModel();
+
+        //    model.entityOrden = (OrdenTrabajoBE)Session[ConstantesUT.SESSION.OTActual];
+        //    model.entityActividad = lista.Find(x => x.GUID_ROW.ToString() == pGuidActividad);
+
+        //    Session[ConstantesUT.SESSION.OTActividadActual] = model.entityActividad;
+
+
+        //    return PartialView("Actividad", model);
+        //}
+
+        public EmptyResult Actividad_Actualizar(string pItemOrde, string pFechaIni, string pFechaFin)
+        {
+            OrdenTrabajoDetalleBE entity = (OrdenTrabajoDetalleBE)Session[ConstantesUT.SESSION.OTActividadActual];
+
+            entity.ITEM_ORDEN = DataUT.ObjectToInt32(pItemOrde);
+            entity.FECHA_INICIO_ACTIVIDAD = DataUT.ObjectToDateTimeNull(pFechaIni);
+            entity.FECHA_FIN_ACTIVIDAD = DataUT.ObjectToDateTimeNull(pFechaFin);
+
+            if (Session[ConstantesUT.SESSION.OTActividades] == null)
+                Session[ConstantesUT.SESSION.OTActividades] = new List<OrdenTrabajoDetalleBE>();
+
+            List<OrdenTrabajoDetalleBE> lista = new List<OrdenTrabajoDetalleBE>();
+            lista = (List<OrdenTrabajoDetalleBE>)Session[ConstantesUT.SESSION.OTActividades];
+
+            //Verificamos la existencia del registro
+
+            OrdenTrabajoDetalleBE item = lista.Find(x => x.GUID_ROW == entity.GUID_ROW);
+            if (item != null)
+            {
+                item.ITEM_ORDEN = entity.ITEM_ORDEN;
+                item.FECHA_INICIO_ACTIVIDAD = entity.FECHA_INICIO_ACTIVIDAD;
+                item.FECHA_FIN_ACTIVIDAD = entity.FECHA_FIN_ACTIVIDAD;
+            }
+            else
+            {
+                lista.Add(entity);
+            }
+            Session[ConstantesUT.SESSION.OTActividades] = lista;
+
+            return new EmptyResult();
+
+        }
+
+        public ActionResult Actividades_Actualizar(string pCodigo)
+        {
+            OrdenTrabajoModel model = new OrdenTrabajoModel();
+            model.entity = new OrdenTrabajoBE();
+            model.entity.NUMERO_ORDEN = pCodigo;
+
+            if (Session[ConstantesUT.SESSION.OTActividades] == null)
+                Session[ConstantesUT.SESSION.OTActividades] = new List<OrdenTrabajoDetalleBE>();
+
+            model.entity.listaActividades = (List<OrdenTrabajoDetalleBE>)Session[ConstantesUT.SESSION.OTActividades];
+
+            return PartialView("Actividades", model);
         }
     }
 }
