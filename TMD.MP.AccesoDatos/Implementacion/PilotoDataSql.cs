@@ -111,7 +111,8 @@ namespace TMD.MP.AccesoDatos.Implementacion
             String strConn = ConfigurationManager.ConnectionStrings[Constantes.TMD_MP_DATABASE].ConnectionString;
             SqlConnection sqlConn = new SqlConnection(strConn);
             StringBuilder strSQL = new StringBuilder();
-            strSQL.Append("SELECT P.CODIGO, S.CODIGO AS CODIGO_SOLUCION, S.DESCRIPCION, P.DESCRIPCION, E.NOMBRE, E.CODIGO AS CODIGO_ESTADO ");
+            strSQL.Append("SELECT P.CODIGO, S.CODIGO AS CODIGO_SOLUCION, S.DESCRIPCION DESCR_SOLUCION, P.DESCRIPCION, E.NOMBRE, ");
+            strSQL.Append("E.CODIGO AS CODIGO_ESTADO, P.FECHA_INICIO_IMPL, P.FECHA_FIN_IMPL, P.CODIGO_EMPLEADO ");
             strSQL.Append("FROM PILOTO P ");
             strSQL.Append("INNER JOIN SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
             strSQL.Append("INNER JOIN ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
@@ -134,9 +135,12 @@ namespace TMD.MP.AccesoDatos.Implementacion
                     oPiloto.codigo = Utilitario.getDefaultOrIntDBValue(dr["CODIGO"]);
                     oPiloto.codigo_Solucion = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_SOLUCION"]);
                     oPiloto.codigo_Estado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_ESTADO"]);
-                    oPiloto.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
+                    oPiloto.solucion = Utilitario.getDefaultOrStringDBValue(dr["DESCR_SOLUCION"]);
+                    oPiloto.descripcion = Utilitario.getDefaultOrStringDBValue(dr["DESCRIPCION"]);
                     oPiloto.nombre_Estado = Utilitario.getDefaultOrStringDBValue(dr["NOMBRE"]);
-
+                    oPiloto.fecha_Inicio = Utilitario.getDefaultOrDatetimeDBValue(dr["FECHA_INICIO_IMPL"]);
+                    oPiloto.fecha_Fin = Utilitario.getDefaultOrDatetimeDBValue(dr["FECHA_FIN_IMPL"]);
+                    oPiloto.codigo_Empleado = Utilitario.getDefaultOrIntDBValue(dr["CODIGO_EMPLEADO"]);
 
                 }
                 dr.Close();
