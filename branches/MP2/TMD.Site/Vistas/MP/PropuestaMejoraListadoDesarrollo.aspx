@@ -42,8 +42,7 @@
                                     &nbsp;
                                 </td>
                                 <td>
-                                    &nbsp;
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                             <tr>
                                 <td>
@@ -57,8 +56,7 @@
                                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnCambiarEstadoEnDesarrollo" runat="server" OnClick="btnCambiarEstadoEnDesarrollo_Click" Text="En Desarrollo" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                         </table>
                         <br />
@@ -110,11 +108,21 @@
                     </asp:TemplateField>
                 </Columns>                
             </asp:GridView>
+
             <br />
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
+                        <asp:Button ID="btnCambiarEstadoEnDesarrollo" runat="server" OnClick="btnCambiarEstadoEnDesarrollo_Click" Text="Cambiar estado en Desarrollo" />
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
                         <asp:Label ID="lblMensajeError" runat="server" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblMensajeConfirmacion" runat="server" ForeColor="Green"></asp:Label>
                     </td>
                 </tr>
             </table>
