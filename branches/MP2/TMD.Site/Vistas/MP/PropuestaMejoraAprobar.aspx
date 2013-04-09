@@ -22,7 +22,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
-        <h1 class="page-title">PROPUESTAS DE MEJORAs por aprobar</h1>
+        <h1 class="page-title">PROPUESTAS DE MEJORAS POR APROBAR</h1>
         <div class="panel-wrapper">
             <asp:UpdatePanel ID="upnlFiltros" runat="server">
                 <ContentTemplate>
@@ -58,8 +58,7 @@
                                     <asp:Button ID="btnBuscar" runat="server" OnClick="btnBuscar_Click" Text="Buscar" />
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnAgregarPropuesta" runat="server" OnClick="btnAgregarPropuesta_Click" Text="Agregar" />
-                                </td>
+                                    &nbsp;</td>
                             </tr>
                         </table>
                         <br />
@@ -75,7 +74,7 @@
                             AutoGenerateColumns="false" AllowPaging="true" PageSize="10" 
                             DataSource='<%#ObtenerPropuestaMejoraListado() %>' BorderWidth="0px" 
                             BorderColor="White" OnRowCommand="gvwPropuestaMejoraListado_RowCommand" 
-                            OnPageIndexChanging="gvwPropuestaMejoraListado_PageIndexChanging" 
+                            OnPageIndexChanging="gvwPropuestaMejoraListado_PageIndexChanging" onselectedindexchanged="gvwPropuestaMejoraListado_SelectedIndexChanged" 
                             >
                             <EmptyDataTemplate>
                                 No existen propuestas con los criterios ingresados.
@@ -119,7 +118,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbtnVer" runat="server" Text='<%#Eval("NOMBRE_ESTADO").ToString() == "REGISTRADA" ? "" : "Ver" %>' CommandName="VerPropuestaAprobar" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link"></asp:LinkButton>
+                                        <asp:LinkButton ID="lbtnVer" runat="server" Text="Ver" CommandName="VerPropuestaAprobar" CommandArgument='<%#Eval("CODIGO_PROPUESTA") %>' CssClass="table-grilla-link"></asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="20px" />
                                 </asp:TemplateField>

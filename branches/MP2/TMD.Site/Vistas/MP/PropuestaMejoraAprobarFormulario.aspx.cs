@@ -1,6 +1,7 @@
 ﻿using System.Web.Script.Services;
 using AjaxControlToolkit;
 using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -183,7 +184,7 @@ namespace TMD.MP.Site.Privado
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraListado, true);
+            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraAprobar, true);
         }
 
         protected void gvwIndicadores_RowCommand(object sender, GridViewCommandEventArgs e)

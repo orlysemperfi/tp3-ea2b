@@ -205,7 +205,7 @@
                         <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
                     </td>
                     <td>
-                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Propuesta" />
+                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="false" ShowSummary="true" ValidationGroup="Propuesta" />
                     </td>
                 </tr>
             </table>            

@@ -87,25 +87,24 @@ namespace TMD.MP.Site.Privado
                 PropuestaMejoraEntidad oPropuestaMejora = oPropuestaMejoraLogica.ObtenerPropuestaMejoraPorCodigo(Convert.ToInt32(e.CommandArgument));
                 Sesiones.PropuestaMejoraSeleccionada = oPropuestaMejora;
 
-                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraAprobarFormulario + "?Action=" + Constantes.ACTION_VIEW, true);
+                Response.Redirect(Paginas.TMD_MP_PropuestaMejoraAprobarFormulario + "?Action=" + Constantes.ACTION_UPDATE, true);
              
                 
             }
            
         }
 
-        protected void btnAgregarPropuesta_Click(object sender, EventArgs e)
-        {
-            Sesiones.PropuestaMejoraSeleccionadaRemover();
-            Response.Redirect(Paginas.TMD_MP_PropuestaMejoraFormulario + "?Action=" + Constantes.ACTION_INSERT, true);
-        }
-
-  
+      
 
         protected void gvwPropuestaMejoraListado_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvwPropuestaMejoraListado.PageIndex = e.NewPageIndex;
             gvwPropuestaMejoraListado.DataBind();
+        }
+
+        protected void gvwPropuestaMejoraListado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
       
