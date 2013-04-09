@@ -112,15 +112,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.Button btnBuscar;
         
         /// <summary>
-        /// btnAgregarPropuesta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarPropuesta;
-        
-        /// <summary>
         /// upnlPropuestaMejoraListado control.
         /// </summary>
         /// <remarks>

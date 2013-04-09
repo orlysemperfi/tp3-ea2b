@@ -40,15 +40,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.DropDownList ddlPropuesta;
         
         /// <summary>
-        /// rfvPropuesta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPropuesta;
-        
-        /// <summary>
         /// ddlEmpleado control.
         /// </summary>
         /// <remarks>
@@ -58,15 +49,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.DropDownList ddlEmpleado;
         
         /// <summary>
-        /// rfvEmpleado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmpleado;
-        
-        /// <summary>
         /// tbxDescripcion control.
         /// </summary>
         /// <remarks>
@@ -74,15 +56,6 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxDescripcion;
-        
-        /// <summary>
-        /// rfvDescripcion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
         
         /// <summary>
         /// btnAgregarAccion control.
@@ -119,6 +92,33 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// rfvPropuesta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPropuesta;
+        
+        /// <summary>
+        /// rfvEmpleado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmpleado;
+        
+        /// <summary>
+        /// rfvDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDescripcion;
         
         /// <summary>
         /// vsumGuardar control.

@@ -13,10 +13,16 @@ CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Priv
             $("#<%=tbxFechaEnvio.ClientID %>").datepicker();
         });
   </script>
+    <style type="text/css">
+        .style2
+        {
+            width: 239px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="listaSol" class="content">
-        <h1 class="page-title">EDICIÓN DE PROPUESTA DE MEJORA</h1>
+        <h1 class="page-title">PROPUESTA DE MEJORA POR APROBAR</h1>
         <div class="panel-wrapper form">
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
@@ -184,16 +190,16 @@ CodeBehind="PropuestaMejoraAprobarFormulario.aspx.cs" Inherits="TMD.MP.Site.Priv
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
-                        <asp:Button ID="btnAprobar" runat="server" OnClick="btnAprobar_Click" Text="Aprobar" ValidationGroup="Propuesta" />                           
+                        <asp:Button ID="btnAprobar" runat="server" OnClick="btnAprobar_Click" Text="Aprobar" />                           
                     </td>
                     
                     <td>
-                        <asp:Button ID="btnRechazar" runat="server" OnClick="btnRechazar_Click" Text="Rechazar" ValidationGroup="Propuesta" />                           
-                    </td>
-                    <td style="padding-left:5px;">
-                        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
+                        <asp:Button ID="btnRechazar" runat="server" OnClick="btnRechazar_Click" Text="Rechazar" />                           
                     </td>
                     <td>
+                        <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar"  />
+                    </td>
+                    <td class="style2">
                         <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Propuesta" />
                     </td>
                 </tr>
