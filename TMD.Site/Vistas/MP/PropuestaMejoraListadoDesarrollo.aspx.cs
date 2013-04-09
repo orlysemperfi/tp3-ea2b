@@ -187,11 +187,13 @@ namespace TMD.MP.Site.Privado
 
             if (count == 0)
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+                /*ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
                       "err_msg",
                       "alert('Seleccione al menos una propuesta');",
                       true);
-                return;
+                return;*/
+                lblMensajeError.Text = Mensajes.Mensaje_Seleccionar_Propuesta;
+                lblMensajeError.DataBind();
             }
             else
             {
@@ -216,9 +218,12 @@ namespace TMD.MP.Site.Privado
             string currentURL = Request.Url.ToString();
             string newURL = currentURL.Substring(0, currentURL.LastIndexOf("/"));
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
+            /*ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
             "alert('Se actualizaron las propuestas seleccionadas al estado En Desarrollo'); window.location='" +
-            newURL + "/PropuestaMejoraDesarrollo.aspx';", true);
+            newURL + "/PropuestaMejoraDesarrollo.aspx';", true);*/
+            CargarPropuestaMejoraListado();
+            lblMensajeError.Text = "Propuestas actualizadas satisfactoriamente";
+            lblMensajeError.DataBind();
 
         }
 
