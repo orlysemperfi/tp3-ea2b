@@ -16,6 +16,7 @@ namespace TMD.MP.Comun
         public static String Mensaje_No_Borrar_Piloto = "El piloto no puede ser borrada.";
         public static String Mensaje_Verificar_Rangos = "Verifique los rangos ingresados.";
         public static String Mensaje_Seleccionar_Indicador = "Seleccione al menos un indicador";
+        public static String Mensaje_Seleccionar_Propuesta = "Seleccione al menos una propuesta";
         
     }
 }
