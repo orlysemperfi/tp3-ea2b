@@ -194,6 +194,7 @@ namespace TMD.MP.Site.Privado
                 return;*/
                 lblMensajeError.Text = Mensajes.Mensaje_Seleccionar_Propuesta;
                 lblMensajeError.DataBind();
+                return;
             }
             else
             {
@@ -221,9 +222,10 @@ namespace TMD.MP.Site.Privado
             /*ScriptManager.RegisterStartupScript(this, this.GetType(), "redirect",
             "alert('Se actualizaron las propuestas seleccionadas al estado En Desarrollo'); window.location='" +
             newURL + "/PropuestaMejoraDesarrollo.aspx';", true);*/
+           
+            lblMensajeConfirmacion.Text = "Propuestas actualizadas satisfactoriamente";
+            lblMensajeConfirmacion.DataBind();
             CargarPropuestaMejoraListado();
-            lblMensajeError.Text = "Propuestas actualizadas satisfactoriamente";
-            lblMensajeError.DataBind();
 
         }
 
