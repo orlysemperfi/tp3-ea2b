@@ -28,7 +28,7 @@
                     <td >
                         <asp:DropDownList ID="ddlProceso" runat="server">
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ValidationGroup="IndicadorC" ErrorMessage="Seleccione un proceso" Display="None"></asp:RequiredFieldValidator>
+
                     </td>
                 </tr>
                 <tr>
@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="tbxNombre" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="tbxNombre" ValidationGroup="IndicadorC" ErrorMessage="Ingrese un nombre" Display="None"></asp:RequiredFieldValidator>
+                        
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +46,7 @@
                     </td>
                     <td>
                          <asp:DropDownList ID="ddlFrecuenciaMed" runat="server"></asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ControlToValidate="ddlFrecuenciaMed" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una frecuencia de medición" Display="None"></asp:RequiredFieldValidator>
+
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +55,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="tbxFuenteMed" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvFuenteMed" runat="server" ControlToValidate="tbxFuenteMed" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una fuente de medición" Display="None"></asp:RequiredFieldValidator>
+
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +64,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="tbxExpresionMat" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvExpresionMat" runat="server" ControlToValidate="tbxExpresionMat" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una expresión matemática" Display="None"></asp:RequiredFieldValidator>
+
                     
                     </td>
                 </tr>
@@ -74,7 +74,7 @@
                     </td>
                     <td>
                         <asp:DropDownList ID="ddlPlazo" runat="server"></asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ControlToValidate="ddlPlazo" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una plazo" Display="None"></asp:RequiredFieldValidator>
+
                     </td>
                 </tr>
 
@@ -139,13 +139,43 @@
             <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>
+                        <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ForeColor="Red" ControlToValidate="ddlProceso" InitialValue="0" ValidationGroup="IndicadorC" ErrorMessage="Seleccione un proceso" Display="Dynamic"></asp:RequiredFieldValidator>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ForeColor="Red" ControlToValidate="tbxNombre" ValidationGroup="IndicadorC" ErrorMessage="Ingrese un nombre" Display="Dynamic"></asp:RequiredFieldValidator>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvFrecuenciaMed" runat="server" ForeColor="Red" ControlToValidate="ddlFrecuenciaMed" InitialValue="0" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una frecuencia de medición" Display="Dynamic"></asp:RequiredFieldValidator>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvFuenteMed" runat="server" ForeColor="Red" ControlToValidate="tbxFuenteMed" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una fuente de medición" Display="Dynamic"></asp:RequiredFieldValidator>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvExpresionMat" runat="server" ForeColor="Red" ControlToValidate="tbxExpresionMat" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una expresión matemática" Display="Dynamic"></asp:RequiredFieldValidator>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:RequiredFieldValidator ID="rfvPlazo" runat="server" ForeColor="Red" ControlToValidate="ddlPlazo" InitialValue="0" ValidationGroup="IndicadorC" ErrorMessage="Ingrese una plazo" Display="Dynamic"></asp:RequiredFieldValidator>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" ValidationGroup="IndicadorC" />
                     </td>
                     <td style="padding:5px">
                         <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
                     </td>
                     <td>
-                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="IndicadorC" />
+                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="false" ShowSummary="false" ValidationGroup="IndicadorC" />
                     </td>
                 </tr>
             </table>
