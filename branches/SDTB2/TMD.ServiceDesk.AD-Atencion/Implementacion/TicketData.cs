@@ -156,17 +156,17 @@ namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
         /// </summary>
         /// <param name="id">Codigo del proyecto</param>
         /// <returns>Fase</returns>
-        public List<Ticket> listaTicketsIntegrante(int CodigoIntegrante,
-                                                  string TipoTicket, String EstadoTicket, DateTime  FechaRegIni,DateTime FechaRegFin)
+        public List<Ticket> listaTicketsIntegrante(int codigoIntegrante,
+                                                  string tipoTicket, String estadoTicket, DateTime  fechaRegIni,DateTime fechaRegFin)
         {
             List<Ticket> listaTickets = new List<Ticket>();
             //try
             //{
             using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Ticket_ListaTicketsIntegrante"))
                 {
-                    DB.AddInParameter(command, "@Integrante", DbType.Int32, CodigoIntegrante);
-                    DB.AddInParameter(command, "@Tipo_Ticket", DbType.String, TipoTicket);
-                    DB.AddInParameter(command, "@Estado", DbType.String, EstadoTicket );
+                    DB.AddInParameter(command, "@Integrante", DbType.Int32, codigoIntegrante);
+                    DB.AddInParameter(command, "@Tipo_Ticket", DbType.String, tipoTicket);
+                    DB.AddInParameter(command, "@Estado", DbType.String, estadoTicket );
                     DB.AddInParameter(command, "@Fecha_RegIni", DbType.DateTime , null); //String.Format("{0:yyyyMMdd}", FechaRegIni));
                     DB.AddInParameter(command, "@Fecha_RegFin", DbType.DateTime, null); //String.Format("{0:yyyyMMdd}", FechaRegFin));
 

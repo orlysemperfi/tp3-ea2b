@@ -31,16 +31,16 @@ namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
         /// <summary>
         /// Obtiene una lista de analistas.
         /// </summary>
-        /// <param name="id">Codigo del proyecto</param>
+        /// <param name="codigoProyecto">Codigo del proyecto</param>
         /// <returns>Fase</returns>
-        public List<Integrante> listaAnalistas(int CodigoProyecto)
+        public List<Integrante> listaAnalistas(int codigoProyecto)
         {
             List<Integrante> listaIntegrante = new List<Integrante>();
             //try
             //{
                 using (DbCommand command = DB.GetStoredProcCommand("DBO.usp_Integrante_Lista"))
                 {
-                    DB.AddInParameter(command, "@Proyecto", DbType.Int32, CodigoProyecto);
+                    DB.AddInParameter(command, "@Proyecto", DbType.Int32, codigoProyecto);
                     DB.AddInParameter(command, "@Nivel", DbType.String, "ANALISTA");
 
                     using (IDataReader reader = DB.ExecuteReader(command))

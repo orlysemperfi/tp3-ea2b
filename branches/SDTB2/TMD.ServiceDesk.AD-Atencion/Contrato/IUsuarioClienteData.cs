@@ -12,9 +12,9 @@ namespace TMD.DBO.AccesoDatos_Atencion.Contrato
         /// <summary>
         /// Lista usuarios cliente por integrante
         /// </summary>
-        /// /// <param name="CodigoProyecto">Codigo del Proyecto</param>
+        /// /// <param name="aliasIntegrante">Codigo del Proyecto</param>
         /// <returns>Lista Integrante</returns>
-        List<UsuarioCliente> listaUsuarioCliente(string AliasIntegrante);
+        List<UsuarioCliente> listaUsuarioCliente(string aliasIntegrante);
 
 
         UsuarioCliente datosUsuarioCliente(int codigoUsuarioCliente);

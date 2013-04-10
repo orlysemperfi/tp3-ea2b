@@ -89,5 +89,14 @@ namespace TMD.DBO.LogicaNegocio_Atencion.Implementacion
             return _ticketData.listaDocumentosTickets(numeroTicket);
         }
 
+        public Boolean EsPosibleRegistrarSolucion(int numeroTicket)
+        {
+            Ticket ticket = datosTicket(numeroTicket);
+
+            if (ticket.Estado_Ticket =="EN PROCESO") return true; 
+
+            return false;
+        }
+
     }
 }

@@ -23,6 +23,9 @@ namespace TMD.DBO.LogicaNegocio_Atencion.Contrato
             ProyectoServicioSede datosServicioSLA(ProyectoServicioSede proyectoServicioSede);
 
             DateTime obtenerFechaExpiración(DateTime fechaRegistro, ProyectoServicioSede proyectoServicioSede);
+
+            String prioridadValida(String tipoIncidente, int prioridad);
+
         }
   
 }
