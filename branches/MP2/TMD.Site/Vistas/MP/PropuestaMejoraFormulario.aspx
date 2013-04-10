@@ -43,7 +43,7 @@
                                 <td>
                                     <asp:DropDownList ID="ddlArea" runat="server">
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="rfvArea" runat="server" ControlToValidate="ddlArea" InitialValue="0" ErrorMessage="Seleccione un área" ValidationGroup="Propuesta" Display="None" />
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -54,7 +54,7 @@
                                     <asp:DropDownList ID="ddlProceso" runat="server" 
                                         onselectedindexchanged="ddlProceso_SelectedIndexChanged" AutoPostBack="true">
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un proceso" ValidationGroup="Propuesta" Display="None" />
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -64,7 +64,7 @@
                                 <td>
                                     <asp:DropDownList ID="ddlTipoPropuesta" runat="server">
                                     </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="rfvTipoPropuesta" runat="server" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un tipo de propuesta" ValidationGroup="Propuesta" Display="None" />
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -73,7 +73,7 @@
                                 </td>
                                 <td>
                                     <asp:DropDownList ID="ddlResponsable" runat="server" />
-                                    <asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ControlToValidate="ddlResponsable" InitialValue="0" ErrorMessage="Seleccione un responsable" ValidationGroup="Propuesta" Display="None" />
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -82,7 +82,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tbxFechaEnvio" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="None" />
+                                    
                                     <%--<asp:RegularExpressionValidator ID="revFechaEnvio" runat="server" ControlToValidate="tbxFechaEnvio" ErrorMessage="Formato de fecha incorrecto" ValidationGroup="Propuesta" Display="None" ValidationExpression="([1-9]|1[012])[- /.]([1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d" />--%>
                                 </td>
                             </tr>
@@ -120,7 +120,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tbxDescripcion" runat="server" TextMode="MultiLine"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Propuesta" Display="None" />
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -197,6 +197,36 @@
             </table>
             <br />
             <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                  <td>
+                      <asp:RequiredFieldValidator ID="rfvArea" runat="server" ForeColor="Red" ControlToValidate="ddlArea" InitialValue="0" ErrorMessage="Seleccione un área" ValidationGroup="Propuesta" Display="Dynamic" />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                      <asp:RequiredFieldValidator ID="rfvProceso" runat="server" ForeColor="Red" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un proceso" ValidationGroup="Propuesta" Display="Dynamic" />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                      <asp:RequiredFieldValidator ID="rfvTipoPropuesta" runat="server" ForeColor="Red" ControlToValidate="ddlProceso" InitialValue="0" ErrorMessage="Seleccione un tipo de propuesta" ValidationGroup="Propuesta" Display="Dynamic" />
+                 </td>
+               </tr>
+               <tr>
+                  <td>
+                      <asp:RequiredFieldValidator ID="rfvResponsable" runat="server" ForeColor="Red" ControlToValidate="ddlResponsable" InitialValue="0" ErrorMessage="Seleccione un responsable" ValidationGroup="Propuesta" Display="Dynamic" />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                      <asp:RequiredFieldValidator ID="rfvFechaEnvio" runat="server" ForeColor="Red" ControlToValidate="tbxFechaEnvio" ErrorMessage="Ingrese una fecha" ValidationGroup="Propuesta" Display="Dynamic" />
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                      <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ForeColor="Red" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Propuesta" Display="Dynamic" />                           
+                  </td>
+               </tr>
                 <tr>
                     <td>
                         <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" ValidationGroup="Propuesta" />                           
@@ -205,7 +235,7 @@
                         <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
                     </td>
                     <td>
-                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="false" ShowSummary="true" ValidationGroup="Propuesta" />
+                        <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="false" ShowSummary="false" ValidationGroup="Propuesta" />
                     </td>
                 </tr>
             </table>            

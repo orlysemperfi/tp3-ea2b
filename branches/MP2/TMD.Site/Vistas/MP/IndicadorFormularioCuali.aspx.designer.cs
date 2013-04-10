@@ -22,15 +22,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.DropDownList ddlProceso;
         
         /// <summary>
-        /// rfvProceso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProceso;
-        
-        /// <summary>
         /// tbxNombre control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxNombre;
-        
-        /// <summary>
-        /// rfvNombre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
         
         /// <summary>
         /// ddlFrecuenciaMed control.
@@ -58,15 +40,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.DropDownList ddlFrecuenciaMed;
         
         /// <summary>
-        /// rfvFrecuenciaMed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFrecuenciaMed;
-        
-        /// <summary>
         /// tbxFuenteMed control.
         /// </summary>
         /// <remarks>
@@ -76,15 +49,6 @@ namespace TMD.MP.Site.Privado {
         protected global::System.Web.UI.WebControls.TextBox tbxFuenteMed;
         
         /// <summary>
-        /// rfvFuenteMed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFuenteMed;
-        
-        /// <summary>
         /// ddlPlazo control.
         /// </summary>
         /// <remarks>
@@ -92,15 +56,6 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPlazo;
-        
-        /// <summary>
-        /// rfvPlazo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlazo;
         
         /// <summary>
         /// btnAgregarICuali control.
@@ -119,6 +74,51 @@ namespace TMD.MP.Site.Privado {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gwEscalasCuali;
+        
+        /// <summary>
+        /// rfvProceso control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProceso;
+        
+        /// <summary>
+        /// rfvNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNombre;
+        
+        /// <summary>
+        /// rfvFrecuenciaMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFrecuenciaMed;
+        
+        /// <summary>
+        /// rfvFuenteMed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFuenteMed;
+        
+        /// <summary>
+        /// rfvPlazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPlazo;
         
         /// <summary>
         /// btnGuardar control.
