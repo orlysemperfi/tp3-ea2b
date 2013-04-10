@@ -107,6 +107,7 @@ namespace TMD.CF.Site.Vistas.DBO.Atenciones
                     Fecha_Registro = DateTime.Now,
                     Tipo_Seguimiento = "ESTADO"
                 };
+                lblMensaje.Text = "Cambio de estado satisfactorio";
                 ticket.registrarSeguimiento(seguimientoTicket);
                 Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
             }

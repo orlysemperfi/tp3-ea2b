@@ -45,7 +45,43 @@ namespace TMD.DBO.LogicaNegocio_Atencion.Implementacion
             return fechaExpiracion;
         }
 
+        public String  prioridadValida(String tipoIncidente, int prioridad)
+        {
+            String resultado="";
 
+            if (tipoIncidente=="INCIDENTE" && !prioridadValidaIncidente(prioridad))  resultado = "Prioridad inválida para los incidentes";
+            else if (tipoIncidente == "PROBLEMA" && !prioridadValidaProblemas(prioridad)) resultado = "Prioridad inválida para los problemas";
+            else if (tipoIncidente == "REQUERIMIENTO" && !prioridadValidaRequerimiento(prioridad)) resultado = "Prioridad inválida para los requerimientos";
+
+            return resultado;
+        }
+
+        public Boolean prioridadValidaProblemas(int prioridad)
+        {
+            Boolean resultado=false ;
+
+            if (prioridad>= 8) resultado = true;
+
+            return resultado;
+        }
+
+        public Boolean prioridadValidaIncidente(int prioridad)
+        {
+            Boolean resultado = false;
+
+            if (prioridad <= 6) resultado = true;
+
+            return resultado;
+        }
+
+        public Boolean prioridadValidaRequerimiento(int prioridad)
+        {
+            Boolean resultado = false;
+
+            if (prioridad <= 8) resultado = true;
+
+            return resultado;
+        }
     }
 
 

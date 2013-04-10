@@ -32,6 +32,9 @@ namespace TMD.DBO.LogicaNegocio_Atencion.Contrato
         void registrarDocumentoTicket(DocumentoTicket documentoTicket);
         void cambiarEstadoTicket(Ticket ticket);
         List<DocumentoTicket> listaDocumentosTickets(int numeroTicket);
-        
+
+        // Reglas de negocio
+        Boolean EsPosibleRegistrarSolucion(int numeroTicket);
+
     }
 }

@@ -47,8 +47,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
-     <ContentTemplate>
+   <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+     <ContentTemplate>--%>
     <table class="style1">
         <tr>
             <td class="style2" colspan="4">
@@ -60,7 +60,8 @@
             <td class="style3">
                 &nbsp;</td>
             <td colspan="3">
-                &nbsp;</td>
+                <asp:Label ID="lblmsj" runat="server" Text="Mensaje" ForeColor="Red" ></asp:Label>
+            </td>
         </tr>
         <tr>
             <td class="style3">
@@ -81,7 +82,7 @@
             <td class="style4">
                 <asp:DropDownList ID="cmbUsuarioCliente" runat="server" Height="24px" 
                     onselectedindexchanged="cmbUsuarioCliente_SelectedIndexChanged" 
-                    Width="209px" AutoPostBack="True" CssClass="fieldEdit">
+                    Width="209px" AutoPostBack="True">
                 </asp:DropDownList>
             </td>
             <td class="style6">
@@ -95,7 +96,7 @@
                 Servicio:</td>
             <td class="style4">
                 <asp:DropDownList ID="cmbServicio" runat="server" Height="24px" Width="331px" 
-                    AutoPostBack="True" CssClass="fieldEdit" 
+                    AutoPostBack="True" 
                     onselectedindexchanged="cmbServicio_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
@@ -104,7 +105,7 @@
             </td>
             <td>
                 <asp:DropDownList ID="cmbTipoRegistro" runat="server" Height="19px" 
-                    Width="178px" CssClass="fieldEdit">
+                    Width="178px">
                     <asp:ListItem>Internet</asp:ListItem>
                     <asp:ListItem>Correo</asp:ListItem>
                     <asp:ListItem>Llamada</asp:ListItem>
@@ -124,7 +125,7 @@
             </td>
             <td>
                 <asp:DropDownList ID="cmbTipoAtencion" runat="server" Height="23px" 
-                    Width="178px" CssClass="fieldEdit">
+                    Width="178px">
                     <asp:ListItem>Incidente</asp:ListItem>
                     <asp:ListItem>Requerimiento</asp:ListItem>
                     <asp:ListItem>Problema</asp:ListItem>
@@ -135,8 +136,7 @@
             <td class="style3">
                 Proyecto:</td>
             <td colspan="3">
-                <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" 
-                    CssClass="fieldEdit" Height="31px" 
+                <asp:DropDownList ID="cmbProyecto" runat="server" AutoPostBack="True" Height="31px" 
                     onselectedindexchanged="cmbProyecto_SelectedIndexChanged" Width="330px">
                 </asp:DropDownList>
             </td>
@@ -147,7 +147,7 @@
             </td>
             <td colspan="3" class="style10">
                 <asp:TextBox ID="txtDescripcionBreve" runat="server" Height="23px" 
-                    MaxLength="50" Width="482px" CssClass="fieldEdit"></asp:TextBox>
+                    MaxLength="50" Width="482px"></asp:TextBox>
                 <asp:CustomValidator ID="CVDescripcionBreve" runat="server" 
                     ControlToValidate="txtDescripcionBreve" 
                     ErrorMessage="Debe ingresar 15 caracteres como mínimo" 
@@ -165,7 +165,7 @@
             <td>
                 Prioridad:</td>
             <td>
-                <asp:TextBox ID="txtPrioridad" runat="server" CssClass="fieldEdit" 
+                <asp:TextBox ID="txtPrioridad" runat="server" 
                     Width="165px"></asp:TextBox>
             </td>
         </tr>
@@ -182,14 +182,14 @@
             </td>
             <td class="style8">
                 <asp:DropDownList ID="cmbEspecialista" runat="server" AutoPostBack="True" 
-                    Height="31px" Width="348px" CssClass="fieldEdit" 
+                    Height="31px" Width="348px" 
                     onselectedindexchanged="cmbEspecialista_SelectedIndexChanged">
                 </asp:DropDownList>
             </td>
             <td class="style8">
                 Equipo:</td>
             <td class="style8">
-                <asp:DropDownList ID="cmbEquipo" runat="server" CssClass="fieldEdit" 
+                <asp:DropDownList ID="cmbEquipo" runat="server" 
                     Height="31px" Width="177px">
                 </asp:DropDownList>
             </td>
@@ -198,7 +198,7 @@
             <td class="style3">
                 Elemento de Configuración:</td>
             <td colspan="3">
-                <asp:DropDownList ID="cmbCMDB" runat="server" CssClass="fieldEdit" 
+                <asp:DropDownList ID="cmbCMDB" runat="server" 
                     Height="31px" Width="350px">
                 </asp:DropDownList>
             </td>
@@ -209,7 +209,7 @@
                 (min=20 y max=1000 carácteres)</td>
             <td colspan="3">
                 <asp:TextBox ID="txtDescripcionDetallada" runat="server" Height="94px" 
-                    MaxLength="1000" Rows="10" Width="696px" CssClass="fieldEdit" 
+                    MaxLength="1000" Rows="10" Width="696px" 
                     ValidationGroup="ValidarAtencion"></asp:TextBox><br />
                 <asp:CustomValidator ID="CVDescripcionDetallada" runat="server" 
                     ErrorMessage="Debe ingresar 20 caracteres como mínimo" 
@@ -245,6 +245,6 @@
                 &nbsp;</td>
         </tr>
     </table>
-    </ContentTemplate>     
-    </asp:UpdatePanel> 
+   <%-- </ContentTemplate>     
+    </asp:UpdatePanel>--%> 
 </asp:Content>

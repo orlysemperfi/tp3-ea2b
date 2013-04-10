@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
 
+
 using TMD.Entidades;
 using TMD.DBO.LogicaNegocio_Atencion.Contrato;
 using TMD.DBO.LogicaNegocio_Atencion.Implementacion;
@@ -38,12 +39,13 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
                 Session["CodigoCliente"] = 0;
                 Session["CodigoSede"] = 0;
+                Session["Mensaje"] = "";
             
 
             //pageAnterior = Request.ServerVariables["HTTP_REFERER"].ToLower();
 
             //Usuarios Proyectos asignados al integrante
-
+            lblmsj.Text ="";
             onCargarUsuarioClientes();
 
             if (accionRegistro == "N")
@@ -63,7 +65,7 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            
+            Session["Mensaje"] = "Cancelación del registro";
             Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
         }
 
@@ -73,13 +75,22 @@ namespace TMD.ServiceDesk.Site.Atenciones
 
             if (Page.IsValid ==false )
             {
+                lblmsj.Text ="Datos inválidos";
                 return; 
             }
             ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
             Ticket Datosticket = new Ticket();
 
+            IServicioLogica servicios = new ServicioLogica(new ServiciosData("TMD"));
+
             int codigoCliente = Convert.ToInt32(Session["CodigoCliente"]);
             int codigoSede = Convert.ToInt32(Session["CodigoSede"]);
+
+            if (servicios.prioridadValida(cmbTipoAtencion.SelectedValue.ToUpper(), Convert.ToInt32(txtPrioridad.Text)) !="")
+            {
+                lblmsj.Text ="Datos inválidos";
+                return;
+            }
             
             Datosticket.Fecha_Registro = Convert.ToDateTime(txtFechaRegistro.Text);
             Datosticket.Tipo_Registro_Ticket = cmbTipoRegistro.SelectedValue.ToUpper();
@@ -105,9 +116,10 @@ namespace TMD.ServiceDesk.Site.Atenciones
                 Int32 numeroTicket = ticket.agregarTicket(Datosticket);
                 ticket.agregarTicketCMDB(numeroTicket,Convert.ToInt32(cmbCMDB.SelectedValue));
                 
-                script = "alert(Se generó el ticket No '{0}');";
-                script = string.Format(script, numeroTicket);
+                //script = "alert(Se generó el ticket No '{0}');";
 
+                //script = string.Format(script, numeroTicket);
+                Session["Mensaje"] = "Se generó el nuevo ticket satisfactoriamente";
             }
             else
             {
@@ -116,12 +128,17 @@ namespace TMD.ServiceDesk.Site.Atenciones
                 Datosticket.Codigo_Ult_Modif = SesionFachada.Usuario.Id;
                 ticket.modificarTicket(Datosticket);
 
-                script = "alert(Se actualizó el ticket No '{0}');";
-                script = string.Format(script, Datosticket.Codigo_Ticket);
+                //script = "alert(Se actualizó el ticket No '{0}');";
+                //script = string.Format(script, Datosticket.Codigo_Ticket);
+                Session["Mensaje"] = "Se actualizó el ticket satisfactoriamente";
             }
 
+            
+            
 
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", script, false);
+           //ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", script, false);
+
+  
 
             Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
         }
@@ -153,7 +170,8 @@ namespace TMD.ServiceDesk.Site.Atenciones
         {
 
             IUsuarioClienteLogica usuarioCliente = new UsuarioClienteLogica(new UsuarioClienteData("TMD"));
-            aliasIntegrante = SesionFachada.Usuario.Alias.ToString();
+            //aliasIntegrante = SesionFachada.Usuario.Alias.ToString();
+            aliasIntegrante = SesionFachada.Usuario.Nombre.ToString();
 
 
             cmbUsuarioCliente.DataSource = usuarioCliente.listaUsuarioCliente(aliasIntegrante);
@@ -210,7 +228,8 @@ namespace TMD.ServiceDesk.Site.Atenciones
             
             datosServicioSLA = servicios.datosServicioSLA(new ProyectoServicioSede {Codigo_Proyecto =Convert.ToInt32(cmbProyecto.SelectedValue),Codigo_Servicio =Convert.ToInt32(cmbServicio.SelectedValue),Codigo_Sede =codigoSede});
             txtSLA.Text = datosServicioSLA.Nombre_SLA;
-            if (txtPrioridad.Text == "")  txtPrioridad.Text = datosServicioSLA.Prioridad.ToString();
+            if (accionRegistro == "N") txtPrioridad.Text = datosServicioSLA.Prioridad.ToString();
+            else if (accionRegistro != "N" && txtPrioridad.Text == "")  txtPrioridad.Text = datosServicioSLA.Prioridad.ToString();
             
             txtFechaExpiracion.Text = servicios.obtenerFechaExpiración(Convert.ToDateTime(txtFechaRegistro.Text), datosServicioSLA).ToString();
             tiempoRespuesta = datosServicioSLA.Tiempo_Respuesta;

@@ -18,7 +18,7 @@ namespace TMD.DBO.AccesoDatos_Atencion.Contrato
         /// <summary>
         /// Lista todos los analistas de un proyecto
         /// </summary>
-        /// /// <param name="CodigoProyecto">Codigo del Proyecto</param>
+        /// /// <param name="codigoProyecto">Codigo del Proyecto</param>
         /// <returns>Lista Integrante</returns>
         List<Integrante> listaAnalistas(int codigoProyecto);
         List<Integrante> listaIntegrantesCompleta(string nivel);

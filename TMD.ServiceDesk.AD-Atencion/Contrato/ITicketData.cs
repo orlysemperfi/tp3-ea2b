@@ -17,10 +17,15 @@ namespace TMD.DBO.AccesoDatos_Atencion.Contrato
         /// <summary>
         /// Lista los ticket de un integrante
         /// </summary>
-        /// /// <param name="CodigoProyecto">Codigo del Proyecto</param>
+        /// /// <param name="codigoIntegrante">Codigo del Integrante</param>
+        /// /// <param name="tipoTicket">Codigo del Integrante</param>
+        /// /// <param name="estadoTicket">Codigo del Integrante</param>
+        /// /// <param name="fechaRegIni">Codigo del Integrante</param>
+        /// /// <param name="fechaRegFin">Codigo del Integrante</param>
+        /// 
         /// <returns>Lista Integrante</returns>
-        List<Ticket> listaTicketsIntegrante(int CodigoIntegrante,
-                                                  string TipoTicket, String EstadoTicket, DateTime FechaRegIni, DateTime FechaRegFin);
+        List<Ticket> listaTicketsIntegrante(int codigoIntegrante,
+                                                  string tipoTicket, String estadoTicket, DateTime fechaRegIni, DateTime fechaRegFin);
         Ticket datosTicket(int numeroTicket);
         TicketCMDB datosTicketCMDB(int numeroTicket);
         void registrarSolucion(int numeroTicket, String solucion, int codigoEquipo, int codigoEspecialista);

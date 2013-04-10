@@ -72,9 +72,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.GM.Site.Informe-Emplead
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMD.GM.LogicaNegocios", "TMD.GM.LogicaNegocios\TMD.GM.LogicaNegocios.csproj", "{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTMD", "TestTMD\TestTMD.csproj", "{D6218F69-AA67-42E5-8636-EEC3263E2BA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC7721BA-A0FA-4C61-8587-17CB5DCCF35F}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TMD.SistemaIntegral.vsmdi = TMD.SistemaIntegral.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = TMD.GestionConfiguracion.vsmdi
+		CategoryFile = TMD.SistemaIntegral.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +178,10 @@ Global
 		{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C3DEA05-4CD0-4969-9E4F-C303FFBE3942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6218F69-AA67-42E5-8636-EEC3263E2BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6218F69-AA67-42E5-8636-EEC3263E2BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6218F69-AA67-42E5-8636-EEC3263E2BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6218F69-AA67-42E5-8636-EEC3263E2BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,9 +209,5 @@ Global
 		{4FC0F443-C923-4C6A-9227-50D0E15985D9} = {08B7FC44-7B5E-4BB7-8788-EC80964918D6}
 		{5FF5EB32-9A74-4BA0-A457-893BD051E35F} = {08B7FC44-7B5E-4BB7-8788-EC80964918D6}
 		{606551B2-72B7-4402-BE4D-3ABA1A870EF4} = {9D7BB1A2-7E1D-49FC-94C3-60ACC8486836}
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

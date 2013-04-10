@@ -23,11 +23,20 @@ namespace ServiceDesk.Atenciones
             {
                 OnInitPage();
             }
+            else
+            {
+                Onactualizarpagina();
+            }
+
         }
 
         private void OnInitPage()
         {
-            lblMensaje.Text = "";
+
+            if (Session["Mensaje"] == null) Session["Mensaje"] = "";
+                
+            lblMensaje.Text = Session["Mensaje"].ToString() ;
+
             //Habilitar opciones 
             if (Request.QueryString["accion"] != "" && Request.QueryString["accion"]!=null) accion = Request.QueryString["accion"];
 
@@ -66,6 +75,12 @@ namespace ServiceDesk.Atenciones
             onCargarTickets();
         }
 
+        private void Onactualizarpagina()
+        {
+
+            //lblMensaje.Text = Session["Mensaje"].ToString();
+
+        }
         private void onCargarEstados()
         {
             cmbEstado.Items.Add("Abierto");
@@ -161,7 +176,13 @@ namespace ServiceDesk.Atenciones
             else
             {
                 numeroTicket = rowGrd.Cells[1].Text;
-                Response.Redirect("~/Vistas/SD/Atenciones/NuevaAtencion.aspx?registro=M&nroticket=" + numeroTicket.ToString());
+                if (EsPosibleRegistrarSolucion(numeroTicket ))
+                    lblMensaje.Text = "";
+                else
+                {
+                    Response.Redirect("~/Vistas/SD/Atenciones/NuevaAtencion.aspx?registro=M&nroticket=" + numeroTicket.ToString()); 
+                }
+                
             }
         }
 
@@ -264,6 +285,7 @@ namespace ServiceDesk.Atenciones
         protected void btnInfoSeguimiento_Click(object sender, EventArgs e)
         {
             string actividadSeleccionada=  cmbActividad.SelectedItem.Value ;
+            Session["Mensaje"] = "";
             lblMensaje.Text = "";
             switch (actividadSeleccionada)
             {
