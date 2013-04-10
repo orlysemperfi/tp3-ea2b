@@ -91,7 +91,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Propuesta">
                                 <ItemTemplate>
-                                    <asp:Label ID="lblCodigoPropuesta" runat="server" Text='<%#Eval("CODIGO_PROPUESTA","{0:000}") %>' />
+                                    <asp:Label ID="lblCodigoPropuesta" runat="server" Text='<%#Eval("PROPUESTA") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>

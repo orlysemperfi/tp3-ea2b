@@ -102,18 +102,23 @@
                         <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlPropuesta" InitialValue="0" ErrorMessage="Seleccione una propuesta" ValidationGroup="Solucion" Display="Dynamic" ForeColor="Red" />
+                                <br />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEmpleado" InitialValue="0" ErrorMessage="Seleccione un empleado" ValidationGroup="Solucion" Display="Dynamic" ForeColor="Red" />
+                                <br />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Solucion" Display="Dynamic" ForeColor="Red" />
+                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="false" ShowSummary="false" ValidationGroup="Solucion" />
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
                                     <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" ValidationGroup="Solucion" />
                                 </td>
                                 <td style="padding-left:5px;">
                                     <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
-                                </td>
-                                <td>
-                                <asp:RequiredFieldValidator ID="rfvPropuesta" runat="server" ControlToValidate="ddlPropuesta" InitialValue="0" ErrorMessage="Seleccione una propuesta" ValidationGroup="Solucion" Display="Dynamic" />
-                                <br />
-                                <asp:RequiredFieldValidator ID="rfvEmpleado" runat="server" ControlToValidate="ddlEmpleado" InitialValue="0" ErrorMessage="Seleccione un empleado" ValidationGroup="Solucion" Display="Dynamic" />
-                                <br />
-                                <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Solucion" Display="Dynamic" />
-                                    <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Solucion" />
                                 </td>
                             </tr>
                         </table>

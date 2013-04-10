@@ -40,8 +40,7 @@
                                     Fecha Inicio:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbxFechaInicio" runat="server"></asp:TextBox>                                    
-                                    <asp:RequiredFieldValidator ID="rfvFechaInicio" runat="server" ControlToValidate="tbxFechaInicio" ErrorMessage="Ingrese una fecha de Inicio" ValidationGroup="Piloto" Display="None" />
+                                    <asp:TextBox ID="tbxFechaInicio" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -49,8 +48,7 @@
                                     Fecha Fin:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbxFechaFin" runat="server"></asp:TextBox>                                    
-                                    <asp:RequiredFieldValidator ID="rfvFechaFin" runat="server" ControlToValidate="tbxFechaFin" ErrorMessage="Ingrese una fecha de Fin" ValidationGroup="Piloto" Display="None" />
+                                    <asp:TextBox ID="tbxFechaFin" runat="server"></asp:TextBox>            
                                 </td>
                             </tr>
                             <tr>
@@ -62,7 +60,6 @@
                                     </asp:DropDownList>
                                 </td>
                                 <td>
-                                <asp:RequiredFieldValidator ID="rfvSolucion" runat="server" ControlToValidate="ddlSolucion" InitialValue="0" ErrorMessage="Seleccione una solucion" ValidationGroup="Piloto" Display="None" />
                                 </td>
                             </tr>
                             <tr>
@@ -72,9 +69,6 @@
                                 <td>
                                     <asp:DropDownList ID="ddlEmpleado" runat="server" />
                                 </td>
-                                <td>
-                                <asp:RequiredFieldValidator ID="rfvEmpleado" runat="server" ControlToValidate="ddlEmpleado" InitialValue="0" ErrorMessage="Seleccione un empleado" ValidationGroup="Solucion" Display="None" />
-                                </td>
                             </tr>
                             <tr>
                                 <td valign="top" align="right">
@@ -83,8 +77,22 @@
                                 <td>
                                     <asp:TextBox ID="tbxDescripcion" runat="server" TextMode="MultiLine"></asp:TextBox>
                                 </td>
-                                <td>
-                                    <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Solucion" Display="None" />
+                            </tr>
+                        </table>
+                        <br />
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>                                    
+                                    <asp:RequiredFieldValidator ID="rfvFechaInicio" runat="server" ControlToValidate="tbxFechaInicio" ErrorMessage="Ingrese una fecha de Inicio" ValidationGroup="Piloto" Display="Dynamic" ForeColor="Red" />
+                                <br />                        
+                                    <asp:RequiredFieldValidator ID="rfvFechaFin" runat="server" ControlToValidate="tbxFechaFin" ErrorMessage="Ingrese una fecha de Fin" ValidationGroup="Piloto" Display="Dynamic" ForeColor="Red" />
+                                <br />
+                                <asp:RequiredFieldValidator ID="rfvSolucion" runat="server" ControlToValidate="ddlSolucion" InitialValue="0" ErrorMessage="Seleccione una solucion" ValidationGroup="Piloto" Display="Dynamic" ForeColor="Red" />
+                                <br />
+                                <asp:RequiredFieldValidator ID="rfvEmpleado" runat="server" ControlToValidate="ddlEmpleado" InitialValue="0" ErrorMessage="Seleccione un empleado" ValidationGroup="Piloto" Display="Dynamic" ForeColor="Red" />
+                                <br />
+                                    <asp:RequiredFieldValidator ID="rfvDescripcion" runat="server" ControlToValidate="tbxDescripcion" ErrorMessage="Ingrese una descripción" ValidationGroup="Piloto" Display="Dynamic" ForeColor="Red" />
+                                    <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="false" ShowSummary="false" ValidationGroup="Piloto" />
                                 </td>
                             </tr>
                         </table>
@@ -92,13 +100,10 @@
                         <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>
-                                    <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" ValidationGroup="Solucion" />
+                                    <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" ValidationGroup="Piloto" />
                                 </td>
                                 <td style="padding-left:5px;">
                                     <asp:Button ID="btnCancelar" runat="server" OnClick="btnCancelar_Click" Text="Cancelar" CausesValidation="false" />
-                                </td>
-                                <td>
-                                    <asp:ValidationSummary ID="vsumGuardar" runat="server" ShowMessageBox="true" ShowSummary="false" ValidationGroup="Solucion" />
                                 </td>
                             </tr>
                         </table>
