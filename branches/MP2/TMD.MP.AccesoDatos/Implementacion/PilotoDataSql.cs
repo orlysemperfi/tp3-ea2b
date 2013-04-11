@@ -27,7 +27,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             strSQL.Append("FROM PILOTO P ");
             strSQL.Append("INNER JOIN SOLUCION_MEJORA S ON S.CODIGO = P.CODIGO_SOLUCION ");
             strSQL.Append("INNER JOIN ESTADO E ON P.CODIGO_ESTADO = E.CODIGO ");
-            strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_SOLUCION_ELIMINADA + "' ");
+            strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_PILOTO_ELIMINADO + "' ");
             if (oPilotoFiltro != null)
             {
                 if (oPilotoFiltro.codigo != null && oPilotoFiltro.codigo != 0)

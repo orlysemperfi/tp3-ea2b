@@ -85,9 +85,21 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Descripción">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblSolucion" runat="server" Text='<%#Eval("DESCRIPCION") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
+                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Estado">
                                 <ItemTemplate>
                                     <asp:Label ID="lblEstado" runat="server" Text='<%#Eval("NOMBRE_ESTADO") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="20px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Fecha">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblFecha" runat="server" Text='<%#Eval("FECHA_REGISTRO_INICIO","{0:d}") %>' />
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="20px" />
                             </asp:TemplateField>
