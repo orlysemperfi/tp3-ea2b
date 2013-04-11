@@ -77,11 +77,15 @@ namespace TMD.MP.Site.Privado
                 oSolucionMejora.descripcion = tbxDescripcion.Text;
 
                 if (oSolucionMejora.codigo_Solucion != null)
+                {
                     oSolucionMejoraLogica.ActualizarSolucionMejora(oSolucionMejora);
+                    Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado + "?sucess=trueM", true);
+                }
                 else
                 {
                     oSolucionMejora.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_SOLUCION.GENERADA);
                     oSolucionMejoraLogica.InsertarSolucionMejora(oSolucionMejora);
+                    Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado + "?sucess=true", true);
                 }
 
                 /*string currentURL = Request.Url.ToString();
@@ -91,7 +95,6 @@ namespace TMD.MP.Site.Privado
                 "alert('Solucion Registrada'); window.location='" +
                 newURL + "/SolucionMejoraListado.aspx';", true);*/
 
-                Response.Redirect(Paginas.TMD_MP_SolucionMejoraListado + "?sucess=true", true);
             }
         }
 

@@ -79,11 +79,15 @@ namespace TMD.MP.Site.Privado
                 oPiloto.descripcion = tbxDescripcion.Text;
 
                 if (oPiloto.codigo != null)
+                {
                     oPilotoLogica.ActualizarPiloto(oPiloto);
+                    Response.Redirect(Paginas.TMD_MP_PilotoListado + "?sucess=trueM", true);
+                }
                 else
                 {
                     oPiloto.codigo_Estado = Convert.ToInt32(Constantes.ESTADO_PILOTO.GENERADO);
                     oPilotoLogica.InsertarPiloto(oPiloto);
+                    Response.Redirect(Paginas.TMD_MP_PilotoListado + "?sucess=true", true);
                 }
 
                 /*string currentURL = Request.Url.ToString();
@@ -93,7 +97,6 @@ namespace TMD.MP.Site.Privado
                 "alert('Piloto Registrado'); window.location='" +
                 newURL + "/PilotoListado.aspx';", true);*/
 
-                Response.Redirect(Paginas.TMD_MP_PilotoListado + "?sucess=true", true);
                 
             }
         }
