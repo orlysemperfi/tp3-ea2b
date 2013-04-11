@@ -87,6 +87,7 @@ namespace TMD.MP.Site.Privado
                 try
                 {
                     oPilotoLogica.BorrarPiloto(oPiloto);
+                    CargarPilotoListado();
                 }
                 catch (BRuleException ex)
                 {
