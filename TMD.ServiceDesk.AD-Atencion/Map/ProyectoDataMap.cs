@@ -5,12 +5,12 @@ using System.Text;
 
 using System.Data;
 
-using TMD.DBO.AccesoDatos_Atencion.Util;
+using TMD.SD.AccesoDatos_Atencion.Util;
 using TMD.Entidades;
 
 
 
-namespace TMD.DBO.AccesoDatos_Atencion.Map
+namespace TMD.SD.AccesoDatos_Atencion.Map
 {
  
  static class ProyectoDataMap

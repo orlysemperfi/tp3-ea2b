@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("TMD.DBO.LogicaNegocio-Encuestas")]
+[assembly: AssemblyTitle("TMD.SD.LogicaNegocio-Encuestas")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Toshiba")]
-[assembly: AssemblyProduct("TMD.DBO.LogicaNegocio-Encuestas")]
+[assembly: AssemblyProduct("TMD.SD.LogicaNegocio-Encuestas")]
 [assembly: AssemblyCopyright("Copyright © Toshiba 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

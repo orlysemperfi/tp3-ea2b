@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace TMD.DBO.AccesoDatos_Atencion.Util
+namespace TMD.SD.AccesoDatos_Atencion.Util
 {
     internal static class DataReaderExtensions
     {

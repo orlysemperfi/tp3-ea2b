@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 
-namespace TMD.DBO.AccesoDatos_Atencion.Core
+namespace TMD.SD.AccesoDatos_Atencion.Core
 {
     public class DataBase
     {

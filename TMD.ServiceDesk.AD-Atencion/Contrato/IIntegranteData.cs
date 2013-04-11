@@ -5,7 +5,7 @@ using System.Text;
 using TMD.Entidades;
 
 
-namespace TMD.DBO.AccesoDatos_Atencion.Contrato
+namespace TMD.SD.AccesoDatos_Atencion.Contrato
 {
 
     /// <summary>

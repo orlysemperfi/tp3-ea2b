@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using TMD.DBO.LogicaNegocio_Atencion.Contrato;
+using TMD.SD.LogicaNegocio_Atencion.Contrato;
 using TMD.Entidades;
-using TMD.DBO.AccesoDatos_Atencion.Contrato;
+using TMD.SD.AccesoDatos_Atencion.Contrato;
 
-namespace TMD.DBO.LogicaNegocio_Atencion.Implementacion
+namespace TMD.SD.LogicaNegocio_Atencion.Implementacion
 {
     public class TicketLogica : ITicketLogica
     {
@@ -89,14 +89,21 @@ namespace TMD.DBO.LogicaNegocio_Atencion.Implementacion
             return _ticketData.listaDocumentosTickets(numeroTicket);
         }
 
-        public Boolean EsPosibleRegistrarSolucion(int numeroTicket)
+        public int EsPosibleRegistrarSolucion(int numeroTicket)
         {
             Ticket ticket = datosTicket(numeroTicket);
+            int resultado=-1;
 
-            if (ticket.Estado_Ticket =="EN PROCESO") return true; 
+            if (ticket.Estado_Ticket == "SOLUCIONADO") return 1;
+            if (ticket.Estado_Ticket != "EN PROCESO") return 2; 
+            if (ticket.Estado_Ticket =="EN PROCESO") return 0;
 
-            return false;
+            return resultado;
         }
+
+
+
+
 
     }
 }

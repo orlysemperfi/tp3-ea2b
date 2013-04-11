@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using System.Globalization;
 
 using TMD.Entidades;
-using TMD.DBO.LogicaNegocio_Atencion.Contrato;
-using TMD.DBO.LogicaNegocio_Atencion.Implementacion;
-using TMD.DBO.AccesoDatos_Atencion.Implementacion;
+using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.SD.LogicaNegocio_Atencion.Implementacion;
+using TMD.SD.AccesoDatos_Atencion.Implementacion;
 
 using TMD.CF.Site.Util;
 
@@ -65,17 +65,15 @@ namespace TMD.ServiceDesk.Site.Atenciones
             Ticket datosTicket = ticket.datosTicket(numeroTicket);
 
             int codigoEspecialista = SesionFachada.Usuario.Id;
-            if (datosTicket.Estado_Ticket  == "SOLUCIONADO") 
+
+            if (ticket.EsPosibleRegistrarSolucion(numeroTicket)!=0)
             {
-                lblMensaje.Text = "El ticket se encuentra con el estado solucionado";     
-            }
-            else if (datosTicket.Estado_Ticket != "EN PROCESO")
-            {
-                lblMensaje.Text = "El estado actual del ticket no permite registrar la solución";
+                lblMensaje.Text = "El estado actual del ticket no permite registrar la solución";     
             }
             else
             {
                 lblMensaje.Text = "";
+                Session["Mensaje"] = "Cambio de estado exitosa";
                 ticket.registrarSolucion(numeroTicket, txtSolucion.Text, codigoEquipo, codigoEspecialista);
                 Response.Redirect("~/Vistas/SD/Atenciones/Atenciones.aspx");
             }

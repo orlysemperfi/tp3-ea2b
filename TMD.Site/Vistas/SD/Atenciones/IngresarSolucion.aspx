@@ -126,7 +126,7 @@ CodeBehind="IngresarSolucion.aspx.cs" Inherits="TMD.ServiceDesk.Site.Atenciones.
                 Solución:</td>
             <td class="style6" colspan="5">
                 <asp:TextBox ID="txtSolucion" runat="server" MaxLength="200" Rows="5" 
-                    TextMode="MultiLine" Width="692px" CssClass="fieldEdit" Height="140px"></asp:TextBox>
+                    TextMode="MultiLine" Width="692px" Height="140px"></asp:TextBox>
             </td>
         </tr>
         <tr>
