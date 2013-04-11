@@ -29,7 +29,7 @@ namespace TMD.MP.AccesoDatos.Implementacion
             strSQL.Append("WHERE E.NOMBRE <> '" + Constantes.ESTADO_SOLUCION_ELIMINADA + "' ");
             if (oSolucionMejoraFiltro != null)
             {
-                if (oSolucionMejoraFiltro.codigo_Propuesta != null && oSolucionMejoraFiltro.codigo_Propuesta != 0)
+                if (oSolucionMejoraFiltro.codigo_Solucion != null && oSolucionMejoraFiltro.codigo_Solucion != 0)
                     strSQL.Append("AND S.CODIGO = @CODIGO_SOLUCION ");
                 if (oSolucionMejoraFiltro.propuesta != null && oSolucionMejoraFiltro.propuesta != String.Empty)
                     strSQL.Append("AND P.DESCRIPCION = @PROPUESTA ");
