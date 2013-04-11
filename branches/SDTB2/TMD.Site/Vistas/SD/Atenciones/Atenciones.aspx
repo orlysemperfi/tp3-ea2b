@@ -90,7 +90,9 @@
             <td class="style17">
                 &nbsp;</td>
             <td class="style8" colspan="4">
-                &nbsp;</td>
+                <asp:Label ID="lblMensajefiltro" runat="server" Text="Filtro" Font-Bold="True" 
+                    ForeColor="Red"></asp:Label>
+            </td>
             <td class="style17">
                 &nbsp;</td>
         </tr>

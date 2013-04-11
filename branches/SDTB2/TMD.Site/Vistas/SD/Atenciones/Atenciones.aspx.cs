@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using TMD.Entidades;
-using TMD.DBO.LogicaNegocio_Atencion.Contrato;
-using TMD.DBO.LogicaNegocio_Atencion.Implementacion;
-using TMD.DBO.AccesoDatos_Atencion.Implementacion;  
+using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.SD.LogicaNegocio_Atencion.Implementacion;
+using TMD.SD.AccesoDatos_Atencion.Implementacion;  
 
 
 namespace ServiceDesk.Atenciones
@@ -134,13 +134,21 @@ namespace ServiceDesk.Atenciones
             DateTime FechaRegIni = new DateTime(2008, 3, 9, 16, 5, 7, 123);
             DateTime FechaRegFin = new DateTime(2016, 3, 9, 16, 5, 7, 123);
 
-            if (cmbAnalistas.SelectedValue!="")
+            if (cmbAnalistas.SelectedValue != "")
             {
-                int codigoAnalista = Convert.ToInt32( cmbAnalistas.SelectedValue);
-                grdTickets.DataSource = ticket.listaTicketsIntegrante(codigoAnalista, LstTipoTicket.SelectedValue.ToUpper(),cmbEstado.Text.ToUpper()  , FechaRegIni, FechaRegFin); 
+                lblMensajefiltro.Text = "Se encontró conincidencias";
+                int codigoAnalista = Convert.ToInt32(cmbAnalistas.SelectedValue);
+                grdTickets.DataSource = ticket.listaTicketsIntegrante(codigoAnalista,
+                                                                      LstTipoTicket.SelectedValue.ToUpper(),
+                                                                      cmbEstado.Text.ToUpper(), FechaRegIni, FechaRegFin);
                 //grdTickets.DataSource = ticket.listaTicketsIntegrante(1, 1, 1, "INCIDENTE", "ABIERTO", DateTime.Now, DateTime.Now) ; //"1900-01-01", "2035-12-31");
-                grdTickets.DataBind(); 
+                grdTickets.DataBind();
             }
+            else
+            {
+                lblMensajefiltro.Text = "Se encontró conincidencias";
+            }
+        
             
 
 
@@ -176,12 +184,12 @@ namespace ServiceDesk.Atenciones
             else
             {
                 numeroTicket = rowGrd.Cells[1].Text;
-                if (EsPosibleRegistrarSolucion(numeroTicket ))
-                    lblMensaje.Text = "";
-                else
-                {
+                //if (EsPosibleRegistrarSolucion(numeroTicket ))
+                //    lblMensaje.Text = "";
+                //else
+                //{
                     Response.Redirect("~/Vistas/SD/Atenciones/NuevaAtencion.aspx?registro=M&nroticket=" + numeroTicket.ToString()); 
-                }
+                //}
                 
             }
         }
@@ -189,6 +197,7 @@ namespace ServiceDesk.Atenciones
         protected void onSolucionTicket()
         {
             string numeroTicket = "0";
+            ITicketLogica ticket = new TicketLogica(new TicketData("TMD"));
 
             GridViewRow rowGrd = grdTickets.SelectedRow;
 
@@ -199,6 +208,13 @@ namespace ServiceDesk.Atenciones
             else
             {
                 numeroTicket = rowGrd.Cells[1].Text;
+                if (ticket.EsPosibleRegistrarSolucion(Convert.ToInt16( numeroTicket))==2)
+                {
+                    lblMensaje.Text = "El estado del ticket debe ser EN PROCESO";
+                    return;
+                }
+
+
                 Response.Redirect("~/Vistas/SD/Atenciones/IngresarSolucion.aspx?nroticket=" + numeroTicket.ToString());
             }
         }

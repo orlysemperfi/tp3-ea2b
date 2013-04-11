@@ -9,9 +9,9 @@ using System.Globalization;
 
 using System.IO;
 using TMD.Entidades;
-using TMD.DBO.LogicaNegocio_Atencion.Contrato;
-using TMD.DBO.LogicaNegocio_Atencion.Implementacion;
-using TMD.DBO.AccesoDatos_Atencion.Implementacion;
+using TMD.SD.LogicaNegocio_Atencion.Contrato;
+using TMD.SD.LogicaNegocio_Atencion.Implementacion;
+using TMD.SD.AccesoDatos_Atencion.Implementacion;
 
 using TMD.CF.Site.Util;
 

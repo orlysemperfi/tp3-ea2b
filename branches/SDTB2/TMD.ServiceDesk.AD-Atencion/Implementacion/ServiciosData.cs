@@ -6,13 +6,13 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 
-using TMD.DBO.AccesoDatos_Atencion.Contrato;
-using TMD.DBO.AccesoDatos_Atencion.Core;
-using TMD.DBO.AccesoDatos_Atencion.Map;
+using TMD.SD.AccesoDatos_Atencion.Contrato;
+using TMD.SD.AccesoDatos_Atencion.Core;
+using TMD.SD.AccesoDatos_Atencion.Map;
 using TMD.Entidades;
 
 
-namespace TMD.DBO.AccesoDatos_Atencion.Implementacion
+namespace TMD.SD.AccesoDatos_Atencion.Implementacion
 {
    
     public class ServiciosData : DataBase, IServicioData
