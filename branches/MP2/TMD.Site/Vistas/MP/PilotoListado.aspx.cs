@@ -21,6 +21,8 @@ namespace TMD.MP.Site.Privado
                 sucess = Request.QueryString["sucess"];
                 if (sucess == "true")
                     lblMensajeConfirmacion.Text = "Piloto Registrado";
+                else if (sucess == "trueM")
+                    lblMensajeConfirmacion.Text = "Piloto Actualizado";
                 else
                     lblMensajeConfirmacion.Text = "";
                 CargarPilotoListado();

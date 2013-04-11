@@ -23,6 +23,8 @@ namespace TMD.MP.Site.Privado
 
                 if (sucess == "true")
                     lblMensajeConfirmacion.Text = "Solucion Registrada";
+                else if (sucess == "trueM")
+                    lblMensajeConfirmacion.Text = "Solucion Actualizada";
                 else
                     lblMensajeConfirmacion.Text = "";
                 CargarSolucionMejoraListado();
