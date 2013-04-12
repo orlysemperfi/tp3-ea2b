@@ -62,7 +62,43 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 throw ex;
             }
         }
+        public List<SelectListItemBE> ListarEstadoOT()
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            List<SelectListItemBE> listaResult = new List<SelectListItemBE>();
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
 
+                        var listaDatos = (from u in db.ORDEN_TRABAJO_ESTADO select u);
+
+                        foreach (var itemEntidad in listaDatos)
+                        {
+                            listaResult.Add(new SelectListItemBE()
+                            {
+                                CODIGO = itemEntidad.CODIGO_ESTADO_OT.ToString(),
+                                DESCRIPCION = itemEntidad.DESCRIPCION_ESTADO_OT,
+                            });
+                        }
+                        return listaResult;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public List<SelectListItemBE> ListarTipoEquipo()
         {
             Database oDatabase = BaseDA.GetSqlDatabase;
@@ -206,7 +242,7 @@ namespace TMD.GM.AccesoDatos.Implementacion
                         result.Add(new SelectListItemBE()
                         {
                             CODIGO = DataUT.ObjectToString(oReader["CODIGO"]),
-                            DESCRIPCION = DataUT.ObjectToString(oReader["DESCRIPCION"]),
+                            DESCRIPCION = DataUT.ObjectToString(oReader["NOMBRE"]),
                         });
                     }
                 }
@@ -241,6 +277,45 @@ namespace TMD.GM.AccesoDatos.Implementacion
                     }
                 }
                 return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<SelectListItemBE> ListarProcedencia()
+        {
+            Database oDatabase = BaseDA.GetSqlDatabase;
+            List<SelectListItemBE> listaResult = new List<SelectListItemBE>();
+            try
+            {
+                using (var db = BaseDA.GetEntityDatabase)
+                {
+                    DbTransaction dbTran = null;
+                    try
+                    {
+                        if (db.Connection.State == System.Data.ConnectionState.Closed)
+                            db.Connection.Open();
+
+                        var listaDatos = (from u in db.PROCEDENCIA select u);
+
+                        foreach (var itemEntidad in listaDatos)
+                        {
+                            listaResult.Add(new SelectListItemBE()
+                            {
+                                CODIGO = itemEntidad.CODIGO_PROCEDENCIA.ToString(),
+                                DESCRIPCION = itemEntidad.DESCRIPCION_PROCEDENCIA,
+                            });
+                        }
+                        return listaResult;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
             }
             catch (Exception ex)
             {

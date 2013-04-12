@@ -1,72 +1,75 @@
 ﻿@model TMD.GM.Site.Models.EquipoModel
+@Html.AntiForgeryToken()
 <fieldset>
 <fieldset class="fieldset_left">
-<span>Código equipo</span><br />
-<input id="txtCodigoEquipo" type="text" class="k-textbox" value="@Model.entity.CODIGO_EQUIPO" style = "width: 100px;" readonly="readonly"  />
+@Html.LabelFor(m => m.entity.CODIGO_EQUIPO)
+@Html.TextBoxFor(m => m.entity.CODIGO_EQUIPO, htmlAttributes: new { @id = "txtCodigoEquipo", @class = "k-textbox", @style = "width: 100px;" })
+@Html.ValidationMessageFor(model => model.entity.CODIGO_EQUIPO)
 </fieldset>
 <fieldset class="fieldset_left">
-<span>Nombre equipo</span><br />
-<input id="txtNombreEquipo" type="text" class="k-textbox" value="@Model.entity.NOMBRE_EQUIPO" style = "width: 200px;"  />
+@Html.LabelFor(m => m.entity.NOMBRE_EQUIPO)
+@Html.TextBoxFor(m => m.entity.NOMBRE_EQUIPO, htmlAttributes: new { @id = "txtNombreEquipo", @class = "k-textbox", @style = "width: 200px;" })
 </fieldset>
 <fieldset class="fieldset_left">
-<span>N° Serie</span><br />
-<input id="txtSerieEquipo" type="text" class="k-textbox" value="@Model.entity.SERIE_EQUIPO" style = "width: 150px;"  />
-</fieldset>
-</fieldset>
-<fieldset>
-<fieldset class="fieldset_left">
-<span>Marca</span><br />
-<input id="txtMarcaEquipo" type="text" class="k-textbox" value="@Model.entity.MARCA_EQUIPO" style = "width: 150px;"  />
-</fieldset>
-<fieldset class="fieldset_left">
-<span>Modelo</span><br />
-<input id="txtModeloEquipo" type="text" class="k-textbox" value="@Model.entity.MODELO_EQUIPO" style = "width: 150px;"  />
+@Html.LabelFor(m => m.entity.SERIE_EQUIPO)
+@Html.TextBoxFor(m => m.entity.SERIE_EQUIPO, htmlAttributes: new { @id = "txtSerieEquipo", @class = "k-textbox", @style = "width: 150px;" })
 </fieldset>
 </fieldset>
 <fieldset>
 <fieldset class="fieldset_left">
-<span>Características</span><br />
-<textarea id="txtCaracteristicaEquipo" rows="5" cols="30" class="k-textbox" style="width:420px;height:40px">@Model.entity.CARACTERISTICAS_EQUIPO</textarea>
+@Html.LabelFor(m => m.entity.MARCA_EQUIPO)
+@Html.TextBoxFor(m => m.entity.MARCA_EQUIPO, htmlAttributes: new { @id = "txtMarcaEquipo", @class = "k-textbox", @style = "width: 150px;" })
+</fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.MODELO_EQUIPO)
+@Html.TextBoxFor(m => m.entity.MODELO_EQUIPO, htmlAttributes: new { @id = "txtModeloEquipo", @class = "k-textbox", @style = "width: 150px;" })
+</fieldset>
+</fieldset>
+<fieldset>
+<fieldset class="fieldset_left">
+@Html.LabelFor(m => m.entity.CARACTERISTICAS_EQUIPO)
+@Html.TextAreaFor(m => m.entity.CARACTERISTICAS_EQUIPO, htmlAttributes: new { @id = "txtCaracteristicaEquipo", @class = "k-textbox", @style = "width:420px;height:40px;", @rows = "5", @cols = "30" })
+@*<textarea id="txtCaracteristicaEquipo" rows="5" cols="30" class="k-textbox" style="width:420px;height:40px">@Model.entity.CARACTERISTICAS_EQUIPO</textarea>*@
 </fieldset>
 </fieldset>
 
 <fieldset>
 <fieldset class="fieldset_left">
-<span>Fecha de compra</span><br />
-<input id="txtFechaCompra" value="@Model.entity.FECHA_COMPRA" style="width:150px;" />
+@Html.LabelFor(m => m.entity.FECHA_COMPRA)
+@Html.TextBoxFor(m => m.entity.FECHA_COMPRA, htmlAttributes: new { @id = "txtFechaCompra", @style = "width: 150px;" })
 </fieldset>
 <fieldset class="fieldset_left">
-<span>Expira garantía</span><br />
-<input id="txtFechaExpira" value="@Model.entity.FECHA_EXPIRACION_GARANTIA" style="width:150px;" />
+@Html.LabelFor(m => m.entity.FECHA_EXPIRACION_GARANTIA)
+@Html.TextBoxFor(m => m.entity.FECHA_EXPIRACION_GARANTIA, htmlAttributes: new { @id = "txtFechaExpira", @style = "width: 150px;" })
 </fieldset>
 <fieldset class="fieldset_left">
-<span>Último mantenimiento</span><br />
-<input id="txtFechaUltiMant" value="@Model.entity.FECHA_ULTIMO_MANTENIMIENTO_EQUIPO" style="width:150px;" disabled="disabled"/>
+@Html.LabelFor(m => m.entity.FECHA_ULTIMO_MANTENIMIENTO_EQUIPO)
+@Html.TextBoxFor(m => m.entity.FECHA_ULTIMO_MANTENIMIENTO_EQUIPO, htmlAttributes: new { @id = "txtFechaUltiMant", @style = "width: 150px;", @disabled = "disabled" })
 </fieldset>
 </fieldset>
 
 <fieldset>
 <fieldset class="fieldset_left">
-<span>Area</span><br />
-@Html.DropDownList("ddlArea",Model.listaAR, new { @class = "ddlForm" })
+@Html.LabelFor(m => m.entity.CODIGO_AREA)
+@Html.DropDownList("ddlArea", Model.listaAR, new { @style = "width:150;" })
 </fieldset>
 <fieldset class="fieldset_left">
-<span>Tipo de equipo</span><br />
-@Html.DropDownList("ddlTipoEquipo",Model.listaTE, new { @class = "ddlForm" })
+@Html.LabelFor(m => m.entity.CODIGO_TIPO_EQUIPO)
+@Html.DropDownList("ddlTipoEquipo", Model.listaTE, new { @style = "width:150;" })
 </fieldset>
 <fieldset class="fieldset_left">
-<span>Plan mantenimiento</span><br />
-@Html.DropDownList("ddlPlanMant", Model.listaPM, new { @class = "ddlForm", @style = "width:300px;" })
+@Html.LabelFor(m => m.entity.CODIGO_PLAN)
+@Html.DropDownList("ddlPlanMant", Model.listaPM, new { @style = "width:300px;" })
 </fieldset>
 </fieldset>
 
 <fieldset>
 <fieldset class="fieldset_left">
-<span>Procedencia</span><br />
-<input id="txtProcedEquipo" type="text" class="k-textbox" value="@Model.entity.PROCEDENCIA_EQUIPO" style = "width: 100px;"  />
+@Html.LabelFor(m => m.entity.PROCEDENCIA_EQUIPO)
+@Html.DropDownList("ddlProcedEquipo", Model.listaPR, new {@style = "width:150;" })
 </fieldset>
 <fieldset class="fieldset_left">
-<span>Activo</span><br />
+@Html.LabelFor(m => m.entity.ESTADO_EQUIPO)
 @Html.CheckBox("checkEstado", Model.entity.ESTADO_EQUIPO, new { @class = "txtForm" })
 </fieldset>
 </fieldset>
@@ -88,8 +91,13 @@
 
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
-        $("#txtFechaCompra").kendoDatePicker({ format: "dd/MM/yyyy" });
-        $("#txtFechaExpira").kendoDatePicker({ format: "dd/MM/yyyy" });
-        $("#txtFechaUltiMant").kendoDatePicker({ format: "dd/MM/yyyy" });
+        $("#txtFechaCompra").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#txtFechaExpira").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#txtFechaUltiMant").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+
+        $("#ddlArea").kendoComboBox();
+        $("#ddlTipoEquipo").kendoComboBox();
+        $("#ddlPlanMant").kendoComboBox();
+        $("#ddlProcedEquipo").kendoComboBox();
     });
 </script>

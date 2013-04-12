@@ -1,15 +1,16 @@
-﻿<fieldset>
+﻿@model TMD.GM.Site.Models.EquipoBusquedaModel
+<fieldset>
 <fieldset class="fieldset_left">
 <span>Código equipo</span><br />
-<input id="txtCodigoEquipo" type="text" class="k-textbox" value="" style="width: 100px;" />
+<input id="txtCodigoEquipo_Consulta" type="text" class="k-textbox" value="" style="width: 100px;" />
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Nombre equipo</span><br />
-<input id="txtNombreEquipo" type="text" class="k-textbox" value="" style="width: 150px;" />
+<input id="txtNombreEquipo_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
 </fieldset>
 <fieldset class="fieldset_left">
 <span>N° Serie</span><br />
-<input id="txtSerieEquipo" type="text" class="k-textbox" value="" style="width: 100px;" />
+<input id="txtSerieEquipo_Consulta" type="text" class="k-textbox" value="" style="width: 100px;" />
 </fieldset>
 </fieldset>
 <fieldset>
@@ -20,4 +21,4 @@
 <div class="k-block"><div class="k-header k-shadow">Equipos</div>
 <div id="gridEquipos"></div>
 </div>
-
+@Html.Hidden("hdFormPocedencia",Model.formProcedencia)
