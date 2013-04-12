@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 using TMD.GM.Entidades;
+using TMD.GM.Util;
 
 namespace TMD.GM.Site.Models
 {
@@ -31,6 +32,9 @@ namespace TMD.GM.Site.Models
         public string codigoPlan { get; set; }
         public string nombrePlan { get; set; }
         public bool activo { get; set; }
+        public int opcion { get; set; }
+
+        
 
     }
 }
