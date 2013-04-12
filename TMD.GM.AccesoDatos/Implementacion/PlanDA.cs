@@ -61,26 +61,36 @@ namespace TMD.GM.AccesoDatos.Implementacion
                 throw ex;
             }
         }
-        public List<PlanBE> ListarPlanManteTodos()
+        public List<PlanBE> ListarPlanManteTodos(PlanBE planBE)
         {
-            Database oDatabase = BaseDA.GetSqlDatabase;
             try
             {
-                List<PlanBE> result = new List<PlanBE>();
-                using (IDataReader oReader = oDatabase.ExecuteReader("GET_PLAN_MANTENIMIENTO_TODOS"))
+                List<PlanBE> listaResult = new List<PlanBE>();
+                using (var db = BaseDA.GetEntityDatabase)
                 {
-                    while (oReader.Read())
-                    {
-                        result.Add(new PlanBE()
-                        {
-                            CODIGO_PLAN = DataUT.ObjectToString(oReader["CODIGO_PLAN"]),
-                            NOMBRE_PLAN = DataUT.ObjectToString(oReader["NOMBRE_PLAN"]),
-                            ESTADO_PLAN = DataUT.ObjectToBoolean(oReader["ESTADO_PLAN"]),
+                    if (db.Connection.State == System.Data.ConnectionState.Closed)
+                        db.Connection.Open();
 
-                        });
+                    var listaData = (from u in db.PLAN_MANTENIMIENTO_CABECERA 
+                                     where (u.CODIGO_PLAN == planBE.CODIGO_PLAN || planBE.CODIGO_PLAN == string.Empty)
+                                     && (u.NOMBRE_PLAN.Contains(planBE.NOMBRE_PLAN) || planBE.NOMBRE_PLAN == string.Empty)
+                                     select u) ;
+
+
+                    
+
+                    foreach (var itemEntidad in listaData)
+                    {
+                        PlanBE item = new PlanBE();
+                        item.CODIGO_PLAN = itemEntidad.CODIGO_PLAN;
+                        item.NOMBRE_PLAN = itemEntidad.NOMBRE_PLAN;
+                        item.ESTADO_PLAN = itemEntidad.ESTADO_PLAN == ConstantesUT.ESTADO_GENERICO.Activo;
+
+                        listaResult.Add(item);
                     }
+
                 }
-                return result;
+                return listaResult;
             }
             catch (Exception ex)
             {

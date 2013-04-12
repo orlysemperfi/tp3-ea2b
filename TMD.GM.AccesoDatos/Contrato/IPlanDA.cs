@@ -10,7 +10,7 @@ namespace TMD.GM.AccesoDatos.Contrato
     {
         PlanBE ObtenerPlanNuevo();
         List<SelectListItemBE> ListarPlanMante();
-        List<PlanBE> ListarPlanManteTodos();
+        List<PlanBE> ListarPlanManteTodos(PlanBE planBE);
         void RegistrarPlan(PlanBE planBE);
         void ActualizarPlan(PlanBE planBE);
         void EliminarPlan(PlanBE planBE);
