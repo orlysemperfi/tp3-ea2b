@@ -4,7 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    
+
+    <link href="~/Styles/Site2.css" rel="stylesheet" type="text/css" />    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="http://malsup.github.com/jquery.cycle.lite.js"></script>
+    <script type="text/javascript" src='<%#ResolveUrl("~/Scripts/extras.js") %>'></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
+
+
 </head>
 <body>
     <form id="form1" runat="server">

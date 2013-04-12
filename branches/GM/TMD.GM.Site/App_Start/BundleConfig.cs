@@ -9,7 +9,7 @@ namespace TMD.GM.Site
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js", 
+                        "~/Scripts/jquery-{version}.js",                       
                         "~/Scripts/jquery-{version}.min.js"//,  "~/Scripts/jquery-1.7.1.min.js"
                         ));
 
@@ -35,6 +35,7 @@ namespace TMD.GM.Site
                   .Include("~/Scripts/kendo/2012.3.1315/kendo.web.*") // or kendo.all.*
                   .Include("~/Scripts/kendo/2012.3.1315/kendo.aspnetmvc.*")
                   .Include("~/Scripts/kendo/2012.3.1315/cultures/kendo.culture.es-PE.min.js")
+                  //.Include("~/Scripts/kendo/2012.3.1315/jquery.min.js")
              );
 
 

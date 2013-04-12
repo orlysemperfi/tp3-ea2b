@@ -56,8 +56,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="frmDefault.aspx" />
+    <Content Include="Images\1363144560_Utilities.png" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\bullet.png" />
     <Content Include="Images\calendario.jpg" />
+    <Content Include="Images\edit16x16.png" />
+    <Content Include="Images\heroAccent.png" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\LogoTMD.jpg" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\warning.png" />
     <Content Include="MantEmpleado\frmEmpEspecialidad.aspx" />
     <Content Include="MantEmpleado\frmMantEmpleado.aspx" />
     <Content Include="MantInforme\frmDetInforme.aspx" />
@@ -67,6 +85,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\Site2.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -136,8 +155,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5106</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>1051</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

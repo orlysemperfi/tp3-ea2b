@@ -10,9 +10,15 @@ using TMD.GM.Entidades;
 
 namespace TMD.GM.Site.Models
 {
-    public class OrdenTrabajoConsultaModels
+    public class EmpleadoModel
     {
-        public List<OrdenTrabajoBE> listaData { get; set; }
+
        
+    }
+
+    public class EmpleadoBusquedaModel
+    {
+        public string formProcedencia { get; set; }
+        public List<EmpleadosBE> listaEmpleados { get; set; }
     }
 }
