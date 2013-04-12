@@ -110,7 +110,14 @@ namespace TMD.GM.Util
 
         public static DateTime? ObjectToDateTimeNull(object obj)
         {
-            if (obj == null || obj == DBNull.Value) return null; else return Convert.ToDateTime(obj);
+            try
+            {
+                if (obj == null || obj == DBNull.Value) return null; else return Convert.ToDateTime(obj);
+            }
+            catch
+            {
+                return null;
+            }
         }
         public static Decimal? ObjectToDecimalNull(object obj)
         {
@@ -118,7 +125,14 @@ namespace TMD.GM.Util
         }
         public static Int32? ObjectToInt32Null(object obj)
         {
-            if (obj == null || obj == DBNull.Value) return null; else return Convert.ToInt32(obj);
+            try
+            {
+                if (obj == null || obj == DBNull.Value) return null; else return Convert.ToInt32(obj);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
         public static string ObjectToDateTimeStringNull(object obj)
         {
@@ -181,6 +195,17 @@ namespace TMD.GM.Util
         public static string ObjectToStringTime(object obj)
         {
             return ((obj == null) || (obj == DBNull.Value)) ? "" : Convert.ToString(obj);
+        }
+        public static string ObjectToStringFromDatetimeNull(object obj, string format)
+        {
+            try
+            {
+                return ((obj == null) || (obj == DBNull.Value)) ? "" : Convert.ToDateTime(obj).ToString(format);
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
         public static string ObjectToDTStringNull(object obj)
         {
