@@ -5,7 +5,7 @@
 <fieldset>
 <fieldset class="fieldset_left">
 <span>Item Actividad</span><br />
-<input id="txtItem" type="text" class="k-textbox" value="@Model.solicitudDetalleBE.ITEM_SOLICITUD" style="width: 150px;"  />
+<input id="txtItem" type="text" class="k-textbox" value="@Model.solicitudDetalleBE.ITEM_SOLICITUD" style="width: 150px;" readonly="readonly" />
 </fieldset>
 <fieldset  class="fieldset_left">
 <span>Descripción</span><br />
@@ -34,10 +34,10 @@
 <span>Priodidad</span><br />
 @Html.DropDownList("ddlPrioridad", Model.listaPR, new { @class = "ddlForm", style = "width: 150px;" })
 </fieldset>
-<fieldset  class="fieldset_left">
+@*<fieldset  class="fieldset_left">
 <span>Frecuencia</span><br />
 @Html.DropDownList("ddlFrecuencia", Model.listaFR, new { @class = "ddlForm", style = "width: 150px;" })
-</fieldset>
+</fieldset>*@
 </fieldset>
 
 

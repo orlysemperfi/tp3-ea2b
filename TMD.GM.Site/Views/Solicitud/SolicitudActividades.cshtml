@@ -25,11 +25,23 @@
             { field: "ITEM_SOLICITUD", title: "Item", width: "50px" },
             { field: "DESCRIPCION_ACTIVIDAD", title: "Actividad", width: "200px" },
             { field: "DESCRIPCION_TIPO_ACTIVIDAD", title: "Tipo", width: "50px" },
-//            { field: "DESCRIPCION_PRIORIDAD_ACTIVIDAD", title: "Prioridad", width: "50px" },
-            { field: "FECHA_PROGRAMACION", title: "Fecha", width: "50px" },
+            //            { field: "DESCRIPCION_PRIORIDAD_ACTIVIDAD", title: "Prioridad", width: "50px" },
+            {field: "FECHA_PROGRAMACION", title: "Fecha", width: "50px" },
             { field: "ORDEN_TRABAJO", title: "OT", width: "100px" },
-            {field: "OPCIONES", title: "Opciones", width: "100px"}]
+            { field: "OPCIONES", title: "Opciones", width: "100px"}]
         });
+
+        //Deahbilitamos el boton si se ha generado el cronograma
+        if ($("#hdCronogramaGenerado").val() == '1') {
+            //$("btnNuevaActividad").attr("disabled", "disabled");
+            $('#btnGenerar').prop('disabled', true).addClass('k-state-disabled');
+            $('#btnBuscarEquipoSolicitud').prop('disabled', true).addClass('k-state-disabled');
+        }
+        else {
+            //$("btnNuevaActividad").removeAttr("disabled");
+            $('#btnGenerar').prop('disabled', false).removeClass('k-state-disabled');
+            $('#btnBuscarEquipoSolicitud').prop('disabled', false).removeClass('k-state-disabled');
+        }
     });
     
 </script>
