@@ -160,3 +160,14 @@ E:\TP3\Proyecto\TMD.ACP.AccesoDatos\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.ACP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.dll
 E:\TP3\Proyecto\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\TMD.ACP.AccesoDatos.dll.config
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\TMD.ACP.AccesoDatos.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\TMD.ACP.AccesoDatos.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\Microsoft.Practices.Unity.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.AccesoDatos\obj\Debug\TMD.ACP.AccesoDatos.pdb
