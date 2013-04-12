@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\EquipoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdenTrabajoController.cs" />
@@ -183,9 +184,9 @@
     <Compile Include="Helpers\CalendarExtensions.cs" />
     <Compile Include="Helpers\HelperExtensions.cs" />
     <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\EmpleadoModels.cs" />
     <Compile Include="Models\EquipoModels.cs" />
     <Compile Include="Models\ErrorModels.cs" />
-    <Compile Include="Models\OrdenTrabajoConsultaModels.cs" />
     <Compile Include="Models\OrdenTrabajoModels.cs" />
     <Compile Include="Models\PlanModels.cs" />
     <Compile Include="Models\SolicitudModels.cs" />
@@ -317,6 +318,8 @@
     <Content Include="Content\kendo\2012.3.1315\Uniform\slider-h.gif" />
     <Content Include="Content\kendo\2012.3.1315\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\2012.3.1315\Uniform\sprite.png" />
+    <Content Include="Content\Site2.css" />
+    <Content Include="Content\Site3.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -376,6 +379,7 @@
     <Content Include="Images\1363144560_Utilities.png" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\edit16x16.png" />
+    <Content Include="Images\LogoTMD.jpg" />
     <Content Include="Images\warning.png" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -849,9 +853,6 @@
     <Content Include="Views\Solicitud\CalendarioActividades.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\NuevaActividad.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Plan\PlanActividad.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -875,13 +876,10 @@
     <Content Include="Views\Plan\Planes.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plan\PlanNuevo.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Solicitud\Solicitudes.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Plan\PlanEdit.cshtml" />
+    <Content Include="Views\Plan\Plan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Solicitud\SolicitudActividades.cshtml" />
@@ -899,9 +897,6 @@
     <Content Include="Views\Equipo\EquipoConsulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Solicitud\SolicitudNueva.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Equipo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -911,15 +906,55 @@
     <Content Include="Views\Equipo\Equipo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\OrdenTrabajo\OrdenTrabajoConsulta.cshtml" />
-    <Content Include="Views\OrdenTrabajo\OrdenTrabajoConsultaResult.cshtml" />
-    <Content Include="Views\OrdenTrabajo\OrdenTrabajoCrear.cshtml" />
+    <Content Include="Views\OrdenTrabajo\OrdenesTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Error\MensajeError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Solicitud\CalendarioDetalle.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Consulta.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Empleado\BuscarResultado.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Empleado\Buscar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\OrdenTrabajo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Actividades.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Generar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\EquiposPendientes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ActividadesPendientes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\AsignacionResponsable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ActividadesPendientesResumen.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ListarActividadResponsables.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\EspecialidadesResponsable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\ActividadesEquipo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrdenTrabajo\Actividad.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
