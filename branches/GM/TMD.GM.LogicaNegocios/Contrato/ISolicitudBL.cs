@@ -18,5 +18,6 @@ namespace TMD.GM.LogicaNegocios.Contrato
 
         List<SolicitudDetalleBE> GenerarCronograma(SolicitudBE solicitudBE);
         CronogramaBE ActividadesCronograma(DateTime fecha);
+        bool EsFechaHabilitada(DateTime fecha);
     }
 }

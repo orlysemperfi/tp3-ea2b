@@ -23,6 +23,12 @@ namespace TMD.GM.AccesoDatos
                     return false;
                 return (x as SOLICITUD_DETALLE).ID_ACTIVIDAD.Equals((y as SOLICITUD_DETALLE).ID_ACTIVIDAD);
             }
+            else if (typeof(T) == typeof(ORDEN_TRABAJO_DETALLE))
+            {
+                if ((x as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD == 0)
+                    return false;
+                return (x as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD.Equals((y as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD);
+            }
             else
                 throw new NotImplementedException();
             return false;
@@ -34,6 +40,8 @@ namespace TMD.GM.AccesoDatos
                 return (obj as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD.GetHashCode();
             else if (typeof(T) == typeof(SOLICITUD_DETALLE))
                 return (obj as SOLICITUD_DETALLE).ID_ACTIVIDAD.GetHashCode();
+            else if (typeof(T) == typeof(ORDEN_TRABAJO_DETALLE))
+                return (obj as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD.GetHashCode();
             else
                 throw new NotImplementedException();
             return obj.GetHashCode();
@@ -59,7 +67,12 @@ namespace TMD.GM.AccesoDatos
                     return true;
                 return (x as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD.Equals((y as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD);
             }
-
+            else if (typeof(T) == typeof(ORDEN_TRABAJO_DETALLE))
+            {
+                if ((x as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD == 0)
+                    return true;
+                return (x as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD.Equals((y as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD);
+            }
             else
                 throw new NotImplementedException();
             return false;
@@ -69,6 +82,8 @@ namespace TMD.GM.AccesoDatos
         {
             if (typeof(T) == typeof(PLAN_MANTENIMIENTO_DETALLE))
                 return (obj as PLAN_MANTENIMIENTO_DETALLE).ID_ACTIVIDAD.GetHashCode();
+            else if (typeof(T) == typeof(ORDEN_TRABAJO_DETALLE))
+                return (obj as ORDEN_TRABAJO_DETALLE).ID_ACTIVIDAD.GetHashCode();
             else
                 throw new NotImplementedException();
             return obj.GetHashCode();
