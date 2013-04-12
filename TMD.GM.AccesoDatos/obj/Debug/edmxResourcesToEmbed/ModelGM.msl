@@ -20,22 +20,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EMPLEADO">
-      <EntityTypeMapping TypeName="BDMantenModel.EMPLEADO">
-        <MappingFragment StoreEntitySet="EMPLEADO">
-          <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
-          <ScalarProperty Name="CODIGO_AREA" ColumnName="CODIGO_AREA" />
-          <ScalarProperty Name="CODIGO_PUESTO" ColumnName="CODIGO_PUESTO" />
-          <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
-          <ScalarProperty Name="FECHA_INICIO_CONTRATO" ColumnName="FECHA_INICIO_CONTRATO" />
-          <ScalarProperty Name="FECHA_FIN_CONTRATO" ColumnName="FECHA_FIN_CONTRATO" />
-          <ScalarProperty Name="CODIGO_JEFE" ColumnName="CODIGO_JEFE" />
-          <ScalarProperty Name="HORA_INGRESO" ColumnName="HORA_INGRESO" />
-          <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
-          <ScalarProperty Name="CODIGO_PERSONA" ColumnName="CODIGO_PERSONA" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="EMPLEADO_ACTIVIDAD">
       <EntityTypeMapping TypeName="BDMantenModel.EMPLEADO_ACTIVIDAD">
         <MappingFragment StoreEntitySet="EMPLEADO_ACTIVIDAD">
@@ -75,83 +59,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ORDEN_TRABAJO_CABECERA">
-      <EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_CABECERA">
-        <MappingFragment StoreEntitySet="ORDEN_TRABAJO_CABECERA">
-          <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
-          <ScalarProperty Name="FECHA_EMISION_ORDEN" ColumnName="FECHA_EMISION_ORDEN" />
-          <ScalarProperty Name="FECHA_INICIO_ORDEN" ColumnName="FECHA_INICIO_ORDEN" />
-          <ScalarProperty Name="FECHA_FIN_ORDEN" ColumnName="FECHA_FIN_ORDEN" />
-          <ScalarProperty Name="HORAS_TRABAJO_ORDEN" ColumnName="HORAS_TRABAJO_ORDEN" />
-          <ScalarProperty Name="OBSERVACIONES_ORDEN" ColumnName="OBSERVACIONES_ORDEN" />
-          <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
-          <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
-          <ScalarProperty Name="ESTADO_ORDEN" ColumnName="ESTADO_ORDEN" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ORDEN_TRABAJO_DETALLE">
-      <EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_DETALLE">
-        <MappingFragment StoreEntitySet="ORDEN_TRABAJO_DETALLE">
-          <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
-          <ScalarProperty Name="ITEM_ORDEN" ColumnName="ITEM_ORDEN" />
-          <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
-          <ScalarProperty Name="FECHA_INICIO_ACTIVIDAD" ColumnName="FECHA_INICIO_ACTIVIDAD" />
-          <ScalarProperty Name="ITEM_SOLICITUD" ColumnName="ITEM_SOLICITUD" />
-          <ScalarProperty Name="FECHA_FIN_ACTIVIDAD" ColumnName="FECHA_FIN_ACTIVIDAD" />
-          <ScalarProperty Name="FECHA_PROGRAMADA" ColumnName="FECHA_PROGRAMADA" />
-          <ScalarProperty Name="RESULTADO_ATENCION" ColumnName="RESULTADO_ATENCION" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PERSONA">
-      <EntityTypeMapping TypeName="BDMantenModel.PERSONA">
-        <MappingFragment StoreEntitySet="PERSONA">
-          <ScalarProperty Name="CODIGO_PERSONA" ColumnName="CODIGO_PERSONA" />
-          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
-          <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
-          <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
-          <ScalarProperty Name="DNI_PERSONA" ColumnName="DNI_PERSONA" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PLAN_MANTENIMIENTO_CABECERA">
       <EntityTypeMapping TypeName="BDMantenModel.PLAN_MANTENIMIENTO_CABECERA">
         <MappingFragment StoreEntitySet="PLAN_MANTENIMIENTO_CABECERA">
+          <ScalarProperty Name="ID_PLAN" ColumnName="ID_PLAN" />
           <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
           <ScalarProperty Name="NOMBRE_PLAN" ColumnName="NOMBRE_PLAN" />
           <ScalarProperty Name="ESTADO_PLAN" ColumnName="ESTADO_PLAN" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PRIORIDAD">
-      <EntityTypeMapping TypeName="BDMantenModel.PRIORIDAD">
-        <MappingFragment StoreEntitySet="PRIORIDAD">
-          <ScalarProperty Name="CODIGO_PRIORIDAD" ColumnName="CODIGO_PRIORIDAD" />
-          <ScalarProperty Name="DESCRIPCION_PRIORIDAD" ColumnName="DESCRIPCION_PRIORIDAD" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PUESTO">
-      <EntityTypeMapping TypeName="BDMantenModel.PUESTO">
-        <MappingFragment StoreEntitySet="PUESTO">
-          <ScalarProperty Name="CODIGO_PUESTO" ColumnName="CODIGO_PUESTO" />
-          <ScalarProperty Name="DESCRIPCION_PUESTO" ColumnName="DESCRIPCION_PUESTO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SOLICITUD_CABECERA">
-      <EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_CABECERA">
-        <MappingFragment StoreEntitySet="SOLICITUD_CABECERA">
-          <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
-          <ScalarProperty Name="FECHA_SOLICITUD" ColumnName="FECHA_SOLICITUD" />
-          <ScalarProperty Name="TIPO_SOLICITUD" ColumnName="TIPO_SOLICITUD" />
-          <ScalarProperty Name="DOCUMENTO_REFERENCIA" ColumnName="DOCUMENTO_REFERENCIA" />
-          <ScalarProperty Name="FECHA_INICIO_SOLICITUD" ColumnName="FECHA_INICIO_SOLICITUD" />
-          <ScalarProperty Name="FECHA_FIN_SOLICITUD" ColumnName="FECHA_FIN_SOLICITUD" />
-          <ScalarProperty Name="ESTADO_SOLICITUD" ColumnName="ESTADO_SOLICITUD" />
-          <ScalarProperty Name="CODIGO_EQUIPO" ColumnName="CODIGO_EQUIPO" />
-          <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -190,24 +104,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PLAN_MANTENIMIENTO_DETALLE">
-      <EntityTypeMapping TypeName="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE">
-        <MappingFragment StoreEntitySet="PLAN_MANTENIMIENTO_DETALLE">
-          <ScalarProperty Name="OBSERVACIONES_PLAN" ColumnName="OBSERVACIONES_PLAN" />
-          <ScalarProperty Name="PROCEDIMIENTOS_PLAN" ColumnName="PROCEDIMIENTOS_PLAN" />
-          <ScalarProperty Name="TIEMPO_ACTIVIDAD" ColumnName="TIEMPO_ACTIVIDAD" />
-          <ScalarProperty Name="CODIGO_TIEMPO" ColumnName="CODIGO_TIEMPO" />
-          <ScalarProperty Name="PERSONAL_REQUERIDO" ColumnName="PERSONAL_REQUERIDO" />
-          <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
-          <ScalarProperty Name="PRIORIDAD_ACTIVIDAD" ColumnName="PRIORIDAD_ACTIVIDAD" />
-          <ScalarProperty Name="DESCRIPCION_ACTIVIDAD" ColumnName="DESCRIPCION_ACTIVIDAD" />
-          <ScalarProperty Name="CODIGO_TIPO_ACTIVIDAD" ColumnName="CODIGO_TIPO_ACTIVIDAD" />
-          <ScalarProperty Name="ITEM_ACTIVIDAD" ColumnName="ITEM_ACTIVIDAD" />
-          <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
-          <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SOLICITUD_DETALLE">
       <EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_DETALLE">
         <MappingFragment StoreEntitySet="SOLICITUD_DETALLE">
@@ -223,6 +119,47 @@
           <ScalarProperty Name="ITEM_SOLICITUD" ColumnName="ITEM_SOLICITUD" />
           <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
           <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CALENDARIO_LABORABLE">
+      <EntityTypeMapping TypeName="BDMantenModel.CALENDARIO_LABORABLE">
+        <MappingFragment StoreEntitySet="CALENDARIO_LABORABLE">
+          <ScalarProperty Name="HORAS_LABORABLES" ColumnName="HORAS_LABORABLES" />
+          <ScalarProperty Name="FECHA_LABORABLE" ColumnName="FECHA_LABORABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRECUENCIA">
+      <EntityTypeMapping TypeName="BDMantenModel.FRECUENCIA">
+        <MappingFragment StoreEntitySet="FRECUENCIA">
+          <ScalarProperty Name="DIAS_FRECUENCIA" ColumnName="DIAS_FRECUENCIA" />
+          <ScalarProperty Name="DESCRIPCION_FRECUENCIA" ColumnName="DESCRIPCION_FRECUENCIA" />
+          <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GET_ORDEN_TRABAJO" FunctionName="BDMantenModel.Store.GET_ORDEN_TRABAJO" />
+    <EntitySetMapping Name="SOLICITUD_CABECERA">
+      <EntityTypeMapping TypeName="BDMantenModel.SOLICITUD_CABECERA">
+        <MappingFragment StoreEntitySet="SOLICITUD_CABECERA">
+          <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
+          <ScalarProperty Name="CODIGO_EQUIPO" ColumnName="CODIGO_EQUIPO" />
+          <ScalarProperty Name="ESTADO_SOLICITUD" ColumnName="ESTADO_SOLICITUD" />
+          <ScalarProperty Name="FECHA_FIN_SOLICITUD" ColumnName="FECHA_FIN_SOLICITUD" />
+          <ScalarProperty Name="FECHA_INICIO_SOLICITUD" ColumnName="FECHA_INICIO_SOLICITUD" />
+          <ScalarProperty Name="DOCUMENTO_REFERENCIA" ColumnName="DOCUMENTO_REFERENCIA" />
+          <ScalarProperty Name="TIPO_SOLICITUD" ColumnName="TIPO_SOLICITUD" />
+          <ScalarProperty Name="FECHA_SOLICITUD" ColumnName="FECHA_SOLICITUD" />
+          <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROCEDENCIA">
+      <EntityTypeMapping TypeName="BDMantenModel.PROCEDENCIA">
+        <MappingFragment StoreEntitySet="PROCEDENCIA">
+          <ScalarProperty Name="DESCRIPCION_PROCEDENCIA" ColumnName="DESCRIPCION_PROCEDENCIA" />
+          <ScalarProperty Name="CODIGO_PROCEDENCIA" ColumnName="CODIGO_PROCEDENCIA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -246,35 +183,115 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CALENDARIO_LABORABLE">
-      <EntityTypeMapping TypeName="BDMantenModel.CALENDARIO_LABORABLE">
-        <MappingFragment StoreEntitySet="CALENDARIO_LABORABLE">
-          <ScalarProperty Name="HORAS_LABORABLES" ColumnName="HORAS_LABORABLES" />
-          <ScalarProperty Name="FECHA_LABORABLE" ColumnName="FECHA_LABORABLE" />
+    <EntitySetMapping Name="ORDEN_TRABAJO_ESTADO">
+      <EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_ESTADO">
+        <MappingFragment StoreEntitySet="ORDEN_TRABAJO_ESTADO">
+          <ScalarProperty Name="DESCRIPCION_ESTADO_OT" ColumnName="DESCRIPCION_ESTADO_OT" />
+          <ScalarProperty Name="CODIGO_ESTADO_OT" ColumnName="CODIGO_ESTADO_OT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="FRECUENCIA">
-      <EntityTypeMapping TypeName="BDMantenModel.FRECUENCIA">
-        <MappingFragment StoreEntitySet="FRECUENCIA">
-          <ScalarProperty Name="DIAS_FRECUENCIA" ColumnName="DIAS_FRECUENCIA" />
-          <ScalarProperty Name="DESCRIPCION_FRECUENCIA" ColumnName="DESCRIPCION_FRECUENCIA" />
-          <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="GET_ORDEN_TRABAJO" FunctionName="BDMantenModel.Store.GET_ORDEN_TRABAJO">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_CONSULTA">
+    <EntitySetMapping Name="ORDEN_TRABAJO_CABECERA">
+      <EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_CABECERA">
+        <MappingFragment StoreEntitySet="ORDEN_TRABAJO_CABECERA">
+          <ScalarProperty Name="ESTADO_ORDEN" ColumnName="ESTADO_ORDEN" />
           <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
-          <ScalarProperty Name="NOMBRE_EQUIPO" ColumnName="NOMBRE_EQUIPO" />
-          <ScalarProperty Name="MARCA_EQUIPO" ColumnName="MARCA_EQUIPO" />
-          <ScalarProperty Name="DESC_AREA" ColumnName="DESC_AREA" />
-          <ScalarProperty Name="FECHA_INICIO_SOLICITUD" ColumnName="FECHA_INICIO_SOLICITUD" />
-          <ScalarProperty Name="FECHA_FIN_SOLICITUD" ColumnName="FECHA_FIN_SOLICITUD" />
-          <ScalarProperty Name="ESTADO_SOLICITUD" ColumnName="ESTADO_SOLICITUD" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+          <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+          <ScalarProperty Name="OBSERVACIONES_ORDEN" ColumnName="OBSERVACIONES_ORDEN" />
+          <ScalarProperty Name="HORAS_TRABAJO_ORDEN" ColumnName="HORAS_TRABAJO_ORDEN" />
+          <ScalarProperty Name="FECHA_FIN_ORDEN" ColumnName="FECHA_FIN_ORDEN" />
+          <ScalarProperty Name="FECHA_INICIO_ORDEN" ColumnName="FECHA_INICIO_ORDEN" />
+          <ScalarProperty Name="FECHA_EMISION_ORDEN" ColumnName="FECHA_EMISION_ORDEN" />
+          <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDEN_TRABAJO_DETALLE">
+      <EntityTypeMapping TypeName="BDMantenModel.ORDEN_TRABAJO_DETALLE">
+        <MappingFragment StoreEntitySet="ORDEN_TRABAJO_DETALLE">
+          <ScalarProperty Name="RESULTADO_ATENCION" ColumnName="RESULTADO_ATENCION" />
+          <ScalarProperty Name="FECHA_PROGRAMADA" ColumnName="FECHA_PROGRAMADA" />
+          <ScalarProperty Name="FECHA_FIN_ACTIVIDAD" ColumnName="FECHA_FIN_ACTIVIDAD" />
+          <ScalarProperty Name="ITEM_SOLICITUD" ColumnName="ITEM_SOLICITUD" />
+          <ScalarProperty Name="FECHA_INICIO_ACTIVIDAD" ColumnName="FECHA_INICIO_ACTIVIDAD" />
+          <ScalarProperty Name="NUMERO_SOLICITUD" ColumnName="NUMERO_SOLICITUD" />
+          <ScalarProperty Name="ITEM_ORDEN" ColumnName="ITEM_ORDEN" />
+          <ScalarProperty Name="NUMERO_ORDEN" ColumnName="NUMERO_ORDEN" />
+          <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="BDMantenModel.EMPLEADO">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="HORA_SALIDA" ColumnName="HORA_SALIDA" />
+          <ScalarProperty Name="HORA_INGRESO" ColumnName="HORA_INGRESO" />
+          <ScalarProperty Name="CODIGO_JEFE" ColumnName="CODIGO_JEFE" />
+          <ScalarProperty Name="FECHA_FIN_CONTRATO" ColumnName="FECHA_FIN_CONTRATO" />
+          <ScalarProperty Name="FECHA_INICIO_CONTRATO" ColumnName="FECHA_INICIO_CONTRATO" />
+          <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+          <ScalarProperty Name="CODIGO_PUESTO" ColumnName="CODIGO_PUESTO" />
+          <ScalarProperty Name="CODIGO_AREA" ColumnName="CODIGO_AREA" />
+          <ScalarProperty Name="APEMAT" ColumnName="APEMAT" />
+          <ScalarProperty Name="APEPAT" ColumnName="APEPAT" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="CODIGO_EMPLEADO" ColumnName="CODIGO_EMPLEADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAN_MANTENIMIENTO_DETALLE">
+      <EntityTypeMapping TypeName="BDMantenModel.PLAN_MANTENIMIENTO_DETALLE">
+        <MappingFragment StoreEntitySet="PLAN_MANTENIMIENTO_DETALLE">
+          <ScalarProperty Name="OBSERVACIONES_PLAN" ColumnName="OBSERVACIONES_PLAN" />
+          <ScalarProperty Name="PROCEDIMIENTOS_PLAN" ColumnName="PROCEDIMIENTOS_PLAN" />
+          <ScalarProperty Name="TIEMPO_ACTIVIDAD" ColumnName="TIEMPO_ACTIVIDAD" />
+          <ScalarProperty Name="CODIGO_TIEMPO" ColumnName="CODIGO_TIEMPO" />
+          <ScalarProperty Name="PERSONAL_REQUERIDO" ColumnName="PERSONAL_REQUERIDO" />
+          <ScalarProperty Name="CODIGO_FRECUENCIA" ColumnName="CODIGO_FRECUENCIA" />
+          <ScalarProperty Name="PRIORIDAD_ACTIVIDAD" ColumnName="PRIORIDAD_ACTIVIDAD" />
+          <ScalarProperty Name="DESCRIPCION_ACTIVIDAD" ColumnName="DESCRIPCION_ACTIVIDAD" />
+          <ScalarProperty Name="CODIGO_TIPO_ACTIVIDAD" ColumnName="CODIGO_TIPO_ACTIVIDAD" />
+          <ScalarProperty Name="ITEM_ACTIVIDAD" ColumnName="ITEM_ACTIVIDAD" />
+          <ScalarProperty Name="CODIGO_PLAN" ColumnName="CODIGO_PLAN" />
+          <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUESTO">
+      <EntityTypeMapping TypeName="BDMantenModel.PUESTO">
+        <MappingFragment StoreEntitySet="PUESTO">
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CODIGO_PUESTO" ColumnName="CODIGO_PUESTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONA">
+      <EntityTypeMapping TypeName="BDMantenModel.PERSONA">
+        <MappingFragment StoreEntitySet="PERSONA">
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="USUARIOFLAG" ColumnName="USUARIOFLAG" />
+          <ScalarProperty Name="TELEFONO_2" ColumnName="TELEFONO_2" />
+          <ScalarProperty Name="TELEFONO_1" ColumnName="TELEFONO_1" />
+          <ScalarProperty Name="DIRECCION_PERSONA" ColumnName="DIRECCION_PERSONA" />
+          <ScalarProperty Name="NRO_DOCUMENTO" ColumnName="NRO_DOCUMENTO" />
+          <ScalarProperty Name="TIPO_DOCUMENTO" ColumnName="TIPO_DOCUMENTO" />
+          <ScalarProperty Name="TIPO_PERSONA" ColumnName="TIPO_PERSONA" />
+          <ScalarProperty Name="APELLIDO_MATERNO" ColumnName="APELLIDO_MATERNO" />
+          <ScalarProperty Name="APELLIDO_PATERNO" ColumnName="APELLIDO_PATERNO" />
+          <ScalarProperty Name="NOMBRE_PERSONA" ColumnName="NOMBRE_PERSONA" />
+          <ScalarProperty Name="CODIGO_PERSONA" ColumnName="CODIGO_PERSONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRIORIDAD">
+      <EntityTypeMapping TypeName="BDMantenModel.PRIORIDAD">
+        <MappingFragment StoreEntitySet="PRIORIDAD">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -21,6 +21,11 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         }
         #endregion
 
+        public List<EmpleadosBE> BuscarEmpleados(EmpleadosBE empleadosBE)
+        {
+            return instanciaDA.BuscarEmpleados(empleadosBE);
+        }
+
         public List<EmpleadosBE> ObtenerEmpleados(string nombres)
         {
             return instanciaDA.ObtenerEmpleados(nombres);

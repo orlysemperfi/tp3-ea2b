@@ -1,0 +1,25 @@
+﻿@model TMD.GM.Site.Models.EmpleadoBusquedaModel
+<fieldset>
+<fieldset  class="fieldset_left">
+<span>DNI</span><br />
+<input id="txtDNIPers_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Nombre</span><br />
+<input id="txtNombPers_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset class="fieldset_left">
+<br />
+<button id="btnBuscar" class="k-button" onclick="EmpleadoEjecutarBusqueda('@Url.Action("BuscarEmpleados", "Empleado")')" ><span class="k-icon k-i-search"></span> Buscar</button>
+</fieldset>
+</fieldset>
+<br />
+<div class="k-block"><div class="k-header k-shadow">Resultado</div>
+<div id="divGridPersonal" style="height:252px"></div>
+</div>
+<br />
+<fieldset>
+<button id="btnRetornar" class="k-button" onclick="CerrarModalEmpleados();" ><span class="k-icon k-i-close"></span>Retornar</button>
+</fieldset>
+
+@Html.Hidden("hdFormPocedencia",Model.formProcedencia)
