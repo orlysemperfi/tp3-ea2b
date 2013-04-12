@@ -116,3 +116,13 @@ E:\TP3\Proyecto\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.dll
 E:\TP3\Proyecto\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\TMD.CF.AccesoDatos.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\TMD.CF.AccesoDatos.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\Microsoft.Practices.Unity.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\bin\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.CF.AccesoDatos\obj\Debug\TMD.CF.AccesoDatos.pdb
