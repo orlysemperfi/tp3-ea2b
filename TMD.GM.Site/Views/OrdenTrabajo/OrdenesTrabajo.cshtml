@@ -1,0 +1,44 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoConsultaModel
+@{ WebGrid grid = new WebGrid(Model.listaData, canPage: false, canSort: false);}
+@grid.GetHtml(htmlAttributes: new { id = "tableOT" },
+      columns: grid.Columns(
+            grid.Column("NUMERO_ORDEN", "N° OT"),
+                grid.Column("FECHA_EMISION_ORDEN", "Fecha", format: @<text>@item.FECHA_EMISION_ORDEN.ToString("dd/MM/yyyy")</text>),
+                grid.Column("NOMBRE_EMPLEADO", "Responsable"),
+                grid.Column("HORAS_TRABAJO_ORDEN", "Horas trabajo"),
+                grid.Column("NUMERO_SOLICITUD", "N° Solicitud"),
+                grid.Column("DESCRIPCION_ESTADO", "Estado OT"),
+                grid.Column("OPCIONES", "Opciones", format: @<text>
+              
+          @if (item.ESTADO_ORDEN == TMD.GM.Util.ConstantesUT.ESTADO_ORDEN.Abierta)
+            {
+            <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="OrdenTrabajoEditar('@Url.Action("Editar", "OrdenTrabajo")','@Url.Action("Actividades", "OrdenTrabajo")','@item.NUMERO_ORDEN');"><span class="k-icon k-edit"></span>Editar</a>
+            <a class="k-button k-button-icontext k-grid-delete" href="#" onclick="OTEliminar('@Url.Action("Eliminar", "OrdenTrabajo")','@Url.Action("OrdenesTrabajo", "OrdenTrabajo")','@item.NUMERO_ORDEN');"><span class="k-icon k-delete"></span>Anular</a>
+            }
+            else
+            {
+            <a class="k-button k-button-icontext k-grid-edit" href="#" onclick="OrdenTrabajoEditar('@Url.Action("Editar", "OrdenTrabajo")','@Url.Action("Actividades", "OrdenTrabajo")','@item.NUMERO_ORDEN');"><span class="k-icon k-i-search"></span>Ver</a>
+            }
+        </text>)
+
+       )
+    )
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#tableOT").kendoGrid({
+            height: 250,
+            columns: [
+            { field: "NUMERO_ORDEN", title: "N° OT", width: "100px" },
+            { field: "FECHA_EMISION_ORDEN", title: "Fecha", width: "80px" },
+            { field: "NOMBRE_EMPLEADO", title: "Responsable", width: "250px" },
+            { field: "HORAS_TRABAJO_ORDEN", title: "Horas trabajo", width: "50px" },
+            { field: "NUMERO_SOLICITUD", title: "N° Solicitud", width: "100px" },
+            { field: "DESCRIPCION_ESTADO", title: "Estado OT", width: "80px" },
+            { field: "OPCIONES", title: "Opciones", width: "150px"}]
+        });
+    });
+    
+</script>
+  
+

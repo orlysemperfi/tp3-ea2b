@@ -8,11 +8,16 @@ namespace TMD.GM.AccesoDatos.Contrato
 {
     public interface IOrdenTrabajoDA
     {
-        //PlanBE ObtenerPlanNuevo();
-        //List<SelectListItemBE> ListarPlanMante();
-        List<OrdenTrabajoBE> ListarOrdenTrabajo(DateTime? pd_Fini, DateTime? pd_Ffin);
-        //void RegistrarPlan(PlanBE planBE);
-        //void ActualizarPlan(PlanBE planBE);
-        //PlanBE VisualizarPlan(PlanBE planBE);
+        List<OrdenTrabajoBE> ListarOrdenTrabajo(OrdenTrabajoFiltroBE entidad);
+        void Registrar(OrdenTrabajoBE entidad);
+        void Registrar(List<OrdenTrabajoBE> entidades);
+        void Actualizar(OrdenTrabajoBE entidad);
+        void Eliminar(OrdenTrabajoBE entidad);
+        OrdenTrabajoBE Visualizar(OrdenTrabajoBE entidad);
+        List<OrdenTrabajoDetalleBE> VisualizarDetalle(OrdenTrabajoBE entidad);
+        List<OrdenTrabajoEquipoBE> ListarEquiposPendientes(OrdenTrabajoFiltroBE filtro);
+        List<OrdenTrabajoDetalleBE> ListarActividadesEquiposPendientes(OrdenTrabajoFiltroBE filtro);
+        OrdenTrabajoBE ObtenerOrdenTrabajoNueva();
+        OrdenTrabajoEquipoBE ObtenerDisponibilidadResponsable(OrdenTrabajoFiltroBE filtro);
     }
 }
