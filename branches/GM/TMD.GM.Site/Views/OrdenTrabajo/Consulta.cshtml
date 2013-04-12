@@ -1,0 +1,78 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoConsultaModel
+@{
+    ViewBag.Title = "Orden de Trabajo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Mantenimiento de Ordenes de Trabajo</h2>
+
+<fieldset>
+<fieldset  class="fieldset_left">
+<span>N° Orden de Trabajo</span><br />
+<input id="txtNumOT_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Desde</span><br />
+<input id="dpFechaIni_Consulta" value="@Model.fechaIni.ToString("dd/MM/yyyy")" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Hasta</span><br />
+<input id="dpFechaFin_Consulta" value="@Model.fechaFin.ToString("dd/MM/yyyy")" style="width:150px;" />
+</fieldset>
+<fieldset class="fieldset_left">
+<span>N° Solicitud</span><br />
+<input id="txtNumSolicitud_Consulta" type="text" class="k-textbox" value="" style="width: 150px;" />
+</fieldset>
+</fieldset>
+
+<fieldset>
+
+<fieldset  class="fieldset_left">
+<span>Estado</span><br />
+@Html.DropDownList("ddlEstadoOT_Consulta", Model.listaES)
+</fieldset>
+<fieldset class="fieldset_left">
+<span>Código de responsable</span><br />
+<input id="txtCodigoResp_ConsultaPrincipal" type="text" class="k-textbox" value="" style="width: 120px;" />
+<button id="btnBuscarResponsable" class="k-button" onclick="EmpleadoConsulta('@Url.Action("Buscar", "Empleado")','PageBase')" >...</button>
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Nombre del Responsable</span><br />
+<input id="txtNombreResp_ConsultaPrincipal" type="text" class="k-textbox" value="" style="width: 300px;" readonly="readonly" />
+</fieldset>
+</fieldset>
+
+<fieldset>
+<button id="btnNuevo" class="k-button" onclick="OTGenerar('@Url.Action("Generar", "OrdenTrabajo")')" ><span class="k-icon k-i-plus"></span> Nueva Orden</button>
+<button id="btnBuscar" class="k-button" onclick="BuscarOT('@Url.Action("OrdenesTrabajo", "OrdenTrabajo")')" ><span class="k-icon k-i-search"></span> Buscar</button>
+</fieldset>
+<br />
+<div class="k-block"><div class="k-header k-shadow">Resultado</div>
+<div id="divGridOTConsulta" style="height:252px"></div>
+</div>
+<fieldset>
+
+<div id="divOrdenTrabajo" class="j_modal" title="Orden Trabajo"></div>
+<div id="divOTGenerar" class="j_modal" title="Generar Orden de Trabajo"></div>
+<div id="divAsignacionReponsable" class="j_modal" title="Asignar Responsable"></div>
+<div id="divActividad" class="j_modal" title="Actividad"></div>
+<div id="divResponsables" class="j_modal" title="Responsables"></div>
+<div id="divActividadesResumen" class="j_modal" title="Actividades"></div>
+<div id="divActividadesResponsable" class="j_modal" title="Responsable"></div>
+<div id="divActividadOT" class="j_modal" title="Actividad"></div>
+
+
+</fieldset>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#dpFechaIni_Consulta").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#dpFechaFin_Consulta").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#ddlEstadoOT_Consulta").kendoComboBox();
+    });
+
+    $("#txtCodigoResp_ConsultaPrincipal").keyup(function () {
+        if ($.trim($(this).val()) == '') {
+            $("#txtNombreResp_ConsultaPrincipal").attr("value", "");
+        }
+    });
+</script>

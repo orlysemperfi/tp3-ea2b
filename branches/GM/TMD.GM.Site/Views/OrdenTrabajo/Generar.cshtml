@@ -1,0 +1,34 @@
+﻿@model TMD.GM.Site.Models.OrdenTrabajoGeneraModel
+<fieldset>
+<fieldset  class="fieldset_left">
+<span>Desde</span><br />
+<input id="dpFechaIni_Genera" value="@Model.fechaIni.ToString("dd/MM/yyyy")" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<span>Hasta</span><br />
+<input id="dpFechaFin_Genera" value="@Model.fechaFin.ToString("dd/MM/yyyy")" style="width:150px;" />
+</fieldset>
+<fieldset  class="fieldset_left">
+<br />
+<button id="btnBuscar" class="k-button" onclick="OTEquipoPendiente('@Url.Action("EquiposPendientes", "OrdenTrabajo")')" ><span class="k-icon k-i-search"></span> Buscar</button>
+</fieldset>
+
+</fieldset>
+<div class="k-block"><div class="k-header k-shadow">Listado de Equipos</div>
+<div id="divGridOTEquiposPendientes" style="height:202px"></div>
+</div>
+<div class="k-block"><div class="k-header k-shadow">Actividades por el Equipo: <b><label id="lblNombEqui_Genera" style="display:inline!important;"></label></b></div>
+<div id="divGridOTEquiposActividades" style="height:202px"></div>
+</div>
+<br />
+<fieldset >
+<button id="btnAsignar" class="k-button" onclick="OTAsignarResponsable('@Url.Action("AsignacionResponsable", "OrdenTrabajo")')" ><span class="k-icon k-i-note"></span> Asignar Responsable</button>
+</fieldset>
+
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("#dpFechaIni_Genera").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+        $("#dpFechaFin_Genera").kendoDatePicker({ culture: "es-PE", format: "dd/MM/yyyy" });
+    });
+</script>
