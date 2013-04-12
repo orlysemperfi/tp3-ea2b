@@ -14,53 +14,72 @@
         @Styles.Render("~/Content/kendo/2012.3.1315/css")
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/kendo")
+
+            <style type="text/css">
+                .style1
+                {
+                    width: 100%;
+                }
+            </style>
+        
+        <link href="~/Content/Site2.css" rel="stylesheet" type="text/css" />    
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">
-                    </p>
-                    <img src="../../Images/1363144560_Utilities.png" alt="" width="80" height="80" >
-                    </img>
-
-                </div>
-                <div class="float-right">
-                    @*<section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>*@
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Plan", "PlanConsulta", "Plan")</li>
-                            <li>@Html.ActionLink("Equipo", "Index", "Equipo")</li>
-                             <li>@Html.ActionLink("Especialidad", "RedirectEspecialidad", "Solicitud")</li>
-                            <li>@Html.ActionLink("Solicitud", "SolicitudConsulta", "Solicitud")</li>
-                             <li>@Html.ActionLink("Orden de Trabajo", "OrdenTrabajoConsulta", "OrdenTrabajo")</li>
-                             <li>@Html.ActionLink("Informe", "RedirectInforme", "Solicitud")</li>
-                             
-                           @* <li>@Html.ActionLink("Información", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>*@
-                        </ul>
-                      @*  <a href="http://localhost:1051/MantEmpleado/frmMantEmpleado.aspx"> Empleado Especialidad</a>
-                        <a href="http://localhost:1051/MantInforme/frmMantInforme.aspx"> Empleado Especialidad</a>*@
-                    </nav>
-                </div>
+        <div class="page">  
+        <div class="header">   
+            <div class="title">
+                <h1>
+                <img src="~/Images/LogoTMD.jpg" width="75" height="77" alt=""  runat="server" />&nbsp;
+                    Sistema Integral
+                </h1>
             </div>
-        </header>
-        <div id="body">
+            <div class="loginDisplay">
+                Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /> Grupo 5 </span>!
+                <a href="#" >Cerrar sesión</a>
+            </div>
+            <div class="clear hideSkiplink">
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Plan", "PlanConsulta", "Plan")</li>
+                        <li>@Html.ActionLink("Equipo", "Index", "Equipo")</li>
+                        <li>@Html.ActionLink("Solicitud", "SolicitudConsulta", "Solicitud")</li>
+                            <li>@Html.ActionLink("Orden de Trabajo", "OrdenTrabajoConsulta", "OrdenTrabajo")</li>
+                            <li>@Html.ActionLink("Especialidad", "RedirectEspecialidad", "Solicitud")</li>
+                            <li>@Html.ActionLink("Informe", "RedirectInforme", "Solicitud")</li>
+                             
+                        @* <li>@Html.ActionLink("Información", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>*@
+                    </ul>
+                    @*  <a href="http://localhost:1051/MantEmpleado/frmMantEmpleado.aspx"> Empleado Especialidad</a>
+                    <a href="http://localhost:1051/MantInforme/frmMantInforme.aspx"> Empleado Especialidad</a>*@
+                </nav>
+            </div>
+            
+        </div>
+        <div id="main">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Sistema de mantenimiento</p>
-                </div>
-            </div>
-        </footer>
+        <div class="clear">
+         </div>
+         <div class="footer">
+        
+            <table class="footer">
+                <tr>
+                    <td>
+                        <h5 > TMD S.A. </h5>
+                    </td>
+                    <td>
+                        <h5 > (C) Copyright 2012-2013 </h5>
+                    </td>
+                </tr>
+            </table>
+        
+        </div> 
+        
         <div class="divLoadingMensaje" >
         <strong>
             <img src="@Url.Content("~/Images/ajax-loader.gif")" alt="Procesando..."/>
@@ -73,8 +92,10 @@
         @*@Scripts.Render("~/bundles/jquery")*@
         @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/jquerypri")
+        @Scripts.Render("~/bundles/jqueryval")
         @*@Scripts.Render("~/bundles/jquerykendo")*@
         @RenderSection("scripts", required: false)
        
+        </div>
     </body>
 </html>
