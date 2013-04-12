@@ -196,3 +196,17 @@ E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
 E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
 E:\TP3\Proyecto\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.LogicaNegocios.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\Microsoft.Practices.Unity.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.ACP.AccesoDatos.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Core.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\bin\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ACP.LogicaNegocios\obj\Debug\TMD.ACP.LogicaNegocios.pdb
