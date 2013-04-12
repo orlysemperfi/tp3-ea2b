@@ -40,3 +40,10 @@ E:\TP3\Proyecto\TMD.MP.Comun\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
 E:\TP3\Proyecto\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\bin\Debug\TMD.MP.Comun.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\bin\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\bin\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.MP.Comun\obj\Debug\TMD.MP.Comun.pdb

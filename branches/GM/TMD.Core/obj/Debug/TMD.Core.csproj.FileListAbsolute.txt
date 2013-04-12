@@ -31,3 +31,8 @@ E:\TP3\Proyecto\TMD.Core\bin\Debug\TMD.Core.pdb
 E:\TP3\Proyecto\TMD.Core\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.Core\obj\Debug\TMD.Core.dll
 E:\TP3\Proyecto\TMD.Core\obj\Debug\TMD.Core.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Core\bin\Debug\TMD.Core.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Core\bin\Debug\TMD.Core.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Core\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Core\obj\Debug\TMD.Core.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Core\obj\Debug\TMD.Core.pdb

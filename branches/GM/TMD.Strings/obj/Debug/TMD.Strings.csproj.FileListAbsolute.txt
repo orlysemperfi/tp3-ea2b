@@ -26,3 +26,8 @@ E:\TP3\Proyecto\TMD.Strings\bin\Debug\TMD.Strings.pdb
 E:\TP3\Proyecto\TMD.Strings\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.Strings\obj\Debug\TMD.Strings.dll
 E:\TP3\Proyecto\TMD.Strings\obj\Debug\TMD.Strings.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Strings\bin\Debug\TMD.Strings.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Strings\bin\Debug\TMD.Strings.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Strings\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Strings\obj\Debug\TMD.Strings.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.Strings\obj\Debug\TMD.Strings.pdb

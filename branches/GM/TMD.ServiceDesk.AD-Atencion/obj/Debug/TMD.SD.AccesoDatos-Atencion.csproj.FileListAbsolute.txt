@@ -65,3 +65,14 @@ E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
 E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
 E:\TP3\Proyecto\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.SD.AccesoDatos-Atencion.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\Microsoft.Practices.Unity.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\bin\Debug\TMD.Entidades.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.ServiceDesk.AD-Atencion\obj\Debug\TMD.SD.AccesoDatos-Atencion.pdb

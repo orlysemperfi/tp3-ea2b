@@ -18,3 +18,8 @@ E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Encuestas\bin\Debug\TMD.SD.LogicaNegocio-En
 E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\ResolveAssemblyReference.cache
 E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.dll
 E:\TP3\Proyecto\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.SD.LogicaNegocio-Encuestas\bin\Debug\TMD.SD.LogicaNegocio-Encuestas.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.SD.LogicaNegocio-Encuestas\bin\Debug\TMD.SD.LogicaNegocio-Encuestas.pdb
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\ResolveAssemblyReference.cache
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.dll
+E:\@Upc\TP3\TMD.GM-BRANCH\TMD.SD.LogicaNegocio-Encuestas\obj\Debug\TMD.SD.LogicaNegocio-Encuestas.pdb
