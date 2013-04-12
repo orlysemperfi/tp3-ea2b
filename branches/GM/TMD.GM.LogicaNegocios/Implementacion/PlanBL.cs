@@ -26,9 +26,9 @@ namespace TMD.GM.LogicaNegocios.Implementacion
         {
             return instanciaDA.ListarPlanMante();
         }
-        public List<PlanBE> ListarPlanManteTodos()
+        public List<PlanBE> ListarPlanManteTodos(PlanBE planBE)
         {
-            return instanciaDA.ListarPlanManteTodos();
+            return instanciaDA.ListarPlanManteTodos(planBE);
         }
 
         public void RegistrarPlan( PlanBE planBE)
