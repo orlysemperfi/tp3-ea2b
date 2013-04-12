@@ -18,10 +18,12 @@ namespace TMD.GM.Site.Models
         public List<SelectListItem> listaTE { get; set; }
         public List<SelectListItem> listaAR { get; set; }
         public List<SelectListItem> listaPM { get; set; }
+        public List<SelectListItem> listaPR { get; set; }
     }
 
     public class EquipoBusquedaModel
     {
+        public string formProcedencia { get; set; }
         public List<EquipoBE> listaEquipos { get; set; }
     }
 }

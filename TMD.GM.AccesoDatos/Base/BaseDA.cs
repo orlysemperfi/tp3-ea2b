@@ -14,10 +14,10 @@ namespace TMD.GM.AccesoDatos
         private  BaseDA(){}
 
         #region Constantes
-        private static string DataSource = @"TESIS051\MSQL2008R2";
-        private static string InitialCatalog = "BDManten";
+        private static string DataSource = @"CARLOS-PC";
+        private static string InitialCatalog = "TMD";
         private static string UserID = "sa";
-        private static string Password = "Pass@word1";
+        private static string Password = "1234";
         private static bool IntegratedSecurity = false;
         private static bool MultipleActiveResultSets = true;
         private static string Provider = "System.Data.SqlClient";
