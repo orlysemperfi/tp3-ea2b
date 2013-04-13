@@ -23,7 +23,7 @@ public class SolicitudTest extends BaseTest{
 		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
 		selenium.click("id=btnGrabar");
 		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
-		assertFalse("Error!!!. Equipo ya asociado",selenium.isTextPresent("Error"));
+		assertFalse("Error!!!",selenium.isTextPresent("Error"));
 	}
 
 	@Test

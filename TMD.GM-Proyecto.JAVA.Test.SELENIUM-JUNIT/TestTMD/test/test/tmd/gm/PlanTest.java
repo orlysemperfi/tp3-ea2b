@@ -24,54 +24,56 @@ public class PlanTest extends BaseTest {
 	}
 
 	@Test
-	public void test2PlanRegistrarOK() throws Exception {
-                String codigoPlan = "2013040702";
+	public void test2PlanRegistrarOk() throws Exception {
+                String codigoPlan = "2013040703";
 		selenium.open("/");
 		selenium.click("link=Plan");
 		selenium.waitForPageToLoad("30000");
 		selenium.click("id=btnNuevo");
 		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
 		selenium.type("id=txtCodigo", codigoPlan);
-		selenium.type("id=txtNombre", "PLAN MANT IMPRESORA 01");
+		selenium.type("id=txtNombre", "PLAN MANTENIMIENTO PREVENTIVO IMPRESORA");
 		selenium.click("id=btnAgregar");
 		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
 		selenium.type("id=txtActividadDesc", "LIMPIEZA CABEZAL");
 		selenium.select("id=ddlTipoActividad", "label=LIMPIEZA");
-		selenium.type("id=ntbPersRequ", "1");
-		selenium.type("id=ntbTiempoDura", "1");
+                selenium.type("id=ntbItem", "1");
+                selenium.type("id=ntbPersRequ", "1");
+                selenium.type("id=ntbTiempoDura","1");
 		selenium.select("id=ddlTiempoUnme", "label=horas");
 		selenium.select("id=ddlPrioridad", "label=Media");
 		selenium.select("id=ddlFrecuencia", "label=Quincenal");
 		selenium.click("id=btnAceptar");
-		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
+		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "10000");
 		selenium.click("id=btnGrabar");
-		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
+		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "10000");
 		assertFalse(selenium.isTextPresent("Error"));
 	}
         
-        //@Test
+        @Test
 	public void test3PlanRegistrarErrorCodigoExiste() throws Exception {
-                String codigoPlan = "2013040702";
+                String codigoPlan = "2013040703";
 		selenium.open("/");
 		selenium.click("link=Plan");
 		selenium.waitForPageToLoad("30000");
 		selenium.click("id=btnNuevo");
 		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
 		selenium.type("id=txtCodigo", codigoPlan);
-		selenium.type("id=txtNombre", "PLAN MANT IMPRESORA 01");
+		selenium.type("id=txtNombre", "PLAN MANTENIMIENTO PREVENTIVO IMPRESORA");
 		selenium.click("id=btnAgregar");
 		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
 		selenium.type("id=txtActividadDesc", "LIMPIEZA CABEZAL");
 		selenium.select("id=ddlTipoActividad", "label=LIMPIEZA");
-		selenium.type("id=ntbPersRequ", "1");
-		selenium.type("id=ntbTiempoDura", "1");
+                selenium.type("id=ntbItem", "1");
+                selenium.type("id=ntbPersRequ", "1");
+                selenium.type("id=ntbTiempoDura","1");
 		selenium.select("id=ddlTiempoUnme", "label=horas");
 		selenium.select("id=ddlPrioridad", "label=Media");
 		selenium.select("id=ddlFrecuencia", "label=Quincenal");
 		selenium.click("id=btnAceptar");
-		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
+		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "10000");
 		selenium.click("id=btnGrabar");
-		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
-		assertFalse(selenium.isTextPresent("Error"));
+		selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "10000");
+		assertTrue("Plan ya existe",selenium.isTextPresent("Error"));
 	}
 }
