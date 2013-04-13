@@ -16,7 +16,7 @@ public class EquipoTest extends BaseTest{
 
     @Test
     public void test1EquipoRegistrarOK() throws Exception {
-        String codigoEquipo = "201304070304";
+        String codigoEquipo = "201304070";
         selenium.open("/");
         selenium.click("link=Equipo");
         selenium.waitForPageToLoad("30000");
@@ -29,13 +29,15 @@ public class EquipoTest extends BaseTest{
         selenium.type("id=txtModeloEquipo", "HP");
         selenium.type("id=txtCaracteristicaEquipo", "DESKTOP HP");
         selenium.type("id=txtFechaCompra", "07/04/2013");
-        selenium.type("id=txtFechaExpira", "11/05/2014");
-        selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
-        
+        selenium.type("id=txtFechaExpira", "11/05/2014");        
+        selenium.select("id=ddlArea", "label=CONTABILIDAD");
+        selenium.select("id=ddlTipoEquipo", "label=DESKTOP");
+        selenium.select("id=ddlPlanMant", "label=PLAN DESKTOP");
+        selenium.select("id=ddlProcedEquipo", "label=Propio");
         selenium.click("id=checkEstado");
         selenium.click("id=btnRegistrar");
         selenium.waitForCondition("selenium.browserbot.getCurrentWindow().$.active == 0", "5000");
-        assertFalse("Error!!!. Equipo ya existe",selenium.isTextPresent("Error"));
+        assertFalse("Error!!!",selenium.isTextPresent("Error"));
     }
     
     //@Test
