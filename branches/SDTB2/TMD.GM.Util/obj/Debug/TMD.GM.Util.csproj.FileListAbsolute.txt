@@ -8,3 +8,8 @@ D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\bin\Debug\TMD.GM.Util.pdb
 D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\obj\Debug\ResolveAssemblyReference.cache
 D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\obj\Debug\TMD.GM.Util.dll
 D:\CARLOS\UPC\MATEN\TMD.GM\TMD.GM.Util\obj\Debug\TMD.GM.Util.pdb
+E:\TP3\Entregable 2\TMD.GM.Util\bin\Debug\TMD.GM.Util.dll
+E:\TP3\Entregable 2\TMD.GM.Util\bin\Debug\TMD.GM.Util.pdb
+E:\TP3\Entregable 2\TMD.GM.Util\obj\Debug\ResolveAssemblyReference.cache
+E:\TP3\Entregable 2\TMD.GM.Util\obj\Debug\TMD.GM.Util.dll
+E:\TP3\Entregable 2\TMD.GM.Util\obj\Debug\TMD.GM.Util.pdb
